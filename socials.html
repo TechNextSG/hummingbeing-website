@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Media â€” HummingBeing</title>
+  <meta name="description" content="Follow HummingBeing and Isabelle Claus Teixeira on Instagram, LinkedIn, YouTube and more for somatic wellness content and inspiration." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+    .post-card {
+      background: var(--white); border-radius: 12px;
+      padding: 1.5rem; box-shadow: 0 3px 16px rgba(44,95,78,.07);
+      border-left: 3px solid var(--gold-accent);
+    }
+    .post-card .post-platform { font-size: .72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-accent); margin-bottom: .6rem; }
+    .post-card p { font-size: .95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: .8rem; }
+    .post-card .post-tags { display: flex; flex-wrap: wrap; gap: .3rem; }
+    .post-card .post-tag { font-size: .72rem; background: var(--sage-bg); color: var(--green-primary); padding: .2rem .6rem; border-radius: 12px; font-weight: 700; }
+    .platform-hero {
+      background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+      border-radius: 16px; padding: 2.5rem; text-align: center;
+      box-shadow: 0 8px 32px rgba(44,95,78,.18); transition: transform .3s;
+    }
+    .platform-hero:hover { transform: translateY(-5px); }
+    .platform-hero .ph-icon { font-size: 3.5rem; display: block; margin-bottom: 1rem; }
+    .platform-hero h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); margin-bottom: .4rem; }
+    .platform-hero .ph-handle { color: var(--gold-accent); font-weight: 700; font-size: .9rem; margin-bottom: .8rem; display: block; }
+    .platform-hero p { color: rgba(255,255,255,.75); font-size: .9rem; margin-bottom: 1.5rem; line-height: 1.5; }
+    .platform-hero a { background: var(--gold-accent); color: var(--white); padding: .6rem 1.4rem; border-radius: 4px; font-weight: 700; font-size: .82rem; text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: background .3s; display: inline-block; }
+    .platform-hero a:hover { background: #b8843e; }
+    .platforms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .newsletter-box {
+      background: linear-gradient(135deg, var(--gold-accent), #a8793e);
+      border-radius: 16px; padding: 3rem; text-align: center; color: var(--white);
+    }
+    .newsletter-box h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; }
+    .newsletter-box p { opacity: .9; margin-bottom: 2rem; }
+    .newsletter-form { display: flex; gap: .8rem; max-width: 440px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .newsletter-form input {
+      flex: 1; min-width: 220px; padding: .9rem 1.2rem; border: none; border-radius: 4px;
+      font-size: 1rem; font-family: inherit;
+    }
+    .newsletter-form button { background: var(--green-dark); color: var(--white); border: none; padding: .9rem 1.5rem; border-radius: 4px; font-weight: 700; cursor: pointer; font-family: inherit; font-size: .85rem; letter-spacing: 1px; text-transform: uppercase; transition: background .3s; }
+    .newsletter-form button:hover { background: var(--green-primary); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Humming<span>Being</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="isabelle.html">Isabelle</a></li>
+    <li><a href="tre.html">TREÂ®</a></li>
+    <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
+    <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
+    <li><a href="socials.html" class="active">Socials</a></li>
+    <li><a href="book.html" class="nav-cta">Book a Session</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <span class="eyebrow">Stay Connected</span>
+  <h1>Follow the Journey</h1>
+  <p>Insights, practices and inspiration from Isabelle â€” across all platforms.</p>
+</div>
+
+<!-- MAIN PLATFORMS -->
+<section class="section-cream">
+  <span class="section-eyebrow">Our Platforms</span>
+  <h2 class="section-title">Find Us Where You Are</h2>
+  <p class="section-subtitle">Follow Isabelle and HummingBeing for somatic wellness content, leadership insights and community.</p>
+  <div class="platforms-grid">
+
+    <div class="platform-hero">
+      <span class="ph-icon">ðŸ“¸</span>
+      <h3>Instagram</h3>
+      <span class="ph-handle">@isabelleclausteixeira_bhd</span>
+      <p>Somatic tips, body wisdom, behind-the-scenes glimpses of sessions and the HummingBeing philosophy in daily life.</p>
+      <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank">Follow on Instagram</a>
+    </div>
+
+    <div class="platform-hero">
+      <span class="ph-icon">ðŸ’¼</span>
+      <h3>LinkedIn</h3>
+      <span class="ph-handle">Isabelle Claus Teixeira</span>
+      <p>Leadership insights, somatic neuroscience articles, coaching reflections and professional updates for leaders and HR professionals.</p>
+      <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank">Connect on LinkedIn</a>
+    </div>
+
+    <div class="platform-hero">
+      <span class="ph-icon">â–¶</span>
+      <h3>YouTube</h3>
+      <span class="ph-handle">@IsabelleClausTeixeira</span>
+      <p>In-depth videos on TREÂ®, somatic practices, resilience building and leadership wellbeing. Subscribe for guided sessions and expert content.</p>
+      <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank">Watch on YouTube</a>
+    </div>
+
+    <div class="platform-hero">
+      <span class="ph-icon">ðŸ“Œ</span>
+      <h3>Pinterest</h3>
+      <span class="ph-handle">isabelleclausteixeira</span>
+      <p>Curated boards on somatic wellness, nervous system regulation, mindful movement, resilience practices and holistic wellbeing resources.</p>
+      <a href="https://www.pinterest.com/isabelleclausteixeira/" target="_blank">Follow on Pinterest</a>
+    </div>
+
+    <div class="platform-hero">
+      <span class="ph-icon">ðŸ’¬</span>
+      <h3>WhatsApp</h3>
+      <span class="ph-handle">+81 806515 1778</span>
+      <p>The quickest way to reach Isabelle directly. Message for enquiries, session bookings or just to start a conversation about your wellness journey.</p>
+      <a href="https://wa.me/818065151778" target="_blank">Message on WhatsApp</a>
+    </div>
+
+    <div class="platform-hero">
+      <span class="ph-icon">ðŸŒ</span>
+      <h3>BHD Asia</h3>
+      <span class="ph-handle">bhdasia.com</span>
+      <p>The parent organisation behind HummingBeing â€” offering executive coaching, leadership development and organisational consulting across Asia.</p>
+      <a href="https://bhdasia.com" target="_blank">Visit BHD Asia</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTENT THEMES -->
+<section class="section-sage">
+  <div class="section-header-center">
+    <span class="section-eyebrow">What to Expect</span>
+    <h2 class="section-title">Content That Nourishes</h2>
+    <p class="section-subtitle">Isabelle's social content spans the full landscape of somatic wellness and human development.</p>
+  </div>
+  <div class="post-grid">
+    <div class="post-card">
+      <div class="post-platform">ðŸ“¸ Instagram Â· Content Theme</div>
+      <p><strong>Somatic Micro-Practices</strong> â€” Short, accessible exercises you can do anywhere to regulate your nervous system, release tension and return to presence.</p>
+      <div class="post-tags">
+        <span class="post-tag">#SomaticWellness</span>
+        <span class="post-tag">#NervousSystem</span>
+        <span class="post-tag">#TRE</span>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-platform">ðŸ’¼ LinkedIn Â· Content Theme</div>
+      <p><strong>Leadership &amp; Resilience</strong> â€” Evidence-based insights on how somatic awareness makes better leaders â€” with practical applications for high-performance professionals.</p>
+      <div class="post-tags">
+        <span class="post-tag">#CoachingLeadership</span>
+        <span class="post-tag">#HumanLeadership</span>
+        <span class="post-tag">#WellbeingAtWork</span>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-platform">â–¶ YouTube Â· Content Theme</div>
+      <p><strong>Guided Somatic Sessions</strong> â€” Full-length guided TREÂ® practice sessions, somatic movement sequences and educational deep-dives on nervous system health.</p>
+      <div class="post-tags">
+        <span class="post-tag">#TREExercises</span>
+        <span class="post-tag">#SomaticMovement</span>
+        <span class="post-tag">#Resilience</span>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-platform">ðŸ“¸ Instagram Â· Content Theme</div>
+      <p><strong>The Hummingbird Journal</strong> â€” Personal reflections on the path from corporate high-achiever to somatic practitioner â€” honest, warm and thought-provoking.</p>
+      <div class="post-tags">
+        <span class="post-tag">#Burnout</span>
+        <span class="post-tag">#PersonalGrowth</span>
+        <span class="post-tag">#Authenticity</span>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-platform">ðŸ’¼ LinkedIn Â· Content Theme</div>
+      <p><strong>Neuroscience &amp; Wellbeing</strong> â€” Accessible breakdowns of the latest research in polyvagal theory, trauma neuroscience and embodied leadership for professional audiences.</p>
+      <div class="post-tags">
+        <span class="post-tag">#PolyvagalTheory</span>
+        <span class="post-tag">#NeuroscienceOfLeadership</span>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-platform">ðŸ“Œ Pinterest Â· Content Theme</div>
+      <p><strong>Wellness Inspiration Boards</strong> â€” Curated visual collections on somatic practices, breathwork, mindful movement, nature-based healing and holistic lifestyle.</p>
+      <div class="post-tags">
+        <span class="post-tag">#HolisticWellness</span>
+        <span class="post-tag">#SomaticHealing</span>
+        <span class="post-tag">#Breathwork</span>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-platform">ðŸ“¸ Instagram Â· Content Theme</div>
+      <p><strong>Client Transformations</strong> â€” With permission, sharing the journeys of clients who have found their way back to resilience, energy and joy through somatic practices.</p>
+      <div class="post-tags">
+        <span class="post-tag">#Transformation</span>
+        <span class="post-tag">#SomaticCoaching</span>
+        <span class="post-tag">#ReleaseRenewRestore</span>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-platform">â–¶ YouTube Â· Content Theme</div>
+      <p><strong>Expert Conversations</strong> â€” Interviews and conversations with leading voices in somatics, trauma therapy, neuroscience and conscious leadership from around the world.</p>
+      <div class="post-tags">
+        <span class="post-tag">#ExpertTalks</span>
+        <span class="post-tag">#ConsciousLeadership</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED RESOURCES -->
+<section class="section-white">
+  <div class="section-header-center">
+    <span class="section-eyebrow">Further Reading</span>
+    <h2 class="section-title">Resources &amp; Related Organisations</h2>
+    <p class="section-subtitle">Expand your understanding of somatic wellness with these trusted resources.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card green-top">
+      <div class="card-icon">ðŸŒ</div>
+      <h3>TREÂ® Global</h3>
+      <p>The official global organisation for Tension &amp; Trauma Release Exercises, founded by Dr. David Berceli. Find certified practitioners, research and resources worldwide.</p>
+      <a href="https://traumaprevention.com" target="_blank" class="card-link">traumaprevention.com â†’</a>
+    </div>
+    <div class="card gold-top">
+      <div class="card-icon">ðŸ›ï¸</div>
+      <h3>Strozzi Institute</h3>
+      <p>The home of Strozzi Somatic Bodywork and Leadership â€” the methodology behind Isabelle's bodywork practice. A global leader in somatics and leadership development.</p>
+      <a href="https://strozziinstitute.com" target="_blank" class="card-link">strozziinstitute.com â†’</a>
+    </div>
+    <div class="card sage-top">
+      <div class="card-icon">ðŸ§ </div>
+      <h3>BHD Asia</h3>
+      <p>The parent organisation offering executive coaching, leadership development, organisational consulting and TREÂ® services across Asia Pacific and Japan.</p>
+      <a href="https://bhdasia.com" target="_blank" class="card-link">bhdasia.com â†’</a>
+    </div>
+    <div class="card green-top">
+      <div class="card-icon">ðŸ“–</div>
+      <h3>Magic Somatic (Book)</h3>
+      <p>Isabelle's book on somatic healing â€” a practical and philosophical guide to working with the body for personal transformation and resilience.</p>
+      <a href="https://www.amazon.com/Magic-Somatic-Isabelle-Mullesch/dp/B0CYXRHYGD" target="_blank" class="card-link">Find on Amazon â†’</a>
+    </div>
+    <div class="card gold-top">
+      <div class="card-icon">ðŸŒ</div>
+      <h3>Somatic Asia</h3>
+      <p>A growing community of somatic practitioners across Asia â€” supporting the spread of body-based healing modalities in a region where access has historically been limited.</p>
+      <a href="https://www.facebook.com/SomaticAsiaTherapy/" target="_blank" class="card-link">Somatic Asia â†’</a>
+    </div>
+    <div class="card sage-top">
+      <div class="card-icon">ðŸŽ“</div>
+      <h3>Noomii â€” Isabelle's Profile</h3>
+      <p>View Isabelle's coaching profile on Noomii â€” the world's largest directory of life coaches and executive coaches â€” including client testimonials and coaching focus areas.</p>
+      <a href="https://www.noomii.com/users/isabelle-claus_teixeira" target="_blank" class="card-link">View Profile â†’</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="section-cream">
+  <div class="newsletter-box" style="max-width:680px;margin:0 auto">
+    <h3>The HummingBeing Letter</h3>
+    <p>Monthly somatic insights, practices you can use immediately and stories from the field of human transformation. No spam â€” ever.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Enter your email address" />
+      <button type="submit" onclick="this.textContent='Subscribed âœ“';this.style.background='var(--green-primary)'">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2>Ready to Start Your Journey?</h2>
+  <p>Follow along on social â€” or take the next step and book a free discovery call.</p>
+  <a href="book.html" class="btn" style="background:var(--white);color:var(--gold-accent)">Book a Free Call</a>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Humming<span>Being</span></a>
+      <p>A safe space to learn TREÂ®, Somatic Coaching and Somatic Bodywork.</p>
+      <p style="margin-top:1rem;font-size:.8rem">Part of <strong style="color:rgba(255,255,255,.85)">BHD Asia &amp; BHD Japan</strong></p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank">ðŸ“¸</a>
+        <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank">ðŸ’¼</a>
+        <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank">â–¶</a>
+        <a href="https://wa.me/818065151778" target="_blank">ðŸ’¬</a>
+      </div>
+    </div>
+    <div><h4>Services</h4><ul>
+      <li><a href="tre.html">TREÂ® Exercises</a></li>
+      <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
+      <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
+      <li><a href="book.html">Book a Session</a></li>
+    </ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="about.html">About HummingBeing</a></li>
+      <li><a href="isabelle.html">Meet Isabelle</a></li>
+      <li><a href="socials.html">Social Media</a></li>
+      <li><a href="https://bhdasia.com" target="_blank">BHD Asia</a></li>
+    </ul></div>
+    <div><h4>Contact</h4><ul>
+      <li><a href="mailto:hello@hummingbeing.com">hello@hummingbeing.com</a></li>
+      <li><a href="https://wa.me/818065151778">WhatsApp Us</a></li>
+      <li style="color:rgba(255,255,255,.5);font-size:.85rem">Singapore &amp; Japan</li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>Â© 2024 HummingBeing Â· BHD Asia &amp; BHD Japan</span>
+    <span><a href="https://hummingbeing.com" style="color:rgba(255,255,255,.4);text-decoration:none">hummingbeing.com</a></span>
+  </div>
+</footer>
+<script>function toggleMenu(){const ul=document.querySelector('.nav-links');ul.style.display=ul.style.display==='flex'?'none':'flex';ul.style.flexDirection='column';ul.style.position='absolute';ul.style.top='72px';ul.style.left='0';ul.style.right='0';ul.style.background='#fff';ul.style.padding='1rem 5%';ul.style.boxShadow='0 8px 24px rgba(0,0,0,.08)';}</script>
+</body>
+</html>
+
+
