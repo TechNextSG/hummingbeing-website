@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,42 +9,66 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <style>
-    .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
-    .post-card {
-      background: var(--white); border-radius: 12px;
-      padding: 1.5rem; box-shadow: 0 3px 16px rgba(44,95,78,.07);
+    /* Content themes grid */
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .theme-item {
+      background: var(--white);
+      border-radius: 3px;
+      padding: 2rem 2rem 2rem 2.2rem;
+      box-shadow: 0 4px 20px rgba(36,46,66,.07);
       border-left: 3px solid var(--gold);
     }
-    .post-card .post-platform { font-size: .72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
-    .post-card p { font-size: .95rem; color: var(--text-mid); line-height: 1.6; margin-bottom: .8rem; }
-    .post-card .post-tags { display: flex; flex-wrap: wrap; gap: .3rem; }
-    .post-card .post-tag { font-size: .72rem; background: var(--sage-bg); color: var(--navy); padding: .2rem .6rem; border-radius: 12px; font-weight: 700; }
-    .platform-hero {
-      background: linear-gradient(135deg, var(--navy), var(--green-dark));
-      border-radius: 16px; padding: 2.5rem; text-align: center;
-      box-shadow: 0 8px 32px rgba(44,95,78,.18); transition: transform .3s;
+    .theme-platform {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .8rem;
     }
-    .platform-hero:hover { transform: translateY(-5px); }
-    .platform-hero .ph-icon { font-size: 3.5rem; display: block; margin-bottom: 1rem; }
-    .platform-hero h3 { font-family: 'PT Serif', Georgia, serif; font-size: 1.6rem; color: var(--white); margin-bottom: .4rem; }
-    .platform-hero .ph-handle { color: var(--gold); font-weight: 700; font-size: .9rem; margin-bottom: .8rem; display: block; }
-    .platform-hero p { color: rgba(255,255,255,.75); font-size: .9rem; margin-bottom: 1.5rem; line-height: 1.5; }
-    .platform-hero a { background: var(--gold); color: var(--white); padding: .6rem 1.4rem; border-radius: 4px; font-weight: 700; font-size: .82rem; text-decoration: none; letter-spacing: 1px; text-transform: uppercase; transition: background .3s; display: inline-block; }
-    .platform-hero a:hover { background: #b8843e; }
-    .platforms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-    .newsletter-box {
-      background: linear-gradient(135deg, var(--gold), #a8793e);
-      border-radius: 16px; padding: 3rem; text-align: center; color: var(--white);
+    .theme-item h4 {
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: 1.05rem; color: var(--navy);
+      font-weight: 700; margin-bottom: .5rem;
     }
-    .newsletter-box h3 { font-family: 'PT Serif', Georgia, serif; font-size: 2rem; margin-bottom: 1rem; }
-    .newsletter-box p { opacity: .9; margin-bottom: 2rem; }
-    .newsletter-form { display: flex; gap: .8rem; max-width: 440px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .theme-item p { font-size: .9rem; color: var(--text-mid); line-height: 1.75; margin: 0; }
+
+    /* Newsletter */
+    .newsletter-inner {
+      background: var(--navy);
+      border-radius: 3px; padding: 3.5rem;
+      text-align: center; max-width: 640px; margin: 0 auto;
+    }
+    .newsletter-inner h3 {
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--white); margin-bottom: .8rem;
+    }
+    .newsletter-inner > p { color: rgba(255,255,255,.72); margin-bottom: 2rem; font-size: 1rem; }
+    .newsletter-form { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; }
     .newsletter-form input {
-      flex: 1; min-width: 220px; padding: .9rem 1.2rem; border: none; border-radius: 4px;
-      font-size: 1rem; font-family: inherit;
+      flex: 1; min-width: 220px; padding: .85rem 1.2rem;
+      border: 1.5px solid rgba(255,255,255,.2); border-radius: 2px;
+      background: rgba(255,255,255,.08); color: var(--white);
+      font-family: 'Lato', sans-serif; font-size: .95rem;
     }
-    .newsletter-form button { background: var(--green-dark); color: var(--white); border: none; padding: .9rem 1.5rem; border-radius: 4px; font-weight: 700; cursor: pointer; font-family: inherit; font-size: .85rem; letter-spacing: 1px; text-transform: uppercase; transition: background .3s; }
-    .newsletter-form button:hover { background: var(--navy); }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,.4); }
+    .newsletter-form input:focus { outline: none; border-color: var(--gold); }
+    .newsletter-form button {
+      background: var(--gold); color: var(--white); border: none;
+      padding: .85rem 1.8rem; border-radius: 2px; font-weight: 700;
+      cursor: pointer; font-family: 'Lato', sans-serif;
+      font-size: .78rem; letter-spacing: 2px; text-transform: uppercase;
+      transition: background .25s;
+    }
+    .newsletter-form button:hover { background: var(--gold-dark); }
+
+    @media (max-width: 600px) {
+      .themes-grid { grid-template-columns: 1fr; }
+      .newsletter-inner { padding: 2rem 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -101,7 +125,7 @@
   <div class="platforms-grid">
 
     <div class="platform-hero">
-      <span class="ph-icon"><i class="fa-brands fa-instagram"></i></span>
+      <div class="ph-icon"><i class="fa-brands fa-instagram"></i></div>
       <h3>Instagram</h3>
       <span class="ph-handle">@isabelleclausteixeira_bhd</span>
       <p>Somatic tips, body wisdom, behind-the-scenes glimpses of sessions and the HummingBeing philosophy in daily life.</p>
@@ -109,7 +133,7 @@
     </div>
 
     <div class="platform-hero">
-      <span class="ph-icon"><i class="fa-brands fa-linkedin"></i></span>
+      <div class="ph-icon"><i class="fa-brands fa-linkedin"></i></div>
       <h3>LinkedIn</h3>
       <span class="ph-handle">Isabelle Claus Teixeira</span>
       <p>Leadership insights, somatic neuroscience articles, coaching reflections and professional updates for leaders and HR professionals.</p>
@@ -117,7 +141,7 @@
     </div>
 
     <div class="platform-hero">
-      <span class="ph-icon"><i class="fa-brands fa-youtube"></i></span>
+      <div class="ph-icon"><i class="fa-brands fa-youtube"></i></div>
       <h3>YouTube</h3>
       <span class="ph-handle">@IsabelleClausTeixeira</span>
       <p>In-depth videos on TRE&#174;, somatic practices, resilience building and leadership wellbeing. Subscribe for guided sessions and expert content.</p>
@@ -125,7 +149,7 @@
     </div>
 
     <div class="platform-hero">
-      <span class="ph-icon"><i class="fa-brands fa-pinterest"></i></span>
+      <div class="ph-icon"><i class="fa-brands fa-pinterest"></i></div>
       <h3>Pinterest</h3>
       <span class="ph-handle">isabelleclausteixeira</span>
       <p>Curated boards on somatic wellness, nervous system regulation, mindful movement, resilience practices and holistic wellbeing resources.</p>
@@ -133,18 +157,18 @@
     </div>
 
     <div class="platform-hero">
-      <span class="ph-icon"><i class="fa-brands fa-whatsapp"></i></span>
+      <div class="ph-icon"><i class="fa-brands fa-whatsapp"></i></div>
       <h3>WhatsApp</h3>
       <span class="ph-handle">+81 806515 1778</span>
-      <p>The quickest way to reach Isabelle directly. Message for enquiries, session bookings or just to start a conversation about your wellness journey.</p>
+      <p>The quickest way to reach Isabelle directly. Message for enquiries, session bookings or just to start a conversation.</p>
       <a href="https://wa.me/818065151778" target="_blank">Message on WhatsApp</a>
     </div>
 
     <div class="platform-hero">
-      <span class="ph-icon"><i class="fa-solid fa-globe"></i></span>
+      <div class="ph-icon"><i class="fa-solid fa-globe"></i></div>
       <h3>BHD Asia</h3>
       <span class="ph-handle">bhdasia.com</span>
-      <p>The parent organisation behind HummingBeing &#8212; offering executive coaching, leadership development and organisational consulting across Asia.</p>
+      <p>The parent organisation behind HummingBeing &#8212; executive coaching, leadership development and consulting across Asia.</p>
       <a href="https://bhdasia.com" target="_blank">Visit BHD Asia</a>
     </div>
 
@@ -159,77 +183,56 @@
     <h2 class="section-title">Content That Nourishes</h2>
     <p class="section-subtitle">Isabelle's social content spans the full landscape of somatic wellness and human development.</p>
   </div>
-  <div class="post-grid">
-    <div class="post-card">
-      <div class="post-platform"><i class="fa-brands fa-instagram"></i> Instagram &#183; Content Theme</div>
-      <p><strong>Somatic Micro-Practices</strong> &#8212; Short, accessible exercises you can do anywhere to regulate your nervous system, release tension and return to presence.</p>
-      <div class="post-tags">
-        <span class="post-tag">#SomaticWellness</span>
-        <span class="post-tag">#NervousSystem</span>
-        <span class="post-tag">#TRE</span>
-      </div>
+  <div class="themes-grid">
+
+    <div class="theme-item">
+      <div class="theme-platform"><i class="fa-brands fa-instagram"></i> Instagram</div>
+      <h4>Somatic Micro-Practices</h4>
+      <p>Short, accessible exercises you can do anywhere to regulate your nervous system, release tension and return to presence.</p>
     </div>
-    <div class="post-card">
-      <div class="post-platform"><i class="fa-brands fa-linkedin"></i> LinkedIn &#183; Content Theme</div>
-      <p><strong>Leadership &amp; Resilience</strong> &#8212; Evidence-based insights on how somatic awareness makes better leaders &#8212; with practical applications for high-performance professionals.</p>
-      <div class="post-tags">
-        <span class="post-tag">#CoachingLeadership</span>
-        <span class="post-tag">#HumanLeadership</span>
-        <span class="post-tag">#WellbeingAtWork</span>
-      </div>
+
+    <div class="theme-item">
+      <div class="theme-platform"><i class="fa-brands fa-linkedin"></i> LinkedIn</div>
+      <h4>Leadership &amp; Resilience</h4>
+      <p>Evidence-based insights on how somatic awareness makes better leaders &#8212; with practical applications for high-performance professionals.</p>
     </div>
-    <div class="post-card">
-      <div class="post-platform"><i class="fa-brands fa-youtube"></i> YouTube &#183; Content Theme</div>
-      <p><strong>Guided Somatic Sessions</strong> &#8212; Full-length guided TRE&#174; practice sessions, somatic movement sequences and educational deep-dives on nervous system health.</p>
-      <div class="post-tags">
-        <span class="post-tag">#TREExercises</span>
-        <span class="post-tag">#SomaticMovement</span>
-        <span class="post-tag">#Resilience</span>
-      </div>
+
+    <div class="theme-item">
+      <div class="theme-platform"><i class="fa-brands fa-youtube"></i> YouTube</div>
+      <h4>Guided Somatic Sessions</h4>
+      <p>Full-length guided TRE&#174; practice sessions, somatic movement sequences and educational deep-dives on nervous system health.</p>
     </div>
-    <div class="post-card">
-      <div class="post-platform"><i class="fa-brands fa-instagram"></i> Instagram &#183; Content Theme</div>
-      <p><strong>The Hummingbird Journal</strong> &#8212; Personal reflections on the path from corporate high-achiever to somatic practitioner &#8212; honest, warm and thought-provoking.</p>
-      <div class="post-tags">
-        <span class="post-tag">#Burnout</span>
-        <span class="post-tag">#PersonalGrowth</span>
-        <span class="post-tag">#Authenticity</span>
-      </div>
+
+    <div class="theme-item">
+      <div class="theme-platform"><i class="fa-brands fa-instagram"></i> Instagram</div>
+      <h4>The Hummingbird Journal</h4>
+      <p>Personal reflections on the path from corporate high-achiever to somatic practitioner &#8212; honest, warm and thought-provoking.</p>
     </div>
-    <div class="post-card">
-      <div class="post-platform"><i class="fa-brands fa-linkedin"></i> LinkedIn &#183; Content Theme</div>
-      <p><strong>Neuroscience &amp; Wellbeing</strong> &#8212; Accessible breakdowns of the latest research in polyvagal theory, trauma neuroscience and embodied leadership for professional audiences.</p>
-      <div class="post-tags">
-        <span class="post-tag">#PolyvagalTheory</span>
-        <span class="post-tag">#NeuroscienceOfLeadership</span>
-      </div>
+
+    <div class="theme-item">
+      <div class="theme-platform"><i class="fa-brands fa-linkedin"></i> LinkedIn</div>
+      <h4>Neuroscience &amp; Wellbeing</h4>
+      <p>Accessible breakdowns of the latest research in polyvagal theory, trauma neuroscience and embodied leadership for professional audiences.</p>
     </div>
-    <div class="post-card">
-      <div class="post-platform"><i class="fa-brands fa-pinterest"></i> Pinterest &#183; Content Theme</div>
-      <p><strong>Wellness Inspiration Boards</strong> &#8212; Curated visual collections on somatic practices, breathwork, mindful movement, nature-based healing and holistic lifestyle.</p>
-      <div class="post-tags">
-        <span class="post-tag">#HolisticWellness</span>
-        <span class="post-tag">#SomaticHealing</span>
-        <span class="post-tag">#Breathwork</span>
-      </div>
+
+    <div class="theme-item">
+      <div class="theme-platform"><i class="fa-brands fa-pinterest"></i> Pinterest</div>
+      <h4>Wellness Inspiration Boards</h4>
+      <p>Curated visual collections on somatic practices, breathwork, mindful movement, nature-based healing and holistic lifestyle.</p>
     </div>
-    <div class="post-card">
-      <div class="post-platform"><i class="fa-brands fa-instagram"></i> Instagram &#183; Content Theme</div>
-      <p><strong>Client Transformations</strong> &#8212; With permission, sharing the journeys of clients who have found their way back to resilience, energy and joy through somatic practices.</p>
-      <div class="post-tags">
-        <span class="post-tag">#Transformation</span>
-        <span class="post-tag">#SomaticCoaching</span>
-        <span class="post-tag">#ReleaseRenewRestore</span>
-      </div>
+
+    <div class="theme-item">
+      <div class="theme-platform"><i class="fa-brands fa-instagram"></i> Instagram</div>
+      <h4>Client Transformations</h4>
+      <p>With permission, sharing the journeys of clients who have found their way back to resilience, energy and joy through somatic practices.</p>
     </div>
-    <div class="post-card">
-      <div class="post-platform"><i class="fa-brands fa-youtube"></i> YouTube &#183; Content Theme</div>
-      <p><strong>Expert Conversations</strong> &#8212; Interviews and conversations with leading voices in somatics, trauma therapy, neuroscience and conscious leadership from around the world.</p>
-      <div class="post-tags">
-        <span class="post-tag">#ExpertTalks</span>
-        <span class="post-tag">#ConsciousLeadership</span>
-      </div>
+
+    <div class="theme-item">
+      <div class="theme-platform"><i class="fa-brands fa-youtube"></i> YouTube</div>
+      <h4>Expert Conversations</h4>
+      <p>Interviews with leading voices in somatics, trauma therapy, neuroscience and conscious leadership from around the world.</p>
     </div>
+
   </div>
   <div style="text-align:center;margin-top:3rem"><a href="book.html" class="btn btn-primary">Book a Free Consultation</a></div>
 </section>
@@ -275,7 +278,7 @@
     <div class="card sage-top">
       <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
       <h3>Noomii &#8212; Isabelle's Profile</h3>
-      <p>View Isabelle's coaching profile on Noomii &#8212; the world's largest directory of life coaches and executive coaches &#8212; including client testimonials and coaching focus areas.</p>
+      <p>View Isabelle's coaching profile on Noomii &#8212; the world's largest directory of life coaches and executive coaches &#8212; including client testimonials and focus areas.</p>
       <a href="https://www.noomii.com/users/isabelle-claus_teixeira" target="_blank" class="card-link">View Profile &#8594;</a>
     </div>
   </div>
@@ -284,12 +287,13 @@
 
 <!-- NEWSLETTER -->
 <section class="section-cream">
-  <div class="newsletter-box" style="max-width:680px;margin:0 auto">
+  <div class="newsletter-inner">
+    <span class="section-eyebrow" style="color:var(--gold)">Stay in the Loop</span>
     <h3>The HummingBeing Letter</h3>
     <p>Monthly somatic insights, practices you can use immediately and stories from the field of human transformation. No spam &#8212; ever.</p>
     <div class="newsletter-form">
-      <input type="email" placeholder="Enter your email address" />
-      <button type="submit" onclick="this.textContent='Subscribed ✓';this.style.background='var(--navy)'">Subscribe</button>
+      <input type="email" placeholder="Your email address" />
+      <button type="submit" onclick="this.textContent='Subscribed ✓';this.style.background='var(--navy-light)'">Subscribe</button>
     </div>
   </div>
   <div style="text-align:center;margin-top:3rem"><a href="book.html" class="btn btn-primary">Book a Free Consultation</a></div>
@@ -343,5 +347,3 @@
 <script src="scripts.js"></script>
 </body>
 </html>
-
-
