@@ -180,7 +180,7 @@ nav.nav-hidden { transform: translateY(-100%); }
 
 /* ── HERO (homepage) ───────────────────────────────────────────────────── */
 .hero {
-  min-height: 90vh;
+  min-height: calc(100vh - 76px);
   display: flex; align-items: center;
   background:
     linear-gradient(to right, rgba(36,46,66,.97) 40%, rgba(36,46,66,.62) 100%),
@@ -810,7 +810,7 @@ footer ul a:hover { color: var(--gold); }
 }
 @media (max-width: 600px) {
   section { padding: 4rem 5%; }
-  .hero { min-height: 80vh; }
+  .hero { min-height: calc(100vh - 76px); }
   .page-hero { padding: 5rem 5% 3.5rem; }
   .cards-grid { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
