@@ -573,11 +573,7 @@ section { padding: 6rem 5%; }
 .platform-hero .ph-icon i { font-size: 2.2rem; color: var(--gold); }
 .platform-hero h3 { font-family: 'PT Serif', Georgia, serif; font-size: 1.15rem; color: var(--white); margin-bottom: .3rem; }
 .platform-hero .ph-handle { color: var(--gold); font-weight: 700; font-size: .78rem; margin-bottom: .65rem; display: block; }
-.platform-hero p {
-  color: rgba(255,255,255,.72); font-size: .82rem; margin-bottom: 1.25rem; line-height: 1.55;
-  flex: 1;
-  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
-}
+.platform-hero p { color: rgba(255,255,255,.72); font-size: .82rem; margin-bottom: 1.25rem; line-height: 1.55; flex: 1; }
 .platform-hero a {
   background: var(--gold); color: var(--white);
   padding: .55rem 1.1rem; border-radius: 2px;
