@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events &amp; Sessions &#8212; HummingBeing</title>
+  <meta name="description" content="Upcoming TRE&#174;, Somatic Coaching and Somatic Bodywork events, workshops and group sessions with Isabelle Claus Teixeira." />
+  <link rel="stylesheet" href="styles.css?v=19" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="favicon.svg" />
+  <style>
+    /* ── EVENT HERO OVERRIDE ────────────────────────────────────────────── */
+    .event-hero {
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+      padding: 5rem 5% 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .event-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(245,166,35,.14) 0%, transparent 65%);
+    }
+    .event-hero .eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem; display: block;
+      animation: fade-down .8s ease .1s both;
+    }
+    .event-hero h1 {
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700; color: var(--white);
+      margin-bottom: 1rem; line-height: 1.1;
+      animation: fade-down .8s ease .25s both;
+    }
+    .event-hero > p {
+      color: rgba(255,255,255,.72);
+      font-size: 1.05rem; max-width: 520px;
+      margin: 0 auto 2.5rem; line-height: 1.75;
+      animation: fade-down .8s ease .4s both;
+    }
+
+    /* ── COUNTDOWN ──────────────────────────────────────────────────────── */
+    .countdown-wrap {
+      display: inline-block;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(245,166,35,.3);
+      border-radius: 4px;
+      padding: 1.6rem 2.5rem 1.4rem;
+      margin-bottom: .8rem;
+      animation: fade-down .8s ease .55s both;
+    }
+    .countdown-label {
+      font-size: .65rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 1rem;
+    }
+    .countdown-units {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      justify-content: center;
+    }
+    .cd-unit { text-align: center; min-width: 56px; }
+    .cd-num {
+      display: block;
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-weight: 700; color: var(--white); line-height: 1;
+    }
+    .cd-lbl {
+      display: block; font-size: .58rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,.4); margin-top: .35rem;
+    }
+    .cd-sep {
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: 2.4rem; color: rgba(245,166,35,.4);
+      padding-top: .05rem; line-height: 1;
+    }
+    .cd-event-title {
+      font-size: .82rem; color: rgba(255,255,255,.5);
+      display: block; margin-top: 1rem;
+      letter-spacing: .5px;
+    }
+    .cd-event-title strong { color: rgba(255,255,255,.8); font-weight: 700; }
+
+    /* ── FILTER TABS ────────────────────────────────────────────────────── */
+    .evt-tabs {
+      display: flex; justify-content: center;
+      gap: .8rem; flex-wrap: wrap; margin-bottom: 3rem;
+    }
+    .evt-tab {
+      padding: .55rem 1.6rem;
+      border: 2px solid var(--border);
+      background: transparent; color: var(--navy);
+      font-family: 'Lato', sans-serif;
+      font-size: .74rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      border-radius: 2px; cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .evt-tab:hover { border-color: var(--gold); color: var(--gold-dark); }
+    .evt-tab.active { background: var(--gold); color: var(--white); border-color: var(--gold); }
+
+    /* ── FEATURED EVENT ─────────────────────────────────────────────────── */
+    .featured-event {
+      background: var(--navy); border-radius: 3px;
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      overflow: hidden; margin-bottom: 3rem;
+      box-shadow: 0 16px 56px rgba(36,46,66,.18);
+    }
+    .fe-image {
+      aspect-ratio: auto;
+      background: linear-gradient(135deg, #0c1018 0%, #1c2234 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 1rem;
+      color: rgba(255,255,255,.14); min-height: 320px;
+    }
+    .fe-image i { font-size: 3.5rem; }
+    .fe-image span { font-size: .62rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; font-family: 'Lato', sans-serif; }
+    .fe-content { padding: 3rem 2.8rem; }
+    .fe-badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--gold); color: var(--navy);
+      font-size: .62rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: .3rem .75rem;
+      border-radius: 2px; margin-bottom: 1.2rem;
+    }
+    .fe-content h3 {
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: var(--white); margin-bottom: .8rem; line-height: 1.2;
+    }
+    .fe-content > p { color: rgba(255,255,255,.65); font-size: .97rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .fe-meta { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 2rem; }
+    .fe-meta-item {
+      display: flex; align-items: center; gap: .7rem;
+      font-size: .86rem; color: rgba(255,255,255,.55);
+    }
+    .fe-meta-item i { color: var(--gold); width: 16px; flex-shrink: 0; }
+    .fe-meta-item strong { color: rgba(255,255,255,.85); }
+
+    /* ── EVENT CARDS GRID ───────────────────────────────────────────────── */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .event-card {
+      background: var(--white);
+      border-radius: 3px;
+      box-shadow: 0 4px 20px rgba(36,46,66,.08);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .event-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(36,46,66,.13); }
+    .ec-img {
+      width: 100%; height: 180px;
+      background: linear-gradient(135deg, #0c1018 0%, #1c2234 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .75rem;
+      color: rgba(255,255,255,.15); flex-shrink: 0;
+    }
+    .ec-img i { font-size: 2.4rem; }
+    .ec-img span { font-size: .58rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-family: 'Lato', sans-serif; }
+    .ec-body { padding: 1.5rem 1.4rem; display: flex; flex-direction: column; flex: 1; }
+    .ec-type {
+      font-size: .64rem; font-weight: 700; letter-spacing: 1.8px;
+      text-transform: uppercase; color: var(--gold-dark); margin-bottom: .6rem;
+    }
+    .ec-body h4 {
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: 1.05rem; color: var(--navy);
+      margin-bottom: .7rem; line-height: 1.3;
+    }
+    .ec-body p { color: var(--text-mid); font-size: .85rem; line-height: 1.6; margin-bottom: 1.1rem; flex: 1; }
+    .ec-details { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1.2rem; }
+    .ec-detail { display: flex; align-items: center; gap: .55rem; font-size: .8rem; color: var(--body-text); }
+    .ec-detail i { color: var(--gold); width: 14px; }
+    .event-card .btn { font-size: .7rem; padding: .7rem 1.4rem; }
+
+    /* ── PAST EVENTS ────────────────────────────────────────────────────── */
+    .event-card.past { opacity: .7; }
+    .event-card.past:hover { opacity: 1; }
+    .past-label {
+      display: inline-block;
+      background: rgba(36,46,66,.08); color: var(--text-mid);
+      font-size: .62rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: .25rem .6rem; border-radius: 2px;
+      margin-bottom: .6rem;
+    }
+
+    /* ── NOTIFY STRIP ───────────────────────────────────────────────────── */
+    .notify-strip {
+      background: var(--navy); padding: 3.5rem 5%;
+      text-align: center;
+    }
+    .notify-strip h3 {
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--white); margin-bottom: .5rem;
+    }
+    .notify-strip > p { color: rgba(255,255,255,.65); margin-bottom: 1.8rem; font-size: .97rem; }
+    .notify-form {
+      display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; max-width: 520px; margin: 0 auto;
+    }
+    .notify-form input {
+      flex: 1; min-width: 220px; padding: .85rem 1.2rem;
+      border: 1.5px solid rgba(255,255,255,.2); border-radius: 2px;
+      background: rgba(255,255,255,.08); color: var(--white);
+      font-family: 'Lato', sans-serif; font-size: .95rem;
+    }
+    .notify-form input::placeholder { color: rgba(255,255,255,.4); }
+    .notify-form input:focus { outline: none; border-color: var(--gold); }
+
+    @media (max-width: 900px) {
+      .featured-event { grid-template-columns: 1fr; }
+      .fe-image { min-height: 200px; }
+      .events-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .events-grid { grid-template-columns: 1fr; }
+      .countdown-units { gap: .9rem; }
+      .cd-sep { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Humming<span>Being</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="isabelle.html">Isabelle</a></li>
+    <li class="nav-dropdown">
+      <a href="#" class="nav-dropdown-toggle">Services <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="tre.html">TRE&#174; Exercises</a></li>
+        <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
+        <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
+      </ul>
+    </li>
+    <li><a href="socials.html">Socials</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="events.html" class="active">Events</a></li>
+    <li><a href="book.html" class="nav-cta">Book a Session</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- EVENT HERO WITH COUNTDOWN -->
+<div class="event-hero">
+  <span class="eyebrow">Live Events &amp; Workshops</span>
+  <h1>Events &amp; Sessions</h1>
+  <p>Group workshops, TRE&#174; sessions, somatic intensives and community gatherings &#8212; in Singapore, Japan and online.</p>
+  <div class="countdown-wrap" id="countdown-wrap">
+    <span class="countdown-label">Next Event Begins In</span>
+    <div class="countdown-units">
+      <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-lbl">Days</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-lbl">Hours</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-mins">--</span><span class="cd-lbl">Minutes</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-lbl">Seconds</span></div>
+    </div>
+    <span class="cd-event-title">Until: <strong>TRE&#174; Group Intensive &#8212; Singapore</strong></span>
+  </div>
+</div>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Wellness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Singapore &amp; Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#174; Provider</span><span class="t-sep">&middot;</span>
+    <span class="t-item">25+ Years of Experience</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Somatic Bodywork</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> BHD Asia &amp; BHD Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Wellness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Singapore &amp; Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#174; Provider</span><span class="t-sep">&middot;</span>
+    <span class="t-item">25+ Years of Experience</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Somatic Bodywork</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> BHD Asia &amp; BHD Japan</span><span class="t-sep">&middot;</span>
+  </div>
+</div>
+
+<!-- FEATURED NEXT EVENT -->
+<section class="section-cream">
+  <div class="section-header-center" style="margin-bottom:2rem">
+    <span class="section-eyebrow">Next Up</span>
+    <h2 class="section-title">Featured Event</h2>
+  </div>
+  <div class="featured-event">
+    <div class="fe-image">
+      <i class="fa-solid fa-person-walking"></i>
+      <span>Photo Coming Soon</span>
+    </div>
+    <div class="fe-content">
+      <span class="fe-badge"><i class="fa-solid fa-circle-dot"></i> Upcoming</span>
+      <h3>TRE&#174; Group Intensive &#8212; Singapore</h3>
+      <p>A half-day immersive group session designed to introduce TRE&#174; to new participants and deepen the practice for returning clients. Led personally by Isabelle in a small, supportive group setting.</p>
+      <div class="fe-meta">
+        <div class="fe-meta-item"><i class="fa-solid fa-calendar"></i> <span><strong>5 July 2026</strong> &nbsp;&#8212;&nbsp; Saturday</span></div>
+        <div class="fe-meta-item"><i class="fa-solid fa-clock"></i> <span><strong>10:00 AM &#8211; 1:00 PM</strong> SGT (UTC+8)</span></div>
+        <div class="fe-meta-item"><i class="fa-solid fa-location-dot"></i> <span><strong>Singapore</strong> &nbsp;&#183;&nbsp; Venue confirmed on registration</span></div>
+        <div class="fe-meta-item"><i class="fa-solid fa-users"></i> <span><strong>Limited to 12 participants</strong> &#8212; small group format</span></div>
+        <div class="fe-meta-item"><i class="fa-solid fa-tag"></i> <span><strong>$180 SGD</strong> per participant</span></div>
+      </div>
+      <a href="book.html" class="btn btn-primary">Reserve My Spot</a>
+    </div>
+  </div>
+
+  <!-- FILTER TABS -->
+  <div class="evt-tabs">
+    <button class="evt-tab active" onclick="filterEvents('all', this)">All Events</button>
+    <button class="evt-tab" onclick="filterEvents('tre', this)">TRE&#174; Sessions</button>
+    <button class="evt-tab" onclick="filterEvents('coaching', this)">Coaching</button>
+    <button class="evt-tab" onclick="filterEvents('workshop', this)">Workshops</button>
+    <button class="evt-tab" onclick="filterEvents('online', this)">Online</button>
+  </div>
+
+  <!-- UPCOMING EVENTS GRID -->
+  <div style="margin-bottom:2rem">
+    <span class="section-eyebrow" style="display:block;margin-bottom:1.5rem">Upcoming</span>
+    <div class="events-grid" id="events-grid">
+
+      <div class="event-card" data-type="tre">
+        <div class="ec-img">
+          <i class="fa-solid fa-person-walking"></i>
+          <span>Photo Coming Soon</span>
+        </div>
+        <div class="ec-body">
+          <span class="ec-type">TRE&#174; Session</span>
+          <h4>TRE&#174; Group Intensive &#8212; Singapore</h4>
+          <p>Half-day group TRE&#174; session for both new and returning participants in a small, supportive setting.</p>
+          <div class="ec-details">
+            <div class="ec-detail"><i class="fa-solid fa-calendar"></i><span>5 July 2026, 10 AM</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-location-dot"></i><span>Singapore (In-Person)</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-tag"></i><span>$180 SGD</span></div>
+          </div>
+          <a href="book.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+
+      <div class="event-card" data-type="workshop">
+        <div class="ec-img">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <span>Photo Coming Soon</span>
+        </div>
+        <div class="ec-body">
+          <span class="ec-type">Workshop</span>
+          <h4>Somatic Intelligence &#8212; Leadership Workshop</h4>
+          <p>A full-day workshop for executives and team leaders: using body-based awareness to lead with greater resilience and clarity.</p>
+          <div class="ec-details">
+            <div class="ec-detail"><i class="fa-solid fa-calendar"></i><span>19 July 2026, 9 AM</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-location-dot"></i><span>Singapore (In-Person)</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-tag"></i><span>$320 SGD</span></div>
+          </div>
+          <a href="book.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+
+      <div class="event-card" data-type="online">
+        <div class="ec-img">
+          <i class="fa-solid fa-video"></i>
+          <span>Photo Coming Soon</span>
+        </div>
+        <div class="ec-body">
+          <span class="ec-type">Online Session</span>
+          <h4>Nervous System Reset &#8212; Online Group Session</h4>
+          <p>A 90-minute guided somatic practice online, open to participants globally. Somatic breathing, light movement and body awareness.</p>
+          <div class="ec-details">
+            <div class="ec-detail"><i class="fa-solid fa-calendar"></i><span>26 July 2026, 10 AM SGT</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-video"></i><span>Zoom &#8212; Worldwide</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-tag"></i><span>$85 SGD</span></div>
+          </div>
+          <a href="book.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+
+      <div class="event-card" data-type="coaching">
+        <div class="ec-img">
+          <i class="fa-solid fa-comments"></i>
+          <span>Photo Coming Soon</span>
+        </div>
+        <div class="ec-body">
+          <span class="ec-type">Group Coaching</span>
+          <h4>Embodied Resilience &#8212; 4-Week Group Programme</h4>
+          <p>A 4-week online group coaching programme for professionals. Weekly 90-minute sessions combining somatic practices and coaching dialogues.</p>
+          <div class="ec-details">
+            <div class="ec-detail"><i class="fa-solid fa-calendar"></i><span>Starts 2 August 2026</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-video"></i><span>Zoom &#8212; Worldwide</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-tag"></i><span>$480 SGD</span></div>
+          </div>
+          <a href="book.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+
+      <div class="event-card" data-type="tre">
+        <div class="ec-img">
+          <i class="fa-solid fa-person-walking"></i>
+          <span>Photo Coming Soon</span>
+        </div>
+        <div class="ec-body">
+          <span class="ec-type">TRE&#174; Session</span>
+          <h4>TRE&#174; Introduction &#8212; Tokyo</h4>
+          <p>An introductory 3-hour group TRE&#174; session for beginners. Learn the neurogenic tremor mechanism and experience your first guided TRE&#174; practice.</p>
+          <div class="ec-details">
+            <div class="ec-detail"><i class="fa-solid fa-calendar"></i><span>16 August 2026, 2 PM JST</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-location-dot"></i><span>Tokyo, Japan (In-Person)</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-tag"></i><span>&#165;24,000 JPY</span></div>
+          </div>
+          <a href="book.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+
+      <div class="event-card" data-type="workshop">
+        <div class="ec-img">
+          <i class="fa-solid fa-spa"></i>
+          <span>Photo Coming Soon</span>
+        </div>
+        <div class="ec-body">
+          <span class="ec-type">Weekend Workshop</span>
+          <h4>Body, Breath &amp; Belonging &#8212; 2-Day Retreat</h4>
+          <p>A weekend somatic retreat combining TRE&#174;, breathwork and group coaching. Designed for deep reset and reconnection to the body.</p>
+          <div class="ec-details">
+            <div class="ec-detail"><i class="fa-solid fa-calendar"></i><span>13&#8211;14 Sep 2026</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-location-dot"></i><span>Singapore (Venue TBC)</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-tag"></i><span>$650 SGD</span></div>
+          </div>
+          <a href="book.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAST EVENTS -->
+  <div>
+    <span class="section-eyebrow" style="display:block;margin-bottom:1.5rem">Past Events</span>
+    <div class="events-grid">
+
+      <div class="event-card past">
+        <div class="ec-img" style="opacity:.6">
+          <i class="fa-solid fa-person-walking"></i>
+          <span>Photo Coming Soon</span>
+        </div>
+        <div class="ec-body">
+          <span class="past-label">Completed</span>
+          <span class="ec-type">TRE&#174; Session</span>
+          <h4>TRE&#174; Group Session &#8212; Singapore</h4>
+          <div class="ec-details">
+            <div class="ec-detail"><i class="fa-solid fa-calendar"></i><span>15 May 2026</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-location-dot"></i><span>Singapore</span></div>
+          </div>
+          <a href="book.html" class="btn btn-dark" style="font-size:.7rem;padding:.65rem 1.2rem">Book Next Session</a>
+        </div>
+      </div>
+
+      <div class="event-card past">
+        <div class="ec-img" style="opacity:.6">
+          <i class="fa-solid fa-comments"></i>
+          <span>Photo Coming Soon</span>
+        </div>
+        <div class="ec-body">
+          <span class="past-label">Completed</span>
+          <span class="ec-type">Online Workshop</span>
+          <h4>Somatic Foundations &#8212; Online</h4>
+          <div class="ec-details">
+            <div class="ec-detail"><i class="fa-solid fa-calendar"></i><span>3 April 2026</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-video"></i><span>Zoom &#8212; Worldwide</span></div>
+          </div>
+          <a href="book.html" class="btn btn-dark" style="font-size:.7rem;padding:.65rem 1.2rem">Book Next Session</a>
+        </div>
+      </div>
+
+      <div class="event-card past">
+        <div class="ec-img" style="opacity:.6">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <span>Photo Coming Soon</span>
+        </div>
+        <div class="ec-body">
+          <span class="past-label">Completed</span>
+          <span class="ec-type">Workshop</span>
+          <h4>Leadership &amp; the Body &#8212; Tokyo</h4>
+          <div class="ec-details">
+            <div class="ec-detail"><i class="fa-solid fa-calendar"></i><span>22 Feb 2026</span></div>
+            <div class="ec-detail"><i class="fa-solid fa-location-dot"></i><span>Tokyo, Japan</span></div>
+          </div>
+          <a href="book.html" class="btn btn-dark" style="font-size:.7rem;padding:.65rem 1.2rem">Book Next Session</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:3.5rem">
+    <a href="book.html" class="btn btn-primary">Book a Private Session Instead</a>
+  </div>
+</section>
+
+<!-- NOTIFY STRIP -->
+<div class="notify-strip">
+  <h3>Never Miss an Event</h3>
+  <p>Get notified when new workshops, group sessions and intensives are announced.</p>
+  <div class="notify-form">
+    <input type="email" placeholder="Your email address" />
+    <button type="button" class="btn btn-primary"
+      onclick="this.textContent='Subscribed &#10003;';this.style.background='var(--navy-light)'">
+      Notify Me
+    </button>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Prefer Something Personal?</h2>
+  <p>1-on-1 sessions with Isabelle are available in Singapore, Japan and online globally.</p>
+  <a href="book.html" class="btn" style="background:var(--white);color:var(--gold)">Book a Private Session</a>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Humming<span>Being</span></a>
+      <p>A safe space to learn TRE&#174;, Somatic Coaching and Somatic Bodywork.</p>
+      <p style="margin-top:1rem;font-size:.8rem">Part of <strong style="color:rgba(255,255,255,.85)">BHD Asia &amp; BHD Japan</strong></p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/818065151778" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div><h4>Services</h4><ul>
+      <li><a href="tre.html">TRE&#174; Exercises</a></li>
+      <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
+      <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
+      <li><a href="book.html">Book a Session</a></li>
+    </ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="about.html">About HummingBeing</a></li>
+      <li><a href="isabelle.html">Meet Isabelle</a></li>
+      <li><a href="socials.html">Social Media</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+      <li><a href="https://bhdasia.com" target="_blank">BHD Asia</a></li>
+    </ul></div>
+    <div><h4>Contact</h4><ul>
+      <li><a href="mailto:hello@hummingbeing.com">hello@hummingbeing.com</a></li>
+      <li><a href="https://wa.me/818065151778">WhatsApp Us</a></li>
+      <li style="color:rgba(255,255,255,.5);font-size:.85rem">Singapore &amp; Japan</li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>&#169; 2024 HummingBeing &#183; BHD Asia &amp; BHD Japan</span>
+    <span>Powered by <a href="https://technextasia.com" target="_blank">TechNext</a></span>
+    <span><a href="https://hummingbeing.com">hummingbeing.com</a></span>
+  </div>
+</footer>
+<a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+<script src="scripts.js"></script>
+<script>
+/* Countdown to next event: 5 July 2026 10:00 AM SGT (UTC+8) */
+(function() {
+  var target = new Date('2026-07-05T10:00:00+08:00').getTime();
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function tick() {
+    var now = Date.now();
+    var diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('countdown-wrap').innerHTML =
+        '<span class="countdown-label" style="font-size:1rem;letter-spacing:0">Event is happening now!</span>';
+      return;
+    }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent  = pad(d);
+    document.getElementById('cd-hours').textContent = pad(h);
+    document.getElementById('cd-mins').textContent  = pad(m);
+    document.getElementById('cd-secs').textContent  = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+/* Event filter */
+function filterEvents(type, btn) {
+  document.querySelectorAll('.evt-tab').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('#events-grid .event-card').forEach(function(card) {
+    card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Changelog &#8212; HummingBeing</title>
   <meta name="description" content="Full development history of the HummingBeing website &#8212; every update, fix and improvement documented." />
-  <link rel="stylesheet" href="styles.css?v=15" />
+  <link rel="stylesheet" href="styles.css?v=19" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <style>
@@ -64,6 +64,7 @@
     </li>
     <li><a href="socials.html">Socials</a></li>
     <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="events.html">Events</a></li>
     <li><a href="book.html" class="nav-cta">Book a Session</a></li>
   </ul>
   <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
@@ -100,6 +101,25 @@
 
 <section>
   <div class="cl-timeline">
+
+    <!-- v19 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v19.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span><span class="cl-tag cl-tag-changed">Changed</span></div>
+        <ul>
+          <li><strong>Events page</strong> &#8212; new <code>events.html</code> with countdown timer to next event (2026-07-05), filter tabs (All / TRE Sessions / Coaching / Workshops / Online), featured event card, 6 upcoming + 3 past event cards, email notify strip</li>
+          <li><strong>Countdown timer</strong> &#8212; live tick every 1s (days / hours / mins / secs) in the events hero; switches to &#8220;happening now&#8221; message when target time passes</li>
+          <li><strong>Book page redesign</strong> &#8212; full personal-branding audit; pricing cards forced to single row at all desktop sizes; trust bar with 4 credentials; sidebar with Isabelle quote, WhatsApp card, locations and session lengths; accordion FAQ</li>
+          <li><strong>Button animations</strong> &#8212; shimmer sweep via <code>::after</code> pseudo-element, <code>translateY(-3px)</code> lift on hover, gold / navy / outline box-shadow glow per variant, press-down on active</li>
+          <li><strong>Image placeholders</strong> &#8212; all non-Isabelle images across all pages replaced with dark gradient <code>.img-placeholder</code> blocks (&#8220;Photo Coming Soon&#8221;); Isabelle&#8217;s two photos kept; gallery image cards without a real photo lose hover/lightbox behaviour via <code>:not([onclick])</code> CSS</li>
+          <li><strong>Events nav &amp; footer link</strong> &#8212; added to all pages; CSS version bumped to <code>v19</code></li>
+        </ul>
+      </div>
+    </div>
 
     <!-- v18 -->
     <div class="cl-entry">
@@ -432,6 +452,7 @@
       <li><a href="isabelle.html">Meet Isabelle</a></li>
       <li><a href="socials.html">Social Media</a></li>
       <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
       <li><a href="changelog.html">Changelog</a></li>
       <li><a href="https://bhdasia.com" target="_blank">BHD Asia</a></li>
     </ul></div>

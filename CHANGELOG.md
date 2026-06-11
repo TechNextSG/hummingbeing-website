@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [19.0] — 2026-06-11
+
+### Added / Changed
+- **Events page** — new `events.html` with countdown timer to next event (2026-07-05), filter tabs (All / TRE Sessions / Coaching / Workshops / Online), featured event card, 6 upcoming + 3 past event cards, email notify strip
+- **Countdown timer** — live tick every 1s (days / hours / mins / secs) in the events hero; switches to "happening now" message when target time passes
+- **Book page redesign** — full personal-branding audit; pricing cards forced to single row at all desktop sizes; trust bar with 4 credentials; sidebar with Isabelle quote, WhatsApp card, locations and session lengths; accordion FAQ
+- **Button animations** — shimmer sweep via `::after` pseudo-element, `translateY(-3px)` lift on hover, gold / navy / outline box-shadow glow per variant, press-down on active
+- **Image placeholders** — all non-Isabelle images across all pages replaced with dark gradient `.img-placeholder` blocks ("Photo Coming Soon"); Isabelle's two photos kept; gallery image cards without a real photo lose hover/lightbox behaviour via `:not([onclick])` CSS
+- **Events nav & footer link** — added to all pages; CSS version bumped to `v19`
+
+---
+
 ## [18.0] — 2026-06-11
 
 ### Added
