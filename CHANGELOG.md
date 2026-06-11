@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [15.0] — 2026-06-11
+
+### Fixed / Changed
+- **Platform cards equalised** — description text clamped to 4 lines so all 6 cards have consistent height regardless of content length
+- **Scroll-to-top button** — resized to match WhatsApp button (58px), changed to gold fill with white icon, repositioned beside WA horizontally instead of stacked above; mobile updated to match
+
+---
+
 ## [14.0] — 2026-06-11
 
 ### Changed
