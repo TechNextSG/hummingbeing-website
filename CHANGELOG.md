@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [17.0] — 2026-06-11
+
+### Changed
+- **Platform cards — descriptions removed** — socials page cards now show icon, platform name, handle and CTA button only; no description text
+
+---
+
 ## [16.0] — 2026-06-11
 
 ### Fixed
