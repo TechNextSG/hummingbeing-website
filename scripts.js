@@ -1,4 +1,4 @@
-/* HummingBeing — scripts.js v3 */
+/* HummingBeing — scripts.js v4 */
 
 // ── Hide nav on scroll-down, reveal on scroll-up ───────────────────────────
 ;(function() {
@@ -8,7 +8,11 @@
     var nav = document.querySelector('nav');
     var topBtn = document.querySelector('.top-float');
     if (nav) {
-      if (y > lastY && y > 80) {
+      var dropdownOpen = !!document.querySelector('.nav-dropdown.dropdown-open');
+      if (dropdownOpen) {
+        // Never hide nav while a dropdown is open
+        nav.classList.remove('nav-hidden');
+      } else if (y > lastY && y > 80) {
         nav.classList.add('nav-hidden');
       } else {
         nav.classList.remove('nav-hidden');
@@ -47,16 +51,32 @@ document.addEventListener('click', function(e) {
   });
 });
 
-// ── Services dropdown (mobile tap to expand) ────────────────────────────────
+// ── Services dropdown ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
+  var nav = document.querySelector('nav');
+
   document.querySelectorAll('.nav-dropdown-toggle').forEach(function(toggle) {
     toggle.addEventListener('click', function(e) {
       e.preventDefault();
       var dropdown = this.closest('.nav-dropdown');
-      var isOpen = dropdown.classList.toggle('dropdown-open');
-      // close any other open dropdowns
+      var opening = !dropdown.classList.contains('dropdown-open');
+      // close all dropdowns first
       document.querySelectorAll('.nav-dropdown').forEach(function(d) {
-        if (d !== dropdown) d.classList.remove('dropdown-open');
+        d.classList.remove('dropdown-open');
+      });
+      if (opening) {
+        dropdown.classList.add('dropdown-open');
+        // ensure nav is visible so user can reach the menu
+        if (nav) nav.classList.remove('nav-hidden');
+      }
+    });
+  });
+
+  // Close dropdown when a sub-link is clicked (before navigation)
+  document.querySelectorAll('.nav-dropdown-menu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.querySelectorAll('.nav-dropdown').forEach(function(d) {
+        d.classList.remove('dropdown-open');
       });
     });
   });
