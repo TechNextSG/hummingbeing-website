@@ -1,4 +1,4 @@
-/* HummingBeing — styles.css v7
+/* HummingBeing — styles.css v8
    Fonts: PT Serif (headings) + Lato (body)  |  Palette: #242e42 navy · #F5A623 gold · #ffc600 yellow
    ——————————————————————————————————————————————————————————————————————————————————————————————— */
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
@@ -106,6 +106,51 @@ nav {
 .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ── NAV DROPDOWN ──────────────────────────────────────────────────────── */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { display: flex !important; align-items: center; gap: .35rem; }
+.nav-arrow { font-size: .5rem; transition: transform .25s ease; }
+.nav-dropdown:hover .nav-arrow { transform: rotate(180deg); }
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 16px); left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--white);
+  border-radius: 3px;
+  box-shadow: 0 8px 32px rgba(36,46,66,.14);
+  border-top: 2px solid var(--gold);
+  padding: .5rem 0;
+  list-style: none;
+  min-width: 210px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .2s ease, visibility .2s ease, transform .2s ease;
+  z-index: 1001;
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute; top: -7px; left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-bottom-color: var(--gold);
+  border-top-width: 0;
+}
+.nav-dropdown-menu li a {
+  display: block;
+  padding: .65rem 1.5rem;
+  font-size: .78rem; font-weight: 700;
+  letter-spacing: 1.3px; text-transform: uppercase;
+  color: var(--body-text) !important;
+  white-space: nowrap;
+  transition: color .2s, background .2s;
+}
+.nav-dropdown-menu li a:hover,
+.nav-dropdown-menu li a.active { color: var(--gold) !important; background: var(--cream); }
 
 /* ── BUTTONS ───────────────────────────────────────────────────────────── */
 .btn {
@@ -706,6 +751,24 @@ footer ul a:hover { color: var(--gold); }
     border-radius: 2px;
   }
   .hamburger { display: flex; }
+
+  /* Dropdown — mobile: inline expand instead of floating */
+  .nav-dropdown { position: static; }
+  .nav-dropdown-menu {
+    display: none;
+    position: static !important; transform: none !important;
+    box-shadow: none !important; border-top: none !important; border-radius: 0;
+    border-left: 2px solid rgba(245,166,35,.45);
+    padding: .15rem 0 .35rem !important; margin: 0 0 .3rem 1rem;
+    min-width: unset !important;
+    opacity: 1 !important; visibility: visible !important; pointer-events: auto !important;
+  }
+  .nav-dropdown.dropdown-open .nav-dropdown-menu { display: block; }
+  .nav-dropdown.dropdown-open .nav-arrow { transform: rotate(180deg); }
+  .nav-dropdown-menu::before { display: none !important; }
+  .nav-dropdown-menu li { border-bottom: none !important; }
+  .nav-dropdown-menu li a { padding: .45rem 1rem !important; font-size: .75rem; }
+
   @keyframes slide-down {
     from { opacity: 0; transform: translateY(-8px); }
     to   { opacity: 1; transform: translateY(0); }

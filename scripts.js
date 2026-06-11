@@ -1,4 +1,4 @@
-/* HummingBeing — scripts.js v1 */
+/* HummingBeing — scripts.js v2 */
 
 // ── Mobile menu ────────────────────────────────────────────────────────────
 function toggleMenu() {
@@ -6,6 +6,11 @@ function toggleMenu() {
   const btn = document.querySelector('.hamburger');
   const open = ul.classList.toggle('nav-open');
   btn.classList.toggle('open', open);
+  if (!open) {
+    document.querySelectorAll('.nav-dropdown').forEach(function(d) {
+      d.classList.remove('dropdown-open');
+    });
+  }
 }
 
 document.addEventListener('click', function(e) {
@@ -15,6 +20,21 @@ document.addEventListener('click', function(e) {
   const btn = document.querySelector('.hamburger');
   if (ul)  ul.classList.remove('nav-open');
   if (btn) btn.classList.remove('open');
+  document.querySelectorAll('.nav-dropdown').forEach(function(d) {
+    d.classList.remove('dropdown-open');
+  });
+});
+
+// ── Services dropdown (mobile tap to expand) ────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.nav-dropdown-toggle').forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (window.innerWidth <= 900) {
+        this.closest('.nav-dropdown').classList.toggle('dropdown-open');
+      }
+    });
+  });
 });
 
 // ── Scroll animations ──────────────────────────────────────────────────────
