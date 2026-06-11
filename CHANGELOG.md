@@ -5,6 +5,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [13.0] — 2026-06-11
+
+### Fixed
+- **Dropdown disappears on item selection** — scroll handler was hiding the nav (sliding it off-screen) while a dropdown was open; any tiny trackpad drift triggered it, collapsing the menu before an item could be clicked
+- **Scroll guard** — nav-hide now skipped when `.nav-dropdown.dropdown-open` exists; opening a dropdown force-clears `nav-hidden`
+- **Sub-link click** — dropdown items now explicitly close the dropdown before navigating; toggle fully closes before re-opening (eliminates double-toggle edge case)
+- **`scripts.js` v4**
+
+---
+
+## [12.0] — 2026-06-11
+
+### Added
+- **`changelog.html`** — live HTML changelog page matching full site design; timeline layout with version badges and colour-coded Added / Changed / Fixed tags
+- **Footer Changelog link** — added to Company section on all 8 pages
+- **`CHANGELOG.md`** — backfilled v9, v10, v11 entries
+
+---
+
 ## [11.0] — 2026-06-11
 
 ### Added

@@ -100,6 +100,39 @@
 <section>
   <div class="cl-timeline">
 
+    <!-- v13 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v13.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
+        <ul>
+          <li><strong>Dropdown disappears when selecting</strong> &#8212; scroll handler was hiding the nav (sliding it off-screen) even while a dropdown was open; any tiny trackpad/touchpad drift triggered it, collapsing the menu before an item could be clicked</li>
+          <li><strong>Scroll guard</strong> &#8212; nav-hide is now skipped whenever <code>.nav-dropdown.dropdown-open</code> exists; opening a dropdown also force-clears <code>nav-hidden</code></li>
+          <li><strong>Sub-link click</strong> &#8212; clicking a dropdown item explicitly closes the dropdown before navigation; toggle now fully closes before re-opening (no double-toggle edge case)</li>
+          <li><strong>scripts.js v4</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v12 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v12.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span></div>
+        <ul>
+          <li><strong>changelog.html</strong> &#8212; live HTML changelog page matching full site design; timeline layout with version badges and colour-coded Added / Changed / Fixed tags</li>
+          <li><strong>Footer Changelog link</strong> &#8212; added to Company section on all 8 pages</li>
+          <li><strong>CHANGELOG.md</strong> &#8212; backfilled v9, v10, v11 entries</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- v11 -->
     <div class="cl-entry">
       <div class="cl-meta">
