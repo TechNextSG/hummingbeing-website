@@ -30,9 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.nav-dropdown-toggle').forEach(function(toggle) {
     toggle.addEventListener('click', function(e) {
       e.preventDefault();
-      if (window.innerWidth <= 900) {
-        this.closest('.nav-dropdown').classList.toggle('dropdown-open');
-      }
+      var dropdown = this.closest('.nav-dropdown');
+      var isOpen = dropdown.classList.toggle('dropdown-open');
+      // close any other open dropdowns
+      document.querySelectorAll('.nav-dropdown').forEach(function(d) {
+        if (d !== dropdown) d.classList.remove('dropdown-open');
+      });
     });
   });
 });
