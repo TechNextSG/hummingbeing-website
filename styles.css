@@ -1,4 +1,4 @@
-/* HummingBeing — styles.css v6
+/* HummingBeing — styles.css v7
    Fonts: PT Serif (headings) + Lato (body)  |  Palette: #242e42 navy · #F5A623 gold · #ffc600 yellow
    ——————————————————————————————————————————————————————————————————————————————————————————————— */
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
@@ -631,6 +631,48 @@ footer ul a:hover { color: var(--gold); }
   .hero-eyebrow, .hero h1, .hero p, .hero-actions,
   .page-hero .eyebrow, .page-hero h1, .page-hero p { animation: none; }
   .wa-float { animation: none; }
+}
+
+/* ── TICKER / MARQUEE ───────────────────────────────────────────────────── */
+.ticker-wrap {
+  overflow: hidden;
+  background: var(--navy);
+  padding: .95rem 0;
+  position: relative;
+}
+.ticker-wrap::before,
+.ticker-wrap::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0;
+  width: 80px; z-index: 2; pointer-events: none;
+}
+.ticker-wrap::before { left: 0;  background: linear-gradient(to right, var(--navy), transparent); }
+.ticker-wrap::after  { right: 0; background: linear-gradient(to left,  var(--navy), transparent); }
+
+.ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ticker-scroll 36s linear infinite;
+}
+.ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+
+.t-item {
+  font-family: 'Lato', sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.68);
+  padding: 0 1.6rem;
+  white-space: nowrap;
+}
+.t-star { color: var(--gold); margin-right: .35rem; font-size: .75rem; }
+.t-sep  { color: rgba(255,255,255,.22); font-size: 1.1rem; flex-shrink: 0; }
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 /* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
