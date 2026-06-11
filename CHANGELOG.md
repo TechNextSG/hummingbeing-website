@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [16.0] — 2026-06-11
+
+### Fixed
+- **Hero fills full viewport** — `min-height` changed from `90vh` to `calc(100vh - 76px)` so the hero occupies exactly the screen below the fixed nav bar on all screen sizes
+
+---
+
 ## [15.0] — 2026-06-11
 
 ### Fixed / Changed
