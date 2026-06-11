@@ -573,7 +573,11 @@ section { padding: 6rem 5%; }
 .platform-hero .ph-icon i { font-size: 2.2rem; color: var(--gold); }
 .platform-hero h3 { font-family: 'PT Serif', Georgia, serif; font-size: 1.15rem; color: var(--white); margin-bottom: .3rem; }
 .platform-hero .ph-handle { color: var(--gold); font-weight: 700; font-size: .78rem; margin-bottom: .65rem; display: block; }
-.platform-hero p { color: rgba(255,255,255,.72); font-size: .82rem; margin-bottom: 1.25rem; line-height: 1.55; flex: 1; }
+.platform-hero p {
+  color: rgba(255,255,255,.72); font-size: .82rem; margin-bottom: 1.25rem; line-height: 1.55;
+  flex: 1;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+}
 .platform-hero a {
   background: var(--gold); color: var(--white);
   padding: .55rem 1.1rem; border-radius: 2px;
@@ -656,23 +660,23 @@ footer ul a:hover { color: var(--gold); }
 /* ── SCROLL-TO-TOP BUTTON ───────────────────────────────────────────────── */
 .top-float {
   position: fixed;
-  bottom: calc(2rem + 58px + .75rem); right: 2rem;
-  width: 46px; height: 46px;
-  background: var(--navy);
-  border: 2px solid var(--gold);
+  bottom: 2rem; right: calc(2rem + 58px + .75rem);
+  width: 58px; height: 58px;
+  background: var(--gold);
+  border: none;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  color: var(--gold);
-  font-size: 1rem;
+  color: var(--white);
+  font-size: 1.35rem;
   z-index: 9998;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(36,46,66,.3);
+  box-shadow: 0 4px 16px rgba(245,166,35,.45);
   opacity: 0; pointer-events: none;
   transform: translateY(10px);
-  transition: opacity .3s ease, transform .3s ease, background .2s ease;
+  transition: opacity .3s ease, transform .3s ease, background .25s ease, box-shadow .25s ease;
 }
 .top-float.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
-.top-float:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
+.top-float:hover { background: var(--gold-dark); box-shadow: 0 8px 28px rgba(245,166,35,.6); }
 
 /* ── SCROLL ANIMATIONS ──────────────────────────────────────────────────── */
 .anim-up {
@@ -815,5 +819,5 @@ footer ul a:hover { color: var(--gold); }
   .footer-bottom { flex-direction: column; gap: .5rem; text-align: center; }
   .form-row { grid-template-columns: 1fr; }
   .wa-float { bottom: 1.25rem; right: 1.25rem; width: 52px; height: 52px; font-size: 1.55rem; }
-  .top-float { bottom: calc(1.25rem + 52px + .6rem); right: 1.25rem; width: 42px; height: 42px; }
+  .top-float { bottom: 1.25rem; right: calc(1.25rem + 52px + .6rem); width: 52px; height: 52px; font-size: 1.2rem; }
 }
