@@ -5,6 +5,32 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [11.0] — 2026-06-11
+
+### Added
+- **Auto-hide header** — nav switches to `position: fixed`; slides off-screen (`translateY(-100%)`) when scrolling down past 80px, returns when scrolling up; `body` gains `padding-top: 76px` to compensate
+- **Scroll-to-top button** — navy circle with gold chevron, floats above the WhatsApp button; appears after 400px scroll, smooth-scrolls to top on click; repositions on mobile
+- **`scripts.js` v3** — scroll event listener (passive) tracks direction for nav hide/show and top-float visibility
+
+---
+
+## [10.0] — 2026-06-11
+
+### Changed
+- **Platform cards** — socials page `platforms-grid` changed from `auto-fit minmax(260px)` to `repeat(6, 1fr)` so all 6 cards sit in a single row on desktop; card padding, icon and text sizes reduced for the narrower columns
+- **Responsive** — 3-column layout on tablet (≤900px), 2-column on mobile (≤600px)
+- **CSS version** bumped to `v10`
+
+---
+
+## [9.0] — 2026-06-11
+
+### Fixed
+- **Dropdown not clickable** — CSS hover-based dropdown had a gap between the nav link and the panel; moving through the gap collapsed the menu before items could be clicked; replaced `:hover` trigger with JS click-toggle (`.dropdown-open` class) on all screen sizes; `e.preventDefault()` now fires universally
+- **CSS version** bumped to `v9`
+
+---
+
 ## [8.0] — 2026-06-11
 
 ### Changed

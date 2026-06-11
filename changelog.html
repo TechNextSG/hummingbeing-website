@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog &#8212; HummingBeing</title>
+  <meta name="description" content="Full development history of the HummingBeing website &#8212; every update, fix and improvement documented." />
+  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="favicon.svg" />
+  <style>
+    .cl-timeline { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .cl-entry {
+      display: grid; grid-template-columns: 150px 1fr; gap: 2.5rem;
+      padding: 2rem 0; border-bottom: 1px solid var(--border);
+    }
+    .cl-entry:last-child { border-bottom: none; }
+    .cl-meta { padding-top: .2rem; }
+    .cl-badge {
+      display: inline-block; background: var(--navy); color: var(--gold);
+      font-weight: 700; font-size: .82rem; letter-spacing: 1.5px;
+      padding: .35rem .9rem; border-radius: 2px; border: 1.5px solid var(--gold);
+      font-family: 'Lato', sans-serif;
+    }
+    .cl-date { display: block; font-size: .78rem; color: var(--text-mid); margin-top: .55rem; }
+    .cl-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .85rem; }
+    .cl-tag {
+      font-size: .67rem; font-weight: 700; letter-spacing: 1.1px;
+      text-transform: uppercase; padding: .2rem .6rem; border-radius: 2px;
+      font-family: 'Lato', sans-serif;
+    }
+    .cl-tag-added   { background: rgba(37,211,102,.12); color: #1a9e4e; }
+    .cl-tag-changed { background: rgba(245,166,35,.15); color: var(--gold-dark); }
+    .cl-tag-fixed   { background: rgba(46,163,242,.15); color: #1a7fc1; }
+    .cl-body ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .55rem; }
+    .cl-body li { font-size: .92rem; padding-left: 1.4rem; position: relative; line-height: 1.6; }
+    .cl-body li::before { content: '&#8594;'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+    .cl-body strong { color: var(--navy); font-weight: 700; }
+    .cl-body code {
+      background: rgba(36,46,66,.07); color: var(--navy);
+      padding: .1em .4em; border-radius: 3px; font-size: .85em;
+      font-family: 'Courier New', monospace;
+    }
+    @media (max-width: 640px) {
+      .cl-entry { grid-template-columns: 1fr; gap: .75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Humming<span>Being</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="isabelle.html">Isabelle</a></li>
+    <li class="nav-dropdown">
+      <a href="#" class="nav-dropdown-toggle">Services <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="tre.html">TRE&#174; Exercises</a></li>
+        <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
+        <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
+      </ul>
+    </li>
+    <li><a href="socials.html">Socials</a></li>
+    <li><a href="book.html" class="nav-cta">Book a Session</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <span class="eyebrow">Development History</span>
+  <h1>Website Changelog</h1>
+  <p>Every update, fix and improvement to the HummingBeing website &#8212; documented transparently.</p>
+</div>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Wellness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Singapore &amp; Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#174; Provider</span><span class="t-sep">&middot;</span>
+    <span class="t-item">25+ Years of Experience</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Somatic Bodywork</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> BHD Asia &amp; BHD Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Wellness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Singapore &amp; Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#174; Provider</span><span class="t-sep">&middot;</span>
+    <span class="t-item">25+ Years of Experience</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Somatic Bodywork</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> BHD Asia &amp; BHD Japan</span><span class="t-sep">&middot;</span>
+  </div>
+</div>
+
+<section>
+  <div class="cl-timeline">
+
+    <!-- v11 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v11.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span><span class="cl-tag cl-tag-changed">Changed</span></div>
+        <ul>
+          <li><strong>Auto-hide header</strong> &#8212; nav switches to <code>position: fixed</code>; slides off-screen when scrolling down past 80&thinsp;px, returns on scroll-up; <code>body</code> gains <code>padding-top: 76px</code> to compensate</li>
+          <li><strong>Scroll-to-top button</strong> &#8212; navy circle with gold chevron floats above the WhatsApp button; appears after 400&thinsp;px of scroll, smooth-scrolls to top on click; repositions on mobile</li>
+          <li><strong>scripts.js v3</strong> &#8212; passive scroll listener handles nav hide/show and top-float visibility</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v10 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v10.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
+        <ul>
+          <li><strong>Platform cards &#8212; one row</strong> &#8212; socials page grid changed to <code>repeat(6, 1fr)</code> so all six platform cards display in a single row on desktop; card padding, icon and text sizes reduced</li>
+          <li><strong>Responsive breakpoints</strong> &#8212; 3-column layout on tablet (&#8804;900&thinsp;px), 2-column on mobile (&#8804;600&thinsp;px)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v9 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v9.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
+        <ul>
+          <li><strong>Dropdown not clickable</strong> &#8212; CSS hover had a gap between the nav link and dropdown panel; moving through the gap collapsed the menu before items could be clicked; replaced <code>:hover</code> trigger with JS click-toggle (<code>.dropdown-open</code> class) on all screen sizes</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v8 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v8.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span><span class="cl-tag cl-tag-fixed">Fixed</span></div>
+        <ul>
+          <li><strong>Services nav dropdown</strong> &#8212; consolidated TRE&#174;, Somatic Coaching and Somatic Bodywork into a single dropdown across all 8 pages; desktop hover panel with gold border; mobile tap-to-expand</li>
+          <li><strong>Active state</strong> &#8212; service pages mark both the Services toggle and matching sub-link as active</li>
+          <li><strong>socials.html rewrite</strong> &#8212; removed broken inline <code>&lt;style&gt;</code> referencing undefined CSS variables; platform cards and content-theme section redesigned with valid global styles</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v7 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v7.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span></div>
+        <ul>
+          <li><strong>Scrolling ticker strip</strong> &#8212; infinite-looping marquee below the hero on all 8 pages; dark navy background with credentials; left/right edge fade; pauses on hover</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v6 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v6.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span><span class="cl-tag cl-tag-changed">Changed</span><span class="cl-tag cl-tag-fixed">Fixed</span></div>
+        <ul>
+          <li><strong>WhatsApp floating button</strong> &#8212; fixed-position green button with pulse animation on all pages</li>
+          <li><strong>Scroll animations</strong> &#8212; IntersectionObserver fade-up/left/right on cards, steps, testimonials and stats; staggered entry; <code>prefers-reduced-motion</code> respected</li>
+          <li><strong>Hero &amp; page-hero entrance animations</strong> &#8212; eyebrow, h1, paragraph and CTA buttons cascade in on load</li>
+          <li><strong>&#8220;Powered by TechNext&#8221;</strong> &#8212; added to footer across all 8 pages</li>
+          <li><strong>Footer compacted</strong> &#8212; padding and gap reduced across all pages</li>
+          <li><strong>Mobile nav</strong> &#8212; class-based toggle with hamburger &#10005; animation and outside-click-to-close</li>
+          <li><strong>Arrow encoding fix</strong> &#8212; corrected <code>&#226;&#8224;&#8216;</code> mojibake &#8594; <code>&amp;#8594;</code> across all pages</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v5 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v5.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span><span class="cl-tag cl-tag-changed">Changed</span></div>
+        <ul>
+          <li><strong>36 CTA buttons</strong> &#8212; &#8220;Book a Free Consultation&#8221; added to every section across all 7 public pages</li>
+          <li><strong>Hero &amp; CTA banner background photos</strong> &#8212; real lifestyle photography from hummingbeing.com with dark gradient overlays</li>
+          <li><strong>Fonts</strong> &#8212; switched to PT Serif (headings) + Lato (body), matching hummingbeing.com editorial style</li>
+          <li><strong>All images replaced</strong> &#8212; Unsplash stock photos removed; real photos from hummingbeing.com across all pages</li>
+          <li><strong>Card icons</strong> &#8212; redesigned as navy circle with gold Font Awesome icon</li>
+          <li><strong>Colour variables</strong> &#8212; primary dark updated to <code>#242e42</code>; added <code>--navy-deep</code>, <code>--navy-light</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v4 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v4.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span><span class="cl-tag cl-tag-fixed">Fixed</span></div>
+        <ul>
+          <li><strong>Font Awesome 6.5.0</strong> &#8212; CDN added to all pages</li>
+          <li><strong>Favicon</strong> &#8212; custom <code>favicon.svg</code> (navy circle, orange &#8220;H&#8221;)</li>
+          <li><strong>YouTube embed</strong> &#8212; responsive 16:9 container on TRE page</li>
+          <li><strong>Tags &amp; card icons</strong> &#8212; <code>.tag</code> pill components and Font Awesome icons on service pages</li>
+          <li><strong>Footer social icons</strong> &#8212; Instagram, LinkedIn, YouTube, WhatsApp icon links in footer</li>
+          <li><strong>UTF-8 mojibake fix</strong> &#8212; corrected broken encoding (em dashes, trademark symbol, curly quotes) across all 8 pages</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v3 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v3.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
+        <ul>
+          <li><strong>CSS cache bust</strong> &#8212; added <code>?v=3</code> query string to stylesheet link after browsers served stale styles from prior rebrand</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v2 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v2.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
+        <ul>
+          <li><strong>Copy tone</strong> &#8212; rewrote all page copy from corporate/formal to personal and warm throughout; hero, CTAs and service descriptions now speak to the individual reader</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v1 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v1.0</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
+        <ul>
+          <li><strong>Brand colours</strong> &#8212; updated to logo colour scheme: navy <code>#2D3E6B</code> and gold <code>#F5A623</code></li>
+          <li><strong>Font</strong> &#8212; switched from Playfair Display to Nunito (800 weight headings)</li>
+          <li><strong>CSS variables</strong> &#8212; introduced <code>--navy</code>, <code>--gold</code>, <code>--gold-accent</code>, <code>--green-primary</code> as design tokens</li>
+          <li><strong>Nav CTA</strong> &#8212; &#8220;Book a Session&#8221; styled with brand navy background</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v0.1 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v0.1</span>
+        <span class="cl-date">2026-06-11</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span></div>
+        <ul>
+          <li><strong>Initial release</strong> &#8212; 8 HTML pages: <code>index</code>, <code>about</code>, <code>isabelle</code>, <code>tre</code>, <code>somatic-coaching</code>, <code>somatic-bodywork</code>, <code>book</code>, <code>socials</code></li>
+          <li><strong>styles.css</strong> &#8212; full stylesheet with CSS custom properties, responsive grid, card components, two-column layout, testimonials, footer</li>
+          <li><strong>Responsive navigation</strong> &#8212; hamburger menu for mobile</li>
+          <li><strong>GitHub Pages deployment</strong> &#8212; via <code>TechNextSG/hummingbeing-website</code> (main branch)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Humming<span>Being</span></a>
+      <p>A safe space to learn TRE&#174;, Somatic Coaching and Somatic Bodywork &#8212; a space to release, renew and restore.</p>
+      <p style="margin-top:1rem;font-size:.8rem">Part of <strong style="color:rgba(255,255,255,.85)">BHD Asia &amp; BHD Japan</strong></p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/818065151778" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div><h4>Services</h4><ul>
+      <li><a href="tre.html">TRE&#174; Exercises</a></li>
+      <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
+      <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
+      <li><a href="book.html">Book a Session</a></li>
+    </ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="about.html">About HummingBeing</a></li>
+      <li><a href="isabelle.html">Meet Isabelle</a></li>
+      <li><a href="socials.html">Social Media</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+      <li><a href="https://bhdasia.com" target="_blank">BHD Asia</a></li>
+    </ul></div>
+    <div><h4>Contact</h4><ul>
+      <li><a href="mailto:hello@hummingbeing.com">hello@hummingbeing.com</a></li>
+      <li><a href="https://wa.me/818065151778">WhatsApp Us</a></li>
+      <li style="color:rgba(255,255,255,.5);font-size:.85rem">Singapore &amp; Japan</li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>&#169; 2024 HummingBeing &#183; Empowering Individuals | BHD Asia &amp; BHD Japan</span>
+    <span>Powered by <a href="https://technextasia.com" target="_blank">TechNext</a></span>
+    <span><a href="https://hummingbeing.com">hummingbeing.com</a></span>
+  </div>
+</footer>
+
+<a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+<script src="scripts.js"></script>
+</body>
+</html>
