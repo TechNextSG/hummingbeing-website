@@ -17,7 +17,7 @@
   --body-text:   #555555;
   --text-mid:    #888888;
   --text-light:  #b0b0b0;
-  --border:      #e5e5e5;
+  --border:      rgba(245,166,35,.28);
   /* backwards-compat aliases */
   --gold-accent:   #F5A623;
   --green-primary: #242e42;
