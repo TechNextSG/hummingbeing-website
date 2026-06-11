@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery &#8212; HummingBeing</title>
+  <meta name="description" content="Browse HummingBeing's gallery &#8212; podcast episodes, somatic wellness videos and photos from Isabelle Claus Teixeira." />
+  <link rel="stylesheet" href="styles.css?v=15" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="favicon.svg" />
+  <style>
+    /* ── GALLERY FILTERS ──────────────────────────────────────────────────── */
+    .gal-filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .gf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .65rem 2rem;
+      border: 2px solid var(--gold);
+      background: transparent;
+      color: var(--navy);
+      font-family: 'Lato', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .gf-btn:hover { background: rgba(245,166,35,.12); }
+    .gf-btn.active { background: var(--gold); color: var(--white); }
+
+    /* ── GALLERY GRID ─────────────────────────────────────────────────────── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    /* ── BASE CARD ────────────────────────────────────────────────────────── */
+    .g-item {
+      border-radius: 3px;
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .g-item:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(36,46,66,.14); }
+
+    /* ── CATEGORY PILL ────────────────────────────────────────────────────── */
+    .g-cat-pill {
+      position: absolute;
+      top: .75rem; left: .75rem;
+      font-size: .6rem; font-weight: 700;
+      letter-spacing: 1.4px; text-transform: uppercase;
+      padding: .22rem .6rem; border-radius: 2px;
+      color: var(--white); z-index: 2; pointer-events: none;
+    }
+    .g-cat-pill.images  { background: var(--gold); }
+    .g-cat-pill.video   { background: #cc0000; }
+    .g-cat-pill.podcast { background: var(--navy); border: 1px solid rgba(255,255,255,.2); }
+
+    /* ── IMAGE CARDS ──────────────────────────────────────────────────────── */
+    .g-img-card { cursor: pointer; position: relative; }
+    .g-img-thumb {
+      position: relative;
+      width: 100%; padding-bottom: 75%; overflow: hidden;
+    }
+    .g-img-thumb img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+    .g-img-card:hover .g-img-thumb img { transform: scale(1.07); }
+    .g-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(36,46,66,.82) 0%, transparent 55%);
+      opacity: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .5rem;
+      transition: opacity .3s;
+    }
+    .g-img-card:hover .g-img-overlay { opacity: 1; }
+    .g-zoom-icon {
+      width: 52px; height: 52px;
+      background: rgba(245,166,35,.92);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 1.15rem;
+      transition: transform .2s;
+    }
+    .g-img-card:hover .g-zoom-icon { transform: scale(1.1); }
+    .g-img-caption-tag {
+      position: absolute;
+      bottom: .85rem; left: 50%;
+      transform: translateX(-50%);
+      color: var(--white); font-size: .68rem;
+      font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; white-space: nowrap;
+      text-shadow: 0 1px 4px rgba(0,0,0,.5);
+    }
+
+    /* ── VIDEO CARDS ──────────────────────────────────────────────────────── */
+    .g-video-card {
+      background: var(--navy); border-radius: 3px;
+      overflow: hidden; cursor: pointer; position: relative;
+    }
+    .g-vid-thumb {
+      position: relative;
+      width: 100%; padding-bottom: 56.25%; overflow: hidden;
+    }
+    .g-vid-thumb img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; transition: transform .45s;
+    }
+    .g-video-card:hover .g-vid-thumb img { transform: scale(1.06); }
+    .g-play-btn {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px; height: 60px;
+      background: rgba(204,0,0,.9); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 1.35rem;
+      transition: transform .25s, background .2s;
+    }
+    .g-video-card:hover .g-play-btn { transform: translate(-50%,-50%) scale(1.12); background: #cc0000; }
+    .g-vid-info { padding: 1rem 1.1rem 1.2rem; }
+    .g-vid-info h4 {
+      font-family: 'PT Serif', Georgia, serif;
+      color: var(--white); font-size: .95rem;
+      margin-bottom: .3rem; line-height: 1.4;
+    }
+    .g-vid-info span { color: rgba(255,255,255,.5); font-size: .74rem; }
+
+    /* Channel browse card */
+    .g-channel-card {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a2340 100%);
+      border-radius: 3px;
+      padding: 2.2rem 1.8rem; text-align: center;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 1rem;
+      min-height: 200px; text-decoration: none; position: relative;
+    }
+    .g-channel-icon {
+      width: 64px; height: 64px;
+      background: rgba(204,0,0,.9); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-size: 1.6rem;
+    }
+    .g-channel-card h4 {
+      font-family: 'PT Serif', Georgia, serif;
+      color: var(--white); font-size: 1rem; margin: 0;
+    }
+    .g-channel-card > p { color: rgba(255,255,255,.6); font-size: .8rem; margin: 0; line-height: 1.5; }
+    .g-ch-cta {
+      font-size: .7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--gold);
+      display: inline-flex; align-items: center; gap: .35rem;
+    }
+
+    /* ── PODCAST CARDS ────────────────────────────────────────────────────── */
+    .g-podcast-card {
+      background: var(--white);
+      border-radius: 3px;
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(36,46,66,.07);
+      padding: 1.6rem 1.4rem 1.6rem 1.6rem;
+      display: flex; gap: 1.1rem; align-items: flex-start;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s, transform .3s ease, box-shadow .3s ease;
+    }
+    .g-podcast-card:hover { background: rgba(245,166,35,.04); }
+    .g-pod-icon {
+      width: 58px; height: 58px; flex-shrink: 0;
+      background: var(--navy); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.4rem;
+    }
+    .g-pod-meta h4 {
+      font-family: 'PT Serif', Georgia, serif;
+      color: var(--navy); font-size: .97rem;
+      margin-bottom: .25rem; line-height: 1.35;
+    }
+    .g-pod-show {
+      display: block; font-size: .67rem; font-weight: 700;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--gold-dark); margin-bottom: .55rem;
+    }
+    .g-pod-meta > p { color: var(--text-mid); font-size: .82rem; line-height: 1.55; margin-bottom: .85rem; }
+    .g-pod-listen {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: 1.1px; text-transform: uppercase; color: var(--gold-dark);
+    }
+
+    /* ── LIGHTBOX ─────────────────────────────────────────────────────────── */
+    #lb-overlay {
+      position: fixed; inset: 0; z-index: 12000;
+      background: rgba(20,26,40,.96);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem; cursor: zoom-out;
+      opacity: 0; visibility: hidden;
+      transition: opacity .3s, visibility .3s;
+    }
+    #lb-overlay.open { opacity: 1; visibility: visible; }
+    #lb-overlay img {
+      max-width: 88vw; max-height: 88vh;
+      object-fit: contain; border-radius: 3px;
+      box-shadow: 0 28px 80px rgba(0,0,0,.55);
+      cursor: default;
+    }
+    #lb-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: none; border: none;
+      color: rgba(255,255,255,.75); font-size: 2.2rem;
+      cursor: pointer; line-height: 1; transition: color .2s;
+    }
+    #lb-close:hover { color: var(--white); }
+    #lb-caption {
+      position: absolute; bottom: 1.5rem; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.6); font-size: .78rem;
+      letter-spacing: 1.1px; text-transform: uppercase; white-space: nowrap;
+    }
+
+    /* ── VIDEO MODAL ──────────────────────────────────────────────────────── */
+    #vm-overlay {
+      position: fixed; inset: 0; z-index: 12000;
+      background: rgba(20,26,40,.97);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+      opacity: 0; visibility: hidden;
+      transition: opacity .3s, visibility .3s;
+    }
+    #vm-overlay.open { opacity: 1; visibility: visible; }
+    #vm-inner { position: relative; width: 100%; max-width: 880px; }
+    #vm-close {
+      position: absolute; top: -2.9rem; right: 0;
+      background: none; border: none;
+      color: rgba(255,255,255,.75); font-size: 1.9rem;
+      cursor: pointer; line-height: 1; transition: color .2s;
+    }
+    #vm-close:hover { color: var(--white); }
+    #vm-ratio { position: relative; padding-bottom: 56.25%; }
+    #vm-ratio iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: none; border-radius: 3px;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gf-btn { padding: .55rem 1.1rem; font-size: .68rem; letter-spacing: 1.2px; }
+      .g-podcast-card { flex-direction: column; }
+      .g-pod-icon { width: 48px; height: 48px; font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Humming<span>Being</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="isabelle.html">Isabelle</a></li>
+    <li class="nav-dropdown">
+      <a href="#" class="nav-dropdown-toggle">Services <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="tre.html">TRE&#174; Exercises</a></li>
+        <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
+        <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
+      </ul>
+    </li>
+    <li><a href="socials.html">Socials</a></li>
+    <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="book.html" class="nav-cta">Book a Session</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <span class="eyebrow">Media &amp; Content</span>
+  <h1>Gallery</h1>
+  <p>Explore podcasts, videos and images &#8212; somatic wisdom in every format.</p>
+</div>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Wellness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Singapore &amp; Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#174; Provider</span><span class="t-sep">&middot;</span>
+    <span class="t-item">25+ Years of Experience</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Somatic Bodywork</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> BHD Asia &amp; BHD Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Wellness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Singapore &amp; Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#174; Provider</span><span class="t-sep">&middot;</span>
+    <span class="t-item">25+ Years of Experience</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Somatic Bodywork</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> BHD Asia &amp; BHD Japan</span><span class="t-sep">&middot;</span>
+  </div>
+</div>
+
+<!-- GALLERY SECTION -->
+<section class="section-cream">
+  <div class="section-header-center">
+    <span class="section-eyebrow">All Media</span>
+    <h2 class="section-title">Explore the Content</h2>
+    <p class="section-subtitle">Filter by category to find exactly what you're looking for.</p>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="gal-filter-bar">
+    <button class="gf-btn active" onclick="galleryFilter('all', this)">
+      <i class="fa-solid fa-grip"></i> All
+    </button>
+    <button class="gf-btn" onclick="galleryFilter('podcast', this)">
+      <i class="fa-solid fa-microphone"></i> Podcast
+    </button>
+    <button class="gf-btn" onclick="galleryFilter('video', this)">
+      <i class="fa-brands fa-youtube"></i> Video
+    </button>
+    <button class="gf-btn" onclick="galleryFilter('images', this)">
+      <i class="fa-regular fa-image"></i> Images
+    </button>
+  </div>
+
+  <!-- GALLERY GRID -->
+  <div class="gallery-grid" id="gallery-grid">
+
+    <!-- ── PODCAST ─────────────────────────────────────────────────────── -->
+    <a class="g-item g-podcast-card" data-cat="podcast"
+       href="https://www.youtube.com/watch?v=1PT1crBhhUE" target="_blank" rel="noopener">
+      <div class="g-pod-icon"><i class="fa-brands fa-youtube"></i></div>
+      <div class="g-pod-meta">
+        <span class="g-pod-show">Video Podcast &nbsp;&#183;&nbsp; TRE&#174; Series</span>
+        <h4>TRE Star Groups with Isabelle Claus Teixeira</h4>
+        <p>Isabelle guides a live group through TRE&#174; &#8212; demonstrating the tremoring mechanism that naturally releases held tension and stress from the body.</p>
+        <span class="g-pod-listen"><i class="fa-solid fa-play"></i> Watch Episode</span>
+      </div>
+    </a>
+
+    <a class="g-item g-podcast-card" data-cat="podcast"
+       href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
+      <div class="g-pod-icon"><i class="fa-solid fa-headphones"></i></div>
+      <div class="g-pod-meta">
+        <span class="g-pod-show">Somatic Insights &nbsp;&#183;&nbsp; Guided Practice</span>
+        <h4>Nervous System Reset &#8212; A Somatic Practice for Busy Professionals</h4>
+        <p>Short breath, movement and body-awareness sequences designed to shift you from stress activation into regulated calm &#8212; in under 10 minutes.</p>
+        <span class="g-pod-listen"><i class="fa-brands fa-youtube"></i> View on YouTube</span>
+      </div>
+    </a>
+
+    <a class="g-item g-podcast-card" data-cat="podcast"
+       href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
+      <div class="g-pod-icon"><i class="fa-solid fa-podcast"></i></div>
+      <div class="g-pod-meta">
+        <span class="g-pod-show">Leadership Series &nbsp;&#183;&nbsp; Interview</span>
+        <h4>Leading from the Body &#8212; Somatic Intelligence in the Workplace</h4>
+        <p>How leaders use somatic awareness to make better decisions, build resilient teams and navigate change from the inside out &#8212; without burning out.</p>
+        <span class="g-pod-listen"><i class="fa-brands fa-youtube"></i> View on YouTube</span>
+      </div>
+    </a>
+
+    <!-- ── VIDEO ───────────────────────────────────────────────────────── -->
+    <div class="g-item g-video-card" data-cat="video"
+         onclick="openVideo('1PT1crBhhUE','TRE Star Groups with Isabelle Claus Teixeira')">
+      <span class="g-cat-pill video">Video</span>
+      <div class="g-vid-thumb">
+        <img src="https://img.youtube.com/vi/1PT1crBhhUE/hqdefault.jpg"
+             alt="TRE Star Groups with Isabelle" loading="lazy" />
+        <div class="g-play-btn"><i class="fa-solid fa-play"></i></div>
+      </div>
+      <div class="g-vid-info">
+        <h4>TRE Star Groups with Isabelle Claus Teixeira</h4>
+        <span><i class="fa-brands fa-youtube"></i> YouTube &nbsp;&middot;&nbsp; TRE&#174; Practice Session</span>
+      </div>
+    </div>
+
+    <a class="g-item g-channel-card" data-cat="video"
+       href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
+      <span class="g-cat-pill video">YouTube</span>
+      <div class="g-channel-icon"><i class="fa-brands fa-youtube"></i></div>
+      <h4>@IsabelleClausTeixeira</h4>
+      <p>Guided TRE&#174; sessions, somatic movement sequences and expert conversations on nervous system health</p>
+      <span class="g-ch-cta">Browse Channel <i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+
+    <!-- ── IMAGES ──────────────────────────────────────────────────────── -->
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2020/01/Artboard-1@2x-100.jpg','Isabelle Claus Teixeira')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2020/01/Artboard-1@2x-100.jpg"
+             alt="Isabelle Claus Teixeira" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Isabelle Claus Teixeira</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2019/11/isatall.jpg','Isabelle at Work')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2019/11/isatall.jpg"
+             alt="Isabelle at Work" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Isabelle at Work</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2019/07/sight-seeing-44.png','Nature &amp; Wellbeing')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2019/07/sight-seeing-44.png"
+             alt="Nature and Wellbeing" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Nature &amp; Wellbeing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2020/10/353436.jpg','Somatic Journey')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2020/10/353436.jpg"
+             alt="Somatic Journey" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Somatic Journey</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2019/11/flight-nature-bird-flying-33066.jpg','Freedom in Movement')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2019/11/flight-nature-bird-flying-33066.jpg"
+             alt="Freedom in Movement" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Freedom in Movement</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2020/11/Relationship-Coaching-6.jpg','Somatic Coaching')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2020/11/Relationship-Coaching-6.jpg"
+             alt="Somatic Coaching" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Somatic Coaching</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2020/11/Relationship-Coaching-1.jpg','TRE&#174; Practice')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2020/11/Relationship-Coaching-1.jpg"
+             alt="TRE Practice" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">TRE&#174; Practice</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2020/11/Relationship-Coaching-5.jpg','Somatic Coaching Session')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2020/11/Relationship-Coaching-5.jpg"
+             alt="Somatic Coaching Session" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Somatic Coaching Session</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2019/08/therapist-08.png','Bodywork Session')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2019/08/therapist-08.png"
+             alt="Bodywork Session" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Bodywork Session</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2019/08/therapist-02.png','Somatic Therapy')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2019/08/therapist-02.png"
+             alt="Somatic Therapy" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Somatic Therapy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2019/11/massage-11.jpg','Somatic Bodywork')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2019/11/massage-11.jpg"
+             alt="Somatic Bodywork" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Somatic Bodywork</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2019/11/massage-12.jpg','Body Release')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2019/11/massage-12.jpg"
+             alt="Body Release" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Body Release</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2019/11/massage-09-1.jpg','Healing Touch')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2019/11/massage-09-1.jpg"
+             alt="Healing Touch" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Healing Touch</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2019/11/massage-04.png','Somatic Practice')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="https://www.hummingbeing.com/wp-content/uploads/2019/11/massage-04.png"
+             alt="Somatic Practice" loading="lazy" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Somatic Practice</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /gallery-grid -->
+
+  <div style="text-align:center;margin-top:3.5rem">
+    <a href="book.html" class="btn btn-primary">Book a Free Consultation</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <h2>Experience It for Yourself</h2>
+  <p>Watch, listen and explore &#8212; then take the first step and book a free discovery call with Isabelle.</p>
+  <a href="book.html" class="btn" style="background:var(--white);color:var(--gold)">Book a Free Call</a>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Humming<span>Being</span></a>
+      <p>A safe space to learn TRE&#174;, Somatic Coaching and Somatic Bodywork.</p>
+      <p style="margin-top:1rem;font-size:.8rem">Part of <strong style="color:rgba(255,255,255,.85)">BHD Asia &amp; BHD Japan</strong></p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/818065151778" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div><h4>Services</h4><ul>
+      <li><a href="tre.html">TRE&#174; Exercises</a></li>
+      <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
+      <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
+      <li><a href="book.html">Book a Session</a></li>
+    </ul></div>
+    <div><h4>Company</h4><ul>
+      <li><a href="about.html">About HummingBeing</a></li>
+      <li><a href="isabelle.html">Meet Isabelle</a></li>
+      <li><a href="socials.html">Social Media</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+      <li><a href="https://bhdasia.com" target="_blank">BHD Asia</a></li>
+    </ul></div>
+    <div><h4>Contact</h4><ul>
+      <li><a href="mailto:hello@hummingbeing.com">hello@hummingbeing.com</a></li>
+      <li><a href="https://wa.me/818065151778">WhatsApp Us</a></li>
+      <li style="color:rgba(255,255,255,.5);font-size:.85rem">Singapore &amp; Japan</li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>&#169; 2024 HummingBeing &#183; BHD Asia &amp; BHD Japan</span>
+    <span>Powered by <a href="https://technextasia.com" target="_blank">TechNext</a></span>
+    <span><a href="https://hummingbeing.com">hummingbeing.com</a></span>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lb-overlay" onclick="if(event.target===this)closeLightbox()">
+  <button id="lb-close" onclick="closeLightbox()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  <img id="lb-img" src="" alt="" />
+  <span id="lb-caption"></span>
+</div>
+
+<!-- VIDEO MODAL -->
+<div id="vm-overlay" onclick="if(event.target===this)closeVideo()">
+  <div id="vm-inner">
+    <button id="vm-close" onclick="closeVideo()" aria-label="Close video"><i class="fa-solid fa-xmark"></i></button>
+    <div id="vm-ratio">
+      <iframe id="vm-iframe" src="" title="Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+<script src="scripts.js"></script>
+<script>
+/* Gallery filter */
+function galleryFilter(cat, btn) {
+  document.querySelectorAll('.gf-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('#gallery-grid .g-item').forEach(function(item) {
+    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
+  });
+}
+
+/* Lightbox */
+function openLightbox(src, caption) {
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb-caption').textContent = caption.replace(/&#[0-9]+;/g, function(m) {
+    var tmp = document.createElement('textarea'); tmp.innerHTML = m; return tmp.value;
+  });
+  document.getElementById('lb-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lb-overlay').classList.remove('open');
+  document.getElementById('lb-img').src = '';
+  document.body.style.overflow = '';
+}
+
+/* Video modal */
+function openVideo(id) {
+  document.getElementById('vm-iframe').src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+  document.getElementById('vm-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeVideo() {
+  document.getElementById('vm-iframe').src = '';
+  document.getElementById('vm-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* Escape key closes any open overlay */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeLightbox(); closeVideo(); }
+});
+</script>
+</body>
+</html>

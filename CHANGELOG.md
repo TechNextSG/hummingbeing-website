@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [18.0] — 2026-06-11
+
+### Added
+- **Gallery page** — new `gallery.html` with 3 clickable category filters: Podcast, Video and Images
+- **Podcast section** — 3 podcast cards (video podcast format) linking to YouTube channel content
+- **Video section** — embedded YouTube player card for TRE Star Groups video + YouTube channel browse card; click-to-play modal with autoplay
+- **Images section** — 14 photo cards with hover zoom-overlay and click-to-expand lightbox (ESC to close)
+- **Gallery nav link** — added to primary navigation on all 10 pages (after Socials, before Book a Session)
+- **Gallery footer link** — added to Company section in footer on all 10 pages
+
+---
+
 ## [17.0] — 2026-06-11
 
 ### Changed
