@@ -34,6 +34,7 @@ body {
   font-weight: 400;
   line-height: 1.75;
   color: var(--body-text);
+  padding-top: 76px;
   background: var(--white);
   -webkit-font-smoothing: antialiased;
 }
@@ -54,13 +55,16 @@ a:hover { color: var(--navy); }
 
 /* ── NAVIGATION ────────────────────────────────────────────────────────── */
 nav {
-  position: sticky; top: 0; z-index: 1000;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   background: var(--white);
   box-shadow: 0 1px 0 rgba(0,0,0,.09), 0 2px 16px rgba(0,0,0,.04);
   padding: 0 5%;
   display: flex; align-items: center; justify-content: space-between;
   height: 76px;
+  transform: translateY(0);
+  transition: transform .35s ease;
 }
+nav.nav-hidden { transform: translateY(-100%); }
 
 .logo {
   font-family: 'PT Serif', Georgia, serif;
@@ -649,6 +653,27 @@ footer ul a:hover { color: var(--gold); }
   50%       { box-shadow: 0 4px 20px rgba(37,211,102,.55), 0 0 0 10px rgba(37,211,102,.08); }
 }
 
+/* ── SCROLL-TO-TOP BUTTON ───────────────────────────────────────────────── */
+.top-float {
+  position: fixed;
+  bottom: calc(2rem + 58px + .75rem); right: 2rem;
+  width: 46px; height: 46px;
+  background: var(--navy);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold);
+  font-size: 1rem;
+  z-index: 9998;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(36,46,66,.3);
+  opacity: 0; pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity .3s ease, transform .3s ease, background .2s ease;
+}
+.top-float.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.top-float:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
+
 /* ── SCROLL ANIMATIONS ──────────────────────────────────────────────────── */
 .anim-up {
   opacity: 0;
@@ -790,4 +815,5 @@ footer ul a:hover { color: var(--gold); }
   .footer-bottom { flex-direction: column; gap: .5rem; text-align: center; }
   .form-row { grid-template-columns: 1fr; }
   .wa-float { bottom: 1.25rem; right: 1.25rem; width: 52px; height: 52px; font-size: 1.55rem; }
+  .top-float { bottom: calc(1.25rem + 52px + .6rem); right: 1.25rem; width: 42px; height: 42px; }
 }

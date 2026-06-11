@@ -1,4 +1,26 @@
-/* HummingBeing — scripts.js v2 */
+/* HummingBeing — scripts.js v3 */
+
+// ── Hide nav on scroll-down, reveal on scroll-up ───────────────────────────
+;(function() {
+  var lastY = 0;
+  window.addEventListener('scroll', function() {
+    var y = window.scrollY;
+    var nav = document.querySelector('nav');
+    var topBtn = document.querySelector('.top-float');
+    if (nav) {
+      if (y > lastY && y > 80) {
+        nav.classList.add('nav-hidden');
+      } else {
+        nav.classList.remove('nav-hidden');
+      }
+    }
+    if (topBtn) {
+      if (y > 400) topBtn.classList.add('visible');
+      else          topBtn.classList.remove('visible');
+    }
+    lastY = y;
+  }, { passive: true });
+})();
 
 // ── Mobile menu ────────────────────────────────────────────────────────────
 function toggleMenu() {
