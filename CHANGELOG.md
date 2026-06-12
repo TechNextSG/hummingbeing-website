@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [23.0] — 2026-06-12
+
+### Changed
+- **Hero overlay opacity lowered** — all 8 hero sections (homepage + 7 inner pages) now show more of the background photo; gradient reduced from `.88/.94` to `.55/.68` on inner pages, and from `.97/.62` to `.65/.38` on the homepage
+
+---
+
 ## [22.0] — 2026-06-12
 
 ### Added
