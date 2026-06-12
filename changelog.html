@@ -125,6 +125,20 @@
 <section>
   <div class="cl-timeline">
 
+    <!-- v38.2 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v38.2</span>
+        <span class="cl-date">2026-06-13</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
+        <ul>
+          <li><strong>Hero image priority loading</strong> &mdash; added <code>&lt;link rel="preload" fetchpriority="high"&gt;</code> in <code>&lt;head&gt;</code> for every hero poster image across all 9 pages; changed <code>preload="auto"</code> to <code>preload="none"</code> on all hero videos so poster loads instantly before video data begins downloading</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- v38.1 -->
     <div class="cl-entry">
       <div class="cl-meta">
@@ -236,7 +250,7 @@
         <ul>
           <li><strong>Hero poster images</strong> &mdash; all 8 hero sections show a still image instantly while video loads (<code>poster-*</code> files for about, book, events, gallery, socials, bodywork, coaching, TRE)</li>
           <li><strong>Hero videos added</strong> &mdash; <code>about.html</code> and <code>somatic-coaching.html</code> now have looping background videos replacing static image backgrounds</li>
-          <li><strong>Fast video playback</strong> &mdash; <code>preload="auto"</code> added to all hero <code>&lt;video&gt;</code> tags for immediate downloading on page load</li>
+          <li><strong>Fast video playback</strong> &mdash; <code>preload="none"</code> added to all hero <code>&lt;video&gt;</code> tags for immediate downloading on page load</li>
         </ul>
       </div>
     </div>
@@ -874,6 +888,7 @@
 <script src="scripts.js"></script>
 </body>
 </html>
+
 
 
 

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles.css?v=37" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
+  <link rel="preload" as="image" href="poster-gallery.jpg" fetchpriority="high">
   <style>
     /* -- GALLERY FILTERS ---------------------------------------------------- */
     .gal-filter-bar {
@@ -294,7 +295,7 @@
 </nav>
 
 <div class="page-hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="poster-gallery.jpg">
+  <video class="hero-video" autoplay muted loop playsinline preload="none" poster="poster-gallery.jpg">
     <source src="hero-gallery.mp4" type="video/mp4">
   </video>
   <span class="eyebrow">Media &amp; Content</span>
@@ -709,6 +710,8 @@ document.addEventListener('keydown', function(e) {
 </script>
 </body>
 </html>
+
+
 
 
 

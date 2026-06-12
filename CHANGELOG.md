@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [38.2] — 2026-06-13
+
+### Fixed
+- **Hero image priority loading** — poster images now load first on all 9 pages:
+  - Added `<link rel="preload" as="image" fetchpriority="high">` in `<head>` for each page's hero poster (8 video pages + index.html CSS background)
+  - Changed all hero `<video preload="auto">` → `preload="none"` so video data no longer competes with the poster image download
+  - Result: poster image appears immediately on page load; video fills in once network is free
+
+---
+
 ## [38.1] — 2026-06-13
 
 ### Fixed
