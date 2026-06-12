@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [39.5] — 2026-06-13
+
+### Changed
+- **Homepage hero — centred** — hero content horizontally centred (`justify-content: center` + `text-align: center`)
+
+---
+
 ## [39.4] — 2026-06-13
 
 ### Changed
