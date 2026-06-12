@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [39.9] — 2026-06-13
+
+### Fixed
+- **Homepage hero — full-width content** — removed `max-width: 680px` constraint on `.hero-content` (replaced with `max-width: 860px`) so the h1 no longer wraps excessively, allowing the content to centre properly in the viewport
+
+---
+
 ## [39.8] — 2026-06-13
 
 ### Changed
