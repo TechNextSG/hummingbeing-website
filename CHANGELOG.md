@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [32.0] — 2026-06-12
+
+### Changed
+- **Ticker strip** — expanded from 9 to 18 unique tags (added: Nervous System Reset, Strozzi Bodywork Method, Embodied Leadership, Trauma & Tension Release, Mind · Body · Soul, Corporate Wellness, Polyvagal Theory, TRE® Trainer Trainee, Executive Coaching); animation slowed from `36s` to `80s`; applied to all 11 pages
+- **CSS version** bumped to `v32`
+
+---
+
 ## [31.0] — 2026-06-12
 
 ### Changed

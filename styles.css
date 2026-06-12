@@ -1046,7 +1046,7 @@ footer ul a:hover { color: var(--gold); }
   display: flex;
   align-items: center;
   width: max-content;
-  animation: ticker-scroll 36s linear infinite;
+  animation: ticker-scroll 80s linear infinite;
 }
 .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
 
