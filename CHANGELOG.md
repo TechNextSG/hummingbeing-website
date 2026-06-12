@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [37.4] — 2026-06-13
+
+### Changed
+- **Somatic Coaching hero** — removed incorrect bodywork background image; hero now shows clean dark navy overlay as placeholder until correct coaching image is available
+
+---
+
 ## [37.3] — 2026-06-13
 
 ### Fixed
