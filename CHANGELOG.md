@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [30.0] — 2026-06-12
+
+### Changed
+- **Hero title font** — all hero section h1s switched from PT Serif to **Playfair Display** (ital, wght 400–800); Playfair Display added to Google Fonts import
+- **CSS version** bumped to `v30`
+
+---
+
 ## [29.0] — 2026-06-12
 
 ### Fixed

@@ -1,7 +1,7 @@
 /* HummingBeing — styles.css v8
-   Fonts: PT Serif (headings) + Lato (body)  |  Palette: #242e42 navy · #F5A623 gold · #ffc600 yellow
+   Fonts: Playfair Display (hero titles) + PT Serif (headings) + Lato (body)  |  Palette: #242e42 navy · #F5A623 gold · #ffc600 yellow
    ——————————————————————————————————————————————————————————————————————————————————————————————— */
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
 
 :root {
   --navy:        #242e42;
@@ -335,7 +335,7 @@ nav.scrolled .hamburger span,
 }
 
 .hero h1 {
-  font-family: 'PT Serif', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
   color: var(--white);
@@ -425,7 +425,7 @@ nav.scrolled .hamburger span,
   animation: fade-down .7s ease .1s both;
 }
 .page-hero h1 {
-  font-family: 'PT Serif', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(2.4rem, 5vw, 3.8rem);
   color: var(--white);
   font-weight: 700;
