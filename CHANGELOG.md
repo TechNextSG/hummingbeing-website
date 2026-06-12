@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [36.1] — 2026-06-13
+
+### Fixed
+- **Events hero spacing** — removed extra `margin-bottom: 2.5rem` on `.event-hero > p`; gap between title and buttons now matches all other pages (2.2rem)
+
+---
+
 ## [36.0] — 2026-06-13
 
 ### Changed
