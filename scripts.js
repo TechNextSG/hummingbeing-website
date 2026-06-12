@@ -1,16 +1,20 @@
 /* HummingBeing — scripts.js v4 */
 
-// ── Hide nav on scroll-down, reveal on scroll-up ───────────────────────────
+// ── Transparent → solid nav on scroll + hide on scroll-down ───────────────
 ;(function() {
   var lastY = 0;
-  window.addEventListener('scroll', function() {
+  function updateNav() {
     var y = window.scrollY;
     var nav = document.querySelector('nav');
     var topBtn = document.querySelector('.top-float');
     if (nav) {
+      // Transparent when at top, solid when scrolled
+      if (y > 60) nav.classList.add('scrolled');
+      else        nav.classList.remove('scrolled');
+
+      // Hide on scroll-down, reveal on scroll-up
       var dropdownOpen = !!document.querySelector('.nav-dropdown.dropdown-open');
       if (dropdownOpen) {
-        // Never hide nav while a dropdown is open
         nav.classList.remove('nav-hidden');
       } else if (y > lastY && y > 80) {
         nav.classList.add('nav-hidden');
@@ -20,10 +24,12 @@
     }
     if (topBtn) {
       if (y > 400) topBtn.classList.add('visible');
-      else          topBtn.classList.remove('visible');
+      else         topBtn.classList.remove('visible');
     }
     lastY = y;
-  }, { passive: true });
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav(); // set correct state on page load
 })();
 
 // ── Mobile menu ────────────────────────────────────────────────────────────

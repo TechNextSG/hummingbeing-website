@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [27.0] — 2026-06-12
+
+### Changed
+- **Transparent nav** — header is now fully transparent over hero sections; transitions to solid white on scroll past 60px; logo and nav links are white over dark heroes, switch to navy when scrolled
+- **Light nav text over dark backgrounds** — nav CTA button is white-outline when transparent, switches to navy fill on scroll; hamburger bars white over dark heroes, navy when scrolled or menu open
+- **CSS version** bumped to `v27`
+
+---
+
 ## [26.0] — 2026-06-12
 
 ### Changed
