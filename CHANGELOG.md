@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [38.9] — 2026-06-13
+
+### Changed
+- **Events hero — countdown repositioned** — moved countdown timer above the CTA buttons so it sits in the vertical centre of the hero, matching the layout pattern of other page heroes
+- **Cards — compact padding sitewide** — reduced padding and spacing on `.card`, `.pricing-card`, and `.social-card`; tightened icon size, heading margins, grid gap, and pc-features margin for a denser, more professional look
+
+---
+
 ## [38.8] — 2026-06-13
 
 ### Changed

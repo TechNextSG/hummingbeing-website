@@ -285,7 +285,7 @@ nav.scrolled .hamburger span,
 .pricing-card {
   background: var(--white);
   border-radius: 3px;
-  padding: 2.5rem 2rem 2.2rem;
+  padding: 1.8rem 1.6rem 1.6rem;
   text-align: center;
   box-shadow: 0 4px 28px rgba(36,46,66,.09);
   border-top: 3px solid var(--gold);
@@ -298,27 +298,27 @@ nav.scrolled .hamburger span,
   border-top-color: var(--gold);
 }
 .pricing-card .pc-icon {
-  width: 60px; height: 60px;
+  width: 52px; height: 52px;
   background: var(--cream); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  color: var(--gold); font-size: 1.35rem; margin-bottom: 1.3rem;
+  color: var(--gold); font-size: 1.2rem; margin-bottom: .9rem;
 }
 .pricing-card.pc-featured .pc-icon { background: rgba(245,166,35,.15); }
 .pricing-card h3 {
   font-family: 'PT Serif', Georgia, serif;
-  font-size: 1.22rem; color: var(--navy); margin-bottom: .3rem;
+  font-size: 1.15rem; color: var(--navy); margin-bottom: .25rem;
 }
 .pricing-card.pc-featured h3 { color: var(--white); }
 .pc-price {
   font-family: 'PT Serif', Georgia, serif;
-  font-size: 2.7rem; font-weight: 700; line-height: 1;
-  color: var(--gold); margin: .9rem 0 .5rem;
+  font-size: 2.3rem; font-weight: 700; line-height: 1;
+  color: var(--gold); margin: .7rem 0 .4rem;
 }
-.pc-tagline { font-size: .92rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 1.6rem; flex: 1; }
+.pc-tagline { font-size: .9rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 1.2rem; flex: 1; }
 .pricing-card.pc-featured .pc-tagline { color: rgba(255,255,255,.88); }
 .pc-features {
   list-style: none; text-align: left;
-  width: 100%; margin-bottom: 2rem;
+  width: 100%; margin-bottom: 1.4rem;
 }
 .pc-features li {
   font-size: .88rem; padding: .5rem 0 .5rem 1.6rem;
@@ -555,21 +555,21 @@ section { padding: 6rem 5%; }
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .card {
   background: var(--white);
   border-radius: 3px;
-  padding: 2.5rem;
+  padding: 1.8rem;
   box-shadow: 0 4px 24px rgba(36,46,66,.08);
   transition: transform .3s, box-shadow .3s;
   border-top: 3px solid transparent;
   overflow: hidden;
 }
 .card-img {
-  width: calc(100% + 5rem);
-  margin: -2.5rem -2.5rem 1.8rem;
+  width: calc(100% + 3.6rem);
+  margin: -1.8rem -1.8rem 1.5rem;
   aspect-ratio: 16/9;
   background: linear-gradient(135deg, #0c1018 0%, #1c2234 100%);
   display: flex;
@@ -587,23 +587,23 @@ section { padding: 6rem 5%; }
 .card.sage-top  { border-top-color: var(--yellow); }
 
 .card-icon {
-  width: 52px; height: 52px;
+  width: 48px; height: 48px;
   background: var(--navy);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
-.card-icon i { font-size: 1.25rem; color: var(--gold); }
+.card-icon i { font-size: 1.15rem; color: var(--gold); }
 
 .card h3 {
   font-family: 'PT Serif', Georgia, serif;
-  font-size: 1.3rem; font-weight: 700;
-  color: var(--navy); margin-bottom: .9rem;
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--navy); margin-bottom: .55rem;
 }
-.card p { color: var(--body-text); line-height: 1.75; font-size: 1rem; }
+.card p { color: var(--body-text); line-height: 1.7; font-size: .96rem; }
 
 .card-link {
-  display: inline-block; margin-top: 1.5rem;
+  display: inline-block; margin-top: 1.1rem;
   color: var(--gold); font-weight: 700;
   font-size: .75rem; letter-spacing: 1.5px;
   text-transform: uppercase; text-decoration: none;
@@ -728,7 +728,7 @@ section { padding: 6rem 5%; }
   gap: 1.5rem;
 }
 .social-card {
-  background: var(--white); border-radius: 3px; padding: 2.5rem;
+  background: var(--white); border-radius: 3px; padding: 1.6rem;
   text-align: center; box-shadow: 0 4px 24px rgba(36,46,66,.07);
   transition: transform .3s, box-shadow .3s;
   text-decoration: none; display: block;
