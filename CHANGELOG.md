@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [21.0] — 2026-06-12
+
+### Added / Changed / Fixed
+- **Chatbot** — floating navy assistant button above WhatsApp; 22-topic knowledge base (TRE®, Somatic Coaching, Bodywork, Isabelle, pricing, booking, location, events, gallery); keyword-scored matching for natural-language tolerance; quick-reply buttons; navigation buttons route directly to relevant pages
+- **Ticker strip** — vertical padding reduced from `.95rem` to `.38rem` for a much slimmer marquee bar
+- **Footer compacted** — padding `3rem → 1.8rem / 1.5rem → 1rem`, grid gap tightened, list spacing and font sizes reduced; applied to all 11 pages
+- **Pricing cards fixed** — removed `anim-up` scroll delay; cards now render immediately on page load without waiting for IntersectionObserver
+- **Service card placeholders** — dark gradient `.card-img` placeholder (16:9) added to all 3 homepage service cards
+- **CSS version** bumped to `v21`
+
+---
+
 ## [19.0] — 2026-06-11
 
 ### Added / Changed
