@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [37.1] — 2026-06-13
+
+### Fixed
+- **Bodywork video restored** — reverted `hero-bodywork.mp4` to the original correct file (3.8 MB) from the Website folder; the AI-generated 7.8 MB version was incorrect
+- **Coaching page reverted** — removed AI video (wrong content — showed someone lying down, not a coaching session); page now uses the static `poster-coaching.png` image background
+
+---
+
 ## [37.0] — 2026-06-13
 
 ### Added
