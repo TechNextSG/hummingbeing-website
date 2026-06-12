@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [39.2] — 2026-06-13
+
+### Changed
+- **Section titles — 15% larger + hero glow sitewide** — `.section-title` and `.two-col-text h2` font size increased 15% (`clamp(2.3rem, 4vw, 3.22rem)`), added adapted hero-style text-shadow (gold ambient glow + soft navy drop shadow) on all section titles across every page
+
+---
+
 ## [39.1] — 2026-06-13
 
 ### Changed
