@@ -512,12 +512,13 @@ section { padding: 6rem 5%; }
 }
 
 .section-title {
-  font-family: 'PT Serif', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: 700; color: var(--navy);
   line-height: 1.2; margin-bottom: 1.5rem;
-  letter-spacing: -.2px;
+  letter-spacing: -.3px;
 }
+.section-title em { font-style: italic; color: var(--gold); }
 
 .section-subtitle {
   font-size: 1.05rem; color: var(--text-mid);
@@ -617,12 +618,13 @@ section { padding: 6rem 5%; }
 .two-col.reverse > *:last-child  { order: 1; }
 
 .two-col-text h2 {
-  font-family: 'PT Serif', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(2rem, 3.5vw, 2.7rem);
   font-weight: 700; color: var(--navy);
   margin-bottom: 1.5rem; line-height: 1.2;
-  letter-spacing: -.2px;
+  letter-spacing: -.3px;
 }
+.two-col-text h2 em { font-style: italic; color: var(--gold); }
 .two-col-text p { color: var(--body-text); margin-bottom: 1.2rem; font-size: 1rem; }
 
 .two-col-image {
@@ -756,10 +758,11 @@ section { padding: 6rem 5%; }
   padding: 6rem 5%; text-align: center;
 }
 .cta-banner h2 {
-  font-family: 'PT Serif', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
-  color: var(--white); margin-bottom: 1rem; letter-spacing: -.2px;
+  color: var(--white); margin-bottom: 1rem; letter-spacing: -.3px;
 }
+.cta-banner h2 em { font-style: italic; color: var(--gold); }
 .cta-banner p {
   color: rgba(255,255,255,.93); font-size: 1.1rem;
   max-width: 520px; margin: 0 auto 2rem;

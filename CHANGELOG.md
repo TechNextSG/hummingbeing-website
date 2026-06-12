@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [39.0] — 2026-06-13
+
+### Changed
+- **Section titles — Playfair Display sitewide** — all `.section-title`, `.two-col-text h2`, and `.cta-banner h2` now use Playfair Display (matching hero h1 font); added `em` italic-gold support on all three so headings can carry the same italic-gold accent as the hero
+
+---
+
 ## [38.9] — 2026-06-13
 
 ### Changed
