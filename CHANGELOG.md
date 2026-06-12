@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [39.7] — 2026-06-13
+
+### Changed
+- **Homepage hero — aligned to page-hero pattern** — switched to `flex-direction: column`, uniform dark overlay gradient replacing the asymmetric right-fade, padding aligned to `6rem 5%`
+
+---
+
 ## [39.6] — 2026-06-13
 
 ### Fixed
