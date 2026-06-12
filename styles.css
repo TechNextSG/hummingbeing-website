@@ -351,7 +351,7 @@ nav.scrolled .hamburger span,
   position: relative;
 }
 
-.hero-content { max-width: 680px; position: relative; z-index: 1; text-align: center; }
+.hero-content { width: 100%; max-width: 860px; position: relative; z-index: 1; text-align: center; }
 
 .hero-eyebrow {
   font-family: 'Lato', sans-serif;
