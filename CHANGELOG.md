@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [36.0] — 2026-06-13
+
+### Changed
+- **Nav links centered** — logo left, page links (HOME–EVENTS) geometrically centered in viewport, BOOK A SESSION anchored right via new `.nav-actions` wrapper; HTML restructured across all 11 pages
+- **CSS version** bumped to `v36`
+
+---
+
 ## [35.0] — 2026-06-13
 
 ### Changed

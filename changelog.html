@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Changelog &#8212; HummingBeing</title>
   <meta name="description" content="Full development history of the HummingBeing website &#8212; every update, fix and improvement documented." />
-  <link rel="stylesheet" href="styles.css?v=35" />
+  <link rel="stylesheet" href="styles.css?v=36" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <style>
@@ -65,9 +65,11 @@
     <li><a href="socials.html">Socials</a></li>
     <li><a href="gallery.html">Gallery</a></li>
     <li><a href="events.html">Events</a></li>
-    <li><a href="book.html" class="nav-cta">Book a Session</a></li>
   </ul>
-  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <div class="nav-actions">
+    <a href="book.html" class="nav-cta">Book a Session</a>
+    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
 <div class="page-hero">
@@ -122,6 +124,21 @@
 
 <section>
   <div class="cl-timeline">
+
+    <!-- v36 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v36.0</span>
+        <span class="cl-date">2026-06-13</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
+        <ul>
+          <li><strong>Nav links centered</strong> &mdash; logo left, page links centered in viewport, <code>BOOK A SESSION</code> anchored right via new <code>.nav-actions</code> wrapper; all 11 pages restructured</li>
+          <li><strong>CSS version</strong> bumped to <code>v36</code></li>
+        </ul>
+      </div>
+    </div>
 
     <!-- v35 -->
     <div class="cl-entry">
@@ -271,7 +288,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Hero sections full viewport height</strong> — <code>.page-hero</code> and <code>.event-hero</code> now use <code>min-height: calc(100vh - 76px)</code> with flex column centering; video fills the entire screen on all inner pages</li>
+          <li><strong>Hero sections full viewport height</strong> � <code>.page-hero</code> and <code>.event-hero</code> now use <code>min-height: calc(100vh - 76px)</code> with flex column centering; video fills the entire screen on all inner pages</li>
           <li><strong>CSS version</strong> bumped to <code>v26</code></li>
         </ul>
       </div>
@@ -286,7 +303,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Looping video hero backgrounds</strong> — 6 inner pages now use autoplay muted looping MP4 videos as hero backgrounds (TRE®, Somatic Bodywork, Book, Gallery, Socials, Events); overlay gradient and gold shimmer sit above video via <code>z-index</code> layering; text content raised to <code>z-index: 3</code>; Somatic Coaching retains static photo; About / Isabelle retain navy gradient fallback</li>
+          <li><strong>Looping video hero backgrounds</strong> � 6 inner pages now use autoplay muted looping MP4 videos as hero backgrounds (TRE�, Somatic Bodywork, Book, Gallery, Socials, Events); overlay gradient and gold shimmer sit above video via <code>z-index</code> layering; text content raised to <code>z-index: 3</code>; Somatic Coaching retains static photo; About / Isabelle retain navy gradient fallback</li>
           <li><strong>CSS version</strong> bumped to <code>v25</code></li>
         </ul>
       </div>
@@ -301,7 +318,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span></div>
         <ul>
-          <li><strong>Hero CTA buttons</strong> — 2 animated buttons added to every page's hero section (10 inner pages + homepage already had them); primary gold button links to booking; secondary outline button is page-contextual (e.g. "Meet Isabelle", "Browse Gallery", "Browse Events", "Explore Services")</li>
+          <li><strong>Hero CTA buttons</strong> � 2 animated buttons added to every page's hero section (10 inner pages + homepage already had them); primary gold button links to booking; secondary outline button is page-contextual (e.g. "Meet Isabelle", "Browse Gallery", "Browse Events", "Explore Services")</li>
           <li><strong>CSS version</strong> bumped to <code>v24</code></li>
         </ul>
       </div>
@@ -316,7 +333,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Hero overlay opacity lowered</strong> � all 8 hero sections (homepage + 7 inner pages) now show more of the background photo; gradient reduced from <code>.88/.94</code> to <code>.55/.68</code> on inner pages and from <code>.97/.62</code> to <code>.65/.38</code> on the homepage</li>
+          <li><strong>Hero overlay opacity lowered</strong> ? all 8 hero sections (homepage + 7 inner pages) now show more of the background photo; gradient reduced from <code>.88/.94</code> to <code>.55/.68</code> on inner pages and from <code>.97/.62</code> to <code>.65/.38</code> on the homepage</li>
         </ul>
       </div>
     </div>
@@ -330,7 +347,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span></div>
         <ul>
-          <li><strong>Hero images</strong> &#8212; real photos applied to all 7 inner-page hero sections (TRE&#174;, Somatic Coaching, Somatic Bodywork, Book, Gallery, Socials, Events); sourced from <code>G:\Shared drives\Marketing\�\HummingBeing\Images</code>; dark gradient overlay preserves text readability</li>
+          <li><strong>Hero images</strong> &#8212; real photos applied to all 7 inner-page hero sections (TRE&#174;, Somatic Coaching, Somatic Bodywork, Book, Gallery, Socials, Events); sourced from <code>G:\Shared drives\Marketing\?\HummingBeing\Images</code>; dark gradient overlay preserves text readability</li>
           <li><strong>CSS version</strong> bumped to <code>v22</code></li>
         </ul>
       </div>
