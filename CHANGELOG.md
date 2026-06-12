@@ -5,6 +5,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [38.0] — 2026-06-13
+
+### Added
+- **Animated CTA buttons** — all `.btn` elements across every page now feature:
+  - Persistent pulsing gold glow on `.btn-primary` (heartbeat ring animation)
+  - Hover: lift + scale (`translateY(-5px) scale(1.04)`) with spring cubic-bezier easing
+  - Hover: letter-spacing expansion (2px → 2.8px)
+  - Hover: stronger box-shadow with outer glow ring (`0 0 0 8px rgba(...)`)
+  - Wider, more visible shimmer sweep on hover
+  - Click ripple — white radial burst from exact tap/click point
+  - Nav "BOOK A SESSION" button: lift + shadow on hover, gold glow when scrolled
+
+---
+
 ## [37.5] — 2026-06-13
 
 ### Fixed

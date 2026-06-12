@@ -1,4 +1,19 @@
-/* HummingBeing — scripts.js v4 */
+/* HummingBeing — scripts.js v5 */
+
+// ── Button ripple on click ────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var r = document.createElement('span');
+      r.className = 'btn-ripple';
+      var rect = btn.getBoundingClientRect();
+      r.style.left = (e.clientX - rect.left) + 'px';
+      r.style.top  = (e.clientY - rect.top)  + 'px';
+      btn.appendChild(r);
+      r.addEventListener('animationend', function() { r.remove(); });
+    });
+  });
+});
 
 // ── Transparent → solid nav on scroll + hide on scroll-down ───────────────
 ;(function() {

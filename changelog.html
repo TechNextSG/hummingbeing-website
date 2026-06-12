@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Changelog &#8212; HummingBeing</title>
   <meta name="description" content="Full development history of the HummingBeing website &#8212; every update, fix and improvement documented." />
-  <link rel="stylesheet" href="styles.css?v=36" />
+  <link rel="stylesheet" href="styles.css?v=37" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <style>
@@ -125,6 +125,21 @@
 <section>
   <div class="cl-timeline">
 
+    <!-- v38 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v38.0</span>
+        <span class="cl-date">2026-06-13</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span></div>
+        <ul>
+          <li><strong>Animated CTA buttons</strong> &mdash; all buttons across every page: persistent pulsing gold glow on primary buttons, spring-eased lift + scale on hover, letter-spacing expansion, stronger outer glow ring, wider shimmer sweep, and click ripple burst from tap point</li>
+          <li><strong>Nav CTA animated</strong> &mdash; "Book a Session" nav button now lifts + adds shadow on hover; gold glow when scrolled</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- v37.5 -->
     <div class="cl-entry">
       <div class="cl-meta">
@@ -162,7 +177,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
         <ul>
-          <li><strong>HTML audit — malformed attribute quotes</strong> &mdash; full desktop audit found <code>?</code> characters replacing <code>"</code> in HTML attributes across 4 pages; all corrected: <code>index.html</code> (7 broken attributes), <code>about.html</code> (section-eyebrow &amp; divider classes), <code>isabelle.html</code> (em style, blockquote curly quotes, img alt text), <code>tre.html</code> (paragraph style attribute)</li>
+          <li><strong>HTML audit â€” malformed attribute quotes</strong> &mdash; full desktop audit found <code>?</code> characters replacing <code>"</code> in HTML attributes across 4 pages; all corrected: <code>index.html</code> (7 broken attributes), <code>about.html</code> (section-eyebrow &amp; divider classes), <code>isabelle.html</code> (em style, blockquote curly quotes, img alt text), <code>tre.html</code> (paragraph style attribute)</li>
         </ul>
       </div>
     </div>
@@ -389,7 +404,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Hero sections full viewport height</strong> � <code>.page-hero</code> and <code>.event-hero</code> now use <code>min-height: calc(100vh - 76px)</code> with flex column centering; video fills the entire screen on all inner pages</li>
+          <li><strong>Hero sections full viewport height</strong> ï¿½ <code>.page-hero</code> and <code>.event-hero</code> now use <code>min-height: calc(100vh - 76px)</code> with flex column centering; video fills the entire screen on all inner pages</li>
           <li><strong>CSS version</strong> bumped to <code>v26</code></li>
         </ul>
       </div>
@@ -404,7 +419,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Looping video hero backgrounds</strong> � 6 inner pages now use autoplay muted looping MP4 videos as hero backgrounds (TRE�, Somatic Bodywork, Book, Gallery, Socials, Events); overlay gradient and gold shimmer sit above video via <code>z-index</code> layering; text content raised to <code>z-index: 3</code>; Somatic Coaching retains static photo; About / Isabelle retain navy gradient fallback</li>
+          <li><strong>Looping video hero backgrounds</strong> ï¿½ 6 inner pages now use autoplay muted looping MP4 videos as hero backgrounds (TREï¿½, Somatic Bodywork, Book, Gallery, Socials, Events); overlay gradient and gold shimmer sit above video via <code>z-index</code> layering; text content raised to <code>z-index: 3</code>; Somatic Coaching retains static photo; About / Isabelle retain navy gradient fallback</li>
           <li><strong>CSS version</strong> bumped to <code>v25</code></li>
         </ul>
       </div>
@@ -419,7 +434,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span></div>
         <ul>
-          <li><strong>Hero CTA buttons</strong> � 2 animated buttons added to every page's hero section (10 inner pages + homepage already had them); primary gold button links to booking; secondary outline button is page-contextual (e.g. "Meet Isabelle", "Browse Gallery", "Browse Events", "Explore Services")</li>
+          <li><strong>Hero CTA buttons</strong> ï¿½ 2 animated buttons added to every page's hero section (10 inner pages + homepage already had them); primary gold button links to booking; secondary outline button is page-contextual (e.g. "Meet Isabelle", "Browse Gallery", "Browse Events", "Explore Services")</li>
           <li><strong>CSS version</strong> bumped to <code>v24</code></li>
         </ul>
       </div>
@@ -845,6 +860,7 @@
 <script src="scripts.js"></script>
 </body>
 </html>
+
 
 
 
