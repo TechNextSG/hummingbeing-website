@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Events &amp; Sessions &#8212; HummingBeing</title>
   <meta name="description" content="Upcoming TRE&#174;, Somatic Coaching and Somatic Bodywork events, workshops and group sessions with Isabelle Claus Teixeira." />
-  <link rel="stylesheet" href="styles.css?v=49" />
+  <link rel="stylesheet" href="styles.css?v=50" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <link rel="preload" as="image" href="poster-events.jpg" fetchpriority="high">
@@ -246,6 +246,76 @@
       .countdown-units { gap: .9rem; }
       .cd-sep { font-size: 1.8rem; }
     }
+
+    /* -- BIG ANIMATED COUNTDOWN SECTION ------------------------------------ */
+    .ecd-section {
+      background: linear-gradient(160deg,#101624 0%,#1a2336 50%,#0d111c 100%);
+      padding: 5.5rem 5% 5rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .ecd-bg-pulse { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+    .ecd-pulse-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(245,166,35,.06); animation: ecdPulse 5s ease-in-out infinite; }
+    .ecd-pulse-ring:nth-child(1) { width: 500px; height: 500px; animation-delay: 0s; }
+    .ecd-pulse-ring:nth-child(2) { width: 850px; height: 850px; animation-delay: 1.8s; }
+    .ecd-pulse-ring:nth-child(3) { width: 1200px; height: 1200px; animation-delay: 3.5s; }
+    @keyframes ecdPulse {
+      0%,100% { opacity: .25; transform: scale(1); }
+      50%      { opacity: .65; transform: scale(1.012); }
+    }
+    .ecd-inner { position: relative; z-index: 1; }
+    .ecd-eyebrow {
+      font-family: 'Lato', sans-serif; font-size: .68rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 1.2rem;
+    }
+    .ecd-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--white); font-weight: 700; line-height: 1.15; margin-bottom: .7rem;
+    }
+    .ecd-heading em { color: var(--gold); font-style: italic; }
+    .ecd-meta {
+      font-size: .88rem; color: rgba(255,255,255,.6);
+      display: flex; align-items: center; justify-content: center; gap: .6rem; flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+    .ecd-meta i { color: var(--gold); }
+    .ecd-units { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3.5rem; }
+    .ecd-unit  { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .ecd-ring-wrap { position: relative; width: 150px; height: 150px; }
+    .ecd-svg   { width: 150px; height: 150px; transform: rotate(-90deg); }
+    .ecd-ring-bg { fill: none; stroke: rgba(255,255,255,.07); stroke-width: 5; }
+    .ecd-ring-fg {
+      fill: none; stroke: var(--gold); stroke-width: 5; stroke-linecap: round;
+      stroke-dasharray: 339.3; stroke-dashoffset: 339.3;
+      transition: stroke-dashoffset .9s cubic-bezier(.4,0,.2,1);
+      filter: drop-shadow(0 0 8px rgba(245,166,35,.55));
+    }
+    .ecd-num-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .ecd-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 3rem; font-weight: 700; color: var(--white); line-height: 1;
+    }
+    .ecd-num.ecd-flip { animation: ecdNumFlip .28s ease; }
+    @keyframes ecdNumFlip {
+      0%   { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .ecd-lbl { font-size: .65rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.45); }
+    .ecd-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-ghost-light {
+      border: 2px solid rgba(255,255,255,.3); color: var(--white); background: transparent;
+      padding: .95rem 2.2rem; font-family: 'Lato', sans-serif; font-size: .78rem;
+      font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; display: inline-block;
+      transition: border-color .25s, background .25s, color .25s;
+    }
+    .btn-ghost-light:hover { border-color: var(--gold); color: var(--gold); background: rgba(245,166,35,.06); }
+    @media (max-width: 640px) {
+      .ecd-ring-wrap, .ecd-svg { width: 110px; height: 110px; }
+      .ecd-num { font-size: 2.2rem; }
+      .ecd-units { gap: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -343,6 +413,70 @@
     <span class="t-item"><span class="t-star">&#9733;</span> Somatic Intelligence</span><span class="t-sep">&middot;</span>
     <span class="t-item">Self-Regulation</span><span class="t-sep">&middot;</span>  </div>
 </div>
+
+<!-- BIG ANIMATED COUNTDOWN -->
+<section class="ecd-section" aria-label="Countdown to next event">
+  <div class="ecd-bg-pulse" aria-hidden="true">
+    <div class="ecd-pulse-ring"></div>
+    <div class="ecd-pulse-ring"></div>
+    <div class="ecd-pulse-ring"></div>
+  </div>
+  <div class="ecd-inner">
+    <span class="ecd-eyebrow"><i class="fa-solid fa-star"></i> Countdown to Next Event</span>
+    <h2 class="ecd-heading">TRE&#174; Community Session<br><em>Singapore</em></h2>
+    <div class="ecd-meta">
+      <i class="fa-regular fa-calendar"></i> Saturday, 5 July 2026
+      <span>&middot;</span> 10:00 AM SGT
+      <span>&middot;</span> <i class="fa-solid fa-location-dot"></i> Singapore
+    </div>
+    <div class="ecd-units" id="ecd-units">
+      <div class="ecd-unit">
+        <div class="ecd-ring-wrap">
+          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
+            <circle class="ecd-ring-fg" id="rng-days" cx="60" cy="60" r="54"/>
+          </svg>
+          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-days">--</span></div>
+        </div>
+        <span class="ecd-lbl">Days</span>
+      </div>
+      <div class="ecd-unit">
+        <div class="ecd-ring-wrap">
+          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
+            <circle class="ecd-ring-fg" id="rng-hours" cx="60" cy="60" r="54"/>
+          </svg>
+          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-hours">--</span></div>
+        </div>
+        <span class="ecd-lbl">Hours</span>
+      </div>
+      <div class="ecd-unit">
+        <div class="ecd-ring-wrap">
+          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
+            <circle class="ecd-ring-fg" id="rng-mins" cx="60" cy="60" r="54"/>
+          </svg>
+          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-mins">--</span></div>
+        </div>
+        <span class="ecd-lbl">Minutes</span>
+      </div>
+      <div class="ecd-unit">
+        <div class="ecd-ring-wrap">
+          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
+            <circle class="ecd-ring-fg" id="rng-secs" cx="60" cy="60" r="54"/>
+          </svg>
+          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-secs">--</span></div>
+        </div>
+        <span class="ecd-lbl">Seconds</span>
+      </div>
+    </div>
+    <div class="ecd-actions">
+      <a href="book.html" class="btn btn-primary">Register Now</a>
+      <a href="#events-grid" class="btn-ghost-light">Browse All Events</a>
+    </div>
+  </div>
+</section>
 
 <!-- FEATURED NEXT EVENT -->
 <section class="section-cream">
@@ -646,6 +780,38 @@
   }
   tick();
   setInterval(tick, 1000);
+})();
+
+/* Big countdown section (with ring progress) */
+(function(){
+  var target=new Date('2026-07-05T10:00:00+08:00').getTime();
+  var CIRC=2*Math.PI*54;
+  function pad(n){return String(n).padStart(2,'0');}
+  function setRing(id,val,max){
+    var el=document.getElementById(id);if(!el)return;
+    el.style.strokeDashoffset=(CIRC*(1-Math.min(1,Math.max(0,val/max)))).toFixed(2);
+  }
+  function setNum(id,val){
+    var el=document.getElementById(id);if(!el)return;
+    var v=pad(val);if(el.textContent===v)return;
+    el.classList.remove('ecd-flip');void el.offsetWidth;
+    el.textContent=v;el.classList.add('ecd-flip');
+  }
+  function tickEcd(){
+    var diff=target-Date.now();
+    if(diff<=0){
+      var u=document.getElementById('ecd-units');
+      if(u)u.innerHTML='<p style="color:var(--gold);font-size:1.5rem;font-weight:700">Event is happening now!</p>';
+      return;
+    }
+    var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),
+        m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+    setNum('ecd-days',d);   setRing('rng-days',d,30);
+    setNum('ecd-hours',h);  setRing('rng-hours',h,24);
+    setNum('ecd-mins',m);   setRing('rng-mins',m,60);
+    setNum('ecd-secs',s);   setRing('rng-secs',s,60);
+  }
+  tickEcd();setInterval(tickEcd,1000);
 })();
 
 /* Event filter */

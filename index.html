@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HummingBeing &#8212; Release. Renew. Restore.</title>
   <meta name="description" content="HummingBeing offers TRE, Somatic Coaching and Somatic Bodywork to help people release stress, renew resilience and restore balance." />
-  <link rel="stylesheet" href="styles.css?v=49" />
+  <link rel="stylesheet" href="styles.css?v=50" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <link rel="preload" as="image" href="https://www.hummingbeing.com/wp-content/uploads/2020/10/brisbane-psychotherapy-connect-hypnosis.jpg" fetchpriority="high">
@@ -105,23 +105,36 @@
     <span class="t-item"><span class="t-star">&#9733;</span> Somatic Intelligence</span><span class="t-sep">&middot;</span>
     <span class="t-item">Self-Regulation</span><span class="t-sep">&middot;</span>  </div>
 </div>
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <span class="stat-num">25+</span>
-    <span class="stat-label">Years of Experience</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">9</span>
-    <span class="stat-label">Countries Lived In</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">40+</span>
-    <span class="stat-label">Nationalities Worked With</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">3</span>
-    <span class="stat-label">Ways to Begin</span>
+<!-- EVENT COUNTDOWN BAR -->
+<div class="evt-countdown-bar">
+  <div class="ecb-inner">
+    <div class="ecb-text">
+      <span class="ecb-eyebrow"><i class="fa-solid fa-star"></i> Next Event</span>
+      <h3 class="ecb-title">TRE&#174; Community Session &middot; Singapore</h3>
+      <p class="ecb-date-info"><i class="fa-regular fa-calendar"></i> Saturday, 5 July 2026 &middot; 10:00 AM SGT</p>
+    </div>
+    <div class="ecb-units" id="ecb-units">
+      <div class="ecb-unit">
+        <span class="ecb-num" id="ecb-days">--</span>
+        <span class="ecb-lbl">Days</span>
+      </div>
+      <div class="ecb-sep">:</div>
+      <div class="ecb-unit">
+        <span class="ecb-num" id="ecb-hours">--</span>
+        <span class="ecb-lbl">Hours</span>
+      </div>
+      <div class="ecb-sep">:</div>
+      <div class="ecb-unit">
+        <span class="ecb-num" id="ecb-mins">--</span>
+        <span class="ecb-lbl">Mins</span>
+      </div>
+      <div class="ecb-sep">:</div>
+      <div class="ecb-unit">
+        <span class="ecb-num" id="ecb-secs">--</span>
+        <span class="ecb-lbl">Secs</span>
+      </div>
+    </div>
+    <a href="events.html" class="btn btn-primary">View Event &rarr;</a>
   </div>
 </div>
 
@@ -132,21 +145,21 @@
   <p class="section-subtitle">Body-based approaches that go beyond talk therapy &#8212; engaging your nervous system directly for deep, lasting change.</p>
   <div class="cards-grid">
     <div class="card green-top">
-      <div class="card-img"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+      <div class="card-img"><img src="images/card-tre.jpg" alt="TRE® Exercises"></div>
       <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
       <h3>TRE&#174; Exercises</h3>
       <p>Tension &amp; Trauma Release Exercises that activate neurogenic tremors &#8212; your body's natural stress-release mechanism &#8212; to restore calm and resilience.</p>
       <a href="tre.html" class="card-link">Learn More &#8594;</a>
     </div>
     <div class="card gold-top">
-      <div class="card-img"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+      <div class="card-img"><img src="images/card-somatic-coaching.png" alt="Somatic Coaching"></div>
       <div class="card-icon"><i class="fa-solid fa-spa"></i></div>
       <h3>Somatic Coaching</h3>
       <p>Guided coaching that develops your embodied intelligence &#8212; the body's wisdom &#8212; for greater emotional resilience, reduced anxiety and improved relationships.</p>
       <a href="somatic-coaching.html" class="card-link">Learn More &#8594;</a>
     </div>
     <div class="card sage-top">
-      <div class="card-img"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+      <div class="card-img"><img src="images/card-somatic-bodywork.png" alt="Somatic Bodywork"></div>
       <div class="card-icon"><i class="fa-solid fa-hand"></i></div>
       <h3>Somatic Bodywork</h3>
       <p>A gentle, systematic process using the Strozzi method to release historical patterns, tensions and contractions &#8212; creating space for more energy and aliveness.</p>
@@ -316,6 +329,36 @@
 <a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 <script src="scripts.js"></script>
+<script>
+(function(){
+  var target=new Date('2026-07-05T10:00:00+08:00').getTime();
+  function pad(n){return String(n).padStart(2,'0');}
+  function setNum(id,val){
+    var el=document.getElementById(id);
+    if(!el)return;
+    var v=pad(val);
+    if(el.textContent===v)return;
+    el.classList.remove('cd-flip');
+    void el.offsetWidth;
+    el.textContent=v;
+    el.classList.add('cd-flip');
+  }
+  function tick(){
+    var diff=target-Date.now();
+    if(diff<=0){
+      var u=document.getElementById('ecb-units');
+      if(u)u.innerHTML='<span style="font-size:1.2rem;font-weight:700;color:var(--gold)">Event is happening now!</span>';
+      return;
+    }
+    setNum('ecb-days',  Math.floor(diff/86400000));
+    setNum('ecb-hours', Math.floor((diff%86400000)/3600000));
+    setNum('ecb-mins',  Math.floor((diff%3600000)/60000));
+    setNum('ecb-secs',  Math.floor((diff%60000)/1000));
+  }
+  tick();
+  setInterval(tick,1000);
+})();
+</script>
 </body>
 </html>
 

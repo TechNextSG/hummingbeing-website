@@ -5,6 +5,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [40.2] — 2026-06-13
+
+### Added
+- **Events page — animated countdown section** — full-width dark section with SVG progress rings, digit flip animation, pulsing background rings, and CTA buttons; placed between ticker and Featured Event
+- **Homepage — event countdown bar** — replaces stats bar; cream background, large animated digits (Days/Hours/Minutes/Seconds), event title/date, "View Event" CTA; counts down to TRE® Community Session 5 Jul 2026
+- **Service cards — real photos** — TRE®, Somatic Coaching and Somatic Bodywork cards now show actual hero images (copied from Drive)
+
+### Fixed
+- **Homepage hero centering** — buttons now centred (`justify-content: center`) and paragraph auto-margins corrected
+
+### Changed
+- **CSS** — bumped to v50 across all 10 pages
+
+---
+
+## [40.1] — 2026-06-13
+
+### Added
+- **Ticker — 8 new items on all pages** — Breathwork, Online & In-Person, Group Sessions, Burnout Recovery, Deep Rest & Renewal, Body Intelligence, Somatic Intelligence, Self-Regulation; added to both halves of the ticker on all 10 pages
+
+---
+
 ## [40.0] — 2026-06-13
 
 ### Fixed
