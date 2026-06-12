@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [37.2] — 2026-06-13
+
+### Fixed
+- **Book page hero framing** — shifted video `object-position` to `center 20%` so both models are fully visible
+
+---
+
 ## [37.1] — 2026-06-13
 
 ### Fixed
