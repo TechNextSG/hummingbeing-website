@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Changelog &#8212; HummingBeing</title>
   <meta name="description" content="Full development history of the HummingBeing website &#8212; every update, fix and improvement documented." />
-  <link rel="stylesheet" href="styles.css?v=37" />
+  <link rel="stylesheet" href="styles.css?v=38" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <style>
@@ -22,7 +22,7 @@
       padding: .35rem .9rem; border-radius: 2px; border: 1.5px solid var(--gold);
       font-family: 'Lato', sans-serif;
     }
-    .cl-date { display: block; font-size: .78rem; color: var(--text-mid); margin-top: .55rem; }
+    .cl-date { display: block; font-size: .82rem; color: var(--text-mid); margin-top: .55rem; }
     .cl-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .85rem; }
     .cl-tag {
       font-size: .67rem; font-weight: 700; letter-spacing: 1.1px;
@@ -124,6 +124,24 @@
 
 <section>
   <div class="cl-timeline">
+
+    <!-- v38.5 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v38.5</span>
+        <span class="cl-date">2026-06-13</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
+        <ul>
+          <li><strong>Text contrast &amp; readability — site-wide</strong> &mdash; <code>--body-text</code> darkened to <code>#3d4250</code>; <code>--text-mid</code> darkened to <code>#5f6472</code> (was failing WCAG AA at 3.5:1 contrast, now ~5.5:1)</li>
+          <li><strong>Font weight</strong> &mdash; removed <code>font-weight: 300</code> from all hero and section descriptions; now renders at normal weight for crisper legibility</li>
+          <li><strong>Dark-background text</strong> &mdash; raised white-text opacity on hero paragraphs, CTA banner, pricing cards, step descriptions, footer, stats bar, and platform cards</li>
+          <li><strong>Card &amp; component text sizes</strong> &mdash; bumped font size on card descriptions, step text, social card descriptions, and podcast meta (+5–10%)</li>
+          <li><strong>Inline style fixes</strong> &mdash; corrected low-opacity text in <code>events.html</code> (countdown, featured event, notify strip), <code>gallery.html</code> (video info, channel card, podcast meta, lightbox caption), <code>book.html</code> (trust items, blockquote), <code>socials.html</code> (newsletter description)</li>
+        </ul>
+      </div>
+    </div>
 
     <!-- v38.4 -->
     <div class="cl-entry">
@@ -234,7 +252,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
         <ul>
-          <li><strong>HTML audit â€” malformed attribute quotes</strong> &mdash; full desktop audit found <code>?</code> characters replacing <code>"</code> in HTML attributes across 4 pages; all corrected: <code>index.html</code> (7 broken attributes), <code>about.html</code> (section-eyebrow &amp; divider classes), <code>isabelle.html</code> (em style, blockquote curly quotes, img alt text), <code>tre.html</code> (paragraph style attribute)</li>
+          <li><strong>HTML audit — malformed attribute quotes</strong> &mdash; full desktop audit found <code>?</code> characters replacing <code>"</code> in HTML attributes across 4 pages; all corrected: <code>index.html</code> (7 broken attributes), <code>about.html</code> (section-eyebrow &amp; divider classes), <code>isabelle.html</code> (em style, blockquote curly quotes, img alt text), <code>tre.html</code> (paragraph style attribute)</li>
         </ul>
       </div>
     </div>
@@ -461,7 +479,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Hero sections full viewport height</strong> ï¿½ <code>.page-hero</code> and <code>.event-hero</code> now use <code>min-height: calc(100vh - 76px)</code> with flex column centering; video fills the entire screen on all inner pages</li>
+          <li><strong>Hero sections full viewport height</strong> � <code>.page-hero</code> and <code>.event-hero</code> now use <code>min-height: calc(100vh - 76px)</code> with flex column centering; video fills the entire screen on all inner pages</li>
           <li><strong>CSS version</strong> bumped to <code>v26</code></li>
         </ul>
       </div>
@@ -476,7 +494,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Looping video hero backgrounds</strong> ï¿½ 6 inner pages now use autoplay muted looping MP4 videos as hero backgrounds (TREï¿½, Somatic Bodywork, Book, Gallery, Socials, Events); overlay gradient and gold shimmer sit above video via <code>z-index</code> layering; text content raised to <code>z-index: 3</code>; Somatic Coaching retains static photo; About / Isabelle retain navy gradient fallback</li>
+          <li><strong>Looping video hero backgrounds</strong> � 6 inner pages now use autoplay muted looping MP4 videos as hero backgrounds (TRE�, Somatic Bodywork, Book, Gallery, Socials, Events); overlay gradient and gold shimmer sit above video via <code>z-index</code> layering; text content raised to <code>z-index: 3</code>; Somatic Coaching retains static photo; About / Isabelle retain navy gradient fallback</li>
           <li><strong>CSS version</strong> bumped to <code>v25</code></li>
         </ul>
       </div>
@@ -491,7 +509,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span></div>
         <ul>
-          <li><strong>Hero CTA buttons</strong> ï¿½ 2 animated buttons added to every page's hero section (10 inner pages + homepage already had them); primary gold button links to booking; secondary outline button is page-contextual (e.g. "Meet Isabelle", "Browse Gallery", "Browse Events", "Explore Services")</li>
+          <li><strong>Hero CTA buttons</strong> � 2 animated buttons added to every page's hero section (10 inner pages + homepage already had them); primary gold button links to booking; secondary outline button is page-contextual (e.g. "Meet Isabelle", "Browse Gallery", "Browse Events", "Explore Services")</li>
           <li><strong>CSS version</strong> bumped to <code>v24</code></li>
         </ul>
       </div>

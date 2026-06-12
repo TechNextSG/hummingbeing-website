@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [38.5] — 2026-06-13
+
+### Changed
+- **Text contrast & readability** — comprehensive pass across all 11 pages:
+  - `--body-text` darkened #555 → #3d4250; `--text-mid` darkened #888 → #5f6472 (was failing WCAG AA at 3.5:1, now ~5.5:1)
+  - Removed `font-weight: 300` from hero/section descriptions — now `400` for crisper rendering
+  - Raised white-text opacity on all dark-background descriptions (hero, CTA banner, pricing, steps, footer, stats, platform cards)
+  - Bumped font sizes on card `.p`, step `.p`, social card `.p`, podcast meta `.p` (all +5–10%)
+  - Fixed low-opacity inline text on `events.html` (countdown labels, featured event, notify strip), `gallery.html` (video info, channel card, podcast meta, lightbox caption), `book.html` (trust items, blockquote), `socials.html` (newsletter description)
+
+---
+
 ## [38.4] — 2026-06-13
 
 ### Changed

@@ -1,4 +1,4 @@
-/* HummingBeing — styles.css v8
+/* HummingBeing — styles.css v9
    Fonts: Playfair Display (hero titles) + PT Serif (headings) + Lato (body)  |  Palette: #242e42 navy · #F5A623 gold · #ffc600 yellow
    ——————————————————————————————————————————————————————————————————————————————————————————————— */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
@@ -14,9 +14,9 @@
   --white:       #ffffff;
   --off-white:   #f9f9f9;
   --cream:       #fafaf8;
-  --body-text:   #555555;
-  --text-mid:    #888888;
-  --text-light:  #b0b0b0;
+  --body-text:   #3d4250;
+  --text-mid:    #5f6472;
+  --text-light:  #8a8f9e;
   --border:      rgba(245,166,35,.28);
   /* backwards-compat aliases */
   --gold-accent:   #F5A623;
@@ -314,8 +314,8 @@ nav.scrolled .hamburger span,
   font-size: 2.7rem; font-weight: 700; line-height: 1;
   color: var(--gold); margin: .9rem 0 .5rem;
 }
-.pc-tagline { font-size: .85rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 1.6rem; flex: 1; }
-.pricing-card.pc-featured .pc-tagline { color: rgba(255,255,255,.6); }
+.pc-tagline { font-size: .92rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 1.6rem; flex: 1; }
+.pricing-card.pc-featured .pc-tagline { color: rgba(255,255,255,.88); }
 .pc-features {
   list-style: none; text-align: left;
   width: 100%; margin-bottom: 2rem;
@@ -326,7 +326,7 @@ nav.scrolled .hamburger span,
   border-bottom: 1px solid rgba(245,166,35,.12);
 }
 .pc-features li:last-child { border-bottom: none; }
-.pricing-card.pc-featured .pc-features li { color: rgba(255,255,255,.72); border-bottom-color: rgba(255,255,255,.08); }
+.pricing-card.pc-featured .pc-features li { color: rgba(255,255,255,.9); border-bottom-color: rgba(255,255,255,.08); }
 .pc-features li::before {
   content: ''; position: absolute; left: 0; top: 50%;
   transform: translateY(-50%);
@@ -383,11 +383,11 @@ nav.scrolled .hamburger span,
 
 .hero p {
   font-size: 1.15rem;
-  color: rgba(255,255,255,.8);
+  color: rgba(255,255,255,.93);
   max-width: 520px;
   margin-bottom: 2.5rem;
   line-height: 1.75;
-  font-weight: 300;
+  font-weight: 400;
   animation: fade-down .8s ease .4s both;
 }
 
@@ -474,13 +474,13 @@ nav.scrolled .hamburger span,
   text-shadow: 0 0 40px rgba(245,166,35,.55), 0 0 80px rgba(245,166,35,.2), 0 2px 12px rgba(0,0,0,.55);
 }
 .page-hero p {
-  color: rgba(255,255,255,.75);
-  font-size: 1.08rem;
+  color: rgba(255,255,255,.93);
+  font-size: 1.1rem;
   max-width: 560px;
   margin: 0 auto;
   position: relative;
   z-index: 3;
-  font-weight: 300;
+  font-weight: 400;
   animation: fade-down .7s ease .35s both;
 }
 .page-hero .hero-actions,
@@ -502,7 +502,7 @@ section { padding: 6rem 5%; }
 .section-sage   { background: #f0f4f8; }
 .section-dark   { background: var(--navy); }
 .section-dark .section-title   { color: var(--white); }
-.section-dark .section-subtitle{ color: rgba(255,255,255,.72); }
+.section-dark .section-subtitle{ color: rgba(255,255,255,.88); }
 
 .section-eyebrow {
   font-family: 'Lato', sans-serif;
@@ -522,7 +522,7 @@ section { padding: 6rem 5%; }
 .section-subtitle {
   font-size: 1.05rem; color: var(--text-mid);
   max-width: 600px; margin-bottom: 3.5rem;
-  font-weight: 300; line-height: 1.75;
+  font-weight: 400; line-height: 1.75;
 }
 
 .section-header-center { text-align: center; }
@@ -547,7 +547,7 @@ section { padding: 6rem 5%; }
   display: block; line-height: 1; margin-bottom: .4rem;
 }
 .stat-label {
-  font-size: .72rem; color: rgba(255,255,255,.6);
+  font-size: .72rem; color: rgba(255,255,255,.85);
   text-transform: uppercase; letter-spacing: 2px; font-weight: 700;
 }
 
@@ -600,7 +600,7 @@ section { padding: 6rem 5%; }
   font-size: 1.3rem; font-weight: 700;
   color: var(--navy); margin-bottom: .9rem;
 }
-.card p { color: var(--text-mid); line-height: 1.75; font-size: .95rem; }
+.card p { color: var(--body-text); line-height: 1.75; font-size: 1rem; }
 
 .card-link {
   display: inline-block; margin-top: 1.5rem;
@@ -736,7 +736,7 @@ section { padding: 6rem 5%; }
 .social-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(36,46,66,.13); }
 .social-card .s-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; color: var(--navy); }
 .social-card h3 { font-family: 'PT Serif', Georgia, serif; font-size: 1.3rem; color: var(--navy); margin-bottom: .4rem; }
-.social-card p { font-size: .88rem; color: var(--text-mid); margin-bottom: .5rem; line-height: 1.6; }
+.social-card p { font-size: .94rem; color: var(--body-text); margin-bottom: .5rem; line-height: 1.65; }
 .social-card .handle { font-weight: 700; color: var(--gold); font-size: .88rem; }
 
 /* ── BADGE / TAG ────────────────────────────────────────────────────────── */
@@ -761,9 +761,9 @@ section { padding: 6rem 5%; }
   color: var(--white); margin-bottom: 1rem; letter-spacing: -.2px;
 }
 .cta-banner p {
-  color: rgba(255,255,255,.8); font-size: 1.1rem;
+  color: rgba(255,255,255,.93); font-size: 1.1rem;
   max-width: 520px; margin: 0 auto 2rem;
-  font-weight: 300; line-height: 1.75;
+  font-weight: 400; line-height: 1.75;
 }
 
 /* ── PROCESS STEPS ──────────────────────────────────────────────────────── */
@@ -778,7 +778,7 @@ section { padding: 6rem 5%; }
   margin: 0 auto 1.2rem;
 }
 .step h4 { font-family: 'PT Serif', Georgia, serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: .6rem; }
-.step p { font-size: .92rem; color: var(--text-mid); line-height: 1.7; }
+.step p { font-size: .97rem; color: var(--body-text); line-height: 1.75; }
 
 /* ── VIDEO EMBED (responsive 16:9) ─────────────────────────────────────── */
 .video-wrap {
@@ -801,7 +801,7 @@ section { padding: 6rem 5%; }
 .platform-hero .ph-icon i { font-size: 2.2rem; color: var(--gold); }
 .platform-hero h3 { font-family: 'PT Serif', Georgia, serif; font-size: 1.15rem; color: var(--white); margin-bottom: .3rem; }
 .platform-hero .ph-handle { color: var(--gold); font-weight: 700; font-size: .78rem; margin-bottom: .65rem; display: block; }
-.platform-hero p { color: rgba(255,255,255,.72); font-size: .82rem; margin-bottom: 1.25rem; line-height: 1.55; flex: 1; }
+.platform-hero p { color: rgba(255,255,255,.9); font-size: .88rem; margin-bottom: 1.25rem; line-height: 1.6; flex: 1; }
 .platform-hero a {
   background: var(--gold); color: var(--white);
   padding: .55rem 1.1rem; border-radius: 2px;
@@ -816,7 +816,7 @@ section { padding: 6rem 5%; }
 /* ── FOOTER ─────────────────────────────────────────────────────────────── */
 footer {
   background: var(--navy-deep);
-  color: rgba(255,255,255,.62);
+  color: rgba(255,255,255,.78);
   padding: 1.8rem 5% 1rem;
 }
 .footer-grid {
@@ -833,7 +833,7 @@ footer h4 {
 }
 footer ul { list-style: none; }
 footer ul li { margin-bottom: .28rem; }
-footer ul a { color: rgba(255,255,255,.58); text-decoration: none; font-size: .83rem; transition: color .25s; }
+footer ul a { color: rgba(255,255,255,.78); text-decoration: none; font-size: .85rem; transition: color .25s; }
 footer ul a:hover { color: var(--gold); }
 
 .footer-social { display: flex; gap: .5rem; margin-top: .6rem; }
@@ -852,7 +852,7 @@ footer ul a:hover { color: var(--gold); }
   flex-wrap: wrap; gap: .4rem;
   font-size: .76rem;
 }
-.footer-bottom a { color: rgba(255,255,255,.4); text-decoration: none; transition: color .25s; }
+.footer-bottom a { color: rgba(255,255,255,.65); text-decoration: none; transition: color .25s; }
 .footer-bottom a:hover { color: var(--gold); }
 
 /* ── WHATSAPP FLOATING BUTTON ───────────────────────────────────────────── */
