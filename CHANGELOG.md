@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [38.6] — 2026-06-13
+
+### Changed
+- **Process steps — interactive hover** — each step now renders as a card; hovering lifts the card, scales the gold number circle with a gold glow ring, and transitions the heading to gold. Applies to all 4 pages using `.steps` (index, TRE®, Somatic Coaching, Somatic Bodywork)
+
+---
+
 ## [38.5] — 2026-06-13
 
 ### Changed
