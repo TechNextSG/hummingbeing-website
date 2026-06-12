@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [39.4] — 2026-06-13
+
+### Changed
+- **Section titles — full revert** — `.section-title`, `.two-col-text h2`, `.cta-banner h2` restored to original PT Serif font, original sizes, and no text-shadow across all pages
+
+---
+
 ## [39.3] — 2026-06-13
 
 ### Changed
