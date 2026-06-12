@@ -341,7 +341,7 @@ nav.scrolled .hamburger span,
 /* ── HERO (homepage) ───────────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
-  display: flex; align-items: center;
+  display: flex; align-items: center; justify-content: center;
   background:
     linear-gradient(to right, rgba(36,46,66,.65) 40%, rgba(36,46,66,.38) 100%),
     url('https://www.hummingbeing.com/wp-content/uploads/2020/10/brisbane-psychotherapy-connect-hypnosis.jpg')
@@ -350,7 +350,7 @@ nav.scrolled .hamburger span,
   position: relative;
 }
 
-.hero-content { max-width: 680px; position: relative; z-index: 1; }
+.hero-content { max-width: 680px; position: relative; z-index: 1; text-align: center; }
 
 .hero-eyebrow {
   font-family: 'Lato', sans-serif;
