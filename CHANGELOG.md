@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [38.4] — 2026-06-13
+
+### Changed
+- **Events hero countdown timer** — increased `margin-top` to `2.5rem` so the countdown sits lower in the hero section
+
+---
+
 ## [38.3] — 2026-06-13
 
 ### Fixed
