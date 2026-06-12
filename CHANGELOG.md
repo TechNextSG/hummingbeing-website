@@ -5,6 +5,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [37.3] — 2026-06-13
+
+### Fixed
+- **HTML audit — malformed attribute quotes** — full desktop audit found `?` characters replacing `"` in HTML attributes across 4 pages; all fixed:
+  - `index.html`: 7 broken attributes (`class`, `href`, `style` on testimonial-author, section-eyebrow, divider, feature-list, btn, and BHD link)
+  - `about.html`: 2 broken `class` attributes (section-eyebrow, divider)
+  - `isabelle.html`: broken `style` attribute on `<em>`, corrupted curly quotes on blockquote, and `?` in image alt text
+  - `tre.html`: broken `style` attribute on TRE in Asia paragraph
+
+---
+
 ## [37.2] — 2026-06-13
 
 ### Fixed
