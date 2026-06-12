@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [39.8] — 2026-06-13
+
+### Changed
+- **Events hero — countdown removed** — countdown timer section removed from the hero
+
+---
+
 ## [39.7] — 2026-06-13
 
 ### Changed
