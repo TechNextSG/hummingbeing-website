@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [38.3] — 2026-06-13
+
+### Fixed
+- **Somatic Bodywork hero video** — replaced wrong video (coaching clip, 3.8 MB) with the correct bodywork video (8.2 MB) from the GDrive Images folder; poster image was already correct
+- **Somatic Coaching hero** — verified correct video and poster already in place
+
+---
+
 ## [38.2] — 2026-06-13
 
 ### Fixed
