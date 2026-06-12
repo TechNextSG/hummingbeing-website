@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [39.6] — 2026-06-13
+
+### Fixed
+- **Events hero h1 — centred** — added explicit `text-align: center; width: 100%` to `.event-hero h1` so the title renders centred
+
+---
+
 ## [39.5] — 2026-06-13
 
 ### Changed
