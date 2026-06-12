@@ -137,4 +137,18 @@ document.addEventListener('DOMContentLoaded', function() {
     el.style.transitionDelay = (i * 0.1) + 's';
     animObserver.observe(el);
   });
+
+  // Pricing cards
+  document.querySelectorAll('.pricing-card').forEach(function(el, i) {
+    el.classList.add('anim-up');
+    el.style.transitionDelay = (i * 0.12) + 's';
+    animObserver.observe(el);
+  });
+
+  // Event cards
+  document.querySelectorAll('.event-card, .event-featured').forEach(function(el, i) {
+    el.classList.add('anim-up');
+    el.style.transitionDelay = (i % 3 * 0.1) + 's';
+    animObserver.observe(el);
+  });
 });
