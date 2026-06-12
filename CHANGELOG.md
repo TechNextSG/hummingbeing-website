@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [35.0] — 2026-06-13
+
+### Changed
+- **Hero title smaller** — index.html `.hero h1` reduced from `clamp(3.5rem, 7vw, 7.5rem)` to `clamp(2.6rem, 5vw, 5.5rem)`
+- **Countdown box removed** — stripped background and border from `.countdown-wrap` on events page; timer numbers float freely over the hero image
+- **CSS version** bumped to `v35`
+
+---
+
 ## [34.0] — 2026-06-13
 
 ### Changed

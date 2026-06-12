@@ -337,7 +337,7 @@ nav.scrolled .hamburger span,
 
 .hero h1 {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(3.5rem, 7vw, 7.5rem);
+  font-size: clamp(2.6rem, 5vw, 5.5rem);
   font-weight: 700;
   color: var(--white);
   line-height: 1.05;
