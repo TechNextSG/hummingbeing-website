@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [38.7] — 2026-06-13
+
+### Changed
+- **Button design — flat block style** — all `.btn` elements redesigned to match reference: `border-radius: 0` (square corners), letter-spacing increased to `3.5px`, padding `1rem 2.6rem`, pulse animation removed from `.btn-primary` for a clean solid look
+
+---
+
 ## [38.6] — 2026-06-13
 
 ### Changed
