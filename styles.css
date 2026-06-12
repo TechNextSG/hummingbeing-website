@@ -517,7 +517,7 @@ section { padding: 6rem 5%; }
   font-weight: 700; color: var(--navy);
   line-height: 1.15; margin-bottom: 1.5rem;
   letter-spacing: -.4px;
-  text-shadow: 0 0 48px rgba(245,166,35,.13), 0 2px 8px rgba(36,46,66,.1), 0 4px 24px rgba(36,46,66,.06);
+  text-shadow: 0 0 40px rgba(245,166,35,.4), 0 0 80px rgba(245,166,35,.18), 0 4px 16px rgba(36,46,66,.22), 0 8px 32px rgba(36,46,66,.1);
 }
 .section-title em { font-style: italic; color: var(--gold); }
 
@@ -624,7 +624,7 @@ section { padding: 6rem 5%; }
   font-weight: 700; color: var(--navy);
   margin-bottom: 1.5rem; line-height: 1.15;
   letter-spacing: -.4px;
-  text-shadow: 0 0 48px rgba(245,166,35,.13), 0 2px 8px rgba(36,46,66,.1), 0 4px 24px rgba(36,46,66,.06);
+  text-shadow: 0 0 40px rgba(245,166,35,.4), 0 0 80px rgba(245,166,35,.18), 0 4px 16px rgba(36,46,66,.22), 0 8px 32px rgba(36,46,66,.1);
 }
 .two-col-text h2 em { font-style: italic; color: var(--gold); }
 .two-col-text p { color: var(--body-text); margin-bottom: 1.2rem; font-size: 1rem; }
