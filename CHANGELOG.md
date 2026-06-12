@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [34.0] — 2026-06-13
+
+### Changed
+- **Nav layout reverted** — switched back to `display: flex; justify-content: space-between`; logo left, nav links right
+- **Hero title centered** — added `text-align: center` explicitly to `.page-hero h1` on all inner pages
+- **CSS version** bumped to `v34`
+
+---
+
 ## [33.0] — 2026-06-12
 
 ### Fixed
