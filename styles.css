@@ -387,6 +387,16 @@ nav.nav-hidden { transform: translateY(-100%); }
   font-weight: 300;
   animation: fade-down .7s ease .35s both;
 }
+.page-hero .hero-actions,
+.event-hero .hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  animation: fade-down .7s ease .5s both;
+}
 
 /* ── SECTIONS ──────────────────────────────────────────────────────────── */
 section { padding: 6rem 5%; }

@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [24.0] — 2026-06-12
+
+### Added
+- **Hero CTA buttons** — 2 animated buttons added to every page's hero section (10 inner pages); primary gold button links to `book.html`; secondary outline button is page-contextual (Meet Isabelle, Browse Gallery, Browse Events, Explore Services, etc.)
+- **CSS version** bumped to `v24`
+
+---
+
 ## [23.0] — 2026-06-12
 
 ### Changed
