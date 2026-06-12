@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [31.0] — 2026-06-12
+
+### Changed
+- **Hero title size** — increased to `clamp(3.5rem, 7vw, 7.5rem)` (homepage) and `clamp(3rem, 6.5vw, 6.5rem)` (inner pages); single-row layout by removing all `<br>` breaks from hero h1s
+- **CSS version** bumped to `v31`
+
+---
+
 ## [30.0] — 2026-06-12
 
 ### Changed
