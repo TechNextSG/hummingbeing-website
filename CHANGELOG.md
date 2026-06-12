@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [26.0] — 2026-06-12
+
+### Changed
+- **Hero sections full viewport height** — `.page-hero` and `.event-hero` now use `min-height: calc(100vh - 76px)` with flex column centering so the video fills the entire screen
+- **CSS version** bumped to `v26`
+
+---
+
 ## [25.0] — 2026-06-12
 
 ### Changed

@@ -344,7 +344,12 @@ nav.nav-hidden { transform: translateY(-100%); }
 /* ── PAGE HERO (inner pages) ────────────────────────────────────────────── */
 .page-hero {
   background: var(--navy-deep);
-  padding: 7rem 5% 5.5rem;
+  min-height: calc(100vh - 76px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 5%;
   text-align: center;
   position: relative;
   overflow: hidden;
