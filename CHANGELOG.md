@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [40.0] — 2026-06-13
+
+### Fixed
+- **Socials page — icon circles no longer clipped** — removed `overflow: hidden` from `.soc-row`; circles were being cut on the left edge
+
+---
+
 ## [39.9] — 2026-06-13
 
 ### Fixed
