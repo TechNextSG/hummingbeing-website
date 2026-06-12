@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [22.0] — 2026-06-12
+
+### Added
+- **Hero images** — real photos applied to all 7 inner-page hero sections (TRE®, Somatic Coaching, Somatic Bodywork, Book a Session, Gallery, Socials, Events); dark gradient overlay ensures text readability; images sourced from `G:\Shared drives\Marketing\…\HummingBeing\Images`
+- **CSS version** bumped to `v22`
+
+---
+
 ## [21.0] — 2026-06-12
 
 ### Added / Changed / Fixed
