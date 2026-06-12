@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [39.3] — 2026-06-13
+
+### Changed
+- **Section title glow — strengthened** — gold glow opacity raised to `.4` (was `.13`), wide gold bloom at `.18`, navy drop shadow at `.22` for clearly visible hero-style effect on all section titles
+
+---
+
 ## [39.2] — 2026-06-13
 
 ### Changed
