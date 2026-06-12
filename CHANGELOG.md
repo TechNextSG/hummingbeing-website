@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [39.1] — 2026-06-13
+
+### Changed
+- **Isabelle page — hero h1** — font 15% larger (`clamp(3.45rem, 7.5vw, 7.5rem)`), colour changed from white to brand navy, hero-style glow effects adapted (gold + blue ambient glow, faint white separation halo, deep drop shadow)
+
+---
+
 ## [39.0] — 2026-06-13
 
 ### Changed
