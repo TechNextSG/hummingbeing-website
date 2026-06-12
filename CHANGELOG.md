@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [33.0] — 2026-06-12
+
+### Fixed
+- **Nav links centered** — switched nav from `display: flex / justify-content: space-between` to `display: grid / grid-template-columns: 1fr auto 1fr`; logo stays left, links are truly centered in the viewport, hamburger right-aligned
+- **CSS version** bumped to `v33`
+
+---
+
 ## [32.0] — 2026-06-12
 
 ### Changed
