@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [38.8] — 2026-06-13
+
+### Changed
+- **Socials page — full redesign of three sections:**
+  - **Platforms** — replaced dark card grid with clean animated link rows: circle icon (rotates + fills gold on hover), platform name + handle, sliding arrow CTA, gold underline sweep, translateX shift
+  - **Content themes** — enhanced interactivity: card lifts on hover, left border thickens, gold tint overlay fades in, platform icon bounces/rotates, heading transitions to gold
+  - **Newsletter** — replaced centered navy box with a two-column split: navy left panel (eyebrow, headline, bullet perks) + cream right panel (heading, email input with gold focus ring, full-width subscribe button)
+
+---
+
 ## [38.7] — 2026-06-13
 
 ### Changed

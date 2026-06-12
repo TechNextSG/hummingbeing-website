@@ -5,70 +5,200 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Social Media &#8212; HummingBeing</title>
   <meta name="description" content="Follow HummingBeing and Isabelle Claus Teixeira on Instagram, LinkedIn, YouTube and more for somatic wellness content and inspiration." />
-  <link rel="stylesheet" href="styles.css?v=40" />
+  <link rel="stylesheet" href="styles.css?v=41" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <link rel="preload" as="image" href="poster-socials.jpg" fetchpriority="high">
   <style>
-    /* Content themes grid */
+    /* ── PLATFORM LINK ROWS ──────────────────────────────────────── */
+    .soc-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 6rem;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .soc-row {
+      display: flex; align-items: center; gap: 1.3rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(36,46,66,.1);
+      text-decoration: none;
+      position: relative; overflow: hidden;
+      transition: transform .32s cubic-bezier(.34,1.56,.64,1);
+    }
+    .soc-row:nth-child(5),
+    .soc-row:nth-child(6) { border-bottom: none; }
+    .soc-row::before {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--gold);
+      transition: width .45s cubic-bezier(.4,0,.2,1);
+    }
+    .soc-row:hover { transform: translateX(7px); }
+    .soc-row:hover::before { width: 100%; }
+
+    .soc-icon-wrap {
+      width: 52px; height: 52px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.55rem; color: var(--navy);
+      border: 1.5px solid rgba(36,46,66,.15); border-radius: 50%;
+      transition: background .28s ease, color .28s ease,
+                  border-color .28s ease,
+                  transform .4s cubic-bezier(.34,1.56,.64,1);
+    }
+    .soc-row:hover .soc-icon-wrap {
+      background: var(--gold); color: var(--white);
+      border-color: var(--gold);
+      transform: scale(1.18) rotate(-8deg);
+    }
+    .soc-info { flex: 1; min-width: 0; }
+    .soc-name {
+      display: block;
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: 1.02rem; font-weight: 700; color: var(--navy);
+      transition: color .25s;
+    }
+    .soc-row:hover .soc-name { color: var(--gold-dark); }
+    .soc-handle {
+      display: block; font-size: .78rem; color: var(--text-mid);
+      margin-top: .1rem; transition: color .25s;
+    }
+    .soc-row:hover .soc-handle { color: var(--navy); }
+    .soc-cta {
+      display: flex; align-items: center; gap: .4rem;
+      font-size: .65rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--text-mid);
+      white-space: nowrap;
+      transition: color .25s;
+    }
+    .soc-cta i { transition: transform .32s cubic-bezier(.34,1.56,.64,1); }
+    .soc-row:hover .soc-cta { color: var(--gold); }
+    .soc-row:hover .soc-cta i { transform: translateX(6px); }
+
+    /* ── CONTENT THEMES (highly interactive) ─────────────────────── */
     .themes-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
     .theme-item {
       background: var(--white);
       border-radius: 3px;
-      padding: 2rem 2rem 2rem 2.2rem;
-      box-shadow: 0 4px 20px rgba(36,46,66,.07);
+      padding: 2rem 2rem 1.8rem 2.2rem;
+      box-shadow: 0 3px 18px rgba(36,46,66,.06);
       border-left: 3px solid var(--gold);
+      position: relative; overflow: hidden;
+      transition: transform .38s cubic-bezier(.34,1.56,.64,1),
+                  box-shadow .32s ease, border-left-width .22s ease;
+      cursor: default;
     }
+    .theme-item::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(245,166,35,.055) 0%, transparent 70%);
+      opacity: 0; transition: opacity .35s ease;
+    }
+    .theme-item:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(36,46,66,.14); border-left-width: 5px; }
+    .theme-item:hover::after { opacity: 1; }
     .theme-platform {
       display: flex; align-items: center; gap: .5rem;
       font-size: .68rem; font-weight: 700;
       letter-spacing: 2px; text-transform: uppercase;
       color: var(--gold); margin-bottom: .8rem;
+      position: relative; z-index: 1;
     }
+    .theme-platform i { transition: transform .4s cubic-bezier(.34,1.56,.64,1); }
+    .theme-item:hover .theme-platform i { transform: scale(1.4) rotate(-10deg); }
     .theme-item h4 {
       font-family: 'PT Serif', Georgia, serif;
-      font-size: 1.05rem; color: var(--navy);
-      font-weight: 700; margin-bottom: .5rem;
+      font-size: 1.08rem; color: var(--navy); font-weight: 700;
+      margin-bottom: .55rem; position: relative; z-index: 1;
+      transition: color .25s;
     }
-    .theme-item p { font-size: .9rem; color: var(--text-mid); line-height: 1.75; margin: 0; }
+    .theme-item:hover h4 { color: var(--gold-dark); }
+    .theme-item p {
+      font-size: .93rem; color: var(--body-text);
+      line-height: 1.75; margin: 0; position: relative; z-index: 1;
+    }
 
-    /* Newsletter */
-    .newsletter-inner {
-      background: var(--navy);
-      border-radius: 3px; padding: 3.5rem;
-      text-align: center; max-width: 640px; margin: 0 auto;
+    /* ── NEWSLETTER SPLIT ────────────────────────────────────────── */
+    .newsletter-split {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-radius: 3px; overflow: hidden;
+      box-shadow: 0 16px 56px rgba(36,46,66,.16);
+      max-width: 860px; margin: 0 auto;
     }
-    .newsletter-inner h3 {
+    .nl-left {
+      background: var(--navy); padding: 3.5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .nl-left .nl-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: .7rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 1.1rem;
+    }
+    .nl-left h3 {
       font-family: 'PT Serif', Georgia, serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      color: var(--white); margin-bottom: .8rem;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      color: var(--white); margin-bottom: 1rem; line-height: 1.25;
     }
-    .newsletter-inner > p { color: rgba(255,255,255,.92); margin-bottom: 2rem; font-size: 1rem; }
-    .newsletter-form { display: flex; gap: .8rem; flex-wrap: wrap; justify-content: center; }
-    .newsletter-form input {
-      flex: 1; min-width: 220px; padding: .85rem 1.2rem;
-      border: 1.5px solid rgba(255,255,255,.2); border-radius: 2px;
-      background: rgba(255,255,255,.08); color: var(--white);
-      font-family: 'Lato', sans-serif; font-size: .95rem;
+    .nl-left > p { color: rgba(255,255,255,.85); font-size: .93rem; line-height: 1.75; margin-bottom: 1.8rem; }
+    .nl-perks { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .nl-perks li {
+      display: flex; align-items: center; gap: .7rem;
+      font-size: .88rem; color: rgba(255,255,255,.82);
     }
-    .newsletter-form input::placeholder { color: rgba(255,255,255,.4); }
-    .newsletter-form input:focus { outline: none; border-color: var(--gold); }
-    .newsletter-form button {
+    .nl-perks li::before {
+      content: ''; width: 7px; height: 7px; flex-shrink: 0;
+      background: var(--gold); border-radius: 50%;
+    }
+    .nl-right {
+      background: var(--cream); padding: 3.5rem;
+      display: flex; flex-direction: column; justify-content: center; gap: 1.6rem;
+    }
+    .nl-right h4 {
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: 1.2rem; color: var(--navy); margin-bottom: .3rem;
+    }
+    .nl-right > p { font-size: .88rem; color: var(--text-mid); margin: 0; }
+    .nl-input-wrap { display: flex; flex-direction: column; gap: .75rem; }
+    .nl-input-wrap input {
+      width: 100%; padding: .95rem 1.2rem;
+      border: 1.5px solid rgba(36,46,66,.15); border-radius: 0;
+      font-size: .95rem; color: var(--navy); background: var(--white);
+      font-family: 'Lato', sans-serif; outline: none;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .nl-input-wrap input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(245,166,35,.14);
+    }
+    .nl-input-wrap input::placeholder { color: var(--text-mid); }
+    .nl-input-wrap button {
+      width: 100%; padding: 1rem;
       background: var(--gold); color: var(--white); border: none;
-      padding: .85rem 1.8rem; border-radius: 2px; font-weight: 700;
-      cursor: pointer; font-family: 'Lato', sans-serif;
-      font-size: .78rem; letter-spacing: 2px; text-transform: uppercase;
-      transition: background .25s;
+      font-family: 'Lato', sans-serif; font-size: .8rem; font-weight: 700;
+      letter-spacing: 3.5px; text-transform: uppercase;
+      border-radius: 0; cursor: pointer;
+      transition: background .25s, transform .32s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
     }
-    .newsletter-form button:hover { background: var(--gold-dark); }
+    .nl-input-wrap button:hover {
+      background: var(--gold-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(245,166,35,.4);
+    }
+    .nl-privacy {
+      font-size: .72rem; color: var(--text-mid);
+      display: flex; align-items: center; gap: .45rem;
+    }
+    .nl-privacy i { color: var(--gold); }
 
-    @media (max-width: 600px) {
-      .themes-grid { grid-template-columns: 1fr; }
-      .newsletter-inner { padding: 2rem 1.5rem; }
+    @media (max-width: 720px) {
+      .soc-links { grid-template-columns: 1fr; }
+      .soc-row:nth-child(5) { border-bottom: 1px solid rgba(36,46,66,.1); }
+      .soc-row:nth-child(6) { border-bottom: none; }
+      .newsletter-split { grid-template-columns: 1fr; }
+      .nl-left, .nl-right { padding: 2.5rem 2rem; }
     }
   </style>
 </head>
@@ -153,52 +283,66 @@
 
 <!-- MAIN PLATFORMS -->
 <section class="section-cream">
-  <span class="section-eyebrow">Our Platforms</span>
-  <h2 class="section-title">Find Us Where You Are</h2>
-  <p class="section-subtitle">Follow Isabelle and HummingBeing for somatic wellness content, leadership insights and community.</p>
-  <div class="platforms-grid">
+  <div class="section-header-center">
+    <span class="section-eyebrow">Our Platforms</span>
+    <h2 class="section-title">Find Us Where You Are</h2>
+    <p class="section-subtitle">Follow Isabelle and HummingBeing for somatic wellness content, leadership insights and community.</p>
+  </div>
+  <div class="soc-links">
 
-    <div class="platform-hero">
-      <div class="ph-icon"><i class="fa-brands fa-instagram"></i></div>
-      <h3>Instagram</h3>
-      <span class="ph-handle">@isabelleclausteixeira_bhd</span>
-      <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank">Follow on Instagram</a>
-    </div>
+    <a class="soc-row" href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank">
+      <span class="soc-icon-wrap"><i class="fa-brands fa-instagram"></i></span>
+      <span class="soc-info">
+        <strong class="soc-name">Instagram</strong>
+        <span class="soc-handle">@isabelleclausteixeira_bhd</span>
+      </span>
+      <span class="soc-cta">Follow <i class="fa-solid fa-arrow-right"></i></span>
+    </a>
 
-    <div class="platform-hero">
-      <div class="ph-icon"><i class="fa-brands fa-linkedin"></i></div>
-      <h3>LinkedIn</h3>
-      <span class="ph-handle">Isabelle Claus Teixeira</span>
-      <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank">Connect on LinkedIn</a>
-    </div>
+    <a class="soc-row" href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank">
+      <span class="soc-icon-wrap"><i class="fa-brands fa-linkedin"></i></span>
+      <span class="soc-info">
+        <strong class="soc-name">LinkedIn</strong>
+        <span class="soc-handle">Isabelle Claus Teixeira</span>
+      </span>
+      <span class="soc-cta">Connect <i class="fa-solid fa-arrow-right"></i></span>
+    </a>
 
-    <div class="platform-hero">
-      <div class="ph-icon"><i class="fa-brands fa-youtube"></i></div>
-      <h3>YouTube</h3>
-      <span class="ph-handle">@IsabelleClausTeixeira</span>
-      <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank">Watch on YouTube</a>
-    </div>
+    <a class="soc-row" href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank">
+      <span class="soc-icon-wrap"><i class="fa-brands fa-youtube"></i></span>
+      <span class="soc-info">
+        <strong class="soc-name">YouTube</strong>
+        <span class="soc-handle">@IsabelleClausTeixeira</span>
+      </span>
+      <span class="soc-cta">Watch <i class="fa-solid fa-arrow-right"></i></span>
+    </a>
 
-    <div class="platform-hero">
-      <div class="ph-icon"><i class="fa-brands fa-pinterest"></i></div>
-      <h3>Pinterest</h3>
-      <span class="ph-handle">isabelleclausteixeira</span>
-      <a href="https://www.pinterest.com/isabelleclausteixeira/" target="_blank">Follow on Pinterest</a>
-    </div>
+    <a class="soc-row" href="https://www.pinterest.com/isabelleclausteixeira/" target="_blank">
+      <span class="soc-icon-wrap"><i class="fa-brands fa-pinterest"></i></span>
+      <span class="soc-info">
+        <strong class="soc-name">Pinterest</strong>
+        <span class="soc-handle">isabelleclausteixeira</span>
+      </span>
+      <span class="soc-cta">Follow <i class="fa-solid fa-arrow-right"></i></span>
+    </a>
 
-    <div class="platform-hero">
-      <div class="ph-icon"><i class="fa-brands fa-whatsapp"></i></div>
-      <h3>WhatsApp</h3>
-      <span class="ph-handle">+81 806515 1778</span>
-      <a href="https://wa.me/818065151778" target="_blank">Message on WhatsApp</a>
-    </div>
+    <a class="soc-row" href="https://wa.me/818065151778" target="_blank">
+      <span class="soc-icon-wrap"><i class="fa-brands fa-whatsapp"></i></span>
+      <span class="soc-info">
+        <strong class="soc-name">WhatsApp</strong>
+        <span class="soc-handle">+81 806515 1778</span>
+      </span>
+      <span class="soc-cta">Message <i class="fa-solid fa-arrow-right"></i></span>
+    </a>
 
-    <div class="platform-hero">
-      <div class="ph-icon"><i class="fa-solid fa-globe"></i></div>
-      <h3>BHD Asia</h3>
-      <span class="ph-handle">bhdasia.com</span>
-      <a href="https://bhdasia.com" target="_blank">Visit BHD Asia</a>
-    </div>
+    <a class="soc-row" href="https://bhdasia.com" target="_blank">
+      <span class="soc-icon-wrap"><i class="fa-solid fa-globe"></i></span>
+      <span class="soc-info">
+        <strong class="soc-name">BHD Asia</strong>
+        <span class="soc-handle">bhdasia.com</span>
+      </span>
+      <span class="soc-cta">Visit <i class="fa-solid fa-arrow-right"></i></span>
+    </a>
 
   </div>
   <div style="text-align:center;margin-top:3rem"><a href="book.html" class="btn btn-primary">Book a Free Consultation</a></div>
@@ -314,14 +458,28 @@
 </section>
 
 <!-- NEWSLETTER -->
-<section class="section-cream">
-  <div class="newsletter-inner">
-    <span class="section-eyebrow" style="color:var(--gold)">Stay in the Loop</span>
-    <h3>The HummingBeing Letter</h3>
-    <p>Monthly somatic insights, practices you can use immediately and stories from the field of human transformation. No spam &#8212; ever.</p>
-    <div class="newsletter-form">
-      <input type="email" placeholder="Your email address" />
-      <button type="submit" onclick="this.textContent='Subscribed ?';this.style.background='var(--navy-light)'">Subscribe</button>
+<section class="section-white">
+  <div class="newsletter-split">
+    <div class="nl-left">
+      <span class="nl-eyebrow">Stay in the Loop</span>
+      <h3>The HummingBeing Letter</h3>
+      <p>Monthly somatic insights, practices you can use immediately and stories from the field of human transformation.</p>
+      <ul class="nl-perks">
+        <li>Monthly somatic micro-practices</li>
+        <li>Nervous system research, made simple</li>
+        <li>Stories of transformation &amp; healing</li>
+      </ul>
+    </div>
+    <div class="nl-right">
+      <div>
+        <h4>Join the community</h4>
+        <p>No spam &#8212; ever. Unsubscribe anytime.</p>
+      </div>
+      <div class="nl-input-wrap">
+        <input type="email" placeholder="Your email address" />
+        <button type="submit" onclick="this.textContent='Subscribed ✓';this.style.background='var(--navy)'">Subscribe</button>
+      </div>
+      <p class="nl-privacy"><i class="fa-solid fa-lock"></i> Your privacy is protected. No spam, ever.</p>
     </div>
   </div>
   <div style="text-align:center;margin-top:3rem"><a href="book.html" class="btn btn-primary">Book a Free Consultation</a></div>
