@@ -340,12 +340,17 @@ nav.scrolled .hamburger span,
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
   color: var(--white);
-  line-height: 1.08;
+  line-height: 1.12;
   margin-bottom: 1.6rem;
   letter-spacing: -.5px;
   animation: fade-down .8s ease .25s both;
+  text-shadow: 0 0 40px rgba(255,255,255,.2), 0 2px 12px rgba(0,0,0,.55);
 }
-.hero h1 em { font-style: italic; color: var(--gold); }
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(245,166,35,.55), 0 0 80px rgba(245,166,35,.2), 0 2px 12px rgba(0,0,0,.55);
+}
 
 .hero p {
   font-size: 1.15rem;
@@ -427,9 +432,16 @@ nav.scrolled .hamburger span,
   font-weight: 700;
   margin-bottom: 1.2rem;
   letter-spacing: -.3px;
+  line-height: 1.15;
   position: relative;
   z-index: 3;
   animation: fade-down .7s ease .2s both;
+  text-shadow: 0 0 40px rgba(255,255,255,.2), 0 2px 12px rgba(0,0,0,.55);
+}
+.page-hero h1 em, .event-hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(245,166,35,.55), 0 0 80px rgba(245,166,35,.2), 0 2px 12px rgba(0,0,0,.55);
 }
 .page-hero p {
   color: rgba(255,255,255,.75);

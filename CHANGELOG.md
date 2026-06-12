@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [28.0] — 2026-06-12
+
+### Changed
+- **Two-tone hero headings** — all hero h1s now split into a white bold line + gold italic `<em>` second line (matching reference style); e.g. "Somatic / *Coaching*", "Let's Begin / *Together*", "A Safe Space to / *Release, Renew & Restore*"
+- **Hero text glow** — white `text-shadow` glow added to all hero h1s; gold shimmer glow added to all `<em>` (gold italic) lines
+- **CSS version** bumped to `v28`
+
+---
+
 ## [27.0] — 2026-06-12
 
 ### Changed
