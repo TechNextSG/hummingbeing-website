@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [37.0] — 2026-06-13
+
+### Added
+- **Hero poster images** — all 8 hero sections now show a still image instantly while the video loads (`poster-about.jpg`, `poster-book.jpg`, `poster-events.jpg`, `poster-gallery.jpg`, `poster-socials.jpg`, `poster-bodywork.png`, `poster-coaching.png`, `poster-tre.jpg`)
+- **Hero videos** — `about.html` and `somatic-coaching.html` now have looping background videos (`hero-about.mp4`, `hero-coaching.mp4`) replacing static image backgrounds
+- **Fast video playback** — added `preload="auto"` to all hero `<video>` tags so browsers start downloading immediately on page load
+
+---
+
 ## [36.1] — 2026-06-13
 
 ### Fixed
