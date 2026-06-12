@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [38.1] — 2026-06-13
+
+### Fixed
+- **Lazy loading audit** — all `<img>` tags already had `loading="lazy"`; added missing `loading="lazy"` to the YouTube `<iframe>` embed on the TRE® page
+
+---
+
 ## [38.0] — 2026-06-13
 
 ### Added
