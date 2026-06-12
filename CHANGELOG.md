@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [29.0] — 2026-06-12
+
+### Fixed
+- **Transparent nav over hero** — removed `body { padding-top: 76px }` and changed hero `min-height` from `calc(100vh - 76px)` to `100vh`; nav now genuinely overlays the hero with no white gap
+- **CSS version** bumped to `v29`
+
+---
+
 ## [28.0] — 2026-06-12
 
 ### Changed
