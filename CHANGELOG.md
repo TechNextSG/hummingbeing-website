@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [37.5] — 2026-06-13
+
+### Fixed
+- **Somatic Coaching hero video** — restored `hero-coaching.mp4` with `poster-coaching.png` placeholder; hero now plays the looping video background on load
+
+---
+
 ## [37.4] — 2026-06-13
 
 ### Changed
