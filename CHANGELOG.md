@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [40.3] — 2026-06-13
+
+### Fixed
+- **Events countdown not activating** — removed stale JS block referencing removed hero countdown elements (`#cd-days` etc.); the `TypeError` it threw was silently killing the entire script block before the new ring countdown could run
+
+---
+
 ## [40.2] — 2026-06-13
 
 ### Added
