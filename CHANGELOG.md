@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [40.4] — 2026-06-13
+
+### Fixed
+- **Countdown rings — glow no longer clipped** — added `overflow: visible` to `.ecd-svg` so the `drop-shadow` filter renders fully outside the SVG boundary
+
+---
+
 ## [40.3] — 2026-06-13
 
 ### Fixed
