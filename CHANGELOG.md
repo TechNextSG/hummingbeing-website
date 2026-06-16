@@ -5,21 +5,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [40.7] — 2026-06-16
+
+### Added
+- **Reiki Practitioner Level II** — certificate image added to isabelle.html Credentials section
+
+### Changed
+- **Restored TRE® and Somatic Bodywork pages** — `tre.html` and `somatic-bodywork.html` restored; nav dropdowns, footer links, service cards (index.html), and isabelle.html Work With Me section all reverted to previous state
+
+---
+
 ## [40.6] — 2026-06-16
 
 ### Changed
 - **Events page — real event content** — replaced placeholder events with two real upcoming events: "Self-care and Presence for Coaches" (ICF CCE, 21 CCEUs, 1,290 SGD special price) and "Become a Certified TRE® Provider" (3-module certification, full pricing tiers) — both on 29–30 August 2026 Singapore
 - **Events countdown** — target updated to 29 August 2026 (Module 1 start)
 - **Homepage countdown bar** — updated to TRE® Provider Certification Module 1, 29–30 August 2026
-
----
-
-## [40.5] — 2026-06-16
-
-### Changed
-- **Removed TRE® Exercises and Somatic Bodywork pages** — `tre.html` and `somatic-bodywork.html` deleted; all nav menus, footers, and internal links updated across every page
-- **Homepage service cards** — TRE® and Somatic Bodywork cards removed; Somatic Coaching card remains
-- **Isabelle page** — hero button and "Work With Me" section updated to reflect single service offering
 
 ---
 
