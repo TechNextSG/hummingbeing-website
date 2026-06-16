@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [40.6] — 2026-06-16
+
+### Changed
+- **Events page — real event content** — replaced placeholder events with two real upcoming events: "Self-care and Presence for Coaches" (ICF CCE, 21 CCEUs, 1,290 SGD special price) and "Become a Certified TRE® Provider" (3-module certification, full pricing tiers) — both on 29–30 August 2026 Singapore
+- **Events countdown** — target updated to 29 August 2026 (Module 1 start)
+- **Homepage countdown bar** — updated to TRE® Provider Certification Module 1, 29–30 August 2026
+
+---
+
 ## [40.5] — 2026-06-16
 
 ### Changed
