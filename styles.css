@@ -664,6 +664,7 @@ section { padding: 6rem 5%; }
 
 .two-col-image {
   aspect-ratio: 4/5;
+  max-height: 400px;
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0 16px 56px rgba(36,46,66,.16);

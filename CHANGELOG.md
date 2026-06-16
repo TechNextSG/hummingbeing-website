@@ -5,6 +5,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [40.9] — 2026-06-17
+
+### Fixed
+- **Two-col image placeholders** — added `max-height: 400px` to `.two-col-image` so placeholders no longer stretch to full column height; applies sitewide
+- **Credential card placeholders** — reduced `.cred-placeholder` from 200px to 150px; Reiki image area matched
+- **Homepage countdown bar** — moved "View Event" button inside the text column so layout is always two-column (text+button | countdown), no more wrapping issue
+- **Homepage "What We Offer"** — section eyebrow/title/subtitle now centred via `section-header-center` wrapper
+
+### Changed
+- **isabelle.html "9 Countries" section** — replaced plain bullet list with 4 compact icon+text info cards (location, language, experience, network)
+
+---
+
 ## [40.8] — 2026-06-16
 
 ### Added

@@ -10,13 +10,23 @@
   <link rel="icon" href="favicon.svg" />
   <style>
     .cred-placeholder {
-      width: 100%; height: 200px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55rem;
+      width: 100%; height: 150px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .45rem;
       background: linear-gradient(135deg, rgba(36,46,66,.06) 0%, rgba(36,46,66,.11) 100%);
       color: rgba(36,46,66,.18); flex-shrink: 0;
     }
-    .cred-placeholder i { font-size: 3.2rem; }
+    .cred-placeholder i { font-size: 2.4rem; }
     .cred-placeholder span { font-size: .58rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-family: 'Lato', sans-serif; }
+    .info-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; margin-top: 3rem; }
+    .info-card {
+      background: var(--white); border: 1px solid rgba(36,46,66,.09); border-radius: 3px;
+      padding: 1.4rem 1.2rem; display: flex; align-items: flex-start; gap: .9rem;
+      box-shadow: 0 2px 10px rgba(36,46,66,.06);
+    }
+    .info-card i { color: var(--gold); font-size: 1.15rem; margin-top: .15rem; flex-shrink: 0; }
+    .info-card strong { font-family: 'PT Serif', Georgia, serif; font-size: .9rem; color: var(--navy); font-weight: 700; line-height: 1.45; }
+    @media (max-width: 820px) { .info-cards { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 520px) { .info-cards { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -172,7 +182,7 @@
       <p>Has lived in 9 countries and collaborated with colleagues representing 40+ nationalities &#8212; enabling her to create genuinely inclusive, culturally sensitive spaces.</p>
     </div>
     <div class="card gold-top">
-      <div class="card-img" style="height:200px"><img src="images/reiki-level-2.jpg" alt="Reiki Practitioner Level II Certificate" style="object-fit:cover;width:100%;height:100%;display:block"></div>
+      <div class="card-img" style="height:150px"><img src="images/reiki-level-2.jpg" alt="Reiki Practitioner Level II Certificate" style="object-fit:cover;width:100%;height:100%;display:block"></div>
       <div class="card-icon"><i class="fa-solid fa-spa"></i></div>
       <h3>Reiki Practitioner Level II</h3>
       <p>Certified as a Reiki Level II Practitioner &#8212; trained in channelling energy for physical, emotional and mental balance, complementing her somatic and body-based practice.</p>
@@ -192,13 +202,13 @@
       <p>Isabelle has lived and worked across an extraordinary range of cultures &#8212; including the United States, France, Russia, Japan, Singapore and multiple other countries in Asia and Europe.</p>
       <p>This depth of cross-cultural exposure has shaped her ability to connect with clients from all walks of life &#8212; adapting her language, approach and style to whatever serves the individual in front of her.</p>
       <p>She has collaborated with colleagues and clients representing 40+ nationalities across diverse religious, gender and age backgrounds. Her somatic practice is built on this foundation of genuine cultural respect and curiosity.</p>
-      <ul class="feature-list" style="margin-top:1rem">
-        <li>Currently based in Singapore &amp; Japan</li>
-        <li>Fluent in English and French</li>
-        <li>Extensive experience in Asia Pacific leadership contexts</li>
-        <li>Part of BHD Asia &amp; BHD Japan networks</li>
-      </ul>
     </div>
+  </div>
+  <div class="info-cards">
+    <div class="info-card"><i class="fa-solid fa-location-dot"></i><strong>Currently based in Singapore &amp; Japan</strong></div>
+    <div class="info-card"><i class="fa-solid fa-language"></i><strong>Fluent in English and French</strong></div>
+    <div class="info-card"><i class="fa-solid fa-briefcase"></i><strong>Extensive experience in Asia Pacific leadership contexts</strong></div>
+    <div class="info-card"><i class="fa-solid fa-handshake"></i><strong>Part of BHD Asia &amp; BHD Japan networks</strong></div>
   </div>
   <div style="text-align:center;margin-top:3rem"><a href="book.html" class="btn btn-primary">Book a Free Consultation</a></div>
 </section>
