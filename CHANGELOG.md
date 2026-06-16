@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [40.8] — 2026-06-16
+
+### Added
+- **Credential cards — image placeholders** — all 6 text-only credential cards on isabelle.html now have a consistent 200px placeholder area (soft gradient, centred icon, "Photo Coming Soon"); Reiki card image area standardised to match
+
+---
+
 ## [40.7] — 2026-06-16
 
 ### Added
