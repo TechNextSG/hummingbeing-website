@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [40.5] — 2026-06-16
+
+### Changed
+- **Removed TRE® Exercises and Somatic Bodywork pages** — `tre.html` and `somatic-bodywork.html` deleted; all nav menus, footers, and internal links updated across every page
+- **Homepage service cards** — TRE® and Somatic Bodywork cards removed; Somatic Coaching card remains
+- **Isabelle page** — hero button and "Work With Me" section updated to reflect single service offering
+
+---
+
 ## [40.4] — 2026-06-13
 
 ### Fixed
