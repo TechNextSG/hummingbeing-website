@@ -92,11 +92,11 @@ nav.scrolled .logo { color: var(--navy); }
   letter-spacing: .4px;
   transition: color .25s;
 }
-.nav-links a:hover,
-.nav-links a.active { color: var(--gold); }
+.nav-links a:hover { color: var(--gold); }
+.nav-links a.active { color: var(--gold); font-weight: 700; }
 nav.scrolled .nav-links a { color: var(--body-text); }
-nav.scrolled .nav-links a:hover,
-nav.scrolled .nav-links a.active { color: var(--gold); }
+nav.scrolled .nav-links a:hover { color: var(--gold); }
+nav.scrolled .nav-links a.active { color: var(--gold); font-weight: 700; }
 
 .nav-cta {
   text-decoration: none;

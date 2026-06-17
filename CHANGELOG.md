@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [42.8] — 2026-06-17
+
+### Changed
+- **Nav active state** — active page link is now bold (`font-weight: 700`) in addition to gold colour, making current page clearly identifiable
+- **CSS version** — bumped to v66
+
+---
+
 ## [42.7] — 2026-06-17
 
 ### Changed
