@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [41.7] — 2026-06-17
+
+### Changed
+- **Footer — full redesign (Casa Escondida format)** — light cream background, thin top border, `.foot-grid` 4-column layout, uppercase gold section headers (`.foot-h`), compact link list (`.foot-links`), circle social icon buttons (`.soc`), bottom bar with Privacy Policy / Terms of Service / Powered by TechNext; applied to all 11 pages
+- **CSS version** — bumped to v57
+
+---
+
 ## [41.6] — 2026-06-17
 
 ### Changed
