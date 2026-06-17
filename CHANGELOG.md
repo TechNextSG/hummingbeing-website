@@ -5,6 +5,27 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [41.0] — 2026-06-17
+
+### Changed
+- **Sitewide redesign — less boxy aesthetic** — major visual overhaul across all pages:
+  - Buttons: square (`border-radius: 0`) → pill-shaped (`border-radius: 50px`)
+  - All cards: `border-radius: 3px` → `border-radius: 24px`; removed rigid coloured top-bar accent in favour of colour-coded icon backgrounds
+  - Two-col images: `border-radius: 3px` → `border-radius: 32px`
+  - Testimonials: left border removed; large gold quote mark (`"`) added as decorative pseudo-element; `border-radius: 24px`
+  - Step cards: `border-radius: 3px` → `border-radius: 24px`; removed yellow outline border
+  - Pricing cards: rounded to `24px`, top border removed
+  - Contact form: `border-radius: 28px`; inputs `border-radius: 12px`
+  - Social / platform cards: `border-radius: 24px`; platform buttons pill-shaped
+  - Nav dropdown: `border-radius: 16px`, gold top border removed, subtle grey border added
+  - Tags: pill-shaped (`border-radius: 50px`)
+  - Video embeds: `border-radius: 24px`
+- **Section transitions** — sections after sections now have curved tops (`border-radius: 40px 40px 0 0`) with 40px overlap creating an organic layered-card effect
+- **isabelle.html** — credential image placeholders made full-bleed (match card-img behaviour); info-cards `border-radius: 16px`
+- CSS bumped to v51 across all pages
+
+---
+
 ## [40.9] — 2026-06-17
 
 ### Fixed
