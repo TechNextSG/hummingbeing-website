@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [41.5] — 2026-06-17
+
+### Changed
+- **Footer text** — all link and body text reduced (links .85rem → .75rem, brand text .84rem → .74rem, logo 1.3rem → 1.1rem, h4 headings .7rem → .63rem)
+- **CSS version** — bumped to v55
+
+---
+
 ## [41.4] — 2026-06-17
 
 ### Changed

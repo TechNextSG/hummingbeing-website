@@ -913,16 +913,16 @@ footer {
   grid-template-columns: 2fr 1fr 1fr 1.5fr;
   gap: 1rem; margin-bottom: .6rem;
 }
-.footer-brand .logo { color: var(--white); font-size: 1.3rem; display: inline-block; margin-bottom: .5rem; }
-.footer-brand p { font-size: .84rem; line-height: 1.55; }
+.footer-brand .logo { color: var(--white); font-size: 1.1rem; display: inline-block; margin-bottom: .4rem; }
+.footer-brand p { font-size: .74rem; line-height: 1.5; }
 footer h4 {
   font-family: 'Lato', sans-serif;
-  color: var(--white); font-size: .7rem; font-weight: 700;
-  letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: .3rem;
+  color: var(--white); font-size: .63rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: .3rem;
 }
 footer ul { list-style: none; }
 footer ul li { margin-bottom: .12rem; }
-footer ul a { color: rgba(255,255,255,.78); text-decoration: none; font-size: .85rem; transition: color .25s; }
+footer ul a { color: rgba(255,255,255,.78); text-decoration: none; font-size: .75rem; transition: color .25s; }
 footer ul a:hover { color: var(--gold); }
 
 .footer-social { display: flex; gap: .5rem; margin-top: .6rem; }
