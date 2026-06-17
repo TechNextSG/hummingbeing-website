@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [43.0] — 2026-06-17
+
+### Changed
+- **CTA banner** — removed dark navy overlay + background image; now cream with thin top border; text updated to navy/body-text; applies to all 10 pages
+- **CTA banner buttons** — replaced white-on-dark inline styles with standard `btn-primary` across all pages
+- **CSS version** — bumped to v67
+
+---
+
 ## [42.9] — 2026-06-17
 
 ### Changed
