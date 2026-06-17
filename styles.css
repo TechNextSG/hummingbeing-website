@@ -1,7 +1,7 @@
 /* HummingBeing — styles.css v9
    Fonts: Playfair Display (hero titles) + PT Serif (headings) + Lato (body)  |  Palette: #242e42 navy · #F5A623 gold · #ffc600 yellow
    ——————————————————————————————————————————————————————————————————————————————————————————————— */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap');
 
 :root {
   --navy:        #242e42;
@@ -86,9 +86,10 @@ nav.scrolled .logo { color: var(--navy); }
 .nav-links a {
   text-decoration: none;
   color: rgba(255,255,255,.88);
-  font-size: .78rem;
-  font-weight: 400;
-  letter-spacing: 1.5px;
+  font-family: 'Raleway', sans-serif;
+  font-size: .76rem;
+  font-weight: 300;
+  letter-spacing: 2px;
   text-transform: uppercase;
   transition: color .25s;
 }

@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [42.2] — 2026-06-17
+
+### Changed
+- **Nav font** — switched from Lato to Raleway 300 for a lighter, more elegant header; added Raleway to Google Fonts import
+- **CSS version** — bumped to v62
+
+---
+
 ## [42.1] — 2026-06-17
 
 ### Changed
