@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [41.4] — 2026-06-17
+
+### Changed
+- **Buttons** — letter-spacing reduced 3.5px → 1px, padding reduced (.72rem 1.75rem), hover no longer expands letter-spacing; hero buttons also re-scaled
+- **"Is This for You?" section** — removed duplicate floating CTA button; single "Book a Free Chat" button now sits inline with a soft descriptor note
+- **CSS version** — bumped to v54
+
+---
+
 ## [41.3] — 2026-06-17
 
 ### Changed

@@ -203,15 +203,15 @@ nav.scrolled .hamburger span,
 
 .btn {
   display: inline-block;
-  padding: 1rem 2.6rem;
+  padding: .72rem 1.75rem;
   border-radius: 50px;
   font-family: 'Lato', sans-serif;
   font-weight: 700;
   font-size: .8rem;
-  letter-spacing: 3.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: transform .32s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, background .25s ease, border-color .25s ease, color .25s ease, letter-spacing .3s ease;
+  transition: transform .32s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, background .25s ease, border-color .25s ease, color .25s ease;
   cursor: pointer;
   border: 2px solid transparent;
   position: relative;
@@ -239,7 +239,7 @@ nav.scrolled .hamburger span,
   pointer-events: none;
   z-index: 1;
 }
-.btn:hover { transform: translateY(-5px) scale(1.04); letter-spacing: 4px; }
+.btn:hover { transform: translateY(-5px) scale(1.04); }
 .btn:hover::after { left: 150%; }
 .btn:active { transform: translateY(-1px) scale(1.01); transition-duration: .08s; }
 
@@ -495,12 +495,12 @@ nav.scrolled .hamburger span,
   z-index: 3;
   animation: fade-down .7s ease .5s both;
 }
-/* 10% smaller buttons inside all hero sections */
+/* slightly smaller buttons inside hero sections */
 .hero .btn,
 .page-hero .btn,
 .event-hero .btn {
   font-size: .72rem;
-  padding: .9rem 2.34rem;
+  padding: .65rem 1.55rem;
 }
 
 /* ── SECTIONS ──────────────────────────────────────────────────────────── */
