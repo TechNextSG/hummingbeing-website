@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [41.8] — 2026-06-17
+
+### Changed
+- **Sitewide layout** — increased horizontal padding from 7% → 9% across all sections (nav, hero, page-hero, sections, footer, CTA banner, mobile breakpoints)
+- **CSS version** — bumped to v58
+
+---
+
 ## [41.7] — 2026-06-17
 
 ### Changed
