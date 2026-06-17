@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [42.1] — 2026-06-17
+
+### Changed
+- **Nav links** — font-weight reduced 700 → 400 (regular) for lighter appearance; letter-spacing 1.3px → 1.5px
+- **CSS version** — bumped to v61
+
+---
+
 ## [42.0] — 2026-06-17
 
 ### Changed
