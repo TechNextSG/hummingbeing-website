@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [41.1] — 2026-06-17
+
+### Fixed
+- **Cards grid** — capped at 3 columns on desktop (`repeat(3, 1fr)`); 2 columns on tablet, 1 on mobile
+
+---
+
 ## [41.0] — 2026-06-17
 
 ### Changed

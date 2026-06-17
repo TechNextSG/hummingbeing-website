@@ -605,7 +605,7 @@ section + section {
 /* ── SERVICE CARDS ──────────────────────────────────────────────────────── */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
@@ -1199,6 +1199,7 @@ footer ul a:hover { color: var(--gold); }
   .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
   .two-col.reverse > *:first-child { order: unset; }
   .two-col.reverse > *:last-child  { order: unset; }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .nav-links {
     display: none;
