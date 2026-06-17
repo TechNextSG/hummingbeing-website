@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [43.1] — 2026-06-17
+
+### Changed
+- **Nav layout** — switched from CSS grid to flexbox; logo flex-1 left, links centered, actions flex-1 right for clean balanced alignment
+- **Nav CTA button** — now Raleway 500 .82rem matching nav links; removed uppercase and heavy letter-spacing for visual cohesion
+- **CSS version** — bumped to v68
+
+---
+
 ## [43.0] — 2026-06-17
 
 ### Changed

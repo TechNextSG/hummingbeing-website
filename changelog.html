@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Changelog &#8212; HummingBeing</title>
   <meta name="description" content="Full development history of the HummingBeing website &#8212; every update, fix and improvement documented." />
-  <link rel="stylesheet" href="styles.css?v=67" />
+  <link rel="stylesheet" href="styles.css?v=68" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <style>
@@ -125,6 +125,22 @@
 <section>
   <div class="cl-timeline">
 
+    <!-- v43.1 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v43.1</span>
+        <span class="cl-date">2026-06-17</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
+        <ul>
+          <li><strong>Nav layout</strong> — switched from CSS grid to flexbox; logo flex-1 left, links centered, actions flex-1 right for clean balanced alignment</li>
+          <li><strong>Nav CTA button</strong> — now Raleway 500 .82rem matching nav links; removed uppercase and heavy letter-spacing for visual cohesion</li>
+          <li><strong>CSS version</strong> — bumped to v68</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- v43.0 -->
     <div class="cl-entry">
       <div class="cl-meta">
@@ -134,8 +150,8 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>CTA banner</strong> — dark navy overlay + background image removed; cream background with thin border; all 10 pages</li>
-          <li><strong>CTA banner buttons</strong> — white-on-dark inline styles replaced with standard <code>btn-primary</code></li>
+          <li><strong>CTA banner</strong> â€” dark navy overlay + background image removed; cream background with thin border; all 10 pages</li>
+          <li><strong>CTA banner buttons</strong> â€” white-on-dark inline styles replaced with standard <code>btn-primary</code></li>
           <li>CSS bumped to v67</li>
         </ul>
       </div>
@@ -150,9 +166,9 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>book.html</strong> — trust bar and Isabelle card dark navy backgrounds → cream/white</li>
-          <li><strong>events.html</strong> — notify strip dark background → cream; form inputs updated</li>
-          <li><strong>socials.html</strong> — newsletter left panel dark background → cream</li>
+          <li><strong>book.html</strong> â€” trust bar and Isabelle card dark navy backgrounds â†’ cream/white</li>
+          <li><strong>events.html</strong> â€” notify strip dark background â†’ cream; form inputs updated</li>
+          <li><strong>socials.html</strong> â€” newsletter left panel dark background â†’ cream</li>
         </ul>
       </div>
     </div>
@@ -166,7 +182,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Nav active state</strong> — active page link now bold (font-weight 700) for clear current-page indication</li>
+          <li><strong>Nav active state</strong> â€” active page link now bold (font-weight 700) for clear current-page indication</li>
           <li>CSS bumped to v66</li>
         </ul>
       </div>
@@ -181,7 +197,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Feature list bullets</strong> — tightened vertical spacing (.65rem → .3rem per item) for a more compact, readable list</li>
+          <li><strong>Feature list bullets</strong> â€” tightened vertical spacing (.65rem â†’ .3rem per item) for a more compact, readable list</li>
           <li>CSS bumped to v65</li>
         </ul>
       </div>
@@ -196,7 +212,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Nav links</strong> — removed uppercase; font-size and weight adjusted for natural mixed-case display</li>
+          <li><strong>Nav links</strong> â€” removed uppercase; font-size and weight adjusted for natural mixed-case display</li>
           <li>CSS bumped to v64</li>
         </ul>
       </div>
@@ -211,9 +227,9 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Buttons</strong> — <code>border-radius</code> 50px → 6px; less pill-shaped across all buttons</li>
-          <li><strong>Cards, steps, testimonials, pricing, contact form</strong> — <code>border-radius</code> 24px → 10px</li>
-          <li><strong>Tags</strong> — 50px → 4px; <strong>Inputs</strong> — 12px → 6px; <strong>Nav dropdown</strong> — 16px → 8px</li>
+          <li><strong>Buttons</strong> â€” <code>border-radius</code> 50px â†’ 6px; less pill-shaped across all buttons</li>
+          <li><strong>Cards, steps, testimonials, pricing, contact form</strong> â€” <code>border-radius</code> 24px â†’ 10px</li>
+          <li><strong>Tags</strong> â€” 50px â†’ 4px; <strong>Inputs</strong> â€” 12px â†’ 6px; <strong>Nav dropdown</strong> â€” 16px â†’ 8px</li>
           <li>CSS bumped to v63</li>
         </ul>
       </div>
@@ -228,8 +244,8 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Sitewide — no more dark sections</strong> — all <code>section-dark</code> navy backgrounds converted to <code>section-cream</code>; white inline text overrides removed; testimonial cards switched to <code>testimonial-light</code></li>
-          <li><strong>Sitewide — CTAs added to all content sections</strong> — "Book a Free Discovery Call" added to every content section across all pages</li>
+          <li><strong>Sitewide â€” no more dark sections</strong> â€” all <code>section-dark</code> navy backgrounds converted to <code>section-cream</code>; white inline text overrides removed; testimonial cards switched to <code>testimonial-light</code></li>
+          <li><strong>Sitewide â€” CTAs added to all content sections</strong> â€” "Book a Free Discovery Call" added to every content section across all pages</li>
         </ul>
       </div>
     </div>
@@ -243,8 +259,8 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Testimonials section</strong> — changed background from <code>section-dark</code> to <code>section-cream</code>; removed white colour override on h2; testimonial card class updated to <code>testimonial-light</code></li>
-          <li><strong>CTA buttons</strong> — added "Book a Free Discovery Call" button after the testimonials grid and after the services cards grid on homepage</li>
+          <li><strong>Testimonials section</strong> â€” changed background from <code>section-dark</code> to <code>section-cream</code>; removed white colour override on h2; testimonial card class updated to <code>testimonial-light</code></li>
+          <li><strong>CTA buttons</strong> â€” added "Book a Free Discovery Call" button after the testimonials grid and after the services cards grid on homepage</li>
         </ul>
       </div>
     </div>
@@ -258,7 +274,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Nav font</strong> — switched from Lato to Raleway 300 for a lighter, more elegant header</li>
+          <li><strong>Nav font</strong> â€” switched from Lato to Raleway 300 for a lighter, more elegant header</li>
           <li>CSS bumped to v62</li>
         </ul>
       </div>
@@ -273,7 +289,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Nav links</strong> — font-weight 700 → 400 for lighter, less bulky appearance</li>
+          <li><strong>Nav links</strong> â€” font-weight 700 â†’ 400 for lighter, less bulky appearance</li>
           <li>CSS bumped to v61</li>
         </ul>
       </div>
@@ -288,8 +304,8 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Image placeholders</strong> — all placeholders changed from dark gradient to light gray, consistent format sitewide; no rounded corners</li>
-          <li><strong>Two-col image containers</strong> — removed <code>border-radius: 32px</code> from <code>.two-col-image</code></li>
+          <li><strong>Image placeholders</strong> â€” all placeholders changed from dark gradient to light gray, consistent format sitewide; no rounded corners</li>
+          <li><strong>Two-col image containers</strong> â€” removed <code>border-radius: 32px</code> from <code>.two-col-image</code></li>
           <li>CSS bumped to v60</li>
         </ul>
       </div>
@@ -304,7 +320,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Sitewide layout</strong> — increased horizontal padding 9% → 12% for wider side margins</li>
+          <li><strong>Sitewide layout</strong> â€” increased horizontal padding 9% â†’ 12% for wider side margins</li>
           <li>CSS bumped to v59</li>
         </ul>
       </div>
@@ -319,7 +335,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Sitewide layout</strong> � increased horizontal padding 7% ? 9% across all sections (nav, hero, page-hero, sections, footer, CTA banner, mobile breakpoints)</li>
+          <li><strong>Sitewide layout</strong> ï¿½ increased horizontal padding 7% ? 9% across all sections (nav, hero, page-hero, sections, footer, CTA banner, mobile breakpoints)</li>
           <li>CSS bumped to v58</li>
         </ul>
       </div>
@@ -334,7 +350,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Footer � full redesign</strong> � light cream background, thin border top, 4-column grid, gold uppercase section headers, compact link list, circle social icon buttons, bottom bar with Privacy Policy / Terms / Powered by TechNext; all 11 pages</li>
+          <li><strong>Footer ï¿½ full redesign</strong> ï¿½ light cream background, thin border top, 4-column grid, gold uppercase section headers, compact link list, circle social icon buttons, bottom bar with Privacy Policy / Terms / Powered by TechNext; all 11 pages</li>
           <li>CSS bumped to v57</li>
         </ul>
       </div>
@@ -351,8 +367,8 @@
           <span class="cl-tag cl-tag-changed">Changed</span>
         </div>
         <ul>
-          <li><strong>Sitewide</strong> � removed 35+ floating "Book a Free Consultation" centred divs from all pages; sections now clean without redundant CTAs below every two-col block</li>
-          <li><strong>somatic-bodywork.html</strong> � "Book a Session" updated to btn-primary with descriptor note inline</li>
+          <li><strong>Sitewide</strong> ï¿½ removed 35+ floating "Book a Free Consultation" centred divs from all pages; sections now clean without redundant CTAs below every two-col block</li>
+          <li><strong>somatic-bodywork.html</strong> ï¿½ "Book a Session" updated to btn-primary with descriptor note inline</li>
           <li>CSS bumped to v56</li>
         </ul>
       </div>
@@ -369,7 +385,7 @@
           <span class="cl-tag cl-tag-changed">Changed</span>
         </div>
         <ul>
-          <li><strong>Footer text</strong> � links .85rem ? .75rem, brand text .84rem ? .74rem, logo 1.3rem ? 1.1rem, section headings .7rem ? .63rem</li>
+          <li><strong>Footer text</strong> ï¿½ links .85rem ? .75rem, brand text .84rem ? .74rem, logo 1.3rem ? 1.1rem, section headings .7rem ? .63rem</li>
           <li>CSS bumped to v55</li>
         </ul>
       </div>
@@ -386,8 +402,8 @@
           <span class="cl-tag cl-tag-changed">Changed</span>
         </div>
         <ul>
-          <li><strong>Buttons</strong> � letter-spacing reduced 3.5px ? 1px; padding reduced; hover no longer widens text; hero buttons re-scaled</li>
-          <li><strong>"Is This for You?" section</strong> � removed duplicate floating CTA; single compact button with soft descriptor note</li>
+          <li><strong>Buttons</strong> ï¿½ letter-spacing reduced 3.5px ? 1px; padding reduced; hover no longer widens text; hero buttons re-scaled</li>
+          <li><strong>"Is This for You?" section</strong> ï¿½ removed duplicate floating CTA; single compact button with soft descriptor note</li>
           <li>CSS bumped to v54</li>
         </ul>
       </div>
@@ -404,12 +420,12 @@
           <span class="cl-tag cl-tag-changed">Changed</span>
         </div>
         <ul>
-          <li><strong>Horizontal padding</strong> � increased from 5% to 7% sitewide (nav, sections, hero, footer, mobile menu)</li>
-          <li><strong>Section transitions removed</strong> � curved overlap effect between sections deleted; flat layout restored</li>
-          <li><strong>Two-col image</strong> � fixed narrow rendering caused by conflicting aspect-ratio + max-height; now fills full column width at 400px height</li>
-          <li><strong>Cards</strong> � padding reduced 1.8rem ? 1.4rem; grid gap 1.5rem ? 1.2rem; icon size 48px ? 40px</li>
-          <li><strong>Footer</strong> � more compact: padding, grid gap, list margins and section padding all reduced</li>
-          <li><strong>isabelle.html</strong> � credential placeholder bleed margins updated to match new card padding</li>
+          <li><strong>Horizontal padding</strong> ï¿½ increased from 5% to 7% sitewide (nav, sections, hero, footer, mobile menu)</li>
+          <li><strong>Section transitions removed</strong> ï¿½ curved overlap effect between sections deleted; flat layout restored</li>
+          <li><strong>Two-col image</strong> ï¿½ fixed narrow rendering caused by conflicting aspect-ratio + max-height; now fills full column width at 400px height</li>
+          <li><strong>Cards</strong> ï¿½ padding reduced 1.8rem ? 1.4rem; grid gap 1.5rem ? 1.2rem; icon size 48px ? 40px</li>
+          <li><strong>Footer</strong> ï¿½ more compact: padding, grid gap, list margins and section padding all reduced</li>
+          <li><strong>isabelle.html</strong> ï¿½ credential placeholder bleed margins updated to match new card padding</li>
           <li>CSS bumped to v53</li>
         </ul>
       </div>
@@ -427,9 +443,9 @@
           <span class="cl-tag cl-tag-changed">Changed</span>
         </div>
         <ul>
-          <li><strong>events.html</strong> � full-width event banner image placeholder (320px, dark, rounded 24px) above event cards</li>
-          <li><strong>Hero text &amp; buttons</strong> � h1 and paragraph font sizes reduced 10% on <code>.hero</code> and <code>.page-hero</code> (all pages); hero buttons also 10% smaller</li>
-          <li><strong>Testimonials</strong> � fixed to 3 columns; 4th+ entries hidden</li>
+          <li><strong>events.html</strong> ï¿½ full-width event banner image placeholder (320px, dark, rounded 24px) above event cards</li>
+          <li><strong>Hero text &amp; buttons</strong> ï¿½ h1 and paragraph font sizes reduced 10% on <code>.hero</code> and <code>.page-hero</code> (all pages); hero buttons also 10% smaller</li>
+          <li><strong>Testimonials</strong> ï¿½ fixed to 3 columns; 4th+ entries hidden</li>
           <li>CSS bumped to v52</li>
         </ul>
       </div>
@@ -444,7 +460,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
         <ul>
-          <li><strong>Cards grid</strong> � capped at 3 columns on desktop (<code>repeat(3, 1fr)</code>); 2 on tablet, 1 on mobile</li>
+          <li><strong>Cards grid</strong> ï¿½ capped at 3 columns on desktop (<code>repeat(3, 1fr)</code>); 2 on tablet, 1 on mobile</li>
         </ul>
       </div>
     </div>
@@ -498,7 +514,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span></div>
         <ul>
-          <li><strong>Credential cards � image placeholders</strong> &mdash; all 6 text-only credential cards on the Isabelle page now have a consistent 200px placeholder area (soft gradient, centred icon, &ldquo;Photo Coming Soon&rdquo;); Reiki card image area standardised to match</li>
+          <li><strong>Credential cards ï¿½ image placeholders</strong> &mdash; all 6 text-only credential cards on the Isabelle page now have a consistent 200px placeholder area (soft gradient, centred icon, &ldquo;Photo Coming Soon&rdquo;); Reiki card image area standardised to match</li>
         </ul>
       </div>
     </div>
@@ -530,7 +546,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Events page � real event content</strong> &mdash; replaced placeholder cards with two real upcoming events: &ldquo;Self-care and Presence for Coaches&rdquo; (ICF CCE, 21 CCEUs, 1,290 SGD special price) and &ldquo;Become a Certified TRE&#174; Provider&rdquo; (3-module certification with full pricing tiers) &mdash; both on 29&ndash;30 August 2026, Singapore</li>
+          <li><strong>Events page ï¿½ real event content</strong> &mdash; replaced placeholder cards with two real upcoming events: &ldquo;Self-care and Presence for Coaches&rdquo; (ICF CCE, 21 CCEUs, 1,290 SGD special price) and &ldquo;Become a Certified TRE&#174; Provider&rdquo; (3-module certification with full pricing tiers) &mdash; both on 29&ndash;30 August 2026, Singapore</li>
           <li><strong>Events countdown</strong> &mdash; target updated to 29 August 2026 (Module 1 start date)</li>
           <li><strong>Homepage countdown bar</strong> &mdash; updated title and date to TRE&#174; Provider Certification Module 1, 29&ndash;30 August 2026</li>
         </ul>
@@ -546,7 +562,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
         <ul>
-          <li><strong>Countdown rings � glow no longer clipped</strong> &mdash; <code>overflow: visible</code> added to SVG so the gold <code>drop-shadow</code> renders fully outside the element boundary</li>
+          <li><strong>Countdown rings ï¿½ glow no longer clipped</strong> &mdash; <code>overflow: visible</code> added to SVG so the gold <code>drop-shadow</code> renders fully outside the element boundary</li>
         </ul>
       </div>
     </div>
@@ -578,9 +594,9 @@
           <span class="cl-tag cl-tag-changed">Changed</span>
         </div>
         <ul>
-          <li><strong>Events page � animated countdown</strong> &mdash; dark section with SVG progress rings, digit flip animation, pulsing background, and CTA; between ticker and Featured Event</li>
-          <li><strong>Homepage � event countdown bar</strong> &mdash; replaces stats bar; cream background, large animated digits, event title &amp; date, "View Event" CTA counting down to 5 Jul 2026</li>
-          <li><strong>Service cards � real photos</strong> &mdash; TRE&#174;, Somatic Coaching and Somatic Bodywork cards now show actual images</li>
+          <li><strong>Events page ï¿½ animated countdown</strong> &mdash; dark section with SVG progress rings, digit flip animation, pulsing background, and CTA; between ticker and Featured Event</li>
+          <li><strong>Homepage ï¿½ event countdown bar</strong> &mdash; replaces stats bar; cream background, large animated digits, event title &amp; date, "View Event" CTA counting down to 5 Jul 2026</li>
+          <li><strong>Service cards ï¿½ real photos</strong> &mdash; TRE&#174;, Somatic Coaching and Somatic Bodywork cards now show actual images</li>
           <li><strong>Homepage hero centering fixed</strong> &mdash; buttons and paragraph now correctly centred</li>
           <li><strong>CSS v50</strong> &mdash; cache-busted across all pages</li>
         </ul>
@@ -596,7 +612,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span></div>
         <ul>
-          <li><strong>Ticker — 8 new items on all pages</strong> &mdash; Breathwork, Online &amp; In-Person, Group Sessions, Burnout Recovery, Deep Rest &amp; Renewal, Body Intelligence, Somatic Intelligence, Self-Regulation; applied to all 10 pages</li>
+          <li><strong>Ticker â€” 8 new items on all pages</strong> &mdash; Breathwork, Online &amp; In-Person, Group Sessions, Burnout Recovery, Deep Rest &amp; Renewal, Body Intelligence, Somatic Intelligence, Self-Regulation; applied to all 10 pages</li>
         </ul>
       </div>
     </div>
@@ -610,7 +626,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
         <ul>
-          <li><strong>Socials page — icon circles no longer clipped</strong> &mdash; removed <code>overflow: hidden</code> from <code>.soc-row</code>; circles were being cut on the left edge</li>
+          <li><strong>Socials page â€” icon circles no longer clipped</strong> &mdash; removed <code>overflow: hidden</code> from <code>.soc-row</code>; circles were being cut on the left edge</li>
         </ul>
       </div>
     </div>
@@ -624,7 +640,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
         <ul>
-          <li><strong>Homepage hero — full-width content</strong> &mdash; removed narrow <code>max-width: 680px</code> constraint so the h1 no longer wraps to three lines and the content centres properly in the viewport</li>
+          <li><strong>Homepage hero â€” full-width content</strong> &mdash; removed narrow <code>max-width: 680px</code> constraint so the h1 no longer wraps to three lines and the content centres properly in the viewport</li>
         </ul>
       </div>
     </div>
@@ -638,7 +654,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Events hero — countdown removed</strong> &mdash; countdown timer section removed from the events hero</li>
+          <li><strong>Events hero â€” countdown removed</strong> &mdash; countdown timer section removed from the events hero</li>
         </ul>
       </div>
     </div>
@@ -652,7 +668,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Homepage hero — aligned to page-hero pattern</strong> &mdash; switched to <code>flex-direction: column</code>, uniform dark overlay gradient replacing asymmetric right-fade, padding standardised to <code>6rem 5%</code></li>
+          <li><strong>Homepage hero â€” aligned to page-hero pattern</strong> &mdash; switched to <code>flex-direction: column</code>, uniform dark overlay gradient replacing asymmetric right-fade, padding standardised to <code>6rem 5%</code></li>
         </ul>
       </div>
     </div>
@@ -666,7 +682,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
         <ul>
-          <li><strong>Events hero h1 — centred</strong> &mdash; explicit <code>text-align: center</code> added to ensure the title renders centred</li>
+          <li><strong>Events hero h1 â€” centred</strong> &mdash; explicit <code>text-align: center</code> added to ensure the title renders centred</li>
         </ul>
       </div>
     </div>
@@ -680,7 +696,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Homepage hero — centred</strong> &mdash; hero content moved to horizontal and vertical centre of the viewport</li>
+          <li><strong>Homepage hero â€” centred</strong> &mdash; hero content moved to horizontal and vertical centre of the viewport</li>
         </ul>
       </div>
     </div>
@@ -694,7 +710,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Section titles — full revert</strong> &mdash; <code>.section-title</code>, <code>.two-col-text h2</code>, and <code>.cta-banner h2</code> restored to original PT Serif font, original sizes, and no text-shadow across all pages</li>
+          <li><strong>Section titles â€” full revert</strong> &mdash; <code>.section-title</code>, <code>.two-col-text h2</code>, and <code>.cta-banner h2</code> restored to original PT Serif font, original sizes, and no text-shadow across all pages</li>
         </ul>
       </div>
     </div>
@@ -708,7 +724,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Section title glow — strengthened</strong> &mdash; gold glow opacity raised to visible levels, wide gold bloom added, navy drop shadow deepened so the hero-style effect is clearly visible on all section titles sitewide</li>
+          <li><strong>Section title glow â€” strengthened</strong> &mdash; gold glow opacity raised to visible levels, wide gold bloom added, navy drop shadow deepened so the hero-style effect is clearly visible on all section titles sitewide</li>
         </ul>
       </div>
     </div>
@@ -722,7 +738,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Section titles — 15% larger + hero glow sitewide</strong> &mdash; <code>.section-title</code> and <code>.two-col-text h2</code> font size increased 15%, hero-style text-shadow applied (gold ambient glow + soft navy depth shadow) across all pages</li>
+          <li><strong>Section titles â€” 15% larger + hero glow sitewide</strong> &mdash; <code>.section-title</code> and <code>.two-col-text h2</code> font size increased 15%, hero-style text-shadow applied (gold ambient glow + soft navy depth shadow) across all pages</li>
         </ul>
       </div>
     </div>
@@ -750,7 +766,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Section titles — Playfair Display sitewide</strong> &mdash; all <code>.section-title</code>, <code>.two-col-text h2</code>, and <code>.cta-banner h2</code> now use Playfair Display to match the hero h1 font; <code>em</code> italic-gold support added to all three for consistent italic-gold accents across every page</li>
+          <li><strong>Section titles â€” Playfair Display sitewide</strong> &mdash; all <code>.section-title</code>, <code>.two-col-text h2</code>, and <code>.cta-banner h2</code> now use Playfair Display to match the hero h1 font; <code>em</code> italic-gold support added to all three for consistent italic-gold accents across every page</li>
         </ul>
       </div>
     </div>
@@ -764,8 +780,8 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Events hero — countdown repositioned</strong> &mdash; countdown timer moved above the CTA buttons so it sits at the vertical centre of the hero, consistent with all other page heroes</li>
-          <li><strong>Cards — compact sitewide</strong> &mdash; reduced padding and spacing on <code>.card</code>, <code>.pricing-card</code>, and <code>.social-card</code>; tightened icon sizes, heading margins, grid gap, and feature-list margin for a denser, more professional look</li>
+          <li><strong>Events hero â€” countdown repositioned</strong> &mdash; countdown timer moved above the CTA buttons so it sits at the vertical centre of the hero, consistent with all other page heroes</li>
+          <li><strong>Cards â€” compact sitewide</strong> &mdash; reduced padding and spacing on <code>.card</code>, <code>.pricing-card</code>, and <code>.social-card</code>; tightened icon sizes, heading margins, grid gap, and feature-list margin for a denser, more professional look</li>
         </ul>
       </div>
     </div>
@@ -779,9 +795,9 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Socials — Platforms section</strong> &mdash; replaced dark card grid with clean animated link rows: icon circle fills gold + rotates on hover, platform name turns gold, gold underline sweeps across, row slides right, arrow animates forward</li>
-          <li><strong>Socials — Content Themes section</strong> &mdash; enhanced hover interactivity: card lifts 8px, left border thickens to 5px, subtle gold tint overlay fades in, platform icon bounces + rotates, heading transitions to gold-dark</li>
-          <li><strong>Socials — Newsletter section</strong> &mdash; replaced centered navy box with a two-column split card: navy left panel with eyebrow, headline and bullet perks; cream right panel with heading, animated email input (gold focus ring + glow) and full-width subscribe button</li>
+          <li><strong>Socials â€” Platforms section</strong> &mdash; replaced dark card grid with clean animated link rows: icon circle fills gold + rotates on hover, platform name turns gold, gold underline sweeps across, row slides right, arrow animates forward</li>
+          <li><strong>Socials â€” Content Themes section</strong> &mdash; enhanced hover interactivity: card lifts 8px, left border thickens to 5px, subtle gold tint overlay fades in, platform icon bounces + rotates, heading transitions to gold-dark</li>
+          <li><strong>Socials â€” Newsletter section</strong> &mdash; replaced centered navy box with a two-column split card: navy left panel with eyebrow, headline and bullet perks; cream right panel with heading, animated email input (gold focus ring + glow) and full-width subscribe button</li>
         </ul>
       </div>
     </div>
@@ -795,7 +811,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Button design — flat block style</strong> &mdash; all buttons redesigned to match reference: <code>border-radius: 0</code> (square corners), letter-spacing <code>3.5px</code>, padding <code>1rem 2.6rem</code>, pulse animation removed from primary buttons for a clean solid appearance</li>
+          <li><strong>Button design â€” flat block style</strong> &mdash; all buttons redesigned to match reference: <code>border-radius: 0</code> (square corners), letter-spacing <code>3.5px</code>, padding <code>1rem 2.6rem</code>, pulse animation removed from primary buttons for a clean solid appearance</li>
         </ul>
       </div>
     </div>
@@ -809,7 +825,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Process steps — interactive hover</strong> &mdash; each step now renders as a card with border and shadow; hovering lifts the card up, scales the gold number circle with a pulsing gold glow ring, and transitions the heading colour to gold. Applies to all 4 pages using <code>.steps</code> (Home, TRE&#174;, Somatic Coaching, Somatic Bodywork)</li>
+          <li><strong>Process steps â€” interactive hover</strong> &mdash; each step now renders as a card with border and shadow; hovering lifts the card up, scales the gold number circle with a pulsing gold glow ring, and transitions the heading colour to gold. Applies to all 4 pages using <code>.steps</code> (Home, TRE&#174;, Somatic Coaching, Somatic Bodywork)</li>
         </ul>
       </div>
     </div>
@@ -823,10 +839,10 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Text contrast &amp; readability — site-wide</strong> &mdash; <code>--body-text</code> darkened to <code>#3d4250</code>; <code>--text-mid</code> darkened to <code>#5f6472</code> (was failing WCAG AA at 3.5:1 contrast, now ~5.5:1)</li>
+          <li><strong>Text contrast &amp; readability â€” site-wide</strong> &mdash; <code>--body-text</code> darkened to <code>#3d4250</code>; <code>--text-mid</code> darkened to <code>#5f6472</code> (was failing WCAG AA at 3.5:1 contrast, now ~5.5:1)</li>
           <li><strong>Font weight</strong> &mdash; removed <code>font-weight: 300</code> from all hero and section descriptions; now renders at normal weight for crisper legibility</li>
           <li><strong>Dark-background text</strong> &mdash; raised white-text opacity on hero paragraphs, CTA banner, pricing cards, step descriptions, footer, stats bar, and platform cards</li>
-          <li><strong>Card &amp; component text sizes</strong> &mdash; bumped font size on card descriptions, step text, social card descriptions, and podcast meta (+5–10%)</li>
+          <li><strong>Card &amp; component text sizes</strong> &mdash; bumped font size on card descriptions, step text, social card descriptions, and podcast meta (+5â€“10%)</li>
           <li><strong>Inline style fixes</strong> &mdash; corrected low-opacity text in <code>events.html</code> (countdown, featured event, notify strip), <code>gallery.html</code> (video info, channel card, podcast meta, lightbox caption), <code>book.html</code> (trust items, blockquote), <code>socials.html</code> (newsletter description)</li>
         </ul>
       </div>
@@ -941,7 +957,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
         <ul>
-          <li><strong>HTML audit — malformed attribute quotes</strong> &mdash; full desktop audit found <code>?</code> characters replacing <code>"</code> in HTML attributes across 4 pages; all corrected: <code>index.html</code> (7 broken attributes), <code>about.html</code> (section-eyebrow &amp; divider classes), <code>isabelle.html</code> (em style, blockquote curly quotes, img alt text), <code>tre.html</code> (paragraph style attribute)</li>
+          <li><strong>HTML audit â€” malformed attribute quotes</strong> &mdash; full desktop audit found <code>?</code> characters replacing <code>"</code> in HTML attributes across 4 pages; all corrected: <code>index.html</code> (7 broken attributes), <code>about.html</code> (section-eyebrow &amp; divider classes), <code>isabelle.html</code> (em style, blockquote curly quotes, img alt text), <code>tre.html</code> (paragraph style attribute)</li>
         </ul>
       </div>
     </div>
@@ -1168,7 +1184,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Hero sections full viewport height</strong> � <code>.page-hero</code> and <code>.event-hero</code> now use <code>min-height: calc(100vh - 76px)</code> with flex column centering; video fills the entire screen on all inner pages</li>
+          <li><strong>Hero sections full viewport height</strong> ï¿½ <code>.page-hero</code> and <code>.event-hero</code> now use <code>min-height: calc(100vh - 76px)</code> with flex column centering; video fills the entire screen on all inner pages</li>
           <li><strong>CSS version</strong> bumped to <code>v26</code></li>
         </ul>
       </div>
@@ -1183,7 +1199,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-changed">Changed</span></div>
         <ul>
-          <li><strong>Looping video hero backgrounds</strong> � 6 inner pages now use autoplay muted looping MP4 videos as hero backgrounds (TRE�, Somatic Bodywork, Book, Gallery, Socials, Events); overlay gradient and gold shimmer sit above video via <code>z-index</code> layering; text content raised to <code>z-index: 3</code>; Somatic Coaching retains static photo; About / Isabelle retain navy gradient fallback</li>
+          <li><strong>Looping video hero backgrounds</strong> ï¿½ 6 inner pages now use autoplay muted looping MP4 videos as hero backgrounds (TREï¿½, Somatic Bodywork, Book, Gallery, Socials, Events); overlay gradient and gold shimmer sit above video via <code>z-index</code> layering; text content raised to <code>z-index: 3</code>; Somatic Coaching retains static photo; About / Isabelle retain navy gradient fallback</li>
           <li><strong>CSS version</strong> bumped to <code>v25</code></li>
         </ul>
       </div>
@@ -1198,7 +1214,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-added">Added</span></div>
         <ul>
-          <li><strong>Hero CTA buttons</strong> � 2 animated buttons added to every page's hero section (10 inner pages + homepage already had them); primary gold button links to booking; secondary outline button is page-contextual (e.g. "Meet Isabelle", "Browse Gallery", "Browse Events", "Explore Services")</li>
+          <li><strong>Hero CTA buttons</strong> ï¿½ 2 animated buttons added to every page's hero section (10 inner pages + homepage already had them); primary gold button links to booking; secondary outline button is page-contextual (e.g. "Meet Isabelle", "Browse Gallery", "Browse Events", "Explore Services")</li>
           <li><strong>CSS version</strong> bumped to <code>v24</code></li>
         </ul>
       </div>
@@ -1637,6 +1653,7 @@
 <script src="scripts.js"></script>
 </body>
 </html>
+
 
 
 
