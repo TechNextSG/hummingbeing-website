@@ -215,25 +215,25 @@
 
     /* -- NOTIFY STRIP ----------------------------------------------------- */
     .notify-strip {
-      background: var(--navy); padding: 3.5rem 5%;
+      background: var(--cream); padding: 3.5rem 5%; border-top: 1px solid rgba(36,46,66,.08);
       text-align: center;
     }
     .notify-strip h3 {
       font-family: 'PT Serif', Georgia, serif;
       font-size: clamp(1.5rem, 3vw, 2rem);
-      color: var(--white); margin-bottom: .5rem;
+      color: var(--navy); margin-bottom: .5rem;
     }
-    .notify-strip > p { color: rgba(255,255,255,.9); margin-bottom: 1.8rem; font-size: .97rem; }
+    .notify-strip > p { color: var(--body-text); margin-bottom: 1.8rem; font-size: .97rem; }
     .notify-form {
       display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; max-width: 520px; margin: 0 auto;
     }
     .notify-form input {
       flex: 1; min-width: 220px; padding: .85rem 1.2rem;
-      border: 1.5px solid rgba(255,255,255,.2); border-radius: 2px;
-      background: rgba(255,255,255,.08); color: var(--white);
+      border: 1.5px solid rgba(36,46,66,.2); border-radius: 2px;
+      background: var(--white); color: var(--navy);
       font-family: 'Lato', sans-serif; font-size: .95rem;
     }
-    .notify-form input::placeholder { color: rgba(255,255,255,.4); }
+    .notify-form input::placeholder { color: var(--text-mid); }
     .notify-form input:focus { outline: none; border-color: var(--gold); }
 
     @media (max-width: 900px) {

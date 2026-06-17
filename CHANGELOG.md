@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [42.9] — 2026-06-17
+
+### Changed
+- **book.html** — `.trust-bar` and `.isa-card` dark navy backgrounds converted to cream/white; text colors updated
+- **events.html** — `.notify-strip` dark background converted to cream; form inputs updated for light background
+- **socials.html** — `.nl-left` newsletter panel dark background converted to cream; text colors updated
+
+---
+
 ## [42.8] — 2026-06-17
 
 ### Changed
