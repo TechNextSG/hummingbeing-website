@@ -367,7 +367,7 @@ nav.scrolled .hamburger span,
 
 .hero h1 {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(2.6rem, 5vw, 5.5rem);
+  font-size: clamp(2.34rem, 4.5vw, 4.95rem);
   font-weight: 700;
   color: var(--white);
   line-height: 1.05;
@@ -383,7 +383,7 @@ nav.scrolled .hamburger span,
 }
 
 .hero p {
-  font-size: 1.15rem;
+  font-size: 1.035rem;
   color: rgba(255,255,255,.93);
   max-width: 520px;
   margin: 0 auto 2.5rem;
@@ -457,7 +457,7 @@ nav.scrolled .hamburger span,
 }
 .page-hero h1 {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(3rem, 6.5vw, 6.5rem);
+  font-size: clamp(2.7rem, 5.85vw, 5.85rem);
   color: var(--white);
   font-weight: 700;
   margin-bottom: 1.2rem;
@@ -476,7 +476,7 @@ nav.scrolled .hamburger span,
 }
 .page-hero p {
   color: rgba(255,255,255,.93);
-  font-size: 1.1rem;
+  font-size: 0.99rem;
   max-width: 560px;
   margin: 0 auto;
   position: relative;
@@ -494,6 +494,13 @@ nav.scrolled .hamburger span,
   position: relative;
   z-index: 3;
   animation: fade-down .7s ease .5s both;
+}
+/* 10% smaller buttons inside all hero sections */
+.hero .btn,
+.page-hero .btn,
+.event-hero .btn {
+  font-size: .72rem;
+  padding: .9rem 2.34rem;
 }
 
 /* ── SECTIONS ──────────────────────────────────────────────────────────── */
@@ -712,9 +719,10 @@ section + section {
 /* ── TESTIMONIALS ───────────────────────────────────────────────────────── */
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
+.testimonials-grid > *:nth-child(n+4) { display: none; }
 .testimonial {
   background: rgba(255,255,255,.07);
   border-radius: 24px; padding: 2.5rem 2.5rem 2.5rem;

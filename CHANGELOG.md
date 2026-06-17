@@ -5,6 +5,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [41.2] — 2026-06-17
+
+### Added
+- **events.html** — full-width event banner image placeholder (320px, dark, rounded) above event cards
+
+### Changed
+- **Hero text and buttons** — title and paragraph font sizes reduced 10% on `.hero` and `.page-hero` (all pages); hero buttons also 10% smaller
+- **Testimonials** — fixed at 3 columns; 4th+ testimonials hidden
+
+---
+
 ## [41.1] — 2026-06-17
 
 ### Fixed
