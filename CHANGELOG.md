@@ -5,6 +5,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [41.3] — 2026-06-17
+
+### Changed
+- **Sitewide horizontal padding** — increased from 5% to 7% on nav, all sections, hero, page-hero, CTA banner, countdown bar, footer, and mobile nav menu
+- **Section transitions removed** — `section + section` border-radius / overlap effect deleted; sections now flow flat with standard spacing
+- **Two-col image placeholder** — fixed `aspect-ratio` constraint; now uses `height: 400px; position: relative` so image fills full column width
+- **Cards — more compact** — padding reduced 1.8rem → 1.4rem; card-img bleed margins updated; grid gap 1.5rem → 1.2rem; card icons 48px → 40px
+- **Footer — more compact** — padding, grid gap, list margins, h4 margin, and footer-bottom padding all reduced
+- **isabelle.html** — `.cred-placeholder` bleed margins updated to match new card padding (1.4rem)
+- **CSS version** — bumped to v53
+
+---
+
 ## [41.2] — 2026-06-17
 
 ### Added

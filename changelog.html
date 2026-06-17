@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Changelog &#8212; HummingBeing</title>
   <meta name="description" content="Full development history of the HummingBeing website &#8212; every update, fix and improvement documented." />
-  <link rel="stylesheet" href="styles.css?v=52" />
+  <link rel="stylesheet" href="styles.css?v=53" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <style>
@@ -124,6 +124,28 @@
 
 <section>
   <div class="cl-timeline">
+
+    <!-- v41.3 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v41.3</span>
+        <span class="cl-date">2026-06-17</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags">
+          <span class="cl-tag cl-tag-changed">Changed</span>
+        </div>
+        <ul>
+          <li><strong>Horizontal padding</strong> — increased from 5% to 7% sitewide (nav, sections, hero, footer, mobile menu)</li>
+          <li><strong>Section transitions removed</strong> — curved overlap effect between sections deleted; flat layout restored</li>
+          <li><strong>Two-col image</strong> — fixed narrow rendering caused by conflicting aspect-ratio + max-height; now fills full column width at 400px height</li>
+          <li><strong>Cards</strong> — padding reduced 1.8rem → 1.4rem; grid gap 1.5rem → 1.2rem; icon size 48px → 40px</li>
+          <li><strong>Footer</strong> — more compact: padding, grid gap, list margins and section padding all reduced</li>
+          <li><strong>isabelle.html</strong> — credential placeholder bleed margins updated to match new card padding</li>
+          <li>CSS bumped to v53</li>
+        </ul>
+      </div>
+    </div>
 
     <!-- v41.2 -->
     <div class="cl-entry">
@@ -1334,6 +1356,7 @@
 <script src="scripts.js"></script>
 </body>
 </html>
+
 
 
 
