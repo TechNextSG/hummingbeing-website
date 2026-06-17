@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [42.5] — 2026-06-17
+
+### Changed
+- **Buttons** — `border-radius: 50px` → `6px` (all buttons, nav-cta, platform links)
+- **Cards** — `border-radius: 24px` → `10px` (cards, steps, pricing, testimonials, contact form, video wrap, platform cards)
+- **Tags** — `border-radius: 50px` → `4px`
+- **Inputs/textarea** — `border-radius: 12px` → `6px`
+- **Nav dropdown** — `border-radius: 16px` → `8px`
+- **CSS version** — bumped to v63
+
+---
+
 ## [42.4] — 2026-06-17
 
 ### Changed
