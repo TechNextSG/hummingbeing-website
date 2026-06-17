@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [41.9] — 2026-06-17
+
+### Changed
+- **Sitewide layout** — increased horizontal padding further from 9% → 12% for wider side margins on all sections
+- **CSS version** — bumped to v59
+
+---
+
 ## [41.8] — 2026-06-17
 
 ### Changed
