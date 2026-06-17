@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [42.7] — 2026-06-17
+
+### Changed
+- **Feature list** — reduced `li` padding `.65rem → .3rem` top/bottom for tighter bullet spacing; left indent 1.9rem → 1.6rem; font-size .97rem → .94rem
+- **CSS version** — bumped to v65
+
+---
+
 ## [42.6] — 2026-06-17
 
 ### Changed
