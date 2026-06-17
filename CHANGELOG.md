@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [42.3] — 2026-06-17
+
+### Changed
+- **Testimonials section** — changed background from `section-dark` to `section-cream`; removed white colour override on h2; changed testimonial card class from `testimonial` to `testimonial-light`
+- **CTA buttons** — added "Book a Free Discovery Call" CTA after the testimonials grid and after the services cards grid
+
+---
+
 ## [42.2] — 2026-06-17
 
 ### Changed
