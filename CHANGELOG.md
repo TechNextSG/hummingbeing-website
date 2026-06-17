@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [42.0] — 2026-06-17
+
+### Changed
+- **Image placeholders** — all `.img-placeholder` and `.cred-placeholder` changed from dark gradient to light gray (`#f0f1f3 → #e4e6ea`), consistent format sitewide
+- **Two-col image containers** — removed `border-radius: 32px` from `.two-col-image` (image containers should not have rounded corners)
+- **about.html** — removed inline `border-radius:16px` from standalone placeholder
+- **CSS version** — bumped to v60
+
+---
+
 ## [41.9] — 2026-06-17
 
 ### Changed
