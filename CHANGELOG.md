@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [41.6] — 2026-06-17
+
+### Changed
+- **Sitewide — removed floating CTA buttons** — 35+ standalone "Book a Free Consultation" divs removed from all pages (about, tre, somatic-bodywork, somatic-coaching, socials, isabelle, index); sections now clean without redundant centred buttons below every two-col
+- **somatic-bodywork.html** — "Book a Session" btn-dark replaced with btn-primary + descriptor note
+- **CSS version** — bumped to v56
+
+---
+
 ## [41.5] — 2026-06-17
 
 ### Changed
