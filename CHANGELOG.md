@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [42.4] — 2026-06-17
+
+### Changed
+- **Sitewide — removed all dark blue sections** — all `section-dark` (navy background) converted to `section-cream` across all pages; inline white/light text color overrides removed; `.testimonial` cards switched to `.testimonial-light` where applicable
+- **Sitewide — CTAs added to all content sections** — "Book a Free Discovery Call" button added to every content section across index, about, isabelle, tre, somatic-coaching, somatic-bodywork pages
+
+---
+
 ## [42.3] — 2026-06-17
 
 ### Changed
