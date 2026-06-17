@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [42.6] — 2026-06-17
+
+### Changed
+- **Nav links** — removed `text-transform: uppercase`; font-size .76rem → .82rem, weight 300 → 400, letter-spacing 2px → .4px
+- **CSS version** — bumped to v64
+
+---
+
 ## [42.5] — 2026-06-17
 
 ### Changed
