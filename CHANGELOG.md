@@ -5,6 +5,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [44.0] — 2026-06-18
+
+### Changed
+- **tre.html — Process steps** — replaced card-style boxes with a horizontal numbered flow: gold circles connected by a subtle gold line, text below each number
+- **tre.html — Science section** — replaced card grid with open 3-column layout: numbered gold eyebrows (01–03), icons, vertical dividers; no card background or shadow
+- **tre.html — Safety section** — image placeholder set to `min-height: 520px` for a more prominent visual presence
+- **events.html** — removed standalone dark event banner placeholder above audience cards
+- **events.html** — added compact dark image placeholder at top of each audience card (coaches & certification)
+- **events.html** — removed "Never Miss an Event" notification strip
+- **socials.html — Resources** — replaced card grid with horizontal directory-list layout: icon · title + description · link, separated by thin borders
+- **All pages — Ticker** — smaller size (.63rem, reduced padding), slower animation (140s), 8 new items added (Dr. David Berceli Method, Neurogenic Tremors, Vagal Tone, Psoas Release, Singapore · Tokyo · Asia Pacific, Free Discovery Call, Certified Reiki Level II, Nervous System Literacy)
+- **CSS version** — bumped to v71
+
+---
+
 ## [43.3] — 2026-06-18
 
 ### Changed
