@@ -5,10 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About &#8212; HummingBeing</title>
   <meta name="description" content="Learn about HummingBeing &#8212; our philosophy, mission and approach to somatic wellness for people." />
-  <link rel="stylesheet" href="styles.css?v=71" />
+  <link rel="stylesheet" href="styles.css?v=72" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <link rel="preload" as="image" href="poster-about.jpg" fetchpriority="high">
+<style>
+/* Our Philosophy — numbered open column layout */
+.philo-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  margin-top: 3rem;
+}
+.philo-item {
+  padding: 2.2rem 2.5rem 2.2rem 0;
+  border-right: 1px solid rgba(36,46,66,.09);
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.philo-item + .philo-item { padding-left: 2.5rem; }
+.philo-item:last-child { border-right: none; padding-right: 0; }
+.philo-row-2 { border-top: 1px solid rgba(36,46,66,.09); }
+.philo-row-2 .philo-item { padding-top: 2.2rem; }
+.philo-eyebrow {
+  font-family: 'Lato',sans-serif;
+  font-size: .62rem; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold);
+}
+.philo-icon { font-size: 1.4rem; color: var(--navy); margin: .3rem 0; }
+.philo-item h3 { font-family: 'PT Serif',Georgia,serif; font-size: 1.1rem; color: var(--navy); margin-bottom: .2rem; }
+.philo-item p { font-size: .93rem; color: var(--body-text); line-height: 1.7; }
+</style>
 </head>
 <body>
 
@@ -131,34 +156,42 @@
     <div class="divider divider-center"></div>
     <p class="section-subtitle">Most personal development works from the neck up. We start in the body &#8212; where real change lives.</p>
   </div>
-  <div class="cards-grid">
-    <div class="card green-top">
-      <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+  <div class="philo-row">
+    <div class="philo-item">
+      <span class="philo-eyebrow">01</span>
+      <i class="fa-solid fa-brain philo-icon"></i>
       <h3>Neuroscience-Backed</h3>
       <p>Our practices are grounded in the latest understanding of the nervous system, polyvagal theory and somatic neuroscience. Change is not only possible &#8212; it is physiologically built in.</p>
     </div>
-    <div class="card gold-top">
-      <div class="card-icon"><i class="fa-solid fa-hands"></i></div>
+    <div class="philo-item">
+      <span class="philo-eyebrow">02</span>
+      <i class="fa-solid fa-hands philo-icon"></i>
       <h3>Whole-Person Approach</h3>
       <p>We address mind, body, emotions and spirit together. True resilience isn't compartmentalised &#8212; it emerges when all dimensions are engaged and integrated.</p>
     </div>
-    <div class="card sage-top">
-      <div class="card-icon"><i class="fa-solid fa-earth-americas"></i></div>
+    <div class="philo-item">
+      <span class="philo-eyebrow">03</span>
+      <i class="fa-solid fa-earth-americas philo-icon"></i>
       <h3>Culturally Inclusive</h3>
       <p>Having worked with 40+ nationalities across Asia, Europe, the Americas and Russia, we create safe, respectful spaces where every background and identity is honoured.</p>
     </div>
-    <div class="card green-top">
-      <div class="card-icon"><i class="fa-solid fa-microscope"></i></div>
+  </div>
+  <div class="philo-row philo-row-2">
+    <div class="philo-item">
+      <span class="philo-eyebrow">04</span>
+      <i class="fa-solid fa-microscope philo-icon"></i>
       <h3>Grounded in Research</h3>
       <p>TRE&#174;, Somatic Coaching and Strozzi Bodywork all have solid research behind them. We trust the science &#8212; and we also trust you. Both matter here.</p>
     </div>
-    <div class="card gold-top">
-      <div class="card-icon"><i class="fa-solid fa-seedling"></i></div>
+    <div class="philo-item">
+      <span class="philo-eyebrow">05</span>
+      <i class="fa-solid fa-seedling philo-icon"></i>
       <h3>Change That Lasts</h3>
       <p>Quick fixes aren't what we're here for. We invest time in you &#8212; because the practices you build here are yours to keep for the rest of your life.</p>
     </div>
-    <div class="card sage-top">
-      <div class="card-icon"><i class="fa-solid fa-dove"></i></div>
+    <div class="philo-item">
+      <span class="philo-eyebrow">06</span>
+      <i class="fa-solid fa-dove philo-icon"></i>
       <h3>Safe &amp; Compassionate</h3>
       <p>You will never be asked to relive or narrate anything difficult here. The body finds its own way &#8212; gently, quietly, at exactly the pace that feels right for you.</p>
     </div>

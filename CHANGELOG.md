@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [44.1] — 2026-06-18
+
+### Changed
+- **about.html — Philosophy section** — replaced 6-item card grid with numbered open column layout: gold eyebrow numbers (01–06), icon, title, description; vertical dividers between columns, horizontal divider between rows
+- **All pages — Footer** — dark charcoal background (`#1e2028`); all text, links, social icons updated for legibility on dark background; gold hover colour on links
+- **CSS version** — bumped to v72
+
+---
+
 ## [44.0] — 2026-06-18
 
 ### Changed
