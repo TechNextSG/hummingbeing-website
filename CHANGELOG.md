@@ -5,6 +5,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [44.8] — 2026-06-19
+
+### Changed
+- **Content simplification — 7 pages** — full audit and rewrite of long/redundant copy across the site for clarity and mobile readability
+  - **index.html** — philosophy section: 3 paragraphs → 2; service card descriptions shortened for all 3 services
+  - **about.html** — mission section: 3 → 2 paragraphs; hummingbird metaphor: 3 → 2 paragraphs; BHD connection: 3 → 2 paragraphs; pillar 01 and 04 descriptions differentiated and simplified
+  - **isabelle.html** — bio paragraphs 2 & 3 merged into one tighter paragraph
+  - **tre.html** — "What is TRE?" paragraphs 2 & 3 simplified; technical jargon reduced
+  - **somatic-coaching.html** — P3 rewritten to remove embedded quote; Commitment section: 3 → 2 paragraphs; benefits list trimmed from 10 → 7 items
+  - **somatic-bodywork.html** — What is SB P3 simplified; Strozzi Method section: 3 → 2 paragraphs; Soma Etymology: 2 → 1 paragraph
+  - **book.html** — all 6 FAQ answers trimmed to 1–2 tight sentences each
+
+---
+
 ## [44.7] — 2026-06-19
 
 ### Changed
