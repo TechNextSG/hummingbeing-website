@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [44.4] — 2026-06-19
+
+### Changed
+- **All pages — Two-column images** — changed `object-fit` from `cover` to `contain` so photos scale down to fit the frame without cropping
+- **CSS version** — bumped to v74
+
+---
+
 ## [44.3] — 2026-06-19
 
 ### Changed
