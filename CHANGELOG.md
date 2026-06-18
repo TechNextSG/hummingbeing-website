@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [44.6] — 2026-06-19
+
+### Changed
+- **index.html — Hero section** — replaced static CSS background image with looping video (`index-hero.mp4`) and JPG poster (`index-hero.jpg`); moved dark gradient overlay to `::after` pseudo-element so video renders beneath it; updated preload hint to new poster image
+- **CSS version** — bumped to v75
+
+---
+
 ## [44.5] — 2026-06-19
 
 ### Changed
