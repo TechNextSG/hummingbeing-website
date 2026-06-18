@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [43.2] — 2026-06-18
+
+### Changed
+- **Process steps** — removed card box style (background, border, box-shadow, border-radius); steps now display as clean open layout with no container
+- **CSS version** — bumped to v69
+
+---
+
 ## [43.1] — 2026-06-17
 
 ### Changed

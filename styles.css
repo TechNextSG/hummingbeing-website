@@ -836,16 +836,11 @@ section { padding: 6rem 12%; }
 .step {
   text-align: center;
   padding: 2.2rem 1.6rem 2rem;
-  background: var(--white);
-  border-radius: 10px;
-  border: 1px solid rgba(36,46,66,.06);
-  box-shadow: 0 4px 20px rgba(36,46,66,.07);
-  transition: transform .38s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+  transition: transform .38s cubic-bezier(.34,1.56,.64,1);
   cursor: default;
 }
 .step:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 22px 56px rgba(36,46,66,.13);
+  transform: translateY(-6px);
 }
 .step-num {
   width: 60px; height: 60px; border-radius: 50%;
