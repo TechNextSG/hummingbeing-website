@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Events &amp; Sessions &#8212; HummingBeing</title>
   <meta name="description" content="Upcoming TRE&#174;, Somatic Coaching and Somatic Bodywork events, workshops and group sessions with Isabelle Claus Teixeira." />
-  <link rel="stylesheet" href="styles.css?v=74" />
+  <link rel="stylesheet" href="styles.css?v=76" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <link rel="preload" as="image" href="poster-events.jpg" fetchpriority="high">
@@ -243,8 +243,24 @@
     }
     @media (max-width: 600px) {
       .events-grid { grid-template-columns: 1fr; }
-      .countdown-units { gap: .9rem; }
-      .cd-sep { font-size: 1.8rem; }
+      .countdown-units { gap: .7rem; }
+      .cd-sep { font-size: 1.6rem; padding-top: .15rem; }
+      .cd-unit { min-width: 44px; }
+      .evt-audience-card { padding: 1.5rem 1.2rem; gap: .85rem; }
+      .evt-price-main { font-size: 1.8rem; }
+      .ecd-meta { font-size: .78rem; gap: .4rem; margin-bottom: 2.5rem; }
+      .ecd-heading { margin-bottom: .5rem; }
+    }
+    @media (max-width: 480px) {
+      .countdown-wrap { padding: 1.2rem 0 1rem; }
+      .countdown-units { gap: .5rem; }
+      .cd-unit { min-width: 38px; }
+      .ecd-ring-wrap, .ecd-svg { width: 80px; height: 80px; }
+      .ecd-num { font-size: 1.7rem; }
+      .ecd-units { gap: 1rem; margin-bottom: 2.5rem; }
+      .ecd-lbl { font-size: .55rem; letter-spacing: 1.5px; }
+      .ecd-actions { flex-direction: column; align-items: center; }
+      .btn-ghost-light { width: 100%; text-align: center; padding: .8rem 1.5rem; }
     }
 
     /* -- BIG ANIMATED COUNTDOWN SECTION ------------------------------------ */

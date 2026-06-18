@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TRE&#174; Tension &amp; Trauma Release Exercises &#8212; HummingBeing</title>
   <meta name="description" content="Learn about TRE&#174; &#8212; Tension and Trauma Release Exercises developed by Dr. David Berceli. Release stored stress and trauma through neurogenic tremors." />
-  <link rel="stylesheet" href="styles.css?v=74" />
+  <link rel="stylesheet" href="styles.css?v=76" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <link rel="preload" as="image" href="poster-tre.jpg" fetchpriority="high">
@@ -62,6 +62,25 @@
 .science-icon { font-size: 1.5rem; color: var(--navy); margin: .4rem 0; }
 .science-item h3 { font-family: 'PT Serif',Georgia,serif; font-size: 1.15rem; color: var(--navy); margin-bottom: .2rem; }
 .science-item p { font-size: .94rem; color: var(--body-text); line-height: 1.75; }
+@media (max-width: 700px) {
+  .tre-steps { grid-template-columns: 1fr 1fr; gap: 2rem 1rem; }
+  .tre-steps::before { display: none; }
+  .tre-step-item { padding: 0 .8rem; }
+  .science-row { grid-template-columns: 1fr 1fr; }
+  .science-item { padding: 1.5rem 1.5rem 1.5rem 0; border-right: none; border-bottom: 1px solid rgba(36,46,66,.09); }
+  .science-item + .science-item { padding-left: 1.5rem; }
+  .science-item:nth-child(odd):not(:last-child) { border-right: 1px solid rgba(36,46,66,.09); }
+  .science-item:last-child { border-bottom: none; }
+}
+@media (max-width: 480px) {
+  .tre-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+  .tre-step-item { padding: 0; display: flex; align-items: flex-start; gap: 1rem; text-align: left; }
+  .tre-step-num { margin: 0; flex-shrink: 0; width: 44px; height: 44px; font-size: 1.1rem; }
+  .science-row { grid-template-columns: 1fr; }
+  .science-item,
+  .science-item + .science-item { padding: 1.2rem 0; border-right: none; }
+  .science-item:nth-child(odd):not(:last-child) { border-right: none; }
+}
 </style>
 </head>
 <body>

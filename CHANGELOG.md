@@ -5,6 +5,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [44.7] — 2026-06-19
+
+### Changed
+- **All pages — Mobile responsive overhaul (v76)**
+  - **Nav/header**: reduced side padding from 12% → 5% (900px) → 4% (480px); hamburger now sits cleanly at the right edge; mobile menu padding matches nav; `max-height + overflow-y: auto` prevents off-screen overflow on tall menus
+  - **Section padding**: reduced from `6rem 12%` to `4.5rem 6%` (900px) → `3rem 5%` (600px) → `2.5rem 4%` (480px) — eliminates excessive side gaps on mobile
+  - **Footer**: side padding reduced to `5%` (600px) / `4%` (480px); tighter link gaps; bottom bar stacks cleanly
+  - **Cards**: gap and padding reduced at 600px and 480px for compact display
+  - **Two-col image**: `min-height` reduced to `240px` when stacked on mobile
+  - **Resource list (socials)**: at 480px collapses to 2-column grid with link wrapping below body text
+- **about.html — Philosophy grid**: added 700px (2-col) and 480px (1-col) breakpoints; borders adapt to stacked layout
+- **tre.html — Steps & Science**: steps go 4→2→1 col with connecting line hidden; science row goes 3→2→1 col; step items become horizontal at 480px
+- **events.html — Countdown & cards**: tighter countdown gaps at 600px and 480px; big animated rings shrink to 80px at 480px; CTA buttons stack at 480px; audience card padding reduced
+- **CSS version** — bumped to v76
+
+---
+
 ## [44.6] — 2026-06-19
 
 ### Changed
