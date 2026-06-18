@@ -674,13 +674,15 @@ section { padding: 6rem 12%; }
 .two-col-text p { color: var(--body-text); margin-bottom: 1.2rem; font-size: 1rem; }
 
 .two-col-image {
-  height: 400px;
+  min-height: 520px;
+  align-self: stretch;
   position: relative;
   overflow: hidden;
   box-shadow: 0 16px 56px rgba(36,46,66,.16);
   background: var(--off-white);
 }
 .two-col-image img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover; display: block;
   transition: transform .5s ease;

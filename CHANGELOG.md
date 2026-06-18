@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [44.2] — 2026-06-18
+
+### Changed
+- **All pages — Two-column images** — changed from fixed `height: 400px` to `min-height: 520px; align-self: stretch` so images grow to fill the full height of the content column beside them; image uses `position: absolute; inset: 0` to fill the container reliably
+- **CSS version** — bumped to v73
+
+---
+
 ## [44.1] — 2026-06-18
 
 ### Changed
