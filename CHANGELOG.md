@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [44.5] — 2026-06-19
+
+### Changed
+- **isabelle.html — Hero section** — added looping video background (`isabelle-hero.mp4`) with static image poster (`isabelle-hero.png`); video autoplay, muted, loop, playsinline
+
+---
+
 ## [44.4] — 2026-06-19
 
 ### Changed
