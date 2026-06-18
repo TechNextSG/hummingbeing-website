@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [43.3] — 2026-06-18
+
+### Changed
+- **isabelle.html — Global Journey section** — increased vertical padding to 7rem top/bottom for more breathing room
+- **isabelle.html — Info items** — replaced card boxes with a connected line strip: gold top border, vertical dividers between items, no background or shadow
+- **isabelle.html — Services section** — replaced card grid with open column layout: vertical dividers, circular icon badges, uppercase gold link labels; no card background/border/shadow
+- **CSS version** — bumped to v70
+
+---
+
 ## [43.2] — 2026-06-18
 
 ### Changed
