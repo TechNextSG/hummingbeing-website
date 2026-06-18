@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [44.3] — 2026-06-19
+
+### Changed
+- **All pages — Footer contact email** — updated from `hello@hummingbeing.com` to `isabelle@bhdasia.com`
+
+---
+
 ## [44.2] — 2026-06-18
 
 ### Changed
