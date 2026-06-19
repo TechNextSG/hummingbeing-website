@@ -5,6 +5,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [45.3] — 2026-06-19
+
+### Added
+- **gallery.html — real images** — replaced 10 of 12 placeholder "Photo Coming Soon" cards with real photos from Isabelle's collection; copied to `images/gallery/` with clean URL-safe filenames
+  - Isabelle — October 2023
+  - Kyoto Station — October 2023
+  - TRE® in Vietnam
+  - Teaching TRE® Module 1
+  - TRE® Module 1 — January 2026
+  - TRE® Group Practice
+  - Somatic Session, Somatic Bodywork, Working with the Body, Body Release Work
+
+---
+
 ## [45.2] — 2026-06-19
 
 ### Fixed
