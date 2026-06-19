@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [45.7] — 2026-06-19
+
+### Added
+- **tre.html — Safety & Suitability section** — replaced placeholder with group meditation image (`tre-safety-group.jpg`)
+- "What Is TRE®?" and "Benefits" placeholders remain — source subfolders were empty
+
+---
+
 ## [45.6] — 2026-06-19
 
 ### Added
