@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.0] — 2026-06-19
+
+### Added / Changed
+- **book.html — Isabelle card portrait** — Replaced `fa-user` icon with `isabelle-her-story.jpg` displayed as a circular 90px avatar using the existing `.isa-avatar` CSS class.
+- **about.html — Hummingbird Metaphor image frame** — Converted to `.two-col-image` wrapper with `min-height:572px` (10% taller than standard 520px).
+
+---
+
 ## [46.9] — 2026-06-19
 
 ### Fixed
