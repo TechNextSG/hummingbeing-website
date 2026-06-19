@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [46.0] — 2026-06-19
+
+### Added
+- **Logo — all pages** — replaced text logo with real HummingBeing logo image (hummingbird + wordmark) in both nav and footer across all 11 pages
+  - Nav: dual-image swap — `logo-dark.png` shown on transparent hero, `logo-light.png` shown when nav scrolls to white background
+  - Footer: `logo-dark.png` (always dark background)
+  - Both PNGs have transparent backgrounds; 2048×500px at 44px display height in nav, 38px in footer
+
+---
+
 ## [45.9] — 2026-06-19
 
 ### Added
