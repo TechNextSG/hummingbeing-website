@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [46.6] — 2026-06-19
+
+### Added
+- **about.html — Part of the BHD Family** — Replaced "Photo Coming Soon" placeholder with `about-bhd-family.jpg` — group somatic healing session on yoga mats (18.7 MB PNG converted to 1.2 MB JPG).
+
+---
+
 ## [46.5] — 2026-06-19
 
 ### Added / Changed / Fixed
