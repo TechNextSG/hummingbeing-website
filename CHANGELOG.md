@@ -5,6 +5,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [44.9] — 2026-06-19
+
+### Changed
+- **Button copy variations — 6 pages** — replaced repetitive "Book a Free Discovery Call" in-section footer buttons with contextual text matching each section's purpose
+  - **index.html** — Services → "Find Your Practice"; Testimonials → "Start Your Journey"
+  - **about.html** — Mission → "Come Back to Yourself"; Philosophy → "Explore the Practices"; Hummingbird → "Find Your Way Back"
+  - **isabelle.html** — Bio → "Work With Isabelle"; Credentials → "See If We're a Fit"; Global Journey → "Connect With Isabelle"; Personal Note → "Start the Conversation"
+  - **tre.html** — What is TRE → "Try TRE® for Yourself"; How it Works → "Experience TRE®"; Benefits → "Start Releasing"; Science → "Explore the Science"; TRE Video → "Book a TRE® Session"; Safety → "Find Out If TRE® Is Right for You"; TRE in Asia → "Book with Isabelle"; Testimonials → "Experience It Yourself"
+  - **somatic-coaching.html** — What is SC → "Explore Somatic Coaching"; How it Differs → "Take a Different Approach"; Benefits → "Start Noticing Changes"; Process → "Begin the Journey"; Commitment → "I'm Ready to Begin"; Who it's For → "This Sounds Like Me"; Testimonials → "Start My Somatic Journey"
+  - **somatic-bodywork.html** — Strozzi Method → "Try Somatic Bodywork"; Benefits → "Release What You're Holding"; Session → "Book a Session"; Soma Etymology → "Experience the Practice"; Testimonials → "Rediscover Your Aliveness"
+
+---
+
 ## [44.8] — 2026-06-19
 
 ### Changed
