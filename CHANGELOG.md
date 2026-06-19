@@ -5,6 +5,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [45.4] — 2026-06-19
+
+### Fixed
+- **gallery.html — image captions** — corrected 6 captions that didn't match the actual photo content
+  - `gallery-screenshot-practice.jpg`: "TRE® Group Practice" → "Somatic Bodywork Session" (one-on-one bodywork, not a group)
+  - `gallery-ws-1.jpg`: "Somatic Session" → "TRE® Module 1 Training" (Isabelle in front of Module 1 slide)
+  - `gallery-ws-2.jpg`: "Somatic Bodywork" → "At the Esplanade, Singapore" (Isabelle with colleague at Esplanade)
+  - `gallery-ws-3.jpg`: "Working with the Body" → "Retreat at Leebong Island" (group photo at island sign)
+  - `gallery-ws-4.jpg`: "Body Release Work" → "TRE® Certification" (Isabelle receiving certificate)
+  - `gallery-isabelle-vietnam-tre.jpg`: "TRE® in Vietnam" → "TRE® Asia Conference, Vietnam" (conference with name badges)
+
+---
+
 ## [45.3] — 2026-06-19
 
 ### Added
