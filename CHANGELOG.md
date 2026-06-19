@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [45.6] — 2026-06-19
+
+### Added
+- **about.html — images** — replaced 2 of 3 placeholders with real images
+  - "Why HummingBeing Exists" section → hummingbird in golden sunlight (`about-why-exists.jpg`)
+  - "The Hummingbird Metaphor" section → hummingbird at red flowers (`about-hummingbird-metaphor.jpg`)
+  - "Part of the BHD Family" placeholder remains — source image is 18.7 MB PNG, too large to deploy
+
+---
+
 ## [45.5] — 2026-06-19
 
 ### Added
