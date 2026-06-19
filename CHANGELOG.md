@@ -5,6 +5,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [45.1] — 2026-06-19
+
+### Changed
+- **Philosophy tone pass — all pages** — removed marketing superlatives, credential-signaling and image-building language sitewide; replaced with humble, service-oriented copy consistent with Isabelle's philosophy
+  - **index.html** — Services subtitle: removed "deep, lasting change" promise → "work with your nervous system directly — not just your mind"
+  - **tre.html** — "How It Works" subtitle: removed "profound results" → factual description of what the exercises are
+  - **somatic-coaching.html** — Process subtitle: "designed for lasting change" → "builds on itself at whatever pace feels right for you"; Testimonials heading: "The Somatic Difference" → "Client Voices"
+  - **somatic-bodywork.html** — Benefits subtitle: "whole-person transformation that touches every dimension" → honest description of approach; Testimonials heading: "Transformations Through Bodywork" → "Client Voices"; fixed broken encoding on who-it's-for section
+  - **isabelle.html** — Global Journey heading: removed "One Mission" brand tagline; section now ends at the facts
+  - **book.html** — Trust bar: replaced credential-signaling items (trophy icons, "25+ Years Experience", "Certified TRE Provider") with service-oriented items ("Isabelle reads every message", "No sales pressure — ever", "You set the pace"); Pricing section eyebrow: "Investment" → "Sessions & Pricing"
+
+---
+
 ## [45.0] — 2026-06-19
 
 ### Changed
