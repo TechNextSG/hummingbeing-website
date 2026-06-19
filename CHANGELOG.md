@@ -5,6 +5,27 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.2] — 2026-06-19
+
+### Added / Changed
+- **SEO — Page titles** — All 10 HTML pages now have keyword-rich, geo-targeted titles replacing generic placeholders. Format: `Service + Location | Brand`.
+- **SEO — Meta descriptions** — All 10 pages updated with concise, keyword-optimised copy covering TRE®, somatic coaching, Isabelle's credentials and locations (Singapore, Japan, online).
+- **SEO — Meta keywords** — Keyword tags added to all 10 pages with primary (TRE Singapore, somatic coaching Singapore, Isabelle Claus Teixeira) and secondary terms.
+- **SEO — Canonical URLs** — `<link rel="canonical">` added to all 10 pages.
+- **SEO — Robots meta** — `index, follow` directive added to all 10 pages.
+- **AEO/GEO — Open Graph tags** — Full OG set (type, site_name, title, description, url, image, image:alt, locale) added to all 10 pages.
+- **AEO/GEO — Twitter / X Cards** — `summary_large_image` card tags added to all 10 pages.
+- **Structured Data — Organization + WebSite** — JSON-LD schema on index.html.
+- **Structured Data — Person** — JSON-LD schema on isabelle.html with credentials, knowsAbout and workLocation.
+- **Structured Data — Service ×3** — Schema.org Service schemas on tre.html, somatic-coaching.html, somatic-bodywork.html with provider, areaServed and pricing.
+- **Structured Data — FAQPage** — JSON-LD on book.html built from all 6 actual FAQ accordion Q&As.
+- **Structured Data — Event ×4** — JSON-LD Event schemas on events.html for Aug 2026 – Feb 2027 workshops/certification modules.
+- **Google Tag (GA4 placeholder)** — Async GA4 snippet added to all 10 pages with `G-XXXXXXXXXX` placeholder.
+- **sitemap.xml** — New file listing all 10 pages with change frequencies and priorities.
+- **robots.txt** — New file allowing all crawlers and referencing the sitemap.
+
+---
+
 ## [47.1] — 2026-06-19
 
 ### Added / Changed
