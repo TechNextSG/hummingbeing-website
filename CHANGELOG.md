@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [45.8] — 2026-06-19
+
+### Added
+- **somatic-coaching.html — "What Is Somatic Coaching?" section** — replaced placeholder with woman stretching in golden light (`sc-what-is.jpg`)
+- "What You Can Expect" placeholder remains — source subfolder was empty
+
+---
+
 ## [45.7] — 2026-06-19
 
 ### Added
