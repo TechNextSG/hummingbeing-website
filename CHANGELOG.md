@@ -5,6 +5,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [46.5] — 2026-06-19
+
+### Added / Changed / Fixed
+- **scripts.js — chatbot rewrite** — Removed `NAV` dictionary; no more direct page redirects from suggestion buttons. All suggestion buttons now trigger `respond()` inline. Page links rendered as styled `.hb-link-btn` anchor only where navigation is genuinely required.
+- **scripts.js — chatbot KB** — Expanded from 22 to 27 entries with richer keyword lists, input tolerance, and contextual 3–4 suggestion buttons on every response.
+- **scripts.js — match()** — Phrase-level exact match + word-level starts-with partial matching + minimum-overlap threshold; near-miss inputs now resolve correctly.
+- **somatic-coaching.html — Honest About Commitment** — Replaced hourglass icon placeholder with `sc-honest-commitment.jpg`.
+- **All pages — nav logo** — Increased height 44 px → 56 px.
+- **All pages — footer logo** — Increased height 38 px → 48 px.
+- **styles.css — .hb-link-btn** — New styled anchor class for chatbot page-link buttons.
+
+---
+
 ## [46.4] — 2026-06-19
 
 ### Fixed / Changed

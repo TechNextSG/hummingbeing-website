@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>HummingBeing — Image Audit</title>
+<style>
+  :root{--navy:#242e42;--gold:#f5a623;--gold-dark:#c8860a;--cream:#f8f5f0;--white:#ffffff;--border:rgba(36,46,66,.12);--text-mid:#6b7591;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--navy);font-size:14px;line-height:1.6}
+  header{background:var(--navy);color:#fff;padding:2rem 3rem 1.6rem}
+  header h1{font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+  header p{color:rgba(255,255,255,.7);font-size:.88rem}
+  .summary-bar{display:flex;gap:1.5rem;flex-wrap:wrap;background:var(--white);padding:1.2rem 3rem;border-bottom:1px solid var(--border)}
+  .stat{display:flex;flex-direction:column;gap:.15rem}
+  .stat strong{font-size:1.6rem;font-weight:800;color:var(--navy)}
+  .stat span{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-mid)}
+  .stat.bad strong{color:#c0392b}
+  .stat.good strong{color:#1a9e4e}
+  main{padding:2rem 3rem;display:flex;flex-direction:column;gap:2.5rem}
+  section h2{font-size:1.05rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:.6rem 1rem;margin-bottom:1rem;border-radius:3px}
+  .sec-a h2{background:rgba(192,57,43,.1);color:#c0392b;border-left:4px solid #c0392b}
+  .sec-b h2{background:rgba(26,158,78,.1);color:#1a9e4e;border-left:4px solid #1a9e4e}
+  table{width:100%;border-collapse:collapse;background:var(--white);border-radius:4px;overflow:hidden;box-shadow:0 2px 12px rgba(36,46,66,.07)}
+  thead tr{background:var(--navy);color:#fff}
+  th{padding:.7rem 1rem;text-align:left;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+  td{padding:.65rem 1rem;border-bottom:1px solid var(--border);font-size:.88rem;vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:rgba(245,166,35,.04)}
+  .file{color:var(--gold-dark);font-weight:700;white-space:nowrap}
+  .section-label{color:var(--text-mid);font-style:italic;font-size:.84rem}
+  .line{color:rgba(36,46,66,.45);font-size:.8rem;white-space:nowrap}
+  .imgfile{font-family:'Courier New',monospace;font-size:.82rem;background:rgba(36,46,66,.06);padding:.1em .4em;border-radius:3px;color:var(--navy)}
+  .note{font-size:.78rem;color:var(--text-mid);margin-top:.2rem}
+  .ext{font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.15rem .45rem;border-radius:2px;background:rgba(36,46,66,.08);color:var(--text-mid);margin-left:.35rem}
+  .ext.remote{background:rgba(245,166,35,.15);color:var(--gold-dark)}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>HummingBeing Website — Image Audit</h1>
+  <p>Generated 2026-06-19 &nbsp;·&nbsp; All 11 HTML files audited</p>
+</header>
+
+<div class="summary-bar">
+  <div class="stat bad"><strong>9</strong><span>Placeholders remaining</span></div>
+  <div class="stat good"><strong>20</strong><span>Assigned images (local)</span></div>
+  <div class="stat good"><strong>4</strong><span>Assigned images (remote URL)</span></div>
+  <div class="stat"><strong>11</strong><span>Files audited</span></div>
+</div>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════ SECTION A -->
+<section class="sec-a">
+  <h2>A) All Remaining Placeholders (img-placeholder / Photo Coming Soon)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>Section / Context</th>
+        <th>Line</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="file">index.html</td>
+        <td>
+          "The HummingBeing Philosophy" — <em>Like the Hummingbird, You Are Built to Thrive</em>
+          <div class="note">Eyebrow: "The HummingBeing Philosophy" · section-sage</div>
+        </td>
+        <td class="line">182</td>
+      </tr>
+      <tr>
+        <td class="file">about.html</td>
+        <td>
+          "Part of the BHD Family" — <em>Business &amp; Human Development</em>
+          <div class="note">Eyebrow: "Part of the BHD Family" · section-white · two-col reverse</div>
+        </td>
+        <td class="line">239</td>
+      </tr>
+      <tr>
+        <td class="file">tre.html</td>
+        <td>
+          "What Is TRE®?" — <em>Your Nervous System's Natural Reset Button</em>
+          <div class="note">Eyebrow: "What Is TRE®?" · section-cream · two-col</div>
+        </td>
+        <td class="line">184</td>
+      </tr>
+      <tr>
+        <td class="file">tre.html</td>
+        <td>
+          "Benefits" — <em>What TRE® Can Do for You</em>
+          <div class="note">Eyebrow: "Benefits" · section-white · two-col reverse · gold-bg</div>
+        </td>
+        <td class="line">242</td>
+      </tr>
+      <tr>
+        <td class="file">somatic-coaching.html</td>
+        <td>
+          "What You Can Expect" — <em>What You Might Start to Notice</em>
+          <div class="note">Eyebrow: "What You Can Expect" · section-white · two-col reverse · gold-bg</div>
+        </td>
+        <td class="line">179</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>
+          Gallery grid — caption: <em>"Healing Touch"</em>
+          <div class="note">data-cat="images" · g-img-card · no onclick lightbox (placeholder, no src)</div>
+        </td>
+        <td class="line">601</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>
+          Gallery grid — caption: <em>"Somatic Practice"</em>
+          <div class="note">data-cat="images" · g-img-card · no onclick lightbox (placeholder, no src)</div>
+        </td>
+        <td class="line">611</td>
+      </tr>
+      <tr>
+        <td class="file">events.html</td>
+        <td>
+          "For Coaches" card — <em>Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring</em>
+          <div class="note">evt-audience-card evt-coaches · div.evt-card-img</div>
+        </td>
+        <td class="line">565</td>
+      </tr>
+      <tr>
+        <td class="file">events.html</td>
+        <td>
+          "TRE® Provider Certification" card — <em>Become a Certified TRE® Provider</em>
+          <div class="note">evt-audience-card evt-certification · div.evt-card-img</div>
+        </td>
+        <td class="line">606</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ SECTION B -->
+<section class="sec-b">
+  <h2>B) All Assigned Images (inside .two-col-image or section layout divs)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>Section / Context</th>
+        <th>Image File</th>
+        <th>Line</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- index.html -->
+      <tr>
+        <td class="file">index.html</td>
+        <td>Service cards — "TRE® Exercises" <span class="section-label">card-img</span></td>
+        <td><span class="imgfile">images/card-tre.jpg</span></td>
+        <td class="line">153</td>
+      </tr>
+      <tr>
+        <td class="file">index.html</td>
+        <td>Service cards — "Somatic Coaching" <span class="section-label">card-img</span></td>
+        <td><span class="imgfile">images/card-somatic-coaching.png</span></td>
+        <td class="line">160</td>
+      </tr>
+      <tr>
+        <td class="file">index.html</td>
+        <td>Service cards — "Somatic Bodywork" <span class="section-label">card-img</span></td>
+        <td><span class="imgfile">images/card-somatic-bodywork.png</span></td>
+        <td class="line">167</td>
+      </tr>
+      <tr>
+        <td class="file">index.html</td>
+        <td>"Is This for You?" — <em>You Don't Need a Particular Story</em> <span class="section-label">two-col-image gold-bg · two-col reverse</span></td>
+        <td><span class="imgfile">images/home-is-this-for-you.jpg</span></td>
+        <td class="line">259</td>
+      </tr>
+
+      <!-- about.html -->
+      <tr>
+        <td class="file">about.html</td>
+        <td>"Why HummingBeing Exists" — <em>A Place to Come Back to Yourself</em> <span class="section-label">two-col-image · two-col</span></td>
+        <td><span class="imgfile">images/about-why-exists.jpg</span></td>
+        <td class="line">151</td>
+      </tr>
+      <tr>
+        <td class="file">about.html</td>
+        <td>"The Hummingbird Metaphor" — <em>200 Beats Per Minute</em> <span class="section-label">inline div · two-col</span></td>
+        <td><span class="imgfile">images/about-hummingbird-metaphor.jpg</span></td>
+        <td class="line">229</td>
+      </tr>
+
+      <!-- isabelle.html -->
+      <tr>
+        <td class="file">isabelle.html</td>
+        <td>"Her Story" — <em>From Fortune 100 HR Leader to Somatic Practitioner</em> <span class="section-label">two-col-image · two-col</span></td>
+        <td><span class="imgfile ext remote">https://www.hummingbeing.com/wp-content/uploads/2020/01/Artboard-1@2x-100.jpg</span>
+          <div class="note">Remote URL — still on old WordPress host</div>
+        </td>
+        <td class="line">161</td>
+      </tr>
+      <tr>
+        <td class="file">isabelle.html</td>
+        <td>Credentials card — "Reiki Practitioner Level II" <span class="section-label">card-img inside card</span></td>
+        <td><span class="imgfile">images/reiki-level-2.jpg</span></td>
+        <td class="line">214</td>
+      </tr>
+      <tr>
+        <td class="file">isabelle.html</td>
+        <td>"A Truly Global Journey" — <em>9 Countries. 40+ Nationalities.</em> <span class="section-label">two-col-image · two-col reverse</span></td>
+        <td><span class="imgfile ext remote">https://www.hummingbeing.com/wp-content/uploads/2019/11/isatall.jpg</span>
+          <div class="note">Remote URL — still on old WordPress host</div>
+        </td>
+        <td class="line">228</td>
+      </tr>
+
+      <!-- somatic-coaching.html -->
+      <tr>
+        <td class="file">somatic-coaching.html</td>
+        <td>"What Is Somatic Coaching?" — <em>The Intelligence Your Body Has Always Had</em> <span class="section-label">two-col-image · two-col</span></td>
+        <td><span class="imgfile">images/sc-what-is.jpg</span></td>
+        <td class="line">111</td>
+      </tr>
+
+      <!-- somatic-bodywork.html -->
+      <tr>
+        <td class="file">somatic-bodywork.html</td>
+        <td>"What Is Somatic Bodywork?" — <em>Working Through the Body</em> <span class="section-label">two-col-image · two-col</span></td>
+        <td><span class="imgfile">images/sb-what-is.png</span></td>
+        <td class="line">111</td>
+      </tr>
+      <tr>
+        <td class="file">somatic-bodywork.html</td>
+        <td>"The Methodology" — <em>The Strozzi Somatic Bodywork Approach</em> <span class="section-label">two-col-image gold-bg · two-col reverse</span></td>
+        <td><span class="imgfile">images/sb-methodology.png</span></td>
+        <td class="line">132</td>
+      </tr>
+      <tr>
+        <td class="file">somatic-bodywork.html</td>
+        <td>"Who Somatic Bodywork Serves" — <em>For Those Ready to Meet Themselves Fully</em> <span class="section-label">two-col-image · two-col</span></td>
+        <td><span class="imgfile">images/sb-who-serves.png</span></td>
+        <td class="line">267</td>
+      </tr>
+
+      <!-- tre.html -->
+      <tr>
+        <td class="file">tre.html</td>
+        <td>"Safety &amp; Suitability" — <em>Is TRE® Right for Me?</em> <span class="section-label">two-col-image (right column) · two-col</span></td>
+        <td><span class="imgfile">images/tre-safety-group.jpg</span></td>
+        <td class="line">335</td>
+      </tr>
+
+      <!-- gallery.html — local image cards -->
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "Isabelle Claus Teixeira" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile ext remote">https://www.hummingbeing.com/wp-content/uploads/2020/01/Artboard-1@2x-100.jpg</span></td>
+        <td class="line">456</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "Isabelle at Work" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile ext remote">https://www.hummingbeing.com/wp-content/uploads/2019/11/isatall.jpg</span></td>
+        <td class="line">469</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "Isabelle — October 2023" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile">images/gallery/gallery-isabelle-oct-2023.jpg</span></td>
+        <td class="line">482</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "Kyoto Station — October 2023" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile">images/gallery/gallery-isabelle-kyoto-2023.jpg</span></td>
+        <td class="line">494</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "TRE® Asia Conference, Vietnam" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile">images/gallery/gallery-isabelle-vietnam-tre.jpg</span></td>
+        <td class="line">506</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "Teaching TRE® Module 1" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile">images/gallery/gallery-isabelle-teaching-tre.jpg</span></td>
+        <td class="line">518</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "TRE® Module 1 — January 2026" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile">images/gallery/gallery-tre-module1-2026.jpg</span></td>
+        <td class="line">530</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "Somatic Bodywork Session" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile">images/gallery/gallery-screenshot-practice.jpg</span></td>
+        <td class="line">542</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "TRE® Module 1 Training" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile">images/gallery/gallery-ws-1.jpg</span></td>
+        <td class="line">554</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "At the Esplanade, Singapore" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile">images/gallery/gallery-ws-2.jpg</span></td>
+        <td class="line">566</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "Retreat at Leebong Island" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile">images/gallery/gallery-ws-3.jpg</span></td>
+        <td class="line">578</td>
+      </tr>
+      <tr>
+        <td class="file">gallery.html</td>
+        <td>Gallery grid — "TRE® Certification" <span class="section-label">g-img-card</span></td>
+        <td><span class="imgfile">images/gallery/gallery-ws-4.jpg</span></td>
+        <td class="line">590</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2 style="font-size:.88rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-mid);margin-bottom:.6rem;padding:0">Notes</h2>
+  <ul style="list-style:none;display:flex;flex-direction:column;gap:.55rem;font-size:.88rem;color:var(--navy)">
+    <li>→ <strong>book.html, socials.html, changelog.html:</strong> No img-placeholder or .two-col-image layout images. Clean.</li>
+    <li>→ <strong>isabelle.html hero:</strong> Uses <code style="background:rgba(36,46,66,.06);padding:.1em .35em;border-radius:3px">images/isabelle-hero.png</code> as poster + <code style="background:rgba(36,46,66,.06);padding:.1em .35em;border-radius:3px">images/isabelle-hero.mp4</code> — not counted above as those are hero video assets, not section layout images.</li>
+    <li>→ <strong>4 remote URLs</strong> (hummingbeing.com WordPress) appear on isabelle.html (×2) and gallery.html (×2). Worth migrating locally to avoid dependency on old host.</li>
+    <li>→ <strong>events.html</strong> event cards use <code style="background:rgba(36,46,66,.06);padding:.1em .35em;border-radius:3px">div.evt-card-img</code> (not <code>img-placeholder</code> class) but display identical "Event Photo Coming Soon" text — counted in Section A.</li>
+  </ul>
+</section>
+
+</main>
+</body>
+</html>

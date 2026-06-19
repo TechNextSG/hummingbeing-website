@@ -1122,6 +1122,16 @@ footer {
   display: flex; align-items: center; justify-content: center;
 }
 .hb-chat-foot .hb-send:hover { background: var(--gold-dark); }
+.hb-link-btn {
+  display: inline-block; align-self: flex-start;
+  color: var(--gold-dark); font-size: .72rem; font-weight: 700;
+  letter-spacing: .5px; text-decoration: none;
+  padding: .3rem .7rem; border-radius: 4px;
+  border: 1.5px solid var(--gold); background: rgba(245,166,35,.06);
+  transition: background .2s, color .2s;
+  margin-top: .1rem;
+}
+.hb-link-btn:hover { background: var(--gold); color: var(--white); }
 @media (max-width: 600px) {
   .hb-chat-btn { bottom: calc(1.25rem + 52px + .6rem); right: 1.25rem; width: 52px; height: 52px; font-size: 1.4rem; }
   .hb-chat-win { width: calc(100vw - 2rem); right: 1rem; bottom: calc(1.25rem + 52px + .6rem + 52px + .6rem); }
