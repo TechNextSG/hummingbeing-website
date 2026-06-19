@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [46.3] — 2026-06-19
+
+### Added / Fixed
+- **styles.css** — fixed `object-fit: contain` → `cover` on `.two-col-image img` so all section images fill their frames perfectly
+- **index.html — Philosophy** — replaced placeholder with hummingbird near pink flowers (`home-philosophy.jpg`)
+- **tre.html — What Is TRE®?** — replaced placeholder with woman in quiet awareness (`tre-what-is.jpg`)
+- **tre.html — Benefits** — replaced placeholder with smiling woman post-session (`tre-benefits.jpg`)
+- **somatic-coaching.html — What Is Somatic Coaching?** — corrected misassigned image; now shows proper group coaching scene (`sc-what-is.jpg`)
+- **somatic-coaching.html — What You Can Expect** — replaced placeholder with serene yoga studio scene (`sc-what-expect.jpg`)
+
+---
+
 ## [46.2] — 2026-06-19
 
 ### Fixed
