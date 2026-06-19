@@ -75,10 +75,10 @@ nav.nav-hidden { transform: translateY(-100%); }
   display: flex;
   align-items: center;
 }
-.logo img { display: block; }
-.logo-on-light { display: none; }
-nav.scrolled .logo-on-dark  { display: none; }
-nav.scrolled .logo-on-light { display: block; }
+.logo img.logo-on-dark  { display: block; }
+.logo img.logo-on-light { display: none; }
+nav.scrolled .logo img.logo-on-dark  { display: none; }
+nav.scrolled .logo img.logo-on-light { display: block; }
 
 .nav-links { list-style: none; display: flex; gap: 2.2rem; align-items: center; }
 .nav-links a {
