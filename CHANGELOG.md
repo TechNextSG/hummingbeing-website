@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [46.9] — 2026-06-19
+
+### Fixed
+- **tre.html — TRE® in Asia heading** — `font-weight:300` → `700` to match site heading style.
+- **somatic-bodywork.html — Soma heading** — Wrong entity `&#7766;` (Latin Ṗ) corrected to `&#8182;` (Greek ῶ). Now renders as σῶμα. Also `font-weight:300` → `700`.
+
+---
+
 ## [46.8] — 2026-06-19
 
 ### Fixed
