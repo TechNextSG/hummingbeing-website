@@ -5,6 +5,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [45.0] — 2026-06-19
+
+### Changed
+- **Philosophy rewrite — isabelle.html + about.html** — applied Isabelle's core philosophy across the site: humility over self-promotion, service over image, the practitioner's own ongoing inner work as the real credential
+  - **isabelle.html — Bio** — rewritten to include her personal healing journey: healed herself from damage caused by toxic work environments and toxic people; comes to this work not as an expert standing above, but as someone who has walked through it and continues to do her own inner work
+  - **isabelle.html — Credentials header** — changed "Expertise You Can Trust" → "Her Training & Formation" (removes sales framing)
+  - **isabelle.html — Personal Note quote** — rewritten to speak to humility and living the practice: "I don't do this work from a distance. I've walked through it myself."
+  - **isabelle.html — Personal Note body** — rewritten to name the toxic work environment experience and the people she now supports: empowered, respected, as healthy mentally and physically as possible
+  - **about.html — Mission** — origin story updated: HummingBeing born from Isabelle's own healing journey, not a career plan; mission closes with "find themselves back: empowered, respected and as healthy as possible"
+  - **about.html — Philosophy section** — added closing note: these traditions ask humility, service and ongoing inner work of every practitioner — not image, but practice she lives herself
+
+---
+
 ## [44.9] — 2026-06-19
 
 ### Changed
