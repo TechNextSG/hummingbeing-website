@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [46.7] — 2026-06-19
+
+### Fixed / Added / Changed
+- **isabelle.html — info strip** — Fixed critical CSS parse bug: orphaned `.card-img` properties left from v46.4 caused the CSS parser to swallow the `.info-strip` rule, leaving it as `display:block`. Removed orphaned declarations — 4-column grid now applies correctly.
+- **isabelle.html — Her Story image** — Replaced external WordPress URL with local `isabelle-her-story.jpg`.
+- **isabelle.html — Global Journey frame** — Image frame 5% narrower (`1.05fr 0.95fr`) and 10% taller (`min-height: 572px`) via scoped `#global-journey` CSS.
+
+---
+
 ## [46.6] — 2026-06-19
 
 ### Added

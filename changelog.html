@@ -125,6 +125,26 @@
 <section>
   <div class="cl-timeline">
 
+    <!-- v46.7 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v46.7</span>
+        <span class="cl-date">2026-06-19</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags">
+          <span class="cl-tag cl-tag-fixed">Fixed</span>
+          <span class="cl-tag cl-tag-added">Added</span>
+          <span class="cl-tag cl-tag-changed">Changed</span>
+        </div>
+        <ul>
+          <li><strong>isabelle.html — info strip</strong> — Fixed critical CSS parse bug: orphaned <code>.card-img</code> properties (leftover from v46.4) caused the parser to swallow the <code>.info-strip</code> rule entirely, leaving the strip as <code>display:block</code> instead of the intended 4-column grid. Removed orphaned declarations.</li>
+          <li><strong>isabelle.html — Her Story image</strong> — Replaced external WordPress URL with local <code>isabelle-her-story.jpg</code> (Isabelle October 2023 portrait).</li>
+          <li><strong>isabelle.html — Global Journey frame</strong> — Image frame made 5% narrower (<code>grid-template-columns: 1.05fr 0.95fr</code>) and 10% taller (<code>min-height: 572px</code>) via scoped <code>#global-journey</code> CSS.</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- v46.6 -->
     <div class="cl-entry">
       <div class="cl-meta">
