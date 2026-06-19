@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [46.1] — 2026-06-19
+
+### Fixed
+- **isabelle.html — credentials grid** — removed 9 "Photo Coming Soon" placeholder frames from credential cards; cards now show icon + text cleanly without the grey image area
+
+---
+
 ## [46.0] — 2026-06-19
 
 ### Added
