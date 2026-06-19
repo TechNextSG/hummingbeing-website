@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [45.5] — 2026-06-19
+
+### Added
+- **index.html — "Is This for You" section** — replaced placeholder with real image (`home-is-this-for-you.jpg`); hands/bodywork scene fitting the section content
+- **Note:** "The HummingBeing Philosophy" placeholder remains — no image was found in that source folder
+
+---
+
 ## [45.4] — 2026-06-19
 
 ### Fixed
