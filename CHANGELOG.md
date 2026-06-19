@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [46.2] — 2026-06-19
+
+### Fixed
+- **styles.css — nav logo** — CSS specificity bug caused both dark and light logos to show simultaneously; fixed by using `img.logo-on-dark` / `img.logo-on-light` selectors
+
+---
+
 ## [46.1] — 2026-06-19
 
 ### Fixed
