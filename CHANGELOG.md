@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [45.2] — 2026-06-19
+
+### Fixed
+- **somatic-coaching.html — pricing grid** — 3 cards now always display in a single row; changed `auto-fit,minmax(280px,1fr)` to `repeat(3,1fr)` and widened container to `max-width:1100px`
+
+---
+
 ## [45.1] — 2026-06-19
 
 ### Changed
