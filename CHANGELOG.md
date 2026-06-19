@@ -5,6 +5,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [46.4] — 2026-06-19
+
+### Fixed / Changed
+- **gallery.html** — removed 2 remaining "Photo Coming Soon" placeholder cards ("Healing Touch", "Somatic Practice")
+- **isabelle.html — Reiki card** — removed image frame from Reiki Practitioner Level II credential card
+- **isabelle.html — info strip** — fixed icon + text layout: icon now sits inline beside text (flex row) instead of stacking above it
+- **styles.css — logo** — added `!important` to logo swap rules to prevent both logos showing simultaneously on mobile
+- **styles.css — hamburger menu** — reduced mobile nav link padding for a more compact dropdown
+- **styles.css — mobile CTAs** — hero-actions always centered on mobile; events countdown bar stacks vertically and centers on small screens
+- **styles.css — feature list** — added `padding-left: .75rem` indent for bulleted lists site-wide
+
+---
+
 ## [46.3] — 2026-06-19
 
 ### Added / Fixed
