@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [45.9] — 2026-06-19
+
+### Added
+- **somatic-bodywork.html — all 3 placeholders replaced** with real images
+  - "What Is Somatic Bodywork?" → hands-on neck bodywork (`sb-what-is.png`)
+  - "The Methodology" → practitioner with floor client (`sb-methodology.png`)
+  - "Who Somatic Bodywork Serves" → one-on-one session (`sb-who-serves.png`)
+
+---
+
 ## [45.8] — 2026-06-19
 
 ### Added
