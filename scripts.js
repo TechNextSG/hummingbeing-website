@@ -1,4 +1,4 @@
-/* HummingBeing — scripts.js v5 */
+/* HummingBeing — scripts.js v6 */
 
 // ── Button ripple on click ────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,6 +15,25 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// ── Scroll progress bar ───────────────────────────────────────────────────
+;(function() {
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.prepend(bar);
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        var scrolled = window.scrollY;
+        var total = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (total > 0 ? scrolled / total : 0) + ')';
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
 // ── Transparent → solid nav on scroll + hide on scroll-down ───────────────
 ;(function() {
   var lastY = 0;
@@ -23,11 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var nav = document.querySelector('nav');
     var topBtn = document.querySelector('.top-float');
     if (nav) {
-      // Transparent when at top, solid when scrolled
       if (y > 60) nav.classList.add('scrolled');
       else        nav.classList.remove('scrolled');
-
-      // Hide on scroll-down, reveal on scroll-up
       var dropdownOpen = !!document.querySelector('.nav-dropdown.dropdown-open');
       if (dropdownOpen) {
         nav.classList.remove('nav-hidden');
@@ -44,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     lastY = y;
   }
   window.addEventListener('scroll', updateNav, { passive: true });
-  updateNav(); // set correct state on page load
+  updateNav();
 })();
 
 // ── Mobile menu ────────────────────────────────────────────────────────────
@@ -75,25 +91,20 @@ document.addEventListener('click', function(e) {
 // ── Services dropdown ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
   var nav = document.querySelector('nav');
-
   document.querySelectorAll('.nav-dropdown-toggle').forEach(function(toggle) {
     toggle.addEventListener('click', function(e) {
       e.preventDefault();
       var dropdown = this.closest('.nav-dropdown');
       var opening = !dropdown.classList.contains('dropdown-open');
-      // close all dropdowns first
       document.querySelectorAll('.nav-dropdown').forEach(function(d) {
         d.classList.remove('dropdown-open');
       });
       if (opening) {
         dropdown.classList.add('dropdown-open');
-        // ensure nav is visible so user can reach the menu
         if (nav) nav.classList.remove('nav-hidden');
       }
     });
   });
-
-  // Close dropdown when a sub-link is clicked (before navigation)
   document.querySelectorAll('.nav-dropdown-menu a').forEach(function(link) {
     link.addEventListener('click', function() {
       document.querySelectorAll('.nav-dropdown').forEach(function(d) {
@@ -111,14 +122,30 @@ var animObserver = new IntersectionObserver(function(entries) {
       animObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+}, { threshold: 0.10, rootMargin: '0px 0px -30px 0px' });
+
+function hasAnim(el) {
+  return el.classList.contains('anim-up') || el.classList.contains('anim-left') ||
+         el.classList.contains('anim-right') || el.classList.contains('anim-scale') ||
+         el.classList.contains('anim-fade') || el.classList.contains('anim-line');
+}
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Cards — staggered fade-up
+
+  // Cards in cards-grid — staggered
   document.querySelectorAll('.cards-grid .card').forEach(function(el, i) {
     el.classList.add('anim-up');
     el.style.transitionDelay = (i % 3 * 0.11) + 's';
     animObserver.observe(el);
+  });
+
+  // Standalone cards (not inside cards-grid)
+  document.querySelectorAll('.card:not(.cards-grid .card)').forEach(function(el, i) {
+    if (!hasAnim(el)) {
+      el.classList.add('anim-up');
+      el.style.transitionDelay = (i % 4 * 0.1) + 's';
+      animObserver.observe(el);
+    }
   });
 
   // Steps — staggered fade-up
@@ -128,6 +155,15 @@ document.addEventListener('DOMContentLoaded', function() {
     animObserver.observe(el);
   });
 
+  // Step number circles — scale-bounce in, slightly after their parent
+  document.querySelectorAll('.step-num').forEach(function(el, i) {
+    if (!hasAnim(el)) {
+      el.classList.add('anim-scale');
+      el.style.transitionDelay = (i * 0.11 + 0.12) + 's';
+      animObserver.observe(el);
+    }
+  });
+
   // Testimonials — staggered fade-up
   document.querySelectorAll('.testimonial, .testimonial-light').forEach(function(el, i) {
     el.classList.add('anim-up');
@@ -135,14 +171,14 @@ document.addEventListener('DOMContentLoaded', function() {
     animObserver.observe(el);
   });
 
-  // Social cards
+  // Social / platform cards
   document.querySelectorAll('.platform-hero, .social-card').forEach(function(el, i) {
     el.classList.add('anim-up');
     el.style.transitionDelay = (i % 4 * 0.1) + 's';
     animObserver.observe(el);
   });
 
-  // Two-col text slides in from the right; image from the left
+  // Two-col: text from right, image from left
   document.querySelectorAll('.two-col-text').forEach(function(el) {
     el.classList.add('anim-right');
     animObserver.observe(el);
@@ -150,6 +186,46 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.two-col-image').forEach(function(el) {
     el.classList.add('anim-left');
     animObserver.observe(el);
+  });
+
+  // Section center headers (eyebrow + h2 as a unit)
+  document.querySelectorAll('.section-header-center').forEach(function(el) {
+    if (!hasAnim(el)) {
+      el.classList.add('anim-up');
+      animObserver.observe(el);
+    }
+  });
+
+  // Dividers — draw in from left
+  document.querySelectorAll('.divider').forEach(function(el) {
+    if (!hasAnim(el)) {
+      el.classList.add('anim-line');
+      animObserver.observe(el);
+    }
+  });
+
+  // Feature list items — staggered
+  document.querySelectorAll('.feature-list li').forEach(function(el, i) {
+    el.classList.add('anim-up');
+    el.style.transitionDelay = (i * 0.08) + 's';
+    animObserver.observe(el);
+  });
+
+  // Info strip items (isabelle page)
+  document.querySelectorAll('.info-strip-item').forEach(function(el, i) {
+    if (!hasAnim(el)) {
+      el.classList.add('anim-up');
+      el.style.transitionDelay = (i * 0.12) + 's';
+      animObserver.observe(el);
+    }
+  });
+
+  // CTA banners
+  document.querySelectorAll('.cta-banner').forEach(function(el) {
+    if (!hasAnim(el)) {
+      el.classList.add('anim-up');
+      animObserver.observe(el);
+    }
   });
 
   // Stats
@@ -165,16 +241,55 @@ document.addEventListener('DOMContentLoaded', function() {
     el.style.transitionDelay = (i % 3 * 0.1) + 's';
     animObserver.observe(el);
   });
+
+  // Resource rows (socials page)
+  document.querySelectorAll('.resource-row').forEach(function(el, i) {
+    el.classList.add('anim-up');
+    el.style.transitionDelay = (i * 0.07) + 's';
+    animObserver.observe(el);
+  });
+
+  // Changelog entries
+  document.querySelectorAll('.cl-entry').forEach(function(el, i) {
+    el.classList.add('anim-up');
+    el.style.transitionDelay = (i % 5 * 0.08) + 's';
+    animObserver.observe(el);
+  });
+
 });
 
 // ── CHATBOT ───────────────────────────────────────────────────────────────────
 ;(function() {
-  // link: { text, url } — shown as a styled anchor below the bubble, not a redirect button
   var KB = [
-    { keys: ['hello','hi','hey','morning','afternoon','evening','howdy','greetings','start','help','hiya','yo','sup'],
+    { keys: ['hello','hi','hey','morning','afternoon','evening','howdy','greetings','start','help','hiya','yo','sup','ok','okay','aloha','namaste'],
       reply: "Hi! I'm the HummingBeing assistant. I can answer questions about our services, pricing, booking and Isabelle. What would you like to know?",
       link: null,
       btns: ['What is TRE®?','Tell me about Somatic Coaching','About Isabelle','How much does it cost?'] },
+
+    { keys: ['how'],
+      reply: "Happy to help! What would you like to know?\n\n• How much does it cost?\n• How does a session work?\n• How do I book?\n• How long are sessions?",
+      link: null,
+      btns: ['How much does it cost?','How does a session work?','How do I book?','How long is a session?'] },
+
+    { keys: ['when','availability','available'],
+      reply: "Isabelle is available for sessions year-round in Singapore, Japan and online via Zoom.\n\nScheduling is flexible and arranged personally after your first enquiry. Regular group events are also listed on the Events page.",
+      link: { text: 'See upcoming events', url: 'events.html' },
+      btns: ['How do I book a session?','Where are sessions held?','How much does it cost?'] },
+
+    { keys: ['what'],
+      reply: "What would you like to explore?\n\n• What services are available?\n• What results can you expect?\n• What happens in a first session?",
+      link: null,
+      btns: ['What services are available?','What results can I expect?','What happens in a session?'] },
+
+    { keys: ['why','reason','purpose','motivation'],
+      reply: "HummingBeing exists because the body holds answers the mind alone cannot always reach.\n\nMost wellness approaches work only with thoughts. Somatic practices work directly with the nervous system — creating deep, lasting change through the body's own natural release mechanisms.",
+      link: null,
+      btns: ['What is TRE®?','Tell me about Somatic Coaching','About Isabelle'] },
+
+    { keys: ['info','information','more info','learn more','tell me more','know more','details'],
+      reply: "I can share information about:\n\n• Our somatic practices — TRE®, Coaching, Bodywork\n• Isabelle and her qualifications\n• Pricing and packages\n• Booking and where sessions are held\n\nWhat would you like to explore?",
+      link: null,
+      btns: ['What services are available?','About Isabelle','How much does it cost?','How do I book?'] },
 
     { keys: ['tre','tension release','trauma release','tremor','neurogenic','tension trauma','tré','t.r.e','shaking','psoas','nervous system','berceli','tremoring','tre exercises'],
       reply: "TRE® (Tension & Trauma Releasing Exercises) activates your body's natural tremor mechanism to release deep stress, tension and trauma stored in the muscles and nervous system.\n\nDeveloped by Dr. David Berceli, it is gentle, safe and beginner-friendly. Most people learn to self-practice after just 3–4 supervised sessions.",
@@ -196,12 +311,12 @@ document.addEventListener('DOMContentLoaded', function() {
       link: null,
       btns: ['What are her qualifications?','What services does she offer?','Where is she based?','Book a session'] },
 
-    { keys: ['what services','services offered','offer','available','what do you do','what can you help','how can you help','what you offer','what is offered','what do you provide'],
+    { keys: ['what services','services offered','offer','available','what do you do','what can you help','how can you help','what you offer','what is offered','what do you provide','services','offerings','practices'],
       reply: "HummingBeing offers three core practices:\n\n• TRE® Exercises — release deep stress & tension through natural tremors\n• Somatic Coaching — body-based coaching for resilience\n• Somatic Bodywork — Strozzi method hands-on bodywork\n\nAll available 1:1, in-person (Singapore/Japan) or online via Zoom.",
       link: null,
       btns: ['What is TRE®?','Tell me about Somatic Coaching','What is Somatic Bodywork?','How much does it cost?'] },
 
-    { keys: ['price','cost','how much','fee','rate','investment','money','package','payment','expensive','afford','charges','pricing','fees','packages','rates'],
+    { keys: ['price','cost','how much','fee','rate','investment','money','package','payment','expensive','afford','charges','pricing','fees','packages','rates','invest','pay','value','worth','dollar'],
       reply: "Three options are available:\n\n• Starter Package — $2,200 for 8 weekly sessions\n• Deep Dive — Custom pricing for 12–24 sessions\n• Free Discovery Call — $0, 30 minutes\n\nThe free call is a great first step with no commitment required.",
       link: null,
       btns: ['Tell me about the Starter Package','Tell me about the Deep Dive','How do I book the free call?','What is included?'] },
@@ -216,17 +331,17 @@ document.addEventListener('DOMContentLoaded', function() {
       link: null,
       btns: ['How is it different from the Starter?','Tell me about the free discovery call','What is Somatic Coaching?','How do I book?'] },
 
-    { keys: ['book','schedule','appointment','sign up','register','join','how to start','how to book','get started','begin','start working','work together','make an appointment'],
+    { keys: ['book','schedule','appointment','sign up','register','join','how to start','how to book','get started','begin','start working','work together','make an appointment','booking','reserve','session booking'],
       reply: "Booking is straightforward:\n\n1. Use the contact form on the Book page\n2. Send a WhatsApp message directly to Isabelle\n\nIsabelle personally responds within 1–2 business days. The free discovery call is a great first step.",
       link: { text: 'Go to the Book page', url: 'book.html' },
       btns: ['Tell me about the free discovery call','How much does it cost?','What to expect in first session?'] },
 
-    { keys: ['discovery call','free call','free session','free chat','30 min','30 minute','consultation','no commitment','no pressure','first call','intro call','introductory'],
+    { keys: ['discovery call','free call','free session','free chat','30 min','30 minute','consultation','no commitment','no pressure','first call','intro call','introductory','free','trial','no cost','complimentary'],
       reply: "The free 30-minute discovery call is a relaxed, no-pressure conversation with Isabelle. You will explore your situation, ask any questions, and find the right path forward together.\n\nNo sales pitch. No commitment. Just honest conversation.",
       link: { text: 'Book the free call', url: 'book.html' },
       btns: ['What happens after the call?','How much does it cost?','What services are available?'] },
 
-    { keys: ['location','where','singapore','japan','online','zoom','remote','virtual','in person','travel','country','based','city','place','where is','where are you'],
+    { keys: ['location','where','singapore','japan','online','zoom','remote','virtual','in person','travel','country','based','city','place','where is','where are you','sg','jp','virtual session'],
       reply: "Sessions are available in three formats:\n\n• In-person in Singapore\n• In-person in Japan\n• Online via Zoom — for clients anywhere in the world\n\nOnline sessions are equally effective. Isabelle has worked with clients from 40+ countries.",
       link: null,
       btns: ['Is online as effective as in-person?','How do I book?','How much does it cost?'] },
@@ -276,7 +391,7 @@ document.addEventListener('DOMContentLoaded', function() {
       link: { text: 'See upcoming events', url: 'events.html' },
       btns: ['What is TRE®?','How much does a programme cost?','Book a private session'] },
 
-    { keys: ['first session','what to expect','what happens','prepare','preparation','my first','what do i need','what to bring','how does a session work','session like'],
+    { keys: ['first session','what to expect','what happens','prepare','preparation','my first','what do i need','what to bring','how does a session work','session like','how does a session','session work'],
       reply: "Your first session typically begins with a short conversation about your goals and situation. Nothing is rushed.\n\nFor TRE® — wear comfortable clothes and have a mat or soft floor space ready. For Coaching — just bring an open, curious mind. Sessions are always tailored to you.",
       link: null,
       btns: ['Is it safe?','How long is a session?','Book a session','How much does it cost?'] },
@@ -318,17 +433,19 @@ document.addEventListener('DOMContentLoaded', function() {
       .replace(/\s+/g, ' ')
       .trim();
     var words = norm.split(' ');
+    var isSingle = words.length <= 2 && norm.length >= 2;
     var best = null, bestScore = 0;
     for (var i = 0; i < KB.length; i++) {
       var score = 0;
       for (var j = 0; j < KB[i].keys.length; j++) {
         var kw = KB[i].keys[j];
-        // exact phrase match — highest weight
-        if (norm.indexOf(kw) !== -1) {
-          score += kw.split(' ').length * 3;
-          continue;
-        }
-        // partial word match — each keyword word checked against input words
+        // exact key match — top priority
+        if (norm === kw) { score += kw.split(' ').length * 4; continue; }
+        // phrase contains keyword
+        if (norm.indexOf(kw) !== -1) { score += kw.split(' ').length * 3; continue; }
+        // short inputs: also match if input found within a keyword (e.g. "book" inside "booking")
+        if (isSingle && norm.length >= 3 && kw.indexOf(norm) !== -1) { score += 2; continue; }
+        // partial word-level match with starts-with tolerance
         var kwWords = kw.split(' ');
         var matched = 0;
         for (var k = 0; k < kwWords.length; k++) {
@@ -337,7 +454,6 @@ document.addEventListener('DOMContentLoaded', function() {
           for (var w = 0; w < words.length; w++) {
             var iw = words[w];
             if (iw.length < 2) continue;
-            // starts-with tolerance (e.g. "pricing" matches "price", "books" matches "book")
             if (iw.indexOf(kww) === 0 || kww.indexOf(iw) === 0) { matched++; break; }
           }
         }
@@ -348,6 +464,27 @@ document.addEventListener('DOMContentLoaded', function() {
       if (score > bestScore) { bestScore = score; best = KB[i]; }
     }
     return bestScore > 0 ? best : null;
+  }
+
+  function showTyping() {
+    var box = document.getElementById('hb-msgs');
+    if (!box) return null;
+    var row = document.createElement('div');
+    row.className = 'hb-msg bot';
+    var ava = document.createElement('div');
+    ava.className = 'hb-msg-ava';
+    ava.innerHTML = '<i class="fa-solid fa-leaf"></i>';
+    row.appendChild(ava);
+    var inner = document.createElement('div');
+    inner.className = 'hb-msg-inner';
+    var typing = document.createElement('div');
+    typing.className = 'hb-bubble hb-typing';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    inner.appendChild(typing);
+    row.appendChild(inner);
+    box.appendChild(row);
+    box.scrollTop = box.scrollHeight;
+    return row;
   }
 
   function addMsg(text, isUser, btns, link) {
@@ -394,7 +531,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (text === 'Back to start') {
       addMsg(text, true);
       setTimeout(function() {
-        addMsg("Of course! What would you like to know?", false, ['What is TRE®?','About Isabelle','How much does it cost?','What services are available?'], null);
+        addMsg("Of course! What would you like to know?", false,
+          ['What is TRE®?','About Isabelle','How much does it cost?','What services are available?'], null);
       }, 350);
       return;
     }
@@ -403,14 +541,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function respond(text) {
-    var r = match(text);
-    if (r) {
-      addMsg(r.reply, false, r.btns, r.link);
-    } else {
-      addMsg("I'm not sure about that — but Isabelle would be happy to help personally! Feel free to reach out via the contact form or WhatsApp.", false,
-        ['What services are available?','How much does it cost?','Back to start'],
-        { text: 'Contact Isabelle directly', url: 'book.html' });
-    }
+    var typingEl = showTyping();
+    setTimeout(function() {
+      if (typingEl && typingEl.parentNode) typingEl.remove();
+      var r = match(text);
+      if (r) {
+        addMsg(r.reply, false, r.btns, r.link);
+      } else {
+        addMsg("I'm not sure about that — but Isabelle would be happy to help personally! Feel free to reach out via the contact form or WhatsApp.", false,
+          ['What services are available?','How much does it cost?','Back to start'],
+          { text: 'Contact Isabelle directly', url: 'book.html' });
+      }
+    }, 820);
   }
 
   function hbSend() {
@@ -420,7 +562,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!val) return;
     inp.value = '';
     addMsg(val, true);
-    setTimeout(function() { respond(val); }, 400);
+    setTimeout(function() { respond(val); }, 100);
   }
 
   function toggleChat() {
@@ -436,6 +578,12 @@ document.addEventListener('DOMContentLoaded', function() {
         addMsg("Hi! I'm the HummingBeing assistant. Ask me anything about our services, pricing or booking.", false,
           ['What is TRE®?','Tell me about Somatic Coaching','About Isabelle','How much does it cost?'], null);
       }, 260);
+    }
+    if (opening) {
+      setTimeout(function() {
+        var inp = document.getElementById('hb-input');
+        if (inp) inp.focus();
+      }, 380);
     }
   }
 
@@ -457,7 +605,7 @@ document.addEventListener('DOMContentLoaded', function() {
       '</div>' +
       '<div class="hb-msgs" id="hb-msgs"></div>' +
       '<div class="hb-chat-foot">' +
-        '<input type="text" id="hb-input" placeholder="Ask anything about our services…" />' +
+        '<input type="text" id="hb-input" placeholder="Type anything — pricing, booking, how…" />' +
         '<button class="hb-send"><i class="fa-solid fa-paper-plane"></i></button>' +
       '</div>';
 

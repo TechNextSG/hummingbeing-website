@@ -5,6 +5,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.1] — 2026-06-19
+
+### Added / Changed
+- **Chatbot — smarter single-word matching** — New KB entries for `how`, `when`, `what`, `why`, `info`. Substring lookup for short inputs. Extra synonyms: booking, reserve, free, invest, sg, jp, etc.
+- **Chatbot — typing indicator** — Three animated gold dots appear before every bot reply. Input placeholder updated. Auto-focus on chat open.
+- **Scroll progress bar** — Thin gold gradient line at top of page fills as user scrolls. All pages.
+- **New animation classes** — `anim-scale` (step circles scale-bounce), `anim-fade` (opacity-only), `anim-line` (dividers draw from left).
+- **Expanded animation targets** — Section center headers, standalone cards, CTA banners, feature list items, info strip items, resource rows, changelog entries.
+- **Image hover zoom** — Two-col images scale 5% on hover.
+- **Card hover lift + glow** — All `.card` elements lift and show gold glow on hover.
+- **CSS v80** — Cache version bumped across all 11 pages.
+
+---
+
 ## [47.0] — 2026-06-19
 
 ### Added / Changed
