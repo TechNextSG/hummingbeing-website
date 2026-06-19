@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [46.8] — 2026-06-19
+
+### Fixed
+- **isabelle.html — Global Journey** — Replaced external `isatall.jpg` (WordPress) with local `isabelle-her-story.jpg`.
+- **gallery.html — 2 image cards** — Replaced last 2 external WordPress URLs with local images. All images now self-hosted.
+
+---
+
 ## [46.7] — 2026-06-19
 
 ### Fixed / Added / Changed
