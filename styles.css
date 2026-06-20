@@ -1505,9 +1505,6 @@ footer {
   .hero-actions { flex-direction: column; align-items: center; }
   .hero-actions .btn { width: 100%; max-width: 280px; }
 
-  /* -- FOOTER: single column -- */
-  .foot-grid { grid-template-columns: 1fr; }
-  .foot-grid > div:first-child { grid-column: auto; }
 
   /* -- SECTION TITLES -- */
   .section-title { font-size: clamp(1.5rem, 6vw, 2.2rem); }

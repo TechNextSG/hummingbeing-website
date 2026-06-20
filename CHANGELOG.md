@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.8] — 2026-06-20
+
+### Fixed
+- **Mobile footer — 2-column layout restored (CSS v83)** — Removed the 480px override that collapsed the footer to single column. Footer now keeps the 2-column grid on all mobile sizes (Services | Company, Contact below).
+
+---
+
 ## [47.7] — 2026-06-20
 
 ### Fixed
