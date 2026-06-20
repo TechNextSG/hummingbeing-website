@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [48.4] — 2026-06-20
+
+### Fix — Mobile nav dropdown card border
+
+- **All pages** — Desktop `.nav-dropdown-menu` had `border: 1px solid` on all sides; mobile override only cleared `border-top`, leaving right/bottom borders visible as a card effect. Rewrote mobile dropdown block: `border: none !important`, cream background, zero margin, items indented 2rem with font-weight 400.
+
+---
+
 ## [48.3] — 2026-06-20
 
 ### Fix — Mobile nav dropdown uppercase
