@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [48.2] — 2026-06-20
+
+### Fix — isabelle.html info strip mobile alignment
+
+- **isabelle.html** — Fixed `.info-item + .info-item` keeping `2rem` left padding on mobile due to CSS specificity override. Items 2–4 were indented relative to item 1 on narrow screens. Added `padding-left: 0` reset at 820px breakpoint and `column-gap: 1.5rem` for tablet 2-column view.
+
+---
+
 ## [48.1] — 2026-06-20
 
 ### Fix — Verification pass completing missed v48.0 CSS changes
