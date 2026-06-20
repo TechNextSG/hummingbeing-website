@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.7] — 2026-06-20
+
+### Fixed
+- **Mobile — CTA buttons centred in text columns (CSS v82)** — Added responsive CSS so all CTA buttons inside two-column text sections centre when the layout stacks to single column on mobile (≤900px).
+- **Button+subtext rows centred** — Flex-row button/caption combos now centre on mobile via `justify-content: center`.
+- **CSS v82** — Cache version bumped across all 11 pages.
+
+---
+
 ## [47.6] — 2026-06-20
 
 ### Fixed / Changed

@@ -1368,6 +1368,10 @@ footer {
   .two-col.reverse > *:last-child  { order: unset; }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
 
+  /* -- TWO-COL CTA CENTERING: centre buttons when text column stacks -- */
+  .two-col-text .btn { display: block; width: fit-content; margin-left: auto; margin-right: auto; }
+  .two-col-text > [style*="flex-wrap"] { justify-content: center; }
+
   /* -- FOOTER -- */
   .foot-grid { grid-template-columns: repeat(3, 1fr); }
   .foot-grid > div:first-child { grid-column: 1 / -1; }
