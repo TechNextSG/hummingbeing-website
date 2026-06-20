@@ -1356,7 +1356,7 @@ footer {
   .nav-dropdown.dropdown-open .nav-arrow { transform: rotate(180deg); }
   .nav-dropdown-menu::before { display: none !important; }
   .nav-dropdown-menu li { border-bottom: none !important; }
-  .nav-dropdown-menu li a { padding: .5rem 1rem !important; font-size: .82rem; }
+  .nav-dropdown-menu li a { padding: .4rem 1rem !important; font-size: .85rem; text-transform: none !important; letter-spacing: .3px !important; font-weight: 600 !important; }
 
   /* -- LAYOUT -- */
   .two-col { grid-template-columns: 1fr; gap: 2rem; }

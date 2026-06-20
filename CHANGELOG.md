@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [48.3] — 2026-06-20
+
+### Fix — Mobile nav dropdown uppercase
+
+- **All pages** — Services dropdown sub-items (TRE® Exercises, Somatic Coaching, Somatic Bodywork) rendered in ALL CAPS on mobile due to `text-transform: uppercase` not being overridden in the 900px breakpoint. Fixed with explicit `text-transform: none`, reduced letter-spacing, and `font-weight: 600`.
+
+---
+
 ## [48.2] — 2026-06-20
 
 ### Fix — isabelle.html info strip mobile alignment
