@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.3] — 2026-06-20
+
+### Fixed
+- **tre.html — Video section description position** — Moved subtitle text from above the video to below it. Heading flows directly into the embed; description now reads as a caption beneath the video.
+
+---
+
 ## [47.2] — 2026-06-19
 
 ### Added / Changed
