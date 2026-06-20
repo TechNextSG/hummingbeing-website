@@ -125,6 +125,23 @@
 <section>
   <div class="cl-timeline">
 
+    <!-- v47.11 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v47.11</span>
+        <span class="cl-date">2026-06-20</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags">
+          <span class="cl-tag cl-tag-fixed">Fixed</span>
+        </div>
+        <ul>
+          <li><strong>isabelle.html — Global Journey section stacking</strong> — The <code>#global-journey .two-col</code> inline style (<code>1.05fr 0.95fr</code>) had higher CSS specificity than the responsive rule, preventing it from stacking to single column on mobile. Fixed by adding an explicit <code>@media (max-width: 900px)</code> override with <code>!important</code> inside the page's own <code>&lt;style&gt;</code> block.</li>
+          <li><strong>somatic-coaching.html — Pricing grid responsive</strong> — Replaced the inline <code>grid-template-columns: repeat(3,1fr)</code> style attribute (which cannot be overridden by media queries) with the existing <code>.pricing-grid</code> CSS class, which already collapses to 1 column at 900px.</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- v47.10 -->
     <div class="cl-entry">
       <div class="cl-meta">

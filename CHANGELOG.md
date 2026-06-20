@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.11] — 2026-06-20
+
+### Fixed
+- **isabelle.html — Global Journey not stacking on mobile** — `#global-journey .two-col` had higher specificity than the responsive rule. Added `@media (max-width: 900px)` with `!important` override in the page's own `<style>` block.
+- **somatic-coaching.html — Pricing grid 3-col on mobile** — Replaced inline `grid-template-columns: repeat(3,1fr)` (unoverridable by media queries) with `.pricing-grid` class which already collapses to 1 column at 900px.
+
+---
+
 ## [47.10] — 2026-06-20
 
 ### Fixed

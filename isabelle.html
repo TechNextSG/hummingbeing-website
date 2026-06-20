@@ -54,6 +54,10 @@
     /* Global Journey — image frame: 5% narrower, 10% taller */
     #global-journey .two-col { grid-template-columns: 1.05fr 0.95fr; }
     #global-journey .two-col-image { min-height: 572px; }
+    @media (max-width: 900px) {
+      #global-journey .two-col { grid-template-columns: 1fr !important; }
+      #global-journey .two-col-image { min-height: 280px !important; }
+    }
   </style>
   <!-- SEO Layer -->
   <meta name="keywords" content="Isabelle Claus Teixeira, TRE provider Singapore, somatic coach Singapore, certified TRE practitioner, somatic bodywork practitioner Singapore, ICF PCC coach Singapore, BHD Asia coach, Strozzi bodywork Singapore" />
