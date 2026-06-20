@@ -1,7 +1,6 @@
 /* HummingBeing — styles.css v9
    Fonts: Playfair Display (hero titles) + PT Serif (headings) + Lato (body)  |  Palette: #242e42 navy · #F5A623 gold · #ffc600 yellow
    ——————————————————————————————————————————————————————————————————————————————————————————————— */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap');
 
 :root {
   --navy:        #242e42;
@@ -18,9 +17,6 @@
   --text-mid:    #5f6472;
   --text-light:  #8a8f9e;
   --border:      rgba(245,166,35,.28);
-  /* backwards-compat aliases */
-  --gold-accent:   #F5A623;
-  --green-primary: #242e42;
 }
 
 /* ── RESET ─────────────────────────────────────────────────────────────── */
@@ -194,10 +190,6 @@ nav.scrolled .hamburger span,
 .nav-dropdown-menu li a.active { color: var(--gold) !important; background: var(--cream); }
 
 /* ── BUTTONS ───────────────────────────────────────────────────────────── */
-@keyframes btn-pulse-gold {
-  0%, 100% { box-shadow: 0 6px 20px rgba(245,166,35,.3), 0 0 0 0 rgba(245,166,35,.45); }
-  50%       { box-shadow: 0 6px 20px rgba(245,166,35,.3), 0 0 0 10px rgba(245,166,35,0); }
-}
 @keyframes btn-ripple {
   to { transform: scale(5); opacity: 0; }
 }
@@ -972,6 +964,7 @@ footer {
   transition: transform .3s ease, box-shadow .3s ease;
   text-decoration: none;
   animation: wa-pulse 2.5s ease-in-out infinite;
+  will-change: transform;
 }
 .wa-float:hover {
   transform: scale(1.1);
@@ -1143,6 +1136,7 @@ footer {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity .6s ease, transform .6s ease;
+  will-change: opacity, transform;
 }
 .anim-left {
   opacity: 0;
@@ -1258,6 +1252,7 @@ footer {
   align-items: center;
   width: max-content;
   animation: ticker-scroll 140s linear infinite;
+  will-change: transform;
 }
 .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
 
@@ -1368,6 +1363,7 @@ footer {
   .two-col.reverse > *:first-child { order: unset; }
   .two-col.reverse > *:last-child  { order: unset; }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .two-col-image { min-height: 280px; }
 
   /* -- TWO-COL CTA CENTERING: centre buttons when text column stacks -- */
   .two-col-text .btn { display: block; width: -webkit-fit-content; width: fit-content; margin-left: auto; margin-right: auto; }
@@ -1517,3 +1513,10 @@ footer {
   .cta-banner .hero-actions { flex-direction: column; align-items: center; }
   .cta-banner .btn { width: 100%; max-width: 260px; }
 }
+
+/* ── UTILITY ADDITIONS ─────────────────────────────────────────────────── */
+.section-cta-center { display: flex; justify-content: center; margin-top: 2rem; }
+.logo img { height: 56px; width: auto; }
+.foot-logo img { height: 48px; width: auto; display: block; }
+.foot-sep { opacity: .4; }
+.g-hidden { display: none !important; }

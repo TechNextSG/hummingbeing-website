@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap">
-  <link rel="stylesheet" href="styles.css?v=86" />
+  <link rel="stylesheet" href="styles.css?v=87" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <meta name="robots" content="noindex, nofollow" />
@@ -87,6 +87,27 @@
 
 <section>
   <div class="cl-timeline">
+
+    <!-- v48.1 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v48.1</span>
+        <span class="cl-date">2026-06-20</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags">
+          <span class="cl-tag cl-tag-fixed">Fix</span>
+          <span class="cl-tag cl-tag-changed">Performance</span>
+        </div>
+        <ul>
+          <li><strong>CSS — will-change completed</strong> — Added <code>will-change: transform</code> to <code>.ticker-track</code> and <code>.wa-float</code>; <code>will-change: opacity, transform</code> to <code>.anim-up</code> (missed in v48.0 deploy).</li>
+          <li><strong>CSS — utility classes completed</strong> — Added <code>.section-cta-center</code>, <code>.foot-logo img</code>, <code>.foot-sep</code>, and <code>.g-hidden { display: none !important }</code> (missed in v48.0 deploy).</li>
+          <li><strong>CSS — tablet two-col fix</strong> — Added <code>.two-col-image { min-height: 280px }</code> inside <code>@media (max-width: 900px)</code> block (missed in v48.0 deploy).</li>
+          <li><strong>somatic-coaching.html — section background</strong> — Changed Pricing section from <code>section-white</code> to <code>section-cream</code> to prevent consecutive same-background sections.</li>
+          <li><strong>All pages — CSS version bump</strong> — Bumped <code>styles.css</code> cache-bust to <code>v87</code> to ensure browsers pick up corrected stylesheet.</li>
+        </ul>
+      </div>
+    </div>
 
     <!-- v48.0 -->
     <div class="cl-entry">

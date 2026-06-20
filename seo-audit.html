@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>HummingBeing SEO/AEO/GEO Audit — June 2026</title>
+<style>
+  :root{
+    --navy:#1a2336;--gold:#c99a2e;--red:#c0392b;--green:#1d7a4e;--amber:#d68910;
+    --bg:#f9f8f5;--white:#fff;--text:#2c2c2c;--mid:#555;--border:#e0dbd0;
+    --pass-bg:#ecf9f2;--fail-bg:#fdf0ef;--warn-bg:#fef9ec;
+    --code-bg:#f2f0eb;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;color:var(--text);background:var(--bg);line-height:1.6}
+  a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}
+
+  /* ── HEADER ── */
+  .site-header{background:var(--navy);color:#fff;padding:2rem 5%;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  .site-header h1{font-size:1.5rem;font-weight:700;letter-spacing:.5px}
+  .site-header .meta{font-size:.8rem;color:rgba(255,255,255,.65);margin-top:.3rem}
+  .header-badge{background:var(--gold);color:#fff;font-size:.72rem;font-weight:700;padding:.3rem .9rem;border-radius:2px;white-space:nowrap;align-self:flex-start;margin-top:.2rem}
+
+  /* ── NAV PILLS ── */
+  .toc{background:var(--navy);padding:.6rem 5%;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-wrap:wrap;gap:.5rem}
+  .toc a{color:rgba(255,255,255,.7);font-size:.72rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;padding:.28rem .7rem;border-radius:2px;transition:background .2s,color .2s}
+  .toc a:hover{background:rgba(255,255,255,.1);color:#fff;text-decoration:none}
+
+  /* ── MAIN LAYOUT ── */
+  .wrap{max-width:1200px;margin:0 auto;padding:2rem 5% 4rem}
+
+  /* ── SUMMARY SCORECARD ── */
+  .scorecard{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2.5rem}
+  .sc-item{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:1.1rem 1.3rem;border-top:3px solid var(--gold)}
+  .sc-item .sc-label{font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-bottom:.3rem}
+  .sc-item .sc-val{font-size:1.5rem;font-weight:700;color:var(--navy)}
+  .sc-item .sc-sub{font-size:.78rem;color:var(--mid);margin-top:.15rem}
+  .sc-item.red .sc-val{color:var(--red)}
+  .sc-item.amber .sc-val{color:var(--amber)}
+  .sc-item.green .sc-val{color:var(--green)}
+
+  /* ── SECTION HEADER ── */
+  .section-head{margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:.75rem}
+  .section-head h2{font-size:1.1rem;color:var(--navy);font-weight:700}
+  .section-head .badge{font-size:.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.22rem .6rem;border-radius:2px;background:var(--navy);color:#fff}
+  .section-head .badge.critical{background:var(--red)}
+  .section-head .badge.warning{background:var(--amber)}
+  .section-head .badge.ok{background:var(--green)}
+
+  /* ── PAGE TABLE ── */
+  .page-table{width:100%;border-collapse:collapse;margin-bottom:2rem;font-size:.82rem}
+  .page-table th{background:var(--navy);color:#fff;text-align:left;padding:.55rem .7rem;font-size:.7rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;white-space:nowrap}
+  .page-table td{padding:.5rem .7rem;border-bottom:1px solid var(--border);vertical-align:top}
+  .page-table tr:nth-child(even) td{background:rgba(0,0,0,.018)}
+  .page-table .label{font-weight:600;color:var(--navy);white-space:nowrap;min-width:130px}
+  code{background:var(--code-bg);border-radius:2px;padding:.08rem .35rem;font-family:'Courier New',monospace;font-size:.8rem;word-break:break-all}
+
+  /* ── STATUS CHIPS ── */
+  .chip{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:.18rem .5rem;border-radius:2px;white-space:nowrap}
+  .chip.pass{background:var(--pass-bg);color:var(--green);border:1px solid #b7dfc9}
+  .chip.fail{background:var(--fail-bg);color:var(--red);border:1px solid #f0bbb8}
+  .chip.warn{background:var(--warn-bg);color:var(--amber);border:1px solid #f0dba0}
+  .chip.info{background:#eef3fb;color:#2563a8;border:1px solid #b8d0f0}
+
+  /* ── FINDING BOXES ── */
+  .findings{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+  .finding{border-radius:3px;padding:.9rem 1.1rem;border-left:4px solid;font-size:.83rem;line-height:1.65}
+  .finding.critical{background:var(--fail-bg);border-color:var(--red)}
+  .finding.warning{background:var(--warn-bg);border-color:var(--amber)}
+  .finding.positive{background:var(--pass-bg);border-color:var(--green)}
+  .finding strong{display:block;font-size:.78rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:.25rem}
+  .finding.critical strong{color:var(--red)}
+  .finding.warning strong{color:var(--amber)}
+  .finding.positive strong{color:var(--green)}
+
+  /* ── GRID ── */
+  .two-col-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+  @media(max-width:700px){.two-col-grid{grid-template-columns:1fr}}
+
+  /* ── PRIORITY TABLE ── */
+  .priority-table{width:100%;border-collapse:collapse;margin-bottom:2rem;font-size:.82rem}
+  .priority-table th{background:var(--navy);color:#fff;text-align:left;padding:.55rem .7rem;font-size:.7rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase}
+  .priority-table td{padding:.5rem .7rem;border-bottom:1px solid var(--border);vertical-align:top}
+  .priority-table tr:nth-child(even) td{background:rgba(0,0,0,.018)}
+  .priority-table .p1{color:var(--red);font-weight:700}
+  .priority-table .p2{color:var(--amber);font-weight:700}
+  .priority-table .p3{color:var(--green);font-weight:700}
+
+  /* ── FOOTER ── */
+  .foot{text-align:center;font-size:.75rem;color:var(--mid);padding:1.5rem 5%;border-top:1px solid var(--border);margin-top:2rem}
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <div>
+    <h1>HummingBeing Website — SEO / AEO / GEO / GTM Audit</h1>
+    <div class="meta">Audited: 19 June 2026 &nbsp;·&nbsp; All 10 pages read in full &nbsp;·&nbsp; Scope: SEO, AEO, GEO, Tracking</div>
+  </div>
+  <div class="header-badge">Full-Site Audit</div>
+</div>
+<nav class="toc">
+  <a href="#summary">Summary</a>
+  <a href="#page-by-page">Page Detail</a>
+  <a href="#global-seo">Global SEO</a>
+  <a href="#aeo">AEO</a>
+  <a href="#geo">GEO</a>
+  <a href="#tracking">Tracking / GTM</a>
+  <a href="#supplementary">Files Check</a>
+  <a href="#priorities">Priority Actions</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ══════════════════════════════════════════════════════════════
+     SCORECARD
+     ══════════════════════════════════════════════════════════════ -->
+<div id="summary">
+<div class="section-head"><h2>Executive Scorecard</h2><span class="badge critical">10 pages audited</span></div>
+<div class="scorecard">
+  <div class="sc-item red">
+    <div class="sc-label">Open Graph Tags</div>
+    <div class="sc-val">0/10</div>
+    <div class="sc-sub">Missing on every page</div>
+  </div>
+  <div class="sc-item red">
+    <div class="sc-label">JSON-LD / Schema</div>
+    <div class="sc-val">0/10</div>
+    <div class="sc-sub">No structured data anywhere</div>
+  </div>
+  <div class="sc-item red">
+    <div class="sc-label">Google Analytics / GTM</div>
+    <div class="sc-val">0/10</div>
+    <div class="sc-sub">No tracking on any page</div>
+  </div>
+  <div class="sc-item red">
+    <div class="sc-label">Canonical Tags</div>
+    <div class="sc-val">0/10</div>
+    <div class="sc-sub">Missing on every page</div>
+  </div>
+  <div class="sc-item red">
+    <div class="sc-label">Twitter Card Tags</div>
+    <div class="sc-val">0/10</div>
+    <div class="sc-sub">Missing on every page</div>
+  </div>
+  <div class="sc-item red">
+    <div class="sc-label">sitemap.xml</div>
+    <div class="sc-val">Missing</div>
+    <div class="sc-sub">File does not exist</div>
+  </div>
+  <div class="sc-item red">
+    <div class="sc-label">robots.txt</div>
+    <div class="sc-val">Missing</div>
+    <div class="sc-sub">File does not exist</div>
+  </div>
+  <div class="sc-item red">
+    <div class="sc-label">manifest.json</div>
+    <div class="sc-val">Missing</div>
+    <div class="sc-sub">PWA not configured</div>
+  </div>
+  <div class="sc-item amber">
+    <div class="sc-label">Meta Keywords</div>
+    <div class="sc-val">0/10</div>
+    <div class="sc-sub">Absent (minor — not critical)</div>
+  </div>
+  <div class="sc-item amber">
+    <div class="sc-label">Robots Meta Tag</div>
+    <div class="sc-val">0/10</div>
+    <div class="sc-sub">No explicit crawl directive</div>
+  </div>
+  <div class="sc-item green">
+    <div class="sc-label">HTML lang attribute</div>
+    <div class="sc-val">10/10</div>
+    <div class="sc-sub">All pages: <code>lang="en"</code></div>
+  </div>
+  <div class="sc-item green">
+    <div class="sc-label">Meta Description</div>
+    <div class="sc-val">10/10</div>
+    <div class="sc-sub">Present on every page</div>
+  </div>
+  <div class="sc-item green">
+    <div class="sc-label">H1 Tag</div>
+    <div class="sc-val">10/10</div>
+    <div class="sc-sub">One H1 on every page</div>
+  </div>
+  <div class="sc-item amber">
+    <div class="sc-label">Favicon</div>
+    <div class="sc-val">10/10</div>
+    <div class="sc-sub">SVG only — no PNG fallback</div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE-BY-PAGE DETAIL
+     ══════════════════════════════════════════════════════════════ -->
+<div id="page-by-page">
+<div class="section-head"><h2>Page-by-Page Detail</h2><span class="badge">10 pages</span></div>
+
+<!-- INDEX -->
+<div class="section-head" style="margin-top:1.5rem"><h2>1. index.html — Home</h2></div>
+<table class="page-table">
+  <tr><td class="label">Title</td><td><code>HummingBeing — Release. Renew. Restore.</code><br><span class="chip pass">Good</span> 43 chars, brand + tagline. Lacks primary keyword (somatic wellness / Singapore).</td></tr>
+  <tr><td class="label">Meta Description</td><td><code>HummingBeing offers TRE, Somatic Coaching and Somatic Bodywork to help people release stress, renew resilience and restore balance.</code><br><span class="chip warn">Acceptable</span> 135 chars. Missing Singapore / Japan location signal. No action verb (Book / Discover).</td></tr>
+  <tr><td class="label">Meta Keywords</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Open Graph</td><td><span class="chip fail">None</span> — og:title, og:description, og:image, og:url, og:type all missing.</td></tr>
+  <tr><td class="label">Twitter Card</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Canonical</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">JSON-LD</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">H1</td><td><code>Release. Renew. Restore.</code> — Brand tagline, no keyword. Weak SEO value. Should include "somatic wellness" or "TRE Singapore".</td></tr>
+  <tr><td class="label">H2 Tags (first 5)</td><td>1. "Somatic Practices for Lasting Transformation"<br>2. "Like the Hummingbird, You Are Built to Thrive"<br>3. "Your Journey to Resilience"<br>4. "What People Are Saying"<br>5. "You Don't Need a Particular Story"</td></tr>
+  <tr><td class="label">Google Analytics / GTM</td><td><span class="chip fail">Absent</span> — No gtag, GTM-, GA4, UA-, G- property found anywhere on page or in scripts.js.</td></tr>
+  <tr><td class="label">Robots Meta</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Sitemap ref</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Image Alt Text (first 5)</td><td>1. Logo: <code>HummingBeing — Coaching &amp; Somatics</code> ✓<br>2. Logo-light: <code>HummingBeing — Coaching &amp; Somatics</code> ✓<br>3. card-tre.jpg: <code>TRE® Exercises</code> ✓ (generic)<br>4. card-somatic-coaching.png: <code>Somatic Coaching</code> ✓ (generic)<br>5. card-somatic-bodywork.png: <code>Somatic Bodywork</code> ✓ (generic)</td></tr>
+  <tr><td class="label">Schema.org</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">hreflang / lang</td><td><code>lang="en"</code> on html tag ✓. No hreflang (acceptable — single language site).</td></tr>
+  <tr><td class="label">Favicon</td><td><code>&lt;link rel="icon" href="favicon.svg"&gt;</code> — SVG only. No PNG fallback, no apple-touch-icon.</td></tr>
+</table>
+
+<!-- ABOUT -->
+<div class="section-head" style="margin-top:1.5rem"><h2>2. about.html</h2></div>
+<table class="page-table">
+  <tr><td class="label">Title</td><td><code>About — HummingBeing</code><br><span class="chip fail">Weak</span> 21 chars. "About" is not a keyword. Should be: "About HummingBeing | Somatic Wellness Singapore &amp; Japan".</td></tr>
+  <tr><td class="label">Meta Description</td><td><code>Learn about HummingBeing — our philosophy, mission and approach to somatic wellness for people.</code><br><span class="chip warn">Weak</span> Vague — "for people" adds nothing. 95 chars (too short, ideally 140–160). No location, no CTA, no differentiators.</td></tr>
+  <tr><td class="label">Meta Keywords</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Open Graph</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Twitter Card</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Canonical</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">JSON-LD</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">H1</td><td><code>A Safe Space to Release, Renew &amp; Restore</code> — Tagline repeat. No keyword.</td></tr>
+  <tr><td class="label">H2 Tags (first 5)</td><td>1. "A Place to Come Back to Yourself"<br>2. "The Body Knows the Way"<br>3. "200 Beats Per Minute. Never Depleted."<br>4. "Business &amp; Human Development"<br>(only 4 H2s on page)</td></tr>
+  <tr><td class="label">Google Analytics / GTM</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Robots Meta</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Image Alt Text (first 5)</td><td>1. Logo: <code>HummingBeing — Coaching &amp; Somatics</code> ✓<br>2. Logo-light: same ✓<br>3. about-why-exists.jpg: <code>Hummingbird in golden light</code> ✓ (evocative but keyword-free)<br>4. about-hummingbird-metaphor.jpg: <code>Hummingbird hovering at red flowers</code> ✓<br>5. about-bhd-family.jpg: <code>Group somatic healing session — the BHD Asia community in practice</code> ✓ (good)</td></tr>
+  <tr><td class="label">Schema.org</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Favicon</td><td>SVG only, same as all pages.</td></tr>
+</table>
+
+<!-- ISABELLE -->
+<div class="section-head" style="margin-top:1.5rem"><h2>3. isabelle.html</h2></div>
+<table class="page-table">
+  <tr><td class="label">Title</td><td><code>Isabelle — HummingBeing</code><br><span class="chip fail">Weak</span> Just a first name. Should be: "Isabelle Claus Teixeira | TRE® Practitioner &amp; Somatic Coach — Singapore".</td></tr>
+  <tr><td class="label">Meta Description</td><td><code>Meet Isabelle Claus Teixeira — somatic practitioner, TRE provider, executive coach with 25+ years of global experience.</code><br><span class="chip warn">Acceptable</span> 122 chars. Missing: Singapore/Japan location, call to action. Good credential mention.</td></tr>
+  <tr><td class="label">Meta Keywords</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Open Graph</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Twitter Card</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Canonical</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">JSON-LD</td><td><span class="chip fail">None — Person schema critically missing for practitioner bio page.</span></td></tr>
+  <tr><td class="label">H1</td><td><code>Isabelle Claus Teixeira</code> — Full name in H1: good for branded/entity search. No service keyword.</td></tr>
+  <tr><td class="label">H2 Tags (first 5)</td><td>1. "From Fortune 100 HR Leader to Somatic Practitioner"<br>2. "Her Training &amp; Formation"<br>3. "9 Countries. 40+ Nationalities."<br>4. "In Her Own Words"<br>5. "Three Ways to Begin"</td></tr>
+  <tr><td class="label">Google Analytics / GTM</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Image Alt Text (first 5)</td><td>1. Logo ✓<br>2. Logo-light ✓<br>3. isabelle-her-story.jpg: <code>Isabelle Claus Teixeira — somatic practitioner</code> ✓<br>4. (credentials cards — icon-only, no img tags)<br>5. isabelle-her-story.jpg (repeated in global journey): <code>Isabelle Claus Teixeira — 9 countries, 40+ nationalities</code> ✓</td></tr>
+  <tr><td class="label">Schema.org</td><td><span class="chip fail">None — Person schema with credentials, sameAs (social URLs), jobTitle, worksFor would greatly boost E-E-A-T signals.</span></td></tr>
+</table>
+
+<!-- TRE -->
+<div class="section-head" style="margin-top:1.5rem"><h2>4. tre.html</h2></div>
+<table class="page-table">
+  <tr><td class="label">Title</td><td><code>TRE® Tension &amp; Trauma Release Exercises — HummingBeing</code><br><span class="chip pass">Good</span> 55 chars. Has primary keyword and brand. Could add "Singapore".</td></tr>
+  <tr><td class="label">Meta Description</td><td><code>Learn about TRE® — Tension and Trauma Release Exercises developed by Dr. David Berceli. Release stored stress and trauma through neurogenic tremors.</code><br><span class="chip pass">Good</span> 151 chars. Keyword-rich, author credentialing, explains mechanism. Missing Singapore/Japan CTA.</td></tr>
+  <tr><td class="label">Meta Keywords</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Open Graph</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Twitter Card</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Canonical</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">JSON-LD</td><td><span class="chip fail">None — Service schema missing.</span></td></tr>
+  <tr><td class="label">H1</td><td><code>TRE® — Tension &amp; Trauma Release Exercises</code> — Strong, keyword-exact.</td></tr>
+  <tr><td class="label">H2 Tags (first 5)</td><td>1. "Your Nervous System's Natural Reset Button"<br>2. "How TRE® Works"<br>3. "What TRE® Can Do for You"<br>4. "Psychology. Neurology. Physiology."<br>5. "TRE® Star Groups with Isabelle"</td></tr>
+  <tr><td class="label">Google Analytics / GTM</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Image Alt Text (first 5)</td><td>1-2. Logo ✓<br>3. tre-what-is.jpg: <code>Woman with eyes closed, hand on heart — nervous system awareness</code> ✓<br>4. tre-benefits.jpg: <code>Woman with dark curly hair smiling — TRE® wellbeing and relief</code> ✓<br>5. tre-safety-group.jpg: <code>TRE® group session — calm and accessible</code> ✓</td></tr>
+  <tr><td class="label">Schema.org</td><td><span class="chip fail">None — Service + FAQPage schemas would be high-value here.</span></td></tr>
+</table>
+
+<!-- SOMATIC COACHING -->
+<div class="section-head" style="margin-top:1.5rem"><h2>5. somatic-coaching.html</h2></div>
+<table class="page-table">
+  <tr><td class="label">Title</td><td><code>Somatic Coaching — HummingBeing</code><br><span class="chip warn">Adequate</span> 33 chars. Has keyword + brand. Missing location.</td></tr>
+  <tr><td class="label">Meta Description</td><td><code>Somatic Coaching at HummingBeing — body-based coaching that develops embodied intelligence for lasting resilience, reduced stress and deeper self-awareness.</code><br><span class="chip pass">Good</span> 158 chars. Keyword-rich, benefit-focused.</td></tr>
+  <tr><td class="label">Meta Keywords</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Open Graph</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Twitter Card</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Canonical</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">JSON-LD</td><td><span class="chip fail">None — Service + Offer + FAQPage schemas missing.</span></td></tr>
+  <tr><td class="label">H1</td><td><code>Somatic Coaching</code> — Clean, keyword-exact.</td></tr>
+  <tr><td class="label">H2 Tags (first 5)</td><td>1. "The Intelligence Your Body Has Always Had"<br>2. "Beyond the Talking Cure"<br>3. "What You Might Start to Notice"<br>4. "What to Expect"<br>5. "Real Transformation Takes Time"</td></tr>
+  <tr><td class="label">Google Analytics / GTM</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Image Alt Text (first 5)</td><td>1-2. Logo ✓<br>3. sc-what-is.jpg: <code>Diverse group in somatic coaching — embodied intelligence in practice</code> ✓<br>4. sc-what-expect.jpg: <code>Serene yoga studio — somatic coaching sessions in natural light</code> ✓<br>5. sc-honest-commitment.jpg: <code>Woman stretching in golden sunlight — commitment to somatic practice</code> ✓</td></tr>
+  <tr><td class="label">Schema.org</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Pricing visible</td><td>Starter Package $2,200 / 8 sessions and Deep Dive Custom clearly stated — good content for GEO.</td></tr>
+</table>
+
+<!-- SOMATIC BODYWORK -->
+<div class="section-head" style="margin-top:1.5rem"><h2>6. somatic-bodywork.html</h2></div>
+<table class="page-table">
+  <tr><td class="label">Title</td><td><code>Somatic Bodywork — HummingBeing</code><br><span class="chip warn">Adequate</span> 33 chars. Missing location.</td></tr>
+  <tr><td class="label">Meta Description</td><td><code>Somatic Bodywork at HummingBeing — Strozzi-method body-based sessions that release historical patterns, tension and trauma to create more energy and aliveness.</code><br><span class="chip pass">Good</span> 162 chars. Specific (Strozzi method named), benefit-led.</td></tr>
+  <tr><td class="label">Meta Keywords</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Open Graph</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Twitter Card</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Canonical</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">JSON-LD</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">H1</td><td><code>Somatic Bodywork</code> — Clean, keyword-exact.</td></tr>
+  <tr><td class="label">H2 Tags (first 5)</td><td>1. "Working Through the Body, Not On It"<br>2. "The Strozzi Somatic Bodywork Approach"<br>3. "What Somatic Bodywork Offers"<br>4. "What a Session Looks Like"<br>5. "Soma (σῶμα) — The Living Body in Its Wholeness"</td></tr>
+  <tr><td class="label">Google Analytics / GTM</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Image Alt Text (first 5)</td><td>1-2. Logo ✓<br>3. sb-what-is.png: <code>Hands-on somatic bodywork — touch at the neck</code> ✓<br>4. sb-methodology.png: <code>Practitioner using Strozzi somatic bodywork method</code> ✓<br>5. sb-who-serves.png: <code>One-on-one somatic bodywork session</code> ✓</td></tr>
+</table>
+
+<!-- BOOK -->
+<div class="section-head" style="margin-top:1.5rem"><h2>7. book.html</h2></div>
+<table class="page-table">
+  <tr><td class="label">Title</td><td><code>Book a Session — HummingBeing</code><br><span class="chip warn">Adequate</span> 30 chars. Functional but could be: "Book a Free Discovery Call | TRE® &amp; Somatic Coaching Singapore".</td></tr>
+  <tr><td class="label">Meta Description</td><td><code>Book a session or free discovery call with Isabelle at HummingBeing. TRE®, Somatic Coaching and Somatic Bodywork in Singapore and Japan.</code><br><span class="chip pass">Good</span> 140 chars. Has location, all services, action intent. Best description on the site.</td></tr>
+  <tr><td class="label">Meta Keywords</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Open Graph</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Twitter Card</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Canonical</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">JSON-LD</td><td><span class="chip fail">None — Offer / PriceSpecification schemas would be high-impact here.</span></td></tr>
+  <tr><td class="label">H1</td><td><code>Let's Begin Together</code> — Warm, but zero keyword value.</td></tr>
+  <tr><td class="label">H2 Tags (first 5)</td><td>1. "Choose Your Path"<br>2. "Get in Touch with Isabelle"<br>3. "Before You Book"<br>(3 H2s total on page)</td></tr>
+  <tr><td class="label">Google Analytics / GTM</td><td><span class="chip fail">Absent — This is the conversion page. Missing analytics is most critical here.</span></td></tr>
+  <tr><td class="label">Form submission</td><td>Form submit fires a JS success message only — no Formspree, EmailJS or backend. Form data goes nowhere. This is a functional bug as well as a tracking gap.</td></tr>
+</table>
+
+<!-- GALLERY -->
+<div class="section-head" style="margin-top:1.5rem"><h2>8. gallery.html</h2></div>
+<table class="page-table">
+  <tr><td class="label">Title</td><td><code>Gallery — HummingBeing</code><br><span class="chip fail">Weak</span> 22 chars. "Gallery" is not a keyword for this business. Should include: "Videos, Podcasts &amp; Photos | TRE® Somatic Wellness".</td></tr>
+  <tr><td class="label">Meta Description</td><td><code>Browse HummingBeing's gallery — podcast episodes, somatic wellness videos and photos from Isabelle Claus Teixeira.</code><br><span class="chip warn">Adequate</span> 115 chars. Short but specific.</td></tr>
+  <tr><td class="label">Meta Keywords</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Open Graph</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Twitter Card</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Canonical</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">JSON-LD</td><td><span class="chip fail">None — VideoObject schema missing for YouTube embeds. ItemList schema missing for gallery.</span></td></tr>
+  <tr><td class="label">H1</td><td><code>Our Gallery</code> — Generic.</td></tr>
+  <tr><td class="label">H2 Tags</td><td>"Explore the Content" (1 H2 on page)</td></tr>
+  <tr><td class="label">Google Analytics / GTM</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Image Alt Text (first 5 actual images)</td><td>YouTube thumbnail: <code>TRE Star Groups with Isabelle</code> ✓<br>gallery-isabelle-oct-2023.jpg: <code>Isabelle Claus Teixeira</code> (minimal)<br>isabelle-her-story.jpg: <code>Isabelle at Work</code> (minimal)<br>gallery-isabelle-oct-2023.jpg (duplicate): <code>Isabelle — October 2023</code><br>gallery-isabelle-kyoto-2023.jpg: <code>Kyoto Station — October 2023</code></td></tr>
+  <tr><td class="label">Schema.org</td><td><span class="chip fail">None — VideoObject for the TRE® YouTube video is a missed opportunity.</span></td></tr>
+</table>
+
+<!-- EVENTS -->
+<div class="section-head" style="margin-top:1.5rem"><h2>9. events.html</h2></div>
+<table class="page-table">
+  <tr><td class="label">Title</td><td><code>Events &amp; Sessions — HummingBeing</code><br><span class="chip warn">Adequate</span> 33 chars. Functional. Could add: "TRE® Provider Certification Singapore 2026".</td></tr>
+  <tr><td class="label">Meta Description</td><td><code>Upcoming TRE®, Somatic Coaching and Somatic Bodywork events, workshops and group sessions with Isabelle Claus Teixeira.</code><br><span class="chip warn">Adequate</span> 120 chars. Good keywords, no date/location urgency signals.</td></tr>
+  <tr><td class="label">Meta Keywords</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Open Graph</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Twitter Card</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Canonical</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">JSON-LD</td><td><span class="chip fail">None — Event schema critically missing. Dates, prices, location (Nilayam Singapore), organizer all present in HTML but not marked up.</span></td></tr>
+  <tr><td class="label">H1</td><td><code>Events &amp; Sessions</code> — Fine for this page.</td></tr>
+  <tr><td class="label">H2 Tags</td><td>1. "TRE® Provider Certification — Module 1 — Singapore" (ecd-heading, h2)<br>2. "Upcoming Events"</td></tr>
+  <tr><td class="label">Google Analytics / GTM</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Event data visible</td><td>29–30 Aug 2026, SGD 1,290–1,800; Module 2: 26–27 Sep 2026; Module 3: 13–14 Feb 2027. All structured in HTML, none in schema.</td></tr>
+</table>
+
+<!-- SOCIALS -->
+<div class="section-head" style="margin-top:1.5rem"><h2>10. socials.html</h2></div>
+<table class="page-table">
+  <tr><td class="label">Title</td><td><code>Social Media — HummingBeing</code><br><span class="chip warn">Weak</span> 28 chars. "Social Media" is not a valuable keyword for this site's audience.</td></tr>
+  <tr><td class="label">Meta Description</td><td><code>Follow HummingBeing and Isabelle Claus Teixeira on Instagram, LinkedIn, YouTube and more for somatic wellness content and inspiration.</code><br><span class="chip warn">Adequate</span> 137 chars. Names platforms and practitioner. Could mention specific content themes.</td></tr>
+  <tr><td class="label">Meta Keywords</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Open Graph</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Twitter Card</td><td><span class="chip fail">None</span></td></tr>
+  <tr><td class="label">Canonical</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">JSON-LD</td><td><span class="chip fail">None — sameAs links to all social platforms present in HTML, ideal for Person schema.</span></td></tr>
+  <tr><td class="label">H1</td><td><code>Follow the Journey</code> — Emotional, not keyword-led.</td></tr>
+  <tr><td class="label">H2 Tags (first 5)</td><td>1. "Find Us Where You Are"<br>2. "Content That Nourishes"<br>3. "Resources &amp; Related Organisations"<br>4. "The HummingBeing Letter"<br>(4 H2s total)</td></tr>
+  <tr><td class="label">Google Analytics / GTM</td><td><span class="chip fail">Absent</span></td></tr>
+  <tr><td class="label">Notable</td><td>Isabelle's book "Magic Somatic" linked to Amazon with full URL. Good for entity authority. No schema markup on this link.</td></tr>
+</table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     GLOBAL SEO ANALYSIS
+     ══════════════════════════════════════════════════════════════ -->
+<div id="global-seo">
+<div class="section-head"><h2>Global SEO Analysis</h2><span class="badge critical">Critical Gaps</span></div>
+
+<div class="findings">
+
+  <div class="finding critical">
+    <strong>Critical — No Canonical Tags (all 10 pages)</strong>
+    Not a single page has a <code>&lt;link rel="canonical"&gt;</code> tag. Without canonicals, if the site is ever served at multiple URLs (www vs non-www, HTTP vs HTTPS, trailing slash vs no slash), Google may split PageRank across duplicates and index may be unreliable.
+  </div>
+
+  <div class="finding critical">
+    <strong>Critical — No Open Graph Tags (all 10 pages)</strong>
+    When any HummingBeing link is shared on LinkedIn, Facebook, WhatsApp, iMessage, or Slack, it renders as a bare URL with no image, no headline, no description. For a wellness brand whose target audience heavily uses LinkedIn and WhatsApp, this is a significant brand exposure gap. Every page needs og:title, og:description, og:image (1200×630px), og:url, og:type. The og:image should be a professional photo of Isabelle or a branded visual.
+  </div>
+
+  <div class="finding critical">
+    <strong>Critical — No Twitter/X Card Tags (all 10 pages)</strong>
+    <code>twitter:card</code>, <code>twitter:title</code>, <code>twitter:description</code>, <code>twitter:image</code> all absent. Unfurling on X will produce bare URLs.
+  </div>
+
+  <div class="finding critical">
+    <strong>Critical — No sitemap.xml</strong>
+    The file does not exist at <code>C:\Users\Rico\hummingbeing-website\sitemap.xml</code>. Google has no machine-readable index of the site's pages. Submit sitemap to Google Search Console after creation. Should include all 10 pages with <code>&lt;lastmod&gt;</code> dates.
+  </div>
+
+  <div class="finding critical">
+    <strong>Critical — No robots.txt</strong>
+    File does not exist. Without it, crawlers operate on defaults. Even a minimal file pointing to the sitemap is important. Also: changelog.html should arguably be <code>noindex</code> to avoid diluting crawl budget with a non-commercial page.
+  </div>
+
+  <div class="finding critical">
+    <strong>Critical — Title Tags are generic on 6/10 pages</strong>
+    "About — HummingBeing", "Isabelle — HummingBeing", "Gallery — HummingBeing", "Social Media — HummingBeing" are weak. None of these secondary pages include a geographic signal (Singapore, Japan) or a service keyword in the title. The home page title "Release. Renew. Restore." is evocative but has zero keyword in it — a missed opportunity for the most-linked page.
+  </div>
+
+  <div class="finding critical">
+    <strong>Critical — Meta descriptions missing location on 9/10 pages</strong>
+    Only book.html mentions "Singapore and Japan". For a local/regional service business where searches include "somatic coaching Singapore" or "TRE provider Tokyo", the location omission across all other pages is a significant ranking signal gap.
+  </div>
+
+  <div class="finding warning">
+    <strong>Warning — No meta keywords (all 10 pages)</strong>
+    Google ignores meta keywords, but Bing and some other engines still reference them, and they signal intent during AEO/GEO content analysis. Low priority but worth a 10-minute addition.
+  </div>
+
+  <div class="finding warning">
+    <strong>Warning — No robots meta tag (all 10 pages)</strong>
+    No explicit <code>&lt;meta name="robots" content="index,follow"&gt;</code>. While default crawl behavior is "index, follow", being explicit avoids any ambiguity — especially when robots.txt is eventually added.
+  </div>
+
+  <div class="finding warning">
+    <strong>Warning — Favicon SVG only</strong>
+    Every page uses <code>&lt;link rel="icon" href="favicon.svg"&gt;</code>. No PNG fallback, no <code>apple-touch-icon</code>, no 32×32 / 16×16 ICO. Safari and some Android browsers may fail to display the favicon. Apple devices will show a blank icon when bookmarked to home screen.
+  </div>
+
+  <div class="finding warning">
+    <strong>Warning — Book form is non-functional</strong>
+    The contact form on book.html has an <code>onsubmit="handleBookSubmit(event)"</code> that only hides the form and shows a thank-you message — no data is transmitted. There is no Formspree endpoint, no EmailJS, no fetch to a backend. Isabelle receives zero submissions from the website. This is both a business critical bug and a conversion tracking issue.
+  </div>
+
+  <div class="finding positive">
+    <strong>Positive — lang="en" on all 10 pages</strong>
+    Every HTML tag has <code>lang="en"</code>. Correct and consistent.
+  </div>
+
+  <div class="finding positive">
+    <strong>Positive — Meta descriptions present on all 10 pages</strong>
+    Every page has a unique meta description. Quality varies but none are blank.
+  </div>
+
+  <div class="finding positive">
+    <strong>Positive — H1 present and unique on all 10 pages</strong>
+    No duplicate H1s detected, no missing H1s.
+  </div>
+
+  <div class="finding positive">
+    <strong>Positive — Image alt text largely populated</strong>
+    The vast majority of images have descriptive alt text. Several alts are generic (e.g. "Isabelle Claus Teixeira" with no context) but none are blank or "image.jpg".
+  </div>
+
+  <div class="finding positive">
+    <strong>Positive — Preload hints on hero images</strong>
+    All pages use <code>&lt;link rel="preload" as="image"&gt;</code> for hero poster images, improving LCP performance.
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     AEO
+     ══════════════════════════════════════════════════════════════ -->
+<div id="aeo">
+<div class="section-head"><h2>AEO — Answer Engine Optimization</h2><span class="badge critical">Not Configured</span></div>
+<p style="margin-bottom:1rem;color:var(--mid);font-size:.85rem">AEO targets how Google's AI Overview, Google's featured snippets, Bing Answers, Perplexity, and similar engines extract and surface direct answers. The primary mechanic is structured data (JSON-LD) and well-formatted FAQ / how-to content.</p>
+
+<div class="findings">
+
+  <div class="finding critical">
+    <strong>Critical — Zero JSON-LD / Schema.org on any page</strong>
+    This is the single largest gap in the entire site. No structured data exists anywhere. The content absolutely warrants and qualifies for:
+    <ul style="margin-top:.5rem;padding-left:1.2rem">
+      <li><strong>Organization</strong> — on index.html: name, url, logo, contactPoint, sameAs (social profiles), address</li>
+      <li><strong>Person</strong> — on isabelle.html: Isabelle's full bio, jobTitle, credentials, sameAs (LinkedIn, Instagram, YouTube, Amazon author)</li>
+      <li><strong>Service</strong> — on tre.html, somatic-coaching.html, somatic-bodywork.html: serviceName, provider, areaServed, offers (price, priceCurrency)</li>
+      <li><strong>FAQPage</strong> — on book.html (6 FAQ items exist), tre.html: ready-made FAQ content just needs schema wrapping</li>
+      <li><strong>Event</strong> — on events.html: 3 TRE® Provider Certification modules with exact dates, prices, location (Nilayam, Singapore)</li>
+      <li><strong>VideoObject</strong> — on gallery.html and tre.html: YouTube embed with title "TRE Star Groups with Isabelle Claus Teixeira" has no schema</li>
+      <li><strong>PriceSpecification / Offer</strong> — on book.html and somatic-coaching.html: $2,200 Starter, custom Deep Dive</li>
+      <li><strong>Book</strong> — on socials.html: "Magic Somatic" by Isabelle, linked to Amazon</li>
+    </ul>
+  </div>
+
+  <div class="finding critical">
+    <strong>Critical — FAQ content exists but is unstructured</strong>
+    book.html has 6 FAQ items ("Do I need previous experience?", "Do I need to talk about my trauma?", "How many sessions will I need?", "Can sessions be done online?", "Is this available for corporate teams?", "What is the cancellation policy?") implemented as an accordion with JavaScript. The text is present but there is no FAQPage JSON-LD. Google and Bing cannot extract these as featured snippets or answer boxes.
+  </div>
+
+  <div class="finding warning">
+    <strong>Warning — No HowTo schema on TRE page</strong>
+    tre.html has a 4-step process ("Prepare the Body", "Activate the Psoas", "Allow the Tremors", "Rest &amp; Integrate") that is perfect for HowTo schema. This format is frequently surfaced in AI Overviews for "how does TRE work" type queries.
+  </div>
+
+  <div class="finding warning">
+    <strong>Warning — Definition-style content without schema</strong>
+    somatic-bodywork.html has an explicit definition of "soma" (ancient Greek + Sanskrit etymology). This is ideal AEO content for "what is somatic bodywork" queries but has no DefinedTerm or speakable schema.
+  </div>
+
+  <div class="finding positive">
+    <strong>Positive — Rich, direct-answer-ready body text</strong>
+    The content quality is excellent. Definitions are given in plain language, processes are step-by-step, benefits are listed, questions are anticipated. The content would answer AI Overviews well if the pages had proper schema and canonical signals to surface them.
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     GEO
+     ══════════════════════════════════════════════════════════════ -->
+<div id="geo">
+<div class="section-head"><h2>GEO — Generative Engine Optimization</h2><span class="badge warning">Partial</span></div>
+<p style="margin-bottom:1rem;color:var(--mid);font-size:.85rem">GEO targets how Claude, ChatGPT, Gemini, Perplexity, and similar LLMs represent the business in their generative outputs. Key factors: entity clarity, factual density, authoritative citations, structured content, and consistent NAP (Name/Address/Phone) signals.</p>
+
+<div class="findings">
+
+  <div class="finding critical">
+    <strong>Critical — No machine-readable entity signals</strong>
+    The business has no JSON-LD Organization or Person schema, no sameAs array linking to social profiles, no structured NAP. LLMs that crawl the live site cannot confidently identify HummingBeing as a distinct entity separate from BHD Asia. The sameAs array on an Organization schema (linking to Instagram, LinkedIn, YouTube, Pinterest, bhdasia.com, traumaprevention.com) would dramatically improve entity confidence.
+  </div>
+
+  <div class="finding critical">
+    <strong>Critical — No Wikipedia / Wikidata presence</strong>
+    Neither HummingBeing nor Isabelle Claus Teixeira appear to have Wikipedia or Wikidata entries. This is the strongest external entity signal for LLMs. While creating Wikipedia articles requires notability standards, a Wikidata entry for the business and person can be created freely and links back to the site as an "official website" reference.
+  </div>
+
+  <div class="finding warning">
+    <strong>Warning — Practitioner credentials scattered, not consolidated</strong>
+    Isabelle's credentials (TRE® Certified Provider, ICF PCC, Strozzi Bodywork, Reiki Level II, 25+ years HR Fortune 100) are spread across isabelle.html and socials.html. A structured Person JSON-LD on isabelle.html with hasCredential, hasOccupation, alumniOf, memberOf would give LLMs a single authoritative source to cite from.
+  </div>
+
+  <div class="finding warning">
+    <strong>Warning — "Magic Somatic" book not prominently featured</strong>
+    Isabelle has published a book listed on socials.html linking to Amazon. This is a significant authority signal for LLMs (published authors receive more generative citations). The book should be featured on isabelle.html with Book schema (name, author, isbn if available, url) and cross-linked from at least 3 other pages.
+  </div>
+
+  <div class="finding warning">
+    <strong>Warning — Third-party authority citations thin</strong>
+    The site references Dr. David Berceli (TRE® founder), Dr. Stephen Porges (Polyvagal Theory), and Richard Strozzi-Heckler (Strozzi Institute) in body text. However, no outbound links to traumaprevention.com, Strozzi Institute, or published research exist from the service pages. Adding these links with proper context ("developed by...") strengthens the site's academic alignment — an important GEO signal.
+  </div>
+
+  <div class="finding positive">
+    <strong>Positive — Factual density is high</strong>
+    The site is rich with specific, citable facts: 25+ years experience, 9 countries, 40+ nationalities, Dr. David Berceli, Dr. Stephen Porges' Polyvagal Theory, Strozzi Institute, Singapore and Japan locations, pricing ($2,200 Starter, 1,290–4,500 SGD certification). LLMs can cite these specifics if they can correctly attribute them to HummingBeing as an entity.
+  </div>
+
+  <div class="finding positive">
+    <strong>Positive — Chatbot knowledge base is excellent GEO content</strong>
+    scripts.js contains a 30-entry FAQ knowledge base covering every key question about the business. This content is not visible to search crawlers or LLMs (it is inside a JS IIFE). If this content were replicated as visible HTML — perhaps as a well-structured FAQ page — it would be prime GEO content.
+  </div>
+
+  <div class="finding positive">
+    <strong>Positive — External links to authoritative organisations</strong>
+    socials.html links to traumaprevention.com (TRE® Global), strozziinstitute.com, bhdasia.com, noomii.com/isabelle profile. These outbound links signal topical authority. The Amazon book link is also an external E-E-A-T signal.
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     TRACKING / GTM
+     ══════════════════════════════════════════════════════════════ -->
+<div id="tracking">
+<div class="section-head"><h2>Google Analytics &amp; Tag Manager</h2><span class="badge critical">Completely Missing</span></div>
+
+<div class="findings">
+
+  <div class="finding critical">
+    <strong>Critical — No analytics or tag manager on any page</strong>
+    A thorough search of all 10 HTML files and scripts.js found zero occurrences of: <code>gtag</code>, <code>GTM-</code>, <code>UA-</code>, <code>G-</code>, <code>_ga</code>, <code>analytics.js</code>, <code>ga.js</code>, <code>measurementId</code>, <code>dataLayer</code>, <code>googletagmanager.com</code>, <code>google-analytics.com</code>. The website has been running with zero visitor data collection. You have no data on: which pages are visited, where users come from, how long they stay, what they click, whether they convert.
+  </div>
+
+  <div class="finding critical">
+    <strong>Critical — No conversion tracking on book.html</strong>
+    book.html is the conversion page. The form submit fires a local JS handler that shows a thank-you message only. There is no conversion event, no goal completion, and the form does not send data anywhere. This is a double problem: (1) no analytics to measure conversions, and (2) no form backend to receive enquiries.
+  </div>
+
+  <div class="finding critical">
+    <strong>Critical — No Facebook Pixel or LinkedIn Insight Tag</strong>
+    Given Isabelle is active on Instagram and LinkedIn, retargeting pixels from those platforms are completely absent. Visitors cannot be retargeted on those platforms.
+  </div>
+
+</div>
+
+<div style="background:var(--navy);color:#fff;border-radius:4px;padding:1.2rem 1.5rem;margin-bottom:2rem;font-size:.85rem">
+  <strong style="color:var(--gold);display:block;margin-bottom:.5rem">Recommended Tracking Setup (in order):</strong>
+  <ol style="padding-left:1.2rem;line-height:2">
+    <li>Create a GA4 property at analytics.google.com, get the Measurement ID (format: G-XXXXXXXXXX)</li>
+    <li>Add the gtag snippet to every HTML page's <code>&lt;head&gt;</code> — or install GTM container and add gtag via GTM</li>
+    <li>Fix the book.html form (add Formspree or EmailJS endpoint) and fire a GA4 conversion event on successful submission</li>
+    <li>Create a Goal in GA4 for "form_submit" event from book.html</li>
+    <li>Add Meta Pixel for Instagram retargeting</li>
+    <li>Add LinkedIn Insight Tag for LinkedIn retargeting</li>
+    <li>Verify Search Console property and submit sitemap</li>
+  </ol>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SUPPLEMENTARY FILES
+     ══════════════════════════════════════════════════════════════ -->
+<div id="supplementary">
+<div class="section-head"><h2>Supplementary Files Check</h2><span class="badge critical">All Missing</span></div>
+<table class="page-table">
+  <tr><th>File</th><th>Status</th><th>Impact</th></tr>
+  <tr><td><code>sitemap.xml</code></td><td><span class="chip fail">Does not exist</span></td><td>Google cannot discover all pages efficiently. Required for Search Console submission.</td></tr>
+  <tr><td><code>robots.txt</code></td><td><span class="chip fail">Does not exist</span></td><td>Crawlers operate on defaults. Sitemap URL cannot be declared. changelog.html cannot be noindexed.</td></tr>
+  <tr><td><code>manifest.json</code></td><td><span class="chip fail">Does not exist</span></td><td>PWA install, "Add to Home Screen" unavailable. Not critical but a missed opportunity.</td></tr>
+  <tr><td><code>favicon.svg</code></td><td><span class="chip warn">SVG only</span></td><td>Present but no PNG fallback (32px, 16px), no apple-touch-icon (180×180).</td></tr>
+  <tr><td><code>scripts.js</code></td><td><span class="chip pass">Present</span></td><td>Contains: button ripple, scroll progress bar, nav behaviour, mobile menu, scroll animations, chatbot KB. No analytics hooks.</td></tr>
+  <tr><td><code>styles.css</code></td><td><span class="chip pass">Present</span></td><td>Not audited for SEO (CSS is not a ranking factor) — confirmed it is loaded on all pages.</td></tr>
+</table>
+
+<div style="background:var(--code-bg);border-radius:4px;padding:1rem 1.2rem;font-size:.82rem;font-family:'Courier New',monospace;margin-bottom:2rem">
+  <strong style="font-family:system-ui;color:var(--navy)">Minimal robots.txt to create:</strong><br><br>
+  User-agent: *<br>
+  Allow: /<br>
+  Disallow: /changelog.html<br><br>
+  Sitemap: https://technextsg.github.io/hummingbeing-website/sitemap.xml
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PRIORITY ACTION TABLE
+     ══════════════════════════════════════════════════════════════ -->
+<div id="priorities">
+<div class="section-head"><h2>Priority Action Table</h2><span class="badge">Ranked by Impact</span></div>
+<table class="priority-table">
+  <tr><th>#</th><th>Priority</th><th>Action</th><th>Pages Affected</th><th>Impact</th></tr>
+  <tr>
+    <td>1</td><td class="p1">P1 — Critical</td>
+    <td>Install Google Analytics 4 (G- tag or GTM container) on every page</td>
+    <td>All 10 pages</td>
+    <td>Without this, there is zero ROI measurement. Fix the form backend at the same time.</td>
+  </tr>
+  <tr>
+    <td>2</td><td class="p1">P1 — Critical</td>
+    <td>Fix book.html contact form to actually submit data (Formspree or EmailJS). Fire GA4 conversion event on success.</td>
+    <td>book.html</td>
+    <td>Currently Isabelle receives zero website enquiries. Business-critical bug.</td>
+  </tr>
+  <tr>
+    <td>3</td><td class="p1">P1 — Critical</td>
+    <td>Add Open Graph + Twitter Card meta tags to all 10 pages with a proper og:image (1200×630)</td>
+    <td>All 10 pages</td>
+    <td>Social sharing (LinkedIn, WhatsApp, iMessage) currently shows blank unfurls.</td>
+  </tr>
+  <tr>
+    <td>4</td><td class="p1">P1 — Critical</td>
+    <td>Add canonical link tags to all 10 pages pointing to the live URL</td>
+    <td>All 10 pages</td>
+    <td>Prevents duplicate indexing and PageRank dilution.</td>
+  </tr>
+  <tr>
+    <td>5</td><td class="p1">P1 — Critical</td>
+    <td>Create sitemap.xml listing all 10 pages with lastmod dates and submit to Google Search Console</td>
+    <td>Site-wide</td>
+    <td>Enables reliable Google crawling and indexing of all pages.</td>
+  </tr>
+  <tr>
+    <td>6</td><td class="p1">P1 — Critical</td>
+    <td>Create robots.txt declaring sitemap URL and blocking changelog.html from indexing</td>
+    <td>Site-wide</td>
+    <td>Standard crawl hygiene; required before Search Console setup.</td>
+  </tr>
+  <tr>
+    <td>7</td><td class="p1">P1 — Critical</td>
+    <td>Add JSON-LD: Organization schema on index.html, Person schema on isabelle.html</td>
+    <td>index.html, isabelle.html</td>
+    <td>Establishes entity identity for Google Knowledge Graph, AEO, and GEO. Include sameAs with all social URLs.</td>
+  </tr>
+  <tr>
+    <td>8</td><td class="p1">P1 — Critical</td>
+    <td>Add FAQPage JSON-LD to book.html (6 FAQ items ready to wrap)</td>
+    <td>book.html</td>
+    <td>Book page FAQ answers exact user questions — eligible for Google FAQ rich results and AI Overviews.</td>
+  </tr>
+  <tr>
+    <td>9</td><td class="p1">P1 — Critical</td>
+    <td>Add Event JSON-LD to events.html for the 3 TRE® Certification modules</td>
+    <td>events.html</td>
+    <td>Events with dates and prices appear in Google's event-specific search results and AI Overviews. Dates and prices are already in the HTML.</td>
+  </tr>
+  <tr>
+    <td>10</td><td class="p2">P2 — Important</td>
+    <td>Add Service JSON-LD to tre.html, somatic-coaching.html, somatic-bodywork.html with areaServed (Singapore, Japan), offers, and provider</td>
+    <td>3 service pages</td>
+    <td>Service schema enables price display in search results and improves local ranking signals.</td>
+  </tr>
+  <tr>
+    <td>11</td><td class="p2">P2 — Important</td>
+    <td>Rewrite title tags on 6 weak pages to include location and primary keyword</td>
+    <td>about.html, isabelle.html, gallery.html, socials.html, book.html, events.html</td>
+    <td>Titles are the #1 on-page ranking factor. Current titles are either brand-only or generic.</td>
+  </tr>
+  <tr>
+    <td>12</td><td class="p2">P2 — Important</td>
+    <td>Add Singapore / Japan to meta descriptions on all pages except book.html</td>
+    <td>9 pages</td>
+    <td>Location in meta description improves click-through rate for location-based searches.</td>
+  </tr>
+  <tr>
+    <td>13</td><td class="p2">P2 — Important</td>
+    <td>Add VideoObject JSON-LD for the TRE® Star Groups YouTube video (YouTube ID: 1PT1crBhhUE)</td>
+    <td>tre.html, gallery.html</td>
+    <td>Video schema enables Google's video rich results and surfaces the video in AI-generated answers about TRE®.</td>
+  </tr>
+  <tr>
+    <td>14</td><td class="p2">P2 — Important</td>
+    <td>Add Book JSON-LD for "Magic Somatic" on isabelle.html and socials.html</td>
+    <td>isabelle.html, socials.html</td>
+    <td>Published author attribution is a strong E-E-A-T and GEO signal.</td>
+  </tr>
+  <tr>
+    <td>15</td><td class="p3">P3 — Enhancement</td>
+    <td>Add HowTo JSON-LD to tre.html for the 4-step TRE® process</td>
+    <td>tre.html</td>
+    <td>HowTo schema surfaces in "how to do TRE" featured snippet results.</td>
+  </tr>
+  <tr>
+    <td>16</td><td class="p3">P3 — Enhancement</td>
+    <td>Add PNG favicon files (32×32, 16×16) and apple-touch-icon (180×180)</td>
+    <td>All pages (via head)</td>
+    <td>Ensures favicon displays on all devices and browsers.</td>
+  </tr>
+  <tr>
+    <td>17</td><td class="p3">P3 — Enhancement</td>
+    <td>Add meta keywords to all pages</td>
+    <td>All 10 pages</td>
+    <td>Bing still uses these. Minor, but no downside.</td>
+  </tr>
+  <tr>
+    <td>18</td><td class="p3">P3 — Enhancement</td>
+    <td>Create robots meta tags on all pages: <code>&lt;meta name="robots" content="index,follow"&gt;</code></td>
+    <td>All 10 pages</td>
+    <td>Explicit indexing directive. Low effort, good hygiene.</td>
+  </tr>
+  <tr>
+    <td>19</td><td class="p3">P3 — Enhancement</td>
+    <td>Create a standalone FAQ page with all chatbot KB questions as visible HTML + FAQPage schema</td>
+    <td>New page</td>
+    <td>The chatbot's 30-entry KB is prime GEO/AEO content currently invisible to search engines.</td>
+  </tr>
+  <tr>
+    <td>20</td><td class="p3">P3 — Enhancement</td>
+    <td>Add outbound citation links from service pages to traumaprevention.com (TRE® Global), strozziinstitute.com on relevant pages</td>
+    <td>tre.html, somatic-bodywork.html</td>
+    <td>Citing authoritative primary sources strengthens topical authority for GEO.</td>
+  </tr>
+</table>
+</div>
+
+</div><!-- /wrap -->
+<div class="foot">HummingBeing SEO/AEO/GEO Audit · June 2026 · Prepared by TechNext</div>
+</body>
+</html>

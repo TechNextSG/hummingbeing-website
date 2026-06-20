@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [48.1] — 2026-06-20
+
+### Fix — Verification pass completing missed v48.0 CSS changes
+
+- **CSS — will-change completed** — Added `will-change: transform` to `.ticker-track` and `.wa-float`; `will-change: opacity, transform` to `.anim-up` (missed in v48.0 deploy).
+- **CSS — utility classes completed** — Added `.section-cta-center`, `.foot-logo img`, `.foot-sep`, and `.g-hidden { display: none !important }` (missed in v48.0 deploy).
+- **CSS — tablet two-col fix** — Added `.two-col-image { min-height: 280px }` inside `@media (max-width: 900px)` (missed in v48.0 deploy).
+- **somatic-coaching.html** — Changed Pricing section from `section-white` to `section-cream` to prevent consecutive same-background sections.
+- **All pages — CSS version bump** — Bumped `styles.css` cache-bust to `v87`.
+
+---
+
 ## [48.0] — 2026-06-20
 
 ### Audit Fixes — Performance, Accessibility & Code Quality
