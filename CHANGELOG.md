@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.5] — 2026-06-20
+
+### Fixed / Changed
+- **events.html — Event photo frame corners** — Removed `border-radius: 12px` from `.evt-card-img`; corners now flush with the card edge.
+- **All pages — Changelog removed from footer** — Removed Changelog link from the Company section footer across all 11 pages.
+
+---
+
 ## [47.4] — 2026-06-20
 
 ### Fixed
