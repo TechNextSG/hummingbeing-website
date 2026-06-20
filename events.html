@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TRE&#174; Events &amp; Workshops Singapore &amp; Japan | HummingBeing</title>
   <meta name="description" content="Join Isabelle Claus Teixeira for TRE&#174; group sessions, somatic coaching workshops and online events in Singapore and Japan. Upcoming TRE&#174; Certification training and community healing sessions." />
-  <link rel="stylesheet" href="styles.css?v=85" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="styles.css?v=86" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <link rel="preload" as="image" href="poster-events.jpg" fetchpriority="high">
@@ -106,139 +110,14 @@
     }
     .cd-event-title strong { color: var(--white); font-weight: 700; }
 
-    /* -- FILTER TABS ------------------------------------------------------ */
-    .evt-tabs {
-      display: flex; justify-content: center;
-      gap: .8rem; flex-wrap: wrap; margin-bottom: 3rem;
-    }
-    .evt-tab {
-      padding: .55rem 1.6rem;
-      border: 2px solid var(--border);
-      background: transparent; color: var(--navy);
-      font-family: 'Lato', sans-serif;
-      font-size: .74rem; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      border-radius: 2px; cursor: pointer;
-      transition: background .2s, color .2s, border-color .2s;
-    }
-    .evt-tab:hover { border-color: var(--gold); color: var(--gold-dark); }
-    .evt-tab.active { background: var(--gold); color: var(--white); border-color: var(--gold); }
-
-    /* -- FEATURED EVENT --------------------------------------------------- */
-    .featured-event {
-      background: var(--navy); border-radius: 3px;
-      display: grid; grid-template-columns: 1.2fr 1fr;
-      overflow: hidden; margin-bottom: 3rem;
-      box-shadow: 0 16px 56px rgba(36,46,66,.18);
-    }
-    .fe-image {
-      aspect-ratio: auto;
-      background: linear-gradient(135deg, #0c1018 0%, #1c2234 100%);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 1rem;
-      color: rgba(255,255,255,.14); min-height: 320px;
-    }
-    .fe-image i { font-size: 3.5rem; }
-    .fe-image span { font-size: .62rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; font-family: 'Lato', sans-serif; }
-    .fe-content { padding: 3rem 2.8rem; }
-    .fe-badge {
-      display: inline-flex; align-items: center; gap: .4rem;
-      background: var(--gold); color: var(--navy);
-      font-size: .62rem; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; padding: .3rem .75rem;
-      border-radius: 2px; margin-bottom: 1.2rem;
-    }
-    .fe-content h3 {
-      font-family: 'PT Serif', Georgia, serif;
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      color: var(--white); margin-bottom: .8rem; line-height: 1.2;
-    }
-    .fe-content > p { color: rgba(255,255,255,.9); font-size: .97rem; line-height: 1.7; margin-bottom: 1.5rem; }
-    .fe-meta { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 2rem; }
-    .fe-meta-item {
-      display: flex; align-items: center; gap: .7rem;
-      font-size: .88rem; color: rgba(255,255,255,.82);
-    }
-    .fe-meta-item i { color: var(--gold); width: 16px; flex-shrink: 0; }
-    .fe-meta-item strong { color: var(--white); }
-
     /* -- EVENT CARDS GRID ------------------------------------------------- */
     .events-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
-    .event-card {
-      background: var(--white);
-      border-radius: 3px;
-      box-shadow: 0 4px 20px rgba(36,46,66,.08);
-      overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: transform .3s ease, box-shadow .3s ease;
-    }
-    .event-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(36,46,66,.13); }
-    .ec-img {
-      width: 100%; height: 180px;
-      background: linear-gradient(135deg, #0c1018 0%, #1c2234 100%);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: .75rem;
-      color: rgba(255,255,255,.15); flex-shrink: 0;
-    }
-    .ec-img i { font-size: 2.4rem; }
-    .ec-img span { font-size: .58rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-family: 'Lato', sans-serif; }
-    .ec-body { padding: 1.5rem 1.4rem; display: flex; flex-direction: column; flex: 1; }
-    .ec-type {
-      font-size: .64rem; font-weight: 700; letter-spacing: 1.8px;
-      text-transform: uppercase; color: var(--gold-dark); margin-bottom: .6rem;
-    }
-    .ec-body h4 {
-      font-family: 'PT Serif', Georgia, serif;
-      font-size: 1.05rem; color: var(--navy);
-      margin-bottom: .7rem; line-height: 1.3;
-    }
-    .ec-body p { color: var(--body-text); font-size: .93rem; line-height: 1.65; margin-bottom: 1.1rem; flex: 1; }
-    .ec-details { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1.2rem; }
-    .ec-detail { display: flex; align-items: center; gap: .55rem; font-size: .8rem; color: var(--body-text); }
-    .ec-detail i { color: var(--gold); width: 14px; }
-    .event-card .btn { font-size: .7rem; padding: .7rem 1.4rem; }
-
-    /* -- PAST EVENTS ------------------------------------------------------ */
-    .event-card.past { opacity: .7; }
-    .event-card.past:hover { opacity: 1; }
-    .past-label {
-      display: inline-block;
-      background: rgba(36,46,66,.08); color: var(--text-mid);
-      font-size: .62rem; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; padding: .25rem .6rem; border-radius: 2px;
-      margin-bottom: .6rem;
-    }
-
-    /* -- NOTIFY STRIP ----------------------------------------------------- */
-    .notify-strip {
-      background: var(--cream); padding: 3.5rem 5%; border-top: 1px solid rgba(36,46,66,.08);
-      text-align: center;
-    }
-    .notify-strip h3 {
-      font-family: 'PT Serif', Georgia, serif;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: var(--navy); margin-bottom: .5rem;
-    }
-    .notify-strip > p { color: var(--body-text); margin-bottom: 1.8rem; font-size: .97rem; }
-    .notify-form {
-      display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; max-width: 520px; margin: 0 auto;
-    }
-    .notify-form input {
-      flex: 1; min-width: 220px; padding: .85rem 1.2rem;
-      border: 1.5px solid rgba(36,46,66,.2); border-radius: 2px;
-      background: var(--white); color: var(--navy);
-      font-family: 'Lato', sans-serif; font-size: .95rem;
-    }
-    .notify-form input::placeholder { color: var(--text-mid); }
-    .notify-form input:focus { outline: none; border-color: var(--gold); }
 
     @media (max-width: 900px) {
-      .featured-event { grid-template-columns: 1fr; }
-      .fe-image { min-height: 200px; }
       .events-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
@@ -410,14 +289,6 @@
   <meta name="twitter:title" content="TRE® Events &amp; Workshops Singapore &amp; Japan | HummingBeing" />
   <meta name="twitter:description" content="TRE® group sessions, somatic workshops and online events with Isabelle Claus Teixeira. Singapore, Japan & online." />
   <meta name="twitter:image" content="https://technextsg.github.io/hummingbeing-website/images/isabelle-her-story.jpg" />
-  <!-- Google tag (gtag.js) — replace G-XXXXXXXXXX with your GA4 Measurement ID -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
   <!-- Structured Data: Events -->
   <script type="application/ld+json">
   [
@@ -561,13 +432,13 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo"><img src="images/logo-dark.png" class="logo-on-dark" alt="HummingBeing — Coaching &amp; Somatics" style="height:56px;width:auto" /><img src="images/logo-light.png" class="logo-on-light" alt="HummingBeing — Coaching &amp; Somatics" style="height:56px;width:auto" /></a>
+  <a href="index.html" class="logo"><img src="images/logo-dark.png" class="logo-on-dark" alt="HummingBeing — Coaching &amp; Somatics" width="168" height="56" style="height:56px;width:auto" /><img src="images/logo-light.png" class="logo-on-light" alt="HummingBeing — Coaching &amp; Somatics" width="168" height="56" style="height:56px;width:auto" /></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="isabelle.html">Isabelle</a></li>
     <li class="nav-dropdown">
-      <a href="#" class="nav-dropdown-toggle">Services <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+      <a href="javascript:void(0)" class="nav-dropdown-toggle">Services <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
       <ul class="nav-dropdown-menu">
         <li><a href="tre.html">TRE&#174; Exercises</a></li>
         <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
@@ -586,7 +457,7 @@
 
 <!-- EVENT HERO WITH COUNTDOWN -->
 <div class="event-hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="none" poster="poster-events.jpg">
+  <video class="hero-video" autoplay muted loop playsinline preload="none" poster="poster-events.jpg" title="HummingBeing events — background video">
     <source src="hero-events.mp4" type="video/mp4">
   </video>
   <span class="eyebrow">Live Events &amp; Workshops</span>
@@ -831,7 +702,7 @@
 <footer>
   <div class="foot-grid">
     <div>
-      <a href="index.html" class="foot-logo"><img src="images/logo-dark.png" alt="HummingBeing — Coaching &amp; Somatics" style="height:48px;width:auto;display:block" /></a>
+      <a href="index.html" class="foot-logo"><img src="images/logo-dark.png" alt="HummingBeing — Coaching &amp; Somatics" width="144" height="48" style="height:48px;width:auto;display:block" /></a>
       <p class="foot-desc">A safe space to learn TRE&#174;, Somatic Coaching and Somatic Bodywork &#8212; a space to release, renew and restore.</p>
       <p class="foot-desc">Part of <strong>BHD Asia &amp; BHD Japan</strong></p>
       <div class="foot-socials">
@@ -871,18 +742,18 @@
     </div>
   </div>
   <div class="foot-bottom">
-    <div class="foot-copy">&#169; 2024 HummingBeing &#183; BHD Asia &amp; BHD Japan</div>
+    <div class="foot-copy">&#169; 2026 HummingBeing &#183; BHD Asia &amp; BHD Japan</div>
     <div class="foot-legal">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <span style="opacity:.4">&#183;</span>
+      <span>Privacy Policy</span>
+      <span>Terms of Service</span>
+      <span class="foot-sep">&#183;</span>
       <a href="https://technextasia.com" target="_blank">Powered by <span class="tn-brand">TechNext</span></a>
     </div>
   </div>
 </footer>
 <a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
-<script src="scripts.js"></script>
+<script src="scripts.js" defer></script>
 <script>
 /* Big countdown section (with ring progress) */
 (function(){
@@ -908,7 +779,7 @@
     }
     var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),
         m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-    setNum('ecd-days',d);   setRing('rng-days',d,30);
+    setNum('ecd-days',d);   setRing('rng-days',d,Math.max(90, d + 1));
     setNum('ecd-hours',h);  setRing('rng-hours',h,24);
     setNum('ecd-mins',m);   setRing('rng-mins',m,60);
     setNum('ecd-secs',s);   setRing('rng-secs',s,60);
