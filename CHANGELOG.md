@@ -5,6 +5,36 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [48.0] — 2026-06-20
+
+### Audit Fixes — Performance, Accessibility & Code Quality
+
+- **Google Fonts — render-blocking eliminated** — Replaced CSS `@import` with `<link rel="preconnect">` + stylesheet link in HTML on all pages.
+- **Font Awesome — CDN preconnect** — Added `rel="preconnect"` hint for `cdnjs.cloudflare.com` on all pages.
+- **CSS — will-change added to animated elements** — Added `will-change` to `.ticker-track`, `.wa-float`, and `.anim-*` for smoother GPU-composited animation.
+- **CSS — dead code removed** — Removed unused `@keyframes btn-pulse-gold` and unused CSS variables.
+- **CSS — utility classes added** — Added `.section-cta-center`, `.logo img`, `.foot-logo img`, `.foot-sep`, and `.g-hidden`.
+- **CSS — tablet layout fix** — Added `.two-col-image` `min-height: 280px` at 900px breakpoint.
+- **All pages — GA4 placeholder scripts removed** — Deleted `G-XXXXXXXXXX` Analytics blocks from all 11 pages.
+- **All pages — image lazy-loading** — Added `loading="lazy"` and explicit `width`/`height` attributes to all below-fold images (CLS improvement).
+- **All pages — hero video accessibility** — Added `title` attributes to all hero video elements (WCAG 1.1.1).
+- **All pages — scripts.js defer** — Added `defer` attribute to `scripts.js` on all pages.
+- **All pages — nav dropdown href fixed** — Changed Services toggle from `href="#"` to `href="javascript:void(0)"`.
+- **All pages — copyright year updated** — Updated footer copyright from 2024 to 2026 across all pages.
+- **All pages — dead policy links** — Converted non-existent Privacy Policy and Terms of Service links to plain text `<span>` elements.
+- **index.html** — Added CTA after steps section; alternated section backgrounds for visual separation.
+- **isabelle.html** — Moved `#global-journey` inline padding to a CSS rule.
+- **tre.html** — Removed inline `min-height` from `.two-col-image`.
+- **somatic-coaching.html** — Fixed `h4` to `h3` heading hierarchy; alternated section backgrounds.
+- **somatic-bodywork.html** — Fixed `h4` to `h3` heading hierarchy.
+- **about.html** — Removed inline `min-height` from `.two-col-image`.
+- **events.html** — Fixed countdown ring max; removed dead CSS classes.
+- **gallery.html** — Fixed `galleryFilter` to use class-based toggle.
+- **socials.html** — Added `rel="noopener noreferrer"` to all external blank-target links.
+- **changelog.html** — Added `noindex` meta; replaced marketing hero with minimal header; removed ticker.
+
+---
+
 ## [47.12] — 2026-06-20
 
 ### Changed

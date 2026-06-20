@@ -88,6 +88,47 @@
 <section>
   <div class="cl-timeline">
 
+    <!-- v48.0 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v48.0</span>
+        <span class="cl-date">2026-06-20</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags">
+          <span class="cl-tag cl-tag-changed">Performance</span>
+          <span class="cl-tag cl-tag-fixed">Accessibility</span>
+          <span class="cl-tag cl-tag-added">SEO</span>
+          <span class="cl-tag cl-tag-changed">Mobile</span>
+        </div>
+        <ul>
+          <li><strong>Google Fonts — render-blocking eliminated</strong> — Replaced CSS <code>@import</code> with <code>&lt;link rel="preconnect"&gt;</code> + stylesheet link in HTML on all pages.</li>
+          <li><strong>Font Awesome — CDN preconnect</strong> — Added <code>rel="preconnect"</code> hint for <code>cdnjs.cloudflare.com</code> on all pages.</li>
+          <li><strong>CSS — will-change added to animated elements</strong> — Added <code>will-change</code> to <code>.ticker-track</code>, <code>.wa-float</code>, and <code>.anim-*</code> for smoother GPU-composited animation.</li>
+          <li><strong>CSS — dead code removed</strong> — Removed unused <code>@keyframes btn-pulse-gold</code> and unused CSS variables.</li>
+          <li><strong>CSS — utility classes added</strong> — Added <code>.section-cta-center</code>, <code>.logo img</code>, <code>.foot-logo img</code>, <code>.foot-sep</code>, and <code>.g-hidden</code>.</li>
+          <li><strong>CSS — tablet layout fix</strong> — Added <code>.two-col-image</code> <code>min-height: 280px</code> at 900px breakpoint.</li>
+          <li><strong>All pages — GA4 placeholder scripts removed</strong> — Deleted <code>G-XXXXXXXXXX</code> Analytics blocks from all 11 pages.</li>
+          <li><strong>All pages — image lazy-loading</strong> — Added <code>loading="lazy"</code> and explicit <code>width</code>/<code>height</code> attributes to all below-fold images (CLS improvement).</li>
+          <li><strong>All pages — hero video accessibility</strong> — Added <code>title</code> attributes to all hero video elements (WCAG 1.1.1).</li>
+          <li><strong>All pages — scripts.js defer</strong> — Added <code>defer</code> attribute to <code>scripts.js</code> on all pages.</li>
+          <li><strong>All pages — nav dropdown href fixed</strong> — Changed Services toggle from <code>href="#"</code> to <code>href="javascript:void(0)"</code>.</li>
+          <li><strong>All pages — copyright year updated</strong> — Updated footer copyright from 2024 to 2026 across all pages.</li>
+          <li><strong>All pages — dead policy links</strong> — Converted non-existent Privacy Policy and Terms of Service links to plain text <code>&lt;span&gt;</code> elements.</li>
+          <li><strong>index.html — CTA after steps section</strong> — Added Book a Free Chat CTA button after the How It Works steps; alternated section backgrounds for visual separation.</li>
+          <li><strong>isabelle.html — Global Journey padding</strong> — Moved <code>#global-journey</code> inline padding to a CSS rule.</li>
+          <li><strong>tre.html — inline min-height removed</strong> — Removed inline <code>min-height</code> from <code>.two-col-image</code>.</li>
+          <li><strong>somatic-coaching.html — heading hierarchy fixed</strong> — Changed <code>&lt;h4&gt;</code> to <code>&lt;h3&gt;</code> for correct heading structure; alternated section backgrounds.</li>
+          <li><strong>somatic-bodywork.html — heading hierarchy fixed</strong> — Changed <code>&lt;h4&gt;</code> to <code>&lt;h3&gt;</code> for correct heading structure.</li>
+          <li><strong>about.html — inline min-height removed</strong> — Removed inline <code>min-height</code> from <code>.two-col-image</code>.</li>
+          <li><strong>events.html — countdown ring max fixed; dead CSS removed</strong> — Fixed countdown ring max value; removed dead CSS classes.</li>
+          <li><strong>gallery.html — filter class-based toggle</strong> — Fixed <code>galleryFilter</code> to use class-based toggle instead of direct style manipulation.</li>
+          <li><strong>socials.html — external link security</strong> — Added <code>rel="noopener noreferrer"</code> to all external blank-target links.</li>
+          <li><strong>changelog.html — SEO &amp; structure</strong> — Added <code>noindex</code> meta; replaced marketing hero with minimal header; removed ticker.</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- v47.12 -->
     <div class="cl-entry">
       <div class="cl-meta">
