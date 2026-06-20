@@ -1420,6 +1420,49 @@ footer {
   /* -- FLOAT BUTTONS -- */
   .wa-float { bottom: 1.25rem; right: 1.25rem; width: 50px; height: 50px; font-size: 1.5rem; }
   .top-float { bottom: 1.25rem; right: calc(1.25rem + 50px + .5rem); width: 50px; height: 50px; font-size: 1.15rem; }
+
+  /* -- TWO-COL IMAGE: override any inline min-height -- */
+  .two-col-image { min-height: 240px !important; }
+
+  /* -- ISABELLE #global-journey inline padding override -- */
+  #global-journey { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+  /* -- TESTIMONIALS: reduce oversized quote mark -- */
+  .testimonial, .testimonial-light { padding: 1.8rem 1.4rem; padding-top: 3rem; }
+  .testimonial::before, .testimonial-light::before { font-size: 3rem; top: .7rem; left: 1rem; }
+
+  /* -- COUNTDOWN BAR: hide separators + shrink digits when stacked -- */
+  .ecb-sep { display: none; }
+  .ecb-num { font-size: 2rem; }
+  .ecb-unit { min-width: 56px; }
+  .ecb-text { min-width: unset; text-align: center; }
+  .ecb-title { font-size: 1.1rem; }
+
+  /* -- SECTION SUBTITLE: slightly smaller on mobile -- */
+  .section-subtitle { font-size: .93rem; }
+  .section-header-center .section-subtitle { max-width: 100%; }
+
+  /* -- CTA BANNER: reduce padding -- */
+  .cta-banner { padding: 3rem 5%; }
+  .cta-banner h2 { font-size: clamp(1.5rem, 5vw, 2.4rem); }
+
+  /* -- CONTACT FORM: reduce padding -- */
+  .contact-form { padding: 1.8rem 1.2rem; }
+
+  /* -- TICKER: smaller fade edges -- */
+  .ticker-wrap::before, .ticker-wrap::after { width: 35px; }
+
+  /* -- RESOURCE ROW: fix at 600px (not just 480px) -- */
+  .resource-row { grid-template-columns: 36px 1fr; row-gap: .3rem; }
+  .resource-row-link { grid-column: 2; white-space: normal; }
+
+  /* -- HERO ACTIONS: always stack on small screens -- */
+  .hero-actions { flex-direction: row; flex-wrap: wrap; gap: .75rem; }
+  .hero-actions .btn { flex: 1 1 auto; min-width: 140px; text-align: center; }
+
+  /* -- PAGE HERO TEXT -- */
+  .page-hero h1 { font-size: clamp(2rem, 7vw, 3.5rem); }
+  .page-hero p { font-size: .95rem; }
 }
 
 @media (max-width: 480px) {
@@ -1444,4 +1487,31 @@ footer {
   /* -- RESOURCE LIST (socials) -- */
   .resource-row { grid-template-columns: 36px 1fr; row-gap: .3rem; }
   .resource-row-link { grid-column: 2; white-space: normal; }
+
+  /* -- PLATFORMS: go full 1-col -- */
+  .platforms-grid { grid-template-columns: 1fr; }
+
+  /* -- TICKER: minimal fade edges on very small screens -- */
+  .ticker-wrap::before, .ticker-wrap::after { width: 18px; }
+
+  /* -- STEP CIRCLES: slightly smaller -- */
+  .step-num { width: 48px; height: 48px; font-size: 1.05rem; }
+
+  /* -- HERO BUTTONS: stack on very narrow screens -- */
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-actions .btn { width: 100%; max-width: 280px; }
+
+  /* -- FOOTER: single column -- */
+  .foot-grid { grid-template-columns: 1fr; }
+  .foot-grid > div:first-child { grid-column: auto; }
+
+  /* -- SECTION TITLES -- */
+  .section-title { font-size: clamp(1.5rem, 6vw, 2.2rem); }
+
+  /* -- CARD ICON -- */
+  .card-icon { width: 36px; height: 36px; font-size: .9rem; }
+
+  /* -- CTA BANNER BUTTONS -- */
+  .cta-banner .hero-actions { flex-direction: column; align-items: center; }
+  .cta-banner .btn { width: 100%; max-width: 260px; }
 }

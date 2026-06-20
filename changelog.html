@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Changelog &#8212; HummingBeing</title>
   <meta name="description" content="Full development history of the HummingBeing website &#8212; every update, fix and improvement documented." />
-  <link rel="stylesheet" href="styles.css?v=80" />
+  <link rel="stylesheet" href="styles.css?v=81" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
   <style>
@@ -124,6 +124,38 @@
 
 <section>
   <div class="cl-timeline">
+
+    <!-- v47.6 -->
+    <div class="cl-entry">
+      <div class="cl-meta">
+        <span class="cl-badge">v47.6</span>
+        <span class="cl-date">2026-06-20</span>
+      </div>
+      <div class="cl-body">
+        <div class="cl-tags">
+          <span class="cl-tag cl-tag-fixed">Fixed</span>
+          <span class="cl-tag cl-tag-changed">Changed</span>
+        </div>
+        <ul>
+          <li><strong>Mobile — Full responsive overhaul (CSS v81)</strong> — Comprehensive pass across all 11 pages targeting every known mobile layout issue:</li>
+          <li><strong>Two-col images</strong> — Added <code>!important</code> override on <code>min-height: 240px</code> so inline styles (about.html 572px, isabelle.html 520px) no longer make images taller than the viewport on mobile.</li>
+          <li><strong>Isabelle — Global Journey padding</strong> — Overrode the inline <code>padding-top/bottom: 7rem</code> to <code>3rem</code> on screens ≤600px.</li>
+          <li><strong>Platforms grid</strong> — Added missing 1-column breakpoint at 480px (was 2-col even on 375px screens).</li>
+          <li><strong>Footer</strong> — Goes to single column at 480px.</li>
+          <li><strong>Testimonials</strong> — Reduced oversized 5rem quote mark to 3rem on mobile; tightened padding.</li>
+          <li><strong>Countdown bar (homepage)</strong> — Hidden colon separators when stacked; reduced digit size from clamp(2.6rem) to 2rem.</li>
+          <li><strong>Ticker</strong> — Reduced edge fade gradient (80px → 35px at 600px, 18px at 480px) so less content is obscured on narrow screens.</li>
+          <li><strong>Resource list</strong> — Fixed 3-column layout squeeze at 481–599px by applying the 2-col fix at 600px (not just 480px).</li>
+          <li><strong>Section subtitles</strong> — Slightly smaller on mobile; max-width: 100% prevents overflow.</li>
+          <li><strong>CTA banner</strong> — Tighter padding and title size on mobile; buttons stack to column at 480px.</li>
+          <li><strong>Contact form</strong> — Padding reduced from 3rem to 1.8rem × 1.2rem on mobile.</li>
+          <li><strong>Hero buttons</strong> — Wrap cleanly and stack to full-width on very small screens.</li>
+          <li><strong>Page hero text</strong> — Title and subtitle sizes tuned for 375–480px viewports.</li>
+          <li><strong>Step circles</strong> — Slightly smaller (48px) at 480px.</li>
+          <li><strong>CSS v81</strong> — Cache version bumped across all 11 pages.</li>
+        </ul>
+      </div>
+    </div>
 
     <!-- v47.5 -->
     <div class="cl-entry">

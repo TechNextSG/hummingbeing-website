@@ -5,6 +5,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.6] — 2026-06-20
+
+### Fixed / Changed
+- **Mobile — Full responsive overhaul (CSS v81)** — Comprehensive pass targeting every known mobile layout issue:
+- **Two-col images** — `min-height: 240px !important` overrides inline styles on about.html (572px) and isabelle.html so images don't exceed viewport height on mobile.
+- **Isabelle #global-journey padding** — Inline `padding: 7rem` overridden to `3rem` at ≤600px.
+- **Platforms grid** — Missing 1-col breakpoint added at 480px (was 2-col on 375px screens).
+- **Footer** — Goes to single column at 480px.
+- **Testimonials** — 5rem quote mark reduced to 3rem on mobile; padding tightened.
+- **Countdown bar (homepage)** — Colon separators hidden when stacked; digit size reduced from clamp(2.6rem) to 2rem.
+- **Ticker** — Edge fade gradient reduced (80px → 35px at 600px, 18px at 480px).
+- **Resource list** — 3-col squeeze fixed at 481–599px by applying 2-col rule at 600px.
+- **Section subtitles** — Smaller on mobile; `max-width: 100%` prevents overflow.
+- **CTA banner** — Tighter padding + title size; buttons stack at 480px.
+- **Contact form** — Padding 3rem → 1.8rem × 1.2rem on mobile.
+- **Hero buttons** — Wrap cleanly; stack full-width at 480px.
+- **Page hero text** — Title and subtitle sizes tuned for 375–480px.
+- **Step circles** — 48px at 480px.
+- **CSS v81** — Cache version bumped across all 11 pages.
+
+---
+
 ## [47.5] — 2026-06-20
 
 ### Fixed / Changed
