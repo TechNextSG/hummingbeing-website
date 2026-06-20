@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.10] — 2026-06-20
+
+### Fixed
+- **iOS Safari — CTA button centering (CSS v85)** — Added `-webkit-fit-content` vendor prefix so buttons centre correctly on iPhone/older Safari.
+
+---
+
 ## [47.9] — 2026-06-20
 
 ### Fixed
