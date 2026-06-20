@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.12] — 2026-06-20
+
+### Changed
+- **index.html — Technical & SEO hardening** — Removed GA4 placeholder block; added Google Fonts preconnects + Playfair Display / PT Serif / Lato / Raleway stylesheet (CSS v86); added preconnect for cdnjs; added `defer` to scripts.js; fixed nav dropdown `href="#"` to `javascript:void(0)`; updated copyright to 2026; replaced `<a href="#">` dead links (Privacy Policy, Terms of Service) with `<span>`; replaced inline `opacity:.4` separator with `class="foot-sep"`; added `title` attribute to hero video; added `width`/`height` to nav and footer logos; added `loading="lazy"` + `width`/`height` to all body images; added `.section-cta-center` Book a Free Chat CTA after the How It Works steps; changed second consecutive `section-cream` (Who It's For) to `section-white`.
+
+---
+
 ## [47.11] — 2026-06-20
 
 ### Fixed
