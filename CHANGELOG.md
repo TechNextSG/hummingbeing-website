@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.9] — 2026-06-20
+
+### Fixed
+- **Mobile — Horizontal overflow eliminated (CSS v84)** — Added `overflow-x: hidden` to `html` and `body`. Prevents any element (ticker animation, translated elements) from creating extra horizontal space or scroll gutter on mobile.
+
+---
+
 ## [47.8] — 2026-06-20
 
 ### Fixed
