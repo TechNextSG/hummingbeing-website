@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [47.4] — 2026-06-20
+
+### Fixed
+- **events.html — Browse All Events button** — Added `border-radius: 6px` to `.btn-ghost-light` so corners match the adjacent Register Now button.
+
+---
+
 ## [47.3] — 2026-06-20
 
 ### Fixed
