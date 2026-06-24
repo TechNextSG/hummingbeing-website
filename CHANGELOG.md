@@ -5,6 +5,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [49.0] — 2026-06-24
+
+### Added / Changed — Nav restructure, 2 new pages, hummingbird text
+
+- **Nav — Services dropdown restructured (all 13 pages)** — "Somatic Coaching" renamed to "Coaching, somatic, trauma and neuroscience informed."; "Somatic Bodywork" removed from nav (page still accessible); new "Somatic Healing" item added.
+- **Nav — Events converted to dropdown (all 13 pages)** — Plain "Events" link replaced with a dropdown: "Upcoming Events" (existing) + "Retreats and Workshops" (new).
+- **New page — somatic-healing.html** — Full service page for Somatic Healing: Reiki, Somatic Bodywork, Breathwork, EFT. Includes benefits, who it serves, Isabelle credentials.
+- **New page — retreats-workshops.html** — Page covering group retreat and workshop offerings: day workshops, weekend immersions, corporate wellness, TRE® group sessions, somatic healing circles, professional training.
+- **about.html — Hummingbird Metaphor expanded** — Added two paragraphs on hummingbird symbolism (joy, resilience, adaptability, perseverance, presence, lightness of being) and positive energy as a reminder to care for physical and mental health.
+- **Footer — Services + Company links updated (all 13 pages)** — Added Somatic Healing and Retreats and Workshops links; removed Somatic Bodywork footer link.
+
+---
+
 ## [48.4] — 2026-06-20
 
 ### Fix — Mobile nav dropdown card border
