@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [61.0] — 2026-06-25
+
+### Added — 15 new gallery images
+
+- **gallery.html** — Added 15 new image cards: Da Nang TRE® Conference Nov 2025, Dinner with David Berceli (TRE® founder), Indoor skydiving in Singapore with TRE® colleagues, 4× Isabelle & Saymara, TRE® Module 1 May 2026, Isabelle with David Berceli & Simba Stenqvist & Nikki Tay, INSEAD campus visit with Simba Stenqvist, UK TRE® students at Singapore airport, 2× UK TRE® provider students, Asia TRE® trainers with David Berceli, Chris Balsley Master Coach. Images copied from source and renamed to web-friendly slugs in `images/gallery/`.
+
+---
+
 ## [60.0] — 2026-06-25
 
 ### Fixed — Executive Retreat Programmes grid fixed to 2 columns
