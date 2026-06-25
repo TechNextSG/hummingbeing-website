@@ -5,6 +5,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [55.0] — 2026-06-25
+
+### Fixed — Deep audit against original feedback DOCX: all remaining items resolved
+
+- **isabelle.html — Continuously Studying card** — Added missing "passionate and dedicated" sentence from original feedback: "Isabelle is passionate and dedicated to her own development so she can best serve her clients and ensure her practice reflects the latest developments."
+- **book.html — "Somatic Coaching" → "Coaching"** — Replaced in 3 visible-text locations: form service dropdown option, FAQ answer, and Session Lengths sidebar card.
+- **book.html — Meta/OG/Twitter descriptions** — Updated: "Somatic Coaching or Bodywork" → "Coaching or Mindfulness"; "Singapore & Japan" → "Japan or online worldwide".
+- **All 15 pages — Ticker: "BHD Asia & BHD Japan" → "Business & Human Development"** — Updated scrolling ticker across every page to remove the old dual-brand reference.
+- **events.html — Title + OG/Twitter** — "TRE® Events & Workshops Singapore & Japan" → "TRE® Events & Workshops | Japan & Worldwide".
+- **events.html — Meta description** — "in Singapore and Japan" → "in Japan and worldwide".
+- **Remaining blocked item (Isabelle to provide)** — Hero image replacement on index.html: feedback document includes 5 reference stock images (business professionals) to guide the direction, but no actual image file has been supplied. Will swap when Isabelle provides the file.
+
+---
 ## [54.0] — 2026-06-25
 
 ### Fixed — Full site audit: Trainer → Certifying Trainer, meta cleanup, nav/footer corrections
