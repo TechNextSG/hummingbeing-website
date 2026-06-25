@@ -1,10 +1,17 @@
-﻿# HummingBeing Website — Changelog
+# HummingBeing Website — Changelog
 
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [56.0] — 2026-06-25
+
+### Fixed — Wrong YouTube embed on tre.html
+
+- **tre.html — TRE® Star Groups video section** — Removed incorrect embedded YouTube video (ID `1PT1crBhhUE`, a TRE FOR AFRICA Foundation video not featuring Isabelle). Replaced with a text CTA linking to Isabelle's own YouTube channel (https://www.youtube.com/@IsabelleClausTeixeira). Caption "Watch a real TRE® group session led by Isabelle" was factually wrong and is removed. Isabelle can supply a specific video URL to embed when ready.
+
+---
 ## [55.0] — 2026-06-25
 
 ### Fixed — Deep audit against original feedback DOCX: all remaining items resolved
