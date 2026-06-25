@@ -5,6 +5,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [63.0] — 2026-06-25
+
+### Added — Romania 2026 events: pages, countdown updates, event cards
+
+- **events.html** — Romania 2026 events section added (two event cards: "From Shaking to Shaping" with 3 sessions, TRE™ Module 1 Bucharest Oct 15–17). Countdown updated to Sep 3, 2026, 10:00 EET (`2026-09-03T10:00:00+03:00`). Countdown heading and meta info updated to reflect the first Romania event.
+- **index.html** — Home page countdown bar updated to target Sep 3, 2026 "From Shaking to Shaping" online workshop.
+- **event-shaking-to-shaping.html** — New landing page for "From Shaking to Shaping: Use of TRE™ in a coaching context." 3 sessions: Sep 3 online (€89), Oct 20 in-person Bucharest (€97), Oct 24 in-person Bucharest (€97). Includes per-session countdown timer, facilitator bios (Isabelle Claus Teixeira + Saymara Ryon), collaboration strip (Învață să Zbori SRL + TRE Romania).
+- **event-tre-module1-bucharest.html** — New landing page for TRE™ Module 1 Bucharest, Oct 15–17, 2026. First time in Europe in English. 21 ICF CCEUs (16 Resource Dev + 5 Core Competencies). 3-day schedule table, full registration section, facilitator bios, cross-link to "From Shaking to Shaping" intro workshop.
+
+---
+
 ## [62.0] — 2026-06-25
 
 ### Changed — All hero sections updated with designated images
