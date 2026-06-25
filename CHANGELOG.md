@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [65.3] — 2026-06-25
+
+### Changed — Countdown timers updated to next upcoming event (Singapore, 29 Aug)
+
+- **index.html + events.html** — Countdown timer targets updated from Romania Sep 3 (`2026-09-03T10:00:00+03:00`) to Singapore Aug 29 (`2026-08-29T09:00:00+08:00`). Singapore workshop is the earliest upcoming event. Labels updated: title, date (Saturday, 29 August 2026), location (Singapore, In-Person). "View Event →" link updated to `event-selfcare-coaches-singapore.html`.
+
+---
+
 ## [65.2] — 2026-06-25
 
 ### Changed — Remove "Book a Private Session" elements from events page
