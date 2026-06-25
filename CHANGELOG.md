@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [65.1] — 2026-06-25
+
+### Added — View & Register button on Singapore For Certification card
+
+- **events.html** — Added "View & Register →" button (`btn-dark`) to the Singapore "For Certification" card, linking to `tre-certification.html`. Now matches the Romania cards pattern: both Singapore cards have "View & Register →" + "Book a Call via Calendly →" buttons.
+
+---
+
 ## [65.0] — 2026-06-25
 
 ### Added — Singapore landing page for Nervous System Regulation & Self-Induced Neurogenic Tremoring
