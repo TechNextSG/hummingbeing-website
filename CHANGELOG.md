@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [65.2] — 2026-06-25
+
+### Changed — Remove "Book a Private Session" elements from events page
+
+- **events.html** — Removed "Book a Private Session Instead" button below Singapore event cards. Removed "Prefer Something Personal?" CTA banner above the footer.
+
+---
+
 ## [65.1] — 2026-06-25
 
 ### Added — View & Register button on Singapore For Certification card
