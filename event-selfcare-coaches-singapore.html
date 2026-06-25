@@ -174,6 +174,33 @@
     /* Responsive two-col */
     .evtl-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; max-width: 860px; margin: 2rem auto 0; }
     @media (max-width: 680px) { .evtl-two-col { grid-template-columns: 1fr; } }
+  
+    /* --- HERO 2-COL: form left · content right --- */
+    .evtl-hero { text-align: left; align-items: stretch; }
+    .evtl-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1280px; width: 100%; margin: 0 auto; align-items: center; }
+    .evtl-meta-pills { justify-content: flex-start; }
+    .evtl-hero-actions { justify-content: flex-start; }
+    .evtl-tagline { margin-left: 0; margin-right: 0; }
+    .evtl-form-card { background: rgba(255,255,255,.09); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.18); border-radius: 16px; padding: 2.2rem 2rem; }
+    .evtl-form-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.45rem; color: var(--white); font-weight: 700; margin-bottom: .45rem; }
+    .evtl-form-sub { font-size: .87rem; color: rgba(255,255,255,.55); margin-bottom: 1.55rem; line-height: 1.55; }
+    .evtl-field { display: flex; flex-direction: column; gap: .38rem; margin-bottom: 1.05rem; }
+    .evtl-field label { font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,.52); }
+    .evtl-field input { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); border-radius: 8px; color: var(--white); font-size: .95rem; padding: .72rem 1rem; outline: none; transition: border-color .2s, background .2s; font-family: 'Lato', sans-serif; width: 100%; box-sizing: border-box; }
+    .evtl-field input::placeholder { color: rgba(255,255,255,.28); }
+    .evtl-field input:focus { border-color: var(--gold); background: rgba(255,255,255,.1); }
+    .evtl-form-success { flex-direction: column; align-items: center; text-align: center; padding: 2rem 1rem; gap: .8rem; }
+    .evtl-form-success i { font-size: 2.8rem; color: var(--gold); }
+    .evtl-form-success p { color: rgba(255,255,255,.82); font-size: .95rem; line-height: 1.65; }
+    @media (max-width: 860px) {
+      .evtl-hero { text-align: center; }
+      .evtl-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .evtl-hero-form { order: 2; }
+      .evtl-hero-content { order: 1; }
+      .evtl-meta-pills { justify-content: center; }
+      .evtl-hero-actions { justify-content: center; }
+      .evtl-tagline { margin-left: auto; margin-right: auto; }
+    }
   </style>
 </head>
 <body>
@@ -208,19 +235,47 @@
     <source src="hero-events.mp4" type="video/mp4">
   </video>
   <div class="evtl-hero-inner">
-    <span class="evtl-eyebrow"><i class="fa-solid fa-star"></i> Self-Care &amp; Presence for Coaches &middot; Singapore &middot; In-Person</span>
-    <div class="icf-hero-badge"><i class="fa-solid fa-award"></i> 21 ICF CCEUs &mdash; 16 Resource Development + 5 Core Competencies</div>
-    <h1>Nervous System<br>Regulation &amp; <em>Neurogenic<br>Tremoring</em></h1>
-    <p class="evtl-tagline">A 2-day in-person TRE&#174; workshop for coaches &#8212; develop embodied self-care, prevent burnout and deepen your somatic presence with clients. Valid as Module 1 of the Global TRE&#174; Provider Certification Program.</p>
-    <div class="evtl-meta-pills">
-      <span class="evtl-pill"><i class="fa-regular fa-calendar"></i> 29 &amp; 30 August 2026</span>
-      <span class="evtl-pill"><i class="fa-solid fa-location-dot"></i> Singapore, In-Person</span>
-      <span class="evtl-pill"><i class="fa-solid fa-award"></i> 21 ICF CCEUs</span>
-      <span class="evtl-pill"><i class="fa-solid fa-tag"></i> 1,290 SGD</span>
+    <div class="evtl-hero-form">
+      <div class="evtl-form-card">
+        <h3 class="evtl-form-title">Reserve Your Spot</h3>
+        <p class="evtl-form-sub">Share your details and we&#8217;ll be in touch shortly.</p>
+        <form class="evtl-form" onsubmit="evtlSubmit(event)">
+          <div class="evtl-field">
+            <label>Full Name <span style="color:var(--gold)">*</span></label>
+            <input type="text" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="evtl-field">
+            <label>Email Address <span style="color:var(--gold)">*</span></label>
+            <input type="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="evtl-field">
+            <label>Phone <span style="opacity:.45">(optional)</span></label>
+            <input type="tel" name="phone" placeholder="+65 / +40 ...">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:.5rem">Send Enquiry &rarr;</button>
+        </form>
+        <div class="evtl-form-success" id="evtl-success" style="display:none">
+          <i class="fa-solid fa-circle-check"></i>
+          <p>Thank you! Isabelle will be in touch shortly.</p>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:.5rem">Or Book via Calendly &rarr;</a>
+        </div>
+      </div>
     </div>
-    <div class="evtl-hero-actions">
-      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary">Book a Call via Calendly &rarr;</a>
-      <a href="events.html" class="btn btn-outline">All Events</a>
+    <div class="evtl-hero-content">
+      <span class="evtl-eyebrow"><i class="fa-solid fa-star"></i> Self-Care &amp; Presence for Coaches &middot; Singapore &middot; In-Person</span>
+      <div class="icf-hero-badge"><i class="fa-solid fa-award"></i> 21 ICF CCEUs &mdash; 16 Resource Development + 5 Core Competencies</div>
+      <h1>Nervous System<br>Regulation &amp; <em>Neurogenic<br>Tremoring</em></h1>
+      <p class="evtl-tagline">A 2-day in-person TRE&#174; workshop for coaches &#8212; develop embodied self-care, prevent burnout and deepen your somatic presence with clients. Valid as Module 1 of the Global TRE&#174; Provider Certification Program.</p>
+      <div class="evtl-meta-pills">
+        <span class="evtl-pill"><i class="fa-regular fa-calendar"></i> 29 &amp; 30 August 2026</span>
+        <span class="evtl-pill"><i class="fa-solid fa-location-dot"></i> Singapore, In-Person</span>
+        <span class="evtl-pill"><i class="fa-solid fa-award"></i> 21 ICF CCEUs</span>
+        <span class="evtl-pill"><i class="fa-solid fa-tag"></i> 1,290 SGD</span>
+      </div>
+      <div class="evtl-hero-actions">
+        <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary">Book a Call via Calendly &rarr;</a>
+        <a href="events.html" class="btn btn-outline">All Events</a>
+      </div>
     </div>
   </div>
 </div>
@@ -474,6 +529,15 @@
   }
   tick();setInterval(tick,1000);
 })();
+</script>
+<script>
+function evtlSubmit(e) {
+  e.preventDefault();
+  var card = e.target.closest('.evtl-form-card');
+  card.querySelector('.evtl-form').style.display = 'none';
+  var s = card.querySelector('.evtl-form-success');
+  s.style.display = 'flex';
+}
 </script>
 </body>
 </html>

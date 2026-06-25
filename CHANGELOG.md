@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [65.6] — 2026-06-25
+
+### Changed — Landing page hero 2-column layout
+
+- **All 3 landing pages — Hero redesign**: Booking form (left column) + title/subtitle/pills/CTA buttons (right column) via CSS grid. Form: Full Name, Email, Phone (optional), Send Enquiry → button. Success state reveals Calendly link. Mobile ≤860px: single column, content first, form below.
+- **Affected**: `event-shaking-to-shaping.html`, `event-tre-module1-bucharest.html`, `event-selfcare-coaches-singapore.html`. Glassmorphism form card (backdrop-filter blur, gold border, rgba dark background).
+
+---
+
 ## [65.5] — 2026-06-25
 
 ### Changed / Removed — Footer location global, dead pages deleted
