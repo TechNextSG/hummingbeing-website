@@ -5,6 +5,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [62.0] — 2026-06-25
+
+### Changed — All hero sections updated with designated images
+
+- **9 pages** — Hero background images and videos replaced from designated source folders:
+  - `index.html` — new cinematic woman / walking-through-flowers video
+  - `about.html` — new soft-focus impressionistic / contemplative hands video
+  - `gallery.html` — hummingbird still + hummingbird-on-branch video (brand-aligned)
+  - `socials.html` — close-up arms / two individuals cinematic video
+  - `events.html` — five professionals group image + diverse professionals video (poster ext: jpg → png)
+  - `retreats-workshops.html` — natural light woman / curly-hair woman video (was incorrectly using events assets; now has dedicated `poster-retreats.jpg` + `hero-retreats.mp4`)
+  - `tre-certification.html` — modern office light / naturalistic woman video (new `poster-certifications.png` + `hero-certifications.mp4`)
+  - `holistic-mastermind.html` — professional office woman / dark-hair woman video (new `poster-holistic.png` + `hero-holistic.mp4`)
+  - `book.html` — office man blue / woman tan cinematic video (poster ext: jpg → png)
+- **Preload tags** — Added missing preload hints on `retreats-workshops.html` and `tre-certification.html`; corrected wrong preload on `holistic-mastermind.html`
+
+---
+
 ## [61.0] — 2026-06-25
 
 ### Added — 15 new gallery images
