@@ -5,6 +5,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [52.0] — 2026-06-25
+
+### Added — Holistic Mastermind Ecosystem service page
+
+- **New page — holistic-mastermind.html** — Full service overview page for The Holistic Mastermind Ecosystem: the overarching four-pillar framework for HummingBeing's leadership offering.
+- **Hero** — Video hero (poster-coaching / hero-coaching.mp4); eyebrow "The Framework"; H1 "The Holistic Mastermind Ecosystem"; dual CTA: Book a Free Discovery Call + Meet Isabelle.
+- **Section 1 — Why Holistic?** — Two-col layout (image left, about-why-exists.jpg); 3 paragraphs on the premise that peak performance is physiological, not just cognitive; four tags: Cognitive Optimization, Somatic Decompression, Energetic Mastery, Expressive Vision.
+- **Section 2 — The Four Pillars** — section-sage; 4-card grid (alternating gold-top/sage-top/green-top/gold-top): I. The Tactical Mind (brain, neuroscience coaching, saboteurs), II. The Somatic Vessel (TRE®, breathwork, somatic coaching), III. The Energetic Matrix (Reiki, somatic bodywork, core shamanism), IV. The Expressive Vision (NLP, mindfulness, art-based coaching).
+- **Section 3 — Your Journey** — section-white; 4-step pathway: Discovery → Foundation Work → Pillar Integration → Sustained Transformation.
+- **Section 4 — The Right Guide** — section-cream; two-col reverse (isabelle-her-story.jpg); credentials copy and 6-item feature list; inline CTA to isabelle.html.
+- **CTA banner** — "Ready to Work at Every Level?" with Book a Free Discovery Call.
+- **Nav** — Services dropdown active state on Holistic Mastermind Ecosystem; no active on top-level nav item.
+- **Footer** — Full updated Services list: Holistic Mastermind Ecosystem, TRE®, Coaching, Somatic Healing, Retreats, Global TRE® Certification, Book a Session.
+- **Ticker** — Extended with Holistic Mastermind Ecosystem, Four Pillars of Leadership, The Tactical Mind, The Somatic Vessel, The Energetic Matrix, The Expressive Vision, Cognitive Optimization, Energetic Mastery entries.
+
+---
+
 ## [51.0] — 2026-06-25
 
 ### Added — Global TRE® Provider Certification page
