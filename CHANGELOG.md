@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [65.5] — 2026-06-25
+
+### Changed / Removed — Footer location global, dead pages deleted
+
+- **Sitewide (17 pages) — Footer contact location**: "Singapore & Japan" updated to "Global".
+- **index.html, isabelle.html, tre-certification.html — Dead links redirected**: `tre.html` → `tre-certification.html`; `somatic-coaching.html` → `holistic-mastermind.html`; `somatic-bodywork.html` → `holistic-mastermind.html`.
+- **Deleted 6 unused pages**: `somatic-bodywork.html`, `somatic-coaching.html`, `somatic-healing.html`, `tre.html`, `image-audit.html`, `seo-audit.html`. None are linked from the main nav; all internal links updated before removal.
+
+---
+
 ## [65.4] — 2026-06-25
 
 ### Fixed — Full site audit fixes
