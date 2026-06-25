@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [60.0] — 2026-06-25
+
+### Fixed — Executive Retreat Programmes grid fixed to 2 columns
+
+- **retreats-workshops.html — Retreat cards grid** — Added `grid-template-columns:repeat(2,1fr)` inline to the Executive Retreat Programmes card grid, overriding the default 3-column layout. Always renders as 2 columns on desktop.
+
+---
 ## [59.0] — 2026-06-25
 
 ### Changed — Nav restructured to 3 service categories per original brief
