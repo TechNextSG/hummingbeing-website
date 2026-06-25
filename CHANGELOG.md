@@ -5,6 +5,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [59.0] — 2026-06-25
+
+### Changed — Nav restructured to 3 service categories per original brief
+
+Per the original feedback document, services are grouped into 3 categories:
+- **All 15 pages — Services nav: 5 items → 3 items**
+  - Removed: TRE® Exercises, Coaching, Somatic Healing (pages remain accessible but are not primary nav items)
+  - Kept/renamed: Holistic Mastermind Ecosystem, Global TRE® Certification → **Global Certifications**
+  - Added: **Resilience Retreats** (retreats-workshops.html, moved from Events)
+- **All 15 pages — Events: dropdown removed → direct link** — Now a single `Events` link to events.html
+- **retreats-workshops.html — Active state updated** — Nav now shows Services active with Resilience Retreats active (was Events active)
+- **All 15 pages — Footer Services list updated** — Now shows 3 items: Holistic Mastermind Ecosystem, Global Certifications, Resilience Retreats + Book a Session
+
+---
 ## [58.0] — 2026-06-25
 
 ### Fixed — Full site audit: all critical, moderate and minor issues resolved
