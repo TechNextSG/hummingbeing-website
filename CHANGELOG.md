@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [53.0] — 2026-06-25
+
+### Changed / Added — Mindfulness page rewrite + nav/footer updates
+
+- **somatic-bodywork.html — Full page rewrite as Mindfulness** — Page completely rebuilt around the Mindfulness service (6 or 8-session personalised journey to bring neuroscience-backed mindfulness practices to daily life). New sections: What Is This Programme, Six Pillars of Your Daily Practice (6 cards), Changes You Might Start to Notice, Programme Journey (4 steps), Who This Serves, Client Voices testimonials. Title, meta, schema, OG all updated.
+- **Nav — All 13 existing pages updated** — Services dropdown now includes Holistic Mastermind Ecosystem and Global TRE® Certification after Somatic Healing across all 13 existing HTML pages.
+- **Footer — All 13 existing pages updated** — Services footer list now includes Holistic Mastermind Ecosystem (first) and Global TRE® Certification (before Book a Session) across all 13 existing pages.
+
+---
+
 ## [52.0] — 2026-06-25
 
 ### Added — Holistic Mastermind Ecosystem service page
