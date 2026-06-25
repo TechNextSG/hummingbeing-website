@@ -5,6 +5,39 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [65.0] — 2026-06-25
+
+### Added — Singapore landing page for Nervous System Regulation & Self-Induced Neurogenic Tremoring
+
+- **event-selfcare-coaches-singapore.html** — New landing page for "Nervous System Regulation & Self-Induced Neurogenic Tremoring: Self-Care and Presence for Coaches." 2-day in-person Singapore workshop, 29 & 30 August 2026. 21 ICF CCEUs (16 Resource Development + 5 Core Competencies). Valid as Module 1 of the Global TRE® Provider Certification Program. Countdown timer targeting `2026-08-29T09:00:00+08:00` (SGT). Structured data, Calendly CTA, facilitator section (Isabelle), "Continue Your Journey" section.
+- **events.html** — Added "View & Register →" link to the Singapore Coaches card, linking to the new landing page.
+
+---
+
+## [64.4] — 2026-06-25
+
+### Added — Calendly button to both Romania event cards
+
+- **events.html** — Added Calendly button to "From Shaking to Shaping" card (gold `btn-primary`) with "Book a Call via Calendly →" and `isabelle@bhdasia.com` email link. Added same Calendly button to TRE™ Module 1 Bucharest card (dark `btn-dark`).
+
+---
+
+## [64.3] — 2026-06-25
+
+### Added — Calendly button to TRE Module 1 Bucharest card
+
+- **events.html** — Added "Book a Call via Calendly →" button (btn-dark) to TRE™ Module 1 Bucharest card.
+
+---
+
+## [64.2] — 2026-06-25
+
+### Changed — Remove "Hosted by Nilayam" from Singapore certification card
+
+- **events.html** — Removed "Hosted by Nilayam ·" prefix from the Singapore TRE® Provider Certification section.
+
+---
+
 ## [64.1] — 2026-06-25
 
 ### Fixed — Wrong day of week on Sep 3 countdown labels
