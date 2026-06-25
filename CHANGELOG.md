@@ -5,6 +5,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [64.0] — 2026-06-25
+
+### Fixed — Landing page structural fixes
+
+- **event-shaking-to-shaping.html** — Fixed footer (`foot-copy` moved to `foot-bottom`, `foot-bottom` restructured to match site template); inline two-column grid replaced with responsive `.evtl-two-col` class (collapses to 1 column below 680px).
+- **event-tre-module1-bucharest.html** — Same footer fix; two inline grids replaced with `.evtl-two-col` and `.evtl-reg-grid` responsive classes; `btn-outline` (invisible on white background) corrected to `btn-dark` in "Also Available" section.
+
+---
+
 ## [63.0] — 2026-06-25
 
 ### Added — Romania 2026 events: pages, countdown updates, event cards

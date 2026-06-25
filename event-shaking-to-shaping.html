@@ -180,6 +180,9 @@
     }
     .collab-strip span { font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); }
     .collab-strip a { font-family: 'Lato', sans-serif; font-size: .88rem; font-weight: 600; color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+    /* Responsive two-column body grid */
+    .evtl-two-col { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; max-width:820px; margin:2rem auto 0; }
+    @media (max-width:680px) { .evtl-two-col { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -252,7 +255,7 @@
     <span class="section-eyebrow">The Workshop</span>
     <h2 class="section-title">What Is <em>From Shaking to Shaping</em>?</h2>
   </div>
-  <div style="max-width:820px;margin:2rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem">
+  <div class="evtl-two-col">
     <div>
       <p style="font-size:1rem;line-height:1.78;color:var(--body-text)">TRE&#8482; (Tension, Stress &amp; Trauma Releasing Exercises) activates the body&#8217;s natural tremoring response &#8212; a neurogenic mechanism that discharges accumulated stress, tension and trauma from the nervous system.</p>
       <p style="font-size:1rem;line-height:1.78;color:var(--body-text);margin-top:1rem">In this workshop you will explore how to <strong>use TRE&#8482; within your coaching practice</strong> &#8212; not just as a self-care tool, but as a somatic method that helps clients move from a state of activation to regulated presence, from trembling uncertainty to purposeful, embodied action.</p>
@@ -417,15 +420,19 @@
       <div class="foot-h">Contact</div>
       <ul class="foot-links">
         <li><a href="mailto:isabelle@bhdasia.com">isabelle@bhdasia.com</a></li>
-        <li><a href="https://wa.me/818065151778" target="_blank">WhatsApp</a></li>
-        <li><a href="book.html">Book a Free Call</a></li>
+        <li><a href="https://wa.me/818065151778" target="_blank">WhatsApp Us</a></li>
+        <li><span>Japan &amp; Worldwide</span></li>
       </ul>
-      <p class="foot-copy">&copy; 2026 HummingBeing &#8212; Business and Human Development Consulting Pte Ltd</p>
     </div>
   </div>
   <div class="foot-bottom">
-    <span>&#8212;</span>
-    <a href="https://technextasia.com" target="_blank">Powered by <span class="tn-brand">TechNext</span></a>
+    <div class="foot-copy">&#169; 2026 HummingBeing &#8212; Business and Human Development Consulting Pte Ltd</div>
+    <div class="foot-legal">
+      <span>Privacy Policy</span>
+      <span>Terms of Service</span>
+      <span class="foot-sep">&#183;</span>
+      <a href="https://technextasia.com" target="_blank">Powered by <span class="tn-brand">TechNext</span></a>
+    </div>
   </div>
 </footer>
 

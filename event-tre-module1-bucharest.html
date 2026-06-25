@@ -174,6 +174,10 @@
     }
     .collab-strip span { font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-mid); }
     .collab-strip a { font-family: 'Lato', sans-serif; font-size: .88rem; font-weight: 600; color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+    /* Responsive two-column body grids */
+    .evtl-two-col { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; max-width:860px; margin:2rem auto 0; }
+    .evtl-reg-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; max-width:720px; margin:2rem auto 0; }
+    @media (max-width:680px) { .evtl-two-col, .evtl-reg-grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -248,7 +252,7 @@
     <span class="section-eyebrow">About the Training</span>
     <h2 class="section-title">Why TRE&#8482; Module 1<br><em>in Bucharest?</em></h2>
   </div>
-  <div style="max-width:860px;margin:2rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem">
+  <div class="evtl-two-col">
     <div>
       <p style="font-size:1rem;line-height:1.78;color:var(--body-text)">This is the <strong>first time TRE&#8482; Module 1 is being offered in Europe in English</strong> &#8212; and the only TRE&#8482; training anywhere in the world that carries <strong>ICF CCEUs</strong> (21 CCEUs: 16 Resource Development + 5 Core Competencies).</p>
       <p style="font-size:1rem;line-height:1.78;color:var(--body-text);margin-top:1rem">TRE&#8482; (Tension, Stress &amp; Trauma Releasing Exercises) was developed by Dr. David Berceli and activates the body&#8217;s natural neurogenic tremoring mechanism &#8212; a reflex that releases stored stress and trauma from the nervous system, builds resilience and promotes deep regulation.</p>
@@ -347,7 +351,7 @@
     <h2 class="section-title">Secure Your <em>Place</em></h2>
     <p class="section-subtitle">Places are limited. Contact Isabelle or Saymara to register and receive full pricing and logistics details.</p>
   </div>
-  <div style="max-width:720px;margin:2rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+  <div class="evtl-reg-grid">
     <div style="background:var(--navy-deep);border-radius:12px;padding:2rem;color:var(--white);display:flex;flex-direction:column;gap:1rem">
       <span style="font-family:'Lato',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Via HummingBeing</span>
       <p style="font-size:.92rem;line-height:1.65;color:rgba(255,255,255,.82)">Register through Isabelle Claus Teixeira — Global TRE&#8482; Certifying Trainer and host of the training.</p>
@@ -413,7 +417,7 @@
     <span class="section-eyebrow">Coming Before the Module?</span>
     <h2 class="section-title" style="font-size:1.8rem">Also Available:<br><em>From Shaking to Shaping</em></h2>
     <p class="section-subtitle">Attend the online or in-person introductory workshop first &#8212; and get it free when you register for TRE&#8482; Module 1.</p>
-    <a href="event-shaking-to-shaping.html" class="btn btn-outline" style="margin-top:1.2rem;display:inline-block">Learn More &rarr;</a>
+    <a href="event-shaking-to-shaping.html" class="btn btn-dark" style="margin-top:1.2rem;display:inline-block">Learn More &rarr;</a>
   </div>
 </section>
 
@@ -461,15 +465,19 @@
       <div class="foot-h">Contact</div>
       <ul class="foot-links">
         <li><a href="mailto:isabelle@bhdasia.com">isabelle@bhdasia.com</a></li>
-        <li><a href="https://wa.me/818065151778" target="_blank">WhatsApp</a></li>
-        <li><a href="book.html">Book a Free Call</a></li>
+        <li><a href="https://wa.me/818065151778" target="_blank">WhatsApp Us</a></li>
+        <li><span>Japan &amp; Worldwide</span></li>
       </ul>
-      <p class="foot-copy">&copy; 2026 HummingBeing &#8212; Business and Human Development Consulting Pte Ltd</p>
     </div>
   </div>
   <div class="foot-bottom">
-    <span>&#8212;</span>
-    <a href="https://technextasia.com" target="_blank">Powered by <span class="tn-brand">TechNext</span></a>
+    <div class="foot-copy">&#169; 2026 HummingBeing &#8212; Business and Human Development Consulting Pte Ltd</div>
+    <div class="foot-legal">
+      <span>Privacy Policy</span>
+      <span>Terms of Service</span>
+      <span class="foot-sep">&#183;</span>
+      <a href="https://technextasia.com" target="_blank">Powered by <span class="tn-brand">TechNext</span></a>
+    </div>
   </div>
 </footer>
 
