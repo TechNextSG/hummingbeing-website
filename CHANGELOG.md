@@ -5,6 +5,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [51.0] — 2026-06-25
+
+### Added — Global TRE® Provider Certification page
+
+- **New page — tre-certification.html** — Full certification service page for Isabelle's Global TRE® Provider Certification training. Covers: hero with CTA, your trainer (Global TRE® Certifying Trainer credentials, Dr. David Berceli methodology), why TRE® is worth certifying in (6 cards: evidence-based, teachable, physiologically grounded, versatile, globally recognised, fast results), how the certification works (4-step pathway: Module 1 → Supervised Practice → Module 2 → Certification), who this is for (feature list for coaches/therapists/HR/etc.), upcoming modules (Singapore 29–30 Aug 2026, Japan TBC, Online option), what's included (training materials, supervised hours, TRE® for All community, mentorship, certificate), and CTA banner.
+- **Nav updated — Services dropdown (tre-certification.html)** — New page includes full updated nav with "Holistic Mastermind Ecosystem" and "Global TRE® Certification" entries in the Services dropdown.
+- **Footer** — tre-certification.html footer includes "Global TRE® Certification" and "Holistic Mastermind Ecosystem" in the Services list; BHD full name; Japan & Worldwide location.
+
+---
+
 ## [50.0] — 2026-06-25
 
 ### Changed / Added — Feedback implementation from Isabelle
