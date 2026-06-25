@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [64.1] — 2026-06-25
+
+### Fixed — Wrong day of week on Sep 3 countdown labels
+
+- **index.html + events.html** — "Wednesday, 3 September 2026" corrected to "Thursday, 3 September 2026". Sep 3, 2026 is a Thursday. JS timer targets were already correct (`2026-09-03T10:00:00+03:00`).
+
+---
+
 ## [64.0] — 2026-06-25
 
 ### Fixed — Landing page structural fixes
