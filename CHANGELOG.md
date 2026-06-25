@@ -5,6 +5,32 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [58.0] — 2026-06-25
+
+### Fixed — Full site audit: all critical, moderate and minor issues resolved
+
+**Critical**
+- **somatic-healing.html + retreats-workshops.html — Ticker** — "BHD Asia & BHD Japan" still present in both pages after bulk fix; now corrected to "Business & Human Development".
+- **gallery.html — Wrong YouTube video** — ID `1PT1crBhhUE` (TRE FOR AFRICA Foundation) appeared twice: as a podcast card link and as an embedded video card. Both replaced with channel links to `@IsabelleClausTeixeira`.
+- **somatic-coaching.html — "Eastern Wisdom + Neuroscience"** — Flagged phrase removed; tag now reads "Neuroscience + Somatics".
+- **about.html — Stale service names in meta/body** — "Somatic Coaching" → "Coaching" and "Bodywork" → "Mindfulness" across meta description, OG, Twitter, JSON-LD, and visible body text. Title updated to "Japan & Worldwide".
+- **All 15 pages — Ticker: "Somatic Coaching" → "Coaching"** — Bulk replacement across every page.
+- **All 15 pages — Ticker: "Strozzi Bodywork Method" → "Mindfulness"** — Bulk replacement across every page.
+
+**Moderate**
+- **index.html — Title/OG/Twitter/JSON-LD** — "Somatic Coaching in Singapore & Japan" → "Coaching in Japan & Worldwide"; JSON-LD description updated to reference Mindfulness not Bodywork.
+- **tre.html — Meta/OG/Twitter** — "certified TRE® Provider" → "Global TRE® Certifying Trainer" in all three tags. OG image alt updated (removed "in Singapore").
+- **somatic-coaching.html — Title/meta/OG/Twitter/JSON-LD** — Service name updated from "Somatic Coaching Singapore" to "Coaching | Somatic, Trauma & Neuroscience-Informed". JSON-LD service name updated. CTA button: "Explore Somatic Coaching" → "Book a Coaching Session".
+- **holistic-mastermind.html — Ticker position** — Ticker was rendering above the hero; moved to after the hero to match all other pages.
+- **socials.html — Stale ticker item** — Removed "Certified TRE® Provider" ticker items (stale credential label alongside correct "Global TRE® Certifying Trainer").
+- **All 15 pages — Nav Coaching label** — Dropdown item "Coaching, somatic, trauma and neuroscience informed." shortened to "Coaching".
+
+**Minor**
+- **isabelle.html — JSON-LD** — `knowsAbout` updated: "Somatic Bodywork" → "Mindfulness", added "Breathwork" and "Reiki". `workLocation` Singapore entry removed (Japan-based). Keywords: "TRE provider Singapore" → "TRE provider Japan".
+- **book.html — Title, FAQ, keywords** — "HummingBeing Singapore" → "HummingBeing"; FAQ in-person text: "Singapore and Japan" → "Japan"; keywords updated to Japan.
+- **socials.html — Keywords** — "somatic coaching resources Singapore" → "coaching resources Japan".
+
+---
 ## [57.0] — 2026-06-25
 
 ### Fixed — Footer copyright separator
