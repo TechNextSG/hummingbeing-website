@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
       link: null,
       btns: ['What services are available?','About Isabelle','How much does it cost?','How do I book?'] },
 
-    { keys: ['tre','tension release','trauma release','tremor','neurogenic','tension trauma','tré','t.r.e','shaking','psoas','nervous system','berceli','tremoring','tre exercises'],
+    { keys: ['tre','tension release','trauma release','tremor','neurogenic','tension trauma','tré','t.r.e','shaking','psoas','nervous system','berceli','tremoring','tre exercises','what is tre','tell me about tre','what are tre exercises','what is tre exercises','explain tre'],
       reply: "TRE® (Tension & Trauma Releasing Exercises) activates your body's natural tremor mechanism to release deep stress, tension and trauma stored in the muscles and nervous system.\n\nDeveloped by Dr. David Berceli, it is gentle, safe and beginner-friendly. Most people learn to self-practice after just 3–4 supervised sessions.",
       link: null,
       btns: ['Is TRE® safe?','What does a session feel like?','How many sessions do I need?','How much does it cost?'] },
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
       link: null,
       btns: ['Tell me about the Starter Package','Tell me about the Deep Dive','How do I book the free call?','What is included?'] },
 
-    { keys: ['starter','8 week','8-week','first package','weekly sessions','starter package','2200','$2200'],
+    { keys: ['starter','8 week','8-week','first package','weekly sessions','starter package','2200','$2200','what is included','what included','included','whats included'],
       reply: "The Starter Package is $2,200 and includes:\n\n• 8 weekly somatic sessions (TRE® or Coaching)\n• Session recordings\n• WhatsApp support between sessions\n• Personalised home practice plan\n\nDesigned to give you enough time to experience real, lasting shifts.",
       link: null,
       btns: ['Tell me about the Deep Dive','How do I book?','Tell me about the free discovery call','What happens in a session?'] },
@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function() {
       link: null,
       btns: ['How is it different from the Starter?','Tell me about the free discovery call','What is Somatic Coaching?','How do I book?'] },
 
-    { keys: ['book','schedule','appointment','sign up','register','join','how to start','how to book','get started','begin','start working','work together','make an appointment','booking','reserve','session booking'],
+    { keys: ['book','schedule','appointment','sign up','register','join','how to start','how to book','how do i book','how can i book','get started','begin','start working','work together','make an appointment','booking','reserve','session booking'],
       reply: "Booking is straightforward:\n\n1. Use the contact form on the Book page\n2. Send a WhatsApp message directly to Isabelle\n\nIsabelle personally responds within 1–2 business days. The free discovery call is a great first step.",
       link: { text: 'Go to the Book page', url: 'book.html' },
       btns: ['Tell me about the free discovery call','How much does it cost?','What to expect in first session?'] },
@@ -386,9 +386,9 @@ document.addEventListener('DOMContentLoaded', function() {
       link: { text: 'View the Gallery', url: 'gallery.html' },
       btns: ['About Isabelle','What services are available?','Book a session'] },
 
-    { keys: ['event','workshop','group','upcoming','schedule','class','programme','program','events','group session','next event','tre workshop','group tre'],
-      reply: "Isabelle runs regular TRE® group sessions, somatic coaching workshops and online events — in Singapore, Japan and online.\n\nSome events are a low-cost way to experience the work before committing to a full programme.",
-      link: { text: 'See upcoming events', url: 'events.html' },
+    { keys: ['event','workshop','group','upcoming','schedule','class','programme','program','events','group session','next event','tre workshop','group tre','romania','bucharest','certification','module 1','icf','cceu'],
+      reply: "Upcoming events:\n\n• 29–30 Aug 2026 — Singapore (In-Person) · Nervous System Regulation for Coaches · 21 ICF CCEUs · S$1,290\n• 15–17 Oct 2026 — Bucharest, Romania · TRE® Module 1 Certification · 21 ICF CCEUs\n\nGroup events are a great way to experience the work before committing to a full programme.",
+      link: { text: 'See all upcoming events', url: 'events.html' },
       btns: ['What is TRE®?','How much does a programme cost?','Book a private session'] },
 
     { keys: ['first session','what to expect','what happens','prepare','preparation','my first','what do i need','what to bring','how does a session work','session like','how does a session','session work'],

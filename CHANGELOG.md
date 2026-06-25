@@ -5,6 +5,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [65.8] — 2026-06-25
+
+### Fixed / Changed — Chatbot audit fixes
+
+- **Bug fix — "What is TRE®?" button**: Returned generic "What would you like to explore?" due to keyword tie-break. Added `what is tre`, `tell me about tre`, `explain tre` to TRE entry keys.
+- **Bug fix — "How do I book?" button**: Returned generic "Happy to help!" instead of booking info. Added `how do i book`, `how can i book` to booking entry keys.
+- **Bug fix — "What is included?" button**: No matching KB entry; now correctly maps to Starter Package info. Added `what is included`, `included`, `whats included` to starter entry keys.
+- **Events KB updated**: Reply now lists Singapore 29–30 Aug 2026 (21 ICF CCEUs, S$1,290) and Romania TRE® Module 1 15–17 Oct 2026. Added `romania`, `bucharest`, `certification`, `icf`, `cceu` as trigger keywords.
+
+---
+
 ## [65.7] — 2026-06-25
 
 ### Changed — Landing page hero column order swapped
