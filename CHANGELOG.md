@@ -5,6 +5,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [65.4] — 2026-06-25
+
+### Fixed — Full site audit fixes
+
+- **Sitewide (16 pages) — Footer contact location**: "Japan & Worldwide" corrected to "Singapore & Japan" in the Contact footer column across all pages.
+- **Sitewide (14 pages) — Footer Company column**: Removed stale "Retreats and Workshops" extra link from Company footer column (left over from a previous nav restructure). Correct Services footer entry "Resilience Retreats" retained.
+- **event-selfcare-coaches-singapore.html — Pricing**: Added missing Early Bird (S$1,500 until 31 Jul 2026) and Normal Price (S$1,800) tiers below the main ICF Special Price display.
+- **events.html — Romania TRE Module 1 Bucharest card**: Added "Contact for Pricing" pricing block (price not yet published publicly).
+- **event-tre-module1-bucharest.html — Day 1 schedule label**: Renamed "Workshop: Self-Care and Presence for Coaches" → "Introductory Evening: Self-Care and Presence for Coaches" to distinguish it from the standalone 2-day Singapore workshop.
+
+---
+
 ## [65.3] — 2026-06-25
 
 ### Changed — Countdown timers updated to next upcoming event (Singapore, 29 Aug)
