@@ -1,10 +1,27 @@
-# HummingBeing Website — Changelog
+﻿# HummingBeing Website — Changelog
 
 All notable changes to this project are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [54.0] — 2026-06-25
+
+### Fixed — Full site audit: Trainer → Certifying Trainer, meta cleanup, nav/footer corrections
+
+- **All 15 pages — TRE® Trainer Trainee → Global TRE® Certifying Trainer** — Bulk replacement across all tickers, meta descriptions, OG tags, Twitter cards, and JSON-LD structured data. Isabelle's title is now correctly "Global TRE® Certifying Trainer" everywhere on the site.
+- **isabelle.html — Full meta overhaul** — title, meta description, OG title/description/alt, Twitter title/description, JSON-LD jobTitle/description/hasCredential credential name, and visible card body text all updated to reflect Global TRE® Certifying Trainer status. Updated "25+ years" → "30 years" throughout head.
+- **isabelle.html — Keywords updated** — Added "Global TRE certifying trainer" and "TRE certifying trainer Japan"; removed stale "somatic bodywork practitioner Singapore".
+- **index.html — Meta/schema updated** — meta description, OG, Twitter, JSON-LD description and serviceType: "Somatic Bodywork" → "Mindfulness" throughout.
+- **somatic-healing.html — Nav fixed** — Services dropdown was missing Holistic Mastermind Ecosystem and Global TRE® Certification items; now shows all 5.
+- **holistic-mastermind.html — Structural fix** — Removed erroneous <header> wrapper around <nav>; nav is now a direct body child matching all other pages.
+- **somatic-bodywork.html (Mindfulness) — Nav active state added** — Services dropdown toggle now has ctive class, matching all other service pages.
+- **book.html — Service names updated** — Form dropdown option and session lengths sidebar: "Somatic Bodywork" → "Mindfulness".
+- **tre-certification.html — Footer Services order fixed** — "Holistic Mastermind Ecosystem" moved to first position; list now matches all other pages.
+- **socials.html — Title tag updated** — "Podcast & Resources" → "Follow & Connect | Social Media & Resources" to accurately describe the page.
+- **All pages — Ticker updated** — "Somatic Bodywork" ticker item replaced with "Mindfulness" across all 14 ticker-bearing pages.
+
+---
 ## [53.0] — 2026-06-25
 
 ### Changed / Added — Mindfulness page rewrite + nav/footer updates
