@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [65.7] — 2026-06-25
+
+### Changed — Landing page hero column order swapped
+
+- **All 3 landing pages**: Title/subtitle/buttons moved to the left column; booking form moved to the right column.
+
+---
+
 ## [65.6] — 2026-06-25
 
 ### Changed — Landing page hero 2-column layout
