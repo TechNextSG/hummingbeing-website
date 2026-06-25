@@ -5,6 +5,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [50.0] — 2026-06-25
+
+### Changed / Added — Feedback implementation from Isabelle
+
+- **index.html** — Hero eyebrow → "Holistic Mastermind Ecosystem"; tagline → "Cognitive optimization, somatic decompression, neuroscience, and energetic mastery."; "Start with a Free Chat" → Calendly link; service cards: "Somatic Coaching" → "Coaching", "Somatic Bodywork" → "Mindfulness".
+- **about.html** — "A Safe Space to" → "Science Backed Processes to"; subtitle updated to 30 years + trauma-informed + mindfulness; "Eastern wisdom" → "trauma-informed, mindfulness and neuroscience backed"; BHD name updated.
+- **isabelle.html** — Hero credentials updated; TRE card → "Global TRE® Certifying Trainer & Certified TRE® Provider"; Executive Coach → "ICF PCC Level Certified"; Reiki card updated and moved to position 4; Ongoing Studies → "Continuously Studying & Growing"; info strip: Japan & global, Spanish added, global/European leadership context, BHD name.
+- **somatic-coaching.html** — Hero updated to somatic/trauma/neuroscience informed coaching.
+- **retreats-workshops.html** — Added "Resilience Retreats for Professionals" section: The Corporate Detox (5d/4n) and The Quick Reset (3d/2n).
+- **All 13 pages** — Footer: BHD name → "Business and Human Development Consulting Pte Ltd"; "safe space" → "Science backed processes"; "Somatic Coaching" → "Coaching"; location → "Japan & Worldwide".
+
+---
+
 ## [49.0] — 2026-06-24
 
 ### Added / Changed — Nav restructure, 2 new pages, hummingbird text
