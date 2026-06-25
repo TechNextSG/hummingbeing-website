@@ -5,6 +5,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [57.0] — 2026-06-25
+
+### Fixed — Footer copyright separator
+
+- **All 15 pages — Footer copyright** — Changed middle dot `&#183;` separator to em dash `&#8212;` for clearer typographic formatting: "© 2026 HummingBeing — Business and Human Development Consulting Pte Ltd".
+
+---
 ## [56.0] — 2026-06-25
 
 ### Fixed — Wrong YouTube embed on tre.html
