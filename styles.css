@@ -1521,3 +1521,72 @@ footer {
 .foot-logo img { height: 48px; width: auto; display: block; }
 .foot-sep { opacity: .4; }
 .g-hidden { display: none !important; }
+
+/* ── HOW TO START WITH ISABELLE ─────────────────────────────────────────── */
+.start-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+.start-card {
+  background: var(--white); border-radius: 12px; padding: 2.5rem 2rem;
+  position: relative; border: 1.5px solid rgba(36,46,66,.1);
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.start-card-featured { background: var(--navy-deep); border-color: var(--gold); }
+.start-num { font-family: 'Lato', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; }
+.start-icon { font-size: 2rem; color: var(--gold); }
+.start-card h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--navy); margin: 0; }
+.start-card-featured h3 { color: var(--white); }
+.start-desc { font-size: .92rem; line-height: 1.7; color: var(--text-mid); margin: 0; }
+.start-card-featured .start-desc { color: rgba(255,255,255,.75); }
+.start-features { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .45rem; }
+.start-features li { font-size: .85rem; padding-left: 1.4rem; position: relative; color: var(--text-mid); }
+.start-features li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+.start-card-featured .start-features li { color: rgba(255,255,255,.7); }
+.start-badge {
+  position: absolute; top: -1px; right: 1.5rem;
+  background: var(--gold); color: var(--navy);
+  font-family: 'Lato', sans-serif; font-size: .66rem; font-weight: 700;
+  letter-spacing: 1.2px; text-transform: uppercase;
+  padding: .28rem .75rem; border-radius: 0 0 6px 6px;
+}
+.start-card .btn { margin-top: auto; }
+
+/* ── HOLISTIC MASTERMIND ECOSYSTEM ──────────────────────────────────────── */
+.section-navy { background: var(--navy-deep); padding: var(--section-pad); }
+.hme-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+.hme-pillar {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px; padding: 2.5rem 2rem; text-align: center; transition: background .25s;
+}
+.hme-pillar:hover { background: rgba(255,255,255,.1); }
+.hme-featured { background: rgba(245,166,35,.1); border-color: rgba(245,166,35,.4); }
+.hme-icon { font-size: 2.4rem; color: var(--gold); margin-bottom: 1.1rem; }
+.hme-pillar h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--white); margin-bottom: .75rem; }
+.hme-pillar p { font-size: .9rem; color: rgba(255,255,255,.68); line-height: 1.72; margin: 0; }
+.btn-outline-light {
+  display: inline-block; border: 2px solid rgba(255,255,255,.45); color: var(--white);
+  background: transparent; padding: .75rem 2rem; border-radius: 6px;
+  font-family: 'Lato', sans-serif; font-weight: 700; font-size: .82rem;
+  letter-spacing: 1px; text-transform: uppercase; transition: all .25s; text-decoration: none;
+}
+.btn-outline-light:hover { background: rgba(255,255,255,.1); border-color: var(--white); color: var(--white); }
+
+/* ── LANDING PAGE FORM SELECT + EVENT BADGE ─────────────────────────────── */
+.evtl-event-badge {
+  background: rgba(245,166,35,.12); border: 1px solid rgba(245,166,35,.3);
+  color: rgba(255,255,255,.85); font-family: 'Lato', sans-serif;
+  font-size: .88rem; font-weight: 600; padding: .62rem 1rem; border-radius: 8px;
+}
+.evtl-event-badge i { color: var(--gold); margin-right: .5rem; }
+.evtl-field select {
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18);
+  border-radius: 8px; color: var(--white); font-size: .95rem;
+  padding: .72rem 1rem; outline: none; transition: border-color .2s;
+  font-family: 'Lato', sans-serif; width: 100%; box-sizing: border-box; cursor: pointer;
+  -webkit-appearance: none; appearance: none;
+}
+.evtl-field select:focus { border-color: var(--gold); background: rgba(255,255,255,.1); }
+.evtl-field select option { background: #1a2035; color: #fff; }
+
+@media (max-width: 860px) {
+  .start-grid { grid-template-columns: 1fr; }
+  .hme-grid { grid-template-columns: 1fr; }
+}
