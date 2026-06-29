@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [65.11] — 2026-06-29
+
+### Changed — All Register buttons redirect to Gmail
+
+- All "Register" / "Register Now" / "Register Your Interest" buttons across `events.html`, `event-shaking-to-shaping.html`, `event-tre-module1-bucharest.html`, and `retreats-workshops.html` now open Gmail compose to `isabelle@bhdasia.com` with an event-specific pre-filled subject line.
+
+---
+
 ## [65.10] — 2026-06-29
 
 ### Changed — Socials page resources
