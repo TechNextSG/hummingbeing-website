@@ -5,6 +5,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [65.10] — 2026-06-29
+
+### Changed — Socials page resources
+
+- Removed "Magic Somatic (Book)" and "Somatic Asia" from the Resources & Related Organisations section.
+
+---
+
 ## [65.9] — 2026-06-29
 
 ### Added / Changed — Homepage sections + landing page form improvements
