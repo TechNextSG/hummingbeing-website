@@ -1550,11 +1550,11 @@ footer {
 .start-card .btn { margin-top: auto; }
 
 /* ── HOLISTIC MASTERMIND ECOSYSTEM ──────────────────────────────────────── */
-.section-navy { background: var(--navy-deep); padding: var(--section-pad); }
-.hme-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+.section-navy { background: var(--navy-deep); padding: 6rem 12%; }
+.hme-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
 .hme-pillar {
   background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
-  border-radius: 12px; padding: 2.5rem 2rem; text-align: center; transition: background .25s;
+  border-radius: 12px; padding: 2rem 1.75rem; text-align: center; transition: background .25s;
 }
 .hme-pillar:hover { background: rgba(255,255,255,.1); }
 .hme-featured { background: rgba(245,166,35,.1); border-color: rgba(245,166,35,.4); }
