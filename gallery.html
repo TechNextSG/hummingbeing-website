@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery &#8212; HummingBeing</title>
-  <meta name="description" content="Browse HummingBeing's gallery &#8212; podcast episodes, somatic wellness videos and photos from Isabelle Claus Teixeira." />
-  <link rel="stylesheet" href="styles.css?v=33" />
+  <title>Gallery &amp; Podcast | HummingBeing Somatic Wellness</title>
+  <meta name="description" content="Watch Isabelle Claus Teixeira in podcast interviews, explore somatic session videos and photos from TRE&#174; workshops and healing events. Get a genuine feel for the HummingBeing approach before booking." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="styles.css?v=89" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
+  <link rel="preload" as="image" href="poster-gallery.jpg" fetchpriority="high">
   <style>
     /* -- GALLERY FILTERS ---------------------------------------------------- */
     .gal-filter-bar {
@@ -137,7 +142,7 @@
       color: var(--white); font-size: .95rem;
       margin-bottom: .3rem; line-height: 1.4;
     }
-    .g-vid-info span { color: rgba(255,255,255,.5); font-size: .74rem; }
+    .g-vid-info span { color: rgba(255,255,255,.82); font-size: .78rem; }
 
     /* Channel browse card */
     .g-channel-card {
@@ -158,7 +163,7 @@
       font-family: 'PT Serif', Georgia, serif;
       color: var(--white); font-size: 1rem; margin: 0;
     }
-    .g-channel-card > p { color: rgba(255,255,255,.6); font-size: .8rem; margin: 0; line-height: 1.5; }
+    .g-channel-card > p { color: rgba(255,255,255,.88); font-size: .88rem; margin: 0; line-height: 1.55; }
     .g-ch-cta {
       font-size: .7rem; font-weight: 700; letter-spacing: 1.5px;
       text-transform: uppercase; color: var(--gold);
@@ -193,7 +198,7 @@
       letter-spacing: 1.2px; text-transform: uppercase;
       color: var(--gold-dark); margin-bottom: .55rem;
     }
-    .g-pod-meta > p { color: var(--text-mid); font-size: .82rem; line-height: 1.55; margin-bottom: .85rem; }
+    .g-pod-meta > p { color: var(--body-text); font-size: .88rem; line-height: 1.6; margin-bottom: .85rem; }
     .g-pod-listen {
       display: inline-flex; align-items: center; gap: .35rem;
       font-size: .7rem; font-weight: 700;
@@ -226,7 +231,7 @@
     #lb-caption {
       position: absolute; bottom: 1.5rem; left: 50%;
       transform: translateX(-50%);
-      color: rgba(255,255,255,.6); font-size: .78rem;
+      color: rgba(255,255,255,.82); font-size: .8rem;
       letter-spacing: 1.1px; text-transform: uppercase; white-space: nowrap;
     }
 
@@ -266,33 +271,56 @@
       .g-pod-icon { width: 48px; height: 48px; font-size: 1.1rem; }
     }
   </style>
+  <!-- SEO Layer -->
+  <meta name="keywords" content="HummingBeing gallery, Isabelle Claus Teixeira podcast, TRE workshop photos, somatic wellness Singapore videos, somatic healing photos, TRE session Singapore" />
+  <link rel="canonical" href="https://technextsg.github.io/hummingbeing-website/gallery.html" />
+  <meta name="robots" content="index, follow" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HummingBeing" />
+  <meta property="og:title" content="Gallery &amp; Podcast | HummingBeing Somatic Wellness" />
+  <meta property="og:description" content="Watch Isabelle Claus Teixeira in podcast interviews, explore somatic session videos and photos from TRE® workshops and healing events." />
+  <meta property="og:url" content="https://technextsg.github.io/hummingbeing-website/gallery.html" />
+  <meta property="og:image" content="https://technextsg.github.io/hummingbeing-website/images/isabelle-her-story.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="HummingBeing somatic wellness gallery — Isabelle Claus Teixeira" />
+  <meta property="og:locale" content="en_SG" />
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gallery &amp; Podcast | HummingBeing Somatic Wellness" />
+  <meta name="twitter:description" content="Podcast interviews, session videos and photos from TRE® workshops with Isabelle Claus Teixeira." />
+  <meta name="twitter:image" content="https://technextsg.github.io/hummingbeing-website/images/isabelle-her-story.jpg" />
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="logo">Humming<span>Being</span></a>
+  <a href="index.html" class="logo"><img src="images/logo-dark.png" class="logo-on-dark" alt="HummingBeing — Coaching &amp; Somatics" style="height:56px;width:auto" width="168" height="56" /><img src="images/logo-light.png" class="logo-on-light" alt="HummingBeing — Coaching &amp; Somatics" style="height:56px;width:auto" width="168" height="56" /></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="isabelle.html">Isabelle</a></li>
     <li class="nav-dropdown">
-      <a href="#" class="nav-dropdown-toggle">Services <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+      <a href="javascript:void(0)" class="nav-dropdown-toggle">Services <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
       <ul class="nav-dropdown-menu">
-        <li><a href="tre.html">TRE&#174; Exercises</a></li>
-        <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
-        <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
+        <li><a href="holistic-mastermind.html">Holistic Mastermind Ecosystem</a></li>
+        <li><a href="tre-certification.html">Global Certifications</a></li>
+        <li><a href="retreats-workshops.html">Resilience Retreats</a></li>
       </ul>
     </li>
     <li><a href="socials.html">Socials</a></li>
     <li><a href="gallery.html" class="active">Gallery</a></li>
     <li><a href="events.html">Events</a></li>
-    <li><a href="book.html" class="nav-cta">Book a Session</a></li>
+
   </ul>
-  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <div class="nav-actions">
+    <a href="book.html" class="nav-cta">Book a Session</a>
+    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
 <div class="page-hero">
-  <video class="hero-video" autoplay muted loop playsinline>
+  <video class="hero-video" autoplay muted loop playsinline preload="none" poster="poster-gallery.jpg" title="HummingBeing gallery — somatic wellness visuals">
     <source src="hero-gallery.mp4" type="video/mp4">
   </video>
   <span class="eyebrow">Media &amp; Content</span>
@@ -310,38 +338,54 @@
     <span class="t-item">Singapore &amp; Japan</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#174; Provider</span><span class="t-sep">&middot;</span>
     <span class="t-item">25+ Years of Experience</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Coaching</span><span class="t-sep">&middot;</span>
-    <span class="t-item">Somatic Bodywork</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Mindfulness</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
     <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> BHD Asia &amp; BHD Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Business &amp; Human Development</span><span class="t-sep">&middot;</span>
     <span class="t-item">Nervous System Reset</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> Strozzi Bodywork Method</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Mindfulness</span><span class="t-sep">&middot;</span>
     <span class="t-item">Embodied Leadership</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Trauma &amp; Tension Release</span><span class="t-sep">&middot;</span>
     <span class="t-item">Mind &middot; Body &middot; Soul</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Corporate Wellness</span><span class="t-sep">&middot;</span>
     <span class="t-item">Polyvagal Theory</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> TRE&#174; Trainer Trainee</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Global TRE&#174; Certifying Trainer</span><span class="t-sep">&middot;</span>
     <span class="t-item">Executive Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Breathwork</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Online &amp; In-Person</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Group Sessions</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Burnout Recovery</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Deep Rest &amp; Renewal</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Body Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Self-Regulation</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Dr. David Berceli Method</span><span class="t-sep">&middot;</span><span class="t-item">Neurogenic Tremors</span><span class="t-sep">&middot;</span><span class="t-item">Vagal Tone</span><span class="t-sep">&middot;</span><span class="t-item">Psoas Release</span><span class="t-sep">&middot;</span><span class="t-item">Singapore &middot; Tokyo &middot; Asia Pacific</span><span class="t-sep">&middot;</span><span class="t-item">Free Discovery Call</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Certified Reiki Level II</span><span class="t-sep">&middot;</span><span class="t-item">Nervous System Literacy</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Somatic Wellness</span><span class="t-sep">&middot;</span>
     <span class="t-item">Singapore &amp; Japan</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#174; Provider</span><span class="t-sep">&middot;</span>
     <span class="t-item">25+ Years of Experience</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Coaching</span><span class="t-sep">&middot;</span>
-    <span class="t-item">Somatic Bodywork</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Mindfulness</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
     <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> BHD Asia &amp; BHD Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Business &amp; Human Development</span><span class="t-sep">&middot;</span>
     <span class="t-item">Nervous System Reset</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> Strozzi Bodywork Method</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Mindfulness</span><span class="t-sep">&middot;</span>
     <span class="t-item">Embodied Leadership</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Trauma &amp; Tension Release</span><span class="t-sep">&middot;</span>
     <span class="t-item">Mind &middot; Body &middot; Soul</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Corporate Wellness</span><span class="t-sep">&middot;</span>
     <span class="t-item">Polyvagal Theory</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> TRE&#174; Trainer Trainee</span><span class="t-sep">&middot;</span>
-    <span class="t-item">Executive Coaching</span><span class="t-sep">&middot;</span>  </div>
+    <span class="t-item"><span class="t-star">&#9733;</span> Global TRE&#174; Certifying Trainer</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Executive Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Breathwork</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Online &amp; In-Person</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Group Sessions</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Burnout Recovery</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Deep Rest &amp; Renewal</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Body Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Self-Regulation</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Dr. David Berceli Method</span><span class="t-sep">&middot;</span><span class="t-item">Neurogenic Tremors</span><span class="t-sep">&middot;</span><span class="t-item">Vagal Tone</span><span class="t-sep">&middot;</span><span class="t-item">Psoas Release</span><span class="t-sep">&middot;</span><span class="t-item">Singapore &middot; Tokyo &middot; Asia Pacific</span><span class="t-sep">&middot;</span><span class="t-item">Free Discovery Call</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Certified Reiki Level II</span><span class="t-sep">&middot;</span><span class="t-item">Nervous System Literacy</span><span class="t-sep">&middot;</span>  </div>
 </div>
 
 <!-- GALLERY SECTION -->
@@ -373,7 +417,7 @@
 
     <!-- -- PODCAST ------------------------------------------------------- -->
     <a class="g-item g-podcast-card" data-cat="podcast"
-       href="https://www.youtube.com/watch?v=1PT1crBhhUE" target="_blank" rel="noopener">
+       href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
       <div class="g-pod-icon"><i class="fa-brands fa-youtube"></i></div>
       <div class="g-pod-meta">
         <span class="g-pod-show">Video Podcast &nbsp;&#183;&nbsp; TRE&#174; Series</span>
@@ -406,19 +450,14 @@
     </a>
 
     <!-- -- VIDEO --------------------------------------------------------- -->
-    <div class="g-item g-video-card" data-cat="video"
-         onclick="openVideo('1PT1crBhhUE','TRE Star Groups with Isabelle Claus Teixeira')">
-      <span class="g-cat-pill video">Video</span>
-      <div class="g-vid-thumb">
-        <img src="https://img.youtube.com/vi/1PT1crBhhUE/hqdefault.jpg"
-             alt="TRE Star Groups with Isabelle" loading="lazy" />
-        <div class="g-play-btn"><i class="fa-solid fa-play"></i></div>
-      </div>
-      <div class="g-vid-info">
-        <h4>TRE Star Groups with Isabelle Claus Teixeira</h4>
-        <span><i class="fa-brands fa-youtube"></i> YouTube &nbsp;&middot;&nbsp; TRE&#174; Practice Session</span>
-      </div>
-    </div>
+    <a class="g-item g-channel-card" data-cat="video"
+       href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
+      <span class="g-cat-pill video">YouTube</span>
+      <div class="g-channel-icon"><i class="fa-brands fa-youtube"></i></div>
+      <h4>TRE&#174; Group Sessions with Isabelle</h4>
+      <p>Watch Isabelle guide groups through TRE&#174; &#8212; demonstrating the tremoring mechanism that naturally releases held tension and stress from the body.</p>
+      <span class="g-ch-cta">Watch on YouTube <i class="fa-solid fa-arrow-right"></i></span>
+    </a>
 
     <a class="g-item g-channel-card" data-cat="video"
        href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
@@ -431,11 +470,11 @@
 
     <!-- -- IMAGES -------------------------------------------------------- -->
     <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2020/01/Artboard-1@2x-100.jpg','Isabelle Claus Teixeira')">
+         onclick="openLightbox('images/gallery/gallery-isabelle-oct-2023.jpg','Isabelle Claus Teixeira')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <img src="https://www.hummingbeing.com/wp-content/uploads/2020/01/Artboard-1@2x-100.jpg"
-             alt="Isabelle Claus Teixeira" loading="lazy" />
+        <img src="images/gallery/gallery-isabelle-oct-2023.jpg"
+             alt="Isabelle Claus Teixeira" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
           <span class="g-img-caption-tag">Isabelle Claus Teixeira</span>
@@ -444,11 +483,11 @@
     </div>
 
     <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('https://www.hummingbeing.com/wp-content/uploads/2019/11/isatall.jpg','Isabelle at Work')">
+         onclick="openLightbox('images/isabelle-her-story.jpg','Isabelle at Work')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <img src="https://www.hummingbeing.com/wp-content/uploads/2019/11/isatall.jpg"
-             alt="Isabelle at Work" loading="lazy" />
+        <img src="images/isabelle-her-story.jpg"
+             alt="Isabelle at Work" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
           <span class="g-img-caption-tag">Isabelle at Work</span>
@@ -456,134 +495,303 @@
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-isabelle-oct-2023.jpg','Isabelle — October 2023')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-isabelle-oct-2023.jpg" alt="Isabelle — October 2023" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Nature &amp; Wellbeing</span>
+          <span class="g-img-caption-tag">Isabelle — October 2023</span>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-isabelle-kyoto-2023.jpg','Kyoto Station — October 2023')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-isabelle-kyoto-2023.jpg" alt="Kyoto Station — October 2023" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Somatic Journey</span>
+          <span class="g-img-caption-tag">Kyoto Station — October 2023</span>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-isabelle-vietnam-tre.jpg','TRE® Asia Conference, Vietnam')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-isabelle-vietnam-tre.jpg" alt="TRE® Asia Conference, Vietnam" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Freedom in Movement</span>
+          <span class="g-img-caption-tag">TRE&#174; Asia Conference, Vietnam</span>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-isabelle-teaching-tre.jpg','Teaching TRE® Module 1')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-isabelle-teaching-tre.jpg" alt="Teaching TRE® Module 1" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Somatic Coaching</span>
+          <span class="g-img-caption-tag">Teaching TRE&#174; Module 1</span>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-tre-module1-2026.jpg','TRE® Module 1 — January 2026')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-tre-module1-2026.jpg" alt="TRE® Module 1 — January 2026" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">TRE&#174; Practice</span>
+          <span class="g-img-caption-tag">TRE&#174; Module 1 — January 2026</span>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-screenshot-practice.jpg','Somatic Bodywork Session')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-screenshot-practice.jpg" alt="Somatic Bodywork Session" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Somatic Coaching Session</span>
+          <span class="g-img-caption-tag">Somatic Bodywork Session</span>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-ws-1.jpg','TRE® Module 1 Training')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-ws-1.jpg" alt="TRE® Module 1 Training" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Bodywork Session</span>
+          <span class="g-img-caption-tag">TRE&#174; Module 1 Training</span>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-ws-2.jpg','At the Esplanade, Singapore')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-ws-2.jpg" alt="At the Esplanade, Singapore" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Somatic Therapy</span>
+          <span class="g-img-caption-tag">At the Esplanade, Singapore</span>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-ws-3.jpg','Retreat at Leebong Island')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-ws-3.jpg" alt="Retreat at Leebong Island" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Somatic Bodywork</span>
+          <span class="g-img-caption-tag">Retreat at Leebong Island</span>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-ws-4.jpg','TRE® Certification')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-ws-4.jpg" alt="TRE® Certification" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Body Release</span>
+          <span class="g-img-caption-tag">TRE&#174; Certification</span>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-danang-tre-conference-nov2025.jpg','Da Nang TRE&#174; Conference — November 2025')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-danang-tre-conference-nov2025.jpg" alt="Da Nang TRE&#174; Conference — November 2025" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Healing Touch</span>
+          <span class="g-img-caption-tag">Da Nang TRE&#174; Conference — November 2025</span>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images">
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-dinner-david-berceli-founders.jpg','Dinner with David Berceli, Founder of TRE&#174;')">
       <span class="g-cat-pill images">Image</span>
       <div class="g-img-thumb">
-        <div class="img-placeholder"><i class="fa-regular fa-image"></i><span>Photo Coming Soon</span></div>
+        <img src="images/gallery/gallery-dinner-david-berceli-founders.jpg" alt="Dinner with David Berceli, Founder of TRE&#174;" loading="lazy" width="800" height="600" />
         <div class="g-img-overlay">
           <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Somatic Practice</span>
+          <span class="g-img-caption-tag">Dinner with David Berceli, Founder of TRE&#174;</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-indoor-skydiving-singapore.jpg','Indoor Skydiving in Singapore with TRE&#174; Colleagues')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-indoor-skydiving-singapore.jpg" alt="Indoor Skydiving in Singapore with TRE&#174; Colleagues" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Indoor Skydiving in Singapore with TRE&#174; Colleagues</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-isabelle-saymara.jpg','Isabelle and Saymara')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-isabelle-saymara.jpg" alt="Isabelle and Saymara" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Isabelle and Saymara</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-isabelle-saymara-2.jpg','Isabelle and Saymara')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-isabelle-saymara-2.jpg" alt="Isabelle and Saymara" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Isabelle and Saymara</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-isabelle-saymara-3.jpg','Isabelle and Saymara')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-isabelle-saymara-3.jpg" alt="Isabelle and Saymara" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Isabelle and Saymara</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-isabelle-saymara-4.jpg','Isabelle and Saymara')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-isabelle-saymara-4.jpg" alt="Isabelle and Saymara" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Isabelle and Saymara</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-isabelle-students-module1-may2026.jpg','TRE&#174; Module 1 — May 2026')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-isabelle-students-module1-may2026.jpg" alt="TRE&#174; Module 1 — May 2026" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">TRE&#174; Module 1 — May 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-isabelle-david-simba-nikki.jpg','Isabelle with David Berceli, Simba Stenqvist &amp; Nikki Tay')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-isabelle-david-simba-nikki.jpg" alt="Isabelle with David Berceli, Simba Stenqvist &amp; Nikki Tay" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Isabelle with David Berceli, Simba Stenqvist &amp; Nikki Tay</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-insead-simba-stenqvist.jpg','Visiting INSEAD Campus with Simba Stenqvist')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-insead-simba-stenqvist.jpg" alt="Visiting INSEAD Campus with Simba Stenqvist" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Visiting INSEAD Campus with Simba Stenqvist</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-uk-students-singapore-airport.jpg','TRE&#174; Students from the UK at Singapore Airport')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-uk-students-singapore-airport.jpg" alt="TRE&#174; Students from the UK at Singapore Airport" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">TRE&#174; Students from the UK at Singapore Airport</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-uk-tre-providers.jpg','With UK TRE&#174; Provider Students')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-uk-tre-providers.jpg" alt="With UK TRE&#174; Provider Students" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">With UK TRE&#174; Provider Students</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-uk-tre-providers-2.jpg','With UK TRE&#174; Provider Students')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-uk-tre-providers-2.jpg" alt="With UK TRE&#174; Provider Students" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">With UK TRE&#174; Provider Students</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-asia-tre-trainers-david.jpg','Asia TRE&#174; Trainers with David Berceli')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-asia-tre-trainers-david.jpg" alt="Asia TRE&#174; Trainers with David Berceli" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">Asia TRE&#174; Trainers with David Berceli</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-item g-img-card" data-cat="images"
+         onclick="openLightbox('images/gallery/gallery-chris-balsley-master-coach.jpg','With Chris Balsley — Master Coach')">
+      <span class="g-cat-pill images">Image</span>
+      <div class="g-img-thumb">
+        <img src="images/gallery/gallery-chris-balsley-master-coach.jpg" alt="With Chris Balsley — Master Coach" loading="lazy" width="800" height="600" />
+        <div class="g-img-overlay">
+          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <span class="g-img-caption-tag">With Chris Balsley — Master Coach</span>
         </div>
       </div>
     </div>
@@ -599,48 +807,59 @@
 <div class="cta-banner">
   <h2>Experience It for Yourself</h2>
   <p>Watch, listen and explore &#8212; then take the first step and book a free discovery call with Isabelle.</p>
-  <a href="book.html" class="btn" style="background:var(--white);color:var(--gold)">Book a Free Call</a>
+  <a href="book.html" class="btn btn-primary">Book a Free Call</a>
 </div>
 
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="index.html" class="logo">Humming<span>Being</span></a>
-      <p>A safe space to learn TRE&#174;, Somatic Coaching and Somatic Bodywork.</p>
-      <p style="margin-top:1rem;font-size:.8rem">Part of <strong style="color:rgba(255,255,255,.85)">BHD Asia &amp; BHD Japan</strong></p>
-      <div class="footer-social">
-        <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://wa.me/818065151778" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+  <div class="foot-grid">
+    <div>
+      <a href="index.html" class="foot-logo"><img src="images/logo-dark.png" alt="HummingBeing — Coaching &amp; Somatics" style="height:48px;width:auto;display:block" width="144" height="48" /></a>
+      <p class="foot-desc">Science backed processes with TRE&#174;, Coaching and Somatic Practices &#8212; a space to release, renew and restore.</p>
+      <p class="foot-desc">Part of <strong>Business and Human Development Consulting Pte Ltd</strong></p>
+      <div class="foot-socials">
+        <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank" class="soc" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank" class="soc" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" class="soc" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/818065151778" target="_blank" class="soc" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </div>
-    <div><h4>Services</h4><ul>
-      <li><a href="tre.html">TRE&#174; Exercises</a></li>
-      <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
-      <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
-      <li><a href="book.html">Book a Session</a></li>
-    </ul></div>
-    <div><h4>Company</h4><ul>
-      <li><a href="about.html">About HummingBeing</a></li>
-      <li><a href="isabelle.html">Meet Isabelle</a></li>
-      <li><a href="socials.html">Social Media</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="changelog.html">Changelog</a></li>
-      <li><a href="privacy-policy.html">Privacy Policy</a></li>
-      <li><a href="https://bhdasia.com" target="_blank">BHD Asia</a></li>
-    </ul></div>
-    <div><h4>Contact</h4><ul>
-      <li><a href="mailto:hello@hummingbeing.com">hello@hummingbeing.com</a></li>
-      <li><a href="https://wa.me/818065151778">WhatsApp Us</a></li>
-      <li style="color:rgba(255,255,255,.5);font-size:.85rem">Singapore &amp; Japan</li>
-    </ul></div>
+    <div>
+      <div class="foot-h">Services</div>
+      <ul class="foot-links">
+        <li><a href="holistic-mastermind.html">Holistic Mastermind Ecosystem</a></li>
+        <li><a href="tre-certification.html">Global Certifications</a></li>
+        <li><a href="retreats-workshops.html">Resilience Retreats</a></li>
+        <li><a href="book.html">Book a Session</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Company</div>
+      <ul class="foot-links">
+        <li><a href="about.html">About HummingBeing</a></li>
+        <li><a href="isabelle.html">Meet Isabelle</a></li>
+        <li><a href="socials.html">Social Media</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="https://bhdasia.com" target="_blank">BHD Asia</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Contact</div>
+      <ul class="foot-links">
+        <li><a href="mailto:isabelle@bhdasia.com">isabelle@bhdasia.com</a></li>
+        <li><a href="https://wa.me/818065151778" target="_blank">WhatsApp Us</a></li>
+        <li><span>Global</span></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-bottom">
-    <span>&#169; 2026 HummingBeing &#183; BHD Asia &amp; BHD Japan</span>
-    <span>Powered by <a href="https://technextasia.com" target="_blank">TechNext</a></span>
-    <span><a href="https://hummingbeing.com">hummingbeing.com</a></span>
+  <div class="foot-bottom">
+    <div class="foot-copy">&#169; 2026 HummingBeing &#8212; Business and Human Development Consulting Pte Ltd</div>
+    <div class="foot-legal">
+      <span>Privacy Policy</span>
+      <span>Terms of Service</span>
+      <span class="foot-sep">&#183;</span>
+      <a href="https://technextasia.com" target="_blank">Powered by <span class="tn-brand">TechNext</span></a>
+    </div>
   </div>
 </footer>
 
@@ -663,14 +882,14 @@
 
 <a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
-<script src="scripts.js"></script>
+<script src="scripts.js" defer></script>
 <script>
 /* Gallery filter */
 function galleryFilter(cat, btn) {
   document.querySelectorAll('.gf-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
   document.querySelectorAll('#gallery-grid .g-item').forEach(function(item) {
-    item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
+    if (cat === 'all' || item.dataset.cat === cat) { item.classList.remove('g-hidden'); } else { item.classList.add('g-hidden'); }
   });
 }
 
@@ -708,6 +927,22 @@ document.addEventListener('keydown', function(e) {
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
