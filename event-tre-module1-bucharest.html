@@ -247,8 +247,6 @@
         <h3 class="evtl-form-title">Reserve Your Spot</h3>
         <p class="evtl-form-sub">Share your details and we&#8217;ll be in touch shortly.</p>
         <form class="evtl-form" onsubmit="evtlSubmit(event)">
-          <div class="evtl-event-badge"><i class="fa-regular fa-calendar"></i> Bucharest &middot; 15&ndash;17 October 2026</div>
-          <input type="hidden" name="event" value="Bucharest · 15–17 October 2026">
           <div class="evtl-field">
             <label>Full Name <span style="color:var(--gold)">*</span></label>
             <input type="text" name="name" placeholder="Your full name" required>
@@ -265,7 +263,7 @@
         </form>
         <div class="evtl-form-success" id="evtl-success" style="display:none">
           <i class="fa-solid fa-circle-check"></i>
-          <p>Thank you! Isabelle will be in touch shortly.</p><span class="evtl-success-event" style="font-size:.8rem;opacity:.65;margin-top:.2rem;display:block"></span>
+          <p>Thank you! Isabelle will be in touch shortly.</p>
           <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:.5rem">Or Book via Calendly &rarr;</a>
         </div>
       </div>
@@ -282,7 +280,7 @@
         <span class="evtl-pill"><i class="fa-solid fa-language"></i> In English</span>
       </div>
       <div class="evtl-hero-actions">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=isabelle@bhdasia.com&su=Registration%3A%20TRE%20Module%201%20Bucharest%20Oct%2015-17%202026" target="_blank" rel="noopener" class="btn btn-primary">Register &rarr;</a>
+        <a href="#register" class="btn btn-primary">Register &rarr;</a>
         <a href="#schedule" class="btn btn-outline">View Schedule</a>
       </div>
     </div>
@@ -415,7 +413,7 @@
     <div style="background:var(--navy-deep);border-radius:12px;padding:2rem;color:var(--white);display:flex;flex-direction:column;gap:1rem">
       <span style="font-family:'Lato',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)">Via HummingBeing</span>
       <p style="font-size:.92rem;line-height:1.65;color:rgba(255,255,255,.82)">Register through Isabelle Claus Teixeira — Global TRE&#8482; Certifying Trainer and host of the training.</p>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=isabelle@bhdasia.com&su=Registration%3A%20TRE%20Module%201%20Bucharest%20Oct%2015-17%202026" target="_blank" rel="noopener" class="btn btn-primary" style="text-align:center">Email Isabelle &rarr;</a>
+      <a href="mailto:isabelle@bhdasia.com?subject=Registration: TRE Module 1 Bucharest Oct 15-17 2026" class="btn btn-primary" style="text-align:center">Email Isabelle &rarr;</a>
       <p style="font-size:.75rem;color:rgba(255,255,255,.5);text-align:center;margin:0">isabelle@bhdasia.com</p>
     </div>
     <div style="background:var(--navy);border-radius:12px;padding:2rem;color:var(--white);display:flex;flex-direction:column;gap:1rem">
@@ -485,7 +483,7 @@
 <div class="cta-banner">
   <h2>Ready to Become a TRE&#8482; Provider?</h2>
   <p>Register for TRE&#8482; Module 1 in Bucharest &#8212; the first in Europe in English, with ICF CCEUs.</p>
-  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=isabelle@bhdasia.com&su=Registration%3A%20TRE%20Module%201%20Bucharest%20Oct%2015-17%202026" target="_blank" rel="noopener" class="btn btn-primary">Register by Email</a>
+  <a href="mailto:isabelle@bhdasia.com?subject=Registration: TRE Module 1 Bucharest Oct 15-17 2026" class="btn btn-primary">Register by Email</a>
 </div>
 
 <footer>
@@ -572,25 +570,9 @@
 <script>
 function evtlSubmit(e) {
   e.preventDefault();
-  var form = e.target;
-  var card = form.closest('.evtl-form-card');
-  var data = {
-    name:  (form.querySelector('[name="name"]')  || {value:''}).value.trim(),
-    email: (form.querySelector('[name="email"]') || {value:''}).value.trim(),
-    phone: (form.querySelector('[name="phone"]') || {value:''}).value.trim(),
-    event: (form.querySelector('[name="event"]') || {value:''}).value.trim(),
-    source: window.location.pathname
-  };
-  var GAS_URL = ''; /* TODO: paste your Google Apps Script URL here */
-  if (GAS_URL) {
-    fetch(GAS_URL, {method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(data)}).catch(function(){});
-  }
-  form.style.display = 'none';
+  var card = e.target.closest('.evtl-form-card');
+  card.querySelector('.evtl-form').style.display = 'none';
   var s = card.querySelector('.evtl-form-success');
-  var ep = s.querySelector('.evtl-success-event');
-  if (ep && data.event) ep.textContent = 'Enquiry for: ' + data.event;
   s.style.display = 'flex';
 }
 </script>

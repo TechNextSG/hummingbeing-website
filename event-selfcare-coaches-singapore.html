@@ -242,8 +242,6 @@
         <h3 class="evtl-form-title">Reserve Your Spot</h3>
         <p class="evtl-form-sub">Share your details and we&#8217;ll be in touch shortly.</p>
         <form class="evtl-form" onsubmit="evtlSubmit(event)">
-          <div class="evtl-event-badge"><i class="fa-regular fa-calendar"></i> Singapore &middot; 29 &amp; 30 August 2026</div>
-          <input type="hidden" name="event" value="Singapore · 29 & 30 August 2026">
           <div class="evtl-field">
             <label>Full Name <span style="color:var(--gold)">*</span></label>
             <input type="text" name="name" placeholder="Your full name" required>
@@ -260,7 +258,7 @@
         </form>
         <div class="evtl-form-success" id="evtl-success" style="display:none">
           <i class="fa-solid fa-circle-check"></i>
-          <p>Thank you! Isabelle will be in touch shortly.</p><span class="evtl-success-event" style="font-size:.8rem;opacity:.65;margin-top:.2rem;display:block"></span>
+          <p>Thank you! Isabelle will be in touch shortly.</p>
           <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:.5rem">Or Book via Calendly &rarr;</a>
         </div>
       </div>
@@ -537,25 +535,9 @@
 <script>
 function evtlSubmit(e) {
   e.preventDefault();
-  var form = e.target;
-  var card = form.closest('.evtl-form-card');
-  var data = {
-    name:  (form.querySelector('[name="name"]')  || {value:''}).value.trim(),
-    email: (form.querySelector('[name="email"]') || {value:''}).value.trim(),
-    phone: (form.querySelector('[name="phone"]') || {value:''}).value.trim(),
-    event: (form.querySelector('[name="event"]') || {value:''}).value.trim(),
-    source: window.location.pathname
-  };
-  var GAS_URL = ''; /* TODO: paste your Google Apps Script URL here */
-  if (GAS_URL) {
-    fetch(GAS_URL, {method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(data)}).catch(function(){});
-  }
-  form.style.display = 'none';
+  var card = e.target.closest('.evtl-form-card');
+  card.querySelector('.evtl-form').style.display = 'none';
   var s = card.querySelector('.evtl-form-success');
-  var ep = s.querySelector('.evtl-success-event');
-  if (ep && data.event) ep.textContent = 'Enquiry for: ' + data.event;
   s.style.display = 'flex';
 }
 </script>

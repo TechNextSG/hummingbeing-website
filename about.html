@@ -3,11 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About &#8212; HummingBeing</title>
-  <meta name="description" content="Learn about HummingBeing &#8212; our philosophy, mission and approach to somatic wellness for people." />
-  <link rel="stylesheet" href="styles.css?v=33" />
+  <title>About HummingBeing | Somatic Wellness in Japan &amp; Worldwide</title>
+  <meta name="description" content="HummingBeing is a somatic wellness practice led by Isabelle Claus Teixeira. We help people release chronic stress, burnout and stored tension through TRE&#174;, Coaching and Mindfulness &#8212; in Japan and online worldwide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="styles.css?v=89" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" href="favicon.svg" />
+  <link rel="preload" as="image" href="poster-about.jpg" fetchpriority="high">
+<style>
+/* Our Philosophy — numbered open column layout */
+.philo-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  margin-top: 3rem;
+}
+.philo-item {
+  padding: 2.2rem 2.5rem 2.2rem 0;
+  border-right: 1px solid rgba(36,46,66,.09);
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.philo-item + .philo-item { padding-left: 2.5rem; }
+.philo-item:last-child { border-right: none; padding-right: 0; }
+.philo-row-2 { border-top: 1px solid rgba(36,46,66,.09); }
+.philo-row-2 .philo-item { padding-top: 2.2rem; }
+.philo-eyebrow {
+  font-family: 'Lato',sans-serif;
+  font-size: .62rem; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold);
+}
+.philo-icon { font-size: 1.4rem; color: var(--navy); margin: .3rem 0; }
+.philo-item h3 { font-family: 'PT Serif',Georgia,serif; font-size: 1.1rem; color: var(--navy); margin-bottom: .2rem; }
+.philo-item p { font-size: .93rem; color: var(--body-text); line-height: 1.7; }
+@media (max-width: 700px) {
+  .philo-row { grid-template-columns: 1fr 1fr; }
+  .philo-item { padding: 1.5rem 1.5rem 1.5rem 0; border-right: none; border-bottom: 1px solid rgba(36,46,66,.09); }
+  .philo-item + .philo-item { padding-left: 1.5rem; }
+  .philo-item:nth-child(even) { border-right: none; padding-right: 0; }
+  .philo-item:nth-child(odd):not(:last-child) { border-right: 1px solid rgba(36,46,66,.09); }
+  .philo-row-2 { border-top: none; }
+}
+@media (max-width: 480px) {
+  .philo-row { grid-template-columns: 1fr; }
+  .philo-item,
+  .philo-item + .philo-item { padding: 1.2rem 0; border-right: none; }
+  .philo-item:nth-child(odd):not(:last-child) { border-right: none; }
+  .philo-item:last-child { border-bottom: none; }
+}
+</style>
+  <!-- SEO Layer -->
+  <meta name="keywords" content="about HummingBeing, somatic wellness Singapore, Isabelle Claus Teixeira, BHD Asia, somatic healing Singapore, nervous system wellness, hummingbird metaphor somatic" />
+  <link rel="canonical" href="https://technextsg.github.io/hummingbeing-website/about.html" />
+  <meta name="robots" content="index, follow" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HummingBeing" />
+  <meta property="og:title" content="About HummingBeing | Somatic Wellness in Japan &amp; Worldwide" />
+  <meta property="og:description" content="HummingBeing is a somatic wellness practice led by Isabelle Claus Teixeira. We help people release chronic stress, burnout and stored tension through TRE®, Coaching and Mindfulness." />
+  <meta property="og:url" content="https://technextsg.github.io/hummingbeing-website/about.html" />
+  <meta property="og:image" content="https://technextsg.github.io/hummingbeing-website/images/about-hummingbird-metaphor.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Hummingbird — the metaphor for HummingBeing somatic wellness" />
+  <meta property="og:locale" content="en_SG" />
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About HummingBeing | Somatic Wellness in Japan &amp; Worldwide" />
+  <meta name="twitter:description" content="Somatic wellness practice led by Isabelle Claus Teixeira. TRE®, Coaching and Mindfulness in Japan and online." />
+  <meta name="twitter:image" content="https://technextsg.github.io/hummingbeing-website/images/about-hummingbird-metaphor.jpg" />
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About HummingBeing",
+    "url": "https://technextsg.github.io/hummingbeing-website/about.html",
+    "description": "HummingBeing is a somatic wellness practice led by Isabelle Claus Teixeira. We help people release chronic stress, burnout and stored tension through TRE®, Coaching and Mindfulness in Japan and online.",
+    "mainEntity": {
+      "@type": "Organization",
+      "@id": "https://technextsg.github.io/hummingbeing-website/#organization",
+      "name": "HummingBeing"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -18,25 +98,30 @@
     <li><a href="about.html" class="active">About</a></li>
     <li><a href="isabelle.html">Isabelle</a></li>
     <li class="nav-dropdown">
-      <a href="#" class="nav-dropdown-toggle">Services <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+      <a href="javascript:void(0)" class="nav-dropdown-toggle">Services <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
       <ul class="nav-dropdown-menu">
-        <li><a href="tre.html">TRE&#174; Exercises</a></li>
-        <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
-        <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
+        <li><a href="holistic-mastermind.html">Holistic Mastermind Ecosystem</a></li>
+        <li><a href="tre-certification.html">Global Certifications</a></li>
+        <li><a href="retreats-workshops.html">Resilience Retreats</a></li>
       </ul>
     </li>
     <li><a href="socials.html">Socials</a></li>
     <li><a href="gallery.html">Gallery</a></li>
     <li><a href="events.html">Events</a></li>
-    <li><a href="book.html" class="nav-cta">Book a Session</a></li>
   </ul>
-  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <div class="nav-actions">
+    <a href="book.html" class="nav-cta">Book a Session</a>
+    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
 <div class="page-hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="none" poster="poster-about.jpg" title="About HummingBeing — somatic wellness background video">
+    <source src="hero-about.mp4" type="video/mp4">
+  </video>
   <span class="eyebrow">About HummingBeing</span>
-  <h1>A Safe Space to<br><em>Release, Renew &amp; Restore</em></h1>
-  <p>Rooted in neuroscience, Eastern wisdom and 25+ years of human development experience.</p>
+  <h1>Science Backed Processes to<br><em>Release, Renew &amp; Restore</em></h1>
+  <p>Rooted in neuroscience, trauma informed, integrating mindfulness and somatics, and 30 years of human development experience.</p>
   <div class="hero-actions">
     <a href="book.html" class="btn btn-primary">Book a Free Discovery Call</a>
     <a href="isabelle.html" class="btn btn-outline">Meet Isabelle</a>
@@ -49,38 +134,54 @@
     <span class="t-item">Singapore &amp; Japan</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#174; Provider</span><span class="t-sep">&middot;</span>
     <span class="t-item">25+ Years of Experience</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Coaching</span><span class="t-sep">&middot;</span>
-    <span class="t-item">Somatic Bodywork</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Mindfulness</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
     <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> BHD Asia &amp; BHD Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Business &amp; Human Development</span><span class="t-sep">&middot;</span>
     <span class="t-item">Nervous System Reset</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> Strozzi Bodywork Method</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Mindfulness</span><span class="t-sep">&middot;</span>
     <span class="t-item">Embodied Leadership</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Trauma &amp; Tension Release</span><span class="t-sep">&middot;</span>
     <span class="t-item">Mind &middot; Body &middot; Soul</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Corporate Wellness</span><span class="t-sep">&middot;</span>
     <span class="t-item">Polyvagal Theory</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> TRE&#174; Trainer Trainee</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Global TRE&#174; Certifying Trainer</span><span class="t-sep">&middot;</span>
     <span class="t-item">Executive Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Breathwork</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Online &amp; In-Person</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Group Sessions</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Burnout Recovery</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Deep Rest &amp; Renewal</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Body Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Self-Regulation</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Dr. David Berceli Method</span><span class="t-sep">&middot;</span><span class="t-item">Neurogenic Tremors</span><span class="t-sep">&middot;</span><span class="t-item">Vagal Tone</span><span class="t-sep">&middot;</span><span class="t-item">Psoas Release</span><span class="t-sep">&middot;</span><span class="t-item">Singapore &middot; Tokyo &middot; Asia Pacific</span><span class="t-sep">&middot;</span><span class="t-item">Free Discovery Call</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Certified Reiki Level II</span><span class="t-sep">&middot;</span><span class="t-item">Nervous System Literacy</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Somatic Wellness</span><span class="t-sep">&middot;</span>
     <span class="t-item">Singapore &amp; Japan</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#174; Provider</span><span class="t-sep">&middot;</span>
     <span class="t-item">25+ Years of Experience</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Coaching</span><span class="t-sep">&middot;</span>
-    <span class="t-item">Somatic Bodywork</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Mindfulness</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
     <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> BHD Asia &amp; BHD Japan</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Business &amp; Human Development</span><span class="t-sep">&middot;</span>
     <span class="t-item">Nervous System Reset</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> Strozzi Bodywork Method</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Mindfulness</span><span class="t-sep">&middot;</span>
     <span class="t-item">Embodied Leadership</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Trauma &amp; Tension Release</span><span class="t-sep">&middot;</span>
     <span class="t-item">Mind &middot; Body &middot; Soul</span><span class="t-sep">&middot;</span>
     <span class="t-item"><span class="t-star">&#9733;</span> Corporate Wellness</span><span class="t-sep">&middot;</span>
     <span class="t-item">Polyvagal Theory</span><span class="t-sep">&middot;</span>
-    <span class="t-item"><span class="t-star">&#9733;</span> TRE&#174; Trainer Trainee</span><span class="t-sep">&middot;</span>
-    <span class="t-item">Executive Coaching</span><span class="t-sep">&middot;</span>  </div>
+    <span class="t-item"><span class="t-star">&#9733;</span> Global TRE&#174; Certifying Trainer</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Executive Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Breathwork</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Online &amp; In-Person</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Group Sessions</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Burnout Recovery</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Deep Rest &amp; Renewal</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Body Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Self-Regulation</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Dr. David Berceli Method</span><span class="t-sep">&middot;</span><span class="t-item">Neurogenic Tremors</span><span class="t-sep">&middot;</span><span class="t-item">Vagal Tone</span><span class="t-sep">&middot;</span><span class="t-item">Psoas Release</span><span class="t-sep">&middot;</span><span class="t-item">Singapore &middot; Tokyo &middot; Asia Pacific</span><span class="t-sep">&middot;</span><span class="t-item">Free Discovery Call</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Certified Reiki Level II</span><span class="t-sep">&middot;</span><span class="t-item">Nervous System Literacy</span><span class="t-sep">&middot;</span>  </div>
 </div>
 
 <!-- MISSION -->
@@ -91,12 +192,13 @@
       <span class="section-eyebrow">Why HummingBeing Exists</span>
       <h2>A Place to Come Back to Yourself</h2>
       <div class="divider"></div>
-      <p>HummingBeing was born from a simple but profound realisation: the most powerful tool for human transformation isn't found in another strategy or framework &#8212; it lives in the body itself.</p>
-      <p>This is a space for anyone who has been carrying a lot for a long time. Through gentle, body-based practices, we help people release what they've been holding &#8212; and slowly find their way back to the energy, ease and connection that is their natural state.</p>
-      <p>Our work draws on Eastern wisdom and modern neuroscience together. We believe that when you feel well in your body, everything else &#8212; how you relate, how you lead, how you simply live &#8212; begins to shift.</p>
+      <p>HummingBeing started with a personal realisation: that real transformation lives in the body &#8212; not in another strategy or framework. It was born from Isabelle&#8217;s own healing journey &#8212; through and out of the kind of environments that quietly deplete us.</p>
+      <p>Through trauma-informed, mindfulness and neuroscience backed practices, we help people release what they&#8217;ve been carrying &#8212; and find themselves back: empowered, respected and as healthy as possible.</p>
     </div>
   </div>
-  <div style="text-align:center;margin-top:3rem"><a href="book.html" class="btn btn-primary">Book a Free Consultation</a></div>
+  <div style="margin-top:2rem;display:flex;justify-content:center">
+    <a href="book.html" class="btn btn-primary">Come Back to Yourself</a>
+  </div>
 </section>
 
 <!-- PHILOSOPHY -->
@@ -107,55 +209,69 @@
     <div class="divider divider-center"></div>
     <p class="section-subtitle">Most personal development works from the neck up. We start in the body &#8212; where real change lives.</p>
   </div>
-  <div class="cards-grid">
-    <div class="card green-top">
-      <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+  <div class="philo-row">
+    <div class="philo-item">
+      <span class="philo-eyebrow">01</span>
+      <i class="fa-solid fa-brain philo-icon"></i>
       <h3>Neuroscience-Backed</h3>
-      <p>Our practices are grounded in the latest understanding of the nervous system, polyvagal theory and somatic neuroscience. Change is not only possible &#8212; it is physiologically built in.</p>
+      <p>Rooted in polyvagal theory and somatic neuroscience. Change isn&#8217;t just possible &#8212; it&#8217;s built into your physiology.</p>
     </div>
-    <div class="card gold-top">
-      <div class="card-icon"><i class="fa-solid fa-hands"></i></div>
+    <div class="philo-item">
+      <span class="philo-eyebrow">02</span>
+      <i class="fa-solid fa-hands philo-icon"></i>
       <h3>Whole-Person Approach</h3>
       <p>We address mind, body, emotions and spirit together. True resilience isn't compartmentalised &#8212; it emerges when all dimensions are engaged and integrated.</p>
     </div>
-    <div class="card sage-top">
-      <div class="card-icon"><i class="fa-solid fa-earth-americas"></i></div>
+    <div class="philo-item">
+      <span class="philo-eyebrow">03</span>
+      <i class="fa-solid fa-earth-americas philo-icon"></i>
       <h3>Culturally Inclusive</h3>
       <p>Having worked with 40+ nationalities across Asia, Europe, the Americas and Russia, we create safe, respectful spaces where every background and identity is honoured.</p>
     </div>
-    <div class="card green-top">
-      <div class="card-icon"><i class="fa-solid fa-microscope"></i></div>
+  </div>
+  <div class="philo-row philo-row-2">
+    <div class="philo-item">
+      <span class="philo-eyebrow">04</span>
+      <i class="fa-solid fa-microscope philo-icon"></i>
       <h3>Grounded in Research</h3>
-      <p>TRE&#174;, Somatic Coaching and Strozzi Bodywork all have solid research behind them. We trust the science &#8212; and we also trust you. Both matter here.</p>
+      <p>Every practice we offer &#8212; TRE&#174;, Coaching and Mindfulness &#8212; has a solid evidence base. We let results speak for themselves.</p>
     </div>
-    <div class="card gold-top">
-      <div class="card-icon"><i class="fa-solid fa-seedling"></i></div>
+    <div class="philo-item">
+      <span class="philo-eyebrow">05</span>
+      <i class="fa-solid fa-seedling philo-icon"></i>
       <h3>Change That Lasts</h3>
       <p>Quick fixes aren't what we're here for. We invest time in you &#8212; because the practices you build here are yours to keep for the rest of your life.</p>
     </div>
-    <div class="card sage-top">
-      <div class="card-icon"><i class="fa-solid fa-dove"></i></div>
+    <div class="philo-item">
+      <span class="philo-eyebrow">06</span>
+      <i class="fa-solid fa-dove philo-icon"></i>
       <h3>Safe &amp; Compassionate</h3>
       <p>You will never be asked to relive or narrate anything difficult here. The body finds its own way &#8212; gently, quietly, at exactly the pace that feels right for you.</p>
     </div>
   </div>
-  <div style="text-align:center;margin-top:3rem"><a href="book.html" class="btn btn-primary">Book a Free Consultation</a></div>
+  <p style="max-width:680px;margin:2.5rem auto 0;text-align:center;font-size:1rem;color:var(--text-mid);font-style:italic;line-height:1.85">These traditions &#8212; TRE&#174;, somatic coaching, mindfulness, Reiki &#8212; ask the same thing of every practitioner: humility, service, and a commitment to one&#8217;s own ongoing inner work. This is what Isabelle brings to every session &#8212; not an image, but a practice she lives herself.</p>
+  <div style="margin-top:2rem;display:flex;justify-content:center">
+    <a href="book.html" class="btn btn-primary">Explore the Practices</a>
+  </div>
 </section>
 
 <!-- HUMMINGBIRD METAPHOR -->
-<section class="section-dark">
+<section class="section-cream">
   <div class="two-col">
     <div class="two-col-text">
       <span class="section-eyebrow" style="color:var(--gold)">The Hummingbird Metaphor</span>
-      <h2 style="color:var(--white);font-family:'PT Serif',Georgia,serif;font-size:clamp(2rem,3.5vw,2.8rem)">200 Beats Per Minute.<br>Never Depleted.</h2>
+      <h2 style="font-family:'PT Serif',Georgia,serif;font-size:clamp(2rem,3.5vw,2.8rem)">200 Beats Per Minute.<br>Never Depleted.</h2>
       <div class="divider"></div>
-      <p style="color:rgba(255,255,255,.8)">The hummingbird is extraordinary. It beats its wings faster than any other bird &#8212; up to 200 times per minute &#8212; yet it is never burned out. It hovers with perfect precision, navigates with grace, and lives with a vibrancy that seems impossible given the energy it expends.</p>
-      <p style="color:rgba(255,255,255,.8)">This is because the hummingbird's entire system &#8212; nervous, muscular, metabolic &#8212; is optimally regulated. It doesn't accumulate the residue of yesterday's flights. Each moment, it is fully present and fully resourced.</p>
-      <p style="color:rgba(255,255,255,.8)">This is the natural state of the human nervous system too &#8212; before years of chronic stress, unprocessed tension and survival-mode living layer over it. HummingBeing is the path back to your natural vibrancy.</p>
+      <p>The hummingbird beats its wings up to 200 times per minute &#8212; yet is never burned out. It hovers with precision, navigates with grace, and lives with a vibrancy that seems impossible given the energy it expends.</p>
+      <p>This is possible because its entire system is optimally regulated. It doesn't carry the residue of yesterday. Each moment, it's fully present and fully resourced &#8212; and that's the natural state your nervous system is designed for, before years of chronic stress layer over it.</p>
+      <p>The hummingbird animal symbolizes joy, resilience, adaptability, perseverance, presence and lightness of being. This little bird also symbolises the ability to find beauty in the little things in life and to appreciate every moment. Remember to have fun and enjoy your surroundings and the moments that make you happy.</p>
+      <p>The hummingbird&#8217;s positive energy is omnipresent; they are always on the move and never seem to tire. They can cover impressive distances during their migrations. This reminds us how important it is to take care of our physical and mental health, while having a positive attitude in our lives.</p>
     </div>
     <div class="two-col-image" style="border-radius:8px;overflow:hidden"><img src="images/about-hummingbird-metaphor.jpg" alt="Hummingbird hovering at red flowers" loading="lazy" width="800" height="600" /></div>
   </div>
-  <div style="text-align:center;margin-top:3rem"><a href="book.html" class="btn" style="background:var(--white);color:var(--gold)">Book a Free Consultation</a></div>
+  <div style="margin-top:2.5rem;display:flex;justify-content:center">
+    <a href="book.html" class="btn btn-primary">Find Your Way Back</a>
+  </div>
 </section>
 
 <!-- BHD CONNECTION -->
@@ -166,9 +282,8 @@
       <span class="section-eyebrow">Part of the BHD Family</span>
       <h2>Business &amp; Human Development</h2>
       <div class="divider"></div>
-      <p>HummingBeing is part of <strong>BHD Asia &amp; BHD Japan</strong> &#8212; a boutique Leadership Coaching and Human Development consultancy established in Singapore in 2012.</p>
-      <p>BHD's mission is to <em>"Honor, strengthen and leverage your Humanity and show up at your best."</em> HummingBeing extends this mission into the somatic domain &#8212; offering body-based practices that complement leadership coaching and organisational development.</p>
-      <p>Whether you come to us through individual somatic work or a broader leadership journey, our goal is the same: to help you access more of who you already are.</p>
+      <p>HummingBeing is part of <strong>Business and Human Development Consulting Pte Ltd</strong> &#8212; a boutique Leadership Coaching and Human Development consultancy established in Singapore in 2012.</p>
+      <p>Our work extends BHD's mission into the body &#8212; offering somatic practices that complement leadership coaching and support anyone ready to access more of who they already are.</p>
       <a href="https://bhdasia.com" target="_blank" class="btn btn-dark" style="margin-top:1rem">Explore BHD Asia</a>
     </div>
   </div>
@@ -178,55 +293,83 @@
 <div class="cta-banner">
   <h2>Curious? Let's Just Talk.</h2>
   <p>A free 30-minute chat with Isabelle &#8212; no agenda, no pressure. Just a conversation about where you are and what might help.</p>
-  <a href="book.html" class="btn" style="background:var(--white);color:var(--gold)">Book Your Free Call</a>
+  <a href="book.html" class="btn btn-primary">Book Your Free Call</a>
 </div>
 
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="index.html" class="logo"><img src="images/logo-dark.png" class="logo-on-dark" alt="HummingBeing — Coaching &amp; Somatics" width="168" height="56" style="height:56px;width:auto" /><img src="images/logo-light.png" class="logo-on-light" alt="HummingBeing — Coaching &amp; Somatics" width="168" height="56" style="height:56px;width:auto" /></a>
-      <p>A safe space to learn TRE&#174;, Somatic Coaching and Somatic Bodywork &#8212; a space to release, renew and restore.</p>
-      <p style="margin-top:1rem;font-size:.8rem">Part of <strong style="color:rgba(255,255,255,.85)">BHD Asia &amp; BHD Japan</strong></p>
-      <div class="footer-social">
-        <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://wa.me/818065151778" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+  <div class="foot-grid">
+    <div>
+      <a href="index.html" class="foot-logo"><img src="images/logo-dark.png" alt="HummingBeing — Coaching &amp; Somatics" width="144" height="48" style="height:48px;width:auto;display:block" /></a>
+      <p class="foot-desc">Science backed processes with TRE&#174;, Coaching and Somatic Practices &#8212; a space to release, renew and restore.</p>
+      <p class="foot-desc">Part of <strong>Business and Human Development Consulting Pte Ltd</strong></p>
+      <div class="foot-socials">
+        <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank" class="soc" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank" class="soc" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" class="soc" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/818065151778" target="_blank" class="soc" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </div>
-    <div><h4>Services</h4><ul>
-      <li><a href="tre.html">TRE&#174; Exercises</a></li>
-      <li><a href="somatic-coaching.html">Somatic Coaching</a></li>
-      <li><a href="somatic-bodywork.html">Somatic Bodywork</a></li>
-      <li><a href="book.html">Book a Session</a></li>
-    </ul></div>
-    <div><h4>Company</h4><ul>
-      <li><a href="about.html">About HummingBeing</a></li>
-      <li><a href="isabelle.html">Meet Isabelle</a></li>
-      <li><a href="socials.html">Social Media</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="changelog.html">Changelog</a></li>
-      <li><a href="privacy-policy.html">Privacy Policy</a></li>
-      <li><a href="https://bhdasia.com" target="_blank">BHD Asia</a></li>
-    </ul></div>
-    <div><h4>Contact</h4><ul>
-      <li><a href="mailto:hello@hummingbeing.com">hello@hummingbeing.com</a></li>
-      <li><a href="https://wa.me/818065151778">WhatsApp Us</a></li>
-      <li style="color:rgba(255,255,255,.5);font-size:.85rem">Singapore &amp; Japan</li>
-    </ul></div>
+    <div>
+      <div class="foot-h">Services</div>
+      <ul class="foot-links">
+        <li><a href="holistic-mastermind.html">Holistic Mastermind Ecosystem</a></li>
+        <li><a href="tre-certification.html">Global Certifications</a></li>
+        <li><a href="retreats-workshops.html">Resilience Retreats</a></li>
+        <li><a href="book.html">Book a Session</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Company</div>
+      <ul class="foot-links">
+        <li><a href="about.html">About HummingBeing</a></li>
+        <li><a href="isabelle.html">Meet Isabelle</a></li>
+        <li><a href="socials.html">Social Media</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="https://bhdasia.com" target="_blank">BHD Asia</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Contact</div>
+      <ul class="foot-links">
+        <li><a href="mailto:isabelle@bhdasia.com">isabelle@bhdasia.com</a></li>
+        <li><a href="https://wa.me/818065151778" target="_blank">WhatsApp Us</a></li>
+        <li><span>Global</span></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-bottom">
-    <span>&#169; 2026 HummingBeing &#183; BHD Asia &amp; BHD Japan</span>
-    <span>Powered by <a href="https://technextasia.com" target="_blank">TechNext</a></span>
-    <span><a href="https://hummingbeing.com">hummingbeing.com</a></span>
+  <div class="foot-bottom">
+    <div class="foot-copy">&#169; 2026 HummingBeing &#8212; Business and Human Development Consulting Pte Ltd</div>
+    <div class="foot-legal">
+      <span>Privacy Policy</span>
+      <span>Terms of Service</span>
+      <span class="foot-sep">&#183;</span>
+      <a href="https://technextasia.com" target="_blank">Powered by <span class="tn-brand">TechNext</span></a>
+    </div>
   </div>
 </footer>
 <a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
-<script src="scripts.js"></script>
+<script src="scripts.js" defer></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

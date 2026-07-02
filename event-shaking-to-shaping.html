@@ -253,15 +253,6 @@
         <p class="evtl-form-sub">Share your details and we&#8217;ll be in touch shortly.</p>
         <form class="evtl-form" onsubmit="evtlSubmit(event)">
           <div class="evtl-field">
-            <label>Select Your Session <span style="color:var(--gold)">*</span></label>
-            <select name="event" required>
-              <option value="" disabled selected>Choose a session&hellip;</option>
-              <option value="Online · 3 September 2026">Online &middot; 3 September 2026</option>
-              <option value="Bucharest · 20 October 2026">Bucharest &middot; 20 October 2026</option>
-              <option value="Bucharest · 24 October 2026">Bucharest &middot; 24 October 2026</option>
-            </select>
-          </div>
-          <div class="evtl-field">
             <label>Full Name <span style="color:var(--gold)">*</span></label>
             <input type="text" name="name" placeholder="Your full name" required>
           </div>
@@ -277,7 +268,7 @@
         </form>
         <div class="evtl-form-success" id="evtl-success" style="display:none">
           <i class="fa-solid fa-circle-check"></i>
-          <p>Thank you! Isabelle will be in touch shortly.</p><span class="evtl-success-event" style="font-size:.8rem;opacity:.65;margin-top:.2rem;display:block"></span>
+          <p>Thank you! Isabelle will be in touch shortly.</p>
           <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:.5rem">Or Book via Calendly &rarr;</a>
         </div>
       </div>
@@ -361,7 +352,7 @@
       <div class="session-price">&#8364;89 <small>per participant</small></div>
       <p class="session-free-note"><i class="fa-solid fa-gift" style="color:var(--gold);margin-right:.3rem"></i>Free if you register for TRE&#8482; Module 1 (Oct 15&#8211;17 2026) or full TRE&#8482; certification on the same cohort.</p>
       <div style="margin-top:auto;padding-top:1rem">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=isabelle@bhdasia.com&su=Registration%3A%20Shaking%20to%20Shaping%20%E2%80%94%20Online%20Sep%203%202026" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;text-align:center;display:block">Register &rarr;</a>
+        <a href="mailto:isabelle@bhdasia.com?subject=Registration: From Shaking to Shaping — Online Sep 3" class="btn btn-primary" style="width:100%;text-align:center;display:block">Register &rarr;</a>
         <p style="font-size:.75rem;color:var(--text-mid);text-align:center;margin-top:.6rem">or email <a href="mailto:isabelle@bhdasia.com" style="color:var(--text-mid)">isabelle@bhdasia.com</a></p>
       </div>
     </div>
@@ -377,7 +368,7 @@
       <div class="session-price">&#8364;97 <small>per participant</small></div>
       <p class="session-free-note"><i class="fa-solid fa-gift" style="color:var(--gold);margin-right:.3rem"></i>Free if you register for TRE&#8482; Module 1 (March 2027 cohort) or full TRE&#8482; certification on the same cohort.</p>
       <div style="margin-top:auto;padding-top:1rem">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=isabelle@bhdasia.com&su=Registration%3A%20Shaking%20to%20Shaping%20%E2%80%94%20In-Person%20Oct%2020%202026" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;text-align:center;display:block">Register &rarr;</a>
+        <a href="mailto:isabelle@bhdasia.com?subject=Registration: From Shaking to Shaping — In-Person Oct 20" class="btn btn-primary" style="width:100%;text-align:center;display:block">Register &rarr;</a>
         <p style="font-size:.75rem;color:var(--text-mid);text-align:center;margin-top:.6rem">Facilitated in English and Romanian</p>
       </div>
     </div>
@@ -393,7 +384,7 @@
       <div class="session-price">&#8364;97 <small>per participant</small></div>
       <p class="session-free-note"><i class="fa-solid fa-gift" style="color:var(--gold);margin-right:.3rem"></i>Free if you register for TRE&#8482; Module 1 (March 2027 cohort) or full TRE&#8482; certification on the same cohort.</p>
       <div style="margin-top:auto;padding-top:1rem">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=isabelle@bhdasia.com&su=Registration%3A%20Shaking%20to%20Shaping%20%E2%80%94%20In-Person%20Oct%2024%202026" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;text-align:center;display:block">Register &rarr;</a>
+        <a href="mailto:isabelle@bhdasia.com?subject=Registration: From Shaking to Shaping — In-Person Oct 24" class="btn btn-primary" style="width:100%;text-align:center;display:block">Register &rarr;</a>
         <p style="font-size:.75rem;color:var(--text-mid);text-align:center;margin-top:.6rem">Facilitated in English and Romanian</p>
       </div>
     </div>
@@ -447,7 +438,7 @@
 <div class="cta-banner">
   <h2>Ready to Join?</h2>
   <p>Choose your session above and register by email, or contact Isabelle directly for any questions.</p>
-  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=isabelle@bhdasia.com&su=Registration%3A%20From%20Shaking%20to%20Shaping" target="_blank" rel="noopener" class="btn btn-primary">Email to Register</a>
+  <a href="mailto:isabelle@bhdasia.com?subject=From Shaking to Shaping — Registration Enquiry" class="btn btn-primary">Email to Register</a>
 </div>
 
 <footer>
@@ -534,25 +525,9 @@
 <script>
 function evtlSubmit(e) {
   e.preventDefault();
-  var form = e.target;
-  var card = form.closest('.evtl-form-card');
-  var data = {
-    name:  (form.querySelector('[name="name"]')  || {value:''}).value.trim(),
-    email: (form.querySelector('[name="email"]') || {value:''}).value.trim(),
-    phone: (form.querySelector('[name="phone"]') || {value:''}).value.trim(),
-    event: (form.querySelector('[name="event"]') || {value:''}).value.trim(),
-    source: window.location.pathname
-  };
-  var GAS_URL = ''; /* TODO: paste your Google Apps Script URL here */
-  if (GAS_URL) {
-    fetch(GAS_URL, {method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(data)}).catch(function(){});
-  }
-  form.style.display = 'none';
+  var card = e.target.closest('.evtl-form-card');
+  card.querySelector('.evtl-form').style.display = 'none';
   var s = card.querySelector('.evtl-form-success');
-  var ep = s.querySelector('.evtl-success-event');
-  if (ep && data.event) ep.textContent = 'Enquiry for: ' + data.event;
   s.style.display = 'flex';
 }
 </script>

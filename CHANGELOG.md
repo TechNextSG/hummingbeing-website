@@ -5,34 +5,6 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [65.11] — 2026-06-29
-
-### Changed — All Register buttons redirect to Gmail
-
-- All "Register" / "Register Now" / "Register Your Interest" buttons across `events.html`, `event-shaking-to-shaping.html`, `event-tre-module1-bucharest.html`, and `retreats-workshops.html` now open Gmail compose to `isabelle@bhdasia.com` with an event-specific pre-filled subject line.
-
----
-
-## [65.10] — 2026-06-29
-
-### Changed — Socials page resources
-
-- Removed "Magic Somatic (Book)" and "Somatic Asia" from the Resources & Related Organisations section.
-
----
-
-## [65.9] — 2026-06-29
-
-### Added / Changed — Homepage sections + landing page form improvements
-
-- **Homepage — "How to Start Working with Isabelle"**: Replaced generic "What We Offer" section with 3-card entry guide (Somatic Coaching, TRE® & Somatic Class featured, Mindfulness Journey) + CTA to free 30-min chat.
-- **Homepage — Holistic Mastermind Ecosystem**: New dark navy section with 3 pillars (Cognitive, Body featured, Energetic) and link to full ecosystem page.
-- **Landing pages — Event identification**: Singapore page shows pre-filled gold badge "Singapore · 29 & 30 August 2026" + hidden field. Bucharest page shows "Bucharest · 15–17 October 2026". Shaking to Shaping page shows session dropdown (Online Sep 3, Bucharest Oct 20, Bucharest Oct 24).
-- **Landing pages — Form submission**: Updated `evtlSubmit()` to collect event data and display it in the success state ("Enquiry for: [event]").
-- **Lead capture — GAS script**: Added `gas-lead-capture.js` — Google Apps Script for Sheets web app, captures Name/Email/Phone/Event/Source, sends email notification with event in subject line.
-
----
-
 ## [65.8] — 2026-06-25
 
 ### Fixed / Changed — Chatbot audit fixes
