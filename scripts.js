@@ -307,19 +307,19 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['How is it different from massage?','Is it safe?','How much does it cost?','What to expect in a session?'] },
 
     { keys: ['isabelle','practitioner','who is','trainer','about isabelle','biography','background','qualifications','credentials','her story','meet isabelle','isabelle claus','teixeira','who runs','founder'],
-      reply: "Isabelle Claus Teixeira is a certified TRE® Provider & Trainer Trainee, Somatic Coach and Somatic Bodywork Practitioner.\n\nShe brings 25+ years of experience across 9 countries, has worked with people from 40+ nationalities, and combines deep personal somatic practice with professional training. Based in Singapore and Japan.",
+      reply: "Isabelle Claus Teixeira is a Global TRE® Certifying Trainer & Certified TRE® Provider, ICF PCC Executive Coach, Somatic Coach and Somatic Bodywork Practitioner.\n\nShe brings 30 years of human development experience across 9 countries, has worked with people from 40+ nationalities, and combines deep personal somatic practice with professional training. Based in Singapore and Japan.",
       link: null,
       btns: ['What are her qualifications?','What services does she offer?','Where is she based?','Book a session'] },
 
     { keys: ['what services','services offered','offer','available','what do you do','what can you help','how can you help','what you offer','what is offered','what do you provide','services','offerings','practices'],
       reply: "HummingBeing offers three core practices:\n\n• TRE® Exercises — release deep stress & tension through natural tremors\n• Somatic Coaching — body-based coaching for resilience\n• Somatic Bodywork — Strozzi method hands-on bodywork\n\nAll available 1:1, in-person (Singapore/Japan) or online via Zoom.",
       link: null,
-      btns: ['What is TRE®?','Tell me about Somatic Coaching','What is Somatic Bodywork?','How much does it cost?'] },
+      btns: ['What is TRE®?','Tell me about Somatic Coaching','What is Somatic Bodywork?','Which practice is right for me?'] },
 
     { keys: ['price','cost','how much','fee','rate','investment','money','package','payment','expensive','afford','charges','pricing','fees','packages','rates','invest','pay','value','worth','dollar'],
       reply: "Three options are available:\n\n• Starter Package — $2,200 for 8 weekly sessions\n• Deep Dive — Custom pricing for 12–24 sessions\n• Free Discovery Call — $0, 30 minutes\n\nThe free call is a great first step with no commitment required.",
       link: null,
-      btns: ['Tell me about the Starter Package','Tell me about the Deep Dive','How do I book the free call?','What is included?'] },
+      btns: ['Tell me about the Starter Package','Tell me about the Deep Dive','What payment options are there?','What is included?'] },
 
     { keys: ['starter','8 week','8-week','first package','weekly sessions','starter package','2200','$2200','what is included','what included','included','whats included'],
       reply: "The Starter Package is $2,200 and includes:\n\n• 8 weekly somatic sessions (TRE® or Coaching)\n• Session recordings\n• WhatsApp support between sessions\n• Personalised home practice plan\n\nDesigned to give you enough time to experience real, lasting shifts.",
@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function() {
     { keys: ['book','schedule','appointment','sign up','register','join','how to start','how to book','how do i book','how can i book','get started','begin','start working','work together','make an appointment','booking','reserve','session booking'],
       reply: "Booking is straightforward:\n\n1. Use the contact form on the Book page\n2. Send a WhatsApp message directly to Isabelle\n\nIsabelle personally responds within 1–2 business days. The free discovery call is a great first step.",
       link: { text: 'Go to the Book page', url: 'book.html' },
-      btns: ['Tell me about the free discovery call','How much does it cost?','What to expect in first session?'] },
+      btns: ['Tell me about the free discovery call','How much does it cost?','What to expect in first session?','Can I reschedule?'] },
 
     { keys: ['discovery call','free call','free session','free chat','30 min','30 minute','consultation','no commitment','no pressure','first call','intro call','introductory','free','trial','no cost','complimentary'],
       reply: "The free 30-minute discovery call is a relaxed, no-pressure conversation with Isabelle. You will explore your situation, ask any questions, and find the right path forward together.\n\nNo sales pitch. No commitment. Just honest conversation.",
@@ -346,22 +346,22 @@ document.addEventListener('DOMContentLoaded', function() {
       link: null,
       btns: ['Is online as effective as in-person?','How do I book?','How much does it cost?'] },
 
-    { keys: ['online effective','zoom effective','virtual work','remote session','online work','does online work','is it effective online','can i do online','is zoom ok','work via zoom'],
+    { keys: ['online effective','zoom effective','virtual work','remote session','online work','does online work','is it effective online','can i do online','is zoom ok','work via zoom','is online as effective as in person','online as effective'],
       reply: "Yes — online sessions via Zoom are equally effective for TRE® and Somatic Coaching. All you need is a quiet space, comfortable clothing, and a mat or soft surface for TRE® exercises.\n\nMany of Isabelle's clients have completed their full programme entirely online.",
       link: null,
       btns: ['How do I book an online session?','What do I need?','How much does it cost?'] },
 
-    { keys: ['how long','duration','time','minutes','hours','length','session length','how many sessions','number of sessions','session time','long is','long does'],
+    { keys: ['how long','duration','time','minutes','hours','length','session length','how many sessions','number of sessions','session time','long is','long does','how many sessions do i need'],
       reply: "Session lengths depend on the format:\n\n• Free Discovery Call — 30 min\n• Individual session — 60 to 90 min\n• Starter Programme — 8 weekly sessions\n• Deep Dive — 12 to 24 sessions\n\nIsabelle will suggest the right structure during your discovery call.",
       link: null,
       btns: ['Tell me about the Starter Package','Tell me about the Deep Dive','Book a free call'] },
 
-    { keys: ['safe','safety','risk','side effect','suitable','beginner','first time','never tried','scared','worry','concern','danger','is it safe','safe for me','contraindication','health condition'],
+    { keys: ['safe','safety','risk','side effect','suitable','beginner','first time','never tried','scared','worry','concern','danger','is it safe','safe for me','contraindication','health condition','is tre safe'],
       reply: "TRE® and somatic practices are gentle and considered very safe for most people. Isabelle tailors every session to your comfort level and health situation.\n\nIf you have specific medical conditions or concerns, mention them when booking — sessions are always adapted. There are very few contraindications.",
       link: null,
       btns: ['Who is it suitable for?','What to expect in a session?','Book a discovery call'] },
 
-    { keys: ['who is it for','suitable for','right for me','is it for me','who benefits','good for','works for','good candidate','am i right','should i try'],
+    { keys: ['who is it for','suitable for','right for me','is it for me','who benefits','good for','works for','good candidate','am i right','should i try','who is it suitable for'],
       reply: "Somatic practices can help anyone carrying chronic stress, burnout, anxiety, stored tension or past trauma. They work especially well for:\n\n• Professionals under high pressure\n• People feeling disconnected from their bodies\n• Those who have tried talk therapy without lasting results\n• Anyone curious about body-based approaches",
       link: null,
       btns: ['Is it safe?','What results can I expect?','Book a free discovery call'] },
@@ -391,17 +391,17 @@ document.addEventListener('DOMContentLoaded', function() {
       link: { text: 'See all upcoming events', url: 'events.html' },
       btns: ['What is TRE®?','How much does a programme cost?','Book a private session'] },
 
-    { keys: ['first session','what to expect','what happens','prepare','preparation','my first','what do i need','what to bring','how does a session work','session like','how does a session','session work'],
+    { keys: ['first session','what to expect','what happens','prepare','preparation','my first','what do i need','what to bring','how does a session work','session like','how does a session','session work','what happens in a session','what to expect in a session'],
       reply: "Your first session typically begins with a short conversation about your goals and situation. Nothing is rushed.\n\nFor TRE® — wear comfortable clothes and have a mat or soft floor space ready. For Coaching — just bring an open, curious mind. Sessions are always tailored to you.",
       link: null,
-      btns: ['Is it safe?','How long is a session?','Book a session','How much does it cost?'] },
+      btns: ['Is it safe?','How long is a session?','What should I wear?','Book a session'] },
 
-    { keys: ['results','outcome','benefit','benefits','change','improve','help me','feel better','work','effective','does it work','what will i feel','difference','what changes'],
+    { keys: ['results','outcome','benefit','benefits','change','improve','help me','feel better','does it work','what will i feel','what changes','what results can i expect','what results can you expect'],
       reply: "Common results reported by clients include:\n\n• Reduced stress, anxiety and chronic tension\n• Improved sleep quality and sustained energy\n• Greater emotional resilience and calm\n• Better relationships and less reactivity\n• A stronger connection to your body and sense of self\n\nResults vary — Isabelle is always honest about realistic expectations.",
       link: null,
       btns: ['What is TRE®?','Tell me about Somatic Coaching','Book a free call'] },
 
-    { keys: ['difference','different from','vs','versus','compare','therapy','talk therapy','physiotherapy','psychology','counselling','meditation','yoga','massage','compared to'],
+    { keys: ['difference','different from','vs','versus','compare','therapy','talk therapy','physiotherapy','psychology','counselling','meditation','yoga','massage','compared to','how is it different from therapy','different from therapy'],
       reply: "Somatic practices differ from talk therapy by working with the body, not just the mind. Unlike massage, they address nervous system patterns rather than muscle tension alone. Unlike yoga, sessions are 1:1 and tailored to your specific situation.\n\nThey are complementary to therapy and medical care — not a replacement.",
       link: null,
       btns: ['What is TRE®?','Tell me about Somatic Coaching','Book a discovery call'] },
@@ -411,10 +411,50 @@ document.addEventListener('DOMContentLoaded', function() {
       link: null,
       btns: ['How much does it cost?','Book the free call','What services are available?'] },
 
-    { keys: ['qualifications','certified','training','credentials','trained','accredited','diploma','certificate','certification','reiki','strozzi','bhd','bhd asia'],
-      reply: "Isabelle's key credentials include:\n\n• Certified TRE® Provider & Trainer Trainee (Dr. David Berceli method)\n• PCC — Professional Certified Coach (ICF)\n• Strozzi Somatic Bodywork Practitioner\n• Reiki Level II Practitioner\n• 25+ years HR Leadership in Fortune 100 companies\n• Results Trained Coach (NeuroLeadership Institute)",
+    { keys: ['qualifications','certified','training','credentials','trained','accredited','diploma','certificate','reiki','strozzi','bhd','bhd asia','what are her qualifications','her qualifications'],
+      reply: "Isabelle's key credentials include:\n\n• Global TRE® Certifying Trainer & Certified TRE® Provider (Dr. David Berceli method)\n• PCC — Professional Certified Coach (ICF)\n• Strozzi Somatic Bodywork Practitioner\n• Reiki Level II Practitioner\n• 25+ years HR Leadership in Fortune 100 companies\n• Results Trained Coach (NeuroLeadership Institute)",
       link: null,
       btns: ['About Isabelle','What services does she offer?','Book a session'] },
+
+    { keys: ['which package','compare package','package comparison','starter vs deep','starter or deep','which programme','which program','difference between packages','different from the starter','different from starter','how is it different from the starter','starter vs','which package is right'],
+      reply: "Here's how the two packages compare:\n\n• Starter — $2,200 for 8 weekly sessions. Ideal for building a foundation and experiencing real, lasting shifts.\n• Deep Dive — custom pricing for 12 to 24 sessions combining TRE®, Coaching & Bodywork, with priority access and integration support, for deeper long-term transformation.\n\nNot sure which fits? The free discovery call will help you decide.",
+      link: { text: 'Book the free discovery call', url: 'book.html' },
+      btns: ['Tell me about the Starter Package','Tell me about the Deep Dive','Book a free discovery call'] },
+
+    { keys: ['which practice','which service','which is right','tre or coaching','coaching or bodywork','what should i choose','which one is right','tre vs coaching','which is best for me','where do i start','what do you recommend','right service for me'],
+      reply: "All three practices work with the nervous system, just through different doors:\n\n• TRE® — release stored stress & tension through natural tremors\n• Somatic Coaching — build resilience & self-awareness through the body\n• Somatic Bodywork — release held patterns through gentle touch\n\nYou don't have to choose alone — Isabelle will recommend the best fit for you in your free discovery call.",
+      link: { text: 'Book a free discovery call', url: 'book.html' },
+      btns: ['What is TRE®?','Tell me about Somatic Coaching','What is Somatic Bodywork?'] },
+
+    { keys: ['what to wear','wear','clothing','clothes','dress','what should i wear','attire','outfit'],
+      reply: "Wear comfortable, loose clothing you can move and relax in. For TRE® and Bodywork, have a mat or soft surface ready — and Bodywork is always done fully clothed.\n\nFor online sessions, just find a quiet, private space. That's all you need.",
+      link: null,
+      btns: ['What happens in a session?','How do I book?','Is it safe?'] },
+
+    { keys: ['cancel','cancellation','reschedule','rescheduling','change appointment','postpone','refund','money back','miss a session','missed session','change my booking'],
+      reply: "Scheduling is handled personally and flexibly. If you need to reschedule, let Isabelle know as early as you can and she'll do her best to find a new time.\n\nFor anything about refunds or a specific package, it's best to raise it directly with Isabelle — she's always fair and transparent.",
+      link: { text: 'Message Isabelle', url: 'book.html' },
+      btns: ['How do I book?','Tell me about the free discovery call','How much does it cost?'] },
+
+    { keys: ['payment options','pay in instal','instalment','installment','payment plan','split payment','how do i pay','methods of payment','bank transfer','credit card','paynow','pay later','what payment options are there'],
+      reply: "Payment details and any available options are arranged directly with Isabelle once you choose a package. Feel free to ask about payment plans during your discovery call — she's happy to find an arrangement that works for you.",
+      link: { text: 'Book a discovery call', url: 'book.html' },
+      btns: ['How much does it cost?','Tell me about the Starter Package','How do I book?'] },
+
+    { keys: ['one on one','1 on 1','one to one','individual or group','group or private','private or group','is it one to one','just me'],
+      reply: "Most of Isabelle's work is 1:1 — fully personalised to you. Group experiences are available through the workshops and events on the Events page, which are a lovely, lower-cost way to try the work first.\n\nThe discovery call will help you choose what fits best.",
+      link: { text: 'See upcoming events', url: 'events.html' },
+      btns: ['See upcoming events','Book a private session','How much does it cost?'] },
+
+    { keys: ['language','languages','english','speak','what language','which language','do you speak','spoken'],
+      reply: "Sessions are conducted in English. Isabelle has worked with clients from 40+ nationalities around the world, so international and cross-cultural clients are very welcome.",
+      link: null,
+      btns: ['Where are sessions held?','How do I book?','About Isabelle'] },
+
+    { keys: ['pregnant','pregnancy','injury','injured','medical condition','medication','disability','chronic illness','heart condition','surgery','back pain','can i still do','health issue'],
+      reply: "Somatic practices are gentle and can often be adapted for many health situations. If you're pregnant, recovering from injury or managing a medical condition, please mention it when you book so Isabelle can tailor the session — and check with your doctor if you're unsure.",
+      link: null,
+      btns: ['Is it safe?','Book a discovery call','What happens in a session?'] },
 
     { keys: ['thanks','thank you','great','awesome','helpful','perfect','appreciate','wonderful','good','brilliant','excellent','nice','cheers','ty'],
       reply: "You are very welcome! Is there anything else you would like to know about HummingBeing?",
