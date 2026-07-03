@@ -345,6 +345,70 @@
   </div>
 </section>
 
+<!-- UPCOMING EVENTS PREVIEW -->
+<style>
+  .home-evt { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; align-items:start; }
+  .home-evt-card { background:var(--white); border-radius:12px; overflow:hidden; box-shadow:0 4px 24px rgba(36,46,66,.1); display:flex; flex-direction:column; transition:transform .3s ease, box-shadow .3s ease; }
+  .home-evt-card:hover { transform:translateY(-5px); box-shadow:0 16px 44px rgba(36,46,66,.16); }
+  .home-evt-thumb { display:block; line-height:0; background:#f4f5f7; }
+  .home-evt-thumb img { width:100%; height:auto; display:block; }
+  .home-evt-body { padding:1.5rem 1.7rem 1.7rem; display:flex; flex-direction:column; gap:.65rem; flex:1; }
+  .home-evt-tags { display:flex; flex-wrap:wrap; gap:.45rem; }
+  .home-evt-tag { font-family:'Lato',sans-serif; font-size:.6rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:.28rem .7rem; border-radius:100px; background:rgba(36,46,66,.07); color:var(--navy); }
+  .home-evt-tag.loc { background:rgba(245,166,35,.15); color:var(--gold-dark); }
+  .home-evt-card h3 { font-family:'PT Serif',Georgia,serif; font-size:1.18rem; color:var(--navy); line-height:1.28; margin:0; }
+  .home-evt-meta { font-size:.82rem; color:var(--text-mid); font-weight:700; margin:0; }
+  .home-evt-meta i { color:var(--gold); margin-right:.4rem; }
+  .home-evt-desc { font-size:.9rem; color:var(--body-text); line-height:1.65; margin:0; flex:1; }
+  .home-evt-actions { display:flex; gap:.7rem; margin-top:.5rem; }
+  .home-evt-actions .btn { flex:1; text-align:center; padding:.72rem .8rem; font-size:.72rem; }
+  .home-evt-btn2 { background:transparent; border-color:var(--navy); color:var(--navy); }
+  .home-evt-btn2:hover { background:var(--navy); border-color:var(--navy); color:#fff; box-shadow:0 12px 30px rgba(36,46,66,.3); }
+  @media (max-width:820px){ .home-evt{ grid-template-columns:1fr; } }
+  @media (max-width:440px){ .home-evt-actions{ flex-direction:column; } }
+</style>
+<section class="section-cream" id="home-events">
+  <div class="section-header-center" style="margin-bottom:2.5rem">
+    <span class="section-eyebrow">Join Us In Person</span>
+    <h2 class="section-title">Upcoming Events</h2>
+    <p class="section-subtitle">Singapore &middot; 29 &amp; 30 August 2026</p>
+  </div>
+  <div class="home-evt">
+
+    <article class="home-evt-card">
+      <a href="event-selfcare-coaches-singapore.html" class="home-evt-thumb"><img src="images/event-nervous-system.png" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" loading="lazy" /></a>
+      <div class="home-evt-body">
+        <div class="home-evt-tags"><span class="home-evt-tag loc">Singapore</span><span class="home-evt-tag">21 CCEUs &middot; ICF</span></div>
+        <h3>Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring</h3>
+        <p class="home-evt-meta"><i class="fa-regular fa-calendar"></i> 29 &amp; 30 August 2026 &middot; In-Person</p>
+        <p class="home-evt-desc">Self-care and presence for coaches &mdash; a 2-day ICF-accredited workshop. Valid as Module 1 of the Global TRE&#174; Provider Certification.</p>
+        <div class="home-evt-actions">
+          <a href="event-selfcare-coaches-singapore.html" class="btn btn-primary">Register</a>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn home-evt-btn2">Book a Call</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="home-evt-card">
+      <a href="tre-certification.html" class="home-evt-thumb"><img src="images/event-transform-practice.png" alt="Become a Certified TRE Provider" loading="lazy" /></a>
+      <div class="home-evt-body">
+        <div class="home-evt-tags"><span class="home-evt-tag loc">Singapore</span><span class="home-evt-tag">Certification</span></div>
+        <h3>Become a Certified TRE&#174; Provider</h3>
+        <p class="home-evt-meta"><i class="fa-regular fa-calendar"></i> From 29 &amp; 30 August 2026 &middot; Modules 1&ndash;3</p>
+        <p class="home-evt-desc">The full Global TRE&#174; Provider Certification. Qualify to offer TRE&#174; to the public in both individual and group settings.</p>
+        <div class="home-evt-actions">
+          <a href="tre-certification.html" class="btn btn-primary">Register</a>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn home-evt-btn2">Book a Call</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+  <div style="text-align:center;margin-top:2.5rem">
+    <a href="events.html" class="btn btn-dark">View All Events &rarr;</a>
+  </div>
+</section>
+
 <!-- CTA BANNER -->
 <div class="cta-banner">
   <h2>Come as You Are</h2>
