@@ -216,13 +216,12 @@
     /* -- TWO-AUDIENCE EVENT CARDS ------------------------------------------ */
     .evt-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
     .evt-audience-card {
-      background: var(--white); border-radius: 3px; padding: 0;
+      background: var(--white); border-radius: 3px; padding: 2.5rem;
       box-shadow: 0 4px 24px rgba(36,46,66,.1);
-      overflow: hidden;
+      display: flex; flex-direction: column; gap: 1.1rem;
     }
-    .evt-card-body { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.1rem; }
-    .evt-coaches    { border-top: none; }
-    .evt-certification { border-top: none; }
+    .evt-coaches    { border-top: 4px solid var(--gold); }
+    .evt-certification { border-top: 4px solid var(--navy); }
     .evt-aud-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .8rem; flex-wrap: wrap; }
     .evt-aud-eyebrow {
       font-family: 'Lato', sans-serif; font-size: .7rem; font-weight: 700;
@@ -604,7 +603,6 @@
 
     <!-- FOR COACHES -->
     <div class="evt-audience-card evt-coaches">
-      <div class="evt-card-img"><img src="images/event-nervous-system.png" alt="Nervous System Regulation & Self-Induced Neurogenic Tremoring" loading="lazy" /></div>
       <div class="evt-card-body">
       <div class="evt-aud-header">
         <span class="evt-aud-eyebrow"><i class="fa-solid fa-star"></i> For Coaches</span>
@@ -648,7 +646,6 @@
 
     <!-- FOR CERTIFICATION -->
     <div class="evt-audience-card evt-certification">
-      <div class="evt-card-img"><img src="images/event-transform-practice.png" alt="Become a Certified TRE® Provider" loading="lazy" /></div>
       <div class="evt-card-body">
       <div class="evt-aud-header">
         <span class="evt-aud-eyebrow"><i class="fa-solid fa-certificate"></i> TRE&#174; Provider Certification</span>
@@ -711,7 +708,6 @@
 
     <!-- SHAKING TO SHAPING -->
     <div class="evt-audience-card evt-coaches">
-      <div class="evt-card-img"><img src="images/event-shaking-to-shaping.png" alt="From Shaking to Shaping — Workshop" loading="lazy" /></div>
       <div class="evt-card-body">
       <div class="evt-aud-header">
         <span class="evt-aud-eyebrow"><i class="fa-solid fa-star"></i> For Coaches &amp; TRE&#8482; Practitioners</span>
@@ -747,7 +743,6 @@
 
     <!-- TRE MODULE 1 BUCHAREST -->
     <div class="evt-audience-card evt-certification">
-      <div class="evt-card-img"><img src="images/event-bucharest-module1.png" alt="TRE® Module 1 — Bucharest" loading="lazy" /></div>
       <div class="evt-card-body">
       <div class="evt-aud-header">
         <span class="evt-aud-eyebrow"><i class="fa-solid fa-certificate"></i> TRE&#8482; Provider Certification</span>
