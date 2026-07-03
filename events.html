@@ -125,8 +125,8 @@
       .countdown-units { gap: .7rem; }
       .cd-sep { font-size: 1.6rem; padding-top: .15rem; }
       .cd-unit { min-width: 44px; }
-      .evt-audience-card { padding: 0; gap: 0; }
-      .evt-card-body { padding: 1.5rem 1.2rem; gap: .85rem; }
+      .evt-two-col .evt-audience-card { padding: 0; gap: 0; }
+      .evt-two-col .evt-card-body { padding: 1.5rem 1.2rem; gap: .85rem; }
       .evt-price-main { font-size: 1.8rem; }
       .ecd-meta { font-size: .78rem; gap: .4rem; margin-bottom: 2.5rem; }
       .ecd-heading { margin-bottom: .5rem; }
@@ -216,12 +216,11 @@
     /* -- TWO-AUDIENCE EVENT CARDS ------------------------------------------ */
     .evt-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
     .evt-audience-card {
-      background: var(--white); border-radius: 3px; padding: 2.5rem;
+      background: var(--white); border-radius: 8px; padding: 0;
       box-shadow: 0 4px 24px rgba(36,46,66,.1);
-      display: flex; flex-direction: column; gap: 1.1rem;
+      display: flex; flex-direction: column; overflow: hidden;
     }
-    .evt-coaches    { border-top: 4px solid var(--gold); }
-    .evt-certification { border-top: 4px solid var(--navy); }
+    .evt-card-body { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.1rem; flex: 1; }
     .evt-aud-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .8rem; flex-wrap: wrap; }
     .evt-aud-eyebrow {
       font-family: 'Lato', sans-serif; font-size: .7rem; font-weight: 700;
@@ -239,6 +238,13 @@
     }
     .evt-card-img { line-height: 0; flex-shrink: 0; }
     .evt-card-img img { width: 100%; height: auto; display: block; }
+    /* card buttons — clear primary + secondary hierarchy, full width */
+    .evt-card-body .btn { width: 100%; text-align: center; box-sizing: border-box; }
+    .evt-btn-2 { background: transparent; }
+    .evt-coaches .evt-btn-2 { border-color: var(--gold); color: var(--gold-dark); }
+    .evt-coaches .evt-btn-2:hover { background: var(--gold); border-color: var(--gold); color: var(--white); box-shadow: 0 12px 34px rgba(245,166,35,.4); }
+    .evt-certification .evt-btn-2 { border-color: var(--navy); color: var(--navy); }
+    .evt-certification .evt-btn-2:hover { background: var(--navy); border-color: var(--navy); color: var(--white); box-shadow: 0 12px 34px rgba(36,46,66,.35); }
     .evt-aud-tag { font-size: .72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin: 0; }
     .evt-aud-sub-tag { font-size: .85rem; color: var(--text-mid); font-style: italic; margin: 0; }
     .evt-includes { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; }
@@ -603,6 +609,7 @@
 
     <!-- FOR COACHES -->
     <div class="evt-audience-card evt-coaches">
+      <div class="evt-card-img"><img src="images/event-nervous-system.png" alt="Nervous System Regulation & Self-Induced Neurogenic Tremoring" loading="lazy" /></div>
       <div class="evt-card-body">
       <div class="evt-aud-header">
         <span class="evt-aud-eyebrow"><i class="fa-solid fa-star"></i> For Coaches</span>
@@ -639,13 +646,14 @@
         <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;font-size:.85rem;color:var(--body-text)"><i class="fa-regular fa-calendar" style="color:var(--gold)"></i> <strong>29 &amp; 30 August 2026</strong> &mdash; Singapore, In-Person</div>
       </div>
       <a href="event-selfcare-coaches-singapore.html" class="btn btn-primary" style="margin-bottom:.65rem">View &amp; Register &rarr;</a>
-      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary">Book a Call via Calendly &rarr;</a>
+      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call via Calendly &rarr;</a>
       <p style="font-size:.75rem;color:var(--text-mid);text-align:center;margin:0"><a href="mailto:isabelle@bhdasia.com" style="color:var(--text-mid)">isabelle@bhdasia.com</a></p>
       </div>
     </div>
 
     <!-- FOR CERTIFICATION -->
     <div class="evt-audience-card evt-certification">
+      <div class="evt-card-img"><img src="images/event-transform-practice.png" alt="Become a Certified TRE® Provider — Transform Your Practice" loading="lazy" /></div>
       <div class="evt-card-body">
       <div class="evt-aud-header">
         <span class="evt-aud-eyebrow"><i class="fa-solid fa-certificate"></i> TRE&#174; Provider Certification</span>
@@ -687,7 +695,7 @@
         </div>
       </div>
       <a href="tre-certification.html" class="btn btn-dark" style="margin-bottom:.65rem">View &amp; Register &rarr;</a>
-      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-dark">Book a Call via Calendly &rarr;</a>
+      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call via Calendly &rarr;</a>
       <p style="font-size:.75rem;color:var(--text-mid);text-align:center;margin:0"><a href="mailto:isabelle@bhdasia.com" style="color:var(--text-mid)">isabelle@bhdasia.com</a></p>
       </div>
     </div>
@@ -708,6 +716,7 @@
 
     <!-- SHAKING TO SHAPING -->
     <div class="evt-audience-card evt-coaches">
+      <div class="evt-card-img"><img src="images/event-shaking-to-shaping.png" alt="From Shaking to Shaping — Workshop" loading="lazy" /></div>
       <div class="evt-card-body">
       <div class="evt-aud-header">
         <span class="evt-aud-eyebrow"><i class="fa-solid fa-star"></i> For Coaches &amp; TRE&#8482; Practitioners</span>
@@ -736,13 +745,14 @@
         </div>
       </div>
       <a href="event-shaking-to-shaping.html" class="btn btn-primary" style="margin-bottom:.65rem">View &amp; Register &rarr;</a>
-      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary">Book a Call via Calendly &rarr;</a>
+      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call via Calendly &rarr;</a>
       <p style="font-size:.75rem;color:var(--text-mid);text-align:center;margin-top:.4rem"><a href="mailto:isabelle@bhdasia.com" style="color:var(--text-mid)">isabelle@bhdasia.com</a></p>
       </div>
     </div>
 
     <!-- TRE MODULE 1 BUCHAREST -->
     <div class="evt-audience-card evt-certification">
+      <div class="evt-card-img"><img src="images/event-bucharest-module1.png" alt="TRE® Module 1 — Bucharest" loading="lazy" /></div>
       <div class="evt-card-body">
       <div class="evt-aud-header">
         <span class="evt-aud-eyebrow"><i class="fa-solid fa-certificate"></i> TRE&#8482; Provider Certification</span>
@@ -783,7 +793,7 @@
         <span class="evt-price-note"><i class="fa-solid fa-envelope"></i> Enquire via Calendly or email</span>
       </div>
       <a href="event-tre-module1-bucharest.html" class="btn btn-dark" style="margin-bottom:.65rem">View &amp; Register &rarr;</a>
-      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-dark">Book a Call via Calendly &rarr;</a>
+      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call via Calendly &rarr;</a>
       <p style="font-size:.75rem;color:var(--text-mid);text-align:center;margin-top:.75rem">Bucharest, Rom&#226;nia &middot; <a href="mailto:isabelle@bhdasia.com" style="color:var(--text-mid)">isabelle@bhdasia.com</a></p>
       </div>
     </div>
