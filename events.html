@@ -126,6 +126,7 @@
       .cd-sep { font-size: 1.6rem; padding-top: .15rem; }
       .cd-unit { min-width: 44px; }
       .evt-audience-card { padding: 1.5rem 1.2rem; gap: .85rem; }
+      .evt-card-img { margin: -1.5rem -1.2rem 0; }
       .evt-price-main { font-size: 1.8rem; }
       .ecd-meta { font-size: .78rem; gap: .4rem; margin-bottom: 2.5rem; }
       .ecd-heading { margin-bottom: .5rem; }
@@ -236,6 +237,8 @@
       font-family: 'PT Serif', Georgia, serif;
       font-size: clamp(1.25rem, 2vw, 1.65rem); color: var(--navy); line-height: 1.2; margin: 0;
     }
+    .evt-card-img { margin: -2.5rem -2.5rem 0; border-radius: 3px 3px 0 0; overflow: hidden; line-height: 0; }
+    .evt-card-img img { width: 100%; height: auto; display: block; }
     .evt-aud-tag { font-size: .72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin: 0; }
     .evt-aud-sub-tag { font-size: .85rem; color: var(--text-mid); font-style: italic; margin: 0; }
     .evt-includes { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; }
@@ -600,7 +603,7 @@
 
     <!-- FOR COACHES -->
     <div class="evt-audience-card evt-coaches">
-      <div class="evt-card-img"><i class="fa-regular fa-image"></i><span>Event Photo Coming Soon</span></div>
+      <div class="evt-card-img"><img src="images/event-nervous-system.png" alt="Nervous System Regulation & Self-Induced Neurogenic Tremoring" loading="lazy" /></div>
       <div class="evt-aud-header">
         <span class="evt-aud-eyebrow"><i class="fa-solid fa-star"></i> For Coaches</span>
         <span class="evt-aud-badge icf-badge"><i class="fa-solid fa-award"></i> 21 CCEUs &mdash; ICF Accredited</span>
@@ -642,7 +645,7 @@
 
     <!-- FOR CERTIFICATION -->
     <div class="evt-audience-card evt-certification">
-      <div class="evt-card-img"><i class="fa-regular fa-image"></i><span>Event Photo Coming Soon</span></div>
+      <div class="evt-card-img"><img src="images/event-transform-practice.png" alt="Become a Certified TRE® Provider" loading="lazy" /></div>
       <div class="evt-aud-header">
         <span class="evt-aud-eyebrow"><i class="fa-solid fa-certificate"></i> TRE&#174; Provider Certification</span>
         <span class="evt-aud-badge cert-badge">Transform Your Practice</span>
