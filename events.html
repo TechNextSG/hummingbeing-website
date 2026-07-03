@@ -221,8 +221,10 @@
       display: flex; flex-direction: column; overflow: hidden;
     }
     .evt-card-body { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.1rem; }
-    .evt-coaches    { border-top: 4px solid var(--gold); }
-    .evt-certification { border-top: 4px solid var(--navy); }
+    .evt-coaches    { border-top: none; }
+    .evt-certification { border-top: none; }
+    .evt-coaches .evt-card-body    { border-top: 4px solid var(--gold); }
+    .evt-certification .evt-card-body { border-top: 4px solid var(--navy); }
     .evt-aud-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .8rem; flex-wrap: wrap; }
     .evt-aud-eyebrow {
       font-family: 'Lato', sans-serif; font-size: .7rem; font-weight: 700;
