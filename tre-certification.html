@@ -125,6 +125,20 @@
   </div>
 </div>
 
+<style>
+  /* event page: tighter section spacing + partner logo row */
+  section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .event-logos { display: flex; align-items: center; justify-content: center; gap: clamp(2rem, 6vw, 5rem); flex-wrap: wrap; padding: 3rem 12% 3.25rem; background: var(--white); }
+  .event-logos img { height: clamp(84px, 11vw, 132px); width: auto; object-fit: contain; }
+  @media (max-width: 600px) { .event-logos { gap: 1.6rem; padding: 2rem 8%; } }
+</style>
+<!-- PARTNER & ACCREDITATION LOGOS -->
+<div class="event-logos">
+  <img src="images/logo-hummingbeing-full.webp" width="500" height="500" alt="HummingBeing — Coaching &amp; Somatics" loading="lazy" decoding="async" />
+  <img src="images/logo-bhd-asia.webp" width="500" height="500" alt="BHD Asia — Business and Human Development" loading="lazy" decoding="async" />
+  <img src="images/logo-icf-cce.webp" width="500" height="500" alt="ICF Continuing Coach Education — CCE Accredited" loading="lazy" decoding="async" />
+</div>
+
 <!-- SECTION 1 — YOUR TRAINER -->
 <section class="section-cream">
   <div class="two-col">
