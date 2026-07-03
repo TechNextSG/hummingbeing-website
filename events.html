@@ -598,206 +598,122 @@
 </section>
 
 <!-- UPCOMING EVENTS -->
+<style>
+  .evt-filter { display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; margin:0 auto 2.8rem; }
+  .evt-filter-btn {
+    font-family:'Lato',sans-serif; font-size:.74rem; font-weight:700; letter-spacing:1.2px; text-transform:uppercase;
+    padding:.6rem 1.5rem; border-radius:100px; border:1.5px solid rgba(36,46,66,.18);
+    background:transparent; color:var(--text-mid); cursor:pointer;
+    transition:background .25s ease, border-color .25s ease, color .25s ease;
+  }
+  .evt-filter-btn:hover { border-color:var(--gold); color:var(--navy); }
+  .evt-filter-btn.is-active { background:var(--navy); border-color:var(--navy); color:#fff; }
+
+  .evt-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; align-items:start; }
+  .evt-card {
+    background:var(--white); border-radius:12px; overflow:hidden;
+    box-shadow:0 4px 24px rgba(36,46,66,.1); display:flex; flex-direction:column;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .evt-card:hover { transform:translateY(-5px); box-shadow:0 16px 44px rgba(36,46,66,.16); }
+  .evt-card.is-hidden { display:none; }
+  .evt-card-thumb { display:block; line-height:0; background:#f4f5f7; }
+  .evt-card-thumb img { width:100%; height:auto; display:block; }
+  .evt-card-content { padding:1.5rem 1.7rem 1.7rem; display:flex; flex-direction:column; gap:.7rem; flex:1; }
+  .evt-card-tags { display:flex; flex-wrap:wrap; gap:.45rem; }
+  .evt-tag { font-family:'Lato',sans-serif; font-size:.6rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:.28rem .7rem; border-radius:100px; background:rgba(36,46,66,.07); color:var(--navy); }
+  .evt-tag.loc { background:rgba(245,166,35,.15); color:var(--gold-dark); }
+  .evt-card h3 { font-family:'PT Serif',Georgia,serif; font-size:1.18rem; color:var(--navy); line-height:1.28; margin:0; }
+  .evt-card-meta { font-size:.82rem; color:var(--text-mid); font-weight:700; margin:0; }
+  .evt-card-meta i { color:var(--gold); margin-right:.4rem; }
+  .evt-card-desc { font-size:.9rem; color:var(--body-text); line-height:1.65; margin:0; flex:1; }
+  .evt-card-actions { display:flex; gap:.7rem; margin-top:.5rem; }
+  .evt-card-actions .btn { flex:1; text-align:center; padding:.72rem .8rem; font-size:.72rem; }
+  .evt-card .evt-btn-2 { background:transparent; border-color:var(--navy); color:var(--navy); }
+  .evt-card .evt-btn-2:hover { background:var(--navy); border-color:var(--navy); color:#fff; box-shadow:0 12px 30px rgba(36,46,66,.3); }
+  .evt-empty { grid-column:1/-1; text-align:center; color:var(--text-mid); padding:3rem 0; display:none; }
+  @media (max-width:820px){ .evt-grid{ grid-template-columns:1fr; } }
+  @media (max-width:440px){ .evt-card-actions{ flex-direction:column; } }
+</style>
 <section class="section-cream" id="events-grid">
-  <div class="section-header-center" style="margin-bottom:2.5rem">
-    <span class="section-eyebrow">Singapore &middot; In-Person</span>
+  <div class="section-header-center" style="margin-bottom:2rem">
+    <span class="section-eyebrow">Workshops &amp; Certifications</span>
     <h2 class="section-title">Upcoming Events</h2>
-    <p class="section-subtitle">29 &amp; 30 August 2026 &middot; Two pathways to the same transformative practice.</p>
+    <p class="section-subtitle">Singapore &amp; Bucharest &middot; 2026&ndash;2027 &middot; Led by Isabelle Claus Teixeira</p>
   </div>
 
-  <div class="evt-two-col">
+  <!-- FILTER BAR -->
+  <div class="evt-filter" role="tablist" aria-label="Filter events">
+    <button type="button" class="evt-filter-btn is-active" data-filter="all">All Events</button>
+    <button type="button" class="evt-filter-btn" data-filter="singapore">Singapore</button>
+    <button type="button" class="evt-filter-btn" data-filter="romania">Romania</button>
+    <button type="button" class="evt-filter-btn" data-filter="certification">Certification</button>
+  </div>
 
-    <!-- FOR COACHES -->
-    <div class="evt-audience-card evt-coaches">
-      <div class="evt-card-img"><img src="images/event-nervous-system.png" alt="Nervous System Regulation & Self-Induced Neurogenic Tremoring" loading="lazy" /></div>
-      <div class="evt-card-body">
-      <div class="evt-aud-header">
-        <span class="evt-aud-eyebrow"><i class="fa-solid fa-star"></i> For Coaches</span>
-        <span class="evt-aud-badge icf-badge"><i class="fa-solid fa-award"></i> 21 CCEUs &mdash; ICF Accredited</span>
-      </div>
-      <div>
-        <p class="evt-aud-tag">Self-care and Presence for Coaches</p>
+  <!-- EVENT GRID -->
+  <div class="evt-grid" id="evt-grid">
+
+    <!-- 1. Nervous System Regulation (SG - Coaches) -->
+    <article class="evt-card" data-cat="singapore coaches">
+      <a href="event-selfcare-coaches-singapore.html" class="evt-card-thumb"><img src="images/event-nervous-system.png" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" loading="lazy" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">21 CCEUs &middot; ICF</span></div>
         <h3>Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring</h3>
-        <p class="evt-aud-sub-tag"><em>Valid as Module 1 of the Global TRE&#174; Provider Certification Program</em></p>
-      </div>
-      <p style="font-size:.92rem;color:var(--body-text);line-height:1.7">For coaches in training and ACC, PCC and MCC level coaches who want to develop embodied self-care practices, prevent burnout and compassion fatigue, and deepen their somatic presence with clients.</p>
-      <ul class="evt-includes">
-        <li><i class="fa-solid fa-circle-check"></i> Coaches in training &#8212; ACC, PCC &amp; MCC level coaches</li>
-        <li><i class="fa-solid fa-circle-check"></i> Prevent &amp; recover from compassion fatigue and burnout</li>
-        <li><i class="fa-solid fa-circle-check"></i> Learn a body-led modality for deep nervous system resilience</li>
-        <li><i class="fa-solid fa-circle-check"></i> Complement your coaching certifications with TRE&#174;</li>
-        <li><i class="fa-solid fa-circle-check"></i> For coaches considering the full TRE&#174; Provider Certification</li>
-      </ul>
-      <div class="evt-what-included">
-        <span class="evt-wi-title">What&#8217;s Included</span>
-        <div class="evt-wi-items">
-          <span><i class="fa-solid fa-check"></i> 2-day ICF certified Workshop (In-Person, Singapore)</span>
-          <span><i class="fa-solid fa-check"></i> 4 personal online TRE&#174; sessions</span>
-          <span><i class="fa-solid fa-check"></i> 16 Resource Development CCEUs</span>
-          <span><i class="fa-solid fa-check"></i> 5 Core Competency CCEUs &mdash; 21 CCEUs total</span>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 29 &amp; 30 August 2026 &middot; In-Person</p>
+        <p class="evt-card-desc">Self-care and presence for coaches &mdash; a 2-day ICF-accredited workshop. Valid as Module 1 of the Global TRE&#174; Provider Certification.</p>
+        <div class="evt-card-actions">
+          <a href="event-selfcare-coaches-singapore.html" class="btn btn-primary">Register</a>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call</a>
         </div>
       </div>
-      <div class="evt-aud-pricing">
-        <span class="evt-price-label">ICF Special Price</span>
-        <span class="evt-price-main">1,290 SGD</span>
-        <span class="evt-price-note"><i class="fa-solid fa-clock"></i> Until 15 August 2026</span>
-      </div>
-      <div>
-        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;font-size:.85rem;color:var(--body-text)"><i class="fa-regular fa-calendar" style="color:var(--gold)"></i> <strong>29 &amp; 30 August 2026</strong> &mdash; Singapore, In-Person</div>
-      </div>
-      <a href="event-selfcare-coaches-singapore.html" class="btn btn-primary" style="margin-bottom:.65rem">View &amp; Register &rarr;</a>
-      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call via Calendly &rarr;</a>
-      <p style="font-size:.75rem;color:var(--text-mid);text-align:center;margin:0"><a href="mailto:isabelle@bhdasia.com" style="color:var(--text-mid)">isabelle@bhdasia.com</a></p>
-      </div>
-    </div>
+    </article>
 
-    <!-- FOR CERTIFICATION -->
-    <div class="evt-audience-card evt-certification">
-      <div class="evt-card-img"><img src="images/event-transform-practice.png" alt="Become a Certified TRE® Provider — Transform Your Practice" loading="lazy" /></div>
-      <div class="evt-card-body">
-      <div class="evt-aud-header">
-        <span class="evt-aud-eyebrow"><i class="fa-solid fa-certificate"></i> TRE&#174; Provider Certification</span>
-        <span class="evt-aud-badge cert-badge">Transform Your Practice</span>
-      </div>
-      <h3>Become a Certified TRE&#174; Provider</h3>
-      <p style="font-size:.92rem;color:var(--body-text);line-height:1.7">TRE&#174; is a body-led series of simple, powerful exercises to release stress, tension and trauma and build resilience. The Global TRE&#174; Provider Certification qualifies you to offer TRE&#174; to the general public in both individual and group settings.</p>
-      <div class="evt-modules">
-        <div class="evt-module">
-          <span class="evt-mod-tag">Module 1 &mdash; Personal Practice</span>
-          <span class="evt-mod-date"><i class="fa-regular fa-calendar"></i> 29 &amp; 30 August 2026 &mdash; Singapore</span>
-          <span class="evt-mod-desc">For personal use. Can be purchased alone. Includes 4 online TRE&#174; personal sessions.</span>
-        </div>
-        <div class="evt-module">
-          <span class="evt-mod-tag">Module 2 &mdash; Teaching to 1 Person</span>
-          <span class="evt-mod-date"><i class="fa-regular fa-calendar"></i> 26 &amp; 27 September 2026 &mdash; Singapore</span>
-          <span class="evt-mod-desc">Open after completing Module 1. Includes 2-day workshop &amp; 4 supervisions.</span>
-        </div>
-        <div class="evt-module">
-          <span class="evt-mod-tag">Module 3 &mdash; Teaching to Groups</span>
-          <span class="evt-mod-date"><i class="fa-regular fa-calendar"></i> 13 &amp; 14 February 2027 &mdash; Singapore</span>
-          <span class="evt-mod-desc">Open after completing Module 2. Includes 2-day workshop &amp; 4 supervisions.</span>
+    <!-- 2. Certified TRE Provider (SG - Certification) -->
+    <article class="evt-card" data-cat="singapore certification">
+      <a href="tre-certification.html" class="evt-card-thumb"><img src="images/event-transform-practice.png" alt="Become a Certified TRE Provider" loading="lazy" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
+        <h3>Become a Certified TRE&#174; Provider</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> From 29 &amp; 30 August 2026 &middot; Modules 1&ndash;3</p>
+        <p class="evt-card-desc">The full Global TRE&#174; Provider Certification. Qualify to offer TRE&#174; to the public in both individual and group settings.</p>
+        <div class="evt-card-actions">
+          <a href="tre-certification.html" class="btn btn-primary">Register</a>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call</a>
         </div>
       </div>
-      <div class="evt-pricing-wrap">
-        <div class="evt-pricing-table">
-          <div class="evt-pt-col">
-            <span class="evt-pt-title">Full Certification Package</span>
-            <div class="evt-pt-row"><em>Super Early Bird</em><div><strong>3,699 SGD</strong><small>until 3 Jul 2026</small></div></div>
-            <div class="evt-pt-row"><em>Early Bird</em><div><strong>4,200 SGD</strong><small>until 31 Jul 2026</small></div></div>
-            <div class="evt-pt-row"><em>Normal Price</em><div><strong>4,500 SGD</strong></div></div>
-          </div>
-          <div class="evt-pt-col">
-            <span class="evt-pt-title">Module 1 Only</span>
-            <div class="evt-pt-row"><em>Super Early Bird</em><div><strong>1,290 SGD</strong><small>until 3 Jul 2026</small></div></div>
-            <div class="evt-pt-row"><em>Early Bird</em><div><strong>1,500 SGD</strong><small>until 31 Jul 2026</small></div></div>
-            <div class="evt-pt-row"><em>Normal Price</em><div><strong>1,800 SGD</strong></div></div>
-          </div>
-        </div>
-      </div>
-      <a href="tre-certification.html" class="btn btn-dark" style="margin-bottom:.65rem">View &amp; Register &rarr;</a>
-      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call via Calendly &rarr;</a>
-      <p style="font-size:.75rem;color:var(--text-mid);text-align:center;margin:0"><a href="mailto:isabelle@bhdasia.com" style="color:var(--text-mid)">isabelle@bhdasia.com</a></p>
-      </div>
-    </div>
+    </article>
 
-  </div>
-
-</section>
-
-<!-- ROMANIA EVENTS -->
-<section class="section-white" id="romania-events" style="padding-top:5rem;padding-bottom:5rem">
-  <div class="section-header-center" style="margin-bottom:3rem">
-    <span class="section-eyebrow"><i class="fa-solid fa-location-dot"></i> Bucharest, Rom&#226;nia &middot; First Time in Europe in English</span>
-    <h2 class="section-title">Upcoming Events &mdash; <em>Romania 2026</em></h2>
-    <p class="section-subtitle">A collaboration between HummingBeing, Înva&#x21B;&#x103; s&#x103; Zbori SRL and TRE Romania &#8212; co-facilitated by Isabelle Claus Teixeira &amp; Saymara Ryon.</p>
-  </div>
-
-  <div class="evt-two-col">
-
-    <!-- SHAKING TO SHAPING -->
-    <div class="evt-audience-card evt-coaches">
-      <div class="evt-card-img"><img src="images/event-shaking-to-shaping.png" alt="From Shaking to Shaping — Workshop" loading="lazy" /></div>
-      <div class="evt-card-body">
-      <div class="evt-aud-header">
-        <span class="evt-aud-eyebrow"><i class="fa-solid fa-star"></i> For Coaches &amp; TRE&#8482; Practitioners</span>
-        <span class="evt-aud-badge icf-badge"><i class="fa-solid fa-globe"></i> Online &amp; In-Person</span>
-      </div>
-      <div>
-        <p class="evt-aud-tag">Use of TRE&#8482; in a Coaching Context</p>
+    <!-- 3. From Shaking to Shaping (RO - Coaches) -->
+    <article class="evt-card" data-cat="romania coaches">
+      <a href="event-shaking-to-shaping.html" class="evt-card-thumb"><img src="images/event-shaking-to-shaping.png" alt="From Shaking to Shaping" loading="lazy" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">Online &amp; In-Person</span></div>
         <h3>From Shaking to Shaping</h3>
-      </div>
-      <p style="font-size:.92rem;color:var(--body-text);line-height:1.7">Discover how to integrate TRE&#8482; into your coaching practice. This workshop explores the use of neurogenic tremoring as a somatic tool for deep nervous system regulation, resilience-building and embodied presence with clients.</p>
-      <div class="evt-modules">
-        <div class="evt-module">
-          <span class="evt-mod-tag"><i class="fa-solid fa-globe" style="color:var(--gold);margin-right:.35rem"></i>Session 1 &mdash; Online (English)</span>
-          <span class="evt-mod-date"><i class="fa-regular fa-calendar"></i> 3 September 2026 &middot; 10:00&#8211;13:00 EET</span>
-          <span class="evt-mod-desc">&#8364;89 &mdash; Free if registered for TRE&#8482; Module 1 (Oct 15&#8211;17) or full certification.</span>
-        </div>
-        <div class="evt-module">
-          <span class="evt-mod-tag"><i class="fa-solid fa-location-dot" style="color:var(--gold);margin-right:.35rem"></i>Session 2 &mdash; In-Person (EN &amp; RO)</span>
-          <span class="evt-mod-date"><i class="fa-regular fa-calendar"></i> 20 October 2026 &middot; 19:00&#8211;22:00 EET &middot; Bucharest</span>
-          <span class="evt-mod-desc">&#8364;97 &mdash; Free if registered for TRE&#8482; Module 1 (Mar 2027) or full certification.</span>
-        </div>
-        <div class="evt-module">
-          <span class="evt-mod-tag"><i class="fa-solid fa-location-dot" style="color:var(--gold);margin-right:.35rem"></i>Session 3 &mdash; In-Person (EN &amp; RO)</span>
-          <span class="evt-mod-date"><i class="fa-regular fa-calendar"></i> 24 October 2026 &middot; 14:30&#8211;17:30 EET &middot; Bucharest</span>
-          <span class="evt-mod-desc">&#8364;97 &mdash; Free if registered for TRE&#8482; Module 1 (Mar 2027) or full certification.</span>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> September&ndash;October 2026 &middot; Bucharest</p>
+        <p class="evt-card-desc">Integrate TRE&#174; into your coaching practice &mdash; neurogenic tremoring as a somatic tool for nervous system regulation and embodied presence.</p>
+        <div class="evt-card-actions">
+          <a href="event-shaking-to-shaping.html" class="btn btn-primary">Register</a>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call</a>
         </div>
       </div>
-      <a href="event-shaking-to-shaping.html" class="btn btn-primary" style="margin-bottom:.65rem">View &amp; Register &rarr;</a>
-      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call via Calendly &rarr;</a>
-      <p style="font-size:.75rem;color:var(--text-mid);text-align:center;margin-top:.4rem"><a href="mailto:isabelle@bhdasia.com" style="color:var(--text-mid)">isabelle@bhdasia.com</a></p>
-      </div>
-    </div>
+    </article>
 
-    <!-- TRE MODULE 1 BUCHAREST -->
-    <div class="evt-audience-card evt-certification">
-      <div class="evt-card-img"><img src="images/event-bucharest-module1.png" alt="TRE® Module 1 — Bucharest" loading="lazy" /></div>
-      <div class="evt-card-body">
-      <div class="evt-aud-header">
-        <span class="evt-aud-eyebrow"><i class="fa-solid fa-certificate"></i> TRE&#8482; Provider Certification</span>
-        <span class="evt-aud-badge cert-badge"><i class="fa-solid fa-award"></i> 21 ICF CCEUs</span>
-      </div>
-      <div>
-        <p class="evt-aud-tag">First Time in Europe in English</p>
-        <h3>TRE&#8482; Module 1 &mdash; Bucharest</h3>
-        <p class="evt-aud-sub-tag"><em>The only TRE&#8482; training in the world with ICF CCEUs (21 CCEUs: 16 Resource Development + 5 Core Competencies)</em></p>
-      </div>
-      <p style="font-size:.92rem;color:var(--body-text);line-height:1.7">An immersive 3-day certification training in Bucharest &#8212; the first of its kind in Europe in English. Valid as Module 1 of the Global TRE&#8482; Provider Certification Program. Includes the &#8220;Self-care and Presence for Coaches&#8221; workshop on Day 1.</p>
-      <div class="evt-modules">
-        <div class="evt-module">
-          <span class="evt-mod-tag">Day 1 &mdash; Workshop</span>
-          <span class="evt-mod-date"><i class="fa-regular fa-calendar"></i> 15 October 2026 &middot; 17:00&#8211;19:00 EET</span>
-          <span class="evt-mod-desc">Self-care and Presence for Coaches: nervous system regulation &amp; self-induced therapeutic tremoring.</span>
-        </div>
-        <div class="evt-module">
-          <span class="evt-mod-tag">Day 2 &mdash; Full Training Day</span>
-          <span class="evt-mod-date"><i class="fa-regular fa-calendar"></i> 16 October 2026 &middot; 09:00&#8211;18:00 EET</span>
-          <span class="evt-mod-desc">TRE&#8482; Module 1 certification training &#8212; full day.</span>
-        </div>
-        <div class="evt-module">
-          <span class="evt-mod-tag">Day 3 &mdash; Full Training Day</span>
-          <span class="evt-mod-date"><i class="fa-regular fa-calendar"></i> 17 October 2026 &middot; 09:00&#8211;18:00 EET</span>
-          <span class="evt-mod-desc">TRE&#8482; Module 1 certification training &#8212; continued &amp; completion.</span>
+    <!-- 4. TRE Module 1 Bucharest (RO - Certification) -->
+    <article class="evt-card" data-cat="romania certification">
+      <a href="event-tre-module1-bucharest.html" class="evt-card-thumb"><img src="images/event-bucharest-module1.png" alt="TRE Module 1 - Bucharest" loading="lazy" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">21 ICF CCEUs</span></div>
+        <h3>TRE&#174; Module 1 &mdash; Bucharest</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 15&ndash;17 October 2026 &middot; Bucharest</p>
+        <p class="evt-card-desc">An immersive 3-day certification &mdash; the first in Europe in English. Valid as Module 1 of the Global TRE&#174; Provider Certification.</p>
+        <div class="evt-card-actions">
+          <a href="event-tre-module1-bucharest.html" class="btn btn-primary">Register</a>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call</a>
         </div>
       </div>
-      <ul class="evt-includes" style="margin-bottom:1.5rem">
-        <li><i class="fa-solid fa-circle-check"></i> 21 ICF CCEUs (16 Resource Development + 5 Core Competencies)</li>
-        <li><i class="fa-solid fa-circle-check"></i> Co-facilitated in English by two international trainers</li>
-        <li><i class="fa-solid fa-circle-check"></i> Valid as Module 1 of the Global TRE&#8482; Provider Certification</li>
-        <li><i class="fa-solid fa-circle-check"></i> Collaboration: HummingBeing + TRE Romania + Înva&#x21B;&#x103; s&#x103; Zbori SRL</li>
-      </ul>
-      <div class="evt-aud-pricing">
-        <span class="evt-price-label">Investment</span>
-        <span class="evt-price-main" style="font-size:1.25rem;letter-spacing:.5px">Contact for Pricing</span>
-        <span class="evt-price-note"><i class="fa-solid fa-envelope"></i> Enquire via Calendly or email</span>
-      </div>
-      <a href="event-tre-module1-bucharest.html" class="btn btn-dark" style="margin-bottom:.65rem">View &amp; Register &rarr;</a>
-      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Book a Call via Calendly &rarr;</a>
-      <p style="font-size:.75rem;color:var(--text-mid);text-align:center;margin-top:.75rem">Bucharest, Rom&#226;nia &middot; <a href="mailto:isabelle@bhdasia.com" style="color:var(--text-mid)">isabelle@bhdasia.com</a></p>
-      </div>
-    </div>
+    </article>
 
+    <p class="evt-empty" id="evt-empty">No events in this category yet.</p>
   </div>
 </section>
 
@@ -890,13 +806,25 @@
 })();
 
 /* Event filter */
-function filterEvents(type, btn) {
-  document.querySelectorAll('.evt-tab').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-  document.querySelectorAll('#events-grid .event-card').forEach(function(card) {
-    card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+(function(){
+  var btns  = document.querySelectorAll('.evt-filter-btn');
+  var cards = document.querySelectorAll('#evt-grid .evt-card');
+  var empty = document.getElementById('evt-empty');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btns.forEach(function(b){ b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      var f = btn.getAttribute('data-filter');
+      var shown = 0;
+      cards.forEach(function(card){
+        var match = (f === 'all') || (card.getAttribute('data-cat') || '').indexOf(f) !== -1;
+        card.classList.toggle('is-hidden', !match);
+        if (match) shown++;
+      });
+      if (empty) empty.style.display = shown === 0 ? 'block' : 'none';
+    });
   });
-}
+})();
 </script>
 </body>
 </html>
