@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://technextsg.github.io/hummingbeing-website/sitemap.xml
