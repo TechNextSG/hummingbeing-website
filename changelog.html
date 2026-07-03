@@ -697,7 +697,7 @@
           <li><strong>CSS — utility classes added</strong> — Added <code>.section-cta-center</code>, <code>.logo img</code>, <code>.foot-logo img</code>, <code>.foot-sep</code>, and <code>.g-hidden</code>.</li>
           <li><strong>CSS — tablet layout fix</strong> — Added <code>.two-col-image</code> <code>min-height: 280px</code> at 900px breakpoint.</li>
           <li><strong>All pages — GA4 placeholder scripts removed</strong> — Deleted <code>G-XXXXXXXXXX</code> Analytics blocks from all 11 pages.</li>
-          <li><strong>All pages — image lazy-loading</strong> — Added <code>loading="lazy"</code> and explicit <code>width</code>/<code>height</code> attributes to all below-fold images (CLS improvement).</li>
+          <li><strong>All pages — image lazy-loading</strong> — Added <code>loading="lazy" decoding="async"</code> and explicit <code>width</code>/<code>height</code> attributes to all below-fold images (CLS improvement).</li>
           <li><strong>All pages — hero video accessibility</strong> — Added <code>title</code> attributes to all hero video elements (WCAG 1.1.1).</li>
           <li><strong>All pages — scripts.js defer</strong> — Added <code>defer</code> attribute to <code>scripts.js</code> on all pages.</li>
           <li><strong>All pages — nav dropdown href fixed</strong> — Changed Services toggle from <code>href="#"</code> to <code>href="javascript:void(0)"</code>.</li>
@@ -737,7 +737,7 @@
           <li><strong>index.html — Dead links replaced</strong> — Privacy Policy and Terms of Service changed from <code>&lt;a href="#"&gt;</code> to <code>&lt;span&gt;</code> since no destination pages exist yet.</li>
           <li><strong>index.html — Footer separator class</strong> — Replaced inline <code>style="opacity:.4"</code> on the footer <code>·</code> separator with <code>class="foot-sep"</code>.</li>
           <li><strong>index.html — Hero video title</strong> — Added <code>title="Somatic wellness — HummingBeing background video"</code> for accessibility.</li>
-          <li><strong>index.html — Image attributes</strong> — Nav logos get <code>width="168" height="56"</code>; footer logo gets <code>width="144" height="48"</code>; all body images get <code>loading="lazy"</code> and <code>width="800" height="600"</code>.</li>
+          <li><strong>index.html — Image attributes</strong> — Nav logos get <code>width="168" height="56"</code>; footer logo gets <code>width="144" height="48"</code>; all body images get <code>loading="lazy" decoding="async"</code> and <code>width="800" height="600"</code>.</li>
           <li><strong>index.html — Steps CTA added</strong> — Inserted <code>.section-cta-center</code> "Book a Free Chat" button after the How It Works steps.</li>
           <li><strong>index.html — Who It's For section</strong> — Changed second consecutive <code>section-cream</code> (Who It's For) to <code>section-white</code> for visual separation.</li>
         </ul>
@@ -2295,7 +2295,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
         <ul>
-          <li><strong>Lazy loading audit</strong> &mdash; all <code>&lt;img&gt;</code> tags already had <code>loading="lazy"</code>; added missing attribute to YouTube <code>&lt;iframe&gt;</code> embed on the TRE&#174; page</li>
+          <li><strong>Lazy loading audit</strong> &mdash; all <code>&lt;img&gt;</code> tags already had <code>loading="lazy" decoding="async"</code>; added missing attribute to YouTube <code>&lt;iframe&gt;</code> embed on the TRE&#174; page</li>
         </ul>
       </div>
     </div>
@@ -2324,7 +2324,7 @@
       <div class="cl-body">
         <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
         <ul>
-          <li><strong>Somatic Coaching hero video</strong> &mdash; restored <code>hero-coaching.mp4</code> with <code>poster-coaching.png</code> placeholder; hero now plays looping video background on load</li>
+          <li><strong>Somatic Coaching hero video</strong> &mdash; restored <code>hero-coaching.mp4</code> with <code>poster-coaching.webp</code> placeholder; hero now plays looping video background on load</li>
         </ul>
       </div>
     </div>
@@ -2381,7 +2381,7 @@
         <div class="cl-tags"><span class="cl-tag cl-tag-fixed">Fixed</span></div>
         <ul>
           <li><strong>Bodywork video restored</strong> &mdash; reverted <code>hero-bodywork.mp4</code> to the original correct file (3.8 MB); wrong AI-generated version removed</li>
-          <li><strong>Coaching page reverted</strong> &mdash; removed incorrect AI video (lying-down scene); page uses static <code>poster-coaching.png</code> image background</li>
+          <li><strong>Coaching page reverted</strong> &mdash; removed incorrect AI video (lying-down scene); page uses static <code>poster-coaching.webp</code> image background</li>
         </ul>
       </div>
     </div>
