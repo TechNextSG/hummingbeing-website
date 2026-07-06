@@ -176,32 +176,53 @@
     <span class="t-item">Self-Regulation</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Dr. David Berceli Method</span><span class="t-sep">&middot;</span><span class="t-item">Neurogenic Tremors</span><span class="t-sep">&middot;</span><span class="t-item">Vagal Tone</span><span class="t-sep">&middot;</span><span class="t-item">Psoas Release</span><span class="t-sep">&middot;</span><span class="t-item">Singapore &middot; Tokyo &middot; Asia Pacific</span><span class="t-sep">&middot;</span><span class="t-item">Free Discovery Call</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Certified Reiki Level II</span><span class="t-sep">&middot;</span><span class="t-item">Nervous System Literacy</span><span class="t-sep">&middot;</span>  </div>
 </div>
 <style>
-  /* Event card beside the countdown timer */
-  .ecb-card { display: flex; flex-direction: row; align-items: stretch; background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 8px 30px rgba(36,46,66,.13); width: 100%; max-width: 720px; }
-  .ecb-card-thumb { flex: 0 0 60%; line-height: 0; display: block; }
-  .ecb-card-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-  .ecb-card-body { flex: 1; padding: 1.2rem 1.4rem; display: flex; flex-direction: column; justify-content: center; }
-  .ecb-card .ecb-eyebrow { margin-bottom: .35rem; }
-  .ecb-card .ecb-title { font-size: .95rem; margin-bottom: .4rem; line-height: 1.25; }
-  .ecb-card .ecb-date-info { font-size: .78rem; }
-  .ecb-card .btn { padding: .6rem 1.1rem; font-size: .72rem; margin-top: .9rem; align-self: flex-start; }
-  @media (max-width: 780px) { .ecb-card { flex-direction: column; max-width: 440px; margin: 0 auto; } .ecb-card-thumb { flex-basis: auto; width: 100%; } }
+  /* Upcoming-events section: header + two event cards + countdown */
+  .ecb-header { text-align: center; max-width: 680px; margin: 0 auto 2.6rem; }
+  .ecb-header .section-subtitle { margin-top: .6rem; }
+  .ecb-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1060px; margin: 0 auto; align-items: stretch; }
+  .ecb-card { display: flex; flex-direction: column; background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 8px 30px rgba(36,46,66,.13); height: 100%; }
+  .ecb-card-thumb { line-height: 0; display: block; }
+  .ecb-card-thumb img { width: 100%; height: auto; display: block; }
+  .ecb-card-body { padding: 1.3rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+  .ecb-card .ecb-eyebrow { margin-bottom: .4rem; }
+  .ecb-card .ecb-title { font-size: 1.05rem; margin-bottom: .45rem; line-height: 1.25; }
+  .ecb-card .ecb-date-info { font-size: .82rem; }
+  .ecb-card .btn { margin-top: auto; align-self: flex-start; padding: .6rem 1.2rem; font-size: .74rem; }
+  .ecb-units { margin-top: 3rem; justify-content: center; }
+  @media (max-width: 860px) { .ecb-cards { grid-template-columns: 1fr; max-width: 460px; } }
 </style>
 <!-- EVENT COUNTDOWN BAR -->
 <div class="evt-countdown-bar">
-  <div class="ecb-inner">
+  <div class="ecb-header">
+    <span class="section-eyebrow">Upcoming Events</span>
+    <h2 class="section-title">Join Isabelle In Person</h2>
+    <p class="section-subtitle">Two transformative in-person events in 2026 &mdash; Singapore this August and Bucharest this October.</p>
+  </div>
+  <div class="ecb-cards">
     <div class="ecb-card">
       <a href="event-selfcare-coaches-singapore.html" class="ecb-card-thumb" aria-label="Nervous System Regulation event">
         <img src="images/event-nervous-system.webp" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" width="1920" height="1080" loading="lazy" decoding="async" />
       </a>
       <div class="ecb-card-body">
-        <span class="ecb-eyebrow"><i class="fa-solid fa-star"></i> Next Event</span>
+        <span class="ecb-eyebrow"><i class="fa-solid fa-star"></i> Singapore &middot; August</span>
         <h3 class="ecb-title">Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring</h3>
         <p class="ecb-date-info"><i class="fa-regular fa-calendar"></i> 29 &amp; 30 August 2026 &middot; Singapore, In-Person</p>
-        <a href="event-selfcare-coaches-singapore.html" class="btn btn-primary" style="margin-top:1.1rem;align-self:flex-start">View Event &rarr;</a>
+        <a href="event-selfcare-coaches-singapore.html" class="btn btn-primary">View Event &rarr;</a>
       </div>
     </div>
-    <div class="ecb-units" id="ecb-units">
+    <div class="ecb-card">
+      <a href="event-tre-module1-bucharest.html" class="ecb-card-thumb" aria-label="TRE Module 1 Bucharest event">
+        <img src="images/event-bucharest-module1.webp" alt="TRE&#174; Module 1 &mdash; Bucharest, Romania" width="1920" height="1080" loading="lazy" decoding="async" />
+      </a>
+      <div class="ecb-card-body">
+        <span class="ecb-eyebrow"><i class="fa-solid fa-star"></i> Bucharest &middot; October</span>
+        <h3 class="ecb-title">TRE&#174; Module 1 &mdash; Bucharest &middot; First Time in Europe</h3>
+        <p class="ecb-date-info"><i class="fa-regular fa-calendar"></i> 15&#8211;17 October 2026 &middot; Bucharest, Romania</p>
+        <a href="event-tre-module1-bucharest.html" class="btn btn-primary">View Event &rarr;</a>
+      </div>
+    </div>
+  </div>
+  <div class="ecb-units" id="ecb-units">
       <div class="ecb-unit">
         <span class="ecb-num" id="ecb-days">--</span>
         <span class="ecb-lbl">Days</span>
@@ -222,7 +243,6 @@
         <span class="ecb-lbl">Secs</span>
       </div>
     </div>
-  </div>
 </div>
 
 <!-- SERVICES OVERVIEW -->
@@ -234,21 +254,21 @@
   </div>
   <div class="cards-grid">
     <div class="card green-top">
-      <div class="card-img"><img src="images/card-tre.jpg" alt="TRE® Exercises" loading="lazy" decoding="async" width="800" height="600"></div>
+      <div class="card-img"><img src="images/card-tre.webp" alt="TRE® Exercises" loading="lazy" decoding="async" width="800" height="600"></div>
       <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
       <h3>TRE&#174; Exercises</h3>
       <p>Simple exercises that trigger your body's built-in tremoring response &#8212; releasing stored stress and tension from the nervous system.</p>
       <a href="tre-certification.html" class="card-link">Learn More &#8594;</a>
     </div>
     <div class="card gold-top">
-      <div class="card-img"><img src="images/card-somatic-coaching.webp" alt="Coaching" loading="lazy" decoding="async" width="800" height="600"></div>
+      <div class="card-img"><img src="images/card-coaching.webp" alt="Coaching" loading="lazy" decoding="async" width="800" height="600"></div>
       <div class="card-icon"><i class="fa-solid fa-spa"></i></div>
       <h3>Coaching</h3>
       <p>Somatic, trauma and neuroscience informed coaching that builds embodied intelligence &#8212; for lasting resilience, calm and transformation.</p>
       <a href="holistic-mastermind.html" class="card-link">Learn More &#8594;</a>
     </div>
     <div class="card sage-top">
-      <div class="card-img"><img src="images/card-somatic-bodywork.webp" alt="Mindfulness" loading="lazy" decoding="async" width="800" height="600"></div>
+      <div class="card-img"><img src="images/card-mindfulness.webp" alt="Mindfulness" loading="lazy" decoding="async" width="800" height="600"></div>
       <div class="card-icon"><i class="fa-solid fa-hand"></i></div>
       <h3>Mindfulness</h3>
       <p>A 6 or 8-session personalised journey to bring mindfulness and neuroscience-backed practices into your daily life.</p>
