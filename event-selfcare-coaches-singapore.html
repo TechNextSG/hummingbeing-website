@@ -190,6 +190,9 @@
     .evtl-field input { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); border-radius: 8px; color: var(--white); font-size: .95rem; padding: .72rem 1rem; outline: none; transition: border-color .2s, background .2s; font-family: 'Lato', sans-serif; width: 100%; box-sizing: border-box; }
     .evtl-field input::placeholder { color: rgba(255,255,255,.28); }
     .evtl-field input:focus { border-color: var(--gold); background: rgba(255,255,255,.1); }
+    .evtl-field select { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); border-radius: 8px; color: var(--white); font-size: .95rem; padding: .72rem 1rem; outline: none; font-family: 'Lato', sans-serif; width: 100%; box-sizing: border-box; cursor: pointer; }
+    .evtl-field select:focus { border-color: var(--gold); background: rgba(255,255,255,.1); }
+    .evtl-field select option { color: #242e42; }
     .evtl-form-success { flex-direction: column; align-items: center; text-align: center; padding: 2rem 1rem; gap: .8rem; }
     .evtl-form-success i { font-size: 2.8rem; color: var(--gold); }
     .evtl-form-success p { color: rgba(255,255,255,.82); font-size: .95rem; line-height: 1.65; }
@@ -241,8 +244,13 @@
         <h3 class="evtl-form-title">Reserve Your Spot</h3>
         <p class="evtl-form-sub">Share your details and we&#8217;ll be in touch shortly.</p>
         <form class="evtl-form" onsubmit="evtlSubmit(event)">
-          <input type="hidden" name="event" value="Nervous System Regulation — Singapore · 29–30 Aug 2026" />
           <input type="hidden" name="source" value="Self-Care Coaches (Singapore) page" />
+          <div class="evtl-field">
+            <label>Event Date &amp; Location <span style="color:var(--gold)">*</span></label>
+            <select name="event" required>
+              <option selected>Nervous System Regulation — 29 &amp; 30 August 2026 · Singapore (In-Person)</option>
+            </select>
+          </div>
           <div class="evtl-field">
             <label>Full Name <span style="color:var(--gold)">*</span></label>
             <input type="text" name="name" placeholder="Your full name" required>
