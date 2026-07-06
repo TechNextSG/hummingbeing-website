@@ -661,3 +661,11 @@ document.addEventListener('DOMContentLoaded', function() {
     winEl.querySelector('.hb-send').addEventListener('click', hbSend);
   });
 })();
+
+// ── LEAD CAPTURE → Google Sheet ─────────────────────────────────────────────
+var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkv934L8ffTxU1TPUiw3jn9Hu6KmdE0Ol1CcJRB_vWstls2xiZHHb-LErG5qHXdTuX/exec';
+function sendLead(data) {
+  try {
+    fetch(LEAD_ENDPOINT, { method: 'POST', body: new URLSearchParams(data) }).catch(function(){});
+  } catch (e) {}
+}

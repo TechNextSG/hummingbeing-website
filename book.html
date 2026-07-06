@@ -614,6 +614,16 @@
 <script>
 function handleBookSubmit(e) {
   e.preventDefault();
+  var g = function(id){ var el = document.getElementById(id); return el ? el.value : ''; };
+  sendLead({
+    name: (g('fname') + ' ' + g('lname')).trim(),
+    email: g('email'),
+    phone: g('phone'),
+    event: g('location'),
+    inquiry: g('service'),
+    source: 'Book a Session page',
+    message: 'Heard via: ' + (g('hear') || '—') + ' | ' + g('message')
+  });
   document.querySelector('form').style.display = 'none';
   document.getElementById('success-msg').style.display = 'block';
 }

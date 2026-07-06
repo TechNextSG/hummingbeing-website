@@ -241,6 +241,8 @@
         <h3 class="evtl-form-title">Reserve Your Spot</h3>
         <p class="evtl-form-sub">Share your details and we&#8217;ll be in touch shortly.</p>
         <form class="evtl-form" onsubmit="evtlSubmit(event)">
+          <input type="hidden" name="event" value="Nervous System Regulation — Singapore · 29–30 Aug 2026" />
+          <input type="hidden" name="source" value="Self-Care Coaches (Singapore) page" />
           <div class="evtl-field">
             <label>Full Name <span style="color:var(--gold)">*</span></label>
             <input type="text" name="name" placeholder="Your full name" required>
@@ -548,6 +550,16 @@
 <script>
 function evtlSubmit(e) {
   e.preventDefault();
+  var fd = new FormData(e.target);
+  sendLead({
+    name: fd.get('name') || '',
+    email: fd.get('email') || '',
+    phone: fd.get('phone') || '',
+    event: fd.get('event') || '',
+    inquiry: 'Event registration enquiry',
+    source: fd.get('source') || document.title,
+    message: fd.get('message') || ''
+  });
   var card = e.target.closest('.evtl-form-card');
   card.querySelector('.evtl-form').style.display = 'none';
   var s = card.querySelector('.evtl-form-success');
