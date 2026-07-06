@@ -177,12 +177,14 @@
 </div>
 <style>
   /* Event card beside the countdown timer */
-  .ecb-card { display: flex; flex-direction: row; align-items: center; background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 8px 30px rgba(36,46,66,.13); flex: 1 1 580px; max-width: 680px; }
-  .ecb-card-thumb { flex: 0 0 58%; line-height: 0; display: block; }
-  .ecb-card-thumb img { width: 100%; height: auto; display: block; }
-  .ecb-card-body { flex: 1; padding: 1.3rem 1.5rem; display: flex; flex-direction: column; }
-  .ecb-card .ecb-title { font-size: 1.02rem; margin-bottom: .4rem; }
-  .ecb-card .ecb-date-info { font-size: .8rem; }
+  .ecb-card { display: flex; flex-direction: row; align-items: stretch; background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 8px 30px rgba(36,46,66,.13); flex: 1 1 620px; max-width: 720px; }
+  .ecb-card-thumb { flex: 0 0 60%; line-height: 0; display: block; }
+  .ecb-card-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .ecb-card-body { flex: 1; padding: 1.2rem 1.4rem; display: flex; flex-direction: column; justify-content: center; }
+  .ecb-card .ecb-eyebrow { margin-bottom: .35rem; }
+  .ecb-card .ecb-title { font-size: .95rem; margin-bottom: .4rem; line-height: 1.25; }
+  .ecb-card .ecb-date-info { font-size: .78rem; }
+  .ecb-card .btn { padding: .6rem 1.1rem; font-size: .72rem; margin-top: .9rem; align-self: flex-start; }
   @media (max-width: 780px) { .ecb-card { flex-direction: column; max-width: 440px; margin: 0 auto; } .ecb-card-thumb { flex-basis: auto; width: 100%; } }
 </style>
 <!-- EVENT COUNTDOWN BAR -->
