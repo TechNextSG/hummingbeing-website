@@ -197,10 +197,15 @@
     .evtl-form-success i { font-size: 2.8rem; color: var(--gold); }
     .evtl-form-success p { color: rgba(255,255,255,.82); font-size: .95rem; line-height: 1.65; }
     @media (max-width: 860px) {
-      .evtl-hero { text-align: center; }
-      .evtl-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      /* Mobile: video becomes a fixed top banner so it stays crisp (no vertical stretch);
+         the form drops below it onto the navy background as its own section. */
+      .evtl-hero { text-align: center; min-height: auto; padding-bottom: 3rem; }
+      .evtl-hero .hero-video { bottom: auto; height: 56vh; }
+      .evtl-hero::after  { bottom: auto; height: 56vh; }
+      .evtl-hero::before { bottom: auto; height: 56vh; }
+      .evtl-hero-inner { grid-template-columns: 1fr; gap: 2.2rem; }
+      .evtl-hero-content { order: 1; min-height: calc(56vh - 6rem); display: flex; flex-direction: column; justify-content: center; }
       .evtl-hero-form { order: 2; }
-      .evtl-hero-content { order: 1; }
       .evtl-meta-pills { justify-content: center; }
       .evtl-hero-actions { justify-content: center; }
       .evtl-tagline { margin-left: auto; margin-right: auto; }
