@@ -179,21 +179,17 @@
     .evtl-reg-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; max-width:720px; margin:2rem auto 0; }
     @media (max-width:680px) { .evtl-two-col, .evtl-reg-grid { grid-template-columns:1fr; } }
   
-    /* --- HERO 2-COL: form left · content right --- */
-    .evtl-hero { text-align: left; align-items: stretch; }
-    .evtl-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1280px; width: 100%; margin: 0 auto; align-items: center; }
-    .evtl-meta-pills { justify-content: flex-start; }
-    .evtl-hero-actions { justify-content: flex-start; }
-    .evtl-tagline { margin-left: 0; margin-right: 0; }
-    .evtl-hero-content { order: 1; }
-    .evtl-hero-form { order: 2; }
-    .evtl-form-card { background: rgba(255,255,255,.09); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.18); border-radius: 16px; padding: 2.2rem 2rem; }
-    .evtl-form-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.45rem; color: var(--white); font-weight: 700; margin-bottom: .45rem; }
-    .evtl-form-sub { font-size: .87rem; color: rgba(255,255,255,.55); margin-bottom: 1.55rem; line-height: 1.55; }
+    /* --- HERO: centered content only (form is its own section below) --- */
+    .evtl-hero-inner { max-width: 860px; margin: 0 auto; }
+    /* --- RESERVE YOUR SPOT: standalone section --- */
+    .evtl-reserve { background: var(--navy-deep); padding: 4.5rem 5%; }
+    .evtl-form-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); border-radius: 16px; padding: 2.4rem 2.2rem; max-width: 540px; margin: 0 auto; }
+    .evtl-form-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); font-weight: 700; margin-bottom: .45rem; text-align: center; }
+    .evtl-form-sub { font-size: .9rem; color: rgba(255,255,255,.6); margin-bottom: 1.6rem; line-height: 1.55; text-align: center; }
     .evtl-field { display: flex; flex-direction: column; gap: .38rem; margin-bottom: 1.05rem; }
-    .evtl-field label { font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,.52); }
+    .evtl-field label { font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,.6); }
     .evtl-field input { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); border-radius: 8px; color: var(--white); font-size: .95rem; padding: .72rem 1rem; outline: none; transition: border-color .2s, background .2s; font-family: 'Lato', sans-serif; width: 100%; box-sizing: border-box; }
-    .evtl-field input::placeholder { color: rgba(255,255,255,.28); }
+    .evtl-field input::placeholder { color: rgba(255,255,255,.3); }
     .evtl-field input:focus { border-color: var(--gold); background: rgba(255,255,255,.1); }
     .evtl-field select { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); border-radius: 8px; color: var(--white); font-size: .95rem; padding: .72rem 1rem; outline: none; font-family: 'Lato', sans-serif; width: 100%; box-sizing: border-box; cursor: pointer; }
     .evtl-field select:focus { border-color: var(--gold); background: rgba(255,255,255,.1); }
@@ -202,18 +198,11 @@
     .evtl-form-success i { font-size: 2.8rem; color: var(--gold); }
     .evtl-form-success p { color: rgba(255,255,255,.82); font-size: .95rem; line-height: 1.65; }
     @media (max-width: 860px) {
-      /* Mobile: video becomes a fixed top banner so it stays crisp (no vertical stretch);
-         the form drops below it onto the navy background as its own section. */
-      .evtl-hero { text-align: center; min-height: auto; padding-bottom: 3rem; }
-      .evtl-hero .hero-video { bottom: auto; height: 56vh; }
-      .evtl-hero::after  { bottom: auto; height: 56vh; }
-      .evtl-hero::before { bottom: auto; height: 56vh; }
-      .evtl-hero-inner { grid-template-columns: 1fr; gap: 2.2rem; }
-      .evtl-hero-content { order: 1; min-height: calc(56vh - 6rem); display: flex; flex-direction: column; justify-content: center; }
-      .evtl-hero-form { order: 2; }
+      .evtl-hero { text-align: center; }
       .evtl-meta-pills { justify-content: center; }
       .evtl-hero-actions { justify-content: center; }
       .evtl-tagline { margin-left: auto; margin-right: auto; }
+      .evtl-reserve { padding: 3rem 5%; }
     }
   </style>
 </head>
@@ -249,39 +238,6 @@
     <source src="hero-certifications.mp4" type="video/mp4">
   </video>
   <div class="evtl-hero-inner">
-    <div class="evtl-hero-form">
-      <div class="evtl-form-card">
-        <h3 class="evtl-form-title">Reserve Your Spot</h3>
-        <p class="evtl-form-sub">Share your details and we&#8217;ll be in touch shortly.</p>
-        <form class="evtl-form" onsubmit="evtlSubmit(event)">
-          <input type="hidden" name="source" value="TRE Module 1 Bucharest page" />
-          <div class="evtl-field">
-            <label>Event Date &amp; Location <span style="color:var(--gold)">*</span></label>
-            <select name="event" required>
-              <option selected>TRE® Module 1 — 15–17 October 2026 · Bucharest (In-Person)</option>
-            </select>
-          </div>
-          <div class="evtl-field">
-            <label>Full Name <span style="color:var(--gold)">*</span></label>
-            <input type="text" name="name" placeholder="Your full name" required>
-          </div>
-          <div class="evtl-field">
-            <label>Email Address <span style="color:var(--gold)">*</span></label>
-            <input type="email" name="email" placeholder="your@email.com" required>
-          </div>
-          <div class="evtl-field">
-            <label>Phone <span style="opacity:.45">(optional)</span></label>
-            <input type="tel" name="phone" placeholder="+65 / +40 ...">
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:.5rem">Send Enquiry &rarr;</button>
-        </form>
-        <div class="evtl-form-success" id="evtl-success" style="display:none">
-          <i class="fa-solid fa-circle-check"></i>
-          <p>Thank you! Isabelle will be in touch shortly.</p>
-          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:.5rem">Or Book via Calendly &rarr;</a>
-        </div>
-      </div>
-    </div>
     <div class="evtl-hero-content">
       <span class="evtl-eyebrow"><i class="fa-solid fa-certificate"></i> TRE&#8482; Provider Certification &middot; Bucharest, Rom&#226;nia &middot; First Time in Europe in English</span>
       <div class="icf-hero-badge"><i class="fa-solid fa-award"></i> 21 ICF CCEUs &mdash; Only TRE&#8482; Training in the World with ICF Accreditation</div>
@@ -317,6 +273,41 @@
     <span style="font-family:'Lato',sans-serif;font-size:.82rem;color:rgba(255,255,255,.7)">15 Oct 2026 &middot; 17:00 EET &middot; Bucharest</span>
   </div>
 </div>
+
+<!-- RESERVE YOUR SPOT -->
+<section class="evtl-reserve">
+  <div class="evtl-form-card">
+    <h3 class="evtl-form-title">Reserve Your Spot</h3>
+    <p class="evtl-form-sub">Share your details and we&#8217;ll be in touch shortly.</p>
+    <form class="evtl-form" onsubmit="evtlSubmit(event)">
+      <input type="hidden" name="source" value="TRE Module 1 Bucharest page" />
+      <div class="evtl-field">
+        <label>Event Date &amp; Location <span style="color:var(--gold)">*</span></label>
+        <select name="event" required>
+          <option selected>TRE® Module 1 — 15–17 October 2026 · Bucharest (In-Person)</option>
+        </select>
+      </div>
+      <div class="evtl-field">
+        <label>Full Name <span style="color:var(--gold)">*</span></label>
+        <input type="text" name="name" placeholder="Your full name" required>
+      </div>
+      <div class="evtl-field">
+        <label>Email Address <span style="color:var(--gold)">*</span></label>
+        <input type="email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="evtl-field">
+        <label>Phone <span style="opacity:.45">(optional)</span></label>
+        <input type="tel" name="phone" placeholder="+65 / +40 ...">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:.5rem">Send Enquiry &rarr;</button>
+    </form>
+    <div class="evtl-form-success" id="evtl-success" style="display:none">
+      <i class="fa-solid fa-circle-check"></i>
+      <p>Thank you! Isabelle will be in touch shortly.</p>
+      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:.5rem">Or Book via Calendly &rarr;</a>
+    </div>
+  </div>
+</section>
 
 <style>
   /* event page: tighter section spacing + partner logo row */
