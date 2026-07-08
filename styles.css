@@ -1521,3 +1521,10 @@ footer {
 .foot-logo img { height: 48px; width: auto; display: block; }
 .foot-sep { opacity: .4; }
 .g-hidden { display: none !important; }
+
+/* Book a Session — mobile menu only (the nav CTA button is hidden below 900px) */
+.nav-links .nav-book-mobile { display: none; }
+@media (max-width: 900px) {
+  .nav-links .nav-book-mobile { display: block; }
+  .nav-links .nav-book-mobile a { color: var(--gold); font-weight: 700; }
+}
