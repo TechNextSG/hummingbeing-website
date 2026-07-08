@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['About Isabelle','What services are available?','Book a session'] },
 
     { keys: ['event','workshop','group','upcoming','schedule','class','programme','program','events','group session','next event','tre workshop','group tre','romania','bucharest','certification','module 1','icf','cceu'],
-      reply: "Upcoming events:\n\n• 29–30 Aug 2026 — Singapore (In-Person) · Nervous System Regulation for Coaches · 21 ICF CCEUs · S$1,290\n• 15–17 Oct 2026 — Bucharest, Romania · TRE® Module 1 Certification · 21 ICF CCEUs\n\nGroup events are a great way to experience the work before committing to a full programme.",
+      reply: "Upcoming events:\n\n• 29–30 Aug 2026 — Singapore · TRE® Module 1 / Nervous System Regulation for Coaches · 21 ICF CCEUs · from S$990 online / S$1,290 in person\n• 26–27 Sep 2026 — Singapore · TRE® Module 2 (teaching TRE® one-to-one)\n• 15–17 Oct 2026 — Bucharest, Romania · TRE® Module 1 Certification · 21 ICF CCEUs\n• 13–14 Feb 2027 — Singapore · TRE® Module 3 (teaching TRE® to groups)\n\nThe full certification bundle (Modules 1–3) starts from S$3,699 super early bird.",
       link: { text: 'See all upcoming events', url: 'events.html' },
       btns: ['What is TRE®?','How much does a programme cost?','Book a private session'] },
 
@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['How much does it cost?','Book the free call','What services are available?'] },
 
     { keys: ['qualifications','certified','training','credentials','trained','accredited','diploma','certificate','reiki','strozzi','bhd','bhd asia','what are her qualifications','her qualifications'],
-      reply: "Isabelle's key credentials include:\n\n• Global TRE® Certifying Trainer & Certified TRE® Provider (Dr. David Berceli method)\n• PCC — Professional Certified Coach (ICF)\n• Strozzi Somatic Bodywork Practitioner\n• Reiki Level II Practitioner\n• 25+ years HR Leadership in Fortune 100 companies\n• Results Trained Coach (NeuroLeadership Institute)",
+      reply: "Isabelle's key credentials include:\n\n• Global TRE® Certifying Trainer & Certified TRE® Provider (Dr. David Berceli method)\n• PCC — Professional Certified Coach (ICF)\n• Strozzi Somatic Bodywork Practitioner\n• Reiki Level II Practitioner\n• 30 years HR Leadership in Fortune 100 companies\n• Results Trained Coach (NeuroLeadership Institute)",
       link: null,
       btns: ['About Isabelle','What services does she offer?','Book a session'] },
 
