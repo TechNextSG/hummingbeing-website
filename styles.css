@@ -945,7 +945,7 @@ footer {
 }
 .foot-copy { font-size: .72rem; color: rgba(255,255,255,.35); }
 .foot-legal { display: flex; gap: 1.5rem; align-items: center; }
-.foot-legal a { font-size: .72rem; color: rgba(255,255,255,.35); text-decoration: none; transition: color .25s; }
+.foot-legal a, .foot-legal span { font-size: .72rem; color: rgba(255,255,255,.35); text-decoration: none; transition: color .25s; }
 .foot-legal a:hover { color: var(--gold); }
 .tn-brand { color: var(--gold); }
 
@@ -1484,7 +1484,7 @@ footer {
   footer { padding: 1.5rem 4% .6rem; }
   .foot-grid { gap: 1rem 1rem; }
   .foot-copy { font-size: .67rem; }
-  .foot-legal a { font-size: .67rem; }
+  .foot-legal a, .foot-legal span { font-size: .67rem; }
 
   /* -- RESOURCE LIST (socials) -- */
   .resource-row { grid-template-columns: 36px 1fr; row-gap: .3rem; }
