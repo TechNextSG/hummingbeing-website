@@ -317,19 +317,19 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['What is TRE®?','Tell me about Somatic Coaching','What is Somatic Bodywork?','Which practice is right for me?'] },
 
     { keys: ['price','cost','how much','fee','rate','investment','money','package','payment','expensive','afford','charges','pricing','fees','packages','rates','invest','pay','value','worth','dollar'],
-      reply: "Three options are available:\n\n• Starter Package — $2,200 for 8 weekly sessions\n• Deep Dive — Custom pricing for 12–24 sessions\n• Free Discovery Call — $0, 30 minutes\n\nThe free call is a great first step with no commitment required.",
+      reply: "Three options are available:\n\n• 8-Week Coaching Package — S$2,300\n• Deep Dive — Custom pricing for 12–24 sessions\n• Free Discovery Call — $0, 30 minutes\n\nThe free call is a great first step with no commitment required.",
       link: null,
-      btns: ['Tell me about the Starter Package','Tell me about the Deep Dive','What payment options are there?','What is included?'] },
+      btns: ['Tell me about the 8-Week Package','Tell me about the Deep Dive','What payment options are there?','What is included?'] },
 
-    { keys: ['starter','8 week','8-week','first package','weekly sessions','starter package','2200','$2200','what is included','what included','included','whats included'],
-      reply: "The Starter Package is $2,200 and includes:\n\n• 8 weekly somatic sessions (TRE® or Coaching)\n• Session recordings\n• WhatsApp support between sessions\n• Personalised home practice plan\n\nDesigned to give you enough time to experience real, lasting shifts.",
+    { keys: ['starter','8 week','8-week','first package','weekly sessions','starter package','coaching package','2300','2200','$2200','what is included','what included','included','whats included'],
+      reply: "The 8-Week Coaching Package is S$2,300 and includes:\n\n• Initial diagnostic session\n• 8 weekly one-on-one coaching sessions\n• Targeted exercises between sessions\n• Follow-up session at 3 months\n\nFully customised to your goals — leadership development, career transition, stress resilience or personal growth.",
       link: null,
       btns: ['Tell me about the Deep Dive','How do I book?','Tell me about the free discovery call','What happens in a session?'] },
 
     { keys: ['deep dive','deep-dive','12 session','24 session','corporate','leadership','long term','long-term','corporate wellness','team','organisation','company','executive program'],
       reply: "The Deep Dive Package is fully customised — 12 to 24 sessions combining TRE®, Coaching and Bodywork for deeper, lasting transformation.\n\nIncludes priority scheduling, direct access to Isabelle, corporate & leadership programmes, and ongoing integration support. Priced by consultation.",
       link: null,
-      btns: ['How is it different from the Starter?','Tell me about the free discovery call','What is Somatic Coaching?','How do I book?'] },
+      btns: ['How is it different from the 8-Week Package?','Tell me about the free discovery call','What is Somatic Coaching?','How do I book?'] },
 
     { keys: ['book','schedule','appointment','sign up','register','join','how to start','how to book','how do i book','how can i book','get started','begin','start working','work together','make an appointment','booking','reserve','session booking'],
       reply: "Booking is straightforward:\n\n1. Use the contact form on the Book page\n2. Send a WhatsApp message directly to Isabelle\n\nIsabelle personally responds within 1–2 business days. The free discovery call is a great first step.",
@@ -352,9 +352,9 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['How do I book an online session?','What do I need?','How much does it cost?'] },
 
     { keys: ['how long','duration','time','minutes','hours','length','session length','how many sessions','number of sessions','session time','long is','long does','how many sessions do i need'],
-      reply: "Session lengths depend on the format:\n\n• Free Discovery Call — 30 min\n• Individual session — 60 to 90 min\n• Starter Programme — 8 weekly sessions\n• Deep Dive — 12 to 24 sessions\n\nIsabelle will suggest the right structure during your discovery call.",
+      reply: "Session lengths depend on the format:\n\n• Free Discovery Call — 30 min\n• Individual session — 60 to 90 min\n• 8-Week Coaching Package — 8 weekly sessions\n• Deep Dive — 12 to 24 sessions\n\nIsabelle will suggest the right structure during your discovery call.",
       link: null,
-      btns: ['Tell me about the Starter Package','Tell me about the Deep Dive','Book a free call'] },
+      btns: ['Tell me about the 8-Week Package','Tell me about the Deep Dive','Book a free call'] },
 
     { keys: ['safe','safety','risk','side effect','suitable','beginner','first time','never tried','scared','worry','concern','danger','is it safe','safe for me','contraindication','health condition','is tre safe'],
       reply: "TRE® and somatic practices are gentle and considered very safe for most people. Isabelle tailors every session to your comfort level and health situation.\n\nIf you have specific medical conditions or concerns, mention them when booking — sessions are always adapted. There are very few contraindications.",
@@ -417,9 +417,9 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['About Isabelle','What services does she offer?','Book a session'] },
 
     { keys: ['which package','compare package','package comparison','starter vs deep','starter or deep','which programme','which program','difference between packages','different from the starter','different from starter','how is it different from the starter','starter vs','which package is right'],
-      reply: "Here's how the two packages compare:\n\n• Starter — $2,200 for 8 weekly sessions. Ideal for building a foundation and experiencing real, lasting shifts.\n• Deep Dive — custom pricing for 12 to 24 sessions combining TRE®, Coaching & Bodywork, with priority access and integration support, for deeper long-term transformation.\n\nNot sure which fits? The free discovery call will help you decide.",
+      reply: "Here's how the two packages compare:\n\n• 8-Week Coaching Package — S$2,300 for 8 weekly one-on-one sessions. Ideal for building a foundation and experiencing real, lasting shifts.\n• Deep Dive — custom pricing for 12 to 24 sessions combining TRE®, Coaching & Bodywork, with priority access and integration support, for deeper long-term transformation.\n\nNot sure which fits? The free discovery call will help you decide.",
       link: { text: 'Book the free discovery call', url: 'book.html' },
-      btns: ['Tell me about the Starter Package','Tell me about the Deep Dive','Book a free discovery call'] },
+      btns: ['Tell me about the 8-Week Package','Tell me about the Deep Dive','Book a free discovery call'] },
 
     { keys: ['which practice','which service','which is right','tre or coaching','coaching or bodywork','what should i choose','which one is right','tre vs coaching','which is best for me','where do i start','what do you recommend','right service for me'],
       reply: "All three practices work with the nervous system, just through different doors:\n\n• TRE® — release stored stress & tension through natural tremors\n• Somatic Coaching — build resilience & self-awareness through the body\n• Somatic Bodywork — release held patterns through gentle touch\n\nYou don't have to choose alone — Isabelle will recommend the best fit for you in your free discovery call.",
@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
     { keys: ['payment options','pay in instal','instalment','installment','payment plan','split payment','how do i pay','methods of payment','bank transfer','credit card','paynow','pay later','what payment options are there'],
       reply: "Payment details and any available options are arranged directly with Isabelle once you choose a package. Feel free to ask about payment plans during your discovery call — she's happy to find an arrangement that works for you.",
       link: { text: 'Book a discovery call', url: 'book.html' },
-      btns: ['How much does it cost?','Tell me about the Starter Package','How do I book?'] },
+      btns: ['How much does it cost?','Tell me about the 8-Week Package','How do I book?'] },
 
     { keys: ['one on one','1 on 1','one to one','individual or group','group or private','private or group','is it one to one','just me'],
       reply: "Most of Isabelle's work is 1:1 — fully personalised to you. Group experiences are available through the workshops and events on the Events page, which are a lovely, lower-cost way to try the work first.\n\nThe discovery call will help you choose what fits best.",
