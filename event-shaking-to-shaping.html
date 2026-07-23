@@ -188,6 +188,9 @@
     .evtl-hero-inner { max-width: 860px; margin: 0 auto; }
     /* --- RESERVE YOUR SPOT: standalone section --- */
     .evtl-reserve { background: var(--navy-deep); padding: 4.5rem 5%; }
+    .evtl-reserve-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 3rem; align-items: center; max-width: 1120px; margin: 0 auto; }
+    .evtl-reserve-poster img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+    @media (max-width: 860px) { .evtl-reserve-grid { grid-template-columns: 1fr; gap: 2rem; max-width: 540px; } .evtl-reserve-poster { order: 2; } }
     .evtl-form-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); border-radius: 16px; padding: 2.4rem 2.2rem; max-width: 540px; margin: 0 auto; }
     .evtl-form-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: var(--white); font-weight: 700; margin-bottom: .45rem; text-align: center; }
     .evtl-form-sub { font-size: .9rem; color: rgba(255,255,255,.6); margin-bottom: 1.6rem; line-height: 1.55; text-align: center; }
@@ -280,6 +283,10 @@
 
 <!-- RESERVE YOUR SPOT -->
 <section class="evtl-reserve">
+  <div class="evtl-reserve-grid">
+  <div class="evtl-reserve-poster">
+    <img src="images/shaking-poster.webp" alt="From Shaking to Shaping &#8212; A Coaching Experience Using TRE&#174;, led by Isabelle Claus Teixeira" width="1080" height="1380" loading="lazy" decoding="async" />
+  </div>
   <div class="evtl-form-card">
     <h3 class="evtl-form-title">Reserve Your Spot</h3>
     <p class="evtl-form-sub">Share your details and we&#8217;ll be in touch shortly.</p>
@@ -314,6 +321,7 @@
       <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:.5rem">Or Book via Calendly &rarr;</a>
     </div>
   </div>
+  </div>
 </section>
 
 <style>
@@ -332,6 +340,14 @@
   <img src="images/logo-tre-romania.webp" width="500" height="500" alt="TRE® România" loading="lazy" decoding="async" />
   <img src="images/logo-invata-zbori.webp" width="500" height="500" alt="Asociația Învață să Zbori (Learn to Fly)" loading="lazy" decoding="async" />
 </div>
+
+
+<!-- EVENT DETAILS FLYER -->
+<section class="evtl-flyer" style="background:var(--cream);padding:1rem 5% 3.5rem">
+  <div style="max-width:880px;margin:0 auto">
+    <img src="images/shaking-flyer.webp" alt="From Shaking to Shaping — full course details: who this coaching experience is for and what we will cover" width="1620" height="2070" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 18px 50px rgba(36,46,66,.14)" />
+  </div>
+</section>
 
 <!-- ABOUT THE WORKSHOP -->
 <section class="section-cream">
