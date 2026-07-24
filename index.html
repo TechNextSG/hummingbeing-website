@@ -190,7 +190,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .ecb-header .section-subtitle { margin-top: .6rem; }
   .ecb-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1060px; margin: 0 auto; align-items: stretch; }
   .ecb-card { display: flex; flex-direction: column; background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 8px 30px rgba(36,46,66,.13); height: 100%; }
-  .ecb-card-thumb { line-height: 0; display: block; }
+  .ecb-card-thumb { line-height: 0; display: block; position: relative; }
+  .ecb-sold-badge { position:absolute; top:14px; left:14px; z-index:3; background:#c0392b; color:#fff; font-family:'Lato',sans-serif; font-size:.7rem; font-weight:900; letter-spacing:2px; text-transform:uppercase; padding:.42rem .95rem; border-radius:5px; box-shadow:0 6px 18px rgba(192,57,43,.45); }
+  .ecb-card.is-sold .ecb-card-thumb img { filter:grayscale(35%) brightness(.94); }
   .ecb-card-thumb img { width: 100%; height: auto; display: block; }
   .ecb-card-body { padding: 1.3rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
   .ecb-card .ecb-eyebrow { margin-bottom: .4rem; }
@@ -208,8 +210,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="section-subtitle">Two transformative in-person events in 2026 &mdash; Singapore this August and Bucharest this October.</p>
   </div>
   <div class="ecb-cards">
-    <div class="ecb-card">
-      <a href="event-selfcare-coaches-singapore.html" class="ecb-card-thumb" aria-label="Nervous System Regulation event">
+    <div class="ecb-card is-sold">
+      <a href="event-selfcare-coaches-singapore.html" class="ecb-card-thumb" aria-label="Nervous System Regulation event"><span class="ecb-sold-badge">Sold Out</span>
         <img src="images/event-nervous-system.webp?v=3" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" width="1920" height="1080" loading="lazy" decoding="async" />
       </a>
       <div class="ecb-card-body">
