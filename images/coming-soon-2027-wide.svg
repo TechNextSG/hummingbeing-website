@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="Global TRE Provider Certification — Coming Soon 2027, new Singapore cohort">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101624"/>
+      <stop offset="0.5" stop-color="#1a2336"/>
+      <stop offset="1" stop-color="#0d111c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="10%" r="65%">
+      <stop offset="0" stop-color="#F5A623" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#F5A623" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+  <rect x="56" y="56" width="1808" height="968" fill="none" stroke="#F5A623" stroke-opacity="0.5" stroke-width="3"/>
+  <text x="960" y="300" text-anchor="middle" fill="#F5A623" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="8">GLOBAL TRE® PROVIDER CERTIFICATION</text>
+  <text x="960" y="530" text-anchor="middle" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="104" font-style="italic" font-weight="700">Coming Soon</text>
+  <text x="960" y="800" text-anchor="middle" fill="#F5A623" font-family="Georgia, 'Times New Roman', serif" font-size="230" font-weight="700" letter-spacing="10">2027</text>
+  <text x="960" y="900" text-anchor="middle" fill="#ffffff" fill-opacity="0.85" font-family="Georgia, serif" font-size="34">New Singapore Cohort &#183; Registration Opening Soon</text>
+</svg>
