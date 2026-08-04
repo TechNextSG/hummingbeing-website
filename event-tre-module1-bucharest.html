@@ -48,7 +48,11 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
       "address": { "@type": "PostalAddress", "addressCountry": "RO", "addressLocality": "Bucharest" }
     },
     "organizer": { "@type": "Person", "name": "Isabelle Claus Teixeira", "url": "https://hummingbeing.com/isabelle.html" },
-    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" }
+    "offers": [
+      { "@type": "Offer", "name": "Super Early Bird (first 5)", "price": "739", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://hummingbeing.com/event-tre-module1-bucharest.html" },
+      { "@type": "Offer", "name": "Early Bird (next 5)", "price": "769", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://hummingbeing.com/event-tre-module1-bucharest.html" },
+      { "@type": "Offer", "name": "Full Price (final 10)", "price": "799", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://hummingbeing.com/event-tre-module1-bucharest.html" }
+    ]
   }
   </script>
   <style>
@@ -268,6 +272,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="evtl-pill"><i class="fa-solid fa-location-dot"></i> Bucharest, Rom&#226;nia</span>
         <span class="evtl-pill"><i class="fa-solid fa-award"></i> 21 ICF CCEUs</span>
         <span class="evtl-pill"><i class="fa-solid fa-language"></i> In English</span>
+        <span class="evtl-pill"><i class="fa-solid fa-tag"></i> From &#8364;739</span>
       </div>
       <div class="evtl-hero-actions">
         <a href="#register" class="btn btn-primary">Register &rarr;</a>
@@ -351,12 +356,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img src="images/logo-invata-zbori.webp" width="500" height="500" alt="Asociația Învață să Zbori (Learn to Fly)" loading="lazy" decoding="async" />
 </div>
 
+<!-- PRICING -->
+<style>
+  .bch-pricing { background: var(--navy-deep); padding: 4.5rem 5%; }
+  .bch-pricing .section-eyebrow { color: var(--gold); }
+  .bch-pricing .section-title { color: var(--white); }
+  .bch-pricing .section-subtitle { color: rgba(255,255,255,.65); }
+  .bch-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; max-width: 940px; margin: 2.5rem auto 0; }
+  .bch-price { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 2rem 1.6rem; display: flex; flex-direction: column; text-align: center; position: relative; }
+  .bch-price.featured { border-color: var(--gold); background: rgba(245,166,35,.08); }
+  .bch-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); font-family: 'Lato', sans-serif; font-size: .6rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: .3rem .9rem; border-radius: 100px; white-space: nowrap; }
+  .bch-tier { font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: .8rem; }
+  .bch-amt { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1; }
+  .bch-amt small { font-size: 1.2rem; vertical-align: super; margin-right: .1rem; }
+  .bch-per { font-size: .8rem; color: rgba(255,255,255,.6); display: block; margin-top: .4rem; }
+  .bch-qty { margin-top: 1.1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.12); font-size: .85rem; color: rgba(255,255,255,.85); font-weight: 700; }
+  .bch-qty span { display: block; font-size: .72rem; font-weight: 400; color: rgba(255,255,255,.5); margin-top: .2rem; }
+  @media (max-width: 720px) { .bch-price-grid { grid-template-columns: 1fr; max-width: 420px; } }
+</style>
+<section class="bch-pricing" id="pricing">
+  <div class="section-header-center">
+    <span class="section-eyebrow">Investment</span>
+    <h2 class="section-title">Pricing &amp; <em style="color:var(--gold)">Tickets</em></h2>
+    <p class="section-subtitle">Only 20 places available &#8212; priced in tiers that rise as tickets sell. All prices per person.</p>
+  </div>
+  <div class="bch-price-grid">
+    <div class="bch-price featured">
+      <span class="bch-badge">Best Price</span>
+      <span class="bch-tier">Super Early Bird</span>
+      <span class="bch-amt"><small>&#8364;</small>739</span>
+      <span class="bch-per">per person</span>
+      <div class="bch-qty">First 5 tickets<span>Limited &#8212; sells first</span></div>
+    </div>
+    <div class="bch-price">
+      <span class="bch-tier">Early Bird</span>
+      <span class="bch-amt"><small>&#8364;</small>769</span>
+      <span class="bch-per">per person</span>
+      <div class="bch-qty">Next 5 tickets<span>After Super Early Bird sells out</span></div>
+    </div>
+    <div class="bch-price">
+      <span class="bch-tier">Full Price</span>
+      <span class="bch-amt"><small>&#8364;</small>799</span>
+      <span class="bch-per">per person</span>
+      <div class="bch-qty">Final 10 tickets<span>Remaining places</span></div>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:1.8rem;font-size:.85rem;color:rgba(255,255,255,.55)">Secure the lowest tier by registering early &#8212; prices step up automatically as each block of tickets sells.</p>
+</section>
+
 <!-- REGISTER -->
 <section class="section-white" id="register">
   <div class="section-header-center">
     <span class="section-eyebrow">Registration</span>
     <h2 class="section-title">Secure Your <em>Place</em></h2>
-    <p class="section-subtitle">Places are limited. Contact Isabelle or Saymara to register and receive full pricing and logistics details.</p>
+    <p class="section-subtitle">Places are limited to 20. Register through Isabelle or Saymara to lock in your ticket at the current tier.</p>
   </div>
   <div class="evtl-reg-grid">
     <div style="background:var(--navy-deep);border-radius:12px;padding:2rem;color:var(--white);display:flex;flex-direction:column;gap:1rem">
@@ -372,7 +425,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="https://treromania.org/" target="_blank" rel="noopener" style="font-size:.8rem;color:rgba(255,255,255,.6);text-align:center;text-decoration:underline;text-underline-offset:3px">treromania.org</a>
     </div>
   </div>
-  <p style="text-align:center;margin-top:1.5rem;font-size:.85rem;color:var(--text-mid)">Single registration form and QR code will be provided on confirmation. Pricing details sent on enquiry.</p>
+  <p style="text-align:center;margin-top:1.5rem;font-size:.85rem;color:var(--text-mid)">Single registration form and QR code will be provided on confirmation.</p>
 </section>
 
 <!-- EVENT DETAILS FLYER -->
