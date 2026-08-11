@@ -145,6 +145,33 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .evt-reg-alt { font-size:.76rem; color:var(--text-mid); text-align:center; margin-top:12px; line-height:1.6; }
     .evt-reg-alt a { color:var(--gold-dark); }
 
+    /* UNIFIED BUTTON SYSTEM ------------------------------------- */
+    .evtd-btn { display:inline-flex; align-items:center; justify-content:center; gap:.45rem; font-family:'Lato',sans-serif; font-size:.86rem; font-weight:800; letter-spacing:.02em; line-height:1; padding:13px 26px; border-radius:8px; border:1.5px solid transparent; text-decoration:none; cursor:pointer; transition:background .2s, color .2s, border-color .2s, transform .15s, box-shadow .2s; }
+    .evtd-btn:hover { transform:translateY(-2px); }
+    .evtd-btn-gold { background:var(--gold); color:var(--navy); }
+    .evtd-btn-gold:hover { background:var(--gold-dark); color:#fff; box-shadow:0 10px 24px rgba(245,166,35,.34); }
+    .evtd-btn-ghost { background:rgba(255,255,255,.08); color:#fff; border-color:rgba(255,255,255,.55); }
+    .evtd-btn-ghost:hover { background:rgba(255,255,255,.16); border-color:#fff; box-shadow:0 8px 22px rgba(0,0,0,.22); }
+    .evtd-btn-ghost-dark { background:transparent; color:var(--navy); border-color:rgba(36,46,66,.35); }
+    .evtd-btn-ghost-dark:hover { background:var(--navy); color:#fff; border-color:var(--navy); box-shadow:0 8px 22px rgba(36,46,66,.2); }
+    .evtd-btn-sm { padding:10px 18px; font-size:.8rem; }
+    .evtd-btn-block { width:100%; box-sizing:border-box; }
+
+    /* TICKETS REMAINING METER ----------------------------------- */
+    .ticket-meter { margin:2px 0 15px; }
+    .ticket-meter-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; gap:10px; }
+    .ticket-left { font-family:'Lato',sans-serif; font-size:.8rem; font-weight:800; letter-spacing:.01em; display:inline-flex; align-items:center; gap:.4rem; }
+    .ticket-left i { font-size:.76rem; }
+    .ticket-total { font-size:.72rem; color:var(--text-mid); font-weight:600; white-space:nowrap; }
+    .ticket-track { height:7px; border-radius:50px; background:rgba(36,46,66,.1); overflow:hidden; }
+    .ticket-fill { display:block; height:100%; border-radius:50px; }
+    .ticket-meter.mid .ticket-left { color:var(--gold-dark); }
+    .ticket-meter.mid .ticket-fill { background:linear-gradient(90deg, var(--gold), var(--gold-dark)); }
+    .ticket-meter.low .ticket-left { color:#c0392b; }
+    .ticket-meter.low .ticket-fill { background:linear-gradient(90deg, #e74c3c, #c0392b); }
+    .reg-urgency { display:flex; align-items:center; gap:.45rem; font-family:'Lato',sans-serif; font-size:.8rem; font-weight:700; color:#c0392b; margin:0 0 14px; line-height:1.4; }
+    .reg-urgency i { color:#e74c3c; }
+
     /* RESPONSIVE ------------------------------------------------- */
     @media (max-width:980px) {
       .evt-layout { grid-template-columns:1fr; gap:36px; padding:48px 0 60px; }
@@ -251,9 +278,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1>From Shaking to <em>Shaping</em></h1>
       <p class="evt-hero-sub">Experience how TRE&#8482; (Tension &amp; Trauma Releasing Exercises) can be used in a coaching context &#8212; co-facilitated by Isabelle Claus Teixeira, Global TRE&#174; Certifying Trainer, and Saymara Ryon, President of Asocia&#539;ia TRE&#174; Rom&#226;nia. One online session and two in Bucharest.</p>
       <div class="evt-hero-ctas">
-        <a class="btn btn-primary" href="#sessions">Buy Tickets &rarr;</a>
-        <a class="btn btn-outline" href="#register">Ask a Question</a>
-        <a class="btn btn-outline" href="events.html">All Events</a>
+        <a class="evtd-btn evtd-btn-gold" href="#sessions">Buy Tickets &rarr;</a>
+        <a class="evtd-btn evtd-btn-ghost" href="#register">Ask a Question</a>
+        <a class="evtd-btn evtd-btn-ghost" href="events.html">All Events</a>
       </div>
     </div>
   </div>
@@ -280,7 +307,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <strong>Joining the online session? Prepare your space first.</strong>
         <span>Camera positioning, what to bring, lighting, dress code and joining on Zoom &#8212; everything to set up before your online TRE&#174; session.</span>
       </div>
-      <a class="btn btn-primary" href="online-session-preparation.html">Preparation Guide &rarr;</a>
+      <a class="evtd-btn evtd-btn-gold" href="online-session-preparation.html">Preparation Guide &rarr;</a>
     </div>
   </div>
 </div>
@@ -322,7 +349,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="session-when"><i class="fa-regular fa-calendar"></i>3 September 2026 &middot; 10:00&#8211;13:00 EET</p>
               <div class="session-price">&#8364;89 <small>per participant</small></div>
               <p class="session-note"><i class="fa-solid fa-gift"></i>Free if you register for TRE&#8482; Module 1 (Oct 15&#8211;17 2026) or full TRE&#8482; certification on the same cohort.</p>
-              <a class="session-buy" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
+              <div class="ticket-meter mid">
+                <div class="ticket-meter-top"><span class="ticket-left"><i class="fa-solid fa-ticket"></i>11 tickets left</span><span class="ticket-total">of 20</span></div>
+                <div class="ticket-track"><span class="ticket-fill" style="width:45%"></span></div>
+              </div>
+              <a class="evtd-btn evtd-btn-gold evtd-btn-sm" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
             </div>
           </div>
 
@@ -333,7 +364,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="session-when"><i class="fa-regular fa-calendar"></i>20 October 2026 &middot; 19:00&#8211;22:00 EET &middot; Bucharest, Rom&#226;nia</p>
               <div class="session-price">&#8364;97 <small>per participant</small></div>
               <p class="session-note"><i class="fa-solid fa-gift"></i>Free if you register for TRE&#8482; Module 1 (March 2027 cohort) or full TRE&#8482; certification on the same cohort.</p>
-              <a class="session-buy" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context-35.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
+              <div class="ticket-meter low">
+                <div class="ticket-meter-top"><span class="ticket-left"><i class="fa-solid fa-fire"></i>Only 5 tickets left</span><span class="ticket-total">of 16</span></div>
+                <div class="ticket-track"><span class="ticket-fill" style="width:69%"></span></div>
+              </div>
+              <a class="evtd-btn evtd-btn-gold evtd-btn-sm" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context-35.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
             </div>
           </div>
 
@@ -344,7 +379,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="session-when"><i class="fa-regular fa-calendar"></i>24 October 2026 &middot; 14:30&#8211;17:30 EET &middot; Bucharest, Rom&#226;nia</p>
               <div class="session-price">&#8364;97 <small>per participant</small></div>
               <p class="session-note"><i class="fa-solid fa-gift"></i>Free if you register for TRE&#8482; Module 1 (March 2027 cohort) or full TRE&#8482; certification on the same cohort.</p>
-              <a class="session-buy" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context-35.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
+              <div class="ticket-meter mid">
+                <div class="ticket-meter-top"><span class="ticket-left"><i class="fa-solid fa-ticket"></i>8 tickets left</span><span class="ticket-total">of 16</span></div>
+                <div class="ticket-track"><span class="ticket-fill" style="width:50%"></span></div>
+              </div>
+              <a class="evtd-btn evtd-btn-gold evtd-btn-sm" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context-35.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
             </div>
           </div>
 
@@ -410,6 +449,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="evt-reg-body">
           <a class="evt-reg-buy" href="#sessions">Buy Tickets &rarr;</a>
+          <p class="reg-urgency"><i class="fa-solid fa-fire"></i> Selling fast &mdash; only 24 seats left across all three sessions.</p>
           <div class="evt-reg-or">or ask a question</div>
           <form class="evt-reg-form" id="evt-reg-form" onsubmit="submitReg(event)">
             <input type="hidden" name="source" value="HummingBeing Event — From Shaking to Shaping (test)" />
@@ -443,8 +483,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="cta-banner">
   <h2>Bring TRE&#8482; Into Your Coaching</h2>
   <p>One half-day intensive &#8212; online or in Bucharest, with two certified TRE&#174; practitioners.</p>
-  <a href="#sessions" class="btn btn-primary">Buy Tickets</a>
-  <a href="events.html" class="btn btn-outline">View All Events</a>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:1.6rem">
+    <a href="#sessions" class="evtd-btn evtd-btn-gold">Buy Tickets</a>
+    <a href="events.html" class="evtd-btn evtd-btn-ghost-dark">View All Events</a>
+  </div>
 </div>
 
 <footer>
