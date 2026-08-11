@@ -27,138 +27,79 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
 
   <style>
     /* ============================================================
-       EVENT DETAIL LAYOUT  (BHD-Asia style, HummingBeing brand)
-       Local classes prefixed evtd-* / evt-* so they never collide
-       with styles.css. Accent = --gold, dark = --navy.
+       EVENT DETAIL LAYOUT — HummingBeing design language.
+       Reuses HB components (.section-eyebrow/.section-title,
+       .session-card, .facilitator-card, .btn) + a sticky side form.
        ============================================================ */
-    :root { --evtd-mid:#2b3550; --evtd-line:rgba(36,46,66,.12); }
     .evtd-container { max-width:1180px; margin:0 auto; padding:0 5%; }
 
-    /* HERO ------------------------------------------------------- */
-    .evt-hero { position:relative; min-height:500px; display:flex; align-items:flex-end; overflow:hidden; margin-top:76px; }
-    .evt-hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
-    .evt-hero-overlay { position:absolute; inset:0; background:linear-gradient(160deg, rgba(26,32,48,.78) 0%, rgba(36,46,66,.48) 100%); }
-    .evt-hero-inner { position:relative; z-index:2; padding:64px 0 54px; width:100%; }
-    .evt-hero-top { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
-    .evt-badge { font-family:'Lato',sans-serif; font-size:10px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:6px 14px; border-radius:50px; }
-    .evt-badge-loc { background:var(--gold); color:var(--navy); }
-    .evt-badge-type { background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.3); }
-    .evt-hero h1 { font-family:'Playfair Display',Georgia,serif; font-size:clamp(2.3rem,5vw,3.6rem); font-weight:800; color:#fff; line-height:1.1; max-width:720px; margin-bottom:16px; letter-spacing:-.01em; }
+    /* HERO (HB style: dark, gold radial glow, serif headline) ---- */
+    .evt-hero { position:relative; min-height:560px; display:flex; align-items:flex-end; overflow:hidden; margin-top:76px; isolation:isolate; }
+    .evt-hero-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0; }
+    .evt-hero-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(135deg, rgba(26,32,48,.84) 0%, rgba(36,46,66,.5) 100%); }
+    .evt-hero::before { content:''; position:absolute; inset:0; z-index:2; background:radial-gradient(circle at 22% 0%, rgba(245,166,35,.20) 0%, transparent 58%); pointer-events:none; }
+    .evt-hero-inner { position:relative; z-index:3; padding:64px 0 56px; width:100%; }
+    .evtl-eyebrow { font-family:'Lato',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:3.5px; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; display:block; }
+    .evt-hero h1 { font-family:'Playfair Display',Georgia,serif; font-size:clamp(2.6rem,5.5vw,4.4rem); font-weight:800; color:#fff; line-height:1.06; max-width:760px; margin-bottom:1.2rem; letter-spacing:-.01em; }
     .evt-hero h1 em { font-style:italic; color:var(--gold); }
-    .evt-hero-sub { font-size:1.02rem; color:rgba(255,255,255,.8); max-width:600px; line-height:1.75; margin-bottom:28px; }
-    .evt-hero-ctas { display:flex; gap:12px; flex-wrap:wrap; }
+    .evtl-tagline { font-size:1.08rem; color:rgba(255,255,255,.88); max-width:600px; margin:0 0 2rem; line-height:1.72; }
+    .evtl-meta-pills { display:flex; flex-wrap:wrap; gap:.65rem; margin-bottom:2.2rem; }
+    .evtl-pill { background:rgba(245,166,35,.15); border:1px solid rgba(245,166,35,.38); color:rgba(255,255,255,.92); font-family:'Lato',sans-serif; font-size:.76rem; font-weight:600; letter-spacing:.6px; padding:.42rem 1rem; border-radius:50px; }
+    .evtl-pill i { color:var(--gold); margin-right:.35rem; }
+    .evtl-hero-actions { display:flex; gap:1rem; flex-wrap:wrap; }
 
-    /* FACTS BAR -------------------------------------------------- */
-    .evt-facts { background:var(--navy); padding:22px 0; }
+    /* QUICK FACTS BAND ------------------------------------------ */
+    .evt-facts { background:var(--navy); border-top:1px solid rgba(245,166,35,.3); padding:1.5rem 0; }
     .evt-facts-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
-    .evt-fact { padding:2px 24px; border-right:1px solid rgba(255,255,255,.12); text-align:center; }
+    .evt-fact { padding:.2rem 1.5rem; border-right:1px solid rgba(255,255,255,.12); text-align:center; }
     .evt-fact:last-child { border-right:none; }
-    .evt-fact-label { font-family:'Lato',sans-serif; font-size:10px; color:rgba(255,255,255,.5); text-transform:uppercase; letter-spacing:.1em; font-weight:700; display:block; margin-bottom:5px; }
-    .evt-fact-val { font-family:'Lato',sans-serif; font-size:15px; font-weight:700; color:#fff; display:block; line-height:1.3; }
+    .evt-fact-label { font-family:'Lato',sans-serif; font-size:.64rem; color:var(--gold); text-transform:uppercase; letter-spacing:2px; font-weight:700; display:block; margin-bottom:.4rem; }
+    .evt-fact-val { font-family:'Lato',sans-serif; font-size:.95rem; font-weight:700; color:#fff; display:block; line-height:1.3; }
 
-    /* ONLINE PREP STRIP ----------------------------------------- */
-    .online-prep-strip { background:var(--evtd-mid); padding:26px 0; }
-    .online-prep-strip .ops-inner { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
-    .online-prep-strip .ops-ico { width:46px; height:46px; border-radius:50%; background:rgba(245,166,35,.18); color:var(--gold); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem; }
-    .online-prep-strip .ops-text { flex:1; min-width:260px; }
-    .online-prep-strip .ops-text strong { display:block; font-family:'PT Serif',Georgia,serif; font-size:1.06rem; font-weight:700; color:#fff; margin-bottom:3px; }
-    .online-prep-strip .ops-text span { font-size:.86rem; line-height:1.65; color:rgba(255,255,255,.72); }
+    /* ONLINE PREP STRIP (HB) ------------------------------------ */
+    .online-prep-strip { background:var(--navy-deep); border-bottom:1px solid rgba(245,166,35,.28); padding:1.7rem 0; }
+    .online-prep-strip .ops-inner { display:flex; align-items:center; gap:1.3rem; flex-wrap:wrap; }
+    .online-prep-strip .ops-ico { width:46px; height:46px; border-radius:50%; background:rgba(245,166,35,.16); color:var(--gold); display:flex; align-items:center; justify-content:center; font-size:1.15rem; flex-shrink:0; }
+    .online-prep-strip .ops-text { flex:1; min-width:250px; }
+    .online-prep-strip .ops-text strong { display:block; font-family:'PT Serif',Georgia,serif; font-size:1.06rem; color:#fff; margin-bottom:.22rem; }
+    .online-prep-strip .ops-text span { font-size:.88rem; line-height:1.62; color:rgba(255,255,255,.72); }
 
-    /* TWO-COLUMN LAYOUT ----------------------------------------- */
-    .evt-layout { display:grid; grid-template-columns:1fr 380px; gap:48px; padding:64px 0 80px; align-items:start; }
+    /* TWO-COLUMN BODY ------------------------------------------- */
+    .evt-layout { display:grid; grid-template-columns:1fr 380px; gap:48px; padding:60px 0 80px; align-items:start; }
     .evt-main { min-width:0; }
     .evt-sidebar { position:sticky; top:92px; }
-    .evt-section { margin-bottom:48px; }
+    .evt-section { margin-bottom:56px; }
     .evt-section:last-child { margin-bottom:0; }
-    .evt-section-label { font-family:'Lato',sans-serif; font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-dark); display:block; margin-bottom:8px; }
-    .evt-section h2 { font-family:'Playfair Display',Georgia,serif; font-size:1.65rem; font-weight:800; color:var(--navy); margin-bottom:16px; letter-spacing:-.01em; line-height:1.2; }
-    .evt-section h2 em { font-style:italic; color:var(--gold-dark); }
-    .evt-section p { font-size:.98rem; color:var(--body-text); line-height:1.85; margin-bottom:14px; }
+    /* HB section headers, tuned to fit the narrower content column */
+    .evt-section .section-title { font-size:clamp(1.7rem,3.2vw,2.3rem); margin-bottom:1rem; }
+    .evt-section .section-eyebrow { margin-bottom:.6rem; }
+    .evt-section p { font-size:.99rem; color:var(--body-text); line-height:1.85; margin-bottom:1rem; }
     .evt-section p a { color:var(--gold-dark); font-weight:600; }
+    .evt-lead { font-size:1rem; color:var(--body-text); line-height:1.8; margin-bottom:.4rem; }
 
     /* WHO IT'S FOR LIST ----------------------------------------- */
-    .evt-for-list { list-style:none; padding:0; margin:16px 0 0; }
-    .evt-for-list li { padding:11px 0; border-bottom:1px solid var(--evtd-line); font-size:.95rem; color:var(--body-text); display:flex; align-items:flex-start; gap:12px; line-height:1.55; }
-    .evt-for-list li::before { content:'\2192'; color:var(--gold-dark); font-weight:700; flex-shrink:0; }
+    .evt-for-list { list-style:none; padding:0; margin:14px 0 0; }
+    .evt-for-list li { padding:12px 0; border-bottom:1px solid rgba(36,46,66,.1); font-size:.96rem; color:var(--body-text); display:flex; align-items:flex-start; gap:12px; line-height:1.55; }
+    .evt-for-list li::before { content:'\2192'; color:var(--gold); font-weight:800; flex-shrink:0; }
 
-    /* SESSION CARDS --------------------------------------------- */
-    .session-cards { display:flex; flex-direction:column; gap:16px; margin-top:20px; }
-    .session-card { border:1.5px solid var(--evtd-line); border-radius:12px; padding:22px; display:flex; gap:20px; align-items:flex-start; transition:border-color .2s, box-shadow .2s; }
-    .session-card:hover { border-color:var(--gold); box-shadow:0 6px 20px rgba(245,166,35,.12); }
-    .session-tag { flex-shrink:0; background:var(--navy); color:#fff; font-family:'Lato',sans-serif; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.1em; padding:8px 12px; border-radius:8px; white-space:nowrap; text-align:center; line-height:1.4; min-width:92px; }
-    .session-tag small { display:block; font-size:9px; opacity:.7; font-weight:600; letter-spacing:.06em; margin-top:3px; }
-    .session-content { flex:1; min-width:0; }
-    .session-content strong { display:block; font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:4px; }
-    .session-content .session-when { font-size:.9rem; color:var(--body-text); line-height:1.6; margin:0 0 8px; }
-    .session-content .session-when i { color:var(--gold-dark); margin-right:.4rem; }
-    .session-price { font-family:'Lato',sans-serif; font-size:1.4rem; font-weight:800; color:var(--gold-dark); margin-bottom:6px; }
-    .session-price small { font-size:.78rem; font-weight:400; color:var(--text-mid); }
-    .session-note { font-size:.8rem; color:var(--text-mid); line-height:1.55; font-style:italic; margin:0 0 14px; }
-    .session-note i { color:var(--gold); margin-right:.3rem; font-style:normal; }
-    .session-buy { display:inline-flex; align-items:center; gap:.4rem; background:var(--gold); color:var(--navy); font-family:'Lato',sans-serif; font-size:.82rem; font-weight:800; letter-spacing:.02em; padding:9px 18px; border-radius:6px; text-decoration:none; transition:background .2s, transform .15s; }
-    .session-buy:hover { background:var(--gold-dark); color:#fff; transform:translateY(-1px); }
-
-    /* FACILITATORS ---------------------------------------------- */
-    .facilitator-card { display:flex; gap:22px; align-items:flex-start; background:#fff; border-radius:12px; padding:24px; box-shadow:0 2px 12px rgba(36,46,66,.07); border-left:4px solid var(--gold); margin-bottom:16px; }
-    .facilitator-card:last-child { margin-bottom:0; }
-    .fac-photo { width:90px; height:90px; border-radius:50%; object-fit:cover; object-position:center top; flex-shrink:0; }
-    .fac-body h4 { font-family:'Playfair Display',Georgia,serif; font-size:1.15rem; font-weight:700; color:var(--navy); margin-bottom:4px; }
-    .fac-body .fac-role { font-family:'Lato',sans-serif; font-size:.72rem; color:var(--gold-dark); font-weight:700; text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px; display:block; }
-    .fac-body p { font-size:.9rem; color:var(--body-text); line-height:1.75; margin-bottom:10px; }
-    .fac-links { display:flex; gap:12px; flex-wrap:wrap; }
-    .fac-links a { font-family:'Lato',sans-serif; font-size:.8rem; color:var(--gold-dark); font-weight:700; text-decoration:none; }
-    .fac-links a:hover { text-decoration:underline; }
-
-    /* RELATED EVENTS -------------------------------------------- */
-    .related-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:20px; }
-    .rel-card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 2px 12px rgba(36,46,66,.08); transition:transform .25s, box-shadow .25s; text-decoration:none; display:block; }
-    .rel-card:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(36,46,66,.14); }
-    .rel-img { height:120px; overflow:hidden; background:var(--navy); }
-    .rel-img img { width:100%; height:100%; object-fit:cover; display:block; }
-    .rel-body { padding:13px 15px; }
-    .rel-body strong { font-size:.9rem; color:var(--navy); display:block; margin-bottom:4px; line-height:1.35; }
-    .rel-body span { font-size:.78rem; color:var(--text-mid); }
-
-    /* REGISTRATION SIDEBAR CARD --------------------------------- */
-    .evt-reg-card { background:#fff; border-radius:14px; box-shadow:0 6px 28px rgba(36,46,66,.12); overflow:hidden; }
-    .evt-reg-head { background:var(--navy); padding:22px 24px; }
-    .evt-reg-head h3 { font-family:'Playfair Display',Georgia,serif; color:#fff; font-size:1.25rem; font-weight:700; margin-bottom:5px; }
-    .evt-reg-head p { color:rgba(255,255,255,.62); font-size:.84rem; margin:0; line-height:1.55; }
-    .evt-reg-body { padding:22px 24px; }
-    .evt-reg-buy { display:flex; align-items:center; justify-content:center; gap:.4rem; width:100%; padding:13px; background:var(--gold); color:var(--navy); border-radius:8px; font-family:'Lato',sans-serif; font-size:.92rem; font-weight:800; text-decoration:none; margin-bottom:16px; transition:background .2s, transform .15s; box-sizing:border-box; }
-    .evt-reg-buy:hover { background:var(--gold-dark); color:#fff; transform:translateY(-1px); }
-    .evt-reg-or { text-align:center; font-family:'Lato',sans-serif; font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-mid); margin:0 0 16px; position:relative; }
-    .evt-reg-or::before, .evt-reg-or::after { content:''; position:absolute; top:50%; width:32%; height:1px; background:var(--evtd-line); }
-    .evt-reg-or::before { left:0; } .evt-reg-or::after { right:0; }
-    .evt-reg-form { display:flex; flex-direction:column; gap:12px; }
-    .evt-reg-form input, .evt-reg-form select, .evt-reg-form textarea { width:100%; padding:11px 14px; border:1.5px solid var(--evtd-line); border-radius:8px; font-size:.9rem; font-family:'Lato',sans-serif; color:var(--navy); background:#fff; box-sizing:border-box; transition:border-color .2s; }
-    .evt-reg-form input:focus, .evt-reg-form select:focus, .evt-reg-form textarea:focus { outline:none; border-color:var(--gold); }
-    .evt-reg-form textarea { resize:vertical; min-height:76px; }
-    .evt-reg-form button { width:100%; padding:13px; background:var(--navy); color:#fff; border:none; border-radius:8px; font-size:.92rem; font-weight:700; font-family:'Lato',sans-serif; cursor:pointer; transition:background .2s, transform .15s; }
-    .evt-reg-form button:hover { background:var(--evtd-mid); transform:translateY(-1px); }
-    .evt-reg-form button:disabled { opacity:.6; cursor:not-allowed; transform:none; }
-    .reg-success-box { text-align:center; padding:30px 20px; }
-    .reg-success-box i { font-size:2.6rem; color:var(--gold); margin-bottom:12px; }
-    .reg-success-box h4 { font-family:'Playfair Display',Georgia,serif; font-size:1.2rem; color:var(--navy); margin-bottom:8px; }
-    .reg-success-box p { font-size:.86rem; color:var(--body-text); line-height:1.7; margin:0; }
-    .evt-refund-note { margin-top:14px; padding:10px 14px; background:rgba(192,57,43,.08); border-left:3px solid #c0392b; font-size:.76rem; font-weight:700; color:#7a2e24; line-height:1.6; border-radius:0 6px 6px 0; }
-    .evt-reg-alt { font-size:.76rem; color:var(--text-mid); text-align:center; margin-top:12px; line-height:1.6; }
-    .evt-reg-alt a { color:var(--gold-dark); }
-
-    /* UNIFIED BUTTON SYSTEM ------------------------------------- */
-    .evtd-btn { display:inline-flex; align-items:center; justify-content:center; gap:.45rem; font-family:'Lato',sans-serif; font-size:.86rem; font-weight:800; letter-spacing:.02em; line-height:1; padding:13px 26px; border-radius:8px; border:1.5px solid transparent; text-decoration:none; cursor:pointer; transition:background .2s, color .2s, border-color .2s, transform .15s, box-shadow .2s; }
-    .evtd-btn:hover { transform:translateY(-2px); }
-    .evtd-btn-gold { background:var(--gold); color:var(--navy); }
-    .evtd-btn-gold:hover { background:var(--gold-dark); color:#fff; box-shadow:0 10px 24px rgba(245,166,35,.34); }
-    .evtd-btn-ghost { background:rgba(255,255,255,.08); color:#fff; border-color:rgba(255,255,255,.55); }
-    .evtd-btn-ghost:hover { background:rgba(255,255,255,.16); border-color:#fff; box-shadow:0 8px 22px rgba(0,0,0,.22); }
-    .evtd-btn-ghost-dark { background:transparent; color:var(--navy); border-color:rgba(36,46,66,.35); }
-    .evtd-btn-ghost-dark:hover { background:var(--navy); color:#fff; border-color:var(--navy); box-shadow:0 8px 22px rgba(36,46,66,.2); }
-    .evtd-btn-sm { padding:10px 18px; font-size:.8rem; }
-    .evtd-btn-block { width:100%; box-sizing:border-box; }
+    /* SESSION CARDS (HB vertical style) ------------------------- */
+    .sessions-grid { display:grid; grid-template-columns:1fr; gap:1.4rem; margin-top:1.6rem; }
+    .session-card { background:var(--white); border:1.5px solid rgba(36,46,66,.1); border-radius:14px; padding:1.8rem 1.7rem; display:flex; flex-direction:column; gap:.9rem; box-shadow:0 4px 20px rgba(36,46,66,.06); transition:box-shadow .25s, transform .25s; }
+    .session-card:hover { box-shadow:0 10px 34px rgba(36,46,66,.12); transform:translateY(-3px); }
+    .session-type-pill { display:inline-flex; align-items:center; gap:.4rem; font-family:'Lato',sans-serif; font-size:.7rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:.35rem .9rem; border-radius:50px; width:fit-content; }
+    .pill-online { background:rgba(37,211,102,.12); color:#1a9e4e; }
+    .pill-inperson { background:rgba(245,166,35,.15); color:var(--gold-dark); }
+    .session-card h3 { font-family:'Playfair Display',Georgia,serif; font-size:1.25rem; margin:0; line-height:1.25; color:var(--navy); }
+    .session-date { font-size:.9rem; color:var(--body-text); display:flex; align-items:flex-start; gap:.55rem; line-height:1.5; }
+    .session-date i { color:var(--gold); margin-top:.15rem; flex-shrink:0; }
+    .session-price { font-family:'Lato',sans-serif; font-size:1.7rem; font-weight:900; color:var(--navy); display:flex; align-items:baseline; gap:.4rem; }
+    .session-price small { font-size:.8rem; font-weight:400; color:var(--text-mid); }
+    .session-free-note { font-size:.82rem; color:var(--text-mid); line-height:1.55; font-style:italic; margin:0; }
+    .session-free-note i { color:var(--gold); margin-right:.3rem; font-style:normal; }
+    .session-card .btn { width:100%; text-align:center; display:block; margin-top:.3rem; }
 
     /* TICKETS REMAINING METER ----------------------------------- */
-    .ticket-meter { margin:2px 0 15px; }
+    .ticket-meter { margin:0; }
     .ticket-meter-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; gap:10px; }
     .ticket-left { font-family:'Lato',sans-serif; font-size:.8rem; font-weight:800; letter-spacing:.01em; display:inline-flex; align-items:center; gap:.4rem; }
     .ticket-left i { font-size:.76rem; }
@@ -169,23 +110,64 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ticket-meter.mid .ticket-fill { background:linear-gradient(90deg, var(--gold), var(--gold-dark)); }
     .ticket-meter.low .ticket-left { color:#c0392b; }
     .ticket-meter.low .ticket-fill { background:linear-gradient(90deg, #e74c3c, #c0392b); }
-    .reg-urgency { display:flex; align-items:center; gap:.45rem; font-family:'Lato',sans-serif; font-size:.8rem; font-weight:700; color:#c0392b; margin:0 0 14px; line-height:1.4; }
+
+    /* FACILITATORS (HB dark cards) ------------------------------ */
+    .facilitators-grid { display:grid; grid-template-columns:1fr; gap:1.6rem; margin-top:1.6rem; }
+    .facilitator-card { background:var(--navy-deep); color:var(--white); border-radius:14px; padding:2rem; display:flex; flex-direction:column; gap:.9rem; }
+    .facilitator-photo { width:104px; height:104px; border-radius:50%; object-fit:cover; object-position:center 22%; border:3px solid rgba(245,166,35,.55); }
+    .facilitator-role { font-family:'Lato',sans-serif; font-size:.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); }
+    .facilitator-name { font-family:'Playfair Display',Georgia,serif; font-size:1.45rem; font-weight:700; line-height:1.25; color:#fff; }
+    .facilitator-bio { font-size:.9rem; line-height:1.7; color:rgba(255,255,255,.82); }
+    .facilitator-links { display:flex; gap:.75rem; flex-wrap:wrap; }
+    .facilitator-link { font-size:.8rem; font-family:'Lato',sans-serif; font-weight:600; color:var(--gold); text-decoration:none; border:1px solid rgba(245,166,35,.4); padding:.32rem .8rem; border-radius:4px; transition:background .2s; }
+    .facilitator-link:hover { background:rgba(245,166,35,.15); }
+
+    /* RELATED EVENTS -------------------------------------------- */
+    .related-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:1.6rem; }
+    .rel-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 12px rgba(36,46,66,.08); transition:transform .25s, box-shadow .25s; text-decoration:none; display:block; }
+    .rel-card:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(36,46,66,.14); }
+    .rel-img { height:120px; overflow:hidden; background:var(--navy); }
+    .rel-img img { width:100%; height:100%; object-fit:cover; display:block; }
+    .rel-body { padding:13px 15px; }
+    .rel-body strong { font-family:'Playfair Display',Georgia,serif; font-size:.98rem; color:var(--navy); display:block; margin-bottom:4px; line-height:1.3; }
+    .rel-body span { font-size:.78rem; color:var(--text-mid); }
+
+    /* SIDEBAR RESERVE FORM -------------------------------------- */
+    .evt-reg-card { background:#fff; border-radius:16px; box-shadow:0 6px 30px rgba(36,46,66,.13); overflow:hidden; border:1px solid rgba(36,46,66,.06); }
+    .evt-reg-head { background:var(--navy-deep); padding:1.5rem 1.6rem; }
+    .evt-reg-head h3 { font-family:'Playfair Display',Georgia,serif; color:#fff; font-size:1.4rem; font-weight:700; margin-bottom:.35rem; }
+    .evt-reg-head p { color:rgba(255,255,255,.65); font-size:.85rem; margin:0; line-height:1.55; }
+    .evt-reg-body { padding:1.5rem 1.6rem; }
+    .evt-reg-body .btn.evt-reg-buy { width:100%; text-align:center; display:block; margin-bottom:.9rem; }
+    .reg-urgency { display:flex; align-items:center; gap:.45rem; font-family:'Lato',sans-serif; font-size:.8rem; font-weight:700; color:#c0392b; margin:0 0 16px; line-height:1.4; }
     .reg-urgency i { color:#e74c3c; }
+    .evt-reg-or { text-align:center; font-family:'Lato',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-mid); margin:0 0 16px; position:relative; }
+    .evt-reg-or::before, .evt-reg-or::after { content:''; position:absolute; top:50%; width:30%; height:1px; background:rgba(36,46,66,.12); }
+    .evt-reg-or::before { left:0; } .evt-reg-or::after { right:0; }
+    .evt-reg-form { display:flex; flex-direction:column; gap:.8rem; }
+    .evt-reg-form input, .evt-reg-form select, .evt-reg-form textarea { width:100%; padding:.72rem .9rem; border:1.5px solid rgba(36,46,66,.14); border-radius:8px; font-size:.9rem; font-family:'Lato',sans-serif; color:var(--navy); background:#fff; box-sizing:border-box; transition:border-color .2s; }
+    .evt-reg-form input:focus, .evt-reg-form select:focus, .evt-reg-form textarea:focus { outline:none; border-color:var(--gold); }
+    .evt-reg-form textarea { resize:vertical; min-height:76px; }
+    .evt-reg-form .btn { width:100%; text-align:center; display:block; }
+    .reg-success-box { text-align:center; padding:28px 18px; }
+    .reg-success-box i { font-size:2.6rem; color:var(--gold); margin-bottom:12px; }
+    .reg-success-box h4 { font-family:'Playfair Display',Georgia,serif; font-size:1.2rem; color:var(--navy); margin-bottom:8px; }
+    .reg-success-box p { font-size:.86rem; color:var(--body-text); line-height:1.7; margin:0; }
+    .evt-refund-note { margin-top:14px; padding:10px 14px; background:rgba(192,57,43,.08); border-left:3px solid #c0392b; font-size:.76rem; font-weight:700; color:#7a2e24; line-height:1.6; border-radius:0 6px 6px 0; }
+    .evt-reg-alt { font-size:.76rem; color:var(--text-mid); text-align:center; margin-top:12px; line-height:1.6; }
+    .evt-reg-alt a { color:var(--gold-dark); }
 
     /* RESPONSIVE ------------------------------------------------- */
     @media (max-width:980px) {
-      .evt-layout { grid-template-columns:1fr; gap:36px; padding:48px 0 60px; }
-      .evt-sidebar { position:static; }
-      .evt-facts-grid { grid-template-columns:repeat(2,1fr); gap:18px; }
+      .evt-layout { grid-template-columns:1fr; gap:2.6rem; padding:2.6rem 0 3.4rem; }
+      .evt-sidebar { position:static; order:-1; }   /* form shows FIRST on mobile */
+      .evt-main { order:1; }
+      .evt-facts-grid { grid-template-columns:repeat(2,1fr); gap:1.4rem 0; }
       .evt-fact { border-right:none; }
-      .related-grid { grid-template-columns:1fr 1fr; }
     }
     @media (max-width:600px) {
       .evt-hero { min-height:auto; }
       .related-grid { grid-template-columns:1fr; }
-      .facilitator-card { flex-direction:column; }
-      .session-card { flex-direction:column; }
-      .session-tag { min-width:0; align-self:flex-start; }
     }
   </style>
 
@@ -270,23 +252,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="evt-hero-overlay"></div>
   <div class="evt-hero-inner">
     <div class="evtd-container">
-      <div class="evt-hero-top">
-        <span class="evt-badge evt-badge-loc">Romania 2026</span>
-        <span class="evt-badge evt-badge-type">Use of TRE&#8482; in a Coaching Context</span>
-        <span class="evt-badge evt-badge-type">Online + In-Person &middot; Sep&#8211;Oct</span>
-      </div>
+      <span class="evtl-eyebrow"><i class="fa-solid fa-star"></i> TRE&#8482; Workshop &middot; Romania 2026</span>
       <h1>From Shaking to <em>Shaping</em></h1>
-      <p class="evt-hero-sub">Experience how TRE&#8482; (Tension &amp; Trauma Releasing Exercises) can be used in a coaching context &#8212; co-facilitated by Isabelle Claus Teixeira, Global TRE&#174; Certifying Trainer, and Saymara Ryon, President of Asocia&#539;ia TRE&#174; Rom&#226;nia. One online session and two in Bucharest.</p>
-      <div class="evt-hero-ctas">
-        <a class="evtd-btn evtd-btn-gold" href="#sessions">Buy Tickets &rarr;</a>
-        <a class="evtd-btn evtd-btn-ghost" href="#register">Ask a Question</a>
-        <a class="evtd-btn evtd-btn-ghost" href="events.html">All Events</a>
+      <p class="evtl-tagline">Use of TRE&#8482; in a coaching context &#8212; a half-day intensive exploring how neurogenic tremoring can deepen your somatic presence, prevent burnout and transform the way you work with clients.</p>
+      <div class="evtl-meta-pills">
+        <span class="evtl-pill"><i class="fa-solid fa-globe"></i> Online &middot; 3 Sep &middot; &#8364;89</span>
+        <span class="evtl-pill"><i class="fa-solid fa-location-dot"></i> Bucharest &middot; 20 Oct &middot; &#8364;97</span>
+        <span class="evtl-pill"><i class="fa-solid fa-location-dot"></i> Bucharest &middot; 24 Oct &middot; &#8364;97</span>
+      </div>
+      <div class="evtl-hero-actions">
+        <a class="btn btn-primary" href="#sessions">Buy Tickets &rarr;</a>
+        <a class="btn btn-outline" href="#reserve">Ask a Question</a>
+        <a class="btn btn-outline" href="events.html">All Events</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FACTS BAR -->
+<!-- QUICK FACTS -->
 <div class="evt-facts">
   <div class="evtd-container">
     <div class="evt-facts-grid">
@@ -298,7 +281,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- ONLINE SESSION PREP STRIP -->
+<!-- ONLINE PREP STRIP -->
 <div class="online-prep-strip">
   <div class="evtd-container">
     <div class="ops-inner">
@@ -307,7 +290,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <strong>Joining the online session? Prepare your space first.</strong>
         <span>Camera positioning, what to bring, lighting, dress code and joining on Zoom &#8212; everything to set up before your online TRE&#174; session.</span>
       </div>
-      <a class="evtd-btn evtd-btn-gold" href="online-session-preparation.html">Preparation Guide &rarr;</a>
+      <a class="btn btn-primary" href="online-session-preparation.html">Preparation Guide &rarr;</a>
     </div>
   </div>
 </div>
@@ -318,16 +301,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="evt-main">
 
       <div class="evt-section">
-        <span class="evt-section-label">About This Workshop</span>
-        <h2>TRE&#8482; in a <em>Coaching Context</em></h2>
+        <span class="section-eyebrow">About This Workshop</span>
+        <h2 class="section-title">TRE&#8482; in a <em>Coaching Context</em></h2>
         <p>TRE&#8482; (Tension, Stress &amp; Trauma Releasing Exercises) activates the body&#8217;s natural tremoring response &#8212; a neurogenic mechanism that discharges accumulated stress, tension and trauma from the nervous system, so the body can return to a balanced, regulated state.</p>
         <p>In this workshop you will explore how to <strong>use TRE&#8482; within your coaching practice</strong> &#8212; not just as a self-care tool, but as a somatic method that helps clients move from a state of activation to regulated presence, from trembling uncertainty to purposeful, embodied action.</p>
-        <p>The workshop is offered in collaboration with <a href="https://www.atelierdesuflet.ro/" target="_blank" rel="noopener">&#206;nva&#539;&#259; s&#259; Zbori (Learn to Fly)</a>, <a href="https://treromania.org/" target="_blank" rel="noopener">TRE Rom&#226;nia</a> and HummingBeing. Ticketing is handled on the official Atelier de Suflet webshop.</p>
+        <p>Offered in collaboration with <a href="https://www.atelierdesuflet.ro/" target="_blank" rel="noopener">&#206;nva&#539;&#259; s&#259; Zbori (Learn to Fly)</a>, <a href="https://treromania.org/" target="_blank" rel="noopener">TRE Rom&#226;nia</a> and HummingBeing. Ticketing is handled on the official Atelier de Suflet webshop.</p>
       </div>
 
       <div class="evt-section">
-        <span class="evt-section-label">Who It&#8217;s For</span>
-        <h2>This Workshop Is For</h2>
+        <span class="section-eyebrow">Who It&#8217;s For</span>
+        <h2 class="section-title">This Workshop Is <em>For</em></h2>
         <ul class="evt-for-list">
           <li>Coaches curious about somatic, body-based approaches to their work</li>
           <li>Practitioners exploring TRE&#8482; before committing to full certification</li>
@@ -337,91 +320,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="evt-section" id="sessions">
-        <span class="evt-section-label">Choose Your Session</span>
-        <h2>3 Ways to <em>Participate</em></h2>
-        <p>One online session and two in-person sessions in Bucharest &#8212; each a standalone half-day intensive. Tickets are purchased on the official webshop.</p>
-        <div class="session-cards">
+        <span class="section-eyebrow">Choose Your Session</span>
+        <h2 class="section-title">3 Ways to <em>Participate</em></h2>
+        <p class="evt-lead">One online session and two in-person sessions in Bucharest &#8212; each a standalone half-day intensive. Tickets are purchased on the official webshop.</p>
+        <div class="sessions-grid">
 
           <div class="session-card">
-            <div class="session-tag">Session 1<small>Online</small></div>
-            <div class="session-content">
-              <strong>Online (English)</strong>
-              <p class="session-when"><i class="fa-regular fa-calendar"></i>3 September 2026 &middot; 10:00&#8211;13:00 EET</p>
-              <div class="session-price">&#8364;89 <small>per participant</small></div>
-              <p class="session-note"><i class="fa-solid fa-gift"></i>Free if you register for TRE&#8482; Module 1 (Oct 15&#8211;17 2026) or full TRE&#8482; certification on the same cohort.</p>
-              <div class="ticket-meter mid">
-                <div class="ticket-meter-top"><span class="ticket-left"><i class="fa-solid fa-ticket"></i>11 tickets left</span><span class="ticket-total">of 20</span></div>
-                <div class="ticket-track"><span class="ticket-fill" style="width:45%"></span></div>
-              </div>
-              <a class="evtd-btn evtd-btn-gold evtd-btn-sm" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
+            <span class="session-type-pill pill-online"><i class="fa-solid fa-globe"></i> Online (English)</span>
+            <h3>Session 1 &middot; 3 September 2026</h3>
+            <div class="session-date"><i class="fa-regular fa-calendar"></i><div>10:00 &#8211; 13:00 EET (Eastern European Time)</div></div>
+            <div class="session-price">&#8364;89 <small>per participant</small></div>
+            <p class="session-free-note"><i class="fa-solid fa-gift"></i>Free if you register for TRE&#8482; Module 1 (Oct 15&#8211;17 2026) or full TRE&#8482; certification on the same cohort.</p>
+            <div class="ticket-meter mid">
+              <div class="ticket-meter-top"><span class="ticket-left"><i class="fa-solid fa-ticket"></i>11 tickets left</span><span class="ticket-total">of 20</span></div>
+              <div class="ticket-track"><span class="ticket-fill" style="width:45%"></span></div>
             </div>
+            <a class="btn btn-primary" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
           </div>
 
           <div class="session-card">
-            <div class="session-tag">Session 2<small>Bucharest</small></div>
-            <div class="session-content">
-              <strong>In-Person &middot; Bucharest</strong>
-              <p class="session-when"><i class="fa-regular fa-calendar"></i>20 October 2026 &middot; 19:00&#8211;22:00 EET &middot; Bucharest, Rom&#226;nia</p>
-              <div class="session-price">&#8364;97 <small>per participant</small></div>
-              <p class="session-note"><i class="fa-solid fa-gift"></i>Free if you register for TRE&#8482; Module 1 (March 2027 cohort) or full TRE&#8482; certification on the same cohort.</p>
-              <div class="ticket-meter low">
-                <div class="ticket-meter-top"><span class="ticket-left"><i class="fa-solid fa-fire"></i>Only 5 tickets left</span><span class="ticket-total">of 16</span></div>
-                <div class="ticket-track"><span class="ticket-fill" style="width:69%"></span></div>
-              </div>
-              <a class="evtd-btn evtd-btn-gold evtd-btn-sm" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context-35.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
+            <span class="session-type-pill pill-inperson"><i class="fa-solid fa-location-dot"></i> In-Person &middot; Bucharest</span>
+            <h3>Session 2 &middot; 20 October 2026</h3>
+            <div class="session-date"><i class="fa-regular fa-calendar"></i><div>19:00 &#8211; 22:00 EET &middot; Bucharest, Rom&#226;nia</div></div>
+            <div class="session-price">&#8364;97 <small>per participant</small></div>
+            <p class="session-free-note"><i class="fa-solid fa-gift"></i>Free if you register for TRE&#8482; Module 1 (March 2027 cohort) or full TRE&#8482; certification on the same cohort.</p>
+            <div class="ticket-meter low">
+              <div class="ticket-meter-top"><span class="ticket-left"><i class="fa-solid fa-fire"></i>Only 5 tickets left</span><span class="ticket-total">of 16</span></div>
+              <div class="ticket-track"><span class="ticket-fill" style="width:69%"></span></div>
             </div>
+            <a class="btn btn-primary" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context-35.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
           </div>
 
           <div class="session-card">
-            <div class="session-tag">Session 3<small>Bucharest</small></div>
-            <div class="session-content">
-              <strong>In-Person &middot; Bucharest</strong>
-              <p class="session-when"><i class="fa-regular fa-calendar"></i>24 October 2026 &middot; 14:30&#8211;17:30 EET &middot; Bucharest, Rom&#226;nia</p>
-              <div class="session-price">&#8364;97 <small>per participant</small></div>
-              <p class="session-note"><i class="fa-solid fa-gift"></i>Free if you register for TRE&#8482; Module 1 (March 2027 cohort) or full TRE&#8482; certification on the same cohort.</p>
-              <div class="ticket-meter mid">
-                <div class="ticket-meter-top"><span class="ticket-left"><i class="fa-solid fa-ticket"></i>8 tickets left</span><span class="ticket-total">of 16</span></div>
-                <div class="ticket-track"><span class="ticket-fill" style="width:50%"></span></div>
-              </div>
-              <a class="evtd-btn evtd-btn-gold evtd-btn-sm" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context-35.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
+            <span class="session-type-pill pill-inperson"><i class="fa-solid fa-location-dot"></i> In-Person &middot; Bucharest</span>
+            <h3>Session 3 &middot; 24 October 2026</h3>
+            <div class="session-date"><i class="fa-regular fa-calendar"></i><div>14:30 &#8211; 17:30 EET &middot; Bucharest, Rom&#226;nia</div></div>
+            <div class="session-price">&#8364;97 <small>per participant</small></div>
+            <p class="session-free-note"><i class="fa-solid fa-gift"></i>Free if you register for TRE&#8482; Module 1 (March 2027 cohort) or full TRE&#8482; certification on the same cohort.</p>
+            <div class="ticket-meter mid">
+              <div class="ticket-meter-top"><span class="ticket-left"><i class="fa-solid fa-ticket"></i>8 tickets left</span><span class="ticket-total">of 16</span></div>
+              <div class="ticket-track"><span class="ticket-fill" style="width:50%"></span></div>
             </div>
+            <a class="btn btn-primary" href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context-35.html" target="_blank" rel="noopener">Buy Tickets &rarr;</a>
           </div>
 
         </div>
       </div>
 
       <div class="evt-section">
-        <span class="evt-section-label">Your Facilitators</span>
-        <h2>Co-Facilitated by <em>Two International Experts</em></h2>
-        <div class="facilitator-card">
-          <img class="fac-photo" src="images/isabelle-your-trainer.jpg" alt="Isabelle Claus Teixeira" width="90" height="90" loading="lazy" />
-          <div class="fac-body">
-            <h4>Isabelle Claus Teixeira</h4>
-            <span class="fac-role">Global TRE&#174; Certifying Trainer &middot; ICF PCC</span>
-            <p>Somatic and Trauma-informed Executive Coach (ICF PCC), Global TRE&#174; Certifying Trainer and Mindfulness Teacher. Trained directly under Dr. David Berceli, founder of TRE&#174;. Over 30 years of experience across 9 countries and 40+ nationalities.</p>
-            <div class="fac-links">
-              <a href="isabelle.html">Meet Isabelle &rarr;</a>
-              <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="section-eyebrow">Your Facilitators</span>
+        <h2 class="section-title">Co-Facilitated by <em>Two Experts</em></h2>
+        <div class="facilitators-grid">
+          <div class="facilitator-card">
+            <img class="facilitator-photo" src="images/isabelle-your-trainer.jpg" alt="Isabelle Claus Teixeira" width="104" height="104" loading="lazy" />
+            <span class="facilitator-role">Global TRE&#174; Certifying Trainer &middot; ICF PCC</span>
+            <span class="facilitator-name">Isabelle Claus Teixeira</span>
+            <p class="facilitator-bio">Somatic and Trauma-informed Executive Coach (ICF PCC), Global TRE&#174; Certifying Trainer and Mindfulness Teacher. Trained directly under Dr. David Berceli, founder of TRE&#174;. Over 30 years of experience across 9 countries and 40+ nationalities.</p>
+            <div class="facilitator-links">
+              <a href="isabelle.html" class="facilitator-link">Meet Isabelle &rarr;</a>
+              <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank" rel="noopener" class="facilitator-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
             </div>
           </div>
-        </div>
-        <div class="facilitator-card">
-          <img class="fac-photo" src="images/saymara-ryon.webp" alt="Saymara Ryon" width="90" height="90" loading="lazy" />
-          <div class="fac-body">
-            <h4>Saymara Ryon</h4>
-            <span class="fac-role">Certified TRE&#174; Provider &amp; Trainer Trainee</span>
-            <p>Founder &amp; President, Asocia&#539;ia TRE&#174; Rom&#226;nia. Holistic Coach, Trainer &amp; Mentor, Certified TRE&#174; Provider and Trainer Trainee. Pioneer of TRE&#174; in Romania, bringing embodied healing and somatic practices to the Romanian professional community.</p>
-            <div class="fac-links">
-              <a href="https://www.atelierdesuflet.ro/" target="_blank" rel="noopener">Official Website &rarr;</a>
-              <a href="https://treromania.org/" target="_blank" rel="noopener">TRE Romania &rarr;</a>
+          <div class="facilitator-card">
+            <img class="facilitator-photo" src="images/saymara-ryon.webp" alt="Saymara Ryon" width="104" height="104" loading="lazy" />
+            <span class="facilitator-role">Certified TRE&#174; Provider &amp; Trainer Trainee</span>
+            <span class="facilitator-name">Saymara Ryon</span>
+            <p class="facilitator-bio">Founder &amp; President, Asocia&#539;ia TRE&#174; Rom&#226;nia. Holistic Coach, Trainer &amp; Mentor, Certified TRE&#174; Provider and Trainer Trainee. Pioneer of TRE&#174; in Romania, bringing embodied healing and somatic practices to the Romanian professional community.</p>
+            <div class="facilitator-links">
+              <a href="https://www.atelierdesuflet.ro/" target="_blank" rel="noopener" class="facilitator-link">Official Website &rarr;</a>
+              <a href="https://treromania.org/" target="_blank" rel="noopener" class="facilitator-link">TRE Romania &rarr;</a>
             </div>
           </div>
         </div>
       </div>
 
       <div class="evt-section">
-        <span class="evt-section-label">Also Available</span>
-        <h2>Related Events</h2>
+        <span class="section-eyebrow">Also Available</span>
+        <h2 class="section-title">Related <em>Events</em></h2>
         <div class="related-grid">
           <a class="rel-card" href="event-tre-module1-bucharest.html">
             <div class="rel-img"><img src="images/event-bucharest-module1.webp" alt="TRE Module 1 Bucharest" width="400" height="220" loading="lazy" /></div>
@@ -441,14 +416,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- SIDEBAR -->
-    <div class="evt-sidebar" id="register">
+    <div class="evt-sidebar" id="reserve">
       <div class="evt-reg-card">
         <div class="evt-reg-head">
           <h3>Reserve Your Spot</h3>
           <p>Buy tickets on the official webshop, or send a question below and Isabelle will be in touch.</p>
         </div>
         <div class="evt-reg-body">
-          <a class="evt-reg-buy" href="#sessions">Buy Tickets &rarr;</a>
+          <a class="btn btn-primary evt-reg-buy" href="#sessions">Buy Tickets &rarr;</a>
           <p class="reg-urgency"><i class="fa-solid fa-fire"></i> Selling fast &mdash; only 24 seats left across all three sessions.</p>
           <div class="evt-reg-or">or ask a question</div>
           <form class="evt-reg-form" id="evt-reg-form" onsubmit="submitReg(event)">
@@ -463,7 +438,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <input type="email" name="email" placeholder="Email Address *" required />
             <input type="tel" name="phone" placeholder="Phone (optional)" />
             <textarea name="message" rows="3" placeholder="Your question about the workshop (optional)"></textarea>
-            <button type="submit">Send Enquiry &rarr;</button>
+            <button type="submit" class="btn btn-dark">Send Enquiry &rarr;</button>
           </form>
           <div class="reg-success-box" id="reg-success" style="display:none">
             <i class="fa-solid fa-circle-check"></i>
@@ -483,9 +458,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="cta-banner">
   <h2>Bring TRE&#8482; Into Your Coaching</h2>
   <p>One half-day intensive &#8212; online or in Bucharest, with two certified TRE&#174; practitioners.</p>
-  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:1.6rem">
-    <a href="#sessions" class="evtd-btn evtd-btn-gold">Buy Tickets</a>
-    <a href="events.html" class="evtd-btn evtd-btn-ghost-dark">View All Events</a>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem">
+    <a href="#sessions" class="btn btn-primary">Buy Tickets</a>
+    <a href="events.html" class="btn btn-dark">View All Events</a>
   </div>
 </div>
 
