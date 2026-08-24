@@ -9,10 +9,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed / Changed — Chatbot audit fixes
 
-- **Bug fix — "What is TRE®?" button**: Returned generic "What would you like to explore?" due to keyword tie-break. Added `what is tre`, `tell me about tre`, `explain tre` to TRE entry keys.
+- **Bug fix — "What is TRE™?" button**: Returned generic "What would you like to explore?" due to keyword tie-break. Added `what is tre`, `tell me about tre`, `explain tre` to TRE™ entry keys.
 - **Bug fix — "How do I book?" button**: Returned generic "Happy to help!" instead of booking info. Added `how do i book`, `how can i book` to booking entry keys.
 - **Bug fix — "What is included?" button**: No matching KB entry; now correctly maps to Starter Package info. Added `what is included`, `included`, `whats included` to starter entry keys.
-- **Events KB updated**: Reply now lists Singapore 29–30 Aug 2026 (21 ICF CCEUs, S$1,290) and Romania TRE® Module 1 15–17 Oct 2026. Added `romania`, `bucharest`, `certification`, `icf`, `cceu` as trigger keywords.
+- **Events KB updated**: Reply now lists Singapore 29–30 Aug 2026 (21 ICF CCEUs, S$1,290) and Romania TRE™ Module 1 15–17 Oct 2026. Added `romania`, `bucharest`, `certification`, `icf`, `cceu` as trigger keywords.
 
 ---
 
@@ -50,7 +50,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - **Sitewide (16 pages) — Footer contact location**: "Japan & Worldwide" corrected to "Singapore & Japan" in the Contact footer column across all pages.
 - **Sitewide (14 pages) — Footer Company column**: Removed stale "Retreats and Workshops" extra link from Company footer column (left over from a previous nav restructure). Correct Services footer entry "Resilience Retreats" retained.
 - **event-selfcare-coaches-singapore.html — Pricing**: Added missing Early Bird (S$1,500 until 31 Jul 2026) and Normal Price (S$1,800) tiers below the main ICF Special Price display.
-- **events.html — Romania TRE Module 1 Bucharest card**: Added "Contact for Pricing" pricing block (price not yet published publicly).
+- **events.html — Romania TRE™ Module 1 Bucharest card**: Added "Contact for Pricing" pricing block (price not yet published publicly).
 - **event-tre-module1-bucharest.html — Day 1 schedule label**: Renamed "Workshop: Self-Care and Presence for Coaches" → "Introductory Evening: Self-Care and Presence for Coaches" to distinguish it from the standalone 2-day Singapore workshop.
 
 ---
@@ -83,7 +83,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added — Singapore landing page for Nervous System Regulation & Self-Induced Neurogenic Tremoring
 
-- **event-selfcare-coaches-singapore.html** — New landing page for "Nervous System Regulation & Self-Induced Neurogenic Tremoring: Self-Care and Presence for Coaches." 2-day in-person Singapore workshop, 29 & 30 August 2026. 21 ICF CCEUs (16 Resource Development + 5 Core Competencies). Valid as Module 1 of the Global TRE® Provider Certification Program. Countdown timer targeting `2026-08-29T09:00:00+08:00` (SGT). Structured data, Calendly CTA, facilitator section (Isabelle), "Continue Your Journey" section.
+- **event-selfcare-coaches-singapore.html** — New landing page for "Nervous System Regulation & Self-Induced Neurogenic Tremoring: Self-Care and Presence for Coaches." 2-day in-person Singapore workshop, 29 & 30 August 2026. 21 ICF CCEUs (16 Resource Development + 5 Core Competencies). Valid as Module 1 of the Global TRE™ Provider Certification Program. Countdown timer targeting `2026-08-29T09:00:00+08:00` (SGT). Structured data, Calendly CTA, facilitator section (Isabelle), "Continue Your Journey" section.
 - **events.html** — Added "View & Register →" link to the Singapore Coaches card, linking to the new landing page.
 
 ---
@@ -98,7 +98,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [64.3] — 2026-06-25
 
-### Added — Calendly button to TRE Module 1 Bucharest card
+### Added — Calendly button to TRE™ Module 1 Bucharest card
 
 - **events.html** — Added "Book a Call via Calendly →" button (btn-dark) to TRE™ Module 1 Bucharest card.
 
@@ -108,7 +108,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed — Remove "Hosted by Nilayam" from Singapore certification card
 
-- **events.html** — Removed "Hosted by Nilayam ·" prefix from the Singapore TRE® Provider Certification section.
+- **events.html** — Removed "Hosted by Nilayam ·" prefix from the Singapore TRE™ Provider Certification section.
 
 ---
 
@@ -135,7 +135,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - **events.html** — Romania 2026 events section added (two event cards: "From Shaking to Shaping" with 3 sessions, TRE™ Module 1 Bucharest Oct 15–17). Countdown updated to Sep 3, 2026, 10:00 EET (`2026-09-03T10:00:00+03:00`). Countdown heading and meta info updated to reflect the first Romania event.
 - **index.html** — Home page countdown bar updated to target Sep 3, 2026 "From Shaking to Shaping" online workshop.
-- **event-shaking-to-shaping.html** — New landing page for "From Shaking to Shaping: Use of TRE™ in a coaching context." 3 sessions: Sep 3 online (€89), Oct 20 in-person Bucharest (€97), Oct 24 in-person Bucharest (€97). Includes per-session countdown timer, facilitator bios (Isabelle Claus Teixeira + Saymara Ryon), collaboration strip (Învață să Zbori SRL + TRE Romania).
+- **event-shaking-to-shaping.html** — New landing page for "From Shaking to Shaping: Use of TRE™ in a coaching context." 3 sessions: Sep 3 online (€89), Oct 20 in-person Bucharest (€97), Oct 24 in-person Bucharest (€97). Includes per-session countdown timer, facilitator bios (Isabelle Claus Teixeira + Saymara Ryon), collaboration strip (Învață să Zbori SRL + TRE™ Romania).
 - **event-tre-module1-bucharest.html** — New landing page for TRE™ Module 1 Bucharest, Oct 15–17, 2026. First time in Europe in English. 21 ICF CCEUs (16 Resource Dev + 5 Core Competencies). 3-day schedule table, full registration section, facilitator bios, cross-link to "From Shaking to Shaping" intro workshop.
 
 ---
@@ -162,7 +162,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added — 15 new gallery images
 
-- **gallery.html** — Added 15 new image cards: Da Nang TRE® Conference Nov 2025, Dinner with David Berceli (TRE® founder), Indoor skydiving in Singapore with TRE® colleagues, 4× Isabelle & Saymara, TRE® Module 1 May 2026, Isabelle with David Berceli & Simba Stenqvist & Nikki Tay, INSEAD campus visit with Simba Stenqvist, UK TRE® students at Singapore airport, 2× UK TRE® provider students, Asia TRE® trainers with David Berceli, Chris Balsley Master Coach. Images copied from source and renamed to web-friendly slugs in `images/gallery/`.
+- **gallery.html** — Added 15 new image cards: Da Nang TRE™ Conference Nov 2025, Dinner with David Berceli (TRE™ founder), Indoor skydiving in Singapore with TRE™ colleagues, 4× Isabelle & Saymara, TRE™ Module 1 May 2026, Isabelle with David Berceli & Simba Stenqvist & Nikki Tay, INSEAD campus visit with Simba Stenqvist, UK TRE™ students at Singapore airport, 2× UK TRE™ provider students, Asia TRE™ trainers with David Berceli, Chris Balsley Master Coach. Images copied from source and renamed to web-friendly slugs in `images/gallery/`.
 
 ---
 
@@ -179,8 +179,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 Per the original feedback document, services are grouped into 3 categories:
 - **All 15 pages — Services nav: 5 items → 3 items**
-  - Removed: TRE® Exercises, Coaching, Somatic Healing (pages remain accessible but are not primary nav items)
-  - Kept/renamed: Holistic Mastermind Ecosystem, Global TRE® Certification → **Global Certifications**
+  - Removed: TRE™ Exercises, Coaching, Somatic Healing (pages remain accessible but are not primary nav items)
+  - Kept/renamed: Holistic Mastermind Ecosystem, Global TRE™ Certification → **Global Certifications**
   - Added: **Resilience Retreats** (retreats-workshops.html, moved from Events)
 - **All 15 pages — Events: dropdown removed → direct link** — Now a single `Events` link to events.html
 - **retreats-workshops.html — Active state updated** — Nav now shows Services active with Resilience Retreats active (was Events active)
@@ -193,7 +193,7 @@ Per the original feedback document, services are grouped into 3 categories:
 
 **Critical**
 - **somatic-healing.html + retreats-workshops.html — Ticker** — "BHD Asia & BHD Japan" still present in both pages after bulk fix; now corrected to "Business & Human Development".
-- **gallery.html — Wrong YouTube video** — ID `1PT1crBhhUE` (TRE FOR AFRICA Foundation) appeared twice: as a podcast card link and as an embedded video card. Both replaced with channel links to `@IsabelleClausTeixeira`.
+- **gallery.html — Wrong YouTube video** — ID `1PT1crBhhUE` (TRE™ FOR AFRICA Foundation) appeared twice: as a podcast card link and as an embedded video card. Both replaced with channel links to `@IsabelleClausTeixeira`.
 - **somatic-coaching.html — "Eastern Wisdom + Neuroscience"** — Flagged phrase removed; tag now reads "Neuroscience + Somatics".
 - **about.html — Stale service names in meta/body** — "Somatic Coaching" → "Coaching" and "Bodywork" → "Mindfulness" across meta description, OG, Twitter, JSON-LD, and visible body text. Title updated to "Japan & Worldwide".
 - **All 15 pages — Ticker: "Somatic Coaching" → "Coaching"** — Bulk replacement across every page.
@@ -201,14 +201,14 @@ Per the original feedback document, services are grouped into 3 categories:
 
 **Moderate**
 - **index.html — Title/OG/Twitter/JSON-LD** — "Somatic Coaching in Singapore & Japan" → "Coaching in Japan & Worldwide"; JSON-LD description updated to reference Mindfulness not Bodywork.
-- **tre.html — Meta/OG/Twitter** — "certified TRE® Provider" → "Global TRE® Certifying Trainer" in all three tags. OG image alt updated (removed "in Singapore").
+- **tre.html — Meta/OG/Twitter** — "certified TRE™ Provider" → "Global TRE™ Certifying Trainer" in all three tags. OG image alt updated (removed "in Singapore").
 - **somatic-coaching.html — Title/meta/OG/Twitter/JSON-LD** — Service name updated from "Somatic Coaching Singapore" to "Coaching | Somatic, Trauma & Neuroscience-Informed". JSON-LD service name updated. CTA button: "Explore Somatic Coaching" → "Book a Coaching Session".
 - **holistic-mastermind.html — Ticker position** — Ticker was rendering above the hero; moved to after the hero to match all other pages.
-- **socials.html — Stale ticker item** — Removed "Certified TRE® Provider" ticker items (stale credential label alongside correct "Global TRE® Certifying Trainer").
+- **socials.html — Stale ticker item** — Removed "Certified TRE™ Provider" ticker items (stale credential label alongside correct "Global TRE™ Certifying Trainer").
 - **All 15 pages — Nav Coaching label** — Dropdown item "Coaching, somatic, trauma and neuroscience informed." shortened to "Coaching".
 
 **Minor**
-- **isabelle.html — JSON-LD** — `knowsAbout` updated: "Somatic Bodywork" → "Mindfulness", added "Breathwork" and "Reiki". `workLocation` Singapore entry removed (Japan-based). Keywords: "TRE provider Singapore" → "TRE provider Japan".
+- **isabelle.html — JSON-LD** — `knowsAbout` updated: "Somatic Bodywork" → "Mindfulness", added "Breathwork" and "Reiki". `workLocation` Singapore entry removed (Japan-based). Keywords: "TRE™ provider Singapore" → "TRE™ provider Japan".
 - **book.html — Title, FAQ, keywords** — "HummingBeing Singapore" → "HummingBeing"; FAQ in-person text: "Singapore and Japan" → "Japan"; keywords updated to Japan.
 - **socials.html — Keywords** — "somatic coaching resources Singapore" → "coaching resources Japan".
 
@@ -224,7 +224,7 @@ Per the original feedback document, services are grouped into 3 categories:
 
 ### Fixed — Wrong YouTube embed on tre.html
 
-- **tre.html — TRE® Star Groups video section** — Removed incorrect embedded YouTube video (ID `1PT1crBhhUE`, a TRE FOR AFRICA Foundation video not featuring Isabelle). Replaced with a text CTA linking to Isabelle's own YouTube channel (https://www.youtube.com/@IsabelleClausTeixeira). Caption "Watch a real TRE® group session led by Isabelle" was factually wrong and is removed. Isabelle can supply a specific video URL to embed when ready.
+- **tre.html — TRE™ Star Groups video section** — Removed incorrect embedded YouTube video (ID `1PT1crBhhUE`, a TRE™ FOR AFRICA Foundation video not featuring Isabelle). Replaced with a text CTA linking to Isabelle's own YouTube channel (https://www.youtube.com/@IsabelleClausTeixeira). Caption "Watch a real TRE™ group session led by Isabelle" was factually wrong and is removed. Isabelle can supply a specific video URL to embed when ready.
 
 ---
 ## [55.0] — 2026-06-25
@@ -235,7 +235,7 @@ Per the original feedback document, services are grouped into 3 categories:
 - **book.html — "Somatic Coaching" → "Coaching"** — Replaced in 3 visible-text locations: form service dropdown option, FAQ answer, and Session Lengths sidebar card.
 - **book.html — Meta/OG/Twitter descriptions** — Updated: "Somatic Coaching or Bodywork" → "Coaching or Mindfulness"; "Singapore & Japan" → "Japan or online worldwide".
 - **All 15 pages — Ticker: "BHD Asia & BHD Japan" → "Business & Human Development"** — Updated scrolling ticker across every page to remove the old dual-brand reference.
-- **events.html — Title + OG/Twitter** — "TRE® Events & Workshops Singapore & Japan" → "TRE® Events & Workshops | Japan & Worldwide".
+- **events.html — Title + OG/Twitter** — "TRE™ Events & Workshops Singapore & Japan" → "TRE™ Events & Workshops | Japan & Worldwide".
 - **events.html — Meta description** — "in Singapore and Japan" → "in Japan and worldwide".
 - **Remaining blocked item (Isabelle to provide)** — Hero image replacement on index.html: feedback document includes 5 reference stock images (business professionals) to guide the direction, but no actual image file has been supplied. Will swap when Isabelle provides the file.
 
@@ -244,11 +244,11 @@ Per the original feedback document, services are grouped into 3 categories:
 
 ### Fixed — Full site audit: Trainer → Certifying Trainer, meta cleanup, nav/footer corrections
 
-- **All 15 pages — TRE® Trainer Trainee → Global TRE® Certifying Trainer** — Bulk replacement across all tickers, meta descriptions, OG tags, Twitter cards, and JSON-LD structured data. Isabelle's title is now correctly "Global TRE® Certifying Trainer" everywhere on the site.
-- **isabelle.html — Full meta overhaul** — title, meta description, OG title/description/alt, Twitter title/description, JSON-LD jobTitle/description/hasCredential credential name, and visible card body text all updated to reflect Global TRE® Certifying Trainer status. Updated "25+ years" → "30 years" throughout head.
-- **isabelle.html — Keywords updated** — Added "Global TRE certifying trainer" and "TRE certifying trainer Japan"; removed stale "somatic bodywork practitioner Singapore".
+- **All 15 pages — TRE™ Trainer Trainee → Global TRE™ Certifying Trainer** — Bulk replacement across all tickers, meta descriptions, OG tags, Twitter cards, and JSON-LD structured data. Isabelle's title is now correctly "Global TRE™ Certifying Trainer" everywhere on the site.
+- **isabelle.html — Full meta overhaul** — title, meta description, OG title/description/alt, Twitter title/description, JSON-LD jobTitle/description/hasCredential credential name, and visible card body text all updated to reflect Global TRE™ Certifying Trainer status. Updated "25+ years" → "30 years" throughout head.
+- **isabelle.html — Keywords updated** — Added "Global TRE™ certifying trainer" and "TRE™ certifying trainer Japan"; removed stale "somatic bodywork practitioner Singapore".
 - **index.html — Meta/schema updated** — meta description, OG, Twitter, JSON-LD description and serviceType: "Somatic Bodywork" → "Mindfulness" throughout.
-- **somatic-healing.html — Nav fixed** — Services dropdown was missing Holistic Mastermind Ecosystem and Global TRE® Certification items; now shows all 5.
+- **somatic-healing.html — Nav fixed** — Services dropdown was missing Holistic Mastermind Ecosystem and Global TRE™ Certification items; now shows all 5.
 - **holistic-mastermind.html — Structural fix** — Removed erroneous <header> wrapper around <nav>; nav is now a direct body child matching all other pages.
 - **somatic-bodywork.html (Mindfulness) — Nav active state added** — Services dropdown toggle now has ctive class, matching all other service pages.
 - **book.html — Service names updated** — Form dropdown option and session lengths sidebar: "Somatic Bodywork" → "Mindfulness".
@@ -262,8 +262,8 @@ Per the original feedback document, services are grouped into 3 categories:
 ### Changed / Added — Mindfulness page rewrite + nav/footer updates
 
 - **somatic-bodywork.html — Full page rewrite as Mindfulness** — Page completely rebuilt around the Mindfulness service (6 or 8-session personalised journey to bring neuroscience-backed mindfulness practices to daily life). New sections: What Is This Programme, Six Pillars of Your Daily Practice (6 cards), Changes You Might Start to Notice, Programme Journey (4 steps), Who This Serves, Client Voices testimonials. Title, meta, schema, OG all updated.
-- **Nav — All 13 existing pages updated** — Services dropdown now includes Holistic Mastermind Ecosystem and Global TRE® Certification after Somatic Healing across all 13 existing HTML pages.
-- **Footer — All 13 existing pages updated** — Services footer list now includes Holistic Mastermind Ecosystem (first) and Global TRE® Certification (before Book a Session) across all 13 existing pages.
+- **Nav — All 13 existing pages updated** — Services dropdown now includes Holistic Mastermind Ecosystem and Global TRE™ Certification after Somatic Healing across all 13 existing HTML pages.
+- **Footer — All 13 existing pages updated** — Services footer list now includes Holistic Mastermind Ecosystem (first) and Global TRE™ Certification (before Book a Session) across all 13 existing pages.
 
 ---
 
@@ -274,23 +274,23 @@ Per the original feedback document, services are grouped into 3 categories:
 - **New page — holistic-mastermind.html** — Full service overview page for The Holistic Mastermind Ecosystem: the overarching four-pillar framework for HummingBeing's leadership offering.
 - **Hero** — Video hero (poster-coaching / hero-coaching.mp4); eyebrow "The Framework"; H1 "The Holistic Mastermind Ecosystem"; dual CTA: Book a Free Discovery Call + Meet Isabelle.
 - **Section 1 — Why Holistic?** — Two-col layout (image left, about-why-exists.jpg); 3 paragraphs on the premise that peak performance is physiological, not just cognitive; four tags: Cognitive Optimization, Somatic Decompression, Energetic Mastery, Expressive Vision.
-- **Section 2 — The Four Pillars** — section-sage; 4-card grid (alternating gold-top/sage-top/green-top/gold-top): I. The Tactical Mind (brain, neuroscience coaching, saboteurs), II. The Somatic Vessel (TRE®, breathwork, somatic coaching), III. The Energetic Matrix (Reiki, somatic bodywork, core shamanism), IV. The Expressive Vision (NLP, mindfulness, art-based coaching).
+- **Section 2 — The Four Pillars** — section-sage; 4-card grid (alternating gold-top/sage-top/green-top/gold-top): I. The Tactical Mind (brain, neuroscience coaching, saboteurs), II. The Somatic Vessel (TRE™, breathwork, somatic coaching), III. The Energetic Matrix (Reiki, somatic bodywork, core shamanism), IV. The Expressive Vision (NLP, mindfulness, art-based coaching).
 - **Section 3 — Your Journey** — section-white; 4-step pathway: Discovery → Foundation Work → Pillar Integration → Sustained Transformation.
 - **Section 4 — The Right Guide** — section-cream; two-col reverse (isabelle-her-story.jpg); credentials copy and 6-item feature list; inline CTA to isabelle.html.
 - **CTA banner** — "Ready to Work at Every Level?" with Book a Free Discovery Call.
 - **Nav** — Services dropdown active state on Holistic Mastermind Ecosystem; no active on top-level nav item.
-- **Footer** — Full updated Services list: Holistic Mastermind Ecosystem, TRE®, Coaching, Somatic Healing, Retreats, Global TRE® Certification, Book a Session.
+- **Footer** — Full updated Services list: Holistic Mastermind Ecosystem, TRE™, Coaching, Somatic Healing, Retreats, Global TRE™ Certification, Book a Session.
 - **Ticker** — Extended with Holistic Mastermind Ecosystem, Four Pillars of Leadership, The Tactical Mind, The Somatic Vessel, The Energetic Matrix, The Expressive Vision, Cognitive Optimization, Energetic Mastery entries.
 
 ---
 
 ## [51.0] — 2026-06-25
 
-### Added — Global TRE® Provider Certification page
+### Added — Global TRE™ Provider Certification page
 
-- **New page — tre-certification.html** — Full certification service page for Isabelle's Global TRE® Provider Certification training. Covers: hero with CTA, your trainer (Global TRE® Certifying Trainer credentials, Dr. David Berceli methodology), why TRE® is worth certifying in (6 cards: evidence-based, teachable, physiologically grounded, versatile, globally recognised, fast results), how the certification works (4-step pathway: Module 1 → Supervised Practice → Module 2 → Certification), who this is for (feature list for coaches/therapists/HR/etc.), upcoming modules (Singapore 29–30 Aug 2026, Japan TBC, Online option), what's included (training materials, supervised hours, TRE® for All community, mentorship, certificate), and CTA banner.
-- **Nav updated — Services dropdown (tre-certification.html)** — New page includes full updated nav with "Holistic Mastermind Ecosystem" and "Global TRE® Certification" entries in the Services dropdown.
-- **Footer** — tre-certification.html footer includes "Global TRE® Certification" and "Holistic Mastermind Ecosystem" in the Services list; BHD full name; Japan & Worldwide location.
+- **New page — tre-certification.html** — Full certification service page for Isabelle's Global TRE™ Provider Certification training. Covers: hero with CTA, your trainer (Global TRE™ Certifying Trainer credentials, Dr. David Berceli methodology), why TRE™ is worth certifying in (6 cards: evidence-based, teachable, physiologically grounded, versatile, globally recognised, fast results), how the certification works (4-step pathway: Module 1 → Supervised Practice → Module 2 → Certification), who this is for (feature list for coaches/therapists/HR/etc.), upcoming modules (Singapore 29–30 Aug 2026, Japan TBC, Online option), what's included (training materials, supervised hours, TRE™ for All community, mentorship, certificate), and CTA banner.
+- **Nav updated — Services dropdown (tre-certification.html)** — New page includes full updated nav with "Holistic Mastermind Ecosystem" and "Global TRE™ Certification" entries in the Services dropdown.
+- **Footer** — tre-certification.html footer includes "Global TRE™ Certification" and "Holistic Mastermind Ecosystem" in the Services list; BHD full name; Japan & Worldwide location.
 
 ---
 
@@ -300,7 +300,7 @@ Per the original feedback document, services are grouped into 3 categories:
 
 - **index.html** — Hero eyebrow → "Holistic Mastermind Ecosystem"; tagline → "Cognitive optimization, somatic decompression, neuroscience, and energetic mastery."; "Start with a Free Chat" → Calendly link; service cards: "Somatic Coaching" → "Coaching", "Somatic Bodywork" → "Mindfulness".
 - **about.html** — "A Safe Space to" → "Science Backed Processes to"; subtitle updated to 30 years + trauma-informed + mindfulness; "Eastern wisdom" → "trauma-informed, mindfulness and neuroscience backed"; BHD name updated.
-- **isabelle.html** — Hero credentials updated; TRE card → "Global TRE® Certifying Trainer & Certified TRE® Provider"; Executive Coach → "ICF PCC Level Certified"; Reiki card updated and moved to position 4; Ongoing Studies → "Continuously Studying & Growing"; info strip: Japan & global, Spanish added, global/European leadership context, BHD name.
+- **isabelle.html** — Hero credentials updated; TRE™ card → "Global TRE™ Certifying Trainer & Certified TRE™ Provider"; Executive Coach → "ICF PCC Level Certified"; Reiki card updated and moved to position 4; Ongoing Studies → "Continuously Studying & Growing"; info strip: Japan & global, Spanish added, global/European leadership context, BHD name.
 - **somatic-coaching.html** — Hero updated to somatic/trauma/neuroscience informed coaching.
 - **retreats-workshops.html** — Added "Resilience Retreats for Professionals" section: The Corporate Detox (5d/4n) and The Quick Reset (3d/2n).
 - **All 13 pages** — Footer: BHD name → "Business and Human Development Consulting Pte Ltd"; "safe space" → "Science backed processes"; "Somatic Coaching" → "Coaching"; location → "Japan & Worldwide".
@@ -314,7 +314,7 @@ Per the original feedback document, services are grouped into 3 categories:
 - **Nav — Services dropdown restructured (all 13 pages)** — "Somatic Coaching" renamed to "Coaching, somatic, trauma and neuroscience informed."; "Somatic Bodywork" removed from nav (page still accessible); new "Somatic Healing" item added.
 - **Nav — Events converted to dropdown (all 13 pages)** — Plain "Events" link replaced with a dropdown: "Upcoming Events" (existing) + "Retreats and Workshops" (new).
 - **New page — somatic-healing.html** — Full service page for Somatic Healing: Reiki, Somatic Bodywork, Breathwork, EFT. Includes benefits, who it serves, Isabelle credentials.
-- **New page — retreats-workshops.html** — Page covering group retreat and workshop offerings: day workshops, weekend immersions, corporate wellness, TRE® group sessions, somatic healing circles, professional training.
+- **New page — retreats-workshops.html** — Page covering group retreat and workshop offerings: day workshops, weekend immersions, corporate wellness, TRE™ group sessions, somatic healing circles, professional training.
 - **about.html — Hummingbird Metaphor expanded** — Added two paragraphs on hummingbird symbolism (joy, resilience, adaptability, perseverance, presence, lightness of being) and positive energy as a reminder to care for physical and mental health.
 - **Footer — Services + Company links updated (all 13 pages)** — Added Somatic Healing and Retreats and Workshops links; removed Somatic Bodywork footer link.
 
@@ -332,7 +332,7 @@ Per the original feedback document, services are grouped into 3 categories:
 
 ### Fix — Mobile nav dropdown uppercase
 
-- **All pages** — Services dropdown sub-items (TRE® Exercises, Somatic Coaching, Somatic Bodywork) rendered in ALL CAPS on mobile due to `text-transform: uppercase` not being overridden in the 900px breakpoint. Fixed with explicit `text-transform: none`, reduced letter-spacing, and `font-weight: 600`.
+- **All pages** — Services dropdown sub-items (TRE™ Exercises, Somatic Coaching, Somatic Bodywork) rendered in ALL CAPS on mobile due to `text-transform: uppercase` not being overridden in the 900px breakpoint. Fixed with explicit `text-transform: none`, reduced letter-spacing, and `font-weight: 600`.
 
 ---
 
@@ -479,8 +479,8 @@ Per the original feedback document, services are grouped into 3 categories:
 
 ### Added / Changed
 - **SEO — Page titles** — All 10 HTML pages now have keyword-rich, geo-targeted titles replacing generic placeholders. Format: `Service + Location | Brand`.
-- **SEO — Meta descriptions** — All 10 pages updated with concise, keyword-optimised copy covering TRE®, somatic coaching, Isabelle's credentials and locations (Singapore, Japan, online).
-- **SEO — Meta keywords** — Keyword tags added to all 10 pages with primary (TRE Singapore, somatic coaching Singapore, Isabelle Claus Teixeira) and secondary terms.
+- **SEO — Meta descriptions** — All 10 pages updated with concise, keyword-optimised copy covering TRE™, somatic coaching, Isabelle's credentials and locations (Singapore, Japan, online).
+- **SEO — Meta keywords** — Keyword tags added to all 10 pages with primary (TRE™ Singapore, somatic coaching Singapore, Isabelle Claus Teixeira) and secondary terms.
 - **SEO — Canonical URLs** — `<link rel="canonical">` added to all 10 pages.
 - **SEO — Robots meta** — `index, follow` directive added to all 10 pages.
 - **AEO/GEO — Open Graph tags** — Full OG set (type, site_name, title, description, url, image, image:alt, locale) added to all 10 pages.
@@ -521,7 +521,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ## [46.9] — 2026-06-19
 
 ### Fixed
-- **tre.html — TRE® in Asia heading** — `font-weight:300` → `700` to match site heading style.
+- **tre.html — TRE™ in Asia heading** — `font-weight:300` → `700` to match site heading style.
 - **somatic-bodywork.html — Soma heading** — Wrong entity `&#7766;` (Latin Ṗ) corrected to `&#8182;` (Greek ῶ). Now renders as σῶμα. Also `font-weight:300` → `700`.
 
 ---
@@ -581,7 +581,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ### Added / Fixed
 - **styles.css** — fixed `object-fit: contain` → `cover` on `.two-col-image img` so all section images fill their frames perfectly
 - **index.html — Philosophy** — replaced placeholder with hummingbird near pink flowers (`home-philosophy.jpg`)
-- **tre.html — What Is TRE®?** — replaced placeholder with woman in quiet awareness (`tre-what-is.jpg`)
+- **tre.html — What Is TRE™?** — replaced placeholder with woman in quiet awareness (`tre-what-is.jpg`)
 - **tre.html — Benefits** — replaced placeholder with smiling woman post-session (`tre-benefits.jpg`)
 - **somatic-coaching.html — What Is Somatic Coaching?** — corrected misassigned image; now shows proper group coaching scene (`sc-what-is.jpg`)
 - **somatic-coaching.html — What You Can Expect** — replaced placeholder with serene yoga studio scene (`sc-what-expect.jpg`)
@@ -634,7 +634,7 @@ Per the original feedback document, services are grouped into 3 categories:
 
 ### Added
 - **tre.html — Safety & Suitability section** — replaced placeholder with group meditation image (`tre-safety-group.jpg`)
-- "What Is TRE®?" and "Benefits" placeholders remain — source subfolders were empty
+- "What Is TRE™?" and "Benefits" placeholders remain — source subfolders were empty
 
 ---
 
@@ -660,12 +660,12 @@ Per the original feedback document, services are grouped into 3 categories:
 
 ### Fixed
 - **gallery.html — image captions** — corrected 6 captions that didn't match the actual photo content
-  - `gallery-screenshot-practice.jpg`: "TRE® Group Practice" → "Somatic Bodywork Session" (one-on-one bodywork, not a group)
-  - `gallery-ws-1.jpg`: "Somatic Session" → "TRE® Module 1 Training" (Isabelle in front of Module 1 slide)
+  - `gallery-screenshot-practice.jpg`: "TRE™ Group Practice" → "Somatic Bodywork Session" (one-on-one bodywork, not a group)
+  - `gallery-ws-1.jpg`: "Somatic Session" → "TRE™ Module 1 Training" (Isabelle in front of Module 1 slide)
   - `gallery-ws-2.jpg`: "Somatic Bodywork" → "At the Esplanade, Singapore" (Isabelle with colleague at Esplanade)
   - `gallery-ws-3.jpg`: "Working with the Body" → "Retreat at Leebong Island" (group photo at island sign)
-  - `gallery-ws-4.jpg`: "Body Release Work" → "TRE® Certification" (Isabelle receiving certificate)
-  - `gallery-isabelle-vietnam-tre.jpg`: "TRE® in Vietnam" → "TRE® Asia Conference, Vietnam" (conference with name badges)
+  - `gallery-ws-4.jpg`: "Body Release Work" → "TRE™ Certification" (Isabelle receiving certificate)
+  - `gallery-isabelle-vietnam-tre.jpg`: "TRE™ in Vietnam" → "TRE™ Asia Conference, Vietnam" (conference with name badges)
 
 ---
 
@@ -675,10 +675,10 @@ Per the original feedback document, services are grouped into 3 categories:
 - **gallery.html — real images** — replaced 10 of 12 placeholder "Photo Coming Soon" cards with real photos from Isabelle's collection; copied to `images/gallery/` with clean URL-safe filenames
   - Isabelle — October 2023
   - Kyoto Station — October 2023
-  - TRE® in Vietnam
-  - Teaching TRE® Module 1
-  - TRE® Module 1 — January 2026
-  - TRE® Group Practice
+  - TRE™ in Vietnam
+  - Teaching TRE™ Module 1
+  - TRE™ Module 1 — January 2026
+  - TRE™ Group Practice
   - Somatic Session, Somatic Bodywork, Working with the Body, Body Release Work
 
 ---
@@ -699,7 +699,7 @@ Per the original feedback document, services are grouped into 3 categories:
   - **somatic-coaching.html** — Process subtitle: "designed for lasting change" → "builds on itself at whatever pace feels right for you"; Testimonials heading: "The Somatic Difference" → "Client Voices"
   - **somatic-bodywork.html** — Benefits subtitle: "whole-person transformation that touches every dimension" → honest description of approach; Testimonials heading: "Transformations Through Bodywork" → "Client Voices"; fixed broken encoding on who-it's-for section
   - **isabelle.html** — Global Journey heading: removed "One Mission" brand tagline; section now ends at the facts
-  - **book.html** — Trust bar: replaced credential-signaling items (trophy icons, "25+ Years Experience", "Certified TRE Provider") with service-oriented items ("Isabelle reads every message", "No sales pressure — ever", "You set the pace"); Pricing section eyebrow: "Investment" → "Sessions & Pricing"
+  - **book.html** — Trust bar: replaced credential-signaling items (trophy icons, "25+ Years Experience", "Certified TRE™ Provider") with service-oriented items ("Isabelle reads every message", "No sales pressure — ever", "You set the pace"); Pricing section eyebrow: "Investment" → "Sessions & Pricing"
 
 ---
 
@@ -723,7 +723,7 @@ Per the original feedback document, services are grouped into 3 categories:
   - **index.html** — Services → "Find Your Practice"; Testimonials → "Start Your Journey"
   - **about.html** — Mission → "Come Back to Yourself"; Philosophy → "Explore the Practices"; Hummingbird → "Find Your Way Back"
   - **isabelle.html** — Bio → "Work With Isabelle"; Credentials → "See If We're a Fit"; Global Journey → "Connect With Isabelle"; Personal Note → "Start the Conversation"
-  - **tre.html** — What is TRE → "Try TRE® for Yourself"; How it Works → "Experience TRE®"; Benefits → "Start Releasing"; Science → "Explore the Science"; TRE Video → "Book a TRE® Session"; Safety → "Find Out If TRE® Is Right for You"; TRE in Asia → "Book with Isabelle"; Testimonials → "Experience It Yourself"
+  - **tre.html** — What is TRE™ → "Try TRE™ for Yourself"; How it Works → "Experience TRE™"; Benefits → "Start Releasing"; Science → "Explore the Science"; TRE™ Video → "Book a TRE™ Session"; Safety → "Find Out If TRE™ Is Right for You"; TRE™ in Asia → "Book with Isabelle"; Testimonials → "Experience It Yourself"
   - **somatic-coaching.html** — What is SC → "Explore Somatic Coaching"; How it Differs → "Take a Different Approach"; Benefits → "Start Noticing Changes"; Process → "Begin the Journey"; Commitment → "I'm Ready to Begin"; Who it's For → "This Sounds Like Me"; Testimonials → "Start My Somatic Journey"
   - **somatic-bodywork.html** — Strozzi Method → "Try Somatic Bodywork"; Benefits → "Release What You're Holding"; Session → "Book a Session"; Soma Etymology → "Experience the Practice"; Testimonials → "Rediscover Your Aliveness"
 
@@ -736,7 +736,7 @@ Per the original feedback document, services are grouped into 3 categories:
   - **index.html** — philosophy section: 3 paragraphs → 2; service card descriptions shortened for all 3 services
   - **about.html** — mission section: 3 → 2 paragraphs; hummingbird metaphor: 3 → 2 paragraphs; BHD connection: 3 → 2 paragraphs; pillar 01 and 04 descriptions differentiated and simplified
   - **isabelle.html** — bio paragraphs 2 & 3 merged into one tighter paragraph
-  - **tre.html** — "What is TRE?" paragraphs 2 & 3 simplified; technical jargon reduced
+  - **tre.html** — "What is TRE™?" paragraphs 2 & 3 simplified; technical jargon reduced
   - **somatic-coaching.html** — P3 rewritten to remove embedded quote; Commitment section: 3 → 2 paragraphs; benefits list trimmed from 10 → 7 items
   - **somatic-bodywork.html** — What is SB P3 simplified; Strozzi Method section: 3 → 2 paragraphs; Soma Etymology: 2 → 1 paragraph
   - **book.html** — all 6 FAQ answers trimmed to 1–2 tight sentences each
@@ -1073,16 +1073,16 @@ Per the original feedback document, services are grouped into 3 categories:
 - **Reiki Practitioner Level II** — certificate image added to isabelle.html Credentials section
 
 ### Changed
-- **Restored TRE® and Somatic Bodywork pages** — `tre.html` and `somatic-bodywork.html` restored; nav dropdowns, footer links, service cards (index.html), and isabelle.html Work With Me section all reverted to previous state
+- **Restored TRE™ and Somatic Bodywork pages** — `tre.html` and `somatic-bodywork.html` restored; nav dropdowns, footer links, service cards (index.html), and isabelle.html Work With Me section all reverted to previous state
 
 ---
 
 ## [40.6] — 2026-06-16
 
 ### Changed
-- **Events page — real event content** — replaced placeholder events with two real upcoming events: "Self-care and Presence for Coaches" (ICF CCE, 21 CCEUs, 1,290 SGD special price) and "Become a Certified TRE® Provider" (3-module certification, full pricing tiers) — both on 29–30 August 2026 Singapore
+- **Events page — real event content** — replaced placeholder events with two real upcoming events: "Self-care and Presence for Coaches" (ICF CCE, 21 CCEUs, 1,290 SGD special price) and "Become a Certified TRE™ Provider" (3-module certification, full pricing tiers) — both on 29–30 August 2026 Singapore
 - **Events countdown** — target updated to 29 August 2026 (Module 1 start)
-- **Homepage countdown bar** — updated to TRE® Provider Certification Module 1, 29–30 August 2026
+- **Homepage countdown bar** — updated to TRE™ Provider Certification Module 1, 29–30 August 2026
 
 ---
 
@@ -1104,8 +1104,8 @@ Per the original feedback document, services are grouped into 3 categories:
 
 ### Added
 - **Events page — animated countdown section** — full-width dark section with SVG progress rings, digit flip animation, pulsing background rings, and CTA buttons; placed between ticker and Featured Event
-- **Homepage — event countdown bar** — replaces stats bar; cream background, large animated digits (Days/Hours/Minutes/Seconds), event title/date, "View Event" CTA; counts down to TRE® Community Session 5 Jul 2026
-- **Service cards — real photos** — TRE®, Somatic Coaching and Somatic Bodywork cards now show actual hero images (copied from Drive)
+- **Homepage — event countdown bar** — replaces stats bar; cream background, large animated digits (Days/Hours/Minutes/Seconds), event title/date, "View Event" CTA; counts down to TRE™ Community Session 5 Jul 2026
+- **Service cards — real photos** — TRE™, Somatic Coaching and Somatic Bodywork cards now show actual hero images (copied from Drive)
 
 ### Fixed
 - **Homepage hero centering** — buttons now centred (`justify-content: center`) and paragraph auto-margins corrected
@@ -1227,7 +1227,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ## [38.6] — 2026-06-13
 
 ### Changed
-- **Process steps — interactive hover** — each step now renders as a card; hovering lifts the card, scales the gold number circle with a gold glow ring, and transitions the heading to gold. Applies to all 4 pages using `.steps` (index, TRE®, Somatic Coaching, Somatic Bodywork)
+- **Process steps — interactive hover** — each step now renders as a card; hovering lifts the card, scales the gold number circle with a gold glow ring, and transitions the heading to gold. Applies to all 4 pages using `.steps` (index, TRE™, Somatic Coaching, Somatic Bodywork)
 
 ---
 
@@ -1271,7 +1271,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ## [38.1] — 2026-06-13
 
 ### Fixed
-- **Lazy loading audit** — all `<img>` tags already had `loading="lazy"`; added missing `loading="lazy"` to the YouTube `<iframe>` embed on the TRE® page
+- **Lazy loading audit** — all `<img>` tags already had `loading="lazy"`; added missing `loading="lazy"` to the YouTube `<iframe>` embed on the TRE™ page
 
 ---
 
@@ -1310,7 +1310,7 @@ Per the original feedback document, services are grouped into 3 categories:
   - `index.html`: 7 broken attributes (`class`, `href`, `style` on testimonial-author, section-eyebrow, divider, feature-list, btn, and BHD link)
   - `about.html`: 2 broken `class` attributes (section-eyebrow, divider)
   - `isabelle.html`: broken `style` attribute on `<em>`, corrupted curly quotes on blockquote, and `?` in image alt text
-  - `tre.html`: broken `style` attribute on TRE in Asia paragraph
+  - `tre.html`: broken `style` attribute on TRE™ in Asia paragraph
 
 ---
 
@@ -1382,7 +1382,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ## [32.0] — 2026-06-12
 
 ### Changed
-- **Ticker strip** — expanded from 9 to 18 unique tags (added: Nervous System Reset, Strozzi Bodywork Method, Embodied Leadership, Trauma & Tension Release, Mind · Body · Soul, Corporate Wellness, Polyvagal Theory, TRE® Trainer Trainee, Executive Coaching); animation slowed from `36s` to `80s`; applied to all 11 pages
+- **Ticker strip** — expanded from 9 to 18 unique tags (added: Nervous System Reset, Strozzi Bodywork Method, Embodied Leadership, Trauma & Tension Release, Mind · Body · Soul, Corporate Wellness, Polyvagal Theory, TRE™ Trainer Trainee, Executive Coaching); animation slowed from `36s` to `80s`; applied to all 11 pages
 - **CSS version** bumped to `v32`
 
 ---
@@ -1440,7 +1440,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ## [25.0] — 2026-06-12
 
 ### Changed
-- **Looping video hero backgrounds** — 6 inner pages now use autoplay muted looping MP4 videos (TRE®, Somatic Bodywork, Book, Gallery, Socials, Events); dark gradient overlay + gold shimmer sit above video via z-index layering; Somatic Coaching keeps static photo; About / Isabelle / Changelog retain navy gradient fallback
+- **Looping video hero backgrounds** — 6 inner pages now use autoplay muted looping MP4 videos (TRE™, Somatic Bodywork, Book, Gallery, Socials, Events); dark gradient overlay + gold shimmer sit above video via z-index layering; Somatic Coaching keeps static photo; About / Isabelle / Changelog retain navy gradient fallback
 - **CSS version** bumped to `v25`
 
 ---
@@ -1463,7 +1463,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ## [22.0] — 2026-06-12
 
 ### Added
-- **Hero images** — real photos applied to all 7 inner-page hero sections (TRE®, Somatic Coaching, Somatic Bodywork, Book a Session, Gallery, Socials, Events); dark gradient overlay ensures text readability; images sourced from `G:\Shared drives\Marketing\…\HummingBeing\Images`
+- **Hero images** — real photos applied to all 7 inner-page hero sections (TRE™, Somatic Coaching, Somatic Bodywork, Book a Session, Gallery, Socials, Events); dark gradient overlay ensures text readability; images sourced from `G:\Shared drives\Marketing\…\HummingBeing\Images`
 - **CSS version** bumped to `v22`
 
 ---
@@ -1471,7 +1471,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ## [21.0] — 2026-06-12
 
 ### Added / Changed / Fixed
-- **Chatbot** — floating navy assistant button above WhatsApp; 22-topic knowledge base (TRE®, Somatic Coaching, Bodywork, Isabelle, pricing, booking, location, events, gallery); keyword-scored matching for natural-language tolerance; quick-reply buttons; navigation buttons route directly to relevant pages
+- **Chatbot** — floating navy assistant button above WhatsApp; 22-topic knowledge base (TRE™, Somatic Coaching, Bodywork, Isabelle, pricing, booking, location, events, gallery); keyword-scored matching for natural-language tolerance; quick-reply buttons; navigation buttons route directly to relevant pages
 - **Ticker strip** — vertical padding reduced from `.95rem` to `.38rem` for a much slimmer marquee bar
 - **Footer compacted** — padding `3rem → 1.8rem / 1.5rem → 1rem`, grid gap tightened, list spacing and font sizes reduced; applied to all 11 pages
 - **Pricing cards fixed** — removed `anim-up` scroll delay; cards now render immediately on page load without waiting for IntersectionObserver
@@ -1483,7 +1483,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ## [19.0] — 2026-06-11
 
 ### Added / Changed
-- **Events page** — new `events.html` with countdown timer to next event (2026-07-05), filter tabs (All / TRE Sessions / Coaching / Workshops / Online), featured event card, 6 upcoming + 3 past event cards, email notify strip
+- **Events page** — new `events.html` with countdown timer to next event (2026-07-05), filter tabs (All / TRE™ Sessions / Coaching / Workshops / Online), featured event card, 6 upcoming + 3 past event cards, email notify strip
 - **Countdown timer** — live tick every 1s (days / hours / mins / secs) in the events hero; switches to "happening now" message when target time passes
 - **Book page redesign** — full personal-branding audit; pricing cards forced to single row at all desktop sizes; trust bar with 4 credentials; sidebar with Isabelle quote, WhatsApp card, locations and session lengths; accordion FAQ
 - **Button animations** — shimmer sweep via `::after` pseudo-element, `translateY(-3px)` lift on hover, gold / navy / outline box-shadow glow per variant, press-down on active
@@ -1497,7 +1497,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ### Added
 - **Gallery page** — new `gallery.html` with 3 clickable category filters: Podcast, Video and Images
 - **Podcast section** — 3 podcast cards (video podcast format) linking to YouTube channel content
-- **Video section** — embedded YouTube player card for TRE Star Groups video + YouTube channel browse card; click-to-play modal with autoplay
+- **Video section** — embedded YouTube player card for TRE™ Star Groups video + YouTube channel browse card; click-to-play modal with autoplay
 - **Images section** — 14 photo cards with hover zoom-overlay and click-to-expand lightbox (ESC to close)
 - **Gallery nav link** — added to primary navigation on all 10 pages (after Socials, before Book a Session)
 - **Gallery footer link** — added to Company section in footer on all 10 pages
@@ -1581,7 +1581,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ## [8.0] — 2026-06-11
 
 ### Changed
-- **Services nav dropdown** — consolidated three separate nav links (TRE® Exercises, Somatic Coaching, Somatic Bodywork) into a single "Services" dropdown button across all 8 pages; desktop: CSS hover with gold top-border panel + triangle pointer; mobile: tap to expand with left gold border indent
+- **Services nav dropdown** — consolidated three separate nav links (TRE™ Exercises, Somatic Coaching, Somatic Bodywork) into a single "Services" dropdown button across all 8 pages; desktop: CSS hover with gold top-border panel + triangle pointer; mobile: tap to expand with left gold border indent
 - **`scripts.js` v2** — added mobile dropdown toggle (`.nav-dropdown-toggle` click handler toggles `.dropdown-open` class at ≤900px); hamburger close also collapses any open dropdown
 - **Active state** — on service pages the "Services" toggle and the matching sub-link both carry the `active` class for correct nav highlighting
 - **socials.html** — complete rewrite: removed broken inline `<style>` block that referenced undefined CSS variables (`--green-dark`, `--sage-bg`); platform cards now use global `.platform-hero` styles; content-theme section redesigned as `.theme-item` cards with gold left border (replaced broken hashtag pills); newsletter box uses valid dark-navy variables
@@ -1592,7 +1592,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ## [7.0] — 2026-06-11
 
 ### Added
-- **Scrolling ticker strip** — infinite-looping marquee below the hero/page-hero on all 8 pages; dark navy background with uppercase credentials: ★ Somatic Wellness · Singapore & Japan · ★ Certified TRE® Provider · 25+ Years of Experience · ★ Somatic Coaching · Somatic Bodywork · ★ 9 Countries · Release · Renew · Restore · ★ BHD Asia & BHD Japan; left/right edge fade; pauses on hover
+- **Scrolling ticker strip** — infinite-looping marquee below the hero/page-hero on all 8 pages; dark navy background with uppercase credentials: ★ Somatic Wellness · Singapore & Japan · ★ Certified TRE™ Provider · 25+ Years of Experience · ★ Somatic Coaching · Somatic Bodywork · ★ 9 Countries · Release · Renew · Restore · ★ BHD Asia & BHD Japan; left/right edge fade; pauses on hover
 - **CSS version** bumped to `v7`
 
 ---
@@ -1633,7 +1633,7 @@ Per the original feedback document, services are grouped into 3 categories:
 - **All images** — removed all Unsplash stock photos; replaced with real photos sourced from hummingbeing.com:
   - Isabelle bio: `Artboard-1@2x-100.jpg` (professional profile)
   - Isabelle global section: `isatall.jpg`
-  - TRE page: `therapist-08.png`, `Relationship-Coaching-1.jpg`, `massage-11.jpg`
+  - TRE™ page: `therapist-08.png`, `Relationship-Coaching-1.jpg`, `massage-11.jpg`
   - Somatic Coaching: `therapist-02.png`, `Relationship-Coaching-5.jpg`
   - Somatic Bodywork: `massage-12.jpg`, `massage-09-1.jpg`, `massage-04.png`
   - About page: `sight-seeing-44.png`, `353436.jpg`, `flight-nature-bird-flying-33066.jpg`
@@ -1650,7 +1650,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ### Added
 - **Font Awesome 6.5.0** CDN link on all pages — enables icon usage throughout
 - **Favicon** — custom `favicon.svg` (navy circle with orange "H")
-- **YouTube embed** on TRE page — responsive 16:9 container (`.video-wrap`) with TRE Star Groups video
+- **YouTube embed** on TRE™ page — responsive 16:9 container (`.video-wrap`) with TRE™ Star Groups video
 - **Tags** — `.tag` pill components added to service pages for scannable credentials
 - **Somatic Bodywork page** — Greek etymology section (`σῶμα`) with Unicode fix
 - **Card icons** — Font Awesome icons added to all service cards across all pages
