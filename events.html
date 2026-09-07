@@ -493,26 +493,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- ONLINE SESSION PREP STRIP -->
-<style>
-.online-prep-strip { background: var(--navy); border-top: 1px solid rgba(245,166,35,.28); border-bottom: 1px solid rgba(245,166,35,.28); padding: 1.7rem 5%; }
-.online-prep-strip .ops-inner { max-width: 1020px; margin: 0 auto; display: flex; align-items: center; gap: 1.3rem; flex-wrap: wrap; }
-.online-prep-strip .ops-ico { width: 46px; height: 46px; border-radius: 50%; background: rgba(245,166,35,.16); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
-.online-prep-strip .ops-text { flex: 1; min-width: 250px; }
-.online-prep-strip .ops-text strong { display: block; font-family: 'PT Serif', Georgia, serif; font-size: 1.08rem; color: #fff; margin-bottom: .22rem; }
-.online-prep-strip .ops-text span { font-size: .9rem; line-height: 1.62; color: rgba(255,255,255,.72); }
-</style>
-<div class="online-prep-strip">
-  <div class="ops-inner">
-    <div class="ops-ico"><i class="fa-solid fa-video"></i></div>
-    <div class="ops-text">
-      <strong>Joining online? Prepare your space first.</strong>
-      <span>Camera positioning, what to bring, lighting, dress code and joining on Zoom &#8212; everything to set up before your online TRE&#8482; session.</span>
-    </div>
-    <a href="online-session-preparation.html" class="btn btn-primary">Preparation Guide &rarr;</a>
-  </div>
-</div>
-
 <div class="ticker-wrap" aria-hidden="true">
   <div class="ticker-track">
     <span class="t-item"><span class="t-star">&#9733;</span> Somatic Wellness</span><span class="t-sep">&middot;</span>
@@ -578,10 +558,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="ecd-inner">
     <span class="ecd-eyebrow"><i class="fa-solid fa-star"></i> Countdown to Next Event</span>
-    <h2 class="ecd-heading">Nervous System Regulation &amp; Neurogenic Tremoring<br><em>Singapore &middot; In-Person &middot; 29 &amp; 30 August 2026</em></h2>
+    <h2 class="ecd-heading">From Shaking to Shaping &mdash; Online<br><em>Online &middot; 8 October 2026 &middot; 7&#8211;9pm</em></h2>
     <div class="ecd-meta">
-      <i class="fa-regular fa-calendar"></i> Saturday, 29 August 2026
-      <span>&middot;</span> <i class="fa-solid fa-location-dot"></i> Singapore, In-Person
+      <i class="fa-regular fa-calendar"></i> Thursday, 8 October 2026
+      <span>&middot;</span> <i class="fa-solid fa-video"></i> Live Online
     </div>
     <div class="ecd-units" id="ecd-units">
       <div class="ecd-unit">
@@ -847,9 +827,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 <script src="scripts.js" defer></script>
 <script>
-/* Big countdown section (with ring progress) */
+/* Big countdown section — DYNAMIC featured event.
+   Auto-selects the earliest event that is neither past nor sold out,
+   populates the heading/meta/register link, and re-selects automatically
+   once that event passes (or is flagged sold out). Add/flag events below. */
 (function(){
-  var target=new Date('2026-08-29T09:00:00+08:00').getTime();
+  var EVENTS=[
+    { title:'From Shaking to Shaping &mdash; Online',
+      sub:'Online &middot; 8 October 2026 &middot; 7&#8211;9pm',
+      metaCal:'Thursday, 8 October 2026', metaLoc:'Live Online', metaIcon:'fa-solid fa-video',
+      date:'2026-10-08T19:00:00+02:00', href:'event-shaking-online.html', soldOut:false },
+    { title:'TRE&#8482; Module 1 &mdash; Bucharest',
+      sub:'Bucharest &middot; 15&#8211;17 October 2026',
+      metaCal:'15&#8211;17 October 2026', metaLoc:'Bucharest, Romania', metaIcon:'fa-solid fa-location-dot',
+      date:'2026-10-15T09:00:00+03:00', href:'event-tre-module1-bucharest.html', soldOut:false }
+  ];
+  var sec=document.querySelector('.ecd-section');
+  if(!sec)return;
+  var now=Date.now();
+  var featured=EVENTS.filter(function(e){
+      return !e.soldOut && new Date(e.date).getTime()>now;
+    }).sort(function(a,b){ return new Date(a.date)-new Date(b.date); })[0];
+  if(!featured){ sec.style.display='none'; return; }
+
+  var hEl=sec.querySelector('.ecd-heading');
+  if(hEl) hEl.innerHTML=featured.title+'<br><em>'+featured.sub+'</em>';
+  var mEl=sec.querySelector('.ecd-meta');
+  if(mEl) mEl.innerHTML='<i class="fa-regular fa-calendar"></i> '+featured.metaCal+
+    ' <span>&middot;</span> <i class="'+featured.metaIcon+'"></i> '+featured.metaLoc;
+  var reg=sec.querySelector('.ecd-actions .btn-primary');
+  if(reg) reg.setAttribute('href',featured.href);
+
+  var target=new Date(featured.date).getTime();
   var CIRC=2*Math.PI*54;
   function pad(n){return String(n).padStart(2,'0');}
   function setRing(id,val,max){

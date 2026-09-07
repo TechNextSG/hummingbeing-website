@@ -101,7 +101,10 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ce-day p{margin:0;color:var(--body-text);font-size:.92rem;line-height:1.6}
     @media(max-width:480px){.ce-day{grid-template-columns:1fr;gap:.5rem}}
     /* facilitator */
-    .ce-person{background:var(--navy-deep);color:#fff;border-radius:12px;padding:1.7rem}
+    .ce-person{background:var(--navy-deep);color:#fff;border-radius:12px;padding:1.7rem;display:flex;gap:1.3rem;align-items:flex-start}
+    .ce-person .ce-avatar{flex:0 0 auto;width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:top center;border:3px solid rgba(245,166,35,.55);box-shadow:0 8px 22px rgba(0,0,0,.28)}
+    .ce-person .ce-person-body{flex:1;min-width:0}
+    @media(max-width:520px){.ce-person{flex-direction:column;align-items:center;text-align:center}.ce-person .links{justify-content:center}}
     .ce-person .role{font-family:'Lato',sans-serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:800}
     .ce-person h4{font-family:'Playfair Display',serif;margin:.35rem 0 .55rem;font-size:1.35rem;color:#fff}
     .ce-person p{color:rgba(255,255,255,.82);font-size:.92rem;line-height:1.7;margin:0 0 .9rem}
@@ -263,13 +266,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <h2>Your trainer</h2>
     <div class="ce-person">
-      <span class="role">Global TRE&#8482; Certifying Trainer &middot; ICF PCC</span>
-      <h4>Isabelle Claus Teixeira</h4>
-      <p>Somatic and Trauma-informed Executive Coach (ICF PCC), Global TRE&#8482; Certifying Trainer and Mindfulness Teacher. Trained directly under Dr. David Berceli, founder of TRE&#8482;. Over 30 years of experience working with professionals, executives and teams across 9 countries and 40+ nationalities &#8212; in person and online.</p>
-      <div class="links">
-        <a href="isabelle.html">Meet Isabelle &rarr;</a>
-        <a href="tre-certification.html">Full certification path &rarr;</a>
-        <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <img class="ce-avatar" src="images/isabelle-your-trainer.jpg" alt="Isabelle Claus Teixeira" width="104" height="104" loading="lazy" decoding="async" />
+      <div class="ce-person-body">
+        <span class="role">Global TRE&#8482; Certifying Trainer &middot; ICF PCC</span>
+        <h4>Isabelle Claus Teixeira</h4>
+        <p>Somatic and Trauma-informed Executive Coach (ICF PCC), Global TRE&#8482; Certifying Trainer and Mindfulness Teacher. Trained directly under Dr. David Berceli, founder of TRE&#8482;. Over 30 years of experience working with professionals, executives and teams across 9 countries and 40+ nationalities &#8212; in person and online.</p>
+        <div class="links">
+          <a href="isabelle.html">Meet Isabelle &rarr;</a>
+          <a href="tre-certification.html">Full certification path &rarr;</a>
+          <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        </div>
       </div>
     </div>
 

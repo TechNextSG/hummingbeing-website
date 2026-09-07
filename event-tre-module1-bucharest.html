@@ -104,7 +104,10 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ce-callout p{color:rgba(255,255,255,.82);font-size:.9rem;line-height:1.6;margin:0}.ce-callout strong{color:var(--gold)}
     .ce-people{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.4rem}
     @media(max-width:640px){.ce-people{grid-template-columns:1fr}}
-    .ce-person{background:var(--navy-deep);color:#fff;border-radius:12px;padding:1.5rem}
+    .ce-person{background:var(--navy-deep);color:#fff;border-radius:12px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start}
+    .ce-person .ce-avatar{flex:0 0 auto;width:78px;height:78px;border-radius:50%;object-fit:cover;object-position:top center;border:2.5px solid rgba(245,166,35,.5)}
+    .ce-person .ce-person-body{flex:1;min-width:0}
+    @media(max-width:400px){.ce-person{flex-direction:column;align-items:center;text-align:center}.ce-person .links{justify-content:center}}
     .ce-person .role{font-family:'Lato',sans-serif;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:800}
     .ce-person h4{font-family:'Playfair Display',serif;margin:.35rem 0 .5rem;font-size:1.2rem;color:#fff}
     .ce-person p{color:rgba(255,255,255,.82);font-size:.88rem;line-height:1.65;margin:0 0 .8rem}
@@ -259,16 +262,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>Your trainers</h2>
     <div class="ce-people">
       <div class="ce-person">
-        <span class="role">Global TRE&#8482; Certifying Trainer</span>
-        <h4>Isabelle Claus Teixeira</h4>
-        <p>Somatic and Trauma-informed Executive Coach (ICF PCC), Global TRE&#8482; Certifying Trainer and Mindfulness Teacher. Trained directly under Dr. David Berceli. 30+ years across 9 countries and 40+ nationalities.</p>
-        <div class="links"><a href="isabelle.html">Meet Isabelle &rarr;</a><a href="tre-certification.html">Certification &rarr;</a><a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank" rel="noopener">LinkedIn</a></div>
+        <img class="ce-avatar" src="images/isabelle-your-trainer.jpg" alt="Isabelle Claus Teixeira" width="78" height="78" loading="lazy" decoding="async" />
+        <div class="ce-person-body">
+          <span class="role">Global TRE&#8482; Certifying Trainer</span>
+          <h4>Isabelle Claus Teixeira</h4>
+          <p>Somatic and Trauma-informed Executive Coach (ICF PCC), Global TRE&#8482; Certifying Trainer and Mindfulness Teacher. Trained directly under Dr. David Berceli. 30+ years across 9 countries and 40+ nationalities.</p>
+          <div class="links"><a href="isabelle.html">Meet Isabelle &rarr;</a><a href="tre-certification.html">Certification &rarr;</a><a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank" rel="noopener">LinkedIn</a></div>
+        </div>
       </div>
       <div class="ce-person">
-        <span class="role">Certified TRE&#8482; Provider &amp; Trainer Trainee</span>
-        <h4>Saymara Ryon</h4>
-        <p>Founder &amp; President, Asocia&#x21B;ia TRE&#8482; Rom&#226;nia. Holistic Coach, Trainer &amp; Mentor. Founder of &#206;nva&#x21B;&#x103; s&#x103; Zbori SRL. Pioneer of TRE&#8482; in Romania, building the practitioner community across Eastern Europe.</p>
-        <div class="links"><a href="https://www.atelierdesuflet.ro/" target="_blank" rel="noopener">Website &rarr;</a><a href="https://treromania.org/" target="_blank" rel="noopener">TRE&#8482; Romania</a><a href="https://ro.linkedin.com/in/saymara-ryon-7252845" target="_blank" rel="noopener">LinkedIn</a></div>
+        <img class="ce-avatar" src="images/saymara-ryon.webp" alt="Saymara Ryon" width="78" height="78" loading="lazy" decoding="async" />
+        <div class="ce-person-body">
+          <span class="role">Certified TRE&#8482; Provider &amp; Trainer Trainee</span>
+          <h4>Saymara Ryon</h4>
+          <p>Founder &amp; President, Asocia&#x21B;ia TRE&#8482; Rom&#226;nia. Holistic Coach, Trainer &amp; Mentor. Founder of &#206;nva&#x21B;&#x103; s&#x103; Zbori SRL. Pioneer of TRE&#8482; in Romania, building the practitioner community across Eastern Europe.</p>
+          <div class="links"><a href="https://www.atelierdesuflet.ro/" target="_blank" rel="noopener">Website &rarr;</a><a href="https://treromania.org/" target="_blank" rel="noopener">TRE&#8482; Romania</a><a href="https://ro.linkedin.com/in/saymara-ryon-7252845" target="_blank" rel="noopener">LinkedIn</a></div>
+        </div>
       </div>
     </div>
     <p class="ce-collab"><strong>In collaboration with</strong> <a href="https://www.atelierdesuflet.ro/" target="_blank" rel="noopener">&#206;nva&#x21B;&#x103; s&#x103; Zbori SRL (Learn to Fly)</a> &middot; <a href="https://treromania.org/" target="_blank" rel="noopener">TRE&#8482; Rom&#226;nia</a> &middot; HummingBeing.</p>
@@ -278,7 +287,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Attend the online or in-person introductory workshop first &#8212; and get it free when you register for TRE&#8482; Module 1.</p>
       <div class="btn-row">
         <a href="event-shaking-to-shaping.html" class="btn btn-primary">Learn more &rarr;</a>
-        <a href="online-session-preparation.html" class="btn btn-outline">Online prep guide</a>
       </div>
     </div>
   </div>
