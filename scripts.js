@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['About Isabelle','What services are available?','Book a session'] },
 
     { keys: ['event','workshop','group','upcoming','schedule','class','programme','program','events','group session','next event','tre workshop','group tre','romania','bucharest','certification','module 1','icf','cceu'],
-      reply: "Upcoming events:\n\n• 29–30 Aug 2026 — Singapore · TRE™ Module 1 / Nervous System Regulation for Coaches · 21 ICF CCEUs · from S$990 online / S$1,290 in person\n• 26–27 Sep 2026 — Singapore · TRE™ Module 2 (teaching TRE™ one-to-one)\n• 15–17 Oct 2026 — Bucharest, Romania · TRE™ Module 1 Certification · 21 ICF CCEUs\n• 13–14 Feb 2027 — Singapore · TRE™ Module 3 (teaching TRE™ to groups)\n\nThe full certification bundle (Modules 1–3) starts from S$3,699 super early bird.",
+      reply: "Upcoming events:\n\n• 8 Oct 2026 — Online · From Shaking to Shaping, with Isabelle Claus Teixeira & Saymara Ryon\n• 15–17 Oct 2026 — Bucharest, Romania · TRE™ Module 1 Certification · 21 ICF CCEUs\n• 20 & 24 Oct 2026 — Bucharest · From Shaking to Shaping, in person\n• 27–28 Feb 2027 — Singapore · TRE™ Provider Certification, Module 1 of the 2027 cohort\n\nThe 2026 Singapore certification intake is now closed. The 2027 cohort is open — co-taught by Isabelle and Simba Stenqvist, with early-bird pricing until 31 December 2026. Book an intake call and Isabelle will walk you through the options.",
       link: { text: 'See all upcoming events', url: 'events.html' },
       btns: ['What is TRE™?','How much does a programme cost?','Book a private session'] },
 
