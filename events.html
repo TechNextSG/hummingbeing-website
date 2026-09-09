@@ -997,6 +997,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       grid.appendChild(card);
     }
   });
+
+  // 3) order the upcoming grid: soonest date first; sold-out pushed to the end
+  if(grid){
+    var order = { ongoing:0, upcoming:0, sold:1, past:2 };
+    var live = [].slice.call(grid.querySelectorAll('.evt-card'));
+    live.sort(function(a,b){
+      var ga = order[a.getAttribute('data-status')] || 0, gb = order[b.getAttribute('data-status')] || 0;
+      if(ga !== gb) return ga - gb;
+      var sa = ms(a.getAttribute('data-start'), false), sb = ms(b.getAttribute('data-start'), false);
+      if(isNaN(sa)) sa = Infinity; if(isNaN(sb)) sb = Infinity;
+      return sa - sb;
+    });
+    live.forEach(function(c){ grid.appendChild(c); });
+  }
 })();
 
 /* Event filter + upcoming/past counts (recomputed after status placement) */
