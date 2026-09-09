@@ -201,6 +201,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .evt-date-tag.is-ongoing { background:rgba(245,166,35,.24); border-color:var(--gold); color:var(--gold-dark); }
   .evt-date-tag.is-ongoing::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--gold-dark); flex:0 0 auto; }
   .evt-date-tag.is-past, .evt-date-tag.is-closed { background:rgba(36,46,66,.055); border-color:rgba(36,46,66,.1); color:var(--text-mid); }
+  /* thumbnail status badges (match events.html) */
+  .home-evt-thumb .h-badge { position:absolute; top:12px; left:12px; z-index:3; color:#fff; font-family:'Lato',sans-serif; font-size:.58rem; font-weight:900; letter-spacing:1.4px; text-transform:uppercase; padding:.3rem .7rem; border-radius:5px; display:inline-flex; align-items:center; gap:.35rem; }
+  .home-evt-thumb .h-badge.is-upcoming { background:#2d6cdf; box-shadow:0 6px 18px rgba(45,108,223,.4); }
+  .home-evt-thumb .h-badge.is-ongoing { background:#1f9d6b; box-shadow:0 6px 18px rgba(31,157,107,.4); }
+  .home-evt-thumb .h-badge.is-past { background:rgba(36,46,66,.85); box-shadow:0 6px 18px rgba(36,46,66,.35); }
+  .home-evt-thumb .h-badge.is-sold { background:#c0392b; box-shadow:0 6px 18px rgba(192,57,43,.45); }
+  .home-evt-thumb .h-badge.is-ongoing::before { content:""; width:6px; height:6px; border-radius:50%; background:#fff; }
 </style>
 <!-- UPCOMING EVENTS -->
 <div class="evt-countdown-bar">
@@ -209,7 +216,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 class="section-title">Join Isabelle Live</h2>
     <p class="section-subtitle">Upcoming TRE&#8482; workshops and certifications &mdash; live online and in person.</p>
   </div>
-  <div class="home-evt-3">
+  <div class="home-evt-3" id="home-evt-grid">
     <article class="home-evt-card">
       <a href="event-shaking-online.html" class="home-evt-thumb" aria-label="From Shaking to Shaping — Online event">
         <img src="images/event-shaking-online.webp?v=5" alt="From Shaking to Shaping &mdash; Online" width="1920" height="1080" loading="lazy" decoding="async" />
@@ -489,21 +496,71 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 <script src="scripts.js" defer></script>
 <script>
-/* Upcoming-events date tags: mark each as upcoming / ongoing / past by its dates */
+/* Upcoming-events section: date-driven on every page load.
+   Reads each card's .evt-date-tag (data-start/data-end, ISO SGT). Colours the
+   pill, badges the thumb (Upcoming/Ongoing/Passed), hides events that have
+   already ended, and orders the rest soonest-first so the newest upcoming
+   event always leads. Refreshes automatically each open/refresh. */
 (function(){
   var now = Date.now();
+  function ms(d, endOfDay){ return d ? Date.parse(d + (endOfDay ? 'T23:59:59' : 'T00:00:00') + '+08:00') : NaN; }
+
+  // colour the standalone date pills
   document.querySelectorAll('.evt-date-tag').forEach(function(t){
     if(/is-(past|upcoming|ongoing|closed)/.test(t.className)) return;
-    var s = t.getAttribute('data-start');
-    var e = t.getAttribute('data-end') || s;
-    if(!e){ t.classList.add('is-upcoming'); return; }
-    var endMs   = Date.parse(e + 'T23:59:59+08:00');
-    var startMs = s ? Date.parse(s + 'T00:00:00+08:00') : endMs;
-    if(isNaN(endMs)){ t.classList.add('is-upcoming'); return; }
-    if(endMs < now){ t.classList.add('is-past'); }
-    else if(startMs <= now && now <= endMs){ t.classList.add('is-ongoing'); }
-    else { t.classList.add('is-upcoming'); }
+    var em = ms(t.getAttribute('data-end') || t.getAttribute('data-start'), true);
+    var sm = t.getAttribute('data-start') ? ms(t.getAttribute('data-start'), false) : em;
+    if(isNaN(em)){ t.classList.add('is-upcoming'); return; }
+    if(em < now) t.classList.add('is-past');
+    else if(sm <= now && now <= em) t.classList.add('is-ongoing');
+    else t.classList.add('is-upcoming');
   });
+
+  var grid = document.getElementById('home-evt-grid');
+  if(!grid) return;
+  var BADGE = { sold:'Sold Out', past:'Passed', ongoing:'Ongoing', upcoming:'Upcoming' };
+
+  function statusOf(card){
+    if(card.getAttribute('data-sold') === 'true') return 'sold';
+    var tag = card.querySelector('.evt-date-tag');
+    if(!tag) return 'upcoming';
+    var em = ms(tag.getAttribute('data-end') || tag.getAttribute('data-start'), true);
+    var sm = tag.getAttribute('data-start') ? ms(tag.getAttribute('data-start'), false) : em;
+    if(!isNaN(em) && em < now) return 'past';
+    if(!isNaN(sm) && sm <= now && (isNaN(em) || now <= em)) return 'ongoing';
+    return 'upcoming';
+  }
+  function startMs(card){
+    var tag = card.querySelector('.evt-date-tag');
+    var s = tag ? ms(tag.getAttribute('data-start'), false) : NaN;
+    return isNaN(s) ? Infinity : s;
+  }
+
+  var cards = [].slice.call(grid.querySelectorAll('.home-evt-card'));
+  cards.forEach(function(card){
+    var status = statusOf(card);
+    card.setAttribute('data-status', status);
+    var thumb = card.querySelector('.home-evt-thumb');
+    if(thumb){
+      thumb.querySelectorAll('.h-badge').forEach(function(b){ b.remove(); });
+      var b = document.createElement('span');
+      b.className = 'h-badge is-' + status;
+      b.textContent = BADGE[status];
+      thumb.insertBefore(b, thumb.firstChild);
+    }
+    card.classList.toggle('is-sold', status === 'sold');
+    // an event that has already ended is never featured on the homepage
+    card.hidden = (status === 'past');
+  });
+
+  // order soonest-first; sold-out sinks below live events
+  var order = { ongoing:0, upcoming:0, sold:1, past:2 };
+  cards.sort(function(a,b){
+    var ga = order[a.getAttribute('data-status')] || 0, gb = order[b.getAttribute('data-status')] || 0;
+    if(ga !== gb) return ga - gb;
+    return startMs(a) - startMs(b);
+  });
+  cards.forEach(function(c){ grid.appendChild(c); });
 })();
 </script>
 </body>
