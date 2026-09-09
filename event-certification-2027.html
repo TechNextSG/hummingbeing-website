@@ -128,6 +128,10 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ce-prep .ce-list li{color:#dbe3f1}
     .ce-prep .ce-list li::before{color:var(--gold)}
     .ce-prep .btn-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.4rem}
+    .ce-prep-section{background:#fff;padding:0 5% 3.5rem}
+    .ce-prep-section .ce-prep{max-width:1160px;margin:0 auto}
+    .ce-prep-section .ce-prep-list{columns:2;column-gap:2.2rem}
+    @media(max-width:640px){.ce-prep-section .ce-prep-list{columns:1}}
     /* sidebar */
     .ce-side{position:sticky;top:96px;display:grid;gap:1.2rem}
     @media(max-width:900px){.ce-side{position:static}}
@@ -370,21 +374,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p><a href="mailto:isabelle@bhdasia.com">isabelle@bhdasia.com</a><br><a href="https://wa.me/818065151778" target="_blank" rel="noopener">WhatsApp +81 80 6515 1778</a></p>
       <p style="margin:1rem 0 0;padding-top:.9rem;border-top:1px solid rgba(36,46,66,.1);font-size:.76rem;line-height:1.55;color:var(--text-mid)"><i class="fa-solid fa-circle-exclamation" style="color:#b23a2c;margin-right:.4rem"></i>All ticket sales are final &mdash; tickets are non-refundable and non-cancellable.</p>
     </div>
-    <div class="ce-prep" id="prepare">
-      <h2>Joining a session online? Prepare your space</h2>
-      <p>Your trainer works with you through the camera, so we must see you head to toe, both standing and on the mat. A quick setup before the session makes all the difference.</p>
-      <ul class="ce-list">
-        <li>Device about 2&#8211;2.5 m away, landscape, roughly hip height &#8212; to the side of your mat</li>
-        <li>A yoga mat, good lighting, and loose, light-coloured clothing (dark hides your tremors)</li>
-        <li>Reliable internet and the Zoom app, joined a few minutes early</li>
-      </ul>
-      <div class="btn-row">
-        <a href="online-session-preparation.html" class="btn btn-primary">Preparation guide &rarr;</a>
-        <a href="online-tre-session-guide.pdf?v=2" download class="btn btn-outline">Download PDF &darr;</a>
-      </div>
-    </div>
   </aside>
 </div>
+
+<!-- ONLINE PREP (full width, reads better than in the narrow sidebar) -->
+<section class="ce-prep-section">
+  <div class="ce-prep" id="prepare">
+    <h2>Joining a session online? Prepare your space</h2>
+    <p>Your trainer works with you through the camera, so we must see you head to toe, both standing and on the mat. A quick setup before the session makes all the difference.</p>
+    <ul class="ce-list ce-prep-list">
+      <li>Device about 2&#8211;2.5 m away, landscape, roughly hip height &#8212; to the side of your mat</li>
+      <li>A yoga mat, good lighting, and loose, light-coloured clothing (dark hides your tremors)</li>
+      <li>Reliable internet and the Zoom app, joined a few minutes early</li>
+    </ul>
+    <div class="btn-row">
+      <a href="online-session-preparation.html" class="btn btn-primary">Preparation guide &rarr;</a>
+      <a href="online-tre-session-guide.pdf?v=2" download class="btn btn-outline">Download PDF &darr;</a>
+    </div>
+  </div>
+</section>
 
 <!-- RELATED -->
 <section class="ce-related">
