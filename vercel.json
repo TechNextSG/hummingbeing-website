@@ -13,7 +13,8 @@
     { "source": "/somatic-healing", "destination": "/holistic-mastermind.html", "permanent": true },
     { "source": "/somatic-healing/", "destination": "/holistic-mastermind.html", "permanent": true },
     { "source": "/somatic-healing.html", "destination": "/holistic-mastermind.html", "permanent": true },
-    { "source": "/isabelle/", "destination": "/isabelle.html", "permanent": true }
+    { "source": "/isabelle/", "destination": "/isabelle.html", "permanent": true },
+    { "source": "/event-certification.html", "destination": "/event-certification-2027.html", "permanent": false }
   ],
   "headers": [
     {
