@@ -638,6 +638,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .evt-card.is-sold .evt-card-thumb img { filter:grayscale(35%) brightness(.94); }
   .btn.btn-soldout { background:#c0392b !important; border-color:#c0392b !important; color:#fff !important; cursor:not-allowed; pointer-events:none; opacity:.92; box-shadow:none !important; }
   .evt-past-badge { position:absolute; top:12px; left:12px; z-index:3; background:rgba(36,46,66,.85); color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(36,46,66,.35); }
+  .evt-ongoing-badge { position:absolute; top:12px; left:12px; z-index:3; background:#1f9d6b; color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(31,157,107,.4); display:inline-flex; align-items:center; gap:.35rem; }
+  .evt-ongoing-badge::before { content:""; width:6px; height:6px; border-radius:50%; background:#fff; animation:evtBadgePulse 1.6s ease-out infinite; }
+  @keyframes evtBadgePulse { 0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)} 70%{box-shadow:0 0 0 5px rgba(255,255,255,0)} 100%{box-shadow:0 0 0 0 rgba(255,255,255,0)} }
+  @media (prefers-reduced-motion:reduce){ .evt-ongoing-badge::before{ animation:none; } }
+  /* Past-events archive section */
+  .evt-archive { opacity:.96; }
+  #past-events .section-title { font-size:1.7rem; }
   .evt-card.is-past .evt-card-thumb img { filter:grayscale(65%) brightness(.9); }
   .btn.btn-ended { background:#5b6472 !important; border-color:#5b6472 !important; color:#fff !important; cursor:default; pointer-events:none; opacity:.95; box-shadow:none !important; }
   .evt-card-content { padding:1.1rem 1.2rem 1.2rem; display:flex; flex-direction:column; gap:.5rem; flex:1; }
@@ -681,7 +688,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button type="button" class="evt-filter-btn" data-filter="international">International</button>
     <button type="button" class="evt-filter-btn" data-filter="certification">Certification</button>
     <button type="button" class="evt-filter-btn" data-filter="workshops">Workshops</button>
-    <button type="button" class="evt-filter-btn" data-filter="past">Past events</button>
   </div>
 
   <!-- EVENT GRID -->
@@ -762,7 +768,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </article>
 
-    <!-- SOLD OUT events always last -->
+    <p class="evt-empty" id="evt-empty">No events in this category yet.</p>
+  </div>
+</section>
+
+<!-- PAST EVENTS (archive) -->
+<section class="section-white" id="past-events">
+  <div class="section-header-center" style="margin-bottom:2rem">
+    <span class="section-eyebrow">Archive</span>
+    <h2 class="section-title">Past Events</h2>
+    <p class="section-subtitle">Recently with us &mdash; now closed</p>
+  </div>
+  <div class="evt-grid evt-archive" id="evt-archive">
 
     <article class="evt-card is-past" data-cat="singapore workshops" data-when="past">
       <a href="event-internal-alchemy.html" class="evt-card-thumb"><span class="evt-past-badge">Passed</span><img src="images/event-internal-alchemy.webp?v=4" alt="Internal Alchemy Workshop with Simba Stenqvist" loading="lazy" decoding="async" width="1600" height="900" /></a>
@@ -792,7 +809,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </article>
 
-    <p class="evt-empty" id="evt-empty">No events in this category yet.</p>
   </div>
 </section>
 
@@ -929,6 +945,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     else if(startMs <= now && now <= endMs){ t.classList.add('is-ongoing'); }
     else { t.classList.add('is-upcoming'); }
   });
+  /* Green "Ongoing" badge on the thumbnail of any card that is currently on-going */
+  document.querySelectorAll('#evt-grid .evt-card, #evt-archive .evt-card').forEach(function(card){
+    if(!card.querySelector('.evt-date-tag.is-ongoing')) return;
+    if(card.querySelector('.evt-ongoing-badge, .evt-sold-badge, .evt-past-badge')) return;
+    var thumb = card.querySelector('.evt-card-thumb');
+    if(!thumb) return;
+    var b = document.createElement('span');
+    b.className = 'evt-ongoing-badge';
+    b.textContent = 'Ongoing';
+    thumb.insertBefore(b, thumb.firstChild);
+  });
 })();
 
 /* Event filter + upcoming/past counts */
@@ -937,20 +964,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var cards = document.querySelectorAll('#evt-grid .evt-card');
   var empty = document.getElementById('evt-empty');
 
-  // counts
-  var up = 0, past = 0;
-  cards.forEach(function(c){ (c.getAttribute('data-when') === 'past') ? past++ : up++; });
+  // counts: upcoming grid vs the separate past-events archive
   var upEl = document.getElementById('evt-count-up'), pastEl = document.getElementById('evt-count-past');
-  if (upEl)   upEl.textContent   = up;
-  if (pastEl) pastEl.textContent = past;
+  if (upEl)   upEl.textContent   = cards.length;
+  if (pastEl) pastEl.textContent = document.querySelectorAll('#evt-archive .evt-card').length;
 
   function apply(f){
     var shown = 0;
     cards.forEach(function(card){
-      var match;
-      if (f === 'all') match = true;
-      else if (f === 'past') match = card.getAttribute('data-when') === 'past';
-      else match = (card.getAttribute('data-cat') || '').indexOf(f) !== -1;
+      var match = (f === 'all') || (card.getAttribute('data-cat') || '').indexOf(f) !== -1;
       card.classList.toggle('is-hidden', !match);
       if (match) shown++;
     });
