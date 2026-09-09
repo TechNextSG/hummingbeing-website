@@ -639,6 +639,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .btn.btn-soldout { background:#c0392b !important; border-color:#c0392b !important; color:#fff !important; cursor:not-allowed; pointer-events:none; opacity:.92; box-shadow:none !important; }
   .evt-past-badge { position:absolute; top:12px; left:12px; z-index:3; background:rgba(36,46,66,.85); color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(36,46,66,.35); }
   .evt-ongoing-badge { position:absolute; top:12px; left:12px; z-index:3; background:#1f9d6b; color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(31,157,107,.4); display:inline-flex; align-items:center; gap:.35rem; }
+  .evt-upcoming-badge { position:absolute; top:12px; left:12px; z-index:3; background:#2d6cdf; color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(45,108,223,.4); }
   .evt-ongoing-badge::before { content:""; width:6px; height:6px; border-radius:50%; background:#fff; animation:evtBadgePulse 1.6s ease-out infinite; }
   @keyframes evtBadgePulse { 0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)} 70%{box-shadow:0 0 0 5px rgba(255,255,255,0)} 100%{box-shadow:0 0 0 0 rgba(255,255,255,0)} }
   @media (prefers-reduced-motion:reduce){ .evt-ongoing-badge::before{ animation:none; } }
@@ -693,13 +694,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- EVENT GRID -->
   <div class="evt-grid" id="evt-grid">
 
-    <!-- 3. From Shaking to Shaping (Sep-Oct 2026) -->
-    <article class="evt-card" data-cat="international online workshops" data-when="upcoming">
+    <!-- 3. From Shaking to Shaping (Romania series: 3 Sep · 20 & 24 Oct 2026) -->
+    <article class="evt-card" data-cat="international online workshops" data-start="2026-09-03" data-end="2026-10-24">
       <a href="event-shaking-to-shaping.html" class="evt-card-thumb"><img src="images/event-shaking-to-shaping.webp?v=4" alt="From Shaking to Shaping" loading="lazy" decoding="async" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">Online &amp; In-Person</span></div>
         <h3>From Shaking to Shaping</h3>
-        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-09-01" data-end="2026-10-31">Sep&ndash;Oct 2026</span></div>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-09-03" data-end="2026-09-03">3 Sep 2026 &middot; Online</span><span class="evt-date-tag" data-start="2026-10-20" data-end="2026-10-24">20 &amp; 24 Oct 2026 &middot; Bucharest</span></div>
         <p class="evt-card-desc">Integrate TRE&#8482; into your coaching practice &mdash; neurogenic tremoring as a somatic tool for nervous system regulation and embodied presence.</p>
         <div class="evt-card-actions">
           <a href="event-shaking-to-shaping.html#sessions" class="btn btn-primary">Buy Tickets</a>
@@ -709,7 +710,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </article>
 
     <!-- 3b. From Shaking to Shaping ONLINE (8 Oct 2026) -->
-    <article class="evt-card" data-cat="online international workshops" data-when="upcoming">
+    <article class="evt-card" data-cat="online international workshops" data-start="2026-10-08" data-end="2026-10-08">
       <a href="event-shaking-online.html" class="evt-card-thumb"><img src="images/event-shaking-online.webp?v=5" alt="From Shaking to Shaping — Online, 8 October" loading="lazy" decoding="async" width="1920" height="1080" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Online</span><span class="evt-tag">TRE&#8482; Coaching</span></div>
@@ -724,7 +725,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </article>
 
     <!-- 4. TRE™ Module 1 Bucharest (15-17 Oct 2026) -->
-    <article class="evt-card" data-cat="international certification" data-when="upcoming">
+    <article class="evt-card" data-cat="international certification" data-start="2026-10-15" data-end="2026-10-17">
       <a href="event-tre-module1-bucharest.html" class="evt-card-thumb"><img src="images/event-bucharest-module1.webp?v=4" alt="TRE™ Module 1 - Bucharest" loading="lazy" decoding="async" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">21 ICF CCEUs</span></div>
@@ -739,7 +740,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </article>
 
     <!-- 4. Become a Certified TRE™ Provider — 2026 Cohort (SOLD OUT) -->
-    <article class="evt-card is-sold" data-cat="singapore certification" data-when="upcoming">
+    <article class="evt-card is-sold" data-cat="singapore certification" data-start="2026-08-29" data-end="2027-02-21" data-sold="true">
       <a href="event-certification.html" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/event-transform-practice.webp?v=4" alt="Become a Certified TRE&#8482; Provider — 2026 Cohort" loading="lazy" decoding="async" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
@@ -754,8 +755,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </article>
 
     <!-- 5. Global TRE™ Provider Certification 2027 (Feb–Oct 2027, Singapore) -->
-    <article class="evt-card" data-cat="singapore certification" data-when="upcoming">
-      <a href="event-certification-2027.html" class="evt-card-thumb"><img src="images/event-certification-2027.webp?v=5" alt="Become a Certified TRE&#8482; Provider 2027 &#8212; boosted by Internal Alchemy, with Isabelle Claus Teixeira and Simba Stenqvist" loading="lazy" decoding="async" width="1920" height="1080" /></a>
+    <article class="evt-card" data-cat="singapore certification" data-start="2027-02-27" data-end="2027-10-31">
+      <a href="event-certification-2027.html" class="evt-card-thumb"><img src="images/event-certification-2027.webp?v=6" alt="Become a Certified TRE&#8482; Provider 2027 &#8212; boosted by Internal Alchemy, with Isabelle Claus Teixeira and Simba Stenqvist" loading="lazy" decoding="async" width="1920" height="1080" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
         <h3>Become a Certified TRE&#8482; Provider &mdash; 2027 Cohort</h3>
@@ -781,7 +782,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <div class="evt-grid evt-archive" id="evt-archive">
 
-    <article class="evt-card is-past" data-cat="singapore workshops" data-when="past">
+    <article class="evt-card is-past" data-cat="singapore workshops" data-start="2026-09-01" data-end="2026-09-01">
       <a href="event-internal-alchemy.html" class="evt-card-thumb"><span class="evt-past-badge">Passed</span><img src="images/event-internal-alchemy.webp?v=4" alt="Internal Alchemy Workshop with Simba Stenqvist" loading="lazy" decoding="async" width="1600" height="900" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Workshop</span></div>
@@ -795,7 +796,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </article>
 
-    <article class="evt-card is-past" data-cat="singapore workshops certification" data-when="past">
+    <article class="evt-card is-past" data-cat="singapore workshops certification" data-start="2026-08-29" data-end="2026-08-30">
       <a href="event-selfcare-coaches-singapore.html" class="evt-card-thumb"><span class="evt-past-badge">Passed</span><img src="images/event-nervous-system.webp?v=4" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" loading="lazy" decoding="async" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">21 CCEUs &middot; ICF</span></div>
@@ -881,7 +882,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     { title:'TRE&#8482; Module 1 &mdash; Bucharest',
       sub:'Bucharest &middot; 15&#8211;17 October 2026',
       metaCal:'15&#8211;17 October 2026', metaLoc:'Bucharest, Romania', metaIcon:'fa-solid fa-location-dot',
-      date:'2026-10-15T09:00:00+03:00', href:'event-tre-module1-bucharest.html', soldOut:false }
+      date:'2026-10-15T09:00:00+03:00', href:'event-tre-module1-bucharest.html', soldOut:false },
+    { title:'Become a Certified TRE&#8482; Provider &mdash; 2027 Cohort',
+      sub:'Singapore &middot; Module 1: 27&#8211;28 February 2027',
+      metaCal:'27&#8211;28 February 2027', metaLoc:'Singapore', metaIcon:'fa-solid fa-location-dot',
+      date:'2027-02-27T09:00:00+08:00', href:'event-certification-2027.html', soldOut:false }
   ];
   var sec=document.querySelector('.ecd-section');
   if(!sec)return;
@@ -929,49 +934,84 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   tickEcd();setInterval(tickEcd,1000);
 })();
 
-/* Event date tags: mark each as upcoming / ongoing / past by its dates
-   (skips tags already given a fixed state, e.g. is-closed) */
+/* ===== Date-driven event status: runs fresh on every page load =====
+   Each card carries data-start / data-end (ISO, SGT) and optional data-sold.
+   Status -> badge (Upcoming/Ongoing/Sold Out/Passed), and passed events are
+   moved into the Past Events archive automatically. */
 (function(){
   var now = Date.now();
+  function ms(d, endOfDay){ return d ? Date.parse(d + (endOfDay ? 'T23:59:59' : 'T00:00:00') + '+08:00') : NaN; }
+  var grid = document.getElementById('evt-grid');
+  var archive = document.getElementById('evt-archive');
+
+  // 1) colour the individual date pills (skip a manually fixed state, e.g. is-closed)
   document.querySelectorAll('.evt-date-tag').forEach(function(t){
     if(/is-(past|upcoming|ongoing|closed)/.test(t.className)) return;
-    var s = t.getAttribute('data-start');
-    var e = t.getAttribute('data-end') || s;
-    if(!e){ t.classList.add('is-upcoming'); return; }
-    var endMs   = Date.parse(e + 'T23:59:59+08:00');
-    var startMs = s ? Date.parse(s + 'T00:00:00+08:00') : endMs;
-    if(isNaN(endMs)){ t.classList.add('is-upcoming'); return; }
-    if(endMs < now){ t.classList.add('is-past'); }
-    else if(startMs <= now && now <= endMs){ t.classList.add('is-ongoing'); }
-    else { t.classList.add('is-upcoming'); }
+    var em = ms(t.getAttribute('data-end') || t.getAttribute('data-start'), true);
+    var sm = t.getAttribute('data-start') ? ms(t.getAttribute('data-start'), false) : em;
+    if(isNaN(em)){ t.classList.add('is-upcoming'); return; }
+    if(em < now) t.classList.add('is-past');
+    else if(sm <= now && now <= em) t.classList.add('is-ongoing');
+    else t.classList.add('is-upcoming');
   });
-  /* Green "Ongoing" badge on the thumbnail of any card that is currently on-going */
-  document.querySelectorAll('#evt-grid .evt-card, #evt-archive .evt-card').forEach(function(card){
-    if(!card.querySelector('.evt-date-tag.is-ongoing')) return;
-    if(card.querySelector('.evt-ongoing-badge, .evt-sold-badge, .evt-past-badge')) return;
-    var thumb = card.querySelector('.evt-card-thumb');
-    if(!thumb) return;
-    var b = document.createElement('span');
-    b.className = 'evt-ongoing-badge';
-    b.textContent = 'Ongoing';
+
+  var BADGE = { sold:['evt-sold-badge','Sold Out'], past:['evt-past-badge','Passed'],
+                ongoing:['evt-ongoing-badge','Ongoing'], upcoming:['evt-upcoming-badge','Upcoming'] };
+
+  function statusOf(card){
+    if(card.getAttribute('data-sold') === 'true') return 'sold';
+    var em = ms(card.getAttribute('data-end') || card.getAttribute('data-start'), true);
+    var sm = card.getAttribute('data-start') ? ms(card.getAttribute('data-start'), false) : em;
+    if(!isNaN(em) && em < now) return 'past';
+    if(!isNaN(sm) && sm <= now && (isNaN(em) || now <= em)) return 'ongoing';
+    return 'upcoming';
+  }
+  function setBadge(card, status){
+    var thumb = card.querySelector('.evt-card-thumb'); if(!thumb) return;
+    thumb.querySelectorAll('.evt-sold-badge,.evt-past-badge,.evt-ongoing-badge,.evt-upcoming-badge').forEach(function(b){ b.remove(); });
+    card.classList.remove('is-sold','is-past');
+    if(status === 'sold') card.classList.add('is-sold');
+    if(status === 'past') card.classList.add('is-past');
+    var m = BADGE[status]; if(!m) return;
+    var b = document.createElement('span'); b.className = m[0]; b.textContent = m[1];
     thumb.insertBefore(b, thumb.firstChild);
+  }
+  function endActions(card){
+    var actions = card.querySelector('.evt-card-actions'); if(!actions) return;
+    if(actions.querySelector('.btn-ended')) return;
+    var first = actions.querySelector('.btn');
+    var ended = document.createElement('span'); ended.className = 'btn btn-ended'; ended.textContent = 'Event Ended';
+    if(first) actions.replaceChild(ended, first);
+  }
+
+  // 2) badge + auto-place every card by its live status
+  document.querySelectorAll('.evt-card').forEach(function(card){
+    var status = statusOf(card);
+    card.setAttribute('data-status', status);
+    setBadge(card, status);
+    if(status === 'past'){
+      endActions(card);
+      if(archive && card.parentElement !== archive) archive.appendChild(card);
+    } else if(grid && card.parentElement !== grid){
+      card.classList.remove('is-hidden');
+      grid.appendChild(card);
+    }
   });
 })();
 
-/* Event filter + upcoming/past counts */
+/* Event filter + upcoming/past counts (recomputed after status placement) */
 (function(){
   var btns  = document.querySelectorAll('.evt-filter-btn');
-  var cards = document.querySelectorAll('#evt-grid .evt-card');
   var empty = document.getElementById('evt-empty');
+  function gridCards(){ return document.querySelectorAll('#evt-grid .evt-card'); }
 
-  // counts: upcoming grid vs the separate past-events archive
   var upEl = document.getElementById('evt-count-up'), pastEl = document.getElementById('evt-count-past');
-  if (upEl)   upEl.textContent   = cards.length;
+  if (upEl)   upEl.textContent   = gridCards().length;
   if (pastEl) pastEl.textContent = document.querySelectorAll('#evt-archive .evt-card').length;
 
   function apply(f){
     var shown = 0;
-    cards.forEach(function(card){
+    gridCards().forEach(function(card){
       var match = (f === 'all') || (card.getAttribute('data-cat') || '').indexOf(f) !== -1;
       card.classList.toggle('is-hidden', !match);
       if (match) shown++;
