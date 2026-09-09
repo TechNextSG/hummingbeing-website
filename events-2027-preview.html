@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
+new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
+"https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,"script","dataLayer","GTM-TXLR5LGG");</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>PREVIEW — 2027 events split into cards | HummingBeing</title>
+  <meta name="description" content="Upcoming TRE&#8482; workshops and certification with Isabelle Claus Teixeira &#8212; Singapore, Bucharest and online. The 2027 certification cohort begins 27&#8211;28 February 2027." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="styles.css?v=91" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=3" />
+  <link rel="icon" href="favicon.ico?v=3" sizes="any" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3" />
+  <link rel="preload" as="image" href="poster-events.webp" fetchpriority="high">
+  <style>
+    /* -- EVENT HERO OVERRIDE ---------------------------------------------- */
+    .event-hero {
+      background: var(--navy-deep);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .event-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(36,46,66,.55) 0%, rgba(15,20,32,.68) 100%);
+      z-index: 1; pointer-events: none;
+    }
+    .event-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(245,166,35,.14) 0%, transparent 65%);
+      z-index: 2; pointer-events: none;
+    }
+    .event-hero .eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem; display: block;
+      position: relative; z-index: 3;
+      animation: fade-down .8s ease .1s both;
+    }
+    .event-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(3rem, 6.5vw, 6.5rem);
+      font-weight: 700; color: var(--white);
+      margin-bottom: 1rem; line-height: 1.05;
+      position: relative; z-index: 3;
+      text-align: center; width: 100%;
+      animation: fade-down .8s ease .25s both;
+    }
+    .event-hero > p {
+      color: rgba(255,255,255,.92);
+      font-size: 1.08rem; max-width: 520px;
+      margin: 0 auto; line-height: 1.75;
+      position: relative; z-index: 3;
+      animation: fade-down .8s ease .4s both;
+    }
+
+    /* -- COUNTDOWN -------------------------------------------------------- */
+    .countdown-wrap {
+      display: inline-block;
+      background: none;
+      border: none;
+      border-radius: 0;
+      padding: 1.6rem 0 1.4rem;
+      margin-top: 2.5rem;
+      margin-bottom: .8rem;
+      position: relative; z-index: 3;
+      animation: fade-down .8s ease .55s both;
+    }
+    .countdown-label {
+      font-size: .65rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 1rem;
+    }
+    .countdown-units {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      justify-content: center;
+    }
+    .cd-unit { text-align: center; min-width: 56px; }
+    .cd-num {
+      display: block;
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-weight: 700; color: var(--white); line-height: 1;
+    }
+    .cd-lbl {
+      display: block; font-size: .58rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,.78); margin-top: .35rem;
+    }
+    .cd-sep {
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: 2.4rem; color: rgba(245,166,35,.75);
+      padding-top: .05rem; line-height: 1;
+    }
+    .cd-event-title {
+      font-size: .85rem; color: rgba(255,255,255,.82);
+      display: block; margin-top: 1rem;
+      letter-spacing: .5px;
+    }
+    .cd-event-title strong { color: var(--white); font-weight: 700; }
+
+    /* -- EVENT CARDS GRID ------------------------------------------------- */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .events-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .events-grid { grid-template-columns: 1fr; }
+      .countdown-units { gap: .7rem; }
+      .cd-sep { font-size: 1.6rem; padding-top: .15rem; }
+      .cd-unit { min-width: 44px; }
+      .evt-two-col .evt-audience-card { padding: 0; gap: 0; }
+      .evt-two-col .evt-card-body { padding: 1.5rem 1.2rem; gap: .85rem; }
+      .evt-price-main { font-size: 1.8rem; }
+      .ecd-meta { font-size: .78rem; gap: .4rem; margin-bottom: 2.5rem; }
+      .ecd-heading { margin-bottom: .5rem; }
+    }
+    @media (max-width: 480px) {
+      .countdown-wrap { padding: 1.2rem 0 1rem; }
+      .countdown-units { gap: .5rem; }
+      .cd-unit { min-width: 38px; }
+      .ecd-ring-wrap, .ecd-svg { width: 80px; height: 80px; }
+      .ecd-num { font-size: 1.7rem; }
+      .ecd-units { gap: 1rem; margin-bottom: 2.5rem; }
+      .ecd-lbl { font-size: .55rem; letter-spacing: 1.5px; }
+      .ecd-actions { flex-direction: column; align-items: center; }
+      .btn-ghost-light { width: 100%; text-align: center; padding: .8rem 1.5rem; }
+    }
+
+    /* -- BIG ANIMATED COUNTDOWN SECTION ------------------------------------ */
+    .ecd-section {
+      background: linear-gradient(160deg,#101624 0%,#1a2336 50%,#0d111c 100%);
+      padding: 5.5rem 5% 5rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .ecd-bg-pulse { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+    .ecd-pulse-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(245,166,35,.06); animation: ecdPulse 5s ease-in-out infinite; }
+    .ecd-pulse-ring:nth-child(1) { width: 500px; height: 500px; animation-delay: 0s; }
+    .ecd-pulse-ring:nth-child(2) { width: 850px; height: 850px; animation-delay: 1.8s; }
+    .ecd-pulse-ring:nth-child(3) { width: 1200px; height: 1200px; animation-delay: 3.5s; }
+    @keyframes ecdPulse {
+      0%,100% { opacity: .25; transform: scale(1); }
+      50%      { opacity: .65; transform: scale(1.012); }
+    }
+    .ecd-inner { position: relative; z-index: 1; }
+    .ecd-eyebrow {
+      font-family: 'Lato', sans-serif; font-size: .68rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 1.2rem;
+    }
+    .ecd-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--white); font-weight: 700; line-height: 1.15; margin-bottom: .7rem;
+    }
+    .ecd-heading em { color: var(--gold); font-style: italic; }
+    .ecd-meta {
+      font-size: .88rem; color: rgba(255,255,255,.6);
+      display: flex; align-items: center; justify-content: center; gap: .6rem; flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+    .ecd-meta i { color: var(--gold); }
+    .ecd-units { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3.5rem; }
+    .ecd-unit  { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .ecd-ring-wrap { position: relative; width: 150px; height: 150px; }
+    .ecd-svg   { width: 150px; height: 150px; transform: rotate(-90deg); overflow: visible; }
+    .ecd-ring-bg { fill: none; stroke: rgba(255,255,255,.07); stroke-width: 5; }
+    .ecd-ring-fg {
+      fill: none; stroke: var(--gold); stroke-width: 5; stroke-linecap: round;
+      stroke-dasharray: 339.3; stroke-dashoffset: 339.3;
+      transition: stroke-dashoffset .9s cubic-bezier(.4,0,.2,1);
+      filter: drop-shadow(0 0 8px rgba(245,166,35,.55));
+    }
+    .ecd-num-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .ecd-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 3rem; font-weight: 700; color: var(--white); line-height: 1;
+    }
+    .ecd-num.ecd-flip { animation: ecdNumFlip .28s ease; }
+    @keyframes ecdNumFlip {
+      0%   { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .ecd-lbl { font-size: .65rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.45); }
+    .ecd-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-ghost-light {
+      border: 2px solid rgba(255,255,255,.3); color: var(--white); background: transparent;
+      padding: .95rem 2.2rem; font-family: 'Lato', sans-serif; font-size: .78rem;
+      font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; display: inline-block; border-radius: 6px;
+      transition: border-color .25s, background .25s, color .25s;
+    }
+    .btn-ghost-light:hover { border-color: var(--gold); color: var(--gold); background: rgba(245,166,35,.06); }
+    @media (max-width: 640px) {
+      .ecd-ring-wrap, .ecd-svg { width: 110px; height: 110px; }
+      .ecd-num { font-size: 2.2rem; }
+      .ecd-units { gap: 1.5rem; }
+    }
+
+    /* -- TWO-AUDIENCE EVENT CARDS ------------------------------------------ */
+    .evt-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .evt-audience-card {
+      background: var(--white); border-radius: 8px; padding: 0;
+      box-shadow: 0 4px 24px rgba(36,46,66,.1);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    .evt-card-body { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.1rem; flex: 1; }
+    .evt-aud-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .8rem; flex-wrap: wrap; }
+    .evt-aud-eyebrow {
+      font-family: 'Lato', sans-serif; font-size: .7rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold-dark);
+    }
+    .evt-aud-badge {
+      font-family: 'Lato', sans-serif; font-size: .62rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; padding: .25rem .7rem; border-radius: 2px;
+    }
+    .icf-badge  { background: rgba(36,46,66,.08); color: var(--navy); }
+    .cert-badge { background: rgba(245,166,35,.12); color: var(--gold-dark); }
+    .evt-audience-card h3 {
+      font-family: 'PT Serif', Georgia, serif;
+      font-size: clamp(1.25rem, 2vw, 1.65rem); color: var(--navy); line-height: 1.2; margin: 0;
+    }
+    .evt-card-img { line-height: 0; flex-shrink: 0; }
+    .evt-card-img img { width: 100%; height: auto; display: block; }
+    /* card buttons — clear primary + secondary hierarchy, full width */
+    .evt-card-body .btn { width: 100%; text-align: center; box-sizing: border-box; }
+    .evt-btn-2 { background: transparent; }
+    .evt-coaches .evt-btn-2 { border-color: var(--gold); color: var(--gold-dark); }
+    .evt-coaches .evt-btn-2:hover { background: var(--gold); border-color: var(--gold); color: var(--white); box-shadow: 0 12px 34px rgba(245,166,35,.4); }
+    .evt-certification .evt-btn-2 { border-color: var(--navy); color: var(--navy); }
+    .evt-certification .evt-btn-2:hover { background: var(--navy); border-color: var(--navy); color: var(--white); box-shadow: 0 12px 34px rgba(36,46,66,.35); }
+    .evt-aud-tag { font-size: .72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin: 0; }
+    .evt-aud-sub-tag { font-size: .85rem; color: var(--text-mid); font-style: italic; margin: 0; }
+    .evt-includes { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; }
+    .evt-includes li { display: flex; align-items: flex-start; gap: .65rem; font-size: .89rem; color: var(--body-text); line-height: 1.5; }
+    .evt-includes li i { color: var(--gold); margin-top: .15rem; flex-shrink: 0; }
+    .evt-what-included { background: rgba(245,166,35,.06); border-radius: 2px; padding: 1rem 1.2rem; }
+    .evt-wi-title { font-size: .65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy); display: block; margin-bottom: .6rem; }
+    .evt-wi-items { display: flex; flex-direction: column; gap: .35rem; }
+    .evt-wi-items span { font-size: .85rem; color: var(--body-text); }
+    .evt-wi-items span i { color: var(--gold); margin-right: .4rem; }
+    .evt-aud-pricing { background: var(--navy); border-radius: 2px; padding: 1.2rem 1.5rem; }
+    .evt-price-label { font-size: .62rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .25rem; }
+    .evt-price-main { font-family: 'PT Serif', Georgia, serif; font-size: 2.2rem; font-weight: 700; color: var(--white); display: block; line-height: 1; }
+    .evt-price-note { font-size: .8rem; color: rgba(255,255,255,.65); display: block; margin-top: .3rem; }
+    .evt-modules { display: flex; flex-direction: column; gap: .65rem; }
+    .evt-module { background: rgba(36,46,66,.04); border-radius: 2px; padding: 1rem 1.2rem; border-left: 3px solid var(--gold); }
+    .evt-mod-tag { font-size: .68rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold-dark); display: block; margin-bottom: .3rem; }
+    .evt-mod-date { font-size: .86rem; color: var(--navy); font-weight: 700; display: block; margin-bottom: .25rem; }
+    .evt-mod-date i { color: var(--gold); margin-right: .3rem; }
+    .evt-mod-desc { font-size: .82rem; color: var(--text-mid); display: block; }
+    .evt-pricing-wrap { background: rgba(36,46,66,.04); border-radius: 2px; padding: 1.2rem; }
+    .evt-pricing-table { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .evt-pt-col { display: flex; flex-direction: column; gap: .4rem; }
+    .evt-pt-title { font-size: .65rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--navy); display: block; padding-bottom: .35rem; border-bottom: 1px solid rgba(36,46,66,.12); margin-bottom: .2rem; }
+    .evt-pt-row { display: flex; justify-content: space-between; align-items: baseline; gap: .4rem; font-size: .82rem; }
+    .evt-pt-row em { color: var(--text-mid); font-style: normal; }
+    .evt-pt-row strong { color: var(--navy); font-weight: 700; }
+    .evt-pt-row small { font-size: .68rem; color: var(--text-mid); display: block; text-align: right; }
+    @media (max-width: 820px) {
+      .evt-two-col { grid-template-columns: 1fr; }
+      .evt-pricing-table { grid-template-columns: 1fr; }
+    }
+  </style>
+  <!-- SEO Layer -->
+  <meta name="keywords" content="TRE™ events, TRE™ workshop, somatic wellness events, TRE™ certification, group TRE™ session, TRE™ Singapore, TRE™ Romania, somatic healing workshop" />
+  <link rel="canonical" href="https://hummingbeing.com/events-2027-preview.html" />
+  <meta name="robots" content="index, follow" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HummingBeing" />
+  <meta property="og:title" content="TRE™ Events &amp; Workshops | Singapore, Europe &amp; Online | HummingBeing" />
+  <meta property="og:description" content="Join Isabelle Claus Teixeira for TRE™ group sessions, somatic coaching workshops and online events in Singapore, Europe and worldwide. Upcoming TRE™ Certification training." />
+  <meta property="og:url" content="https://hummingbeing.com/events.html" />
+  <meta property="og:image" content="https://hummingbeing.com/images/isabelle-her-story.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="TRE™ events and somatic workshops with Isabelle Claus Teixeira" />
+  <meta property="og:locale" content="en_SG" />
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TRE™ Events &amp; Workshops | Singapore, Europe &amp; Online | HummingBeing" />
+  <meta name="twitter:description" content="TRE™ group sessions, somatic workshops and online events with Isabelle Claus Teixeira. Singapore, Japan & online." />
+  <meta name="twitter:image" content="https://hummingbeing.com/images/isabelle-her-story.jpg" />
+  <!-- Structured Data: Events -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Nervous System Regulation & Self-Induced Neurogenic Tremoring — For Coaches (TRE™ Module 1)",
+      "description": "For coaches in training and ACC, PCC and MCC level coaches who want to develop embodied self-care practices, prevent burnout and compassion fatigue, and deepen their somatic presence with clients. ICF accredited — 21 CCEUs. Valid as Module 1 of the Global TRE™ Provider Certification Program.",
+      "startDate": "2026-08-29",
+      "endDate": "2026-08-30",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Singapore",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "SG",
+          "addressLocality": "Singapore"
+        }
+      },
+      "organizer": {
+        "@type": "Person",
+        "name": "Isabelle Claus Teixeira",
+        "url": "https://hummingbeing.com/isabelle.html"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "1290",
+        "priceCurrency": "SGD",
+        "priceValidUntil": "2026-08-15",
+        "url": "https://calendly.com/bhdasia/tre-certification-intake-call",
+        "availability": "https://schema.org/SoldOut"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "TRE™ Provider Certification — Module 1: Personal Practice",
+      "description": "Module 1 of the Global TRE™ Provider Certification Program. TRE™ is a body-led series of simple, powerful exercises to release stress, tension and trauma and build resilience. Includes 4 online TRE™ personal sessions. Can be purchased alone or as part of the full certification.",
+      "startDate": "2026-08-29",
+      "endDate": "2026-08-30",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Singapore",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "SG",
+          "addressLocality": "Singapore"
+        }
+      },
+      "organizer": {
+        "@type": "Person",
+        "name": "Isabelle Claus Teixeira",
+        "url": "https://hummingbeing.com/isabelle.html"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Module 1 Only (2026 intake — closed)",
+          "price": "1290",
+          "priceCurrency": "SGD",
+          "priceValidUntil": "2026-08-15",
+          "url": "https://calendly.com/bhdasia/tre-certification-intake-call",
+          "availability": "https://schema.org/SoldOut"
+        },
+        {
+          "@type": "Offer",
+          "name": "Full Certification Package (2026 intake — closed)",
+          "price": "3699",
+          "priceCurrency": "SGD",
+          "priceValidUntil": "2026-08-15",
+          "url": "https://calendly.com/bhdasia/tre-certification-intake-call",
+          "availability": "https://schema.org/SoldOut"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "TRE™ Provider Certification — Module 2: Teaching to 1 Person",
+      "description": "Module 2 of the Global TRE™ Provider Certification Program. Open after completing Module 1. Includes 2-day workshop and 4 supervisions.",
+      "startDate": "2026-09-26",
+      "endDate": "2026-09-27",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Singapore",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "SG",
+          "addressLocality": "Singapore"
+        }
+      },
+      "organizer": {
+        "@type": "Person",
+        "name": "Isabelle Claus Teixeira",
+        "url": "https://hummingbeing.com/isabelle.html"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://calendly.com/bhdasia/tre-certification-intake-call",
+        "availability": "https://schema.org/SoldOut"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "TRE™ Provider Certification — Module 3: Teaching to Groups",
+      "description": "Module 3 of the Global TRE™ Provider Certification Program. Open after completing Module 2. Includes 2-day workshop and 4 supervisions.",
+      "startDate": "2027-02-20",
+      "endDate": "2027-02-21",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Singapore",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "SG",
+          "addressLocality": "Singapore"
+        }
+      },
+      "organizer": {
+        "@type": "Person",
+        "name": "Isabelle Claus Teixeira",
+        "url": "https://hummingbeing.com/isabelle.html"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://calendly.com/bhdasia/tre-certification-intake-call",
+        "availability": "https://schema.org/SoldOut"
+      }
+    }
+  ]
+  </script>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXLR5LGG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo-dark.webp" class="logo-on-dark" alt="HummingBeing — Coaching &amp; Somatics" width="168" height="56" style="height:56px;width:auto" /><img src="images/logo-light.webp" class="logo-on-light" alt="HummingBeing — Coaching &amp; Somatics" width="168" height="56" style="height:56px;width:auto" /></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="isabelle.html">Isabelle</a></li>
+    <li class="nav-dropdown">
+      <a href="javascript:void(0)" class="nav-dropdown-toggle">Services <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="holistic-mastermind.html">Holistic Mastermind Ecosystem</a></li>
+        <li><a href="tre-certification.html">Global Certifications</a></li>
+        <li><a href="retreats-workshops.html">Resilience Retreats</a></li>
+      </ul>
+    </li>
+    <li><a href="socials.html">Socials</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="events.html" class="active">Events</a></li>
+    <li class="nav-book-mobile"><a href="book.html">Book a Session</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="book.html" class="nav-cta">Book a Session</a>
+    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div style="background:#c0392b;color:#fff;text-align:center;padding:11px 16px;font-size:.82rem;font-weight:700;letter-spacing:.4px;margin-top:76px">
+  PREVIEW &mdash; the 2027 programme split into one card per event. Placeholder posters; not published.
+</div>
+
+<!-- EVENT HERO WITH COUNTDOWN -->
+<div class="event-hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="none" poster="poster-events.webp" title="HummingBeing events — background video">
+    <source src="hero-events.mp4" type="video/mp4">
+  </video>
+  <span class="eyebrow">Live Events &amp; Workshops</span>
+  <h1>2027 <em>Programme</em></h1>
+  <p>Group workshops, TRE&#8482; sessions, somatic intensives and community gatherings &#8212; in Singapore, Europe and online.</p>
+  <div class="hero-actions">
+    <a href="book.html" class="btn btn-primary">Book a Free Discovery Call</a>
+    <a href="#events-grid" class="btn btn-outline">Browse Events</a>
+  </div>
+</div>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Wellness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">In-Person &amp; Online Worldwide</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#8482; Provider</span><span class="t-sep">&middot;</span>
+    <span class="t-item">30 Years of Experience</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Mindfulness</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Business &amp; Human Development</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Nervous System Reset</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Mindfulness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Embodied Leadership</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Trauma &amp; Tension Release</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Mind &middot; Body &middot; Soul</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Corporate Wellness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Polyvagal Theory</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Global TRE&#8482; Certifying Trainer</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Executive Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Breathwork</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Online &amp; In-Person</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Group Sessions</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Burnout Recovery</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Deep Rest &amp; Renewal</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Body Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Self-Regulation</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Dr. David Berceli Method</span><span class="t-sep">&middot;</span><span class="t-item">Neurogenic Tremors</span><span class="t-sep">&middot;</span><span class="t-item">Vagal Tone</span><span class="t-sep">&middot;</span><span class="t-item">Psoas Release</span><span class="t-sep">&middot;</span><span class="t-item">Europe &middot; US &middot; Asia &middot; Worldwide</span><span class="t-sep">&middot;</span><span class="t-item">Free Discovery Call</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Certified Reiki Level II</span><span class="t-sep">&middot;</span><span class="t-item">Nervous System Literacy</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Wellness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">In-Person &amp; Online Worldwide</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Certified TRE&#8482; Provider</span><span class="t-sep">&middot;</span>
+    <span class="t-item">30 Years of Experience</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Mindfulness</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> 9 Countries &middot; 40+ Nationalities</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Release &middot; Renew &middot; Restore</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Business &amp; Human Development</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Nervous System Reset</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Mindfulness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Embodied Leadership</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Trauma &amp; Tension Release</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Mind &middot; Body &middot; Soul</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Corporate Wellness</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Polyvagal Theory</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Global TRE&#8482; Certifying Trainer</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Executive Coaching</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Breathwork</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Online &amp; In-Person</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Group Sessions</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Burnout Recovery</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Deep Rest &amp; Renewal</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Body Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item"><span class="t-star">&#9733;</span> Somatic Intelligence</span><span class="t-sep">&middot;</span>
+    <span class="t-item">Self-Regulation</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Dr. David Berceli Method</span><span class="t-sep">&middot;</span><span class="t-item">Neurogenic Tremors</span><span class="t-sep">&middot;</span><span class="t-item">Vagal Tone</span><span class="t-sep">&middot;</span><span class="t-item">Psoas Release</span><span class="t-sep">&middot;</span><span class="t-item">Europe &middot; US &middot; Asia &middot; Worldwide</span><span class="t-sep">&middot;</span><span class="t-item">Free Discovery Call</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Certified Reiki Level II</span><span class="t-sep">&middot;</span><span class="t-item">Nervous System Literacy</span><span class="t-sep">&middot;</span>  </div>
+</div>
+
+<!-- BIG ANIMATED COUNTDOWN -->
+<section class="ecd-section" aria-label="Countdown to next event">
+  <div class="ecd-bg-pulse" aria-hidden="true">
+    <div class="ecd-pulse-ring"></div>
+    <div class="ecd-pulse-ring"></div>
+    <div class="ecd-pulse-ring"></div>
+  </div>
+  <div class="ecd-inner">
+    <span class="ecd-eyebrow"><i class="fa-solid fa-star"></i> Countdown to Next Event</span>
+    <h2 class="ecd-heading">From Shaking to Shaping &mdash; Online<br><em>Online &middot; 8 October 2026 &middot; 7&#8211;9pm</em></h2>
+    <div class="ecd-meta">
+      <i class="fa-regular fa-calendar"></i> Thursday, 8 October 2026
+      <span>&middot;</span> <i class="fa-solid fa-video"></i> Live Online
+    </div>
+    <div class="ecd-units" id="ecd-units">
+      <div class="ecd-unit">
+        <div class="ecd-ring-wrap">
+          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
+            <circle class="ecd-ring-fg" id="rng-days" cx="60" cy="60" r="54"/>
+          </svg>
+          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-days">--</span></div>
+        </div>
+        <span class="ecd-lbl">Days</span>
+      </div>
+      <div class="ecd-unit">
+        <div class="ecd-ring-wrap">
+          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
+            <circle class="ecd-ring-fg" id="rng-hours" cx="60" cy="60" r="54"/>
+          </svg>
+          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-hours">--</span></div>
+        </div>
+        <span class="ecd-lbl">Hours</span>
+      </div>
+      <div class="ecd-unit">
+        <div class="ecd-ring-wrap">
+          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
+            <circle class="ecd-ring-fg" id="rng-mins" cx="60" cy="60" r="54"/>
+          </svg>
+          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-mins">--</span></div>
+        </div>
+        <span class="ecd-lbl">Minutes</span>
+      </div>
+      <div class="ecd-unit">
+        <div class="ecd-ring-wrap">
+          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
+            <circle class="ecd-ring-fg" id="rng-secs" cx="60" cy="60" r="54"/>
+          </svg>
+          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-secs">--</span></div>
+        </div>
+        <span class="ecd-lbl">Seconds</span>
+      </div>
+    </div>
+    <div class="ecd-actions">
+      <a href="event-shaking-to-shaping.html" class="btn btn-primary">Register Now</a>
+      <a href="#events-grid" class="btn-ghost-light">Browse All Events</a>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING EVENTS -->
+<style>
+  .evt-filter { display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; margin:0 auto 2.8rem; }
+  .evt-filter-btn {
+    font-family:'Lato',sans-serif; font-size:.74rem; font-weight:700; letter-spacing:1.2px; text-transform:uppercase;
+    padding:.6rem 1.5rem; border-radius:100px; border:1.5px solid rgba(36,46,66,.18);
+    background:transparent; color:var(--text-mid); cursor:pointer;
+    transition:background .25s ease, border-color .25s ease, color .25s ease;
+  }
+  .evt-filter-btn:hover { border-color:var(--gold); color:var(--navy); }
+  .evt-filter-btn.is-active { background:var(--navy); border-color:var(--navy); color:#fff; }
+
+  .evt-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; align-items:start; }
+  .evt-card {
+    background:var(--white); border-radius:12px; overflow:hidden;
+    box-shadow:0 4px 24px rgba(36,46,66,.1); display:flex; flex-direction:column;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .evt-card:hover { transform:translateY(-5px); box-shadow:0 16px 44px rgba(36,46,66,.16); }
+  .evt-card.is-hidden { display:none; }
+  .evt-card-thumb { display:block; line-height:0; background:#f4f5f7; position:relative; }
+  .evt-card-thumb img { width:100%; height:auto; display:block; }
+  .evt-sold-badge { position:absolute; top:12px; left:12px; z-index:3; background:#c0392b; color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(192,57,43,.45); }
+  .evt-card.is-sold .evt-card-thumb img { filter:grayscale(35%) brightness(.94); }
+  .btn.btn-soldout { background:#c0392b !important; border-color:#c0392b !important; color:#fff !important; cursor:not-allowed; pointer-events:none; opacity:.92; box-shadow:none !important; }
+  .evt-card-content { padding:1.1rem 1.2rem 1.2rem; display:flex; flex-direction:column; gap:.5rem; flex:1; }
+  .evt-card-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .evt-tag { font-family:'Lato',sans-serif; font-size:.56rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:.25rem .6rem; border-radius:100px; background:rgba(36,46,66,.07); color:var(--navy); }
+  .evt-tag.loc { background:rgba(245,166,35,.15); color:var(--gold-dark); }
+  .evt-card h3 { font-family:'PT Serif',Georgia,serif; font-size:1.02rem; color:var(--navy); line-height:1.25; margin:0; }
+  .evt-card-meta { font-size:.76rem; color:var(--text-mid); font-weight:700; margin:0; }
+  .evt-card-meta i { color:var(--gold); margin-right:.35rem; }
+  .evt-card-desc { font-size:.82rem; color:var(--body-text); line-height:1.55; margin:0; flex:1; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  .evt-card-actions { display:flex; gap:.55rem; margin-top:.4rem; }
+  .evt-card-actions .btn { flex:1; text-align:center; padding:.62rem .5rem; font-size:.66rem; }
+  .evt-card .evt-btn-2 { background:transparent; border-color:var(--navy); color:var(--navy); }
+  .evt-card .evt-btn-2:hover { background:var(--navy); border-color:var(--navy); color:#fff; box-shadow:0 12px 30px rgba(36,46,66,.3); }
+  .evt-empty { grid-column:1/-1; text-align:center; color:var(--text-mid); padding:3rem 0; display:none; }
+  @media (max-width:900px){ .evt-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .evt-grid{ grid-template-columns:1fr; } }
+  @media (max-width:440px){ .evt-card-actions{ flex-direction:column; } }
+</style>
+<section class="section-cream" id="events-grid">
+  <div class="section-header-center" style="margin-bottom:2rem">
+    <span class="section-eyebrow">Workshops &amp; Certifications</span>
+    <h2 class="section-title">Upcoming Events</h2>
+    <p class="section-subtitle">Singapore &amp; Bucharest &middot; 2026&ndash;2027 &middot; Led by Isabelle Claus Teixeira</p>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="evt-filter" role="tablist" aria-label="Filter events">
+    <button type="button" class="evt-filter-btn is-active" data-filter="all">All Events</button>
+    <button type="button" class="evt-filter-btn" data-filter="singapore">Singapore</button>
+    <button type="button" class="evt-filter-btn" data-filter="romania">Romania</button>
+    <button type="button" class="evt-filter-btn" data-filter="certification">Certification</button>
+    <button type="button" class="evt-filter-btn" data-filter="2027">2027 Cohort</button>
+    <button type="button" class="evt-filter-btn" data-filter="soldout">Sold Out</button>
+  </div>
+
+    <p style="text-align:center;font-size:.92rem;font-weight:700;color:#b3362b;margin:0 0 2rem"><i class="fa-solid fa-circle-exclamation" style="margin-right:.45rem"></i>All ticket sales are final &mdash; tickets are non-refundable and non-cancellable.</p>
+
+  <!-- EVENT GRID -->
+  <div class="evt-grid" id="evt-grid">
+
+    <article class="evt-card" data-cat="singapore certification 2027">
+      <a href="event-2027-module1.html" class="evt-card-thumb"><img src="images/event-2027-module1.webp" alt="TRETM Module 1 - Your Personal Practice" loading="lazy" decoding="async" width="1920" height="1080" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
+        <h3>TRE&#8482; Module 1 &mdash; Your Personal Practice</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 27&#8211;28 February 2027 &middot; Singapore &middot; In-Person</p>
+        <p class="evt-card-desc">Where the certification begins &mdash; and the one module you can take purely for yourself. 2-day workshop + 4 online TRE&#8482; sessions. ICF CCE included. From S$1,888.</p>
+        <div class="evt-card-actions">
+          <a href="event-2027-module1.html" class="btn btn-primary">Register</a>
+          <a href="event-2027-module1.html" class="btn evt-btn-2">Details</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="evt-card" data-cat="singapore certification 2027">
+      <a href="event-2027-module2.html" class="evt-card-thumb"><img src="images/event-2027-module2.webp" alt="TRETM Module 2 - Teaching One Person" loading="lazy" decoding="async" width="1920" height="1080" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
+        <h3>TRE&#8482; Module 2 &mdash; Teaching One Person</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 2&#8211;3 July 2027 &middot; Singapore &middot; In-Person</p>
+        <p class="evt-card-desc">Turn your personal practice outward: assess, guide and contain one person through a full TRE&#8482; session. Includes individual and group supervision. Open after Module 1.</p>
+        <div class="evt-card-actions">
+          <a href="event-2027-module2.html" class="btn btn-primary">Register</a>
+          <a href="event-2027-module2.html" class="btn evt-btn-2">Details</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="evt-card" data-cat="singapore certification 2027">
+      <a href="event-2027-shaping.html" class="evt-card-thumb"><img src="images/event-2027-shaping.webp" alt="From Shaking to Shaping" loading="lazy" decoding="async" width="1920" height="1080" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Workshop</span></div>
+        <h3>From Shaking to Shaping</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 4 July 2027 &middot; Singapore &middot; 1 Day</p>
+        <p class="evt-card-desc">A one-day workshop on using TRE&#8482; in a coaching context &mdash; how neurogenic tremoring supports embodied presence, self-care and client work.</p>
+        <div class="evt-card-actions">
+          <a href="event-2027-shaping.html" class="btn btn-primary">Register</a>
+          <a href="event-2027-shaping.html" class="btn evt-btn-2">Details</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="evt-card" data-cat="singapore certification 2027">
+      <a href="event-2027-alchemy-one.html" class="evt-card-thumb"><img src="images/event-2027-alchemy-one.webp" alt="Intro to Internal Alchemy - Lead One" loading="lazy" decoding="async" width="1920" height="1080" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Internal Alchemy</span></div>
+        <h3>Intro to Internal Alchemy &mdash; Lead One</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 28 October 2027 &middot; Singapore &middot; 1 Day</p>
+        <p class="evt-card-desc">A one-day introduction to Internal Alchemy for working with one person &mdash; breathwork, fascial release, grounding and tremor work, with Simba Stenqvist.</p>
+        <div class="evt-card-actions">
+          <a href="event-2027-alchemy-one.html" class="btn btn-primary">Register</a>
+          <a href="event-2027-alchemy-one.html" class="btn evt-btn-2">Details</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="evt-card" data-cat="singapore certification 2027">
+      <a href="event-2027-module3.html" class="evt-card-thumb"><img src="images/event-2027-module3.webp" alt="TRETM Module 3 - Teaching Groups" loading="lazy" decoding="async" width="1920" height="1080" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
+        <h3>TRE&#8482; Module 3 &mdash; Teaching Groups</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 29&#8211;30 October 2027 &middot; Singapore &middot; In-Person</p>
+        <p class="evt-card-desc">Hold a whole room through TRE&#8482; safely. Completes your Global TRE&#8482; Provider certification. Open after Module 2.</p>
+        <div class="evt-card-actions">
+          <a href="event-2027-module3.html" class="btn btn-primary">Register</a>
+          <a href="event-2027-module3.html" class="btn evt-btn-2">Details</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="evt-card" data-cat="singapore certification 2027">
+      <a href="event-2027-alchemy-group.html" class="evt-card-thumb"><img src="images/event-2027-alchemy-group.webp" alt="Intro to Internal Alchemy - Work with a Group" loading="lazy" decoding="async" width="1920" height="1080" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Internal Alchemy</span></div>
+        <h3>Intro to Internal Alchemy &mdash; Work with a Group</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 31 October 2027 &middot; Singapore &middot; 1 Day</p>
+        <p class="evt-card-desc">Upgrade the Internal Alchemy system into group settings &mdash; a one-day introduction with Simba Stenqvist.</p>
+        <div class="evt-card-actions">
+          <a href="event-2027-alchemy-group.html" class="btn btn-primary">Register</a>
+          <a href="event-2027-alchemy-group.html" class="btn evt-btn-2">Details</a>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- 3. From Shaking to Shaping (Sep-Oct 2026) -->
+    <article class="evt-card" data-cat="romania coaches">
+      <a href="event-shaking-to-shaping.html" class="evt-card-thumb"><img src="images/event-shaking-to-shaping.webp?v=4" alt="From Shaking to Shaping" loading="lazy" decoding="async" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">Online &amp; In-Person</span></div>
+        <h3>From Shaking to Shaping</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> September&ndash;October 2026 &middot; Bucharest</p>
+        <p class="evt-card-desc">Integrate TRE&#8482; into your coaching practice &mdash; neurogenic tremoring as a somatic tool for nervous system regulation and embodied presence.</p>
+        <div class="evt-card-actions">
+          <a href="event-shaking-to-shaping.html#sessions" class="btn btn-primary">Buy Tickets</a>
+          <a href="event-shaking-to-shaping.html" class="btn evt-btn-2">Details</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3b. From Shaking to Shaping ONLINE (8 Oct 2026) -->
+    <article class="evt-card" data-cat="romania coaches online">
+      <a href="event-shaking-online.html" class="evt-card-thumb"><img src="images/event-shaking-online.webp?v=5" alt="From Shaking to Shaping — Online, 8 October" loading="lazy" decoding="async" width="1920" height="1080" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Online</span><span class="evt-tag">TRE&#8482; Coaching</span></div>
+        <h3>From Shaking to Shaping &mdash; Online</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 8 October &middot; 7&#8211;9pm &middot; Online</p>
+        <p class="evt-card-desc">A live online workshop on using TRE&#8482; in a coaching context &mdash; co-led by Isabelle Claus Teixeira &amp; Saymara Ryon, in partnership with Neurogenic Integration.</p>
+        <div class="evt-card-actions">
+          <a href="event-shaking-online.html" class="btn btn-primary">Register</a>
+          <a href="event-shaking-online.html" class="btn evt-btn-2">View Details</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. TRE™ Module 1 Bucharest (15-17 Oct 2026) -->
+    <article class="evt-card" data-cat="romania certification">
+      <a href="event-tre-module1-bucharest.html" class="evt-card-thumb"><img src="images/event-bucharest-module1.webp?v=4" alt="TRE™ Module 1 - Bucharest" loading="lazy" decoding="async" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">21 ICF CCEUs</span></div>
+        <h3>TRE&#8482; Module 1 &mdash; Bucharest</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 15&ndash;17 October 2026 &middot; Bucharest</p>
+        <p class="evt-card-desc">An immersive 3-day certification &mdash; the first in Europe in English. Valid as Module 1 of the Global TRE&#8482; Provider Certification.</p>
+        <div class="evt-card-actions">
+          <a href="https://www.atelierdesuflet.ro/tre-module-1-bucharest-romania-21-icf-cceus-only-tre-training-in-the-world-with-icf-accreditation.html" target="_blank" rel="noopener" class="btn btn-primary">Buy Tickets</a>
+          <a href="event-tre-module1-bucharest.html" class="btn evt-btn-2">Details</a>
+        </div>
+      </div>
+    </article>
+
+    
+
+    <!-- SOLD OUT events always last -->
+    <article class="evt-card is-sold" data-cat="singapore certification soldout">
+      <span class="evt-card-thumb" style="display:block"><span class="evt-sold-badge">Sold Out</span><img src="images/event-transform-practice.webp?v=4" alt="Become a Certified TRE&#8482; Provider" loading="lazy" decoding="async" /></span>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
+        <h3>Become a Certified TRE&#8482; Provider</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> Aug 2026 &ndash; Feb 2027 &middot; Modules 1&ndash;3</p>
+        <p class="evt-card-desc">The 2026 Singapore intake of the Global TRE&#8482; Provider Certification. This cohort is now closed &mdash; the next intake runs in 2027.</p>
+        <div class="evt-card-actions">
+          <span class="btn btn-soldout">Sold Out</span>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Join Waitlist</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="evt-card is-sold" data-cat="singapore workshop soldout">
+      <a href="event-internal-alchemy.html" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/event-internal-alchemy.webp?v=4" alt="Internal Alchemy Workshop with Simba Stenqvist" loading="lazy" decoding="async" width="1600" height="900" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Workshop</span></div>
+        <h3>Internal Alchemy &mdash; Introductory Workshop</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 1 September 2026 &middot; 7&#8211;9pm &middot; In-Person</p>
+        <p class="evt-card-desc">Breathwork, fascial release, grounding &amp; tremor work with Simba Stenqvist, creator of Internal Alchemy. This workshop has now taken place.</p>
+        <div class="evt-card-actions">
+          <span class="btn btn-soldout">Sold Out</span>
+          <a href="event-internal-alchemy.html" class="btn evt-btn-2">View Details</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="evt-card is-sold" data-cat="singapore coaches soldout">
+      <a href="event-selfcare-coaches-singapore.html" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/event-nervous-system.webp?v=4" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" loading="lazy" decoding="async" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">21 CCEUs &middot; ICF</span></div>
+        <h3>Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring</h3>
+        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 29 &amp; 30 August 2026 &middot; In-Person</p>
+        <p class="evt-card-desc">Self-care and presence for coaches &mdash; a 2-day ICF-accredited workshop. Valid as Module 1 of the Global TRE&#8482; Provider Certification.</p>
+        <div class="evt-card-actions">
+          <span class="btn btn-soldout">Sold Out</span>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Join Waitlist</a>
+        </div>
+      </div>
+    </article>
+
+    <p class="evt-empty" id="evt-empty">No events in this category yet.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <a href="index.html" class="foot-logo"><img src="images/logo-dark.webp" alt="HummingBeing — Coaching &amp; Somatics" width="144" height="48" style="height:48px;width:auto;display:block" /></a>
+      <p class="foot-desc">Science backed processes with TRE&#8482;, Coaching and Somatic Practices &#8212; a space to release, renew and restore.</p>
+      <p class="foot-desc">Part of <strong>Business and Human Development Consulting Pte Ltd</strong></p>
+      <div class="foot-socials">
+        <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank" class="soc" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank" class="soc" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" class="soc" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/818065151778" target="_blank" class="soc" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">Services</div>
+      <ul class="foot-links">
+        <li><a href="holistic-mastermind.html">Holistic Mastermind Ecosystem</a></li>
+        <li><a href="tre-certification.html">Global Certifications</a></li>
+        <li><a href="retreats-workshops.html">Resilience Retreats</a></li>
+        <li><a href="book.html">Book a Session</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Company</div>
+      <ul class="foot-links">
+        <li><a href="about.html">About HummingBeing</a></li>
+        <li><a href="isabelle.html">Meet Isabelle</a></li>
+        <li><a href="socials.html">Social Media</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="https://bhdasia.com" target="_blank">BHD Asia</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Contact</div>
+      <ul class="foot-links">
+        <li><a href="mailto:isabelle@bhdasia.com">isabelle@bhdasia.com</a></li>
+        <li><a href="https://wa.me/818065151778" target="_blank">WhatsApp Us</a></li>
+        <li><span>Global</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">&#169; 2026 HummingBeing &#8212; Business and Human Development Consulting Pte Ltd</div>
+    <div class="foot-legal">
+      <span>Privacy Policy</span>
+      <span>Terms of Service</span>
+      <span class="foot-sep">&#183;</span>
+      <a href="https://technextasia.com" target="_blank">Powered by <span class="tn-brand">TechNext</span></a>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+<script src="scripts.js" defer></script>
+<script>
+/* Big countdown section — DYNAMIC featured event.
+   Auto-selects the earliest event that is neither past nor sold out,
+   populates the heading/meta/register link, and re-selects automatically
+   once that event passes (or is flagged sold out). Add/flag events below. */
+(function(){
+  var EVENTS=[
+    { title:'From Shaking to Shaping &mdash; Online',
+      sub:'Online &middot; 8 October 2026 &middot; 7&#8211;9pm',
+      metaCal:'Thursday, 8 October 2026', metaLoc:'Live Online', metaIcon:'fa-solid fa-video',
+      date:'2026-10-08T19:00:00+02:00', href:'event-shaking-online.html', soldOut:false },
+    { title:'TRE&#8482; Module 1 &mdash; Bucharest',
+      sub:'Bucharest &middot; 15&#8211;17 October 2026',
+      metaCal:'15&#8211;17 October 2026', metaLoc:'Bucharest, Romania', metaIcon:'fa-solid fa-location-dot',
+      date:'2026-10-15T09:00:00+03:00', href:'event-tre-module1-bucharest.html', soldOut:false }
+  ];
+  var sec=document.querySelector('.ecd-section');
+  if(!sec)return;
+  var now=Date.now();
+  var featured=EVENTS.filter(function(e){
+      return !e.soldOut && new Date(e.date).getTime()>now;
+    }).sort(function(a,b){ return new Date(a.date)-new Date(b.date); })[0];
+  if(!featured){ sec.style.display='none'; return; }
+
+  var hEl=sec.querySelector('.ecd-heading');
+  if(hEl) hEl.innerHTML=featured.title+'<br><em>'+featured.sub+'</em>';
+  var mEl=sec.querySelector('.ecd-meta');
+  if(mEl) mEl.innerHTML='<i class="fa-regular fa-calendar"></i> '+featured.metaCal+
+    ' <span>&middot;</span> <i class="'+featured.metaIcon+'"></i> '+featured.metaLoc;
+  var reg=sec.querySelector('.ecd-actions .btn-primary');
+  if(reg) reg.setAttribute('href',featured.href);
+
+  var target=new Date(featured.date).getTime();
+  var CIRC=2*Math.PI*54;
+  function pad(n){return String(n).padStart(2,'0');}
+  function setRing(id,val,max){
+    var el=document.getElementById(id);if(!el)return;
+    el.style.strokeDashoffset=(CIRC*(1-Math.min(1,Math.max(0,val/max)))).toFixed(2);
+  }
+  function setNum(id,val){
+    var el=document.getElementById(id);if(!el)return;
+    var v=pad(val);if(el.textContent===v)return;
+    el.classList.remove('ecd-flip');void el.offsetWidth;
+    el.textContent=v;el.classList.add('ecd-flip');
+  }
+  function tickEcd(){
+    var diff=target-Date.now();
+    if(diff<=0){
+      var u=document.getElementById('ecd-units');
+      if(u)u.innerHTML='<p style="color:var(--gold);font-size:1.5rem;font-weight:700">Event is happening now!</p>';
+      return;
+    }
+    var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),
+        m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+    setNum('ecd-days',d);   setRing('rng-days',d,Math.max(90, d + 1));
+    setNum('ecd-hours',h);  setRing('rng-hours',h,24);
+    setNum('ecd-mins',m);   setRing('rng-mins',m,60);
+    setNum('ecd-secs',s);   setRing('rng-secs',s,60);
+  }
+  tickEcd();setInterval(tickEcd,1000);
+})();
+
+/* Event filter */
+(function(){
+  var btns  = document.querySelectorAll('.evt-filter-btn');
+  var cards = document.querySelectorAll('#evt-grid .evt-card');
+  var empty = document.getElementById('evt-empty');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btns.forEach(function(b){ b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      var f = btn.getAttribute('data-filter');
+      var shown = 0;
+      cards.forEach(function(card){
+        var match = (f === 'all') || (card.getAttribute('data-cat') || '').indexOf(f) !== -1;
+        card.classList.toggle('is-hidden', !match);
+        if (match) shown++;
+      });
+      if (empty) empty.style.display = shown === 0 ? 'block' : 'none';
+    });
+  });
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
