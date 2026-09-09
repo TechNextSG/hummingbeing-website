@@ -156,71 +156,71 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     /* -- BIG ANIMATED COUNTDOWN SECTION ------------------------------------ */
     .ecd-section {
       background: linear-gradient(160deg,#101624 0%,#1a2336 50%,#0d111c 100%);
-      padding: 5.5rem 5% 5rem; text-align: center;
+      padding: 2.4rem 5%; text-align: center;
       position: relative; overflow: hidden;
     }
     .ecd-bg-pulse { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; }
-    .ecd-pulse-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(245,166,35,.06); animation: ecdPulse 5s ease-in-out infinite; }
-    .ecd-pulse-ring:nth-child(1) { width: 500px; height: 500px; animation-delay: 0s; }
-    .ecd-pulse-ring:nth-child(2) { width: 850px; height: 850px; animation-delay: 1.8s; }
-    .ecd-pulse-ring:nth-child(3) { width: 1200px; height: 1200px; animation-delay: 3.5s; }
+    .ecd-pulse-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(245,166,35,.05); animation: ecdPulse 5s ease-in-out infinite; }
+    .ecd-pulse-ring:nth-child(1) { width: 300px; height: 300px; animation-delay: 0s; }
+    .ecd-pulse-ring:nth-child(2) { width: 500px; height: 500px; animation-delay: 1.8s; }
+    .ecd-pulse-ring:nth-child(3) { width: 720px; height: 720px; animation-delay: 3.5s; }
     @keyframes ecdPulse {
       0%,100% { opacity: .25; transform: scale(1); }
-      50%      { opacity: .65; transform: scale(1.012); }
+      50%      { opacity: .55; transform: scale(1.012); }
     }
-    .ecd-inner { position: relative; z-index: 1; }
+    .ecd-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
     .ecd-eyebrow {
-      font-family: 'Lato', sans-serif; font-size: .68rem; font-weight: 700;
-      letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
-      display: block; margin-bottom: 1.2rem;
+      font-family: 'Lato', sans-serif; font-size: .6rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: .5rem;
     }
     .ecd-heading {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      color: var(--white); font-weight: 700; line-height: 1.15; margin-bottom: .7rem;
+      font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+      color: var(--white); font-weight: 700; line-height: 1.2; margin-bottom: .3rem;
     }
     .ecd-heading em { color: var(--gold); font-style: italic; }
     .ecd-meta {
-      font-size: .88rem; color: rgba(255,255,255,.6);
-      display: flex; align-items: center; justify-content: center; gap: .6rem; flex-wrap: wrap;
-      margin-bottom: 4rem;
+      font-size: .76rem; color: rgba(255,255,255,.55);
+      display: flex; align-items: center; justify-content: center; gap: .5rem; flex-wrap: wrap;
+      margin-bottom: 1.5rem;
     }
     .ecd-meta i { color: var(--gold); }
-    .ecd-units { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3.5rem; }
-    .ecd-unit  { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-    .ecd-ring-wrap { position: relative; width: 150px; height: 150px; }
-    .ecd-svg   { width: 150px; height: 150px; transform: rotate(-90deg); overflow: visible; }
+    .ecd-units { display: flex; gap: 1.3rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.7rem; }
+    .ecd-unit  { display: flex; flex-direction: column; align-items: center; gap: .45rem; }
+    .ecd-ring-wrap { position: relative; width: 76px; height: 76px; }
+    .ecd-svg   { width: 76px; height: 76px; transform: rotate(-90deg); overflow: visible; }
     .ecd-ring-bg { fill: none; stroke: rgba(255,255,255,.07); stroke-width: 5; }
     .ecd-ring-fg {
       fill: none; stroke: var(--gold); stroke-width: 5; stroke-linecap: round;
       stroke-dasharray: 339.3; stroke-dashoffset: 339.3;
       transition: stroke-dashoffset .9s cubic-bezier(.4,0,.2,1);
-      filter: drop-shadow(0 0 8px rgba(245,166,35,.55));
+      filter: drop-shadow(0 0 5px rgba(245,166,35,.5));
     }
     .ecd-num-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
     .ecd-num {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 3rem; font-weight: 700; color: var(--white); line-height: 1;
+      font-size: 1.5rem; font-weight: 700; color: var(--white); line-height: 1;
     }
     .ecd-num.ecd-flip { animation: ecdNumFlip .28s ease; }
     @keyframes ecdNumFlip {
       0%   { opacity: 0; transform: translateY(10px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-    .ecd-lbl { font-size: .65rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.45); }
-    .ecd-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .ecd-lbl { font-size: .52rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255,255,255,.45); }
+    .ecd-actions { display: flex; gap: .7rem; justify-content: center; flex-wrap: wrap; }
     .btn-ghost-light {
-      border: 2px solid rgba(255,255,255,.3); color: var(--white); background: transparent;
-      padding: .95rem 2.2rem; font-family: 'Lato', sans-serif; font-size: .78rem;
-      font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      border: 1.5px solid rgba(255,255,255,.3); color: var(--white); background: transparent;
+      padding: .6rem 1.5rem; font-family: 'Lato', sans-serif; font-size: .7rem;
+      font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
       text-decoration: none; display: inline-block; border-radius: 6px;
       transition: border-color .25s, background .25s, color .25s;
     }
     .btn-ghost-light:hover { border-color: var(--gold); color: var(--gold); background: rgba(245,166,35,.06); }
     @media (max-width: 640px) {
-      .ecd-ring-wrap, .ecd-svg { width: 110px; height: 110px; }
-      .ecd-num { font-size: 2.2rem; }
-      .ecd-units { gap: 1.5rem; }
+      .ecd-ring-wrap, .ecd-svg { width: 64px; height: 64px; }
+      .ecd-num { font-size: 1.25rem; }
+      .ecd-units { gap: .9rem; }
     }
 
     /* -- TWO-AUDIENCE EVENT CARDS ------------------------------------------ */
@@ -637,6 +637,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .evt-sold-badge { position:absolute; top:12px; left:12px; z-index:3; background:#c0392b; color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(192,57,43,.45); }
   .evt-card.is-sold .evt-card-thumb img { filter:grayscale(35%) brightness(.94); }
   .btn.btn-soldout { background:#c0392b !important; border-color:#c0392b !important; color:#fff !important; cursor:not-allowed; pointer-events:none; opacity:.92; box-shadow:none !important; }
+  .evt-past-badge { position:absolute; top:12px; left:12px; z-index:3; background:rgba(36,46,66,.85); color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(36,46,66,.35); }
+  .evt-card.is-past .evt-card-thumb img { filter:grayscale(65%) brightness(.9); }
+  .btn.btn-ended { background:#5b6472 !important; border-color:#5b6472 !important; color:#fff !important; cursor:default; pointer-events:none; opacity:.95; box-shadow:none !important; }
   .evt-card-content { padding:1.1rem 1.2rem 1.2rem; display:flex; flex-direction:column; gap:.5rem; flex:1; }
   .evt-card-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
   .evt-tag { font-family:'Lato',sans-serif; font-size:.56rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:.25rem .6rem; border-radius:100px; background:rgba(36,46,66,.07); color:var(--navy); }
@@ -650,7 +653,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .evt-date-tag.is-upcoming { background:rgba(245,166,35,.15); border-color:rgba(245,166,35,.45); color:var(--gold-dark); }
   .evt-date-tag.is-ongoing { background:rgba(245,166,35,.24); border-color:var(--gold); color:var(--gold-dark); }
   .evt-date-tag.is-ongoing::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--gold-dark); flex:0 0 auto; animation:evtPulse 1.8s ease-out infinite; }
-  .evt-date-tag.is-past { background:rgba(36,46,66,.055); border-color:rgba(36,46,66,.1); color:var(--text-mid); }
+  .evt-date-tag.is-past, .evt-date-tag.is-closed { background:rgba(36,46,66,.055); border-color:rgba(36,46,66,.1); color:var(--text-mid); }
   @keyframes evtPulse { 0%{box-shadow:0 0 0 0 rgba(245,166,35,.55)} 70%{box-shadow:0 0 0 6px rgba(245,166,35,0)} 100%{box-shadow:0 0 0 0 rgba(245,166,35,0)} }
   @media (prefers-reduced-motion:reduce){ .evt-date-tag.is-ongoing::before{ animation:none; } }
   .evt-card-desc { font-size:.82rem; color:var(--body-text); line-height:1.55; margin:0; flex:1; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
@@ -665,27 +668,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </style>
 <section class="section-cream" id="events-grid">
   <div class="section-header-center" style="margin-bottom:2rem">
-    <span class="section-eyebrow">Workshops &amp; Certifications</span>
+    <span class="section-eyebrow">Calendar</span>
     <h2 class="section-title">Upcoming Events</h2>
-    <p class="section-subtitle">Singapore &amp; Bucharest &middot; 2026&ndash;2027 &middot; Led by Isabelle Claus Teixeira</p>
+    <p class="section-subtitle" id="evt-count"><span id="evt-count-up">&ndash;</span> upcoming &middot; <span id="evt-count-past">&ndash;</span> past</p>
   </div>
 
   <!-- FILTER BAR -->
   <div class="evt-filter" role="tablist" aria-label="Filter events">
-    <button type="button" class="evt-filter-btn is-active" data-filter="all">All Events</button>
+    <button type="button" class="evt-filter-btn is-active" data-filter="all">All events</button>
     <button type="button" class="evt-filter-btn" data-filter="singapore">Singapore</button>
-    <button type="button" class="evt-filter-btn" data-filter="romania">Romania</button>
+    <button type="button" class="evt-filter-btn" data-filter="online">Online</button>
+    <button type="button" class="evt-filter-btn" data-filter="international">International</button>
     <button type="button" class="evt-filter-btn" data-filter="certification">Certification</button>
-    <button type="button" class="evt-filter-btn" data-filter="soldout">Sold Out</button>
+    <button type="button" class="evt-filter-btn" data-filter="workshops">Workshops</button>
+    <button type="button" class="evt-filter-btn" data-filter="past">Past events</button>
   </div>
-
-    <p style="text-align:center;font-size:.92rem;font-weight:700;color:#b3362b;margin:0 0 2rem"><i class="fa-solid fa-circle-exclamation" style="margin-right:.45rem"></i>All ticket sales are final &mdash; tickets are non-refundable and non-cancellable.</p>
 
   <!-- EVENT GRID -->
   <div class="evt-grid" id="evt-grid">
 
     <!-- 3. From Shaking to Shaping (Sep-Oct 2026) -->
-    <article class="evt-card" data-cat="romania coaches">
+    <article class="evt-card" data-cat="international online workshops" data-when="upcoming">
       <a href="event-shaking-to-shaping.html" class="evt-card-thumb"><img src="images/event-shaking-to-shaping.webp?v=4" alt="From Shaking to Shaping" loading="lazy" decoding="async" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">Online &amp; In-Person</span></div>
@@ -700,7 +703,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </article>
 
     <!-- 3b. From Shaking to Shaping ONLINE (8 Oct 2026) -->
-    <article class="evt-card" data-cat="romania coaches online">
+    <article class="evt-card" data-cat="online international workshops" data-when="upcoming">
       <a href="event-shaking-online.html" class="evt-card-thumb"><img src="images/event-shaking-online.webp?v=5" alt="From Shaking to Shaping — Online, 8 October" loading="lazy" decoding="async" width="1920" height="1080" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Online</span><span class="evt-tag">TRE&#8482; Coaching</span></div>
@@ -715,7 +718,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </article>
 
     <!-- 4. TRE™ Module 1 Bucharest (15-17 Oct 2026) -->
-    <article class="evt-card" data-cat="romania certification">
+    <article class="evt-card" data-cat="international certification" data-when="upcoming">
       <a href="event-tre-module1-bucharest.html" class="evt-card-thumb"><img src="images/event-bucharest-module1.webp?v=4" alt="TRE™ Module 1 - Bucharest" loading="lazy" decoding="async" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">21 ICF CCEUs</span></div>
@@ -729,23 +732,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </article>
 
-    <!-- 4. Become a Certified TRE™ Provider — 2026 Cohort (Module 1 done; Modules 2 & 3 still open) -->
-    <article class="evt-card" data-cat="singapore certification">
-      <a href="event-certification.html" class="evt-card-thumb"><img src="images/event-transform-practice.webp?v=4" alt="Become a Certified TRE&#8482; Provider — 2026 Cohort" loading="lazy" decoding="async" /></a>
+    <!-- 4. Become a Certified TRE™ Provider — 2026 Cohort (SOLD OUT) -->
+    <article class="evt-card is-sold" data-cat="singapore certification" data-when="upcoming">
+      <a href="event-certification.html" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/event-transform-practice.webp?v=4" alt="Become a Certified TRE&#8482; Provider — 2026 Cohort" loading="lazy" decoding="async" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
         <h3>Become a Certified TRE&#8482; Provider &mdash; 2026 Cohort</h3>
-        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-08-29" data-end="2026-08-30">M1 &middot; 29&ndash;30 Aug 2026</span><span class="evt-date-tag" data-start="2026-09-26" data-end="2026-09-27">M2 &middot; 26&ndash;27 Sep 2026</span><span class="evt-date-tag" data-start="2027-02-20" data-end="2027-02-21">M3 &middot; 20&ndash;21 Feb 2027</span></div>
-        <p class="evt-card-desc">The 2026 Singapore intake of the Global TRE&#8482; Provider Certification. Module 1 is complete &mdash; <strong>Module 2 (Sep) and Module 3 (Feb 2027) still have places</strong> for those continuing their certification.</p>
+        <div class="evt-dates"><span class="evt-date-tag is-closed">Aug 2026 &ndash; Feb 2027 &middot; Modules 1&ndash;3</span></div>
+        <p class="evt-card-desc">The 2026 Singapore intake of the Global TRE&#8482; Provider Certification. This cohort is now closed &mdash; the next intake runs in 2027.</p>
         <div class="evt-card-actions">
-          <a href="event-certification.html#reserve" class="btn btn-primary">Enquire</a>
-          <a href="event-certification.html" class="btn evt-btn-2">Details</a>
+          <span class="btn btn-soldout">Sold Out</span>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Join Waitlist</a>
         </div>
       </div>
     </article>
 
-    <!-- 5. Global TRE™ Provider Certification 2027 (Mar–Aug 2027, Singapore) -->
-    <article class="evt-card" data-cat="singapore certification 2027">
+    <!-- 5. Global TRE™ Provider Certification 2027 (Feb–Oct 2027, Singapore) -->
+    <article class="evt-card" data-cat="singapore certification" data-when="upcoming">
       <a href="event-certification-2027.html" class="evt-card-thumb"><img src="images/event-certification-2027.webp?v=5" alt="Become a Certified TRE&#8482; Provider 2027 &#8212; boosted by Internal Alchemy, with Isabelle Claus Teixeira and Simba Stenqvist" loading="lazy" decoding="async" width="1920" height="1080" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
@@ -761,30 +764,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- SOLD OUT events always last -->
 
-    <article class="evt-card is-sold" data-cat="singapore workshop soldout">
-      <a href="event-internal-alchemy.html" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/event-internal-alchemy.webp?v=4" alt="Internal Alchemy Workshop with Simba Stenqvist" loading="lazy" decoding="async" width="1600" height="900" /></a>
+    <article class="evt-card is-past" data-cat="singapore workshops" data-when="past">
+      <a href="event-internal-alchemy.html" class="evt-card-thumb"><span class="evt-past-badge">Passed</span><img src="images/event-internal-alchemy.webp?v=4" alt="Internal Alchemy Workshop with Simba Stenqvist" loading="lazy" decoding="async" width="1600" height="900" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Workshop</span></div>
         <h3>Internal Alchemy &mdash; Introductory Workshop</h3>
         <div class="evt-dates"><span class="evt-date-tag" data-start="2026-09-01" data-end="2026-09-01">1 Sep 2026 &middot; 7&#8211;9pm</span></div>
         <p class="evt-card-desc">Breathwork, fascial release, grounding &amp; tremor work with Simba Stenqvist, creator of Internal Alchemy. This workshop has now taken place.</p>
         <div class="evt-card-actions">
-          <span class="btn btn-soldout">Sold Out</span>
+          <span class="btn btn-ended">Event Ended</span>
           <a href="event-internal-alchemy.html" class="btn evt-btn-2">View Details</a>
         </div>
       </div>
     </article>
 
-    <article class="evt-card is-sold" data-cat="singapore coaches soldout">
-      <a href="event-selfcare-coaches-singapore.html" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/event-nervous-system.webp?v=4" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" loading="lazy" decoding="async" /></a>
+    <article class="evt-card is-past" data-cat="singapore workshops certification" data-when="past">
+      <a href="event-selfcare-coaches-singapore.html" class="evt-card-thumb"><span class="evt-past-badge">Passed</span><img src="images/event-nervous-system.webp?v=4" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" loading="lazy" decoding="async" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">21 CCEUs &middot; ICF</span></div>
         <h3>Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring</h3>
         <div class="evt-dates"><span class="evt-date-tag" data-start="2026-08-29" data-end="2026-08-30">29&ndash;30 Aug 2026</span></div>
-        <p class="evt-card-desc">Self-care and presence for coaches &mdash; a 2-day ICF-accredited workshop. Valid as Module 1 of the Global TRE&#8482; Provider Certification.</p>
+        <p class="evt-card-desc">Self-care and presence for coaches &mdash; a 2-day ICF-accredited workshop. Valid as Module 1 of the Global TRE&#8482; Provider Certification. This workshop has now taken place.</p>
         <div class="evt-card-actions">
-          <span class="btn btn-soldout">Sold Out</span>
-          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Join Waitlist</a>
+          <span class="btn btn-ended">Event Ended</span>
+          <a href="event-selfcare-coaches-singapore.html" class="btn evt-btn-2">View Details</a>
         </div>
       </div>
     </article>
@@ -910,10 +913,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   tickEcd();setInterval(tickEcd,1000);
 })();
 
-/* Event date tags: mark each as upcoming / ongoing / past by its dates */
+/* Event date tags: mark each as upcoming / ongoing / past by its dates
+   (skips tags already given a fixed state, e.g. is-closed) */
 (function(){
   var now = Date.now();
   document.querySelectorAll('.evt-date-tag').forEach(function(t){
+    if(/is-(past|upcoming|ongoing|closed)/.test(t.className)) return;
     var s = t.getAttribute('data-start');
     var e = t.getAttribute('data-end') || s;
     if(!e){ t.classList.add('is-upcoming'); return; }
@@ -926,23 +931,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 })();
 
-/* Event filter */
+/* Event filter + upcoming/past counts */
 (function(){
   var btns  = document.querySelectorAll('.evt-filter-btn');
   var cards = document.querySelectorAll('#evt-grid .evt-card');
   var empty = document.getElementById('evt-empty');
+
+  // counts
+  var up = 0, past = 0;
+  cards.forEach(function(c){ (c.getAttribute('data-when') === 'past') ? past++ : up++; });
+  var upEl = document.getElementById('evt-count-up'), pastEl = document.getElementById('evt-count-past');
+  if (upEl)   upEl.textContent   = up;
+  if (pastEl) pastEl.textContent = past;
+
+  function apply(f){
+    var shown = 0;
+    cards.forEach(function(card){
+      var match;
+      if (f === 'all') match = true;
+      else if (f === 'past') match = card.getAttribute('data-when') === 'past';
+      else match = (card.getAttribute('data-cat') || '').indexOf(f) !== -1;
+      card.classList.toggle('is-hidden', !match);
+      if (match) shown++;
+    });
+    if (empty) empty.style.display = shown === 0 ? 'block' : 'none';
+  }
   btns.forEach(function(btn){
     btn.addEventListener('click', function(){
       btns.forEach(function(b){ b.classList.remove('is-active'); });
       btn.classList.add('is-active');
-      var f = btn.getAttribute('data-filter');
-      var shown = 0;
-      cards.forEach(function(card){
-        var match = (f === 'all') || (card.getAttribute('data-cat') || '').indexOf(f) !== -1;
-        card.classList.toggle('is-hidden', !match);
-        if (match) shown++;
-      });
-      if (empty) empty.style.display = shown === 0 ? 'block' : 'none';
+      apply(btn.getAttribute('data-filter'));
     });
   });
 })();
