@@ -407,8 +407,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .home-evt { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; align-items:start; }
   .home-evt-card { background:var(--white); border-radius:12px; overflow:hidden; box-shadow:0 4px 24px rgba(36,46,66,.1); display:flex; flex-direction:column; transition:transform .3s ease, box-shadow .3s ease; }
   .home-evt-card:hover { transform:translateY(-5px); box-shadow:0 16px 44px rgba(36,46,66,.16); }
-  .home-evt-thumb { display:block; line-height:0; background:#f4f5f7; }
+  .home-evt-thumb { display:block; line-height:0; background:#f4f5f7; position:relative; }
   .home-evt-thumb img { width:100%; height:auto; display:block; }
+  .home-evt-sold-badge { position:absolute; top:14px; left:14px; z-index:3; background:#c0392b; color:#fff; font-family:'Lato',sans-serif; font-size:.65rem; font-weight:900; letter-spacing:1.6px; text-transform:uppercase; padding:.36rem .85rem; border-radius:5px; box-shadow:0 6px 18px rgba(192,57,43,.45); }
+  .home-evt-card.is-sold .home-evt-thumb img { filter:grayscale(35%) brightness(.94); }
+  .btn.btn-soldout { background:#c0392b !important; border-color:#c0392b !important; color:#fff !important; cursor:not-allowed; pointer-events:none; opacity:.92; box-shadow:none !important; }
   .home-evt-body { padding:1.5rem 1.7rem 1.7rem; display:flex; flex-direction:column; gap:.65rem; flex:1; }
   .home-evt-tags { display:flex; flex-wrap:wrap; gap:.45rem; }
   .home-evt-tag { font-family:'Lato',sans-serif; font-size:.6rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:.28rem .7rem; border-radius:100px; background:rgba(36,46,66,.07); color:var(--navy); }
@@ -426,36 +429,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </style>
 <section class="section-cream" id="home-events">
   <div class="section-header-center" style="margin-bottom:2.5rem">
-    <span class="section-eyebrow">Join Us In Person</span>
-    <h2 class="section-title">Upcoming Events</h2>
-    <p class="section-subtitle">Singapore &middot; 29 &amp; 30 August 2026</p>
+    <span class="section-eyebrow">Recently With Us</span>
+    <h2 class="section-title">Past Events</h2>
+    <p class="section-subtitle">Singapore &middot; August &ndash; September 2026 &middot; now closed</p>
   </div>
   <div class="home-evt">
 
-    <article class="home-evt-card">
-      <a href="event-selfcare-coaches-singapore.html" class="home-evt-thumb"><img src="images/event-nervous-system.webp?v=4" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" loading="lazy" decoding="async" /></a>
+    <article class="home-evt-card is-sold">
+      <a href="event-selfcare-coaches-singapore.html" class="home-evt-thumb"><span class="home-evt-sold-badge">Sold Out</span><img src="images/event-nervous-system.webp?v=4" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" loading="lazy" decoding="async" /></a>
       <div class="home-evt-body">
         <div class="home-evt-tags"><span class="home-evt-tag loc">Singapore</span><span class="home-evt-tag">21 CCEUs &middot; ICF</span></div>
         <h3>Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring</h3>
         <p class="home-evt-meta"><i class="fa-regular fa-calendar"></i> 29 &amp; 30 August 2026 &middot; In-Person</p>
-        <p class="home-evt-desc">Self-care and presence for coaches &mdash; a 2-day ICF-accredited workshop. Valid as Module 1 of the Global TRE&#8482; Provider Certification.</p>
+        <p class="home-evt-desc">Self-care and presence for coaches &mdash; a 2-day ICF-accredited workshop. This workshop has now taken place.</p>
         <div class="home-evt-actions">
-          <a href="event-selfcare-coaches-singapore.html" class="btn btn-primary">Register</a>
-          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn home-evt-btn2">Book a Call</a>
+          <span class="btn btn-soldout">Sold Out</span>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn home-evt-btn2">Join Waitlist</a>
         </div>
       </div>
     </article>
 
-    <article class="home-evt-card">
-      <a href="tre-certification.html" class="home-evt-thumb"><img src="images/event-transform-practice.webp?v=4" alt="Become a Certified TRE™ Provider" loading="lazy" decoding="async" /></a>
+    <article class="home-evt-card is-sold">
+      <span class="home-evt-thumb" style="display:block"><span class="home-evt-sold-badge">Sold Out</span><img src="images/event-transform-practice.webp?v=4" alt="Become a Certified TRE&#8482; Provider" loading="lazy" decoding="async" /></span>
       <div class="home-evt-body">
         <div class="home-evt-tags"><span class="home-evt-tag loc">Singapore</span><span class="home-evt-tag">Certification</span></div>
         <h3>Become a Certified TRE&#8482; Provider</h3>
-        <p class="home-evt-meta"><i class="fa-regular fa-calendar"></i> From 29 &amp; 30 August 2026 &middot; Modules 1&ndash;3</p>
-        <p class="home-evt-desc">The full Global TRE&#8482; Provider Certification. Qualify to offer TRE&#8482; to the public in both individual and group settings.</p>
+        <p class="home-evt-meta"><i class="fa-regular fa-calendar"></i> Aug 2026 &ndash; Feb 2027 &middot; Modules 1&ndash;3</p>
+        <p class="home-evt-desc">The 2026 Singapore intake of the Global TRE&#8482; Provider Certification. This cohort is now closed &mdash; the next intake runs in 2027.</p>
         <div class="home-evt-actions">
-          <a href="tre-certification.html" class="btn btn-primary">Register</a>
-          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn home-evt-btn2">Book a Call</a>
+          <span class="btn btn-soldout">Sold Out</span>
+          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn home-evt-btn2">Join Waitlist</a>
         </div>
       </div>
     </article>
