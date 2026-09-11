@@ -11,7 +11,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>PREVIEW — 2027 events split into cards | HummingBeing</title>
+  <title>PREVIEW — 2027 modules as separate cards | HummingBeing</title>
   <meta name="description" content="Upcoming TRE&#8482; workshops and certification with Isabelle Claus Teixeira &#8212; Singapore, Bucharest and online. The 2027 certification cohort begins 27&#8211;28 February 2027." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,71 +157,71 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     /* -- BIG ANIMATED COUNTDOWN SECTION ------------------------------------ */
     .ecd-section {
       background: linear-gradient(160deg,#101624 0%,#1a2336 50%,#0d111c 100%);
-      padding: 5.5rem 5% 5rem; text-align: center;
+      padding: 2.4rem 5%; text-align: center;
       position: relative; overflow: hidden;
     }
     .ecd-bg-pulse { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; }
-    .ecd-pulse-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(245,166,35,.06); animation: ecdPulse 5s ease-in-out infinite; }
-    .ecd-pulse-ring:nth-child(1) { width: 500px; height: 500px; animation-delay: 0s; }
-    .ecd-pulse-ring:nth-child(2) { width: 850px; height: 850px; animation-delay: 1.8s; }
-    .ecd-pulse-ring:nth-child(3) { width: 1200px; height: 1200px; animation-delay: 3.5s; }
+    .ecd-pulse-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(245,166,35,.05); animation: ecdPulse 5s ease-in-out infinite; }
+    .ecd-pulse-ring:nth-child(1) { width: 300px; height: 300px; animation-delay: 0s; }
+    .ecd-pulse-ring:nth-child(2) { width: 500px; height: 500px; animation-delay: 1.8s; }
+    .ecd-pulse-ring:nth-child(3) { width: 720px; height: 720px; animation-delay: 3.5s; }
     @keyframes ecdPulse {
       0%,100% { opacity: .25; transform: scale(1); }
-      50%      { opacity: .65; transform: scale(1.012); }
+      50%      { opacity: .55; transform: scale(1.012); }
     }
-    .ecd-inner { position: relative; z-index: 1; }
+    .ecd-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
     .ecd-eyebrow {
-      font-family: 'Lato', sans-serif; font-size: .68rem; font-weight: 700;
-      letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
-      display: block; margin-bottom: 1.2rem;
+      font-family: 'Lato', sans-serif; font-size: .6rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: .5rem;
     }
     .ecd-heading {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      color: var(--white); font-weight: 700; line-height: 1.15; margin-bottom: .7rem;
+      font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+      color: var(--white); font-weight: 700; line-height: 1.2; margin-bottom: .3rem;
     }
     .ecd-heading em { color: var(--gold); font-style: italic; }
     .ecd-meta {
-      font-size: .88rem; color: rgba(255,255,255,.6);
-      display: flex; align-items: center; justify-content: center; gap: .6rem; flex-wrap: wrap;
-      margin-bottom: 4rem;
+      font-size: .76rem; color: rgba(255,255,255,.55);
+      display: flex; align-items: center; justify-content: center; gap: .5rem; flex-wrap: wrap;
+      margin-bottom: 1.5rem;
     }
     .ecd-meta i { color: var(--gold); }
-    .ecd-units { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3.5rem; }
-    .ecd-unit  { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-    .ecd-ring-wrap { position: relative; width: 150px; height: 150px; }
-    .ecd-svg   { width: 150px; height: 150px; transform: rotate(-90deg); overflow: visible; }
+    .ecd-units { display: flex; gap: 1.3rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.7rem; }
+    .ecd-unit  { display: flex; flex-direction: column; align-items: center; gap: .45rem; }
+    .ecd-ring-wrap { position: relative; width: 76px; height: 76px; }
+    .ecd-svg   { width: 76px; height: 76px; transform: rotate(-90deg); overflow: visible; }
     .ecd-ring-bg { fill: none; stroke: rgba(255,255,255,.07); stroke-width: 5; }
     .ecd-ring-fg {
       fill: none; stroke: var(--gold); stroke-width: 5; stroke-linecap: round;
       stroke-dasharray: 339.3; stroke-dashoffset: 339.3;
       transition: stroke-dashoffset .9s cubic-bezier(.4,0,.2,1);
-      filter: drop-shadow(0 0 8px rgba(245,166,35,.55));
+      filter: drop-shadow(0 0 5px rgba(245,166,35,.5));
     }
     .ecd-num-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
     .ecd-num {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 3rem; font-weight: 700; color: var(--white); line-height: 1;
+      font-size: 1.5rem; font-weight: 700; color: var(--white); line-height: 1;
     }
     .ecd-num.ecd-flip { animation: ecdNumFlip .28s ease; }
     @keyframes ecdNumFlip {
       0%   { opacity: 0; transform: translateY(10px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-    .ecd-lbl { font-size: .65rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.45); }
-    .ecd-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .ecd-lbl { font-size: .52rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255,255,255,.45); }
+    .ecd-actions { display: flex; gap: .7rem; justify-content: center; flex-wrap: wrap; }
     .btn-ghost-light {
-      border: 2px solid rgba(255,255,255,.3); color: var(--white); background: transparent;
-      padding: .95rem 2.2rem; font-family: 'Lato', sans-serif; font-size: .78rem;
-      font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      border: 1.5px solid rgba(255,255,255,.3); color: var(--white); background: transparent;
+      padding: .6rem 1.5rem; font-family: 'Lato', sans-serif; font-size: .7rem;
+      font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
       text-decoration: none; display: inline-block; border-radius: 6px;
       transition: border-color .25s, background .25s, color .25s;
     }
     .btn-ghost-light:hover { border-color: var(--gold); color: var(--gold); background: rgba(245,166,35,.06); }
     @media (max-width: 640px) {
-      .ecd-ring-wrap, .ecd-svg { width: 110px; height: 110px; }
-      .ecd-num { font-size: 2.2rem; }
-      .ecd-units { gap: 1.5rem; }
+      .ecd-ring-wrap, .ecd-svg { width: 64px; height: 64px; }
+      .ecd-num { font-size: 1.25rem; }
+      .ecd-units { gap: .9rem; }
     }
 
     /* -- TWO-AUDIENCE EVENT CARDS ------------------------------------------ */
@@ -479,10 +479,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
-
-<div style="background:#c0392b;color:#fff;text-align:center;padding:11px 16px;font-size:.82rem;font-weight:700;letter-spacing:.4px;margin-top:76px">
-  PREVIEW &mdash; the 2027 programme split into one card per event. Placeholder posters; not published.
-</div>
+<div style="background:#c0392b;color:#fff;text-align:center;padding:11px 16px;font-size:.82rem;font-weight:700;letter-spacing:.4px;margin-top:76px">PREVIEW &mdash; the 2027 programme split into one card per module. Placeholder posters; not published.</div>
 
 <!-- EVENT HERO WITH COUNTDOWN -->
 <div class="event-hero">
@@ -490,7 +487,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <source src="hero-events.mp4" type="video/mp4">
   </video>
   <span class="eyebrow">Live Events &amp; Workshops</span>
-  <h1>2027 <em>Programme</em></h1>
+  <h1>Events &amp; <em>Sessions</em></h1>
   <p>Group workshops, TRE&#8482; sessions, somatic intensives and community gatherings &#8212; in Singapore, Europe and online.</p>
   <div class="hero-actions">
     <a href="book.html" class="btn btn-primary">Book a Free Discovery Call</a>
@@ -642,6 +639,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .evt-sold-badge { position:absolute; top:12px; left:12px; z-index:3; background:#c0392b; color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(192,57,43,.45); }
   .evt-card.is-sold .evt-card-thumb img { filter:grayscale(35%) brightness(.94); }
   .btn.btn-soldout { background:#c0392b !important; border-color:#c0392b !important; color:#fff !important; cursor:not-allowed; pointer-events:none; opacity:.92; box-shadow:none !important; }
+  .evt-past-badge { position:absolute; top:12px; left:12px; z-index:3; background:rgba(36,46,66,.85); color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(36,46,66,.35); }
+  .evt-ongoing-badge { position:absolute; top:12px; left:12px; z-index:3; background:#1f9d6b; color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(31,157,107,.4); display:inline-flex; align-items:center; gap:.35rem; }
+  .evt-upcoming-badge { position:absolute; top:12px; left:12px; z-index:3; background:#2d6cdf; color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(45,108,223,.4); }
+  .evt-ongoing-badge::before { content:""; width:6px; height:6px; border-radius:50%; background:#fff; animation:evtBadgePulse 1.6s ease-out infinite; }
+  @keyframes evtBadgePulse { 0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)} 70%{box-shadow:0 0 0 5px rgba(255,255,255,0)} 100%{box-shadow:0 0 0 0 rgba(255,255,255,0)} }
+  @media (prefers-reduced-motion:reduce){ .evt-ongoing-badge::before{ animation:none; } }
+  /* Past-events archive section */
+  .evt-archive { opacity:.96; }
+  #past-events .section-title { font-size:1.7rem; }
+  .evt-card.is-past .evt-card-thumb img { filter:grayscale(65%) brightness(.9); }
+  .btn.btn-ended { background:#5b6472 !important; border-color:#5b6472 !important; color:#fff !important; cursor:default; pointer-events:none; opacity:.95; box-shadow:none !important; }
   .evt-card-content { padding:1.1rem 1.2rem 1.2rem; display:flex; flex-direction:column; gap:.5rem; flex:1; }
   .evt-card-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
   .evt-tag { font-family:'Lato',sans-serif; font-size:.56rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:.25rem .6rem; border-radius:100px; background:rgba(36,46,66,.07); color:var(--navy); }
@@ -649,6 +657,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .evt-card h3 { font-family:'PT Serif',Georgia,serif; font-size:1.02rem; color:var(--navy); line-height:1.25; margin:0; }
   .evt-card-meta { font-size:.76rem; color:var(--text-mid); font-weight:700; margin:0; }
   .evt-card-meta i { color:var(--gold); margin-right:.35rem; }
+  /* Colour-coded date tags — gold when upcoming/ongoing, gray once passed (set by JS) */
+  .evt-dates { display:flex; flex-wrap:wrap; gap:.34rem; margin:0; }
+  .evt-date-tag { display:inline-flex; align-items:center; gap:.32rem; font-family:'Lato',sans-serif; font-size:.68rem; font-weight:800; letter-spacing:.01em; line-height:1.15; padding:.3rem .62rem; border-radius:100px; border:1px solid rgba(36,46,66,.12); background:rgba(36,46,66,.06); color:var(--navy); white-space:nowrap; }
+  .evt-date-tag.is-upcoming { background:rgba(245,166,35,.15); border-color:rgba(245,166,35,.45); color:var(--gold-dark); }
+  .evt-date-tag.is-ongoing { background:rgba(245,166,35,.24); border-color:var(--gold); color:var(--gold-dark); }
+  .evt-date-tag.is-ongoing::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--gold-dark); flex:0 0 auto; animation:evtPulse 1.8s ease-out infinite; }
+  .evt-date-tag.is-past, .evt-date-tag.is-closed { background:rgba(36,46,66,.055); border-color:rgba(36,46,66,.1); color:var(--text-mid); }
+  @keyframes evtPulse { 0%{box-shadow:0 0 0 0 rgba(245,166,35,.55)} 70%{box-shadow:0 0 0 6px rgba(245,166,35,0)} 100%{box-shadow:0 0 0 0 rgba(245,166,35,0)} }
+  @media (prefers-reduced-motion:reduce){ .evt-date-tag.is-ongoing::before{ animation:none; } }
   .evt-card-desc { font-size:.82rem; color:var(--body-text); line-height:1.55; margin:0; flex:1; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
   .evt-card-actions { display:flex; gap:.55rem; margin-top:.4rem; }
   .evt-card-actions .btn { flex:1; text-align:center; padding:.62rem .5rem; font-size:.66rem; }
@@ -661,33 +678,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </style>
 <section class="section-cream" id="events-grid">
   <div class="section-header-center" style="margin-bottom:2rem">
-    <span class="section-eyebrow">Workshops &amp; Certifications</span>
+    <span class="section-eyebrow">Calendar</span>
     <h2 class="section-title">Upcoming Events</h2>
-    <p class="section-subtitle">Singapore &amp; Bucharest &middot; 2026&ndash;2027 &middot; Led by Isabelle Claus Teixeira</p>
+    <p class="section-subtitle" id="evt-count"><span id="evt-count-up">&ndash;</span> upcoming &middot; <span id="evt-count-past">&ndash;</span> past</p>
   </div>
 
   <!-- FILTER BAR -->
   <div class="evt-filter" role="tablist" aria-label="Filter events">
-    <button type="button" class="evt-filter-btn is-active" data-filter="all">All Events</button>
+    <button type="button" class="evt-filter-btn is-active" data-filter="all">All events</button>
     <button type="button" class="evt-filter-btn" data-filter="singapore">Singapore</button>
-    <button type="button" class="evt-filter-btn" data-filter="romania">Romania</button>
+    <button type="button" class="evt-filter-btn" data-filter="online">Online</button>
+    <button type="button" class="evt-filter-btn" data-filter="international">International</button>
     <button type="button" class="evt-filter-btn" data-filter="certification">Certification</button>
-    <button type="button" class="evt-filter-btn" data-filter="2027">2027 Cohort</button>
-    <button type="button" class="evt-filter-btn" data-filter="soldout">Sold Out</button>
+    <button type="button" class="evt-filter-btn" data-filter="workshops">Workshops</button>
   </div>
-
-    <p style="text-align:center;font-size:.92rem;font-weight:700;color:#b3362b;margin:0 0 2rem"><i class="fa-solid fa-circle-exclamation" style="margin-right:.45rem"></i>All ticket sales are final &mdash; tickets are non-refundable and non-cancellable.</p>
 
   <!-- EVENT GRID -->
   <div class="evt-grid" id="evt-grid">
 
-    <article class="evt-card" data-cat="singapore certification 2027">
+    <article class="evt-card" data-cat="singapore certification 2027" data-start="2027-02-27" data-end="2027-02-28">
       <a href="event-2027-module1.html" class="evt-card-thumb"><img src="images/event-2027-module1.webp" alt="TRETM Module 1 - Your Personal Practice" loading="lazy" decoding="async" width="1920" height="1080" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
         <h3>TRE&#8482; Module 1 &mdash; Your Personal Practice</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 27&#8211;28 February 2027 &middot; Singapore &middot; In-Person</p>
-        <p class="evt-card-desc">Where the certification begins &mdash; and the one module you can take purely for yourself. 2-day workshop + 4 online TRE&#8482; sessions. ICF CCE included. From S$1,888.</p>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2027-02-27" data-end="2027-02-28">27&#8211;28 Feb 2027 &middot; Singapore</span></div>
+        <p class="evt-card-desc">Where the certification begins &mdash; and the one module you can take purely for yourself. 2-day workshop + 4 online TRE&#8482; sessions. From S$1,888.</p>
         <div class="evt-card-actions">
           <a href="event-2027-module1.html" class="btn btn-primary">Register</a>
           <a href="event-2027-module1.html" class="btn evt-btn-2">Details</a>
@@ -695,13 +710,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </article>
 
-    <article class="evt-card" data-cat="singapore certification 2027">
+    <article class="evt-card" data-cat="singapore certification 2027" data-start="2027-07-03" data-end="2027-07-04">
       <a href="event-2027-module2.html" class="evt-card-thumb"><img src="images/event-2027-module2.webp" alt="TRETM Module 2 - Teaching One Person" loading="lazy" decoding="async" width="1920" height="1080" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
         <h3>TRE&#8482; Module 2 &mdash; Teaching One Person</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 2&#8211;3 July 2027 &middot; Singapore &middot; In-Person</p>
-        <p class="evt-card-desc">Turn your personal practice outward: assess, guide and contain one person through a full TRE&#8482; session. Includes individual and group supervision. Open after Module 1.</p>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2027-07-03" data-end="2027-07-04">3&#8211;4 Jul 2027 &middot; Singapore</span></div>
+        <p class="evt-card-desc">Guide one person safely through a full TRE&#8482; session. Plus 2 online group supervisions and 2 individual supervisions. Open after Module 1.</p>
         <div class="evt-card-actions">
           <a href="event-2027-module2.html" class="btn btn-primary">Register</a>
           <a href="event-2027-module2.html" class="btn evt-btn-2">Details</a>
@@ -709,41 +724,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </article>
 
-    <article class="evt-card" data-cat="singapore certification 2027">
-      <a href="event-2027-shaping.html" class="evt-card-thumb"><img src="images/event-2027-shaping.webp" alt="From Shaking to Shaping" loading="lazy" decoding="async" width="1920" height="1080" /></a>
-      <div class="evt-card-content">
-        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Workshop</span></div>
-        <h3>From Shaking to Shaping</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 4 July 2027 &middot; Singapore &middot; 1 Day</p>
-        <p class="evt-card-desc">A one-day workshop on using TRE&#8482; in a coaching context &mdash; how neurogenic tremoring supports embodied presence, self-care and client work.</p>
-        <div class="evt-card-actions">
-          <a href="event-2027-shaping.html" class="btn btn-primary">Register</a>
-          <a href="event-2027-shaping.html" class="btn evt-btn-2">Details</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="evt-card" data-cat="singapore certification 2027">
-      <a href="event-2027-alchemy-one.html" class="evt-card-thumb"><img src="images/event-2027-alchemy-one.webp" alt="Intro to Internal Alchemy - Lead One" loading="lazy" decoding="async" width="1920" height="1080" /></a>
-      <div class="evt-card-content">
-        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Internal Alchemy</span></div>
-        <h3>Intro to Internal Alchemy &mdash; Lead One</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 28 October 2027 &middot; Singapore &middot; 1 Day</p>
-        <p class="evt-card-desc">A one-day introduction to Internal Alchemy for working with one person &mdash; breathwork, fascial release, grounding and tremor work, with Simba Stenqvist.</p>
-        <div class="evt-card-actions">
-          <a href="event-2027-alchemy-one.html" class="btn btn-primary">Register</a>
-          <a href="event-2027-alchemy-one.html" class="btn evt-btn-2">Details</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="evt-card" data-cat="singapore certification 2027">
+    <article class="evt-card" data-cat="singapore certification 2027" data-start="2027-10-30" data-end="2027-10-31">
       <a href="event-2027-module3.html" class="evt-card-thumb"><img src="images/event-2027-module3.webp" alt="TRETM Module 3 - Teaching Groups" loading="lazy" decoding="async" width="1920" height="1080" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
         <h3>TRE&#8482; Module 3 &mdash; Teaching Groups</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 29&#8211;30 October 2027 &middot; Singapore &middot; In-Person</p>
-        <p class="evt-card-desc">Hold a whole room through TRE&#8482; safely. Completes your Global TRE&#8482; Provider certification. Open after Module 2.</p>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2027-10-30" data-end="2027-10-31">30&#8211;31 Oct 2027 &middot; Singapore</span></div>
+        <p class="evt-card-desc">Hold a whole room through TRE&#8482; safely. Plus 1 online group supervision (13 Nov 2027) and 3 individual supervisions. Completes your certification.</p>
         <div class="evt-card-actions">
           <a href="event-2027-module3.html" class="btn btn-primary">Register</a>
           <a href="event-2027-module3.html" class="btn evt-btn-2">Details</a>
@@ -751,29 +738,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </article>
 
-    <article class="evt-card" data-cat="singapore certification 2027">
-      <a href="event-2027-alchemy-group.html" class="evt-card-thumb"><img src="images/event-2027-alchemy-group.webp" alt="Intro to Internal Alchemy - Work with a Group" loading="lazy" decoding="async" width="1920" height="1080" /></a>
-      <div class="evt-card-content">
-        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Internal Alchemy</span></div>
-        <h3>Intro to Internal Alchemy &mdash; Work with a Group</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 31 October 2027 &middot; Singapore &middot; 1 Day</p>
-        <p class="evt-card-desc">Upgrade the Internal Alchemy system into group settings &mdash; a one-day introduction with Simba Stenqvist.</p>
-        <div class="evt-card-actions">
-          <a href="event-2027-alchemy-group.html" class="btn btn-primary">Register</a>
-          <a href="event-2027-alchemy-group.html" class="btn evt-btn-2">Details</a>
-        </div>
-      </div>
-    </article>
 
-
-    <!-- 3. From Shaking to Shaping (Sep-Oct 2026) -->
-    <article class="evt-card" data-cat="romania coaches">
-      <a href="event-shaking-to-shaping.html" class="evt-card-thumb"><img src="images/event-shaking-to-shaping.webp?v=4" alt="From Shaking to Shaping" loading="lazy" decoding="async" /></a>
+    <!-- 3. From Shaking to Shaping (Bucharest in-person: 20 & 24 Oct 2026 — Sep 3 online session archived separately) -->
+    <article class="evt-card" data-cat="international workshops" data-start="2026-10-20" data-end="2026-10-24">
+      <a href="event-shaking-to-shaping.html" class="evt-card-thumb"><img src="images/event-shaking-to-shaping.webp?v=4" alt="From Shaking to Shaping — Bucharest" loading="lazy" decoding="async" /></a>
       <div class="evt-card-content">
-        <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">Online &amp; In-Person</span></div>
-        <h3>From Shaking to Shaping</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> September&ndash;October 2026 &middot; Bucharest</p>
-        <p class="evt-card-desc">Integrate TRE&#8482; into your coaching practice &mdash; neurogenic tremoring as a somatic tool for nervous system regulation and embodied presence.</p>
+        <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">In-Person</span></div>
+        <h3>From Shaking to Shaping &mdash; Bucharest</h3>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-20" data-end="2026-10-24">20 &amp; 24 Oct 2026 &middot; Bucharest</span></div>
+        <p class="evt-card-desc">Integrate TRE&#8482; into your coaching practice &mdash; neurogenic tremoring as a somatic tool for nervous system regulation and embodied presence. In-person in Bucharest, Rom&#226;nia.</p>
         <div class="evt-card-actions">
           <a href="event-shaking-to-shaping.html#sessions" class="btn btn-primary">Buy Tickets</a>
           <a href="event-shaking-to-shaping.html" class="btn evt-btn-2">Details</a>
@@ -782,12 +755,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </article>
 
     <!-- 3b. From Shaking to Shaping ONLINE (8 Oct 2026) -->
-    <article class="evt-card" data-cat="romania coaches online">
+    <article class="evt-card" data-cat="online international workshops" data-start="2026-10-08" data-end="2026-10-08">
       <a href="event-shaking-online.html" class="evt-card-thumb"><img src="images/event-shaking-online.webp?v=5" alt="From Shaking to Shaping — Online, 8 October" loading="lazy" decoding="async" width="1920" height="1080" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Online</span><span class="evt-tag">TRE&#8482; Coaching</span></div>
         <h3>From Shaking to Shaping &mdash; Online</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 8 October &middot; 7&#8211;9pm &middot; Online</p>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-08" data-end="2026-10-08">8 Oct 2026 &middot; 7&#8211;9pm</span></div>
         <p class="evt-card-desc">A live online workshop on using TRE&#8482; in a coaching context &mdash; co-led by Isabelle Claus Teixeira &amp; Saymara Ryon, in partnership with Neurogenic Integration.</p>
         <div class="evt-card-actions">
           <a href="event-shaking-online.html" class="btn btn-primary">Register</a>
@@ -797,12 +770,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </article>
 
     <!-- 4. TRE™ Module 1 Bucharest (15-17 Oct 2026) -->
-    <article class="evt-card" data-cat="romania certification">
+    <article class="evt-card" data-cat="international certification" data-start="2026-10-15" data-end="2026-10-17">
       <a href="event-tre-module1-bucharest.html" class="evt-card-thumb"><img src="images/event-bucharest-module1.webp?v=4" alt="TRE™ Module 1 - Bucharest" loading="lazy" decoding="async" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">21 ICF CCEUs</span></div>
         <h3>TRE&#8482; Module 1 &mdash; Bucharest</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 15&ndash;17 October 2026 &middot; Bucharest</p>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-15" data-end="2026-10-17">15&ndash;17 Oct 2026</span></div>
         <p class="evt-card-desc">An immersive 3-day certification &mdash; the first in Europe in English. Valid as Module 1 of the Global TRE&#8482; Provider Certification.</p>
         <div class="evt-card-actions">
           <a href="https://www.atelierdesuflet.ro/tre-module-1-bucharest-romania-21-icf-cceus-only-tre-training-in-the-world-with-icf-accreditation.html" target="_blank" rel="noopener" class="btn btn-primary">Buy Tickets</a>
@@ -811,15 +784,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </article>
 
-    
-
-    <!-- SOLD OUT events always last -->
-    <article class="evt-card is-sold" data-cat="singapore certification soldout">
-      <span class="evt-card-thumb" style="display:block"><span class="evt-sold-badge">Sold Out</span><img src="images/event-transform-practice.webp?v=4" alt="Become a Certified TRE&#8482; Provider" loading="lazy" decoding="async" /></span>
+    <!-- 4. Become a Certified TRE™ Provider — 2026 Cohort (SOLD OUT) -->
+    <article class="evt-card is-sold" data-cat="singapore certification" data-start="2026-08-29" data-end="2027-02-21" data-sold="true">
+      <a href="event-certification.html" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/event-transform-practice.webp?v=4" alt="Become a Certified TRE&#8482; Provider — 2026 Cohort" loading="lazy" decoding="async" /></a>
       <div class="evt-card-content">
         <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
-        <h3>Become a Certified TRE&#8482; Provider</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> Aug 2026 &ndash; Feb 2027 &middot; Modules 1&ndash;3</p>
+        <h3>Become a Certified TRE&#8482; Provider &mdash; 2026 Cohort</h3>
+        <div class="evt-dates"><span class="evt-date-tag is-closed">Aug 2026 &ndash; Feb 2027 &middot; Modules 1&ndash;3</span></div>
         <p class="evt-card-desc">The 2026 Singapore intake of the Global TRE&#8482; Provider Certification. This cohort is now closed &mdash; the next intake runs in 2027.</p>
         <div class="evt-card-actions">
           <span class="btn btn-soldout">Sold Out</span>
@@ -828,35 +799,76 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </article>
 
-    <article class="evt-card is-sold" data-cat="singapore workshop soldout">
-      <a href="event-internal-alchemy.html" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/event-internal-alchemy.webp?v=4" alt="Internal Alchemy Workshop with Simba Stenqvist" loading="lazy" decoding="async" width="1600" height="900" /></a>
+    <!-- 5. Global TRE™ Provider Certification 2027 (Feb–Oct 2027, Singapore) -->
+    <article class="evt-card" data-cat="singapore certification" data-start="2027-02-27" data-end="2027-10-31">
+      <a href="event-certification-2027.html" class="evt-card-thumb"><img src="images/event-certification-2027.webp?v=6" alt="Become a Certified TRE&#8482; Provider 2027 &#8212; boosted by Internal Alchemy, with Isabelle Claus Teixeira and Simba Stenqvist" loading="lazy" decoding="async" width="1920" height="1080" /></a>
       <div class="evt-card-content">
-        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Workshop</span></div>
-        <h3>Internal Alchemy &mdash; Introductory Workshop</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 1 September 2026 &middot; 7&#8211;9pm &middot; In-Person</p>
-        <p class="evt-card-desc">Breathwork, fascial release, grounding &amp; tremor work with Simba Stenqvist, creator of Internal Alchemy. This workshop has now taken place.</p>
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
+        <h3>Become a Certified TRE&#8482; Provider &mdash; 2027 Cohort</h3>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2027-02-27" data-end="2027-02-28">M1 &middot; 27&ndash;28 Feb 2027</span><span class="evt-date-tag" data-start="2027-07-03" data-end="2027-07-04">M2 &middot; 3&ndash;4 Jul 2027</span><span class="evt-date-tag" data-start="2027-10-30" data-end="2027-10-31">M3 &middot; 30&ndash;31 Oct 2027</span></div>
+        <p class="evt-card-desc">The 2027 Singapore cohort of the Global TRE&#8482; Provider Certification &mdash; three in-person modules plus online supervisions and bonus programs, taught by two TRE&#8482; Trainers, Isabelle Claus Teixeira &amp; Simba Stenqvist. ICF CCE with Module 1. Bundle from S$5,888 early bird.</p>
         <div class="evt-card-actions">
-          <span class="btn btn-soldout">Sold Out</span>
-          <a href="event-internal-alchemy.html" class="btn evt-btn-2">View Details</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="evt-card is-sold" data-cat="singapore coaches soldout">
-      <a href="event-selfcare-coaches-singapore.html" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/event-nervous-system.webp?v=4" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" loading="lazy" decoding="async" /></a>
-      <div class="evt-card-content">
-        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">21 CCEUs &middot; ICF</span></div>
-        <h3>Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring</h3>
-        <p class="evt-card-meta"><i class="fa-regular fa-calendar"></i> 29 &amp; 30 August 2026 &middot; In-Person</p>
-        <p class="evt-card-desc">Self-care and presence for coaches &mdash; a 2-day ICF-accredited workshop. Valid as Module 1 of the Global TRE&#8482; Provider Certification.</p>
-        <div class="evt-card-actions">
-          <span class="btn btn-soldout">Sold Out</span>
-          <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn evt-btn-2">Join Waitlist</a>
+          <a href="event-certification-2027.html#reserve" class="btn btn-primary">Register</a>
+          <a href="event-certification-2027.html" class="btn evt-btn-2">Details</a>
         </div>
       </div>
     </article>
 
     <p class="evt-empty" id="evt-empty">No events in this category yet.</p>
+  </div>
+</section>
+
+<!-- PAST EVENTS (archive) -->
+<section class="section-white" id="past-events">
+  <div class="section-header-center" style="margin-bottom:2rem">
+    <span class="section-eyebrow">Archive</span>
+    <h2 class="section-title">Past Events</h2>
+    <p class="section-subtitle">Recently with us &mdash; now closed</p>
+  </div>
+  <div class="evt-grid evt-archive" id="evt-archive">
+
+    <article class="evt-card is-past" data-cat="online international workshops" data-start="2026-09-03" data-end="2026-09-03">
+      <a href="event-shaking-to-shaping-sep3.html" class="evt-card-thumb"><span class="evt-past-badge">Passed</span><img src="images/event-shaking-to-shaping.webp?v=4" alt="From Shaking to Shaping — Online, 3 September 2026" loading="lazy" decoding="async" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Online</span><span class="evt-tag">TRE&#8482; Coaching</span></div>
+        <h3>From Shaking to Shaping &mdash; Online</h3>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-09-03" data-end="2026-09-03">3 Sep 2026 &middot; Online</span></div>
+        <p class="evt-card-desc">Use of TRE&#8482; in a coaching context &mdash; the 3 September 2026 online session with Isabelle Claus Teixeira &amp; Saymara Ryon. Fully booked; this session has now taken place.</p>
+        <div class="evt-card-actions">
+          <span class="btn btn-ended">Event Ended</span>
+          <a href="event-shaking-to-shaping-sep3.html" class="btn evt-btn-2">View Details</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="evt-card is-past" data-cat="singapore workshops" data-start="2026-09-01" data-end="2026-09-01">
+      <a href="event-internal-alchemy.html" class="evt-card-thumb"><span class="evt-past-badge">Passed</span><img src="images/event-internal-alchemy.webp?v=4" alt="Internal Alchemy Workshop with Simba Stenqvist" loading="lazy" decoding="async" width="1600" height="900" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Workshop</span></div>
+        <h3>Internal Alchemy &mdash; Introductory Workshop</h3>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-09-01" data-end="2026-09-01">1 Sep 2026 &middot; 7&#8211;9pm</span></div>
+        <p class="evt-card-desc">Breathwork, fascial release, grounding &amp; tremor work with Simba Stenqvist, creator of Internal Alchemy. This workshop has now taken place.</p>
+        <div class="evt-card-actions">
+          <span class="btn btn-ended">Event Ended</span>
+          <a href="event-internal-alchemy.html" class="btn evt-btn-2">View Details</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="evt-card is-past" data-cat="singapore workshops certification" data-start="2026-08-29" data-end="2026-08-30">
+      <a href="event-selfcare-coaches-singapore.html" class="evt-card-thumb"><span class="evt-past-badge">Passed</span><img src="images/event-nervous-system.webp?v=4" alt="Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring" loading="lazy" decoding="async" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">21 CCEUs &middot; ICF</span></div>
+        <h3>Nervous System Regulation &amp; Self-Induced Neurogenic Tremoring</h3>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-08-29" data-end="2026-08-30">29&ndash;30 Aug 2026</span></div>
+        <p class="evt-card-desc">Self-care and presence for coaches &mdash; a 2-day ICF-accredited workshop. Valid as Module 1 of the Global TRE&#8482; Provider Certification. This workshop has now taken place.</p>
+        <div class="evt-card-actions">
+          <span class="btn btn-ended">Event Ended</span>
+          <a href="event-selfcare-coaches-singapore.html" class="btn evt-btn-2">View Details</a>
+        </div>
+      </div>
+    </article>
+
   </div>
 </section>
 
@@ -929,7 +941,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     { title:'TRE&#8482; Module 1 &mdash; Bucharest',
       sub:'Bucharest &middot; 15&#8211;17 October 2026',
       metaCal:'15&#8211;17 October 2026', metaLoc:'Bucharest, Romania', metaIcon:'fa-solid fa-location-dot',
-      date:'2026-10-15T09:00:00+03:00', href:'event-tre-module1-bucharest.html', soldOut:false }
+      date:'2026-10-15T09:00:00+03:00', href:'event-tre-module1-bucharest.html', soldOut:false },
+    { title:'Become a Certified TRE&#8482; Provider &mdash; 2027 Cohort',
+      sub:'Singapore &middot; Module 1: 27&#8211;28 February 2027',
+      metaCal:'27&#8211;28 February 2027', metaLoc:'Singapore', metaIcon:'fa-solid fa-location-dot',
+      date:'2027-02-27T09:00:00+08:00', href:'event-certification-2027.html', soldOut:false }
   ];
   var sec=document.querySelector('.ecd-section');
   if(!sec)return;
@@ -977,23 +993,109 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   tickEcd();setInterval(tickEcd,1000);
 })();
 
-/* Event filter */
+/* ===== Date-driven event status: runs fresh on every page load =====
+   Each card carries data-start / data-end (ISO, SGT) and optional data-sold.
+   Status -> badge (Upcoming/Ongoing/Sold Out/Passed), and passed events are
+   moved into the Past Events archive automatically. */
+(function(){
+  var now = Date.now();
+  function ms(d, endOfDay){ return d ? Date.parse(d + (endOfDay ? 'T23:59:59' : 'T00:00:00') + '+08:00') : NaN; }
+  var grid = document.getElementById('evt-grid');
+  var archive = document.getElementById('evt-archive');
+
+  // 1) colour the individual date pills (skip a manually fixed state, e.g. is-closed)
+  document.querySelectorAll('.evt-date-tag').forEach(function(t){
+    if(/is-(past|upcoming|ongoing|closed)/.test(t.className)) return;
+    var em = ms(t.getAttribute('data-end') || t.getAttribute('data-start'), true);
+    var sm = t.getAttribute('data-start') ? ms(t.getAttribute('data-start'), false) : em;
+    if(isNaN(em)){ t.classList.add('is-upcoming'); return; }
+    if(em < now) t.classList.add('is-past');
+    else if(sm <= now && now <= em) t.classList.add('is-ongoing');
+    else t.classList.add('is-upcoming');
+  });
+
+  var BADGE = { sold:['evt-sold-badge','Sold Out'], past:['evt-past-badge','Passed'],
+                ongoing:['evt-ongoing-badge','Ongoing'], upcoming:['evt-upcoming-badge','Upcoming'] };
+
+  function statusOf(card){
+    if(card.getAttribute('data-sold') === 'true') return 'sold';
+    var em = ms(card.getAttribute('data-end') || card.getAttribute('data-start'), true);
+    var sm = card.getAttribute('data-start') ? ms(card.getAttribute('data-start'), false) : em;
+    if(!isNaN(em) && em < now) return 'past';
+    if(!isNaN(sm) && sm <= now && (isNaN(em) || now <= em)) return 'ongoing';
+    return 'upcoming';
+  }
+  function setBadge(card, status){
+    var thumb = card.querySelector('.evt-card-thumb'); if(!thumb) return;
+    thumb.querySelectorAll('.evt-sold-badge,.evt-past-badge,.evt-ongoing-badge,.evt-upcoming-badge').forEach(function(b){ b.remove(); });
+    card.classList.remove('is-sold','is-past');
+    if(status === 'sold') card.classList.add('is-sold');
+    if(status === 'past') card.classList.add('is-past');
+    var m = BADGE[status]; if(!m) return;
+    var b = document.createElement('span'); b.className = m[0]; b.textContent = m[1];
+    thumb.insertBefore(b, thumb.firstChild);
+  }
+  function endActions(card){
+    var actions = card.querySelector('.evt-card-actions'); if(!actions) return;
+    if(actions.querySelector('.btn-ended')) return;
+    var first = actions.querySelector('.btn');
+    var ended = document.createElement('span'); ended.className = 'btn btn-ended'; ended.textContent = 'Event Ended';
+    if(first) actions.replaceChild(ended, first);
+  }
+
+  // 2) badge + auto-place every card by its live status
+  document.querySelectorAll('.evt-card').forEach(function(card){
+    var status = statusOf(card);
+    card.setAttribute('data-status', status);
+    setBadge(card, status);
+    if(status === 'past'){
+      endActions(card);
+      if(archive && card.parentElement !== archive) archive.appendChild(card);
+    } else if(grid && card.parentElement !== grid){
+      card.classList.remove('is-hidden');
+      grid.appendChild(card);
+    }
+  });
+
+  // 3) order the upcoming grid: soonest date first; sold-out pushed to the end
+  if(grid){
+    var order = { ongoing:0, upcoming:0, sold:1, past:2 };
+    var live = [].slice.call(grid.querySelectorAll('.evt-card'));
+    live.sort(function(a,b){
+      var ga = order[a.getAttribute('data-status')] || 0, gb = order[b.getAttribute('data-status')] || 0;
+      if(ga !== gb) return ga - gb;
+      var sa = ms(a.getAttribute('data-start'), false), sb = ms(b.getAttribute('data-start'), false);
+      if(isNaN(sa)) sa = Infinity; if(isNaN(sb)) sb = Infinity;
+      return sa - sb;
+    });
+    live.forEach(function(c){ grid.appendChild(c); });
+  }
+})();
+
+/* Event filter + upcoming/past counts (recomputed after status placement) */
 (function(){
   var btns  = document.querySelectorAll('.evt-filter-btn');
-  var cards = document.querySelectorAll('#evt-grid .evt-card');
   var empty = document.getElementById('evt-empty');
+  function gridCards(){ return document.querySelectorAll('#evt-grid .evt-card'); }
+
+  var upEl = document.getElementById('evt-count-up'), pastEl = document.getElementById('evt-count-past');
+  if (upEl)   upEl.textContent   = gridCards().length;
+  if (pastEl) pastEl.textContent = document.querySelectorAll('#evt-archive .evt-card').length;
+
+  function apply(f){
+    var shown = 0;
+    gridCards().forEach(function(card){
+      var match = (f === 'all') || (card.getAttribute('data-cat') || '').indexOf(f) !== -1;
+      card.classList.toggle('is-hidden', !match);
+      if (match) shown++;
+    });
+    if (empty) empty.style.display = shown === 0 ? 'block' : 'none';
+  }
   btns.forEach(function(btn){
     btn.addEventListener('click', function(){
       btns.forEach(function(b){ b.classList.remove('is-active'); });
       btn.classList.add('is-active');
-      var f = btn.getAttribute('data-filter');
-      var shown = 0;
-      cards.forEach(function(card){
-        var match = (f === 'all') || (card.getAttribute('data-cat') || '').indexOf(f) !== -1;
-        card.classList.toggle('is-hidden', !match);
-        if (match) shown++;
-      });
-      if (empty) empty.style.display = shown === 0 ? 'block' : 'none';
+      apply(btn.getAttribute('data-filter'));
     });
   });
 })();
