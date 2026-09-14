@@ -58,7 +58,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ce-hero{position:relative;color:#fff;overflow:hidden;background:var(--navy-deep)}
     .ce-hero .ce-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.20;filter:saturate(.7) blur(6px);transform:scale(1.06)}
     .ce-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(26,32,48,.94),rgba(36,46,66,.80) 60%,rgba(26,32,48,.92))}
-    .ce-hero-inner{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:128px 5% 56px;display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+    .ce-hero-inner{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:96px 5% 40px;display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
     .ce-crumbs{font-family:'Lato',sans-serif;font-size:.82rem;color:#c7d2e6;margin-bottom:1rem}
     .ce-crumbs a{color:#fff;opacity:.85;text-decoration:none}.ce-crumbs a:hover{color:var(--gold)}
     .ce-badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.1rem}
@@ -68,10 +68,8 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ce-hero h1 em{font-style:italic;color:var(--gold)}
     .ce-lead{font-size:1.05rem;color:#dbe3f1;line-height:1.7;max-width:660px;margin:0 0 1.5rem}
     .ce-hero-actions{display:flex;gap:.8rem;flex-wrap:wrap}
-    .ce-poster{margin:0;border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.18);background:#0f1524}
-    .ce-poster-band{max-width:940px;margin:2.4rem auto 0;padding:0 5%}
-    .ce-poster-band .ce-poster{max-width:100%;margin:0;order:0}
-    @media(max-width:900px){.ce-poster-band{margin-top:1.5rem}}
+    .ce-poster{margin:0;border-radius:14px;overflow:hidden}
+    .ce-main > .ce-poster{max-width:100%;margin:0 0 1.8rem;order:0}
     .ce-poster img{width:100%;height:auto;display:block}
     @media(max-width:900px){.ce-hero-inner{grid-template-columns:1fr;gap:2rem}.ce-poster{max-width:400px;margin:0 auto;order:-1}}
     /* facts */
@@ -125,7 +123,10 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ce-prep-section .ce-prep-list{columns:2;column-gap:2.2rem}
     @media(max-width:640px){.ce-prep-section .ce-prep-list{columns:1}}
     /* sidebar */
-    .ce-side{position:sticky;top:96px;display:grid;gap:1.2rem}
+    /* sticky-safe: clip instead of hidden so .ce-side can stick */
+    html,body{overflow-x:hidden;overflow-x:clip}
+    .ce-side{position:sticky;top:90px;align-self:start;display:grid;gap:1.2rem;max-height:calc(100vh - 106px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;-ms-overflow-style:none}
+    .ce-side::-webkit-scrollbar{display:none}
     @media(max-width:900px){.ce-side{position:static}}
     .ce-box{background:#fff;border:1px solid rgba(36,46,66,.1);border-radius:14px;padding:1.5rem;box-shadow:0 4px 22px rgba(36,46,66,.08)}
     .ce-box h3{font-family:'Playfair Display',serif;font-size:1.18rem;color:var(--navy);margin:0 0 .9rem}
@@ -234,16 +235,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- POSTER -->
-<div class="ce-poster-band">
-  <figure class="ce-poster">
-      <img src="images/certification-flyer.webp?v=2" alt="Become a Certified TRE&#8482; Provider &#8212; Modules 1&#8211;3 dates (Module 3: 20 &amp; 21 February 2027) and 2026 pricing. Led by Isabelle Claus Teixeira" width="1080" height="1350" decoding="async" />
-    </figure>
-</div>
-
 <!-- BODY -->
 <div class="ce-layout">
   <div class="ce-main">
+    <figure class="ce-poster">
+      <img src="images/certification-flyer.webp?v=2" alt="Become a Certified TRE&#8482; Provider &#8212; Modules 1&#8211;3 dates (Module 3: 20 &amp; 21 February 2027) and 2026 pricing. Led by Isabelle Claus Teixeira" width="1080" height="1350" decoding="async" />
+    </figure>
+
     <div role="note" style="display:flex;gap:.8rem;align-items:flex-start;background:rgba(192,57,43,.06);border:1px solid rgba(192,57,43,.2);border-left:4px solid #c0392b;border-radius:10px;padding:1rem 1.15rem;margin:0 0 1.6rem;font-size:.9rem;line-height:1.55;color:var(--text-mid)">
       <i class="fa-solid fa-circle-xmark" style="color:#c0392b;margin-top:.2rem"></i>
       <div><strong style="color:var(--navy)">The 2026 cohort is closed and sold out.</strong> Enrolment for the August 2026 &ndash; February 2027 intake has ended. The next intake is the <a href="event-certification-2027.html">2027 cohort</a> &mdash; or <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener">join the waitlist</a> to hear about places first. The programme below is kept for reference.</div>

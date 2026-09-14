@@ -60,7 +60,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ce-hero{position:relative;color:#fff;overflow:hidden;background:var(--navy-deep)}
     .ce-hero .ce-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.20;filter:saturate(.7) blur(6px);transform:scale(1.06)}
     .ce-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(26,32,48,.94),rgba(36,46,66,.80) 60%,rgba(26,32,48,.92))}
-    .ce-hero-inner{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:128px 5% 56px;display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+    .ce-hero-inner{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:96px 5% 40px;display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
     .ce-crumbs{font-family:'Lato',sans-serif;font-size:.82rem;color:#c7d2e6;margin-bottom:1rem}
     .ce-crumbs a{color:#fff;opacity:.85;text-decoration:none}.ce-crumbs a:hover{color:var(--gold)}
     .ce-badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.1rem}
@@ -70,10 +70,8 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ce-hero h1 em{font-style:italic;color:var(--gold)}
     .ce-lead{font-size:1.05rem;color:#dbe3f1;line-height:1.7;max-width:660px;margin:0 0 1.5rem}
     .ce-hero-actions{display:flex;gap:.8rem;flex-wrap:wrap}
-    .ce-poster{margin:0;border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.18);background:#0f1524;cursor:zoom-in;position:relative}
-    .ce-poster-band{max-width:940px;margin:2.4rem auto 0;padding:0 5%}
-    .ce-poster-band .ce-poster{max-width:100%;margin:0;order:0}
-    @media(max-width:900px){.ce-poster-band{margin-top:1.5rem}}
+    .ce-poster{margin:0;border-radius:14px;overflow:hidden;cursor:zoom-in;position:relative}
+    .ce-main > .ce-poster{max-width:100%;margin:0 0 1.8rem;order:0}
     .ce-poster img{width:100%;height:auto;display:block;transition:transform .3s ease}
     .ce-poster:hover img{transform:scale(1.03)}
     .ce-poster .ce-zoom-hint{position:absolute;bottom:10px;right:10px;background:rgba(15,21,36,.72);color:#fff;font-family:'Lato',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .6rem;border-radius:50px;display:inline-flex;align-items:center;gap:.35rem;pointer-events:none}
@@ -135,7 +133,10 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ce-prep-section .ce-prep-list{columns:2;column-gap:2.2rem}
     @media(max-width:640px){.ce-prep-section .ce-prep-list{columns:1}}
     /* sidebar */
-    .ce-side{position:sticky;top:96px;display:grid;gap:1.2rem}
+    /* sticky-safe: clip instead of hidden so .ce-side can stick */
+    html,body{overflow-x:hidden;overflow-x:clip}
+    .ce-side{position:sticky;top:90px;align-self:start;display:grid;gap:1.2rem;max-height:calc(100vh - 106px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;-ms-overflow-style:none}
+    .ce-side::-webkit-scrollbar{display:none}
     @media(max-width:900px){.ce-side{position:static}}
     .ce-box{background:#fff;border:1px solid rgba(36,46,66,.1);border-radius:14px;padding:1.5rem;box-shadow:0 4px 22px rgba(36,46,66,.08)}
     .ce-box h3{font-family:'Playfair Display',serif;font-size:1.18rem;color:var(--navy);margin:0 0 .3rem}
@@ -236,17 +237,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- POSTER -->
-<div class="ce-poster-band">
-  <figure class="ce-poster" id="ce-poster" role="button" tabindex="0" aria-label="View full-size event poster">
-      <img src="images/event-certification-2027.webp?v=6" alt="Become a Certified TRE&#8482; Provider 2027 — boosted by Internal Alchemy, with Isabelle Claus Teixeira and Simba Stenqvist. Module 1: 27–28 Feb, Module 2: 3–4 Jul, Module 3: 30–31 Oct 2027" width="1920" height="1080" fetchpriority="high" decoding="async" />
-      <span class="ce-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to enlarge</span>
-    </figure>
-</div>
-
 <!-- BODY -->
 <div class="ce-layout">
   <div class="ce-main">
+    <figure class="ce-poster" id="ce-poster" role="button" tabindex="0" aria-label="View full-size event poster">
+      <img src="images/event-certification-2027.webp?v=6" alt="Become a Certified TRE&#8482; Provider 2027 — boosted by Internal Alchemy, with Isabelle Claus Teixeira and Simba Stenqvist. Module 1: 27–28 Feb, Module 2: 3–4 Jul, Module 3: 30–31 Oct 2027" width="1920" height="1080" fetchpriority="high" decoding="async" />
+      <span class="ce-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to enlarge</span>
+    </figure>
+
     <h2>About this certification</h2>
     <p>TRE&#8482; is a body-led series of simple, powerful exercises that release stress, tension and trauma and build resilience &#8212; safely activating the body&#8217;s natural tremor reflex so the nervous system returns to balance. The <strong>Global TRE&#8482; Provider Certification</strong> qualifies you to offer TRE&#8482; to the general public, in both individual and group settings.</p>
     <p>The 2027 Singapore cohort is <strong>boosted by Internal Alchemy</strong> and co-taught by two TRE&#8482; Trainers &#8212; Isabelle Claus Teixeira and Simba Stenqvist &#8212; for richer, varied learning. <strong>Only one cohort runs in Singapore each year</strong>, so register your interest early to secure your place.</p>
