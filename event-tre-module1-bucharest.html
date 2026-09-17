@@ -49,9 +49,9 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     },
     "organizer": { "@type": "Person", "name": "Isabelle Claus Teixeira", "url": "https://hummingbeing.com/isabelle.html" },
     "offers": [
-      { "@type": "Offer", "name": "Super Early Bird (first 5)", "price": "739", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://hummingbeing.com/event-tre-module1-bucharest.html" },
-      { "@type": "Offer", "name": "Early Bird (next 5)", "price": "769", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://hummingbeing.com/event-tre-module1-bucharest.html" },
-      { "@type": "Offer", "name": "Full Price (final 10)", "price": "799", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://hummingbeing.com/event-tre-module1-bucharest.html" }
+      { "@type": "Offer", "name": "Super Early Bird (first 5)", "price": "739", "priceCurrency": "EUR", "availability": "https://schema.org/SoldOut", "url": "https://hummingbeing.com/event-tre-module1-bucharest.html" },
+      { "@type": "Offer", "name": "Early Bird (next 5)", "price": "769", "priceCurrency": "EUR", "availability": "https://schema.org/SoldOut", "url": "https://hummingbeing.com/event-tre-module1-bucharest.html" },
+      { "@type": "Offer", "name": "Full Price (final 10)", "price": "799", "priceCurrency": "EUR", "availability": "https://schema.org/SoldOut", "url": "https://hummingbeing.com/event-tre-module1-bucharest.html" }
     ]
   }
   </script>
@@ -66,6 +66,9 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ce-badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.1rem}
     .ce-badge{font-family:'Lato',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:.4rem .8rem;border-radius:50px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.24)}
     .ce-badge.cat{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+    .ce-badge.sold{background:#c0392b;color:#fff;border-color:#c0392b}
+    .btn-soldout{background:#c0392b!important;border-color:#c0392b!important;color:#fff!important;cursor:not-allowed;pointer-events:none;box-shadow:none!important}
+    .ce-soldtag{display:inline-block;background:#c0392b;color:#fff;font-family:'Lato',sans-serif;font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;border-radius:5px;margin-bottom:.7rem}
     .ce-hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.1rem,4.4vw,3.3rem);font-weight:800;color:#fff;line-height:1.08;margin:0 0 .9rem}
     .ce-hero h1 em{font-style:italic;color:var(--gold)}
     .ce-lead{font-size:1.05rem;color:#dbe3f1;line-height:1.7;max-width:660px;margin:0 0 1.5rem}
@@ -207,11 +210,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="ce-badge cat">Certification</span>
         <span class="ce-badge">21 ICF CCEUs</span>
         <span class="ce-badge">In English</span>
+        <span class="ce-badge sold">Sold Out</span>
       </div>
       <h1>TRE&#8482; Module 1 <em>&mdash; Bucharest</em></h1>
       <p class="ce-lead">A 3-day immersive certification training &#8212; valid as Module 1 of the Global TRE&#8482; Provider Certification. The first ICF-accredited TRE&#8482; Module 1 in Europe, carrying 21 ICF CCEUs. Co-facilitated by Isabelle Claus Teixeira and Saymara Ryon.</p>
       <div class="ce-hero-actions">
-        <a href="https://www.atelierdesuflet.ro/tre-module-1-bucharest-romania-21-icf-cceus-only-tre-training-in-the-world-with-icf-accreditation.html" target="_blank" rel="noopener" class="btn btn-primary">Buy Tickets &rarr;</a>
+        <span class="btn btn-soldout">Sold Out</span>
         <a href="#programme" class="btn btn-outline">View schedule</a>
       </div>
     </div>
@@ -307,16 +311,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- SIDEBAR -->
   <aside class="ce-side" id="register">
     <div class="ce-box">
+      <span class="ce-soldtag">Sold out &middot; sales closed</span>
       <h3>Pricing &amp; tickets</h3>
-      <p class="sub">Only 20 places &#8212; prices step up automatically as each block sells.</p>
+      <p class="sub">This event is sold out &#8212; ticket sales are closed. It has been postponed; contact Isabelle to join the waitlist for the new dates.</p>
       <div class="ce-tiers">
         <div class="ce-tier hl"><div class="tl">Super Early Bird<small>first 5 tickets</small></div><div class="tp">&#8364;739</div></div>
         <div class="ce-tier"><div class="tl">Early Bird<small>next 5 tickets</small></div><div class="tp">&#8364;769</div></div>
         <div class="ce-tier"><div class="tl">Full Price<small>final 10 tickets</small></div><div class="tp">&#8364;799</div></div>
       </div>
-      <a href="https://www.atelierdesuflet.ro/tre-module-1-bucharest-romania-21-icf-cceus-only-tre-training-in-the-world-with-icf-accreditation.html" target="_blank" rel="noopener" class="btn btn-primary">Buy Tickets &rarr;</a>
-      <a href="mailto:isabelle@bhdasia.com?subject=Registration: TRE Module 1 Bucharest Oct 15-17 2026" class="btn btn-dark">Email Isabelle to register</a>
-      <p class="fine">Buy securely on the official Atelier de Suflet webshop (hosted by Saymara Ryon), or register through Isabelle.</p>
+      <span class="btn btn-soldout">Sold Out</span>
+      <a href="mailto:isabelle@bhdasia.com?subject=Waitlist: TRE Module 1 Bucharest (postponed)" class="btn btn-dark">Join the waitlist &rarr;</a>
+      <p class="fine">This training is sold out and has been postponed. Email Isabelle to join the waitlist for the new dates.</p>
     </div>
     <div class="ce-box ce-qa">
       <h3>Questions?</h3>

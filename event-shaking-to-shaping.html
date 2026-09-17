@@ -58,7 +58,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "location": { "@type": "Place", "name": "Bucharest, Romania", "address": { "@type": "PostalAddress", "addressCountry": "RO", "addressLocality": "Bucharest" } },
       "organizer": { "@type": "Person", "name": "Isabelle Claus Teixeira" },
-      "offers": { "@type": "Offer", "price": "97", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
+      "offers": { "@type": "Offer", "price": "97", "priceCurrency": "EUR", "availability": "https://schema.org/SoldOut" }
     },
     {
       "@context": "https://schema.org",
@@ -71,7 +71,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "location": { "@type": "Place", "name": "Bucharest, Romania", "address": { "@type": "PostalAddress", "addressCountry": "RO", "addressLocality": "Bucharest" } },
       "organizer": { "@type": "Person", "name": "Isabelle Claus Teixeira" },
-      "offers": { "@type": "Offer", "price": "97", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
+      "offers": { "@type": "Offer", "price": "97", "priceCurrency": "EUR", "availability": "https://schema.org/SoldOut" }
     }
   ]
   </script>
@@ -86,6 +86,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .ce-badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.1rem}
     .ce-badge{font-family:'Lato',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:.4rem .8rem;border-radius:50px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.24)}
     .ce-badge.cat{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+    .ce-badge.sold{background:#c0392b;color:#fff;border-color:#c0392b}
     .ce-hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.1rem,4.4vw,3.3rem);font-weight:800;color:#fff;line-height:1.08;margin:0 0 .9rem}
     .ce-hero h1 em{font-style:italic;color:var(--gold)}
     .ce-lead{font-size:1.05rem;color:#dbe3f1;line-height:1.7;max-width:660px;margin:0 0 1.5rem}
@@ -237,12 +238,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="ce-badge">Rom&#226;nia</span>
         <span class="ce-badge cat">Workshop</span>
         <span class="ce-badge">Online + In-Person</span>
-        <span class="ce-badge">Sep&#8211;Oct 2026</span>
+        <span class="ce-badge">Sep&#8211;Oct 2026</span><span class="ce-badge" style="margin-left:.5rem">3 ICF CCEs</span><span class="ce-badge sold" style="margin-left:.5rem">Sold Out</span>
       </div>
       <h1>From Shaking to <em>Shaping</em></h1>
       <p class="ce-lead">Use of TRE&#8482; in a coaching context &#8212; a half-day intensive exploring how neurogenic tremoring can deepen your somatic presence, prevent burnout and transform the way you work with clients. Co-facilitated by Isabelle Claus Teixeira and Saymara Ryon.</p>
       <div class="ce-hero-actions">
-        <a href="#sessions" class="btn btn-primary">Choose a session &darr;</a>
+        <a href="#sessions" class="btn btn-primary">Sessions &amp; waitlist &darr;</a>
         <a href="events.html" class="btn btn-outline">All events</a>
       </div>
     </div>
@@ -267,7 +268,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </figure>
 
     <h2 id="sessions">Choose your session</h2>
-    <p style="margin-top:-.4rem">One online session and two in-person sessions in Bucharest &#8212; each a standalone half-day intensive. Tickets for the Bucharest sessions are on the official Atelier de Suflet webshop.</p>
+    <p style="margin-top:-.4rem">One online session and two in-person sessions in Bucharest &#8212; each a standalone half-day intensive. Now ICF-accredited: each workshop carries <strong>3 ICF CCEs (1.5 Resource Development + 1.5 Core Competencies)</strong>. The Bucharest sessions are now sold out.</p>
     <div class="ce-ses">
       <div class="ce-sescard sold">
         <div class="s-main">
@@ -281,28 +282,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="ce-soldbtn">Sold Out</span>
         </div>
       </div>
-      <div class="ce-sescard">
+      <div class="ce-sescard sold">
         <div class="s-main">
           <span class="ce-spill inperson"><i class="fa-solid fa-location-dot"></i> In-Person &middot; Bucharest</span>
           <h4>Session 2 &middot; 20 October 2026</h4>
           <p class="when">19:00 &#8211; 22:00 EET &middot; Bucharest, Rom&#226;nia &middot; Facilitated in English &amp; Romanian</p>
-          <p class="note"><i class="fa-solid fa-gift" style="color:var(--gold)"></i> Free if you register for TRE&#8482; Module 1 (March 2027 cohort) or full certification.</p>
+          <p class="note">This session is sold out &#8212; email <a href="mailto:isabelle@bhdasia.com?subject=Waitlist%3A%20From%20Shaking%20to%20Shaping%20Bucharest">isabelle@bhdasia.com</a> to join the waitlist.</p>
         </div>
         <div class="s-act">
           <div class="price">&#8364;97<small>per participant</small></div>
-          <a href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context-35.html" target="_blank" rel="noopener" class="btn btn-primary">Buy Tickets &rarr;</a>
+          <span class="ce-soldbtn">Sold Out</span>
         </div>
       </div>
-      <div class="ce-sescard">
+      <div class="ce-sescard sold">
         <div class="s-main">
           <span class="ce-spill inperson"><i class="fa-solid fa-location-dot"></i> In-Person &middot; Bucharest</span>
           <h4>Session 3 &middot; 24 October 2026</h4>
           <p class="when">14:30 &#8211; 17:30 EET &middot; Bucharest, Rom&#226;nia &middot; Facilitated in English &amp; Romanian</p>
-          <p class="note"><i class="fa-solid fa-gift" style="color:var(--gold)"></i> Free if you register for TRE&#8482; Module 1 (March 2027 cohort) or full certification.</p>
+          <p class="note">This session is sold out &#8212; email <a href="mailto:isabelle@bhdasia.com?subject=Waitlist%3A%20From%20Shaking%20to%20Shaping%20Bucharest">isabelle@bhdasia.com</a> to join the waitlist.</p>
         </div>
         <div class="s-act">
           <div class="price">&#8364;97<small>per participant</small></div>
-          <a href="https://www.atelierdesuflet.ro/training-workshops-retrreat-tre/from-shaking-to-shaping-use-of-tre-in-a-coaching-context-35.html" target="_blank" rel="noopener" class="btn btn-primary">Buy Tickets &rarr;</a>
+          <span class="ce-soldbtn">Sold Out</span>
         </div>
       </div>
     </div>
