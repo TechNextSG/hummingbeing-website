@@ -667,10 +667,32 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 })();
 
-// ── LEAD CAPTURE → Google Sheet ─────────────────────────────────────────────
+// ── LEAD CAPTURE → Google Sheet + direct email to Isabelle ──────────────────
 var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkv934L8ffTxU1TPUiw3jn9Hu6KmdE0Ol1CcJRB_vWstls2xiZHHb-LErG5qHXdTuX/exec';
+var LEAD_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/isabelle@bhdasia.com';
 function sendLead(data) {
+  // 1) Log to the Google Sheet (existing backend)
   try {
     fetch(LEAD_ENDPOINT, { method: 'POST', body: new URLSearchParams(data) }).catch(function(){});
+  } catch (e) {}
+  // 2) Email the full submission straight to Isabelle (FormSubmit)
+  try {
+    var payload = {
+      _subject: 'New enquiry from hummingbeing.com' + (data.source ? ' — ' + data.source : ''),
+      _template: 'table',
+      _replyto: data.email || '',
+      Name: data.name || '',
+      Email: data.email || '',
+      Phone: data.phone || '',
+      Event: data.event || '',
+      Enquiry: data.inquiry || '',
+      Source: data.source || '',
+      Message: data.message || ''
+    };
+    fetch(LEAD_EMAIL_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(function(){});
   } catch (e) {}
 }
