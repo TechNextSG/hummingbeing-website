@@ -24,261 +24,477 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3" />
   <link rel="preload" as="image" href="poster-gallery.jpg" fetchpriority="high">
   <style>
-    /* -- GALLERY FILTERS ---------------------------------------------------- */
-    .gal-filter-bar {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
+    /* ==========================================================================
+       GALLERY (.gx) - page-scoped. Every selector lives under .gx so nothing
+       leaks into the shared styles.css. Buttons (.btn) are NOT restyled here.
+       ========================================================================== */
+    .gx {
+      --gx-navy: #242e42; --gx-deep: #1a2030; --gx-mid: #3a4a66;
+      --gx-gold: #F5A623; --gx-gold-d: #c98000; --gx-cream: #fafaf8; --gx-text: #3d4250;
+      --gx-ease: cubic-bezier(.23, 1, .32, 1);
+      --gx-gap: 14px;
+      --gx-pad: clamp(16px, 5vw, 64px);
+      --gx-max: 1240px;
+      --gx-r: 12px;
     }
-    .gf-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .65rem 2rem;
-      border: 2px solid var(--gold);
-      background: transparent;
-      color: var(--navy);
-      font-family: 'Lato', sans-serif;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: background .2s, color .2s;
+    section.gx {
+      padding: clamp(3.5rem, 7vw, 6rem) var(--gx-pad) clamp(4rem, 8vw, 6.5rem);
+      background: var(--gx-cream);
+      color: var(--gx-text);
+      position: relative;
+      overflow: clip;
+      scroll-margin-top: 64px;
     }
-    .gf-btn:hover { background: rgba(245,166,35,.12); }
-    .gf-btn.active { background: var(--gold); color: var(--white); }
+    .gx-wrap { max-width: var(--gx-max); margin: 0 auto; }
+    .gx :focus-visible { outline: 3px solid var(--gx-gold); outline-offset: 3px; }
 
-    /* -- GALLERY GRID ------------------------------------------------------- */
-    .gallery-grid {
+    /* -- Intro strip ---------------------------------------------------------- */
+    .gx-intro {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      align-items: start;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: end;
+      margin-bottom: clamp(2.25rem, 4vw, 3.25rem);
+    }
+    .gx-eyebrow {
+      display: inline-flex; align-items: center; gap: .75rem;
+      font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--gx-gold-d);
+      margin-bottom: 1rem;
+    }
+    .gx-eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--gx-gold); }
+    .gx-title {
+      font-family: 'Playfair Display', Georgia, serif; font-weight: 700;
+      color: var(--gx-navy); font-size: clamp(2rem, 4.4vw, 3.2rem);
+      line-height: 1.08; letter-spacing: -.01em; margin: 0 0 1.1rem;
+    }
+    .gx-title em { font-style: italic; color: var(--gx-gold-d); }
+    .gx-lede { font-family: 'Lato', sans-serif; font-size: 1.02rem; line-height: 1.75; max-width: 36rem; margin: 0; color: var(--gx-text); }
+    .gx-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 1rem; align-items: start; }
+    .gx-stat {
+      position: relative; display: block; text-align: left;
+      background: none; border: 0; margin: 0; padding: 1.15rem .25rem .35rem 0;
+      min-height: 44px; cursor: pointer; color: inherit; font: inherit;
+      border-top: 1px solid rgba(36, 46, 66, .16); border-radius: 0;
+    }
+    .gx-stat::before {
+      content: ""; position: absolute; left: 0; top: -1px; height: 2px; width: 100%;
+      background: var(--gx-gold); transform: scaleX(.18); transform-origin: left;
+      transition: transform .5s var(--gx-ease);
+    }
+    .gx-stat:focus-visible::before, .gx-stat[aria-pressed="true"]::before { transform: scaleX(1); }
+    .gx-stat-n {
+      display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 700;
+      font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1; color: var(--gx-navy);
+      font-variant-numeric: tabular-nums;
+    }
+    .gx-stat-l {
+      display: flex; align-items: center; gap: .45rem; margin-top: .6rem;
+      font-family: 'Lato', sans-serif; font-size: .68rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; color: var(--gx-text);
+    }
+    .gx-stat-l i { color: var(--gx-gold-d); font-size: .8rem; }
+
+    /* -- Filter bar ----------------------------------------------------------- */
+    .gx-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: .75rem 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; scroll-margin-top: 96px;
+    }
+    .gx-tabs {
+      position: relative; display: inline-flex; gap: 2px; padding: 5px;
+      max-width: 100%; overflow-x: auto; scrollbar-width: none;
+      background: #fff; border: 1px solid rgba(36, 46, 66, .1); border-radius: 999px;
+      box-shadow: 0 8px 28px rgba(36, 46, 66, .07);
+    }
+    .gx-tabs::-webkit-scrollbar { display: none; }
+    .gx-ind {
+      position: absolute; top: 5px; bottom: 5px; left: 0; width: 0;
+      background: var(--gx-gold); border-radius: 999px; z-index: 0;
+      box-shadow: 0 6px 18px rgba(245, 166, 35, .38);
+      transition: transform .5s var(--gx-ease), width .5s var(--gx-ease);
+      pointer-events: none;
+    }
+    .gx-tab {
+      position: relative; z-index: 1; flex: 0 0 auto;
+      display: inline-flex; align-items: center; gap: .55rem;
+      min-height: 44px; padding: 0 1.15rem; margin: 0;
+      background: none; border: 0; border-radius: 999px; cursor: pointer;
+      font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700;
+      letter-spacing: 1.4px; text-transform: uppercase; white-space: nowrap;
+      color: var(--gx-navy); transition: color .3s var(--gx-ease);
+    }
+    .gx-tab i { font-size: .85rem; color: var(--gx-gold-d); transition: color .3s var(--gx-ease); }
+    .gx-tab[aria-pressed="true"], .gx-tab[aria-pressed="true"] i { color: var(--gx-deep); }
+    .gx-tab:focus-visible { outline-offset: -3px; }
+    .gx-tab-c {
+      display: inline-grid; place-items: center; min-width: 1.75em; height: 1.75em; padding: 0 .45em;
+      border-radius: 999px; background: rgba(36, 46, 66, .08);
+      font-size: .66rem; letter-spacing: 0; font-variant-numeric: tabular-nums;
+      transition: background .3s var(--gx-ease);
+    }
+    .gx-tab[aria-pressed="true"] .gx-tab-c { background: rgba(26, 32, 48, .14); }
+    .gx-status {
+      display: inline-flex; align-items: center; gap: .5rem; margin: 0;
+      font-family: 'Lato', sans-serif; font-size: .8rem; color: var(--gx-text);
+    }
+    .gx-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gx-gold); box-shadow: 0 0 0 4px rgba(245, 166, 35, .18); }
+
+    /* -- Groups --------------------------------------------------------------- */
+    .gx-group + .gx-group { margin-top: clamp(2.75rem, 5vw, 4rem); }
+    .gx-ghead { display: flex; align-items: center; gap: 1rem; margin: 0 0 1.25rem; }
+    .gx-ghead h3 {
+      font-family: 'Playfair Display', Georgia, serif; font-weight: 700; margin: 0;
+      font-size: clamp(1.35rem, 2.3vw, 1.7rem); color: var(--gx-navy); line-height: 1.2;
+    }
+    .gx-gcount {
+      font-family: 'Lato', sans-serif; font-size: .68rem; font-weight: 700;
+      letter-spacing: 1.6px; text-transform: uppercase; color: var(--gx-gold-d); white-space: nowrap;
+    }
+    .gx-ghead::after { content: ""; flex: 1; height: 1px; background: rgba(36, 46, 66, .13); }
+
+    /* -- Photo bento grid ----------------------------------------------------- */
+    .gx-grid {
+      --cols: 4;
+      --row: calc((min(100vw - var(--gx-pad) * 2, var(--gx-max)) - (var(--cols) - 1) * var(--gx-gap)) / var(--cols) * .78);
+      display: grid;
+      grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+      grid-auto-rows: var(--row);
+      grid-auto-flow: dense;
+      gap: var(--gx-gap);
+    }
+    .gx-f { grid-column: span 2; grid-row: span 2; }
+    .gx-t { grid-row: span 2; }
+    .gx-w { grid-column: span 2; }
+    .gx-cell { position: relative; min-width: 0; }
+    .gx-cell[hidden] { display: none !important; }
+
+    .gx-tile {
+      position: relative; display: block; width: 100%; height: 100%;
+      margin: 0; padding: 0; border: 0; border-radius: var(--gx-r);
+      overflow: hidden; isolation: isolate; cursor: zoom-in;
+      background: var(--gx-deep); color: #fff; text-align: left; font: inherit;
+      -webkit-tap-highlight-color: transparent;
+      transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transition: transform .6s var(--gx-ease), box-shadow .45s var(--gx-ease);
+      box-shadow: 0 1px 2px rgba(26, 32, 48, .06);
+    }
+    .gx-tile img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform .9s var(--gx-ease), opacity .6s ease;
+    }
+    .gx-tile::after {
+      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(26, 32, 48, 0) 42%, rgba(26, 32, 48, .88) 100%);
+      opacity: 0; transition: opacity .4s var(--gx-ease);
+    }
+    .gx-tile::before {
+      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .16), transparent 45%);
+      opacity: 0; transition: opacity .4s var(--gx-ease);
+    }
+    .gx-cap {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+      padding: 1rem 1.1rem 1.05rem;
+      font-family: 'Lato', sans-serif; font-size: .82rem; font-weight: 700; line-height: 1.4;
+      color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, .35);
+      opacity: 0; transform: translateY(14px);
+      transition: opacity .4s var(--gx-ease), transform .5s var(--gx-ease);
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .gx-zoom {
+      position: absolute; top: .75rem; right: .75rem; z-index: 2;
+      width: 38px; height: 38px; border-radius: 50%;
+      display: grid; place-items: center; font-size: .85rem;
+      background: rgba(250, 250, 248, .94); color: var(--gx-navy);
+      opacity: 0; transform: scale(.6);
+      transition: opacity .35s var(--gx-ease), transform .45s var(--gx-ease);
+    }
+    .gx-tile:focus-visible::after, .gx-tile:focus-visible .gx-cap, .gx-tile:focus-visible .gx-zoom { opacity: 1; transform: none; }
+    .gx-tile:active { transform: scale(.985); }
+
+    @media (hover: hover) and (pointer: fine) {
+      .gx-tile:hover { box-shadow: 0 24px 54px rgba(26, 32, 48, .28); }
+      .gx-tile:hover img { transform: scale(1.07); }
+      .gx-tile:hover::after, .gx-tile:hover::before { opacity: 1; }
+      .gx-tile:hover .gx-cap, .gx-tile:hover .gx-zoom { opacity: 1; transform: none; }
+      .gx-tile.is-tilting { transition: transform .12s linear, box-shadow .45s var(--gx-ease); }
+    }
+    @media (hover: none), (pointer: coarse) {
+      .gx-tile::after { opacity: .85; background: linear-gradient(180deg, rgba(26, 32, 48, 0) 55%, rgba(26, 32, 48, .82) 100%); }
+      .gx-cap { opacity: 1; transform: none; font-size: .72rem; padding: .6rem .7rem; -webkit-line-clamp: 2; }
     }
 
-    /* -- BASE CARD ---------------------------------------------------------- */
-    .g-item {
-      border-radius: 3px;
-      overflow: hidden;
-      transition: transform .3s ease, box-shadow .3s ease;
+    /* Latest-cohort label tile */
+    .gx-label {
+      position: relative; display: flex; flex-direction: column; justify-content: space-between;
+      width: 100%; height: 100%; margin: 0; padding: 1.25rem 1.3rem; border: 0;
+      border-radius: var(--gx-r); overflow: hidden; cursor: pointer; text-align: left; font: inherit;
+      color: #fff; background: linear-gradient(150deg, var(--gx-mid) 0%, var(--gx-navy) 45%, var(--gx-deep) 100%);
     }
-    .g-item:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(36,46,66,.14); }
+    .gx-label::before {
+      content: ""; position: absolute; right: -40%; top: -40%; width: 90%; aspect-ratio: 1; border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 166, 35, .28), transparent 65%);
+      transition: transform .9s var(--gx-ease);
+    }
+    .gx-label > * { position: relative; }
+    .gx-label-k { font-family: 'Lato', sans-serif; font-size: .64rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gx-gold); display: flex; align-items: center; gap: .5rem; }
+    .gx-label-k::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gx-gold); animation: gx-pulse 2.4s ease-out infinite; }
+    .gx-label-t { display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(1.1rem, 1.9vw, 1.55rem); line-height: 1.15; margin: .55rem 0 .35rem; }
+    .gx-label-m { display: block; font-family: 'Lato', sans-serif; font-size: .8rem; line-height: 1.45; color: rgba(255, 255, 255, .86); }
+    .gx-label-cta { display: inline-flex; align-items: center; gap: .5rem; font-family: 'Lato', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--gx-gold); }
+    .gx-label-cta i { transition: transform .45s var(--gx-ease); }
+    @media (hover: hover) and (pointer: fine) {
+      .gx-label:hover::before { transform: scale(1.35) translate(-8%, 8%); }
+      .gx-label:hover .gx-label-cta i { transform: translateX(5px); }
+    }
+    @keyframes gx-pulse { 0% { box-shadow: 0 0 0 0 rgba(245, 166, 35, .55); } 70%, 100% { box-shadow: 0 0 0 9px rgba(245, 166, 35, 0); } }
 
-    /* -- CATEGORY PILL ------------------------------------------------------ */
-    .g-cat-pill {
-      position: absolute;
-      top: .75rem; left: .75rem;
-      font-size: .6rem; font-weight: 700;
-      letter-spacing: 1.4px; text-transform: uppercase;
-      padding: .22rem .6rem; border-radius: 2px;
-      color: var(--white); z-index: 2; pointer-events: none;
-    }
-    .g-cat-pill.images  { background: var(--gold); }
-    .g-cat-pill.video   { background: #cc0000; }
-    .g-cat-pill.podcast { background: var(--navy); border: 1px solid rgba(255,255,255,.2); }
+    /* -- Watch & listen ------------------------------------------------------- */
+    .gx-media { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gx-gap); }
+    .gx-mfeat { grid-column: span 2; grid-row: span 2; }
+    .gx-media .gx-cell { display: flex; }
+    .gx-media .gx-cell > * { flex: 1; }
+    .gx a.gx-chan, .gx a.gx-pod { text-decoration: none; }
 
-    /* -- IMAGE CARDS -------------------------------------------------------- */
-    .g-img-card { cursor: pointer; position: relative; }
-    .g-img-thumb {
-      position: relative;
-      width: 100%; padding-bottom: 75%; overflow: hidden;
+    .gx-vid {
+      display: flex; flex-direction: column; width: 100%; margin: 0; padding: 0; border: 0;
+      border-radius: var(--gx-r); overflow: hidden; cursor: pointer; text-align: left; font: inherit;
+      background: var(--gx-deep); color: #fff;
+      transition: transform .5s var(--gx-ease), box-shadow .5s var(--gx-ease);
     }
-    .g-img-thumb img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform .45s ease;
+    .gx-vid-thumb { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--gx-navy); }
+    .gx-vid-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--gx-ease); }
+    .gx-vid-thumb::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26, 32, 48, .1), rgba(26, 32, 48, .45)); }
+    .gx-play {
+      position: absolute; left: 50%; top: 50%; z-index: 1; width: 76px; height: 76px; margin: -38px 0 0 -38px;
+      border-radius: 50%; display: grid; place-items: center; font-size: 1.4rem;
+      background: var(--gx-gold); color: var(--gx-deep);
+      box-shadow: 0 14px 40px rgba(26, 32, 48, .45);
+      transition: transform .5s var(--gx-ease);
     }
-    .g-img-card:hover .g-img-thumb img { transform: scale(1.07); }
-    .g-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(36,46,66,.82) 0%, transparent 55%);
-      opacity: 0; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: .5rem;
-      transition: opacity .3s;
+    .gx-play i { margin-left: 4px; }
+    .gx-play::before, .gx-play::after {
+      content: ""; position: absolute; inset: 0; border-radius: 50%;
+      border: 2px solid rgba(245, 166, 35, .7); animation: gx-ring 2.6s var(--gx-ease) infinite;
     }
-    .g-img-card:hover .g-img-overlay { opacity: 1; }
-    .g-zoom-icon {
-      width: 52px; height: 52px;
-      background: rgba(245,166,35,.92);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--white); font-size: 1.15rem;
-      transition: transform .2s;
+    .gx-play::after { animation-delay: 1.3s; }
+    @keyframes gx-ring { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(1.9); opacity: 0; } }
+    .gx-pill {
+      position: absolute; left: 1rem; top: 1rem; z-index: 1;
+      padding: .35rem .7rem; border-radius: 999px; background: rgba(26, 32, 48, .78);
+      font-family: 'Lato', sans-serif; font-size: .62rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: #fff;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
     }
-    .g-img-card:hover .g-zoom-icon { transform: scale(1.1); }
-    .g-img-caption-tag {
-      position: absolute;
-      bottom: .85rem; left: 50%;
-      transform: translateX(-50%);
-      color: var(--white); font-size: .68rem;
-      font-weight: 700; letter-spacing: 1.2px;
-      text-transform: uppercase; white-space: nowrap;
-      text-shadow: 0 1px 4px rgba(0,0,0,.5);
-    }
+    .gx-vid-body { display: flex; flex-direction: column; gap: .5rem; flex: 1; padding: 1.4rem 1.5rem 1.6rem; }
+    .gx-kicker { display: inline-flex; align-items: center; gap: .5rem; font-family: 'Lato', sans-serif; font-size: .66rem; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gx-gold); }
+    .gx-vid-title { display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1.2; }
+    .gx-vid-desc { display: block; font-family: 'Lato', sans-serif; font-size: .92rem; line-height: 1.65; color: rgba(255, 255, 255, .84); max-width: 40rem; }
+    .gx-link { display: inline-flex; align-items: center; gap: .5rem; margin-top: auto; padding-top: .4rem; font-family: 'Lato', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gx-gold); }
+    .gx-link i { transition: transform .45s var(--gx-ease); }
 
-    /* -- VIDEO CARDS -------------------------------------------------------- */
-    .g-video-card {
-      background: var(--navy); border-radius: 3px;
-      overflow: hidden; cursor: pointer; position: relative;
+    .gx-chan {
+      position: relative; display: flex; flex-direction: column; gap: .7rem; width: 100%;
+      padding: 1.5rem 1.4rem; border-radius: var(--gx-r); overflow: hidden; isolation: isolate;
+      background: linear-gradient(155deg, var(--gx-navy) 0%, var(--gx-deep) 100%); color: #fff;
+      transition: transform .5s var(--gx-ease), box-shadow .5s var(--gx-ease);
     }
-    .g-vid-thumb {
-      position: relative;
-      width: 100%; padding-bottom: 56.25%; overflow: hidden;
+    .gx-chan::before {
+      content: ""; position: absolute; z-index: -1; right: -30%; bottom: -55%; width: 80%; aspect-ratio: 1; border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 166, 35, .2), transparent 65%); transition: transform .9s var(--gx-ease);
     }
-    .g-vid-thumb img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; transition: transform .45s;
+    .gx-chan-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .gx-ico {
+      width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px; display: grid; place-items: center;
+      background: rgba(245, 166, 35, .14); color: var(--gx-gold); font-size: 1.25rem;
+      transition: transform .5s var(--gx-ease), background .4s;
     }
-    .g-video-card:hover .g-vid-thumb img { transform: scale(1.06); }
-    .g-play-btn {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60px; height: 60px;
-      background: rgba(204,0,0,.9); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--white); font-size: 1.35rem;
-      transition: transform .25s, background .2s;
-    }
-    .g-video-card:hover .g-play-btn { transform: translate(-50%,-50%) scale(1.12); background: #cc0000; }
-    .g-vid-info { padding: 1rem 1.1rem 1.2rem; }
-    .g-vid-info h4 {
-      font-family: 'PT Serif', Georgia, serif;
-      color: var(--white); font-size: .95rem;
-      margin-bottom: .3rem; line-height: 1.4;
-    }
-    .g-vid-info span { color: rgba(255,255,255,.82); font-size: .78rem; }
+    .gx-tag { font-family: 'Lato', sans-serif; font-size: .62rem; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(255, 255, 255, .8); display: inline-flex; align-items: center; gap: .4rem; }
+    .gx-chan h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.12rem; line-height: 1.3; color: #fff; margin: .2rem 0 0; overflow-wrap: anywhere; }
+    .gx-chan p { font-family: 'Lato', sans-serif; font-size: .88rem; line-height: 1.6; color: rgba(255, 255, 255, .84); margin: 0; }
 
-    /* Channel browse card */
-    .g-channel-card {
-      background: linear-gradient(135deg, var(--navy) 0%, #1a2340 100%);
-      border-radius: 3px;
-      padding: 2.2rem 1.8rem; text-align: center;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 1rem;
-      min-height: 200px; text-decoration: none; position: relative;
+    .gx-pod {
+      position: relative; display: flex; flex-direction: column; gap: .75rem; width: 100%;
+      padding: 1.5rem 1.4rem 1.4rem; border-radius: var(--gx-r); overflow: hidden;
+      background: #fff; color: var(--gx-text);
+      border: 1px solid rgba(36, 46, 66, .08); box-shadow: 0 6px 24px rgba(36, 46, 66, .06);
+      transition: transform .5s var(--gx-ease), box-shadow .5s var(--gx-ease), border-color .4s;
     }
-    .g-channel-icon {
-      width: 64px; height: 64px;
-      background: rgba(204,0,0,.9); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--white); font-size: 1.6rem;
-    }
-    .g-channel-card h4 {
-      font-family: 'PT Serif', Georgia, serif;
-      color: var(--white); font-size: 1rem; margin: 0;
-    }
-    .g-channel-card > p { color: rgba(255,255,255,.88); font-size: .88rem; margin: 0; line-height: 1.55; }
-    .g-ch-cta {
-      font-size: .7rem; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; color: var(--gold);
-      display: inline-flex; align-items: center; gap: .35rem;
-    }
+    .gx-pod::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gx-gold); transform: scaleY(.35); transform-origin: top; transition: transform .6s var(--gx-ease); }
+    .gx-pod .gx-ico { background: var(--gx-navy); color: var(--gx-gold); }
+    .gx-eq { display: inline-flex; align-items: flex-end; gap: 3px; height: 18px; }
+    .gx-eq span { width: 3px; height: 100%; border-radius: 2px; background: var(--gx-gold); transform-origin: bottom; transform: scaleY(.3); }
+    .gx-eq span:nth-child(2) { transform: scaleY(.6); }
+    .gx-eq span:nth-child(3) { transform: scaleY(.45); }
+    .gx-eq span:nth-child(4) { transform: scaleY(.75); }
+    .gx-pod-show { display: block; font-family: 'Lato', sans-serif; font-size: .64rem; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; color: var(--gx-gold-d); }
+    .gx-pod h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.08rem; line-height: 1.35; color: var(--gx-navy); margin: 0; }
+    .gx-pod p { font-family: 'Lato', sans-serif; font-size: .88rem; line-height: 1.65; margin: 0; color: var(--gx-text); }
+    .gx-pod .gx-link { color: var(--gx-gold-d); }
 
-    /* -- PODCAST CARDS ------------------------------------------------------ */
-    .g-podcast-card {
-      background: var(--white);
-      border-radius: 3px;
-      border-left: 3px solid var(--gold);
-      box-shadow: 0 4px 20px rgba(36,46,66,.07);
-      padding: 1.6rem 1.4rem 1.6rem 1.6rem;
-      display: flex; gap: 1.1rem; align-items: flex-start;
-      cursor: pointer; text-decoration: none;
-      transition: background .2s, transform .3s ease, box-shadow .3s ease;
+    @media (hover: hover) and (pointer: fine) {
+      .gx-vid:hover, .gx-chan:hover, .gx-pod:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(26, 32, 48, .2); }
+      .gx-vid:hover .gx-vid-thumb img { transform: scale(1.05); }
+      .gx-vid:hover .gx-play { transform: scale(1.1); }
+      .gx-vid:hover .gx-link i, .gx-chan:hover .gx-link i, .gx-pod:hover .gx-link i { transform: translateX(5px); }
+      .gx-chan:hover::before { transform: scale(1.4); }
+      .gx-chan:hover .gx-ico, .gx-pod:hover .gx-ico { transform: rotate(-6deg) scale(1.06); }
+      .gx-pod:hover { border-color: rgba(245, 166, 35, .45); }
+      .gx-pod:hover::before { transform: scaleY(1); }
+      .gx-pod:hover .gx-eq span { animation: gx-eq .9s ease-in-out infinite alternate; }
+      .gx-pod:hover .gx-eq span:nth-child(2) { animation-delay: -.3s; }
+      .gx-pod:hover .gx-eq span:nth-child(3) { animation-delay: -.6s; }
+      .gx-pod:hover .gx-eq span:nth-child(4) { animation-delay: -.15s; }
     }
-    .g-podcast-card:hover { background: rgba(245,166,35,.04); }
-    .g-pod-icon {
-      width: 58px; height: 58px; flex-shrink: 0;
-      background: var(--navy); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold); font-size: 1.4rem;
+    .gx-vid:focus-visible .gx-link i, .gx-chan:focus-visible .gx-link i, .gx-pod:focus-visible .gx-link i { transform: translateX(5px); }
+    .gx-vid:active, .gx-chan:active, .gx-pod:active { transform: scale(.985); }
+    @keyframes gx-eq { from { transform: scaleY(.25); } to { transform: scaleY(1); } }
+
+    /* -- Moments timeline ----------------------------------------------------- */
+    .gx-tl { margin-top: clamp(3.5rem, 6vw, 5rem); }
+    .gx-tl-sub { font-family: 'Lato', sans-serif; font-size: .92rem; line-height: 1.6; margin: -.5rem 0 1.25rem; color: var(--gx-text); }
+    .gx-tl-track {
+      display: grid; grid-auto-flow: column; grid-auto-columns: minmax(160px, 1fr);
+      overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity;
+      padding: 4px 4px 1rem; margin: 0 -4px; list-style: none; scrollbar-width: thin;
     }
-    .g-pod-meta h4 {
-      font-family: 'PT Serif', Georgia, serif;
-      color: var(--navy); font-size: .97rem;
-      margin-bottom: .25rem; line-height: 1.35;
+    .gx-tl-track li { scroll-snap-align: start; min-width: 0; }
+    .gx-moment {
+      position: relative; display: block; width: 100%; margin: 0; padding: 2.1rem 1rem 0 0;
+      background: none; border: 0; cursor: pointer; text-align: left; font: inherit; color: inherit;
+      border-radius: var(--gx-r);
     }
-    .g-pod-show {
-      display: block; font-size: .67rem; font-weight: 700;
-      letter-spacing: 1.2px; text-transform: uppercase;
-      color: var(--gold-dark); margin-bottom: .55rem;
+    .gx-moment::before {
+      content: ""; position: absolute; left: 0; right: 0; top: 9px; height: 2px;
+      background: linear-gradient(90deg, var(--gx-gold), rgba(245, 166, 35, .35));
+      transform-origin: left; transform: scaleX(var(--line, 1));
+      transition: transform 1s var(--gx-ease) var(--d, 0ms);
     }
-    .g-pod-meta > p { color: var(--body-text); font-size: .88rem; line-height: 1.6; margin-bottom: .85rem; }
-    .g-pod-listen {
-      display: inline-flex; align-items: center; gap: .35rem;
-      font-size: .7rem; font-weight: 700;
-      letter-spacing: 1.1px; text-transform: uppercase; color: var(--gold-dark);
+    .gx-moment::after {
+      content: ""; position: absolute; left: 0; top: 2px; width: 16px; height: 16px; border-radius: 50%;
+      background: var(--gx-cream); border: 3px solid var(--gx-gold);
+      transition: transform .45s var(--gx-ease), background .3s;
+    }
+    .gx-moment-d { display: block; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.05rem; color: var(--gx-navy); margin-bottom: .6rem; }
+    .gx-moment-img { display: block; position: relative; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: var(--gx-navy); }
+    .gx-moment-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--gx-ease); }
+    .gx-moment-c { display: block; font-family: 'Lato', sans-serif; font-size: .82rem; line-height: 1.5; margin-top: .6rem; color: var(--gx-text); }
+    @media (hover: hover) and (pointer: fine) {
+      .gx-moment:hover::after { transform: scale(1.3); background: var(--gx-gold); }
+      .gx-moment:hover .gx-moment-img img { transform: scale(1.07); }
+    }
+    .gx-moment:focus-visible::after { background: var(--gx-gold); }
+    .gx-js .gx-tl:not(.is-in) .gx-moment { --line: 0; }
+
+    .gx-cta { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: clamp(2.75rem, 5vw, 3.5rem); }
+
+    /* -- Scroll reveal (only when JS is running) ------------------------------ */
+    .gx-js .gx-rv { opacity: 0; transform: translateY(24px) scale(.985); }
+    .gx-js .gx-rv.is-in {
+      opacity: 1; transform: none;
+      transition: opacity .7s var(--gx-ease) var(--d, 0ms), transform .9s var(--gx-ease) var(--d, 0ms);
     }
 
-    /* -- LIGHTBOX ----------------------------------------------------------- */
-    #lb-overlay {
+    /* -- Lightbox + video modal ----------------------------------------------- */
+    .gx.gx-ov {
       position: fixed; inset: 0; z-index: 12000;
-      background: rgba(20,26,40,.96);
       display: flex; align-items: center; justify-content: center;
-      padding: 2rem; cursor: zoom-out;
-      opacity: 0; visibility: hidden;
-      transition: opacity .3s, visibility .3s;
+      padding: clamp(3.75rem, 8vh, 5rem) clamp(12px, 6vw, 96px);
+      opacity: 0; transition: opacity .35s var(--gx-ease);
     }
-    #lb-overlay.open { opacity: 1; visibility: visible; }
-    #lb-overlay img {
-      max-width: 88vw; max-height: 88vh;
-      object-fit: contain; border-radius: 3px;
-      box-shadow: 0 28px 80px rgba(0,0,0,.55);
-      cursor: default;
+    .gx.gx-ov[hidden] { display: none; }
+    .gx.gx-ov.is-open { opacity: 1; }
+    .gx-ov-bg { position: absolute; inset: 0; background: rgba(20, 26, 40, .95); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); cursor: zoom-out; }
+    .gx-ov-bar {
+      position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: .75rem clamp(12px, 3vw, 28px);
     }
-    #lb-close {
-      position: absolute; top: 1.5rem; right: 1.5rem;
-      background: none; border: none;
-      color: rgba(255,255,255,.75); font-size: 2.2rem;
-      cursor: pointer; line-height: 1; transition: color .2s;
+    .gx-count { font-family: 'Lato', sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: 2px; color: rgba(255, 255, 255, .8); font-variant-numeric: tabular-nums; }
+    .gx-count b { color: var(--gx-gold); font-weight: 700; }
+    .gx-ov-btn {
+      display: grid; place-items: center; width: 48px; height: 48px; margin: 0; padding: 0;
+      border-radius: 50%; border: 1px solid rgba(255, 255, 255, .22); background: rgba(26, 32, 48, .55);
+      color: #fff; font-size: 1.05rem; cursor: pointer;
+      transition: background .25s, border-color .25s, color .25s, transform .3s var(--gx-ease);
     }
-    #lb-close:hover { color: var(--white); }
-    #lb-caption {
-      position: absolute; bottom: 1.5rem; left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255,255,255,.82); font-size: .8rem;
-      letter-spacing: 1.1px; text-transform: uppercase; white-space: nowrap;
+    .gx-ov-btn:hover { background: var(--gx-gold); border-color: var(--gx-gold); color: var(--gx-deep); }
+    .gx-ov-btn:active { transform: scale(.92); }
+    .gx-lb-nav { position: absolute; top: 50%; z-index: 2; margin-top: -24px; }
+    .gx-lb-prev { left: clamp(8px, 2vw, 28px); }
+    .gx-lb-next { right: clamp(8px, 2vw, 28px); }
+    .gx-lb-stage {
+      position: relative; z-index: 1; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 1rem;
+      max-width: 100%; touch-action: pan-y; user-select: none;
+    }
+    .gx-lb-img {
+      display: block; max-width: min(88vw, 1400px); max-height: calc(100vh - 11rem); max-height: calc(100dvh - 11rem);
+      width: auto; height: auto; object-fit: contain; border-radius: 6px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, .55); background: var(--gx-navy);
+      transform-origin: center center; will-change: transform;
+    }
+    .gx-lb-cap {
+      font-family: 'Lato', sans-serif; font-size: .9rem; line-height: 1.5; color: rgba(255, 255, 255, .88);
+      text-align: center; max-width: 44rem; padding: 0 3.5rem; min-height: 1.5em;
+    }
+    .gx-lb-prog { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255, 255, 255, .08); z-index: 2; }
+    .gx-lb-prog span { display: block; height: 100%; background: var(--gx-gold); transform-origin: left; transition: transform .5s var(--gx-ease); }
+
+    .gx-vm-box { position: relative; z-index: 1; width: min(100%, 980px); transform: translateY(18px) scale(.97); transition: transform .5s var(--gx-ease); }
+    .gx-ov.is-open .gx-vm-box { transform: none; }
+    .gx-vm-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1rem, 2vw, 1.25rem); color: #fff; margin: 0; }
+    .gx-vm-ratio { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; box-shadow: 0 30px 90px rgba(0, 0, 0, .55); }
+    .gx-vm-ratio iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+    /* -- Responsive ----------------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .gx-grid { --cols: 3; }
+      .gx-intro { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 2rem; }
+      .gx-media { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gx-mfeat { grid-column: 1 / -1; grid-row: auto; }
+      .gx-media .gx-cell[data-cat="podcast"] { grid-column: 1 / -1; }
+    }
+    @media (max-width: 680px) {
+      .gx { --gx-gap: 10px; --gx-r: 10px; }
+      .gx-grid { --cols: 2; }
+      .gx-bar { flex-direction: column; align-items: stretch; }
+      .gx-tabs { align-self: stretch; }
+      .gx-tab { padding: 0 .85rem; gap: .4rem; letter-spacing: 1px; flex: 1 0 auto; justify-content: center; }
+      .gx-tab i { display: none; }
+      .gx-status { justify-content: center; }
+      .gx-media { grid-template-columns: minmax(0, 1fr); }
+      .gx-media .gx-cell { grid-column: 1 / -1; }
+      .gx-stat-l { font-size: .6rem; letter-spacing: 1px; }
+      .gx-label { padding: .8rem .85rem; }
+      .gx-label-t { font-size: 1rem; margin: .35rem 0 .2rem; }
+      .gx-label-m { font-size: .68rem; }
+      .gx-label-cta { font-size: .6rem; }
+      .gx-zoom { display: none; }
+      .gx-play { width: 60px; height: 60px; margin: -30px 0 0 -30px; font-size: 1.1rem; }
+      .gx-vid-body { padding: 1.15rem 1.15rem 1.3rem; }
+      .gx-lb-nav { top: auto; bottom: 1rem; margin-top: 0; }
+      .gx-lb-prev { left: 1rem; }
+      .gx-lb-next { right: 1rem; }
+      .gx-lb-img { max-width: calc(100vw - 24px); max-height: calc(100vh - 13rem); max-height: calc(100dvh - 13rem); }
+      .gx-lb-cap { padding: 0 1rem; font-size: .84rem; }
+      .gx-tl-track { grid-auto-columns: 72%; }
+    }
+    @media (max-width: 380px) {
+      .gx-tab { padding: 0 .5rem; gap: .3rem; font-size: .66rem; letter-spacing: .3px; }
+      .gx-tab-c { min-width: 1.55em; padding: 0 .3em; }
+      .gx-label-m { display: none; }
     }
 
-    /* -- VIDEO MODAL -------------------------------------------------------- */
-    #vm-overlay {
-      position: fixed; inset: 0; z-index: 12000;
-      background: rgba(20,26,40,.97);
-      display: flex; align-items: center; justify-content: center;
-      padding: 2rem;
-      opacity: 0; visibility: hidden;
-      transition: opacity .3s, visibility .3s;
-    }
-    #vm-overlay.open { opacity: 1; visibility: visible; }
-    #vm-inner { position: relative; width: 100%; max-width: 880px; }
-    #vm-close {
-      position: absolute; top: -2.9rem; right: 0;
-      background: none; border: none;
-      color: rgba(255,255,255,.75); font-size: 1.9rem;
-      cursor: pointer; line-height: 1; transition: color .2s;
-    }
-    #vm-close:hover { color: var(--white); }
-    #vm-ratio { position: relative; padding-bottom: 56.25%; }
-    #vm-ratio iframe {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      border: none; border-radius: 3px;
-    }
-
-    /* -- RESPONSIVE --------------------------------------------------------- */
-    @media (max-width: 960px) {
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-      .gf-btn { padding: .55rem 1.1rem; font-size: .68rem; letter-spacing: 1.2px; }
-      .g-podcast-card { flex-direction: column; }
-      .g-pod-icon { width: 48px; height: 48px; font-size: 1.1rem; }
+    /* -- Reduced motion: no movement, instant fades ---------------------------- */
+    @media (prefers-reduced-motion: reduce) {
+      .gx *, .gx *::before, .gx *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0ms !important; }
+      .gx.gx-ov { transition: none; }
+      .gx-js .gx-rv { transform: none; }
+      .gx-tile, .gx-tile:hover, .gx-tile img, .gx-tile:hover img,
+      .gx-vid:hover, .gx-chan:hover, .gx-pod:hover, .gx-vid:hover .gx-vid-thumb img,
+      .gx-moment-img img, .gx-moment:hover .gx-moment-img img { transform: none !important; }
+      .gx-cap, .gx-zoom { transform: none; }
+      .gx-vm-box { transform: none; }
     }
   </style>
   <!-- SEO Layer -->
@@ -417,491 +633,409 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="t-item">Self-Regulation</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Dr. David Berceli Method</span><span class="t-sep">&middot;</span><span class="t-item">Neurogenic Tremors</span><span class="t-sep">&middot;</span><span class="t-item">Vagal Tone</span><span class="t-sep">&middot;</span><span class="t-item">Psoas Release</span><span class="t-sep">&middot;</span><span class="t-item">Europe &middot; US &middot; Asia &middot; Worldwide</span><span class="t-sep">&middot;</span><span class="t-item">Free Discovery Call</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Certified Reiki Level II</span><span class="t-sep">&middot;</span><span class="t-item">Nervous System Literacy</span><span class="t-sep">&middot;</span>  </div>
 </div>
 
-<!-- GALLERY SECTION -->
-<section class="section-cream">
-  <div class="section-header-center">
-    <span class="section-eyebrow">All Media</span>
-    <h2 class="section-title">Explore the Content</h2>
-    <p class="section-subtitle">Filter by category to find exactly what you're looking for.</p>
-  </div>
+<!-- GALLERY SECTION (redesigned; all styles/scripts scoped under .gx) -->
+<section class="gx" id="gallery-grid" aria-labelledby="gx-title">
+  <div class="gx-wrap">
 
-  <!-- FILTER BAR -->
-  <div class="gal-filter-bar">
-    <button class="gf-btn active" onclick="galleryFilter('all', this)">
-      <i class="fa-solid fa-grip"></i> All
-    </button>
-    <button class="gf-btn" onclick="galleryFilter('podcast', this)">
-      <i class="fa-solid fa-microphone"></i> Podcast
-    </button>
-    <button class="gf-btn" onclick="galleryFilter('video', this)">
-      <i class="fa-brands fa-youtube"></i> Video
-    </button>
-    <button class="gf-btn" onclick="galleryFilter('images', this)">
-      <i class="fa-regular fa-image"></i> Images
-    </button>
-  </div>
-
-  <!-- GALLERY GRID -->
-  <div class="gallery-grid" id="gallery-grid">
-
-    <!-- -- PODCAST ------------------------------------------------------- -->
-    <a class="g-item g-podcast-card" data-cat="podcast"
-       href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
-      <div class="g-pod-icon"><i class="fa-brands fa-youtube"></i></div>
-      <div class="g-pod-meta">
-        <span class="g-pod-show">Video Podcast &nbsp;&#183;&nbsp; TRE&#8482; Series</span>
-        <h4>TRE™ Star Groups with Isabelle Claus Teixeira</h4>
-        <p>Isabelle guides a live group through TRE&#8482; &#8212; demonstrating the tremoring mechanism that naturally releases held tension and stress from the body.</p>
-        <span class="g-pod-listen"><i class="fa-solid fa-play"></i> Watch Episode</span>
+    <!-- Intro strip + live counts -->
+    <div class="gx-intro">
+      <div class="gx-rv">
+        <span class="gx-eyebrow">All Media</span>
+        <h2 class="gx-title" id="gx-title">Moments from <em>the room</em></h2>
+        <p class="gx-lede">Trainings, conferences and the people behind the practice &#8212; from Singapore and Kyoto to Da Nang and Leebong Island. Open any photo full-screen, press play on a session, or filter to find exactly what you're looking for.</p>
       </div>
-    </a>
-
-    <a class="g-item g-podcast-card" data-cat="podcast"
-       href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
-      <div class="g-pod-icon"><i class="fa-solid fa-headphones"></i></div>
-      <div class="g-pod-meta">
-        <span class="g-pod-show">Somatic Insights &nbsp;&#183;&nbsp; Guided Practice</span>
-        <h4>Nervous System Reset &#8212; A Somatic Practice for Busy Professionals</h4>
-        <p>Short breath, movement and body-awareness sequences designed to shift you from stress activation into regulated calm &#8212; in under 10 minutes.</p>
-        <span class="g-pod-listen"><i class="fa-brands fa-youtube"></i> View on YouTube</span>
+      <div class="gx-stats gx-rv" style="--d:120ms">
+        <button type="button" class="gx-stat" data-go="images" aria-pressed="false"><span class="gx-stat-n" data-count="images">33</span><span class="gx-stat-l"><i class="fa-regular fa-image" aria-hidden="true"></i> Photos</span></button>
+        <button type="button" class="gx-stat" data-go="video" aria-pressed="false"><span class="gx-stat-n" data-count="video">3</span><span class="gx-stat-l"><i class="fa-brands fa-youtube" aria-hidden="true"></i> Videos</span></button>
+        <button type="button" class="gx-stat" data-go="podcast" aria-pressed="false"><span class="gx-stat-n" data-count="podcast">3</span><span class="gx-stat-l"><i class="fa-solid fa-microphone" aria-hidden="true"></i> Podcast episodes</span></button>
       </div>
-    </a>
+    </div>
 
-    <a class="g-item g-podcast-card" data-cat="podcast"
-       href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
-      <div class="g-pod-icon"><i class="fa-solid fa-podcast"></i></div>
-      <div class="g-pod-meta">
-        <span class="g-pod-show">Leadership Series &nbsp;&#183;&nbsp; Interview</span>
-        <h4>Leading from the Body &#8212; Somatic Intelligence in the Workplace</h4>
-        <p>How leaders use somatic awareness to make better decisions, build resilient teams and navigate change from the inside out &#8212; without burning out.</p>
-        <span class="g-pod-listen"><i class="fa-brands fa-youtube"></i> View on YouTube</span>
+    <!-- Filter bar -->
+    <div class="gx-bar gx-rv" id="gx-bar">
+      <div class="gx-tabs" role="group" aria-label="Filter the gallery">
+        <span class="gx-ind" aria-hidden="true"></span>
+        <button type="button" class="gx-tab" data-filter="all" aria-pressed="true"><i class="fa-solid fa-grip" aria-hidden="true"></i> All <span class="gx-tab-c" data-count="all"></span></button>
+        <button type="button" class="gx-tab" data-filter="images" aria-pressed="false"><i class="fa-regular fa-image" aria-hidden="true"></i> Images <span class="gx-tab-c" data-count="images"></span></button>
+        <button type="button" class="gx-tab" data-filter="video" aria-pressed="false"><i class="fa-brands fa-youtube" aria-hidden="true"></i> Video <span class="gx-tab-c" data-count="video"></span></button>
+        <button type="button" class="gx-tab" data-filter="podcast" aria-pressed="false"><i class="fa-solid fa-microphone" aria-hidden="true"></i> Podcast <span class="gx-tab-c" data-count="podcast"></span></button>
       </div>
-    </a>
+      <p class="gx-status" id="gx-status" aria-live="polite">Showing everything</p>
+    </div>
 
-    <!-- -- VIDEO --------------------------------------------------------- -->
-    <a class="g-item g-channel-card" data-cat="video"
-       href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
-      <span class="g-cat-pill video">YouTube</span>
-      <div class="g-channel-icon"><i class="fa-brands fa-youtube"></i></div>
-      <h4>TRE&#8482; Group Sessions with Isabelle</h4>
-      <p>Watch Isabelle guide groups through TRE&#8482; &#8212; demonstrating the tremoring mechanism that naturally releases held tension and stress from the body.</p>
-      <span class="g-ch-cta">Watch on YouTube <i class="fa-solid fa-arrow-right"></i></span>
-    </a>
-
-    <a class="g-item g-channel-card" data-cat="video"
-       href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
-      <span class="g-cat-pill video">YouTube</span>
-      <div class="g-channel-icon"><i class="fa-brands fa-youtube"></i></div>
-      <h4>@IsabelleClausTeixeira</h4>
-      <p>Guided TRE&#8482; sessions, somatic movement sequences and expert conversations on nervous system health</p>
-      <span class="g-ch-cta">Browse Channel <i class="fa-solid fa-arrow-right"></i></span>
-    </a>
-
-    <!-- -- IMAGES -------------------------------------------------------- -->
-    <!-- TRE Module 2 - 26-27 September 2026 -->
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-module2-sep2026-6.jpg','TRE&#8482; Module 2 cohort &#8212; 26&#8211;27 September 2026, Singapore')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-module2-sep2026-6.jpg" alt="TRE&#8482; Module 2 cohort &#8212; 26&#8211;27 September 2026, Singapore" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">TRE&#8482; Module 2 cohort &#8212; 26&#8211;27 September 2026, Singapore</span>
+    <!-- Photographs -->
+    <div class="gx-group" data-group="images">
+      <div class="gx-ghead"><h3>Photographs</h3><span class="gx-gcount" data-gcount="images"></span></div>
+      <div class="gx-grid" id="gx-grid">
+        <div class="gx-cell gx-rv gx-f" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="0" aria-label="Open photo: TRE&#8482; Module 2 cohort &#8212; 26&#8211;27 September 2026, Singapore">
+            <img src="images/gallery/gallery-module2-sep2026-6.jpg" alt="TRE&#8482; Module 2 cohort &#8212; 26&#8211;27 September 2026, Singapore" width="1600" height="1200" loading="eager" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">TRE&#8482; Module 2 cohort &#8212; 26&#8211;27 September 2026, Singapore</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv" data-cat="images" data-nocount>
+          <button type="button" class="gx-label" data-open="0" aria-label="Open the TRE&#8482; Module 2 photo set, 26&#8211;27 September 2026">
+            <span class="gx-label-k">Latest cohort</span>
+            <span><span class="gx-label-t">TRE&#8482; Module 2</span>
+            <span class="gx-label-m">26&#8211;27 September 2026 &#183; Singapore</span></span>
+            <span class="gx-label-cta">View the set <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="1" aria-label="Open photo: Isabelle teaching &#8212; TRE&#8482; Module 2, September 2026">
+            <img src="images/gallery/gallery-module2-sep2026-1.jpg" alt="Isabelle teaching &#8212; TRE&#8482; Module 2, September 2026" width="1200" height="1600" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Isabelle teaching &#8212; TRE&#8482; Module 2, September 2026</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="2" aria-label="Open photo: Module 2 in session with Simba Stenqvist &#8212; Singapore, September 2026">
+            <img src="images/gallery/gallery-module2-sep2026-2.jpg" alt="Module 2 in session with Simba Stenqvist &#8212; Singapore, September 2026" width="1200" height="1600" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Module 2 in session with Simba Stenqvist &#8212; Singapore, September 2026</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="3" aria-label="Open photo: Isabelle &amp; Simba with the Module 2 cohort &#8212; September 2026">
+            <img src="images/gallery/gallery-module2-sep2026-4.jpg" alt="Isabelle &amp; Simba with the Module 2 cohort &#8212; September 2026" width="1600" height="1200" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Isabelle &amp; Simba with the Module 2 cohort &#8212; September 2026</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="4" aria-label="Open photo: Sharing circle &#8212; TRE&#8482; Module 2, September 2026">
+            <img src="images/gallery/gallery-module2-sep2026-3.jpg" alt="Sharing circle &#8212; TRE&#8482; Module 2, September 2026" width="1200" height="1600" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Sharing circle &#8212; TRE&#8482; Module 2, September 2026</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="5" aria-label="Open photo: Module 2 with Isabelle &amp; Simba &#8212; Singapore, September 2026">
+            <img src="images/gallery/gallery-module2-sep2026-5.jpg" alt="Module 2 with Isabelle &amp; Simba &#8212; Singapore, September 2026" width="1600" height="1200" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Module 2 with Isabelle &amp; Simba &#8212; Singapore, September 2026</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="6" aria-label="Open photo: Indoor Skydiving in Singapore with TRE&#8482; Colleagues">
+            <img src="images/gallery/gallery-indoor-skydiving-singapore.jpg" alt="Indoor Skydiving in Singapore with TRE&#8482; Colleagues" width="1536" height="2048" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Indoor Skydiving in Singapore with TRE&#8482; Colleagues</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="7" aria-label="Open photo: Isabelle at Work">
+            <img src="images/isabelle-her-story.jpg" alt="Isabelle at Work" width="850" height="1280" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Isabelle at Work</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="8" aria-label="Open photo: Isabelle — October 2023">
+            <img src="images/gallery/gallery-isabelle-oct-2023.jpg" alt="Isabelle — October 2023" width="708" height="1216" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Isabelle — October 2023</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="9" aria-label="Open photo: Kyoto Station — October 2023">
+            <img src="images/gallery/gallery-isabelle-kyoto-2023.jpg" alt="Kyoto Station — October 2023" width="418" height="640" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Kyoto Station — October 2023</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="10" aria-label="Open photo: TRE™ Asia Conference, Vietnam">
+            <img src="images/gallery/gallery-isabelle-vietnam-tre.jpg" alt="TRE™ Asia Conference, Vietnam" width="1368" height="1368" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">TRE™ Asia Conference, Vietnam</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="11" aria-label="Open photo: Teaching TRE™ Module 1">
+            <img src="images/gallery/gallery-isabelle-teaching-tre.jpg" alt="Teaching TRE™ Module 1" width="1200" height="1600" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Teaching TRE™ Module 1</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="12" aria-label="Open photo: TRE™ Module 1 — January 2026">
+            <img src="images/gallery/gallery-tre-module1-2026.jpg" alt="TRE™ Module 1 — January 2026" width="1600" height="2844" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">TRE™ Module 1 — January 2026</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="13" aria-label="Open photo: Somatic Bodywork Session">
+            <img src="images/gallery/gallery-screenshot-practice.jpg" alt="Somatic Bodywork Session" width="1132" height="892" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Somatic Bodywork Session</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="14" aria-label="Open photo: TRE™ Module 1 Training">
+            <img src="images/gallery/gallery-ws-1.jpg" alt="TRE™ Module 1 Training" width="1600" height="1200" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">TRE™ Module 1 Training</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="15" aria-label="Open photo: At the Esplanade, Singapore">
+            <img src="images/gallery/gallery-ws-2.jpg" alt="At the Esplanade, Singapore" width="1200" height="1600" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">At the Esplanade, Singapore</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="16" aria-label="Open photo: Retreat at Leebong Island">
+            <img src="images/gallery/gallery-ws-3.jpg" alt="Retreat at Leebong Island" width="960" height="1280" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Retreat at Leebong Island</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="17" aria-label="Open photo: TRE™ Certification">
+            <img src="images/gallery/gallery-ws-4.jpg" alt="TRE™ Certification" width="1600" height="1200" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">TRE™ Certification</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-f" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="18" aria-label="Open photo: Da Nang TRE&#8482; Conference — November 2025">
+            <img src="images/gallery/gallery-danang-tre-conference-nov2025.jpg" alt="Da Nang TRE&#8482; Conference — November 2025" width="1600" height="1200" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Da Nang TRE&#8482; Conference — November 2025</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-f" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="19" aria-label="Open photo: Dinner with David Berceli, Founder of TRE&#8482;">
+            <img src="images/gallery/gallery-dinner-david-berceli-founders.jpg" alt="Dinner with David Berceli, Founder of TRE&#8482;" width="929" height="959" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Dinner with David Berceli, Founder of TRE&#8482;</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="20" aria-label="Open photo: Isabelle Claus Teixeira">
+            <img src="images/gallery/gallery-isabelle-oct-2023.jpg" alt="Isabelle Claus Teixeira" width="708" height="1216" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Isabelle Claus Teixeira</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="21" aria-label="Open photo: Isabelle and Saymara">
+            <img src="images/gallery/gallery-isabelle-saymara.jpg" alt="Isabelle and Saymara" width="1045" height="1600" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Isabelle and Saymara</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="22" aria-label="Open photo: Isabelle and Saymara">
+            <img src="images/gallery/gallery-isabelle-saymara-2.jpg" alt="Isabelle and Saymara" width="809" height="1048" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Isabelle and Saymara</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="23" aria-label="Open photo: Isabelle and Saymara">
+            <img src="images/gallery/gallery-isabelle-saymara-3.jpg" alt="Isabelle and Saymara" width="1200" height="1599" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Isabelle and Saymara</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-f" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="24" aria-label="Open photo: Isabelle and Saymara">
+            <img src="images/gallery/gallery-isabelle-saymara-4.jpg" alt="Isabelle and Saymara" width="894" height="970" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Isabelle and Saymara</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-f" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="25" aria-label="Open photo: TRE&#8482; Module 1 — May 2026">
+            <img src="images/gallery/gallery-isabelle-students-module1-may2026.jpg" alt="TRE&#8482; Module 1 — May 2026" width="1600" height="1200" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">TRE&#8482; Module 1 — May 2026</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="26" aria-label="Open photo: Isabelle with David Berceli, Simba Stenqvist &amp; Nikki Tay">
+            <img src="images/gallery/gallery-isabelle-david-simba-nikki.jpg" alt="Isabelle with David Berceli, Simba Stenqvist &amp; Nikki Tay" width="1536" height="2048" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Isabelle with David Berceli, Simba Stenqvist &amp; Nikki Tay</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-w" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="27" aria-label="Open photo: Visiting INSEAD Campus with Simba Stenqvist">
+            <img src="images/gallery/gallery-insead-simba-stenqvist.jpg" alt="Visiting INSEAD Campus with Simba Stenqvist" width="2016" height="1134" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Visiting INSEAD Campus with Simba Stenqvist</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="28" aria-label="Open photo: TRE&#8482; Students from the UK at Singapore Airport">
+            <img src="images/gallery/gallery-uk-students-singapore-airport.jpg" alt="TRE&#8482; Students from the UK at Singapore Airport" width="1600" height="1200" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">TRE&#8482; Students from the UK at Singapore Airport</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="29" aria-label="Open photo: With UK TRE&#8482; Provider Students">
+            <img src="images/gallery/gallery-uk-tre-providers.jpg" alt="With UK TRE&#8482; Provider Students" width="1200" height="1600" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">With UK TRE&#8482; Provider Students</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="30" aria-label="Open photo: With UK TRE&#8482; Provider Students">
+            <img src="images/gallery/gallery-uk-tre-providers-2.jpg" alt="With UK TRE&#8482; Provider Students" width="1200" height="1600" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">With UK TRE&#8482; Provider Students</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-f" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="31" aria-label="Open photo: Asia TRE&#8482; Trainers with David Berceli">
+            <img src="images/gallery/gallery-asia-tre-trainers-david.jpg" alt="Asia TRE&#8482; Trainers with David Berceli" width="1600" height="1380" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">Asia TRE&#8482; Trainers with David Berceli</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
+        </div>
+        <div class="gx-cell gx-rv gx-t" data-cat="images">
+          <button type="button" class="gx-tile" data-photo="32" aria-label="Open photo: With Chris Balsley — Master Coach">
+            <img src="images/gallery/gallery-chris-balsley-master-coach.jpg" alt="With Chris Balsley — Master Coach" width="1200" height="1600" loading="lazy" decoding="async" />
+            <span class="gx-cap" aria-hidden="true">With Chris Balsley — Master Coach</span>
+            <span class="gx-zoom" aria-hidden="true"><i class="fa-solid fa-expand"></i></span>
+          </button>
         </div>
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-module2-sep2026-1.jpg','Isabelle teaching &#8212; TRE&#8482; Module 2, September 2026')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-module2-sep2026-1.jpg" alt="Isabelle teaching &#8212; TRE&#8482; Module 2, September 2026" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Isabelle teaching &#8212; TRE&#8482; Module 2, September 2026</span>
+    <!-- Watch & listen -->
+    <div class="gx-group" data-group="media">
+      <div class="gx-ghead"><h3>Watch &amp; listen</h3><span class="gx-gcount" data-gcount="media"></span></div>
+      <div class="gx-media">
+
+        <div class="gx-cell gx-rv gx-mfeat" data-cat="video">
+          <button type="button" class="gx-vid" data-video="8_UE9nKEh2s" data-title="Isabelle &amp; Simba in the Room" aria-label="Play video: Isabelle &amp; Simba in the Room">
+            <span class="gx-vid-thumb">
+              <img src="https://i.ytimg.com/vi/8_UE9nKEh2s/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" />
+              <span class="gx-pill">TRE&#8482; Module 2</span>
+              <span class="gx-play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+            </span>
+            <span class="gx-vid-body">
+              <span class="gx-kicker"><i class="fa-brands fa-youtube" aria-hidden="true"></i> Featured video</span>
+              <span class="gx-vid-title">Isabelle &amp; Simba in the Room</span>
+              <span class="gx-vid-desc">A look inside a live TRE&#8482; training &#8212; how Isabelle Claus Teixeira and Simba Stenqvist teach, guide and hold the space.</span>
+              <span class="gx-link">Play video <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </span>
+          </button>
         </div>
+
+        <div class="gx-cell gx-rv" data-cat="video" style="--d:80ms">
+          <a class="gx-chan" href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
+            <span class="gx-chan-top"><span class="gx-ico"><i class="fa-brands fa-youtube" aria-hidden="true"></i></span><span class="gx-tag">YouTube <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></span>
+            <h4>TRE&#8482; Group Sessions with Isabelle</h4>
+            <p>Watch Isabelle guide groups through TRE&#8482; &#8212; demonstrating the tremoring mechanism that naturally releases held tension and stress from the body.</p>
+            <span class="gx-link">Watch on YouTube <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+          </a>
+        </div>
+
+        <div class="gx-cell gx-rv" data-cat="video" style="--d:160ms">
+          <a class="gx-chan" href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
+            <span class="gx-chan-top"><span class="gx-ico"><i class="fa-brands fa-youtube" aria-hidden="true"></i></span><span class="gx-tag">YouTube <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></span>
+            <h4>@IsabelleClausTeixeira</h4>
+            <p>Guided TRE&#8482; sessions, somatic movement sequences and expert conversations on nervous system health</p>
+            <span class="gx-link">Browse Channel <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+          </a>
+        </div>
+
+        <div class="gx-cell gx-rv" data-cat="podcast">
+          <a class="gx-pod" href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
+            <span class="gx-chan-top"><span class="gx-ico"><i class="fa-brands fa-youtube" aria-hidden="true"></i></span><span class="gx-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+            <span class="gx-pod-show">Video Podcast &nbsp;&#183;&nbsp; TRE&#8482; Series</span>
+            <h4>TRE™ Star Groups with Isabelle Claus Teixeira</h4>
+            <p>Isabelle guides a live group through TRE&#8482; &#8212; demonstrating the tremoring mechanism that naturally releases held tension and stress from the body.</p>
+            <span class="gx-link"><i class="fa-solid fa-play" aria-hidden="true"></i> Watch Episode</span>
+          </a>
+        </div>
+
+        <div class="gx-cell gx-rv" data-cat="podcast" style="--d:80ms">
+          <a class="gx-pod" href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
+            <span class="gx-chan-top"><span class="gx-ico"><i class="fa-solid fa-headphones" aria-hidden="true"></i></span><span class="gx-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+            <span class="gx-pod-show">Somatic Insights &nbsp;&#183;&nbsp; Guided Practice</span>
+            <h4>Nervous System Reset &#8212; A Somatic Practice for Busy Professionals</h4>
+            <p>Short breath, movement and body-awareness sequences designed to shift you from stress activation into regulated calm &#8212; in under 10 minutes.</p>
+            <span class="gx-link"><i class="fa-brands fa-youtube" aria-hidden="true"></i> View on YouTube</span>
+          </a>
+        </div>
+
+        <div class="gx-cell gx-rv" data-cat="podcast" style="--d:160ms">
+          <a class="gx-pod" href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" rel="noopener">
+            <span class="gx-chan-top"><span class="gx-ico"><i class="fa-solid fa-podcast" aria-hidden="true"></i></span><span class="gx-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span>
+            <span class="gx-pod-show">Leadership Series &nbsp;&#183;&nbsp; Interview</span>
+            <h4>Leading from the Body &#8212; Somatic Intelligence in the Workplace</h4>
+            <p>How leaders use somatic awareness to make better decisions, build resilient teams and navigate change from the inside out &#8212; without burning out.</p>
+            <span class="gx-link"><i class="fa-brands fa-youtube" aria-hidden="true"></i> View on YouTube</span>
+          </a>
+        </div>
+
       </div>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-module2-sep2026-2.jpg','Module 2 in session with Simba Stenqvist &#8212; Singapore, September 2026')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-module2-sep2026-2.jpg" alt="Module 2 in session with Simba Stenqvist &#8212; Singapore, September 2026" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Module 2 in session with Simba Stenqvist &#8212; Singapore, September 2026</span>
-        </div>
-      </div>
+    <!-- Moments timeline (dates taken from the photo captions) -->
+    <div class="gx-tl" id="gx-tl">
+      <div class="gx-ghead"><h3>Along the way</h3><span class="gx-gcount">Dated moments</span></div>
+      <p class="gx-tl-sub">A few dated moments from the collection &#8212; select one to open it full-screen.</p>
+      <ol class="gx-tl-track">
+          <li>
+            <button type="button" class="gx-moment" data-open="8" aria-label="October 2023 &#8212; open photo: Isabelle — October 2023">
+              <span class="gx-moment-d">October 2023</span>
+              <span class="gx-moment-img"><img src="images/gallery/gallery-isabelle-oct-2023.jpg" alt="" width="708" height="1216" loading="lazy" decoding="async" /></span>
+              <span class="gx-moment-c">Isabelle — October 2023</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="gx-moment" data-open="9" aria-label="October 2023 &#8212; open photo: Kyoto Station — October 2023">
+              <span class="gx-moment-d">October 2023</span>
+              <span class="gx-moment-img"><img src="images/gallery/gallery-isabelle-kyoto-2023.jpg" alt="" width="418" height="640" loading="lazy" decoding="async" /></span>
+              <span class="gx-moment-c">Kyoto Station — October 2023</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="gx-moment" data-open="18" aria-label="November 2025 &#8212; open photo: Da Nang TRE&#8482; Conference — November 2025">
+              <span class="gx-moment-d">November 2025</span>
+              <span class="gx-moment-img"><img src="images/gallery/gallery-danang-tre-conference-nov2025.jpg" alt="" width="1600" height="1200" loading="lazy" decoding="async" /></span>
+              <span class="gx-moment-c">Da Nang TRE&#8482; Conference — November 2025</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="gx-moment" data-open="12" aria-label="January 2026 &#8212; open photo: TRE™ Module 1 — January 2026">
+              <span class="gx-moment-d">January 2026</span>
+              <span class="gx-moment-img"><img src="images/gallery/gallery-tre-module1-2026.jpg" alt="" width="1600" height="2844" loading="lazy" decoding="async" /></span>
+              <span class="gx-moment-c">TRE™ Module 1 — January 2026</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="gx-moment" data-open="25" aria-label="May 2026 &#8212; open photo: TRE&#8482; Module 1 — May 2026">
+              <span class="gx-moment-d">May 2026</span>
+              <span class="gx-moment-img"><img src="images/gallery/gallery-isabelle-students-module1-may2026.jpg" alt="" width="1600" height="1200" loading="lazy" decoding="async" /></span>
+              <span class="gx-moment-c">TRE&#8482; Module 1 — May 2026</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="gx-moment" data-open="0" aria-label="September 2026 &#8212; open photo: TRE&#8482; Module 2 cohort &#8212; 26&#8211;27 September 2026, Singapore">
+              <span class="gx-moment-d">September 2026</span>
+              <span class="gx-moment-img"><img src="images/gallery/gallery-module2-sep2026-6.jpg" alt="" width="1600" height="1200" loading="lazy" decoding="async" /></span>
+              <span class="gx-moment-c">TRE&#8482; Module 2 cohort &#8212; 26&#8211;27 September 2026, Singapore</span>
+            </button>
+          </li>
+      </ol>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-module2-sep2026-4.jpg','Isabelle &amp; Simba with the Module 2 cohort &#8212; September 2026')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-module2-sep2026-4.jpg" alt="Isabelle &amp; Simba with the Module 2 cohort &#8212; September 2026" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Isabelle &amp; Simba with the Module 2 cohort &#8212; September 2026</span>
-        </div>
-      </div>
+    <div class="gx-cta">
+      <a href="book.html" class="btn btn-primary">Book a Free Consultation</a>
+      <a href="https://www.youtube.com/@IsabelleClausTeixeira" class="btn btn-dark" target="_blank" rel="noopener">Visit the YouTube Channel</a>
     </div>
 
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-module2-sep2026-3.jpg','Sharing circle &#8212; TRE&#8482; Module 2, September 2026')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-module2-sep2026-3.jpg" alt="Sharing circle &#8212; TRE&#8482; Module 2, September 2026" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Sharing circle &#8212; TRE&#8482; Module 2, September 2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-module2-sep2026-5.jpg','Module 2 with Isabelle &amp; Simba &#8212; Singapore, September 2026')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-module2-sep2026-5.jpg" alt="Module 2 with Isabelle &amp; Simba &#8212; Singapore, September 2026" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Module 2 with Isabelle &amp; Simba &#8212; Singapore, September 2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-isabelle-oct-2023.jpg','Isabelle Claus Teixeira')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-isabelle-oct-2023.jpg"
-             alt="Isabelle Claus Teixeira" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Isabelle Claus Teixeira</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/isabelle-her-story.jpg','Isabelle at Work')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/isabelle-her-story.jpg"
-             alt="Isabelle at Work" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Isabelle at Work</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-isabelle-oct-2023.jpg','Isabelle — October 2023')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-isabelle-oct-2023.jpg" alt="Isabelle — October 2023" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Isabelle — October 2023</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-isabelle-kyoto-2023.jpg','Kyoto Station — October 2023')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-isabelle-kyoto-2023.jpg" alt="Kyoto Station — October 2023" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Kyoto Station — October 2023</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-isabelle-vietnam-tre.jpg','TRE™ Asia Conference, Vietnam')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-isabelle-vietnam-tre.jpg" alt="TRE™ Asia Conference, Vietnam" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">TRE&#8482; Asia Conference, Vietnam</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-isabelle-teaching-tre.jpg','Teaching TRE™ Module 1')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-isabelle-teaching-tre.jpg" alt="Teaching TRE™ Module 1" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Teaching TRE&#8482; Module 1</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-tre-module1-2026.jpg','TRE™ Module 1 — January 2026')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-tre-module1-2026.jpg" alt="TRE™ Module 1 — January 2026" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">TRE&#8482; Module 1 — January 2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-screenshot-practice.jpg','Somatic Bodywork Session')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-screenshot-practice.jpg" alt="Somatic Bodywork Session" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Somatic Bodywork Session</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-ws-1.jpg','TRE™ Module 1 Training')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-ws-1.jpg" alt="TRE™ Module 1 Training" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">TRE&#8482; Module 1 Training</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-ws-2.jpg','At the Esplanade, Singapore')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-ws-2.jpg" alt="At the Esplanade, Singapore" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">At the Esplanade, Singapore</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-ws-3.jpg','Retreat at Leebong Island')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-ws-3.jpg" alt="Retreat at Leebong Island" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Retreat at Leebong Island</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-ws-4.jpg','TRE™ Certification')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-ws-4.jpg" alt="TRE™ Certification" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">TRE&#8482; Certification</span>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-danang-tre-conference-nov2025.jpg','Da Nang TRE&#8482; Conference — November 2025')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-danang-tre-conference-nov2025.jpg" alt="Da Nang TRE&#8482; Conference — November 2025" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Da Nang TRE&#8482; Conference — November 2025</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-dinner-david-berceli-founders.jpg','Dinner with David Berceli, Founder of TRE&#8482;')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-dinner-david-berceli-founders.jpg" alt="Dinner with David Berceli, Founder of TRE&#8482;" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Dinner with David Berceli, Founder of TRE&#8482;</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-indoor-skydiving-singapore.jpg','Indoor Skydiving in Singapore with TRE&#8482; Colleagues')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-indoor-skydiving-singapore.jpg" alt="Indoor Skydiving in Singapore with TRE&#8482; Colleagues" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Indoor Skydiving in Singapore with TRE&#8482; Colleagues</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-isabelle-saymara.jpg','Isabelle and Saymara')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-isabelle-saymara.jpg" alt="Isabelle and Saymara" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Isabelle and Saymara</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-isabelle-saymara-2.jpg','Isabelle and Saymara')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-isabelle-saymara-2.jpg" alt="Isabelle and Saymara" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Isabelle and Saymara</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-isabelle-saymara-3.jpg','Isabelle and Saymara')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-isabelle-saymara-3.jpg" alt="Isabelle and Saymara" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Isabelle and Saymara</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-isabelle-saymara-4.jpg','Isabelle and Saymara')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-isabelle-saymara-4.jpg" alt="Isabelle and Saymara" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Isabelle and Saymara</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-isabelle-students-module1-may2026.jpg','TRE&#8482; Module 1 — May 2026')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-isabelle-students-module1-may2026.jpg" alt="TRE&#8482; Module 1 — May 2026" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">TRE&#8482; Module 1 — May 2026</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-isabelle-david-simba-nikki.jpg','Isabelle with David Berceli, Simba Stenqvist &amp; Nikki Tay')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-isabelle-david-simba-nikki.jpg" alt="Isabelle with David Berceli, Simba Stenqvist &amp; Nikki Tay" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Isabelle with David Berceli, Simba Stenqvist &amp; Nikki Tay</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-insead-simba-stenqvist.jpg','Visiting INSEAD Campus with Simba Stenqvist')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-insead-simba-stenqvist.jpg" alt="Visiting INSEAD Campus with Simba Stenqvist" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Visiting INSEAD Campus with Simba Stenqvist</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-uk-students-singapore-airport.jpg','TRE&#8482; Students from the UK at Singapore Airport')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-uk-students-singapore-airport.jpg" alt="TRE&#8482; Students from the UK at Singapore Airport" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">TRE&#8482; Students from the UK at Singapore Airport</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-uk-tre-providers.jpg','With UK TRE&#8482; Provider Students')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-uk-tre-providers.jpg" alt="With UK TRE&#8482; Provider Students" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">With UK TRE&#8482; Provider Students</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-uk-tre-providers-2.jpg','With UK TRE&#8482; Provider Students')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-uk-tre-providers-2.jpg" alt="With UK TRE&#8482; Provider Students" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">With UK TRE&#8482; Provider Students</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-asia-tre-trainers-david.jpg','Asia TRE&#8482; Trainers with David Berceli')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-asia-tre-trainers-david.jpg" alt="Asia TRE&#8482; Trainers with David Berceli" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">Asia TRE&#8482; Trainers with David Berceli</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="g-item g-img-card" data-cat="images"
-         onclick="openLightbox('images/gallery/gallery-chris-balsley-master-coach.jpg','With Chris Balsley — Master Coach')">
-      <span class="g-cat-pill images">Image</span>
-      <div class="g-img-thumb">
-        <img src="images/gallery/gallery-chris-balsley-master-coach.jpg" alt="With Chris Balsley — Master Coach" loading="lazy" decoding="async" width="800" height="600" />
-        <div class="g-img-overlay">
-          <div class="g-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
-          <span class="g-img-caption-tag">With Chris Balsley — Master Coach</span>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /gallery-grid -->
-
-  <div style="text-align:center;margin-top:3.5rem">
-    <a href="book.html" class="btn btn-primary">Book a Free Consultation</a>
   </div>
 </section>
 
@@ -966,19 +1100,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- LIGHTBOX -->
-<div id="lb-overlay" onclick="if(event.target===this)closeLightbox()">
-  <button id="lb-close" onclick="closeLightbox()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-  <img id="lb-img" src="" alt="" />
-  <span id="lb-caption"></span>
+<div class="gx gx-ov gx-lb" id="gx-lb" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <div class="gx-ov-bg" data-close></div>
+  <div class="gx-ov-bar">
+    <span class="gx-count" aria-live="polite"><b id="gx-lb-i">1</b> / <span id="gx-lb-n">1</span></span>
+    <button type="button" class="gx-ov-btn" data-close aria-label="Close photo viewer"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  </div>
+  <button type="button" class="gx-ov-btn gx-lb-nav gx-lb-prev" id="gx-lb-prev" aria-label="Previous photo"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+  <figure class="gx-lb-stage" id="gx-lb-stage">
+    <img class="gx-lb-img" id="gx-lb-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />
+    <figcaption class="gx-lb-cap" id="gx-lb-cap"></figcaption>
+  </figure>
+  <button type="button" class="gx-ov-btn gx-lb-nav gx-lb-next" id="gx-lb-next" aria-label="Next photo"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+  <div class="gx-lb-prog" aria-hidden="true"><span id="gx-lb-prog"></span></div>
 </div>
 
-<!-- VIDEO MODAL -->
-<div id="vm-overlay" onclick="if(event.target===this)closeVideo()">
-  <div id="vm-inner">
-    <button id="vm-close" onclick="closeVideo()" aria-label="Close video"><i class="fa-solid fa-xmark"></i></button>
-    <div id="vm-ratio">
-      <iframe id="vm-iframe" src="" title="Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<!-- VIDEO MODAL (iframe is created on open and removed on close) -->
+<div class="gx gx-ov gx-vm" id="gx-vm" role="dialog" aria-modal="true" aria-labelledby="gx-vm-title" hidden>
+  <div class="gx-ov-bg" data-close></div>
+  <div class="gx-vm-box">
+    <div class="gx-ov-bar" style="position:static;padding:0 0 .85rem">
+      <p class="gx-vm-title" id="gx-vm-title">Video</p>
+      <button type="button" class="gx-ov-btn" data-close aria-label="Close video"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
     </div>
+    <div class="gx-vm-ratio" id="gx-vm-ratio"></div>
   </div>
 </div>
 
@@ -986,46 +1131,390 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 <script src="scripts.js" defer></script>
 <script>
-/* Gallery filter */
-function galleryFilter(cat, btn) {
-  document.querySelectorAll('.gf-btn').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-  document.querySelectorAll('#gallery-grid .g-item').forEach(function(item) {
-    if (cat === 'all' || item.dataset.cat === cat) { item.classList.remove('g-hidden'); } else { item.classList.add('g-hidden'); }
+/* ==========================================================================
+   GALLERY (.gx) - filters with FLIP, scroll reveal, count-up, hover tilt,
+   lightbox (arrows, swipe, counter, focus trap) and lazy video modal.
+   Plain JS, no libraries. Everything is scoped to section.gx + the overlays.
+   ========================================================================== */
+(function () {
+  'use strict';
+  var root = document.querySelector('section.gx');
+  if (!root) return;
+  document.documentElement.classList.add('gx-js');
+
+  var EASE = 'cubic-bezier(.23,1,.32,1)';
+  var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mqFine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  var canAnimate = typeof Element.prototype.animate === 'function';
+  function still() { return mqReduce.matches || !canAnimate; }
+  function $(s, c) { return (c || document).querySelector(s); }
+  function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+  function inView(el) { var r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < window.innerHeight && r.width > 0; }
+
+  var cells = $$('.gx-cell[data-cat]', root);
+  var groups = $$('.gx-group', root);
+  var tabs = $$('.gx-tab', root);
+  var stats = $$('.gx-stat', root);
+  var tabsBox = $('.gx-tabs', root);
+  var ind = $('.gx-ind', root);
+  var statusEl = $('#gx-status');
+  var bar = $('#gx-bar');
+
+  /* ---- Counts (derived from the markup, so they can never drift) --------- */
+  var counts = { all: 0, images: 0, video: 0, podcast: 0 };
+  cells.forEach(function (c) {
+    if (c.hasAttribute('data-nocount')) return;
+    counts[c.getAttribute('data-cat')]++; counts.all++;
   });
-}
+  function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
+  $$('.gx-tab-c[data-count]', root).forEach(function (el) { el.textContent = counts[el.getAttribute('data-count')]; });
+  var gcImg = $('[data-gcount="images"]', root), gcMed = $('[data-gcount="media"]', root);
+  if (gcImg) gcImg.textContent = plural(counts.images, 'photo', 'photos');
+  if (gcMed) gcMed.textContent = plural(counts.video, 'video', 'videos') + ' · ' + plural(counts.podcast, 'episode', 'episodes');
+  var STATUS = {
+    all: 'Showing all ' + counts.all + ' items',
+    images: 'Showing ' + plural(counts.images, 'photo', 'photos'),
+    video: 'Showing ' + plural(counts.video, 'video', 'videos'),
+    podcast: 'Showing ' + plural(counts.podcast, 'podcast episode', 'podcast episodes')
+  };
+  statusEl.textContent = STATUS.all;
 
-/* Lightbox */
-function openLightbox(src, caption) {
-  document.getElementById('lb-img').src = src;
-  document.getElementById('lb-caption').textContent = caption.replace(/&#[0-9]+;/g, function(m) {
-    var tmp = document.createElement('textarea'); tmp.innerHTML = m; return tmp.value;
+  /* ---- Count-up ---------------------------------------------------------- */
+  var statNums = $$('.gx-stat-n[data-count]', root);
+  statNums.forEach(function (el) { el.textContent = still() ? counts[el.getAttribute('data-count')] : '0'; });
+  function countUp() {
+    statNums.forEach(function (el, i) {
+      var target = counts[el.getAttribute('data-count')];
+      if (still()) { el.textContent = target; return; }
+      var t0 = null, dur = 1400, delay = i * 140;
+      function step(ts) {
+        if (t0 === null) t0 = ts + delay;
+        var p = Math.min(1, Math.max(0, (ts - t0) / dur));
+        var e = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+        el.textContent = Math.round(target * e);
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  /* ---- Scroll reveal (staggered per batch) ------------------------------- */
+  var hasIO = 'IntersectionObserver' in window;
+  var revealIO = hasIO ? new IntersectionObserver(function (entries) {
+    var batch = entries.filter(function (e) { return e.isIntersecting; })
+      .sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left; });
+    batch.forEach(function (e, i) {
+      var el = e.target;
+      if (el.classList.contains('gx-cell') && !el.style.getPropertyValue('--d')) {
+        el.style.setProperty('--d', Math.min(i, 8) * 60 + 'ms');
+        setTimeout(function () { el.style.removeProperty('--d'); }, 1600);
+      }
+      el.classList.add('is-in');
+      revealIO.unobserve(el);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }) : null;
+  $$('.gx-rv', root).forEach(function (el) { if (revealIO) revealIO.observe(el); else el.classList.add('is-in'); });
+
+  var tl = $('#gx-tl');
+  $$('.gx-moment', root).forEach(function (m, i) { m.style.setProperty('--d', i * 140 + 'ms'); });
+  var statsBox = $('.gx-stats', root);
+  if (hasIO) {
+    var onceIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        if (e.target === statsBox) countUp(); else e.target.classList.add('is-in');
+        onceIO.unobserve(e.target);
+      });
+    }, { threshold: 0.35 });
+    if (statsBox) onceIO.observe(statsBox);
+    if (tl) onceIO.observe(tl);
+  } else { countUp(); if (tl) tl.classList.add('is-in'); }
+
+  /* ---- Filter bar: sliding indicator ------------------------------------- */
+  var current = 'all', seq = 0;
+  function activeTab() { return tabs.filter(function (t) { return t.getAttribute('aria-pressed') === 'true'; })[0]; }
+  function moveInd(animate) {
+    var t = activeTab(); if (!t || !ind) return;
+    if (!animate) ind.style.transition = 'none';
+    ind.style.width = t.offsetWidth + 'px';
+    ind.style.transform = 'translateX(' + t.offsetLeft + 'px)';
+    if (!animate) { void ind.offsetWidth; ind.style.transition = ''; }
+    if (tabsBox.scrollWidth > tabsBox.clientWidth + 1) {
+      var left = t.offsetLeft - (tabsBox.clientWidth - t.offsetWidth) / 2;
+      try { tabsBox.scrollTo({ left: left, behavior: still() ? 'auto' : 'smooth' }); } catch (err) { tabsBox.scrollLeft = left; }
+    }
+  }
+
+  /* ---- Filter: FLIP (First, Last, Invert, Play) ------------------------- */
+  function matches(c, cat) { return cat === 'all' || c.getAttribute('data-cat') === cat; }
+  function syncGroups() {
+    groups.forEach(function (g) {
+      g.hidden = !$$('.gx-cell[data-cat]', g).some(function (c) { return !c.hidden; });
+    });
+  }
+  function applyFilter(cat, animate) {
+    if (!STATUS[cat]) cat = 'all';
+    current = cat;
+    var my = ++seq;
+    tabs.forEach(function (t) { t.setAttribute('aria-pressed', t.getAttribute('data-filter') === cat ? 'true' : 'false'); });
+    stats.forEach(function (s) { s.setAttribute('aria-pressed', s.getAttribute('data-go') === cat ? 'true' : 'false'); });
+    moveInd(animate);
+    statusEl.textContent = STATUS[cat];
+
+    var motion = animate && !still();
+    if (motion) cells.forEach(function (c) { c.getAnimations().forEach(function (a) { a.cancel(); }); });
+    var visible = cells.filter(function (c) { return !c.hidden; });
+    var leaving = visible.filter(function (c) { return !matches(c, cat); });
+    var staying = visible.filter(function (c) { return matches(c, cat); });
+    var entering = cells.filter(function (c) { return c.hidden && matches(c, cat); });
+
+    function commit() {
+      if (my !== seq) return;
+      var first = staying.map(function (c) { return c.getBoundingClientRect(); });
+      leaving.forEach(function (c) { c.hidden = true; if (motion) c.getAnimations().forEach(function (a) { a.cancel(); }); });
+      entering.forEach(function (c) { c.hidden = false; c.classList.add('is-in'); });
+      syncGroups();
+      if (!motion) return;
+      staying.forEach(function (c, i) {
+        var a = first[i], b = c.getBoundingClientRect();
+        var dx = a.left - b.left, dy = a.top - b.top;
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+        if ((a.bottom < 0 && b.bottom < 0) || (a.top > innerHeight && b.top > innerHeight)) return;
+        c.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px)' }, { transform: 'none' }], { duration: 620, easing: EASE });
+      });
+      var k = 0;
+      entering.forEach(function (c) {
+        if (!inView(c)) return;
+        c.animate([
+          { opacity: 0, transform: 'translateY(22px) scale(.95)' },
+          { opacity: 1, transform: 'none' }
+        ], { duration: 560, delay: Math.min(k++, 12) * 45, easing: EASE, fill: 'backwards' });
+      });
+    }
+
+    var outs = motion ? leaving.filter(inView) : [];
+    if (!outs.length) { commit(); return; }
+    var anims = outs.map(function (c, i) {
+      return c.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'scale(.94)' }],
+        { duration: 200, delay: Math.min(i, 6) * 15, easing: 'cubic-bezier(.4,0,1,1)', fill: 'forwards' });
+    });
+    Promise.all(anims.map(function (a) { return a.finished; })).then(commit, commit);
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { if (t.getAttribute('data-filter') !== current) applyFilter(t.getAttribute('data-filter'), true); });
+    t.addEventListener('keydown', function (e) {
+      var j = null;
+      if (e.key === 'ArrowRight') j = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft') j = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') j = 0;
+      else if (e.key === 'End') j = tabs.length - 1;
+      if (j === null) return;
+      e.preventDefault(); tabs[j].focus(); applyFilter(tabs[j].getAttribute('data-filter'), true);
+    });
   });
-  document.getElementById('lb-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-  document.getElementById('lb-overlay').classList.remove('open');
-  document.getElementById('lb-img').src = '';
-  document.body.style.overflow = '';
-}
+  stats.forEach(function (s) {
+    s.addEventListener('click', function () {
+      var cat = s.getAttribute('data-go');
+      applyFilter(cat === current ? 'all' : cat, true);
+      if (bar) bar.scrollIntoView({ behavior: still() ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+  moveInd(false);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { moveInd(false); });
+  var rz = 0;
+  window.addEventListener('resize', function () { cancelAnimationFrame(rz); rz = requestAnimationFrame(function () { moveInd(false); }); });
 
-/* Video modal */
-function openVideo(id) {
-  document.getElementById('vm-iframe').src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
-  document.getElementById('vm-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeVideo() {
-  document.getElementById('vm-iframe').src = '';
-  document.getElementById('vm-overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
+  /* ---- Hover tilt + sheen (fine pointers only) --------------------------- */
+  var tiles = $$('.gx-tile[data-photo]', root);
+  tiles.forEach(function (b) {
+    var raf = 0, ev = null;
+    b.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse' || !mqFine.matches || still()) return;
+      ev = e;
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = 0;
+        var r = b.getBoundingClientRect();
+        var px = (ev.clientX - r.left) / r.width, py = (ev.clientY - r.top) / r.height;
+        var amp = r.width > 420 ? 3.5 : 6;
+        b.classList.add('is-tilting');
+        b.style.setProperty('--ry', ((px - 0.5) * amp).toFixed(2) + 'deg');
+        b.style.setProperty('--rx', ((0.5 - py) * amp).toFixed(2) + 'deg');
+        b.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+        b.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+      });
+    });
+    b.addEventListener('pointerleave', function () {
+      if (raf) { cancelAnimationFrame(raf); raf = 0; }
+      b.classList.remove('is-tilting');
+      b.style.removeProperty('--rx'); b.style.removeProperty('--ry');
+    });
+  });
 
-/* Escape key closes any open overlay */
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') { closeLightbox(); closeVideo(); }
-});
+  /* ---- Dialog helpers: scroll lock, focus trap, focus return ------------- */
+  var openEl = null, lastFocus = null;
+  function focusables(el) {
+    return $$('button, [href], iframe, [tabindex]:not([tabindex="-1"])', el).filter(function (n) {
+      return !n.disabled && n.offsetParent !== null;
+    });
+  }
+  function lockScroll(on) {
+    var de = document.documentElement;
+    if (on) {
+      var sw = window.innerWidth - de.clientWidth;
+      de.style.overflow = 'hidden';
+      if (sw > 0) document.body.style.paddingRight = sw + 'px';
+    } else { de.style.overflow = ''; document.body.style.paddingRight = ''; }
+  }
+  function showDialog(el, from) {
+    if (openEl && openEl !== el) hideDialog(openEl, null, true);
+    lastFocus = from || document.activeElement;
+    el.hidden = false;
+    void el.offsetWidth;
+    el.classList.add('is-open');
+    lockScroll(true);
+    openEl = el;
+    var f = focusables(el); if (f.length) f[0].focus({ preventScroll: true });
+  }
+  function hideDialog(el, done, instant) {
+    el.classList.remove('is-open');
+    var fin = function () { if (!el.classList.contains('is-open')) el.hidden = true; if (done) done(); };
+    if (instant || still()) fin(); else setTimeout(fin, 360);
+    if (openEl === el) {
+      openEl = null; lockScroll(false);
+      if (!instant && lastFocus && document.contains(lastFocus)) { try { lastFocus.focus({ preventScroll: true }); } catch (err) { lastFocus.focus(); } }
+    }
+  }
+  document.addEventListener('focusin', function (e) {
+    if (openEl && !openEl.contains(e.target)) { var f = focusables(openEl); if (f.length) f[0].focus({ preventScroll: true }); }
+  });
+
+  /* ---- Lightbox --------------------------------------------------------- */
+  var lb = $('#gx-lb'), lbImg = $('#gx-lb-img'), lbCap = $('#gx-lb-cap'), lbI = $('#gx-lb-i'), lbProg = $('#gx-lb-prog'), stage = $('#gx-lb-stage');
+  var photos = tiles.map(function (b) { var im = b.querySelector('img'); return { src: im.getAttribute('src'), alt: im.getAttribute('alt') }; });
+  $('#gx-lb-n').textContent = photos.length;
+  var cur = 0, token = 0;
+
+  function preload(i) { var p = photos[(i + photos.length) % photos.length]; var im = new Image(); im.decoding = 'async'; im.src = p.src; }
+  function setPhoto(i, dir, from) {
+    var n = photos.length;
+    cur = (i + n) % n;
+    var p = photos[cur], my = ++token;
+    lbI.textContent = cur + 1;
+    lbProg.style.transform = 'scaleX(' + ((cur + 1) / n) + ')';
+    function reveal() {
+      if (my !== token) return;
+      var running = lbImg.getAnimations ? lbImg.getAnimations() : [];
+      if (still()) { running.forEach(function (a) { a.cancel(); }); return; }
+      var kf;
+      if (from && inView(from)) {
+        var r1 = from.getBoundingClientRect(), r2 = lbImg.getBoundingClientRect();
+        if (r2.width > 0) {
+          var s = Math.min(r1.width / r2.width, r1.height / r2.height) || 0.5;
+          var dx = (r1.left + r1.width / 2) - (r2.left + r2.width / 2);
+          var dy = (r1.top + r1.height / 2) - (r2.top + r2.height / 2);
+          kf = [{ transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + s + ')', opacity: 0.35 }, { transform: 'none', opacity: 1 }];
+        }
+      }
+      if (!kf) kf = dir ? [{ transform: 'translateX(' + dir * 48 + 'px)', opacity: 0 }, { transform: 'none', opacity: 1 }]
+                        : [{ transform: 'scale(.96)', opacity: 0 }, { transform: 'none', opacity: 1 }];
+      running.forEach(function (a) { a.cancel(); });
+      lbImg.animate(kf, { duration: from ? 520 : 420, easing: EASE, fill: 'backwards' });
+    }
+    function swap() {
+      if (my !== token) return;
+      lbImg.src = p.src; lbImg.alt = p.alt; lbCap.textContent = p.alt;
+      var ready = lbImg.decode ? lbImg.decode().catch(function () {}) : Promise.resolve();
+      ready.then(reveal);
+    }
+    if (dir && !still() && !lb.hidden) {
+      lbImg.getAnimations().forEach(function (a) { a.cancel(); });
+      lbImg.animate([{ transform: 'none', opacity: 1 }, { transform: 'translateX(' + (-dir * 48) + 'px)', opacity: 0 }],
+        { duration: 170, easing: 'cubic-bezier(.4,0,1,1)', fill: 'forwards' }).finished.then(swap, swap);
+    } else swap();
+    preload(cur + 1); preload(cur - 1);
+  }
+  function openLightbox(i, from) {
+    lbImg.style.transform = '';
+    showDialog(lb, from);
+    setPhoto(i, 0, from);
+  }
+  function closeLightbox() { if (!lb.hidden) hideDialog(lb); }
+  function go(d) { setPhoto(cur + d, d); }
+  $('#gx-lb-prev').addEventListener('click', function () { go(-1); });
+  $('#gx-lb-next').addEventListener('click', function () { go(1); });
+
+  // Touch swipe
+  var sx = null, sy = 0, sdx = 0;
+  stage.addEventListener('pointerdown', function (e) { if (e.pointerType === 'mouse') return; sx = e.clientX; sy = e.clientY; sdx = 0; });
+  stage.addEventListener('pointermove', function (e) {
+    if (sx === null) return;
+    sdx = e.clientX - sx;
+    if (Math.abs(sdx) > Math.abs(e.clientY - sy) && !still()) lbImg.style.transform = 'translateX(' + (sdx * 0.6) + 'px)';
+  });
+  function endSwipe() {
+    if (sx === null) return;
+    var d = sdx; sx = null; lbImg.style.transform = '';
+    if (Math.abs(d) > 50) go(d < 0 ? 1 : -1);
+  }
+  stage.addEventListener('pointerup', endSwipe);
+  stage.addEventListener('pointercancel', endSwipe);
+
+  /* ---- Video modal (iframe created only on open) ------------------------- */
+  var vm = $('#gx-vm'), vmBox = $('#gx-vm-ratio'), vmTitle = $('#gx-vm-title');
+  function openVideo(id, title, from) {
+    vmBox.innerHTML = '';
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0';
+    f.title = title || 'Video';
+    f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    f.setAttribute('allowfullscreen', '');
+    f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    vmBox.appendChild(f);
+    vmTitle.textContent = title || 'Video';
+    showDialog(vm, from);
+  }
+  function closeVideo() { if (vm.hidden) return; vmBox.innerHTML = ''; hideDialog(vm); }
+
+  [lb, vm].forEach(function (d) {
+    d.addEventListener('click', function (e) {
+      if (e.target.closest('[data-close]')) { if (d === lb) closeLightbox(); else closeVideo(); }
+    });
+  });
+
+  /* ---- Click delegation inside the section ------------------------------- */
+  root.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-photo], [data-open], [data-video]');
+    if (!t || !root.contains(t)) return;
+    if (t.hasAttribute('data-video')) { openVideo(t.getAttribute('data-video'), t.getAttribute('data-title'), t); return; }
+    var i = parseInt(t.getAttribute(t.hasAttribute('data-photo') ? 'data-photo' : 'data-open'), 10);
+    if (!isNaN(i)) openLightbox(i, t);
+  });
+
+  /* ---- Keyboard: Esc, arrows, focus trap --------------------------------- */
+  document.addEventListener('keydown', function (e) {
+    if (!openEl) return;
+    if (e.key === 'Escape') { e.preventDefault(); if (openEl === lb) closeLightbox(); else closeVideo(); return; }
+    if (openEl === lb && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { e.preventDefault(); go(e.key === 'ArrowRight' ? 1 : -1); return; }
+    if (openEl === lb && (e.key === 'Home' || e.key === 'End')) { e.preventDefault(); setPhoto(e.key === 'Home' ? 0 : photos.length - 1, e.key === 'Home' ? -1 : 1); return; }
+    if (e.key === 'Tab') {
+      var f = focusables(openEl); if (!f.length) return;
+      var a = f[0], z = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+      else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+    }
+  });
+
+  /* ---- Backwards-compatible globals ------------------------------------- */
+  window.openLightbox = function (src) {
+    var i = photos.map(function (p) { return p.src; }).indexOf(src);
+    openLightbox(i < 0 ? 0 : i, null);
+  };
+  window.closeLightbox = closeLightbox;
+  window.openVideo = function (id, title) { openVideo(id, title, null); };
+  window.closeVideo = closeVideo;
+})();
 </script>
 </body>
 </html>

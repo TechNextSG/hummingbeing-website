@@ -15,7 +15,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap">
-  <link rel="stylesheet" href="styles.css?v=93" />
+  <link rel="stylesheet" href="styles.css?v=94" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3" />
@@ -687,65 +687,76 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="t-item">Self-Regulation</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Dr. David Berceli Method</span><span class="t-sep">&middot;</span><span class="t-item">Neurogenic Tremors</span><span class="t-sep">&middot;</span><span class="t-item">Vagal Tone</span><span class="t-sep">&middot;</span><span class="t-item">Psoas Release</span><span class="t-sep">&middot;</span><span class="t-item">Europe &middot; US &middot; Asia &middot; Worldwide</span><span class="t-sep">&middot;</span><span class="t-item">Free Discovery Call</span><span class="t-sep">&middot;</span><span class="t-item"><span class="t-star">&#9733;</span> Certified Reiki Level II</span><span class="t-sep">&middot;</span><span class="t-item">Nervous System Literacy</span><span class="t-sep">&middot;</span>  </div>
 </div>
 
-<!-- BIG ANIMATED COUNTDOWN -->
-<section class="ecd-section" aria-label="Countdown to next event">
-  <div class="ecd-bg-pulse" aria-hidden="true">
-    <div class="ecd-pulse-ring"></div>
-    <div class="ecd-pulse-ring"></div>
-    <div class="ecd-pulse-ring"></div>
-  </div>
-  <div class="ecd-inner">
-    <span class="ecd-eyebrow"><i class="fa-solid fa-star"></i> Countdown to Next Event</span>
-    <h2 class="ecd-heading">From Shaking to Shaping &mdash; Online<br><em>Online &middot; 8 October 2026 &middot; 7&#8211;9pm</em></h2>
-    <div class="ecd-meta">
-      <i class="fa-regular fa-calendar"></i> Thursday, 8 October 2026
-      <span>&middot;</span> <i class="fa-solid fa-video"></i> Live Online
+<!-- NEXT EVENT COUNTDOWN (interactive) -->
+<style>
+  .ecx{position:relative;overflow:hidden;isolation:isolate;padding:clamp(3.5rem,7vw,5.5rem) 6%;color:#fff;
+    background:radial-gradient(900px circle at var(--mx,70%) var(--my,30%),rgba(245,166,35,.16),transparent 55%),linear-gradient(160deg,#101624 0%,#1a2336 55%,#0d111c 100%)}
+  .ecx::before{content:"";position:absolute;inset:0;z-index:-1;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%)}
+  .ecx-orb{position:absolute;width:640px;height:640px;right:-160px;top:50%;margin-top:-320px;z-index:-1;border-radius:50%;filter:blur(40px);opacity:.55;
+    background:conic-gradient(from 0deg,rgba(245,166,35,.55),rgba(58,74,102,.2),rgba(201,128,0,.45),rgba(58,74,102,.15),rgba(245,166,35,.55));animation:ecx-spin 24s linear infinite}
+  @keyframes ecx-spin{to{transform:rotate(360deg)}}
+  .ecx-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+  .ecx-live{display:inline-flex;align-items:center;gap:.6rem;font-family:'Lato',sans-serif;font-size:.72rem;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+  .ecx-live i{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(245,166,35,.6);animation:ecx-beat 1.8s infinite}
+  @keyframes ecx-beat{0%{box-shadow:0 0 0 0 rgba(245,166,35,.6)}70%{box-shadow:0 0 0 12px rgba(245,166,35,0)}100%{box-shadow:0 0 0 0 rgba(245,166,35,0)}}
+  .ecx-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,3.8vw,3rem);font-weight:800;line-height:1.08;color:#fff;margin:0 0 .6rem}
+  .ecx-sub{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(1.1rem,1.8vw,1.45rem);color:var(--gold);margin:0 0 1.4rem}
+  .ecx-meta{list-style:none;margin:0 0 1.8rem;padding:0;display:flex;flex-wrap:wrap;gap:.55rem}
+  .ecx-meta li{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .85rem;border-radius:100px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);font-size:.84rem;color:#dbe3f1}
+  .ecx-meta i{color:var(--gold)}
+  .ecx-actions{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+  .ecx-actions button.btn{cursor:pointer}
+  .ecx-info{transition:opacity .45s cubic-bezier(.23,1,.32,1),transform .55s cubic-bezier(.23,1,.32,1)}
+  .ecx-info.swap{opacity:0;transform:translateY(14px)}
+  .ecx-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.6rem,1.4vw,1rem)}
+  .ecx-tile{position:relative;border-radius:20px;padding:1.3rem .6rem 1rem;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);
+    transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.23,1,.32,1),border-color .4s;overflow:hidden}
+  .ecx-tile::before{content:"";position:absolute;left:18%;right:18%;top:0;height:2px;border-radius:2px;background:var(--gold);box-shadow:0 0 18px 2px rgba(245,166,35,.55)}
+  .ecx-tile:hover{border-color:rgba(245,166,35,.45)}
+  .ecx-num{display:inline-flex;justify-content:center;height:1.15em;overflow:hidden;font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(2.4rem,4.6vw,3.9rem);line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+  .ecx-col{display:block;width:.62em;height:1.15em;overflow:hidden}
+  .ecx-strip{display:flex;flex-direction:column;transition:transform .7s cubic-bezier(.34,1.3,.5,1)}
+  .ecx-strip span{height:1.15em;line-height:1.15em;display:block}
+  .ecx-lbl{display:block;margin-top:.7rem;font-size:.66rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#93a0ba}
+  .ecx-prog{position:absolute;left:0;bottom:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(var(--f,0));background:linear-gradient(90deg,rgba(245,166,35,.25),var(--gold));transition:transform 1s linear}
+  .ecx-note{margin:1.2rem 0 0;font-size:.84rem;color:#93a0ba;display:flex;align-items:center;gap:.5rem}
+  .ecx-note i{color:var(--gold)}
+  .ecx-next{margin-top:1.6rem;padding-top:1.3rem;border-top:1px solid rgba(255,255,255,.1)}
+  .ecx-next h3{font-family:'Lato',sans-serif;font-size:.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#93a0ba;margin:0 0 .8rem}
+  .ecx-chips{display:flex;flex-wrap:wrap;gap:.55rem}
+  .ecx-chip{display:inline-flex;align-items:center;gap:.6rem;min-height:44px;padding:.5rem .95rem;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);color:#dbe3f1;font:600 .84rem 'Lato',sans-serif;cursor:pointer;text-align:left;transition:border-color .3s,background .3s,color .3s,transform .3s cubic-bezier(.23,1,.32,1)}
+  .ecx-chip b{font-family:'Playfair Display',Georgia,serif;font-size:1rem;color:var(--gold);min-width:2.6ch}
+  .ecx-chip:hover{border-color:rgba(245,166,35,.55);transform:translateY(-2px)}
+  .ecx-chip[aria-pressed="true"]{border-color:var(--gold);background:rgba(245,166,35,.12);color:#fff}
+  .ecx-chip:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .ecx-now{grid-column:1/-1;padding:1.6rem;border-radius:20px;border:1px solid rgba(245,166,35,.45);text-align:center;font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;color:var(--gold)}
+  @media(max-width:900px){.ecx-inner{grid-template-columns:1fr}.ecx-orb{width:420px;height:420px;margin-top:-210px;right:-200px}}
+  @media(max-width:520px){.ecx-tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:.45rem}.ecx-tile{padding:1rem .2rem .8rem;border-radius:14px}.ecx-num{font-size:2rem}.ecx-lbl{font-size:.56rem;letter-spacing:1.2px}.ecx-actions .btn{flex:1 1 100%;justify-content:center;text-align:center}}
+  @media(prefers-reduced-motion:reduce){.ecx-orb,.ecx-live i{animation:none}.ecx-strip,.ecx-prog,.ecx-info,.ecx-tile{transition:none}}
+</style>
+<section class="ecx" id="next-event" aria-labelledby="ecx-title">
+  <div class="ecx-orb" aria-hidden="true"></div>
+  <div class="ecx-inner">
+    <div class="ecx-info" id="ecx-info">
+      <span class="ecx-live"><i aria-hidden="true"></i>Next live event</span>
+      <h2 class="ecx-title" id="ecx-title">From Shaking to Shaping &mdash; Online</h2>
+      <p class="ecx-sub" id="ecx-sub">Online &middot; 8 October 2026 &middot; 7&#8211;9pm</p>
+      <ul class="ecx-meta" id="ecx-meta"></ul>
+      <div class="ecx-actions">
+        <a href="event-shaking-online.html" class="btn btn-primary" id="ecx-reg">Register now</a>
+        <button type="button" class="btn btn-outline" id="ecx-ics"><i class="fa-regular fa-calendar-plus" aria-hidden="true"></i>&nbsp; Add to calendar</button>
+      </div>
     </div>
-    <div class="ecd-units" id="ecd-units">
-      <div class="ecd-unit">
-        <div class="ecd-ring-wrap">
-          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
-            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
-            <circle class="ecd-ring-fg" id="rng-days" cx="60" cy="60" r="54"/>
-          </svg>
-          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-days">--</span></div>
-        </div>
-        <span class="ecd-lbl">Days</span>
+    <div class="ecx-clock">
+      <div class="ecx-tiles" id="ecx-tiles" role="timer" aria-label="Time remaining">
+        <div class="ecx-tile" data-u="d"><span class="ecx-num" aria-hidden="true"></span><span class="ecx-lbl">Days</span><i class="ecx-prog"></i></div>
+        <div class="ecx-tile" data-u="h"><span class="ecx-num" aria-hidden="true"></span><span class="ecx-lbl">Hours</span><i class="ecx-prog"></i></div>
+        <div class="ecx-tile" data-u="m"><span class="ecx-num" aria-hidden="true"></span><span class="ecx-lbl">Minutes</span><i class="ecx-prog"></i></div>
+        <div class="ecx-tile" data-u="s"><span class="ecx-num" aria-hidden="true"></span><span class="ecx-lbl">Seconds</span><i class="ecx-prog"></i></div>
       </div>
-      <div class="ecd-unit">
-        <div class="ecd-ring-wrap">
-          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
-            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
-            <circle class="ecd-ring-fg" id="rng-hours" cx="60" cy="60" r="54"/>
-          </svg>
-          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-hours">--</span></div>
-        </div>
-        <span class="ecd-lbl">Hours</span>
-      </div>
-      <div class="ecd-unit">
-        <div class="ecd-ring-wrap">
-          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
-            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
-            <circle class="ecd-ring-fg" id="rng-mins" cx="60" cy="60" r="54"/>
-          </svg>
-          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-mins">--</span></div>
-        </div>
-        <span class="ecd-lbl">Minutes</span>
-      </div>
-      <div class="ecd-unit">
-        <div class="ecd-ring-wrap">
-          <svg class="ecd-svg" viewBox="0 0 120 120" aria-hidden="true">
-            <circle class="ecd-ring-bg" cx="60" cy="60" r="54"/>
-            <circle class="ecd-ring-fg" id="rng-secs" cx="60" cy="60" r="54"/>
-          </svg>
-          <div class="ecd-num-wrap"><span class="ecd-num" id="ecd-secs">--</span></div>
-        </div>
-        <span class="ecd-lbl">Seconds</span>
-      </div>
-    </div>
-    <div class="ecd-actions">
-      <a href="event-shaking-to-shaping.html" class="btn btn-primary">Register Now</a>
-      <a href="#events-grid" class="btn-ghost-light">Browse All Events</a>
+      <p class="sr-only" id="ecx-sr" aria-live="polite"></p>
+      <p class="ecx-note" id="ecx-local"></p>
+      <div class="ecx-next" id="ecx-next" hidden><h3>Also coming up &mdash; tap to count down</h3><div class="ecx-chips" id="ecx-chips"></div></div>
     </div>
   </div>
 </section>
@@ -1051,10 +1062,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 <script src="scripts.js" defer></script>
 <script>
-/* Big countdown section — DYNAMIC featured event.
-   Auto-selects the earliest event that is neither past nor sold out,
-   populates the heading/meta/register link, and re-selects automatically
-   once that event passes (or is flagged sold out). Add/flag events below. */
+/* Next-event countdown — DYNAMIC and interactive.
+   Picks the earliest event that is neither past nor sold out, lets visitors switch
+   to the other upcoming events, rolls each digit, shows the visitor's local time
+   and offers an .ics "Add to calendar". Add/flag events in EVENTS below. */
 (function(){
   var EVENTS=[
     { title:'The Body in the Room &mdash; with Aun Ali',
@@ -1074,50 +1085,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       metaCal:'27&#8211;28 February 2027', metaLoc:'Singapore', metaIcon:'fa-solid fa-location-dot',
       date:'2027-02-27T09:00:00+08:00', href:'event-certification-2027.html', soldOut:false }
   ];
-  var sec=document.querySelector('.ecd-section');
-  if(!sec)return;
+  var sec=document.getElementById('next-event'); if(!sec) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var now=Date.now();
-  var featured=EVENTS.filter(function(e){
-      return !e.soldOut && new Date(e.date).getTime()>now;
-    }).sort(function(a,b){ return new Date(a.date)-new Date(b.date); })[0];
-  if(!featured){ sec.style.display='none'; return; }
-
-  var hEl=sec.querySelector('.ecd-heading');
-  if(hEl) hEl.innerHTML=featured.title+'<br><em>'+featured.sub+'</em>';
-  var mEl=sec.querySelector('.ecd-meta');
-  if(mEl) mEl.innerHTML='<i class="fa-regular fa-calendar"></i> '+featured.metaCal+
-    ' <span>&middot;</span> <i class="'+featured.metaIcon+'"></i> '+featured.metaLoc;
-  var reg=sec.querySelector('.ecd-actions .btn-primary');
-  if(reg) reg.setAttribute('href',featured.href);
-
-  var target=new Date(featured.date).getTime();
-  var CIRC=2*Math.PI*54;
-  function pad(n){return String(n).padStart(2,'0');}
-  function setRing(id,val,max){
-    var el=document.getElementById(id);if(!el)return;
-    el.style.strokeDashoffset=(CIRC*(1-Math.min(1,Math.max(0,val/max)))).toFixed(2);
+  var list=EVENTS.filter(function(e){return !e.soldOut && new Date(e.date).getTime()>now;})
+                 .sort(function(a,b){return new Date(a.date)-new Date(b.date);});
+  if(!list.length){ sec.style.display='none'; return; }
+  var cur=list[0], target=0, timer=0;
+  var info=document.getElementById('ecx-info'), tiles=[].slice.call(sec.querySelectorAll('.ecx-tile'));
+  function strip(t){ var d=document.createElement('div'); d.innerHTML=t; return (d.textContent||'').trim(); }
+  function col(){ var c=document.createElement('span'); c.className='ecx-col'; var st=document.createElement('span'); st.className='ecx-strip';
+    for(var i=0;i<10;i++){ var n=document.createElement('span'); n.textContent=i; st.appendChild(n); } c.appendChild(st); return c; }
+  function setDigits(el,val,minLen){ var str=String(val); while(str.length<minLen) str='0'+str;
+    while(el.children.length<str.length) el.insertBefore(col(),el.firstChild);
+    while(el.children.length>str.length) el.removeChild(el.firstChild);
+    for(var i=0;i<str.length;i++) el.children[i].firstChild.style.transform='translateY(-'+(+str[i]*1.15).toFixed(2)+'em)'; }
+  function render(){
+    document.getElementById('ecx-title').innerHTML=cur.title;
+    document.getElementById('ecx-sub').innerHTML=cur.sub;
+    document.getElementById('ecx-meta').innerHTML='<li><i class="fa-regular fa-calendar"></i>'+cur.metaCal+'</li><li><i class="'+cur.metaIcon+'"></i>'+cur.metaLoc+'</li>';
+    document.getElementById('ecx-reg').setAttribute('href',cur.href);
+    target=new Date(cur.date).getTime();
+    var loc=document.getElementById('ecx-local');
+    try{ var f=new Intl.DateTimeFormat(undefined,{weekday:'short',day:'numeric',month:'short',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+      loc.innerHTML='<i class="fa-regular fa-clock"></i>In your time zone: <strong style="color:#fff;font-weight:700">&nbsp;'+f.format(new Date(target))+'</strong>'; }catch(e){ loc.textContent=''; }
+    var chips=document.getElementById('ecx-chips'), wrap=document.getElementById('ecx-next');
+    chips.innerHTML=''; wrap.hidden=list.length<2;
+    list.slice(0,4).forEach(function(e){ var d=new Date(e.date); var b=document.createElement('button'); b.type='button'; b.className='ecx-chip';
+      b.setAttribute('aria-pressed',e===cur?'true':'false');
+      b.innerHTML='<b>'+d.getDate()+'</b><span>'+d.toLocaleString('en-GB',{month:'short'})+' &middot; '+strip(e.title).replace(/ \u2014 .*$/,'')+'</span>';
+      b.addEventListener('click',function(){ if(e===cur) return; switchTo(e); }); chips.appendChild(b); });
+    tick();
   }
-  function setNum(id,val){
-    var el=document.getElementById(id);if(!el)return;
-    var v=pad(val);if(el.textContent===v)return;
-    el.classList.remove('ecd-flip');void el.offsetWidth;
-    el.textContent=v;el.classList.add('ecd-flip');
-  }
-  function tickEcd(){
+  function switchTo(e){ if(reduce){ cur=e; render(); return; } info.classList.add('swap'); setTimeout(function(){ cur=e; render(); info.classList.remove('swap'); },260); }
+  var lastSr='';
+  function tick(){
     var diff=target-Date.now();
-    if(diff<=0){
-      var u=document.getElementById('ecd-units');
-      if(u)u.innerHTML='<p style="color:var(--gold);font-size:1.5rem;font-weight:700">Event is happening now!</p>';
-      return;
-    }
-    var d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),
-        m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-    setNum('ecd-days',d);   setRing('rng-days',d,Math.max(90, d + 1));
-    setNum('ecd-hours',h);  setRing('rng-hours',h,24);
-    setNum('ecd-mins',m);   setRing('rng-mins',m,60);
-    setNum('ecd-secs',s);   setRing('rng-secs',s,60);
+    if(diff<=0){ document.getElementById('ecx-tiles').innerHTML='<p class="ecx-now">It&#8217;s happening now &mdash; join us live.</p>'; clearInterval(timer); return; }
+    var d=Math.floor(diff/864e5), h=Math.floor(diff%864e5/36e5), m=Math.floor(diff%36e5/6e4), s=Math.floor(diff%6e4/1e3);
+    var vals={d:d,h:h,m:m,s:s}, max={d:Math.max(30,d+1),h:24,m:60,s:60};
+    tiles.forEach(function(t){ var u=t.dataset.u; setDigits(t.querySelector('.ecx-num'),vals[u],2); t.style.setProperty('--f',(vals[u]/max[u]).toFixed(3)); });
+    var sr=d+' days, '+h+' hours to go'; if(sr!==lastSr){ document.getElementById('ecx-sr').textContent=sr; lastSr=sr; }
   }
-  tickEcd();setInterval(tickEcd,1000);
+  document.getElementById('ecx-ics').addEventListener('click',function(){
+    var st=new Date(cur.date), en=new Date(st.getTime()+2*36e5);
+    function z(x){ return x.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''); }
+    var url=new URL(cur.href,location.href).href;
+    var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//HummingBeing//Events//EN','BEGIN:VEVENT','UID:'+z(st)+'@hummingbeing.com','DTSTAMP:'+z(new Date()),
+      'DTSTART:'+z(st),'DTEND:'+z(en),'SUMMARY:'+strip(cur.title),'DESCRIPTION:'+strip(cur.sub)+' \\n'+url,'LOCATION:'+strip(cur.metaLoc),'URL:'+url,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+    var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
+    a.download=strip(cur.title).replace(/[^a-z0-9]+/gi,'-').replace(/^-|-$/g,'').toLowerCase()+'.ics';
+    document.body.appendChild(a); a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); },500);
+  });
+  if(fine && !reduce){
+    sec.addEventListener('pointermove',function(e){ var r=sec.getBoundingClientRect();
+      sec.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%'); sec.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%'); });
+    tiles.forEach(function(t){ t.addEventListener('pointermove',function(e){ var r=t.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      t.style.setProperty('--rx',(y*-10).toFixed(1)+'deg'); t.style.setProperty('--ry',(x*12).toFixed(1)+'deg'); });
+      t.addEventListener('pointerleave',function(){ t.style.setProperty('--rx','0deg'); t.style.setProperty('--ry','0deg'); }); });
+  }
+  render(); timer=setInterval(tick,1000);
+  if(window.hbInitButtons) window.hbInitButtons();
 })();
 
 /* ===== Date-driven event status: runs fresh on every page load =====
