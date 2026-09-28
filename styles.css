@@ -1830,3 +1830,22 @@ nav.scrolled .nav-cta { color: var(--navy) !important; border-color: var(--navy)
 @media (min-width: 901px) { .steps.steps-live { grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: 1.4rem; } .steps-live .steps-track { left: calc(50% / var(--n, 4)); right: calc(50% / var(--n, 4)); } }
 
 body.menu-lock .wa-float, body.menu-lock .top-float, body.menu-lock .hb-chat-btn, body.menu-lock .hb-chat-win { opacity: 0 !important; pointer-events: none !important; transition: opacity .2s; }
+
+/* Philosophy cards quick fix 2026-09-29: even padding so the lifted card frames its content */
+.philo-live .philo-row { margin-inline: -1.6rem; }
+.philo-live .philo-item,
+.philo-live .philo-item + .philo-item,
+.philo-live .philo-item:last-child,
+.philo-live .philo-row-2 .philo-item { padding: 2rem 1.6rem 2.2rem !important; border-right-color: transparent !important; }
+.philo-live .philo-row-2 { border-top-color: transparent; }
+.philo-live .philo-item::after { left: 1.6rem; right: 1.6rem; }
+.philo-live .philo-icon { margin: .4rem 0 .2rem !important; }
+.philo-live.has-hover .philo-item:not(:hover) { opacity: .82; }
+@media (max-width: 600px) {
+  .philo-live .philo-row { margin-inline: 0; }
+  .philo-live .philo-item,
+  .philo-live .philo-item + .philo-item,
+  .philo-live .philo-item:last-child,
+  .philo-live .philo-row-2 .philo-item { padding: 1.4rem 1.2rem 1.6rem !important; border-bottom-color: rgba(36,46,66,.06) !important; }
+  .philo-live .philo-item::after { left: 1.2rem; right: 1.2rem; }
+}
