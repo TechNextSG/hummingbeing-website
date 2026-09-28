@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>MOCKUP — HummingBeing home page redesign</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="styles.css?v=93" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3" />
+  <link rel="preload" as="image" href="images/isabelle-hero.webp" fetchpriority="high">
+  <style>
+    /* ================= TICKET BOOK — home page mockup ================= */
+    :root{
+      --ink:#242e42; --ink-deep:#1a2030; --ink-mid:#3a4a66; --gold:#F5A623; --gold-dark:#c98000;
+      --card:#fafaf8; --paper:#ffffff; --rule:rgba(36,46,66,.14); --rule-soft:rgba(36,46,66,.08);
+      --text:#3d4250; --muted:#5f6472;
+      --sans:'Lato',system-ui,sans-serif; --serif:'Playfair Display',Georgia,serif;
+      --ease:cubic-bezier(.23,1,.32,1);
+      --s1:.5rem; --s2:.75rem; --s3:1rem; --s4:1.5rem; --s5:2rem; --s6:3rem;
+      --wrap:1180px;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--card);color:var(--text);font-family:var(--sans);font-size:1rem;line-height:1.55}
+    ::selection{background:rgba(245,166,35,.35);color:var(--ink)}
+    .wrap{max-width:var(--wrap);margin:0 auto;padding:0 5%}
+    .tb h1,.tb h2,.tb h3{font-family:var(--serif);color:var(--ink);letter-spacing:-.01em;text-wrap:balance;margin:0}
+    .tb h2{font-size:clamp(1.5rem,2.4vw,1.95rem);font-weight:700;line-height:1.15}
+    .tb p{margin:0}
+    .tb a{color:inherit}
+    .lbl{font-family:var(--sans);font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .num{font-variant-numeric:tabular-nums lining-nums}
+    .ico{width:18px;height:18px;flex:0 0 18px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+    .ico.lg{width:26px;height:26px;flex-basis:26px}
+
+    /* ---- cover (first viewport) ---- */
+    .cover{background:var(--ink-deep);color:#fff;position:relative;overflow:hidden}
+    .cover::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(60% 80% at 82% 40%,rgba(245,166,35,.16),transparent 60%),
+      linear-gradient(180deg,rgba(26,32,48,0) 0%,rgba(26,32,48,.35) 100%)}
+    .cover-inner{position:relative;z-index:1;max-width:var(--wrap);margin:0 auto;padding:118px 5% 0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--s6);align-items:end}
+    .cover-copy{padding-bottom:var(--s6)}
+    .cover .stamp{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--gold);margin-bottom:var(--s3)}
+    .cover .stamp::before{content:"";width:28px;height:1px;background:var(--gold)}
+    .cover h1{font-size:clamp(2.1rem,4.6vw,3.35rem);font-weight:800;line-height:1.06;color:#fff;margin-bottom:var(--s3)}
+    .cover h1 em{font-style:italic;color:var(--gold)}
+    .cover .lead{font-size:1.06rem;line-height:1.6;color:#dbe3f1;max-width:52ch;margin-bottom:var(--s4)}
+    .cover .lead strong{color:#fff}
+    .seals{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);align-items:center}
+    .seal{display:flex;align-items:center;gap:.55rem;font-size:.86rem;color:#c7d2e6;font-weight:700}
+    .seal img{width:40px;height:40px;border-radius:50%;background:#fff;padding:3px}
+    .seal .ico{color:var(--gold)}
+    .seal small{display:block;font-weight:400;color:#93a0ba;font-size:.76rem;letter-spacing:.02em}
+    /* plate + reservation stub */
+    .cover-plate{position:relative;align-self:stretch;min-height:520px}
+    .cover-plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 30%;border-radius:14px 14px 0 0;filter:saturate(.92)}
+    .cover-plate::after{content:"";position:absolute;inset:0;border-radius:14px 14px 0 0;background:linear-gradient(180deg,rgba(26,32,48,0) 45%,rgba(26,32,48,.55) 100%)}
+    .reserve{position:absolute;left:-28px;bottom:var(--s5);z-index:2;width:min(340px,92%);background:var(--paper);color:var(--ink);border-radius:12px;padding:var(--s4) var(--s4) var(--s3);box-shadow:0 22px 50px rgba(0,0,0,.35);
+      -webkit-mask:radial-gradient(9px at 0 50%,transparent 97%,#000) -9px 50%/100% 100% no-repeat; mask:radial-gradient(9px at 0 50%,transparent 97%,#000) -9px 50%/100% 100% no-repeat}
+    .reserve::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--gold);border-radius:12px 0 0 12px}
+    .reserve .lbl{color:var(--gold-dark);margin-bottom:.35rem}
+    .reserve h3{font-size:1.32rem;line-height:1.2;margin-bottom:.4rem}
+    .reserve p{font-size:.88rem;color:var(--muted);line-height:1.5;margin-bottom:var(--s3)}
+    .reserve .btn{display:block;text-align:center}
+    .reserve .fine{display:flex;gap:1rem;margin-top:var(--s2);font-size:.74rem;color:var(--muted)}
+    .reserve .fine span{display:inline-flex;align-items:center;gap:.35rem}
+    .reserve .fine .ico{width:14px;height:14px;flex-basis:14px;color:var(--gold-dark)}
+
+    /* ---- ticket strip ---- */
+    .tickets{margin-top:-1px;background:var(--card);border-bottom:1px solid var(--rule)}
+    .tickets-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:var(--s4) 0 var(--s3)}
+    .tickets-head a{font-size:.86rem;font-weight:700;color:var(--gold-dark);text-decoration:none;display:inline-flex;align-items:center;gap:.35rem}
+    .tickets-head a .ico{width:16px;height:16px;flex-basis:16px}
+    .ticket-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);padding-bottom:var(--s5)}
+    .ticket{position:relative;display:grid;grid-template-columns:66px minmax(0,1fr);background:var(--paper);border:1px solid var(--rule);border-radius:10px;overflow:hidden;transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s}
+    .ticket:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(36,46,66,.12);border-color:rgba(245,166,35,.55)}
+    .ticket .date{background:var(--ink);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--s3) .5rem;text-align:center;border-right:1px dashed rgba(255,255,255,.35)}
+    .ticket .date b{font-family:var(--serif);font-size:1.6rem;line-height:1;font-weight:700}
+    .ticket .date span{font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#c7d2e6;margin-top:.3rem}
+    .ticket .date i{font-style:normal;font-size:.62rem;color:var(--gold);margin-top:.35rem;letter-spacing:.06em}
+    .ticket.cohort{border-color:rgba(245,166,35,.6)}
+    .ticket.cohort .date{box-shadow:inset 0 4px 0 var(--gold)}
+    .ticket .body{padding:var(--s3) var(--s3) var(--s2);display:flex;flex-direction:column;gap:.35rem;min-width:0}
+    .ticket .tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;line-height:1.3;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .ticket .tag .ico{width:13px;height:13px;flex-basis:13px;color:var(--gold-dark)}
+    .ticket h3{font-size:1.02rem;line-height:1.25}
+    .ticket .meta{font-size:.8rem;color:var(--muted)}
+    .ticket .price{font-size:.84rem;color:var(--ink);font-weight:700;margin-top:auto;padding-top:.4rem}
+    .ticket .price small{font-weight:400;color:var(--muted)}
+    .ticket .acts{display:grid;gap:.45rem;margin-top:.45rem;padding-top:.6rem;border-top:1px dashed var(--rule)}
+    .ticket .acts .btn{padding:.55rem .6rem;font-size:.68rem;letter-spacing:.08em;text-align:center;white-space:nowrap}
+    .ticket .acts a.more{font-size:.78rem;font-weight:700;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:.25rem;justify-self:end}
+    .ticket .acts a.more:hover,.tickets-head a:hover,.cert .cta a.txt:hover,.close .r a.txt:hover{color:var(--gold-dark)}
+    .ticket .acts a.more .ico{width:14px;height:14px;flex-basis:14px}
+    .ticket.sold .date{background:#6b7280}
+    .ticket.sold .acts .btn{pointer-events:none;background:#c0392b;border-color:#c0392b}
+
+    /* ---- section rhythm ---- */
+    .sec{padding:var(--s6) 0}
+    .sec + .sec{border-top:1px solid var(--rule)}
+    .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s3);margin-bottom:var(--s4)}
+    .sec-head p{font-size:.95rem;color:var(--muted);max-width:56ch}
+
+    /* ---- practices + certification ---- */
+    .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s5);align-items:start}
+    .practice-list{display:grid;gap:0}
+    .practice{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:var(--s3);align-items:center;padding:var(--s3) 0;border-top:1px solid var(--rule-soft);text-decoration:none;color:inherit;transition:background .18s}
+    .practice:last-child{border-bottom:1px solid var(--rule-soft)}
+    .practice:hover{background:rgba(245,166,35,.06)}
+    .practice .ic{width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--gold);display:grid;place-items:center}
+    .practice h3{font-size:1.08rem;margin-bottom:.15rem}
+    .practice p{font-size:.88rem;color:var(--muted);line-height:1.45}
+    .practice .go{color:var(--gold-dark);display:inline-flex}
+    .cert{background:var(--ink);color:#fff;border-radius:14px;padding:var(--s4);position:relative;overflow:hidden}
+    .cert::after{content:"";position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;background:rgba(245,166,35,.12)}
+    .cert .lbl{color:var(--gold)}
+    .cert h2{color:#fff;font-size:1.55rem;margin:.35rem 0 .5rem}
+    .cert h2 em{font-style:italic;color:var(--gold)}
+    .cert p{color:#dbe3f1;font-size:.92rem;max-width:48ch;margin-bottom:var(--s3)}
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:.1rem var(--s3);margin:0 0 var(--s3);padding:0;list-style:none;position:relative;z-index:1}
+    .facts li{display:flex;justify-content:space-between;gap:.75rem;padding:.5rem 0;border-top:1px solid rgba(255,255,255,.14);font-size:.86rem}
+    .facts li span{color:#93a0ba}
+    .facts li b{color:#fff;font-weight:700;text-align:right}
+    .cert .cta{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;position:relative;z-index:1}
+    .cert .cta a.txt{color:#fff;font-size:.86rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
+
+    /* ---- journey + proof ---- */
+    .journey{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:var(--s5);align-items:start}
+    .steps{position:relative;list-style:none;margin:0;padding:0 0 0 30px}
+    .steps::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--rule)}
+    .steps li{position:relative;padding:0 0 var(--s3) 0}
+    .steps li::before{content:"";position:absolute;left:-26px;top:.35rem;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--ink)}
+    .steps li:first-child::before{background:var(--gold);border-color:var(--gold)}
+    .steps h3{font-size:1rem;margin-bottom:.15rem}
+    .steps p{font-size:.88rem;color:var(--muted);line-height:1.45}
+    .video{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:var(--ink-deep);box-shadow:0 18px 44px rgba(36,46,66,.18)}
+    .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .video-cap{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--muted);margin-top:.6rem}
+    .video-cap .ico{color:var(--gold-dark);width:16px;height:16px;flex-basis:16px}
+    .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3);margin-top:var(--s5)}
+    .quote{background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:var(--s3) var(--s4);position:relative}
+    .quote::before{content:"\201C";position:absolute;top:.2rem;left:.9rem;font-family:var(--serif);font-size:3rem;line-height:1;color:var(--gold);opacity:.7}
+    .quote p{font-family:var(--serif);font-style:italic;font-size:.98rem;line-height:1.5;color:var(--ink);padding-top:1.1rem;margin-bottom:.6rem}
+    .quote cite{font-style:normal;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+    /* ---- is this for you + close ---- */
+    .fit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:var(--s5);align-items:center}
+    .fit ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.55rem var(--s3)}
+    .fit li{display:flex;gap:.55rem;align-items:flex-start;font-size:.92rem;line-height:1.4}
+    .fit li .ico{color:var(--gold-dark);margin-top:2px}
+    .close{margin-top:var(--s5);background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:var(--s4);display:flex;align-items:center;justify-content:space-between;gap:var(--s4);position:relative;
+      background-image:radial-gradient(circle at 0 50%,var(--card) 9px,transparent 9.5px),radial-gradient(circle at 100% 50%,var(--card) 9px,transparent 9.5px)}
+    .close h2{font-size:1.4rem}
+    .close p{font-size:.9rem;color:var(--muted);margin-top:.25rem}
+    .close .r{display:flex;align-items:center;gap:var(--s3);flex-shrink:0}
+    .close .r a.txt{font-size:.86rem;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap}
+
+    /* ---- reveal (uses scripts.js observer classes) ---- */
+    .anim-up{opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+    .anim-up.in-view{opacity:1;transform:none}
+    @media(prefers-reduced-motion:reduce){.anim-up{opacity:1;transform:none;transition:none}.ticket,.ticket:hover{transform:none}}
+
+    /* ---- responsive ---- */
+    @media(max-width:1024px){.ticket-row{grid-template-columns:repeat(2,minmax(0,1fr))}.two,.journey,.fit{grid-template-columns:1fr}.quotes{grid-template-columns:1fr}}
+    @media(max-width:860px){
+      .cover-inner{grid-template-columns:1fr;gap:var(--s4);padding-top:104px}
+      .cover-copy{padding-bottom:0}
+      .cover-plate{min-height:420px;margin-bottom:var(--s5)}
+      .reserve{left:var(--s3);right:var(--s3);width:auto;bottom:calc(-1 * var(--s4))}
+      .cover-plate{margin-bottom:calc(var(--s6) + var(--s3))}
+    }
+    @media(max-width:600px){
+      .ticket-row{grid-template-columns:1fr}
+      .sec{padding:var(--s5) 0}
+      .cover h1{font-size:2.1rem}
+      .fit ul{grid-template-columns:1fr}
+      .close{flex-direction:column;align-items:flex-start}
+      .seals{gap:var(--s2) var(--s3)}
+    }
+  </style>
+</head>
+<body class="tb">
+
+<nav>
+  <a href="index.html" class="logo"><img src="images/logo-dark.webp" class="logo-on-dark" alt="HummingBeing — Coaching &amp; Somatics" width="168" height="56" style="height:56px;width:auto" /><img src="images/logo-light.webp" class="logo-on-light" alt="HummingBeing — Coaching &amp; Somatics" width="168" height="56" style="height:56px;width:auto" /></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="isabelle.html">Isabelle</a></li>
+    <li class="nav-dropdown">
+      <a href="javascript:void(0)" class="nav-dropdown-toggle">Services <i class="fa-solid fa-chevron-down nav-arrow"></i></a>
+      <ul class="nav-dropdown-menu">
+        <li><a href="holistic-mastermind.html">Holistic Mastermind Ecosystem</a></li>
+        <li><a href="tre-certification.html">Global Certifications</a></li>
+        <li><a href="retreats-workshops.html">Resilience Retreats</a></li>
+      </ul>
+    </li>
+    <li><a href="socials.html">Socials</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li class="nav-book-mobile"><a href="book.html">Book a Session</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="book.html" class="nav-cta">Book a Session</a>
+    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ===== COVER: master stub + reservation stub ===== -->
+<header class="cover">
+  <div class="cover-inner">
+    <div class="cover-copy">
+      <span class="stamp">Release. Renew. Restore.</span>
+      <h1>TRE&#8482;, somatic coaching &#8212; and the only <em>ICF-accredited</em> TRE&#8482; certification.</h1>
+      <p class="lead">Body-led work with <strong>Isabelle Claus Teixeira</strong>, Global TRE&#8482; Certifying Trainer and ICF PCC executive coach. Sessions online and in Singapore for people carrying chronic stress &#8212; and a certification pathway for the professionals who want to teach it.</p>
+      <div class="seals">
+        <span class="seal"><img src="images/logo-icf-cce.webp" alt="ICF CCE" width="40" height="40" loading="lazy" /><span>ICF CCEs<small>Module 1 &middot; 21 CCEUs</small></span></span>
+        <span class="seal"><svg class="ico lg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg><span>Certifying Trainer<small>Trained under Dr. David Berceli</small></span></span>
+        <span class="seal"><svg class="ico lg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span>30 years &middot; 9 countries<small>40+ nationalities coached</small></span></span>
+      </div>
+    </div>
+    <div class="cover-plate">
+      <img src="images/isabelle-hero.webp" alt="Isabelle Claus Teixeira leading a TRE™ session" width="1600" height="893" fetchpriority="high" />
+      <aside class="reserve" aria-label="Reserve a free discovery chat">
+        <span class="lbl">Reservation stub</span>
+        <h3>A free 30-minute chat with Isabelle</h3>
+        <p>Tell her what you're carrying, or which credential you're weighing. She'll tell you honestly which practice fits.</p>
+        <a href="book.html" class="btn btn-primary">Reserve my free chat</a>
+        <div class="fine"><span><svg class="ico" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>No commitment</span><span><svg class="ico" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Reply within 24h</span></div>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<!-- ===== TICKET STRIP: next dated events ===== -->
+<section class="tickets" aria-labelledby="next-h">
+  <div class="wrap">
+    <div class="tickets-head">
+      <h2 id="next-h">Next on the calendar</h2>
+      <a href="events.html">All events <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="ticket-row">
+      <article class="ticket anim-up">
+        <div class="date num"><b>8</b><span>Oct 2026</span><i>7&#8211;9pm SGT</i></div>
+        <div class="body">
+          <span class="tag"><svg class="ico" viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m22 7-5 4 5 4z"/></svg>Online &middot; TRE&#8482; in coaching</span>
+          <h3>From Shaking to Shaping</h3>
+          <p class="meta">With Isabelle &amp; Saymara Ryon &middot; 3 ICF CCEs</p>
+          <p class="price">Register via Neurogenic Integration</p>
+          <div class="acts"><a href="event-shaking-online.html" class="btn btn-primary">Register</a><a class="more" href="event-shaking-online.html">Details <svg class="ico" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="ticket anim-up">
+        <div class="date num"><b>28</b><span>Oct 2026</span><i>7&#8211;9:30pm</i></div>
+        <div class="body">
+          <span class="tag"><svg class="ico" viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m22 7-5 4 5 4z"/></svg>Online &middot; Guest: Sara Marie</span>
+          <h3>Feminine &amp; Masculine Energetics</h3>
+          <p class="meta">Inside corporate structures &middot; Zoom</p>
+          <p class="price">88 SGD <small>&middot; TRE&#8482; providers 68 SGD</small></p>
+          <div class="acts"><a href="https://calendly.com/sara-spirit/feminine-masculine-energetics-in-the-corporate-world" target="_blank" rel="noopener" class="btn btn-primary">Register</a><a class="more" href="event-feminine-masculine-energetics.html">Details <svg class="ico" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="ticket anim-up">
+        <div class="date num"><b>25</b><span>Nov 2026</span><i>7pm SGT</i></div>
+        <div class="body">
+          <span class="tag"><svg class="ico" viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="m22 7-5 4 5 4z"/></svg>Online &middot; For therapists</span>
+          <h3>The Body in the Room</h3>
+          <p class="meta">TRE&#8482; &amp; somatic practice in psychotherapy &middot; Aun Ali</p>
+          <p class="price">Open workshop <small>&middot; on Zoom</small></p>
+          <div class="acts"><a href="https://us02web.zoom.us/j/86108202439" target="_blank" rel="noopener" class="btn btn-primary">Join</a><a class="more" href="event-body-in-the-room.html">Details <svg class="ico" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+      <article class="ticket cohort anim-up">
+        <div class="date num"><b>27</b><span>Feb 2027</span><i>Module 1</i></div>
+        <div class="body">
+          <span class="tag"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="M6 10.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-5.5"/></svg>Singapore &middot; Certification</span>
+          <h3>Become a Certified TRE&#8482; Provider</h3>
+          <p class="meta">2027 cohort &middot; 3 modules, Feb&#8211;Oct &middot; with Simba Stenqvist</p>
+          <p class="price">From S$5,888 <small>early bird to 31 Dec</small></p>
+          <div class="acts"><a href="event-certification-2027.html" class="btn btn-primary">Register</a><a class="more" href="tre-certification.html">Details <svg class="ico" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRACTICES + CERTIFICATION ===== -->
+<section class="sec" aria-labelledby="pr-h">
+  <div class="wrap two">
+    <div>
+      <div class="sec-head"><h2 id="pr-h">Three practices, one nervous system</h2></div>
+      <div class="practice-list">
+        <a class="practice anim-up" href="holistic-mastermind.html">
+          <span class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M2 12c3-6 6-6 9 0s6 6 9 0"/><path d="M2 17c3-6 6-6 9 0s6 6 9 0" opacity=".5"/></svg></span>
+          <span><h3>TRE&#8482; Exercises</h3><p>Seven simple exercises that switch on the body's own tremor reflex and let stored tension go. Learnable in 3&#8211;4 sessions, yours for life.</p></span>
+          <span class="go"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="practice anim-up" href="holistic-mastermind.html">
+          <span class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v1a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4z"/><path d="M9 8H7a3 3 0 0 0 0 6h2M15 8h2a3 3 0 0 1 0 6h-2M12 12v9M9 21h6"/></svg></span>
+          <span><h3>Somatic &amp; Executive Coaching</h3><p>Trauma- and neuroscience-informed coaching for leaders &#8212; the body in the room, not just the story. 8-week package S$2,300.</p></span>
+          <span class="go"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="practice anim-up" href="retreats-workshops.html">
+          <span class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M12 21c-4-3-8-6-8-11a8 8 0 0 1 16 0c0 5-4 8-8 11z"/><path d="M12 7v6M9 10h6"/></svg></span>
+          <span><h3>Mindfulness, Retreats &amp; Workshops</h3><p>A 6&#8211;8 session mindfulness journey, and immersive retreats combining TRE&#8482;, somatic healing and breathwork.</p></span>
+          <span class="go"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+    <div class="cert anim-up">
+      <span class="lbl">For coaches, therapists &amp; HR professionals</span>
+      <h2>Train to teach TRE&#8482; &#8212; <em>with ICF credit</em></h2>
+      <p>The Global TRE&#8482; Provider Certification, 2027 Singapore cohort. Co-taught by Isabelle and Simba Stenqvist, boosted by Internal Alchemy. One cohort a year.</p>
+      <ul class="facts num">
+        <li><span>Module 1</span><b>27&#8211;28 Feb 2027</b></li>
+        <li><span>Module 2</span><b>3&#8211;4 Jul 2027</b></li>
+        <li><span>Module 3</span><b>30&#8211;31 Oct 2027</b></li>
+        <li><span>ICF CCEs</span><b>21 &middot; Module 1</b></li>
+        <li><span>Full certification</span><b>S$5,888 early bird</b></li>
+        <li><span>Module 1 only</span><b>S$1,888 early bird</b></li>
+      </ul>
+      <div class="cta"><a href="event-certification-2027.html" class="btn btn-primary">See the 2027 cohort</a><a class="txt" href="tre-certification.html">How certification works <svg class="ico" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS + VIDEO + QUOTES ===== -->
+<section class="sec" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="journey">
+      <div>
+        <div class="sec-head"><h2 id="how-h">How a session journey works</h2></div>
+        <ol class="steps">
+          <li class="anim-up"><h3>Free 30-minute chat</h3><p>What you're carrying, and which practice fits. No commitment.</p></li>
+          <li class="anim-up"><h3>Guided 1:1 sessions</h3><p>Isabelle activates your body's own release mechanism, safely and gradually.</p></li>
+          <li class="anim-up"><h3>Self-practice</h3><p>After 3&#8211;4 sessions most people practise alone &#8212; a tool for life.</p></li>
+          <li class="anim-up"><h3>Integration</h3><p>Support as new patterns settle into work, relationships and sleep.</p></li>
+        </ol>
+        <a href="book.html" class="btn btn-primary">Reserve my free chat</a>
+      </div>
+      <div class="anim-up">
+        <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/8_UE9nKEh2s?rel=0" title="How Isabelle and Simba teach TRE™" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+        <p class="video-cap"><svg class="ico" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>Inside a live TRE&#8482; training &#8212; how Isabelle and Simba teach, guide and hold the room.</p>
+      </div>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote anim-up"><p>I am less anxious and feel so much more grounded. I never expected a body-based practice to create such profound changes in my mindset.</p><cite>Senior manager, Singapore</cite></blockquote>
+      <blockquote class="quote anim-up"><p>I slept so well after my first TRE&#8482; session. Three months in, my relationship with stress has completely changed.</p><cite>Finance executive, Tokyo</cite></blockquote>
+      <blockquote class="quote anim-up"><p>Thank you, dear Isabelle, for going beyond a trainer with your passion, energy and care. Let's keep this community growing.</p><cite>R.H., TRE&#8482; certification student</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IS THIS FOR YOU + CLOSE ===== -->
+<section class="sec" aria-labelledby="fit-h">
+  <div class="wrap">
+    <div class="fit">
+      <div><h2 id="fit-h">You don't need a particular story</h2><p style="margin-top:.6rem;color:var(--muted);font-size:.95rem">You don't need to be in crisis &#8212; just the quiet pull to come back to yourself.</p></div>
+      <ul>
+        <li><svg class="ico" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Exhausted in a way sleep doesn't fix</li>
+        <li><svg class="ico" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Going through a big life or work change</li>
+        <li><svg class="ico" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Anxiety or tension feels like your default</li>
+        <li><svg class="ico" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Something happened you don't want to talk through</li>
+        <li><svg class="ico" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>You want to feel more present, more like you</li>
+        <li><svg class="ico" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>You're a professional who wants a body-based tool to offer clients</li>
+      </ul>
+    </div>
+    <div class="close anim-up">
+      <div><h2>Start with a free chat</h2><p>30 minutes with Isabelle, online or in Singapore. No commitment &middot; reply within 24 hours.</p></div>
+      <div class="r"><a class="txt" href="https://wa.me/818065151778" target="_blank" rel="noopener">WhatsApp instead</a><a href="book.html" class="btn btn-primary">Reserve my free chat</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <a href="index.html" class="foot-logo"><img src="images/logo-dark.webp" alt="HummingBeing — Coaching &amp; Somatics" width="144" height="48" style="height:48px;width:auto;display:block" /></a>
+      <p class="foot-desc">Science backed processes with TRE&#8482;, Coaching and Somatic Practices &#8212; a space to release, renew and restore.</p>
+      <p class="foot-desc">Part of <strong>Business and Human Development Consulting Pte Ltd</strong></p>
+      <div class="foot-socials">
+        <a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank" class="soc" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/isabelleclausteixeira/" target="_blank" class="soc" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@IsabelleClausTeixeira" target="_blank" class="soc" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/818065151778" target="_blank" class="soc" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">Services</div>
+      <ul class="foot-links">
+        <li><a href="holistic-mastermind.html">Holistic Mastermind Ecosystem</a></li>
+        <li><a href="tre-certification.html">Global Certifications</a></li>
+        <li><a href="retreats-workshops.html">Resilience Retreats</a></li>
+        <li><a href="book.html">Book a Session</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Company</div>
+      <ul class="foot-links">
+        <li><a href="about.html">About HummingBeing</a></li>
+        <li><a href="isabelle.html">Meet Isabelle</a></li>
+        <li><a href="socials.html">Social Media</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="https://bhdasia.com" target="_blank">BHD Asia</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-h">Contact</div>
+      <ul class="foot-links">
+        <li><a href="mailto:isabelle@bhdasia.com">isabelle@bhdasia.com</a></li>
+        <li><a href="https://wa.me/818065151778" target="_blank">WhatsApp Us</a></li>
+        <li><span>Global</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">&#169; 2026 HummingBeing &#8212; Business and Human Development Consulting Pte Ltd</div>
+    <div class="foot-legal">
+      <span>Privacy Policy</span>
+      <span>Terms of Service</span>
+      <span class="foot-sep">&#183;</span>
+      <a href="https://technext.asia" target="_blank">Powered by <span class="tn-brand">TechNext</span></a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+<script src="scripts.js" defer></script>
+<script>
+  // reveal for elements that scripts.js's observer does not already cover
+  document.addEventListener('DOMContentLoaded', function(){
+    if (!('IntersectionObserver' in window)) { document.querySelectorAll('.anim-up').forEach(function(e){ e.classList.add('in-view'); }); return; }
+    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in-view'); io.unobserve(en.target); } }); }, {threshold:.12, rootMargin:'0px 0px -20px 0px'});
+    document.querySelectorAll('.anim-up').forEach(function(e,i){ e.style.transitionDelay = (i%4*60)+'ms'; io.observe(e); });
+  });
+</script>
+</body>
+</html>
