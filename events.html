@@ -15,7 +15,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap">
-  <link rel="stylesheet" href="styles.css?v=95" />
+  <link rel="stylesheet" href="styles.css?v=96" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3" />
@@ -286,6 +286,271 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     @media (max-width: 820px) {
       .evt-two-col { grid-template-columns: 1fr; }
       .evt-pricing-table { grid-template-columns: 1fr; }
+    }
+  </style>
+  <style>
+    /* ==========================================================================
+       EVENTS LISTING (.ev) - upcoming grid + past-events strip.
+       Filter pills with live counts + sliding indicator, grid / by-month view,
+       FLIP re-layout, pointer tilt + spotlight cards, "Starts in N days" chips,
+       swipeable archive. Everything scoped to section.ev.
+       ========================================================================== */
+    .ev {
+      --ev-navy: #242e42; --ev-deep: #1a2030; --ev-mid: #3a4a66;
+      --ev-gold: #F5A623; --ev-gold-d: #c98000; --ev-cream: #fafaf8;
+      --ev-text: #3d4250; --ev-soft: #5f6472;
+      --ev-ease: cubic-bezier(.23, 1, .32, 1);
+      --ev-r: 16px; --ev-gap: clamp(14px, 1.8vw, 22px);
+      position: relative; overflow: hidden; isolation: isolate;
+      padding: clamp(3.5rem, 7vw, 6rem) clamp(16px, 5vw, 64px);
+      color: var(--ev-text);
+    }
+    .ev-up {
+      background:
+        radial-gradient(900px 480px at 100% 0%, rgba(245, 166, 35, .10), transparent 60%),
+        radial-gradient(700px 420px at 0% 100%, rgba(58, 74, 102, .07), transparent 60%),
+        var(--ev-cream);
+    }
+    .ev-past { background: #fff; padding-top: clamp(3rem, 6vw, 5rem); }
+    .ev-wrap { max-width: 1240px; margin: 0 auto; position: relative; }
+    .ev :focus-visible { outline: 3px solid var(--ev-gold); outline-offset: 3px; }
+
+    /* -- Section heads -------------------------------------------------------- */
+    .ev-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.25rem 2rem; margin-bottom: clamp(1.4rem, 3vw, 2rem); }
+    .ev-head-t { min-width: 0; }
+    .ev-head .section-eyebrow { display: inline-flex; align-items: center; gap: .7rem; color: var(--ev-navy); margin-bottom: .85rem; }
+    .ev-head .section-eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--ev-gold); }
+    .ev-head .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.08; margin: 0 0 .65rem; color: var(--ev-navy); }
+    .ev-past .ev-head .section-title { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+    .ev-head .section-subtitle { margin: 0; max-width: none; font-size: 1rem; color: var(--ev-soft); }
+    .ev-count span { display: inline-block; min-width: 1ch; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.4em; line-height: 1; color: var(--ev-navy); font-variant-numeric: tabular-nums; }
+    .ev-count #evt-count-up { color: var(--ev-gold-d); }
+
+    /* -- View toggle ---------------------------------------------------------- */
+    .ev-views { display: inline-flex; gap: .25rem; padding: 5px; border-radius: 999px; background: rgba(36, 46, 66, .06); }
+    .ev-view {
+      display: inline-flex; align-items: center; gap: .5rem; min-height: 40px; padding: 0 1rem; margin: 0;
+      border: 0; border-radius: 999px; background: transparent; color: var(--ev-soft); cursor: pointer;
+      font: 700 .7rem/1 'Lato', sans-serif; letter-spacing: 1.1px; text-transform: uppercase;
+      transition: background .35s var(--ev-ease), color .35s var(--ev-ease), box-shadow .35s var(--ev-ease), transform .3s var(--ev-ease);
+    }
+    .ev-view i { color: var(--ev-gold-d); font-size: .85rem; }
+    .ev-view:hover { color: var(--ev-navy); }
+    .ev-view:active { transform: scale(.96); }
+    .ev-view[aria-pressed="true"] { background: #fff; color: var(--ev-navy); box-shadow: 0 4px 14px rgba(36, 46, 66, .12); }
+    .ev:not(.ev-js) .ev-views { display: none; }
+
+    /* -- Filter pills (role=tablist) ------------------------------------------ */
+    .ev-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; margin-bottom: clamp(1.3rem, 2.4vw, 1.8rem); }
+    .ev .evt-filter {
+      position: relative; display: flex; flex-wrap: nowrap; justify-content: flex-start; gap: .2rem;
+      margin: 0; padding: 5px; max-width: 100%; min-width: 0;
+      border-radius: 999px; background: #fff; border: 1px solid rgba(36, 46, 66, .1);
+      box-shadow: 0 6px 24px rgba(36, 46, 66, .06);
+      overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
+    }
+    .ev .evt-filter::-webkit-scrollbar { display: none; }
+    .ev-ind {
+      position: absolute; left: 0; top: 5px; bottom: 5px; width: 0; z-index: 0; pointer-events: none;
+      border-radius: 999px; background: var(--ev-navy); box-shadow: 0 6px 18px rgba(36, 46, 66, .25);
+      transition: transform .5s var(--ev-ease), width .5s var(--ev-ease);
+    }
+    .ev .evt-filter-btn {
+      position: relative; z-index: 1; flex: 0 0 auto; display: inline-flex; align-items: center; gap: .55rem;
+      min-height: 44px; margin: 0; padding: 0 1rem 0 1.1rem; border: 0; border-radius: 999px;
+      background: transparent; color: var(--ev-navy); cursor: pointer;
+      font: 700 .72rem/1 'Lato', sans-serif; letter-spacing: 1.2px; text-transform: uppercase; white-space: nowrap;
+      transition: color .35s var(--ev-ease), background .35s var(--ev-ease), opacity .3s;
+    }
+    .ev .evt-filter-btn:hover { color: var(--ev-navy); background: rgba(36, 46, 66, .05); border-color: transparent; }
+    .ev .evt-filter-btn.is-active, .ev .evt-filter-btn.is-active:hover { color: #fff; background: transparent; }
+    .ev:not(.ev-js) .evt-filter-btn.is-active { background: var(--ev-navy); }
+    .ev .evt-filter-btn[data-empty] { opacity: .6; }
+    .ev-fc {
+      display: inline-grid; place-items: center; min-width: 1.75em; height: 1.75em; padding: 0 .45em;
+      border-radius: 999px; background: rgba(36, 46, 66, .08); color: var(--ev-navy);
+      font-size: .66rem; letter-spacing: 0; font-variant-numeric: tabular-nums;
+      transition: background .35s var(--ev-ease), color .35s var(--ev-ease), transform .45s var(--ev-ease);
+    }
+    .ev .evt-filter-btn.is-active .ev-fc { background: var(--ev-gold); color: var(--ev-deep); transform: scale(1.08); }
+    .ev-status { margin: 0; font-size: .84rem; color: var(--ev-soft); min-height: 1.3em; }
+    .ev-status b { color: var(--ev-navy); }
+
+    /* -- Grid ----------------------------------------------------------------- */
+    .ev .evt-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ev-gap); align-items: stretch; }
+
+    /* -- Card ----------------------------------------------------------------- */
+    .ev .evt-card {
+      position: relative; display: flex; flex-direction: column; min-width: 0;
+      background: #fff; border-radius: var(--ev-r); overflow: hidden;
+      border: 1px solid rgba(36, 46, 66, .08); box-shadow: 0 6px 24px rgba(36, 46, 66, .07);
+      transform: perspective(1000px) rotateX(var(--ev-rx, 0deg)) rotateY(var(--ev-ry, 0deg)) translateY(var(--ev-lift, 0px));
+      transition: transform .6s var(--ev-ease), box-shadow .5s var(--ev-ease), border-color .4s var(--ev-ease),
+                  opacity .7s var(--ev-ease) var(--d, 0ms), translate .9s var(--ev-ease) var(--d, 0ms);
+    }
+    .ev .evt-card::after {
+      content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none; border-radius: inherit;
+      background: radial-gradient(460px circle at var(--ev-px, 50%) var(--ev-py, 0%), rgba(245, 166, 35, .16), transparent 55%);
+      opacity: 0; transition: opacity .45s var(--ev-ease);
+    }
+    .ev .evt-card.is-hidden { display: none; }
+    .ev .evt-card:focus-within { border-color: rgba(245, 166, 35, .6); }
+    @media (hover: hover) and (pointer: fine) {
+      .ev .evt-card:hover { --ev-lift: -6px; box-shadow: 0 26px 60px rgba(26, 32, 48, .18); border-color: rgba(245, 166, 35, .45); }
+      .ev .evt-card:hover::after { opacity: 1; }
+      .ev .evt-card:hover .evt-card-thumb img { transform: scale(1.06); }
+      .ev .evt-card:hover .ev-cal { transform: translateY(-2px) rotate(-3deg); }
+      .ev .evt-card.ev-tilting { transition: transform .14s linear, box-shadow .5s var(--ev-ease), border-color .4s var(--ev-ease), opacity .7s var(--ev-ease), translate .9s var(--ev-ease); }
+    }
+
+    .ev .evt-card-thumb { display: block; position: relative; line-height: 0; overflow: hidden; aspect-ratio: 16 / 9; background: var(--ev-navy); }
+    .ev .evt-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1s var(--ev-ease), filter .6s var(--ev-ease); }
+    .ev .evt-card-thumb::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(26, 32, 48, 0) 58%, rgba(26, 32, 48, .5) 100%); }
+    .ev .evt-card.is-sold .evt-card-thumb img { filter: grayscale(35%) brightness(.94); }
+    .ev .evt-card.is-past .evt-card-thumb img { filter: grayscale(65%) brightness(.9); }
+    .ev .evt-card.is-past:hover .evt-card-thumb img, .ev .evt-card.is-past:focus-within .evt-card-thumb img { filter: none; }
+
+    /* status badges (created by the status script) */
+    .ev .evt-sold-badge, .ev .evt-past-badge, .ev .evt-ongoing-badge, .ev .evt-upcoming-badge {
+      position: absolute; top: 12px; left: 12px; z-index: 3; display: inline-flex; align-items: center; gap: .4rem;
+      padding: .45rem .75rem; border-radius: 999px; line-height: 1;
+      font: 900 .6rem/1 'Lato', sans-serif; letter-spacing: 1.5px; text-transform: uppercase;
+      box-shadow: 0 6px 18px rgba(26, 32, 48, .3);
+    }
+    .ev .evt-sold-badge { background: #c0392b; color: #fff; }
+    .ev .evt-past-badge { background: rgba(36, 46, 66, .9); color: #fff; }
+    .ev .evt-ongoing-badge { background: var(--ev-navy); color: #fff; }
+    .ev .evt-ongoing-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ev-gold); animation: ev-beat 1.6s ease-out infinite; }
+    .ev .evt-upcoming-badge { background: var(--ev-gold); color: var(--ev-deep); }
+
+    /* date block + "starts in" chip (added by JS) */
+    .ev-cal {
+      position: absolute; top: 10px; right: 10px; z-index: 3; width: 52px; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; padding: .5rem 0 .45rem;
+      border-radius: 12px; background: rgba(250, 250, 248, .96); color: var(--ev-navy); line-height: 1;
+      box-shadow: 0 8px 22px rgba(26, 32, 48, .28); transition: transform .5s var(--ev-ease);
+    }
+    .ev-cal::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--ev-gold); }
+    .ev-cal b { font-family: 'Playfair Display', Georgia, serif; font-size: 1.35rem; font-weight: 700; }
+    .ev-cal span { margin-top: .22rem; font: 900 .56rem/1 'Lato', sans-serif; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ev-mid); }
+    .ev-when {
+      position: absolute; left: 12px; bottom: 12px; z-index: 3; display: inline-flex; align-items: center; gap: .45rem;
+      padding: .45rem .78rem; border-radius: 999px; line-height: 1;
+      background: rgba(26, 32, 48, .8); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+      color: #fff; font: 700 .7rem/1 'Lato', sans-serif; letter-spacing: .3px;
+    }
+    .ev-when i { color: var(--ev-gold); }
+    .ev-when.ev-soon { background: var(--ev-gold); color: var(--ev-deep); }
+    .ev-when.ev-soon i { color: var(--ev-deep); }
+
+    .ev .evt-card-content { position: relative; display: flex; flex-direction: column; gap: .6rem; flex: 1; min-width: 0; padding: 1.15rem 1.25rem 1.3rem; }
+    .ev .evt-card-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .ev .evt-tag { font: 700 .6rem/1 'Lato', sans-serif; letter-spacing: 1.1px; text-transform: uppercase; padding: .36rem .65rem; border-radius: 999px; background: rgba(36, 46, 66, .07); color: var(--ev-navy); }
+    .ev .evt-tag.loc { background: rgba(245, 166, 35, .2); color: var(--ev-deep); }
+    .ev .evt-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.16rem; font-weight: 700; line-height: 1.25; color: var(--ev-navy); margin: 0; }
+    .ev .evt-dates { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; }
+    .ev .evt-date-tag {
+      display: inline-flex; align-items: center; gap: .4rem; padding: .36rem .68rem; border-radius: 999px;
+      border: 1px solid rgba(36, 46, 66, .12); background: rgba(36, 46, 66, .05); color: var(--ev-navy);
+      font: 800 .7rem/1.15 'Lato', sans-serif; white-space: nowrap;
+    }
+    .ev .evt-date-tag.is-upcoming { background: rgba(245, 166, 35, .12); border-color: rgba(245, 166, 35, .55); color: var(--ev-navy); }
+    .ev .evt-date-tag.is-upcoming::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ev-gold); flex: 0 0 auto; }
+    .ev .evt-date-tag.is-ongoing { background: rgba(245, 166, 35, .22); border-color: var(--ev-gold); color: var(--ev-navy); }
+    .ev .evt-date-tag.is-ongoing::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ev-gold-d); flex: 0 0 auto; animation: ev-pulse 1.8s ease-out infinite; }
+    .ev .evt-date-tag.is-past, .ev .evt-date-tag.is-closed { background: rgba(36, 46, 66, .05); border-color: rgba(36, 46, 66, .1); color: var(--ev-soft); }
+    .ev .evt-card-desc { font-size: .86rem; line-height: 1.6; color: var(--ev-text); margin: 0; flex: 0 0 auto; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .ev .evt-card-actions { display: flex; gap: .55rem; margin-top: auto; padding-top: .45rem; }
+    .ev .evt-card-actions .btn { flex: 1; text-align: center; padding: .66rem .5rem; font-size: .66rem; }
+    /* the page's existing status / secondary button rules, carried over unchanged */
+    .ev .btn.btn-soldout { background: #c0392b !important; border-color: #c0392b !important; color: #fff !important; cursor: not-allowed; pointer-events: none; opacity: .92; box-shadow: none !important; }
+    .ev .btn.btn-ended { background: #5b6472 !important; border-color: #5b6472 !important; color: #fff !important; cursor: default; pointer-events: none; opacity: .95; box-shadow: none !important; }
+    .ev .evt-card .evt-btn-2 { background: transparent; border-color: var(--navy); color: var(--navy); }
+    .ev .evt-card .evt-btn-2:hover { background: var(--navy); border-color: var(--navy); color: #fff; box-shadow: 0 12px 30px rgba(36, 46, 66, .3); }
+
+    .ev .evt-empty { grid-column: 1 / -1; display: none; margin: 0; padding: 3rem 1rem; text-align: center; color: var(--ev-soft); border: 1px dashed rgba(36, 46, 66, .22); border-radius: var(--ev-r); background: rgba(255, 255, 255, .6); }
+
+    /* -- By-month timeline view ------------------------------------------------ */
+    .ev .evt-grid.ev-by-month { grid-template-columns: minmax(0, 1fr); gap: 1rem; position: relative; padding-left: 2.4rem; }
+    .ev .evt-grid.ev-by-month::before { content: ""; position: absolute; left: 9px; top: .9rem; bottom: .5rem; width: 2px; border-radius: 2px; background: linear-gradient(180deg, var(--ev-gold), rgba(245, 166, 35, .12)); }
+    .ev-month { position: relative; display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .9rem; margin: 1.1rem 0 0; }
+    .ev-month:first-child { margin-top: 0; }
+    .ev-month::before { content: ""; position: absolute; left: -2.4rem; top: .45rem; width: 20px; height: 20px; border-radius: 50%; box-sizing: border-box; background: var(--ev-cream); border: 4px solid var(--ev-gold); box-shadow: 0 0 0 5px rgba(245, 166, 35, .14); }
+    .ev-month.ev-m-sold::before { border-color: #c0392b; box-shadow: 0 0 0 5px rgba(192, 57, 43, .12); }
+    .ev-month-l { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(1.3rem, 2.3vw, 1.7rem); line-height: 1.2; color: var(--ev-navy); }
+    .ev-month-n { font: 700 .68rem/1 'Lato', sans-serif; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ev-soft); }
+    @media (min-width: 761px) {
+      .ev .ev-by-month .evt-card { flex-direction: row; }
+      .ev .ev-by-month .evt-card-thumb { flex: 0 0 34%; aspect-ratio: auto; min-height: 210px; }
+      .ev .ev-by-month .evt-card-thumb img { position: absolute; inset: 0; }
+      .ev .ev-by-month .evt-card-content { padding: 1.4rem 1.6rem; justify-content: center; }
+      .ev .ev-by-month .evt-card h3 { font-size: 1.35rem; }
+      .ev .ev-by-month .evt-card-actions { max-width: 420px; }
+    }
+
+    /* -- Past events: swipeable strip ----------------------------------------- */
+    .ev-past-head { margin-bottom: 1.4rem; }
+    .ev-nav { display: flex; gap: .55rem; }
+    .ev-nav[hidden], .ev-prog[hidden] { display: none; }
+    .ev-arrow {
+      display: grid; place-items: center; width: 48px; height: 48px; margin: 0; padding: 0;
+      border-radius: 50%; border: 1px solid rgba(36, 46, 66, .18); background: #fff; color: var(--ev-navy); cursor: pointer; font-size: .95rem;
+      transition: background .3s var(--ev-ease), border-color .3s var(--ev-ease), color .3s var(--ev-ease), transform .3s var(--ev-ease), opacity .3s;
+    }
+    .ev-arrow:hover:not(:disabled) { background: var(--ev-navy); border-color: var(--ev-navy); color: #fff; }
+    .ev-arrow:active:not(:disabled) { transform: scale(.92); }
+    .ev-arrow:disabled { opacity: .35; cursor: default; }
+    #past-events .ev-strip {
+      display: grid; grid-auto-flow: column; grid-template-columns: none;
+      grid-auto-columns: calc((100% - 2 * var(--ev-gap)) / 3); gap: var(--ev-gap); align-items: stretch;
+      overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding: 0 6px;
+      padding: 10px 6px 1.3rem; margin: 0 -6px; scrollbar-width: thin; scrollbar-color: rgba(245, 166, 35, .6) transparent;
+    }
+    .ev-js#past-events .ev-strip { scrollbar-width: none; }
+    .ev-js#past-events .ev-strip::-webkit-scrollbar { display: none; }
+    #past-events .ev-strip > .evt-card { scroll-snap-align: start; }
+    #past-events .evt-card-desc { -webkit-line-clamp: 2; }
+    #past-events .evt-card h3 { font-size: 1.05rem; }
+    .ev-prog { position: relative; height: 3px; border-radius: 3px; background: rgba(36, 46, 66, .08); overflow: hidden; }
+    .ev-prog span { position: absolute; left: 0; top: 0; bottom: 0; width: 30%; border-radius: 3px; background: var(--ev-gold); transition: transform .25s var(--ev-ease), width .25s var(--ev-ease); }
+
+    /* -- Scroll reveal (only when our script runs) ------------------------------ */
+    .ev-js .ev-rv { opacity: 0; translate: 0 24px; }
+    .ev-js .ev-rv.ev-in { opacity: 1; translate: 0 0; transition: opacity .7s var(--ev-ease) var(--d, 0ms), translate .9s var(--ev-ease) var(--d, 0ms); }
+    .ev-js .evt-card.ev-rc:not(.ev-in) { opacity: 0; translate: 0 30px; }
+
+    @keyframes ev-beat { 0% { box-shadow: 0 0 0 0 rgba(245, 166, 35, .7); } 70%, 100% { box-shadow: 0 0 0 6px rgba(245, 166, 35, 0); } }
+    @keyframes ev-pulse { 0% { box-shadow: 0 0 0 0 rgba(245, 166, 35, .55); } 70%, 100% { box-shadow: 0 0 0 6px rgba(245, 166, 35, 0); } }
+
+    /* -- Responsive ----------------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .ev .evt-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #past-events .ev-strip { grid-auto-columns: calc((100% - var(--ev-gap)) / 2.15); }
+    }
+    @media (max-width: 760px) {
+      .ev-bar { flex-direction: column; align-items: stretch; }
+      .ev .evt-filter { align-self: stretch; }
+      .ev-status { text-align: left; }
+    }
+    @media (max-width: 640px) {
+      .ev .evt-grid { grid-template-columns: minmax(0, 1fr); }
+      .ev .evt-grid.ev-by-month { padding-left: 1.9rem; }
+      .ev .evt-grid.ev-by-month::before { left: 7px; }
+      .ev-month::before { left: -1.9rem; width: 16px; height: 16px; top: .5rem; border-width: 3px; }
+      #past-events .ev-strip { grid-auto-columns: 84%; }
+      .ev-head { align-items: flex-start; }
+      .ev-views { width: 100%; }
+      .ev-view { flex: 1; justify-content: center; white-space: nowrap; padding: 0 .6rem; }
+      .ev .evt-filter-btn { padding: 0 .85rem 0 .95rem; letter-spacing: 1px; }
+    }
+    @media (max-width: 440px) { .ev .evt-card-actions { flex-direction: column; } }
+
+    /* -- Reduced motion: no movement, content always visible -------------------- */
+    @media (prefers-reduced-motion: reduce) {
+      .ev *, .ev *::before, .ev *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0ms !important; }
+      .ev-js .ev-rv, .ev-js .evt-card.ev-rc:not(.ev-in) { opacity: 1 !important; translate: none !important; }
+      .ev .evt-card, .ev .evt-card:hover { transform: none !important; }
+      .ev .evt-card:hover .evt-card-thumb img, .ev .evt-card:hover .ev-cal { transform: none !important; }
     }
   </style>
   <!-- SEO Layer -->
@@ -762,86 +1027,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- UPCOMING EVENTS -->
-<style>
-  .evt-filter { display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; margin:0 auto 2.8rem; }
-  .evt-filter-btn {
-    font-family:'Lato',sans-serif; font-size:.74rem; font-weight:700; letter-spacing:1.2px; text-transform:uppercase;
-    padding:.6rem 1.5rem; border-radius:100px; border:1.5px solid rgba(36,46,66,.18);
-    background:transparent; color:var(--text-mid); cursor:pointer;
-    transition:background .25s ease, border-color .25s ease, color .25s ease;
-  }
-  .evt-filter-btn:hover { border-color:var(--gold); color:var(--navy); }
-  .evt-filter-btn.is-active { background:var(--navy); border-color:var(--navy); color:#fff; }
+<section class="section-cream ev ev-up" id="events-grid" aria-labelledby="ev-up-title">
+  <div class="ev-wrap">
+    <div class="ev-head">
+      <div class="ev-head-t ev-rv">
+        <span class="section-eyebrow">Calendar</span>
+        <h2 class="section-title" id="ev-up-title">Upcoming Events</h2>
+        <p class="section-subtitle ev-count" id="evt-count"><span id="evt-count-up">&ndash;</span> upcoming &middot; <span id="evt-count-past">&ndash;</span> past</p>
+      </div>
+      <div class="ev-views ev-rv" role="group" aria-label="Choose a layout" style="--d:120ms">
+        <button type="button" class="ev-view" data-view="grid" aria-pressed="true"><i class="fa-solid fa-grip" aria-hidden="true"></i>Grid</button>
+        <button type="button" class="ev-view" data-view="month" aria-pressed="false"><i class="fa-regular fa-calendar" aria-hidden="true"></i>By month</button>
+      </div>
+    </div>
 
-  .evt-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; align-items:start; }
-  .evt-card {
-    background:var(--white); border-radius:12px; overflow:hidden;
-    box-shadow:0 4px 24px rgba(36,46,66,.1); display:flex; flex-direction:column;
-    transition:transform .3s ease, box-shadow .3s ease;
-  }
-  .evt-card:hover { transform:translateY(-5px); box-shadow:0 16px 44px rgba(36,46,66,.16); }
-  .evt-card.is-hidden { display:none; }
-  .evt-card-thumb { display:block; line-height:0; background:#f4f5f7; position:relative; }
-  .evt-card-thumb img { width:100%; height:auto; display:block; }
-  .evt-sold-badge { position:absolute; top:12px; left:12px; z-index:3; background:#c0392b; color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(192,57,43,.45); }
-  .evt-card.is-sold .evt-card-thumb img { filter:grayscale(35%) brightness(.94); }
-  .btn.btn-soldout { background:#c0392b !important; border-color:#c0392b !important; color:#fff !important; cursor:not-allowed; pointer-events:none; opacity:.92; box-shadow:none !important; }
-  .evt-past-badge { position:absolute; top:12px; left:12px; z-index:3; background:rgba(36,46,66,.85); color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(36,46,66,.35); }
-  .evt-ongoing-badge { position:absolute; top:12px; left:12px; z-index:3; background:#1f9d6b; color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(31,157,107,.4); display:inline-flex; align-items:center; gap:.35rem; }
-  .evt-upcoming-badge { position:absolute; top:12px; left:12px; z-index:3; background:#2d6cdf; color:#fff; font-family:'Lato',sans-serif; font-size:.6rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase; padding:.32rem .75rem; border-radius:5px; box-shadow:0 6px 18px rgba(45,108,223,.4); }
-  .evt-ongoing-badge::before { content:""; width:6px; height:6px; border-radius:50%; background:#fff; animation:evtBadgePulse 1.6s ease-out infinite; }
-  @keyframes evtBadgePulse { 0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)} 70%{box-shadow:0 0 0 5px rgba(255,255,255,0)} 100%{box-shadow:0 0 0 0 rgba(255,255,255,0)} }
-  @media (prefers-reduced-motion:reduce){ .evt-ongoing-badge::before{ animation:none; } }
-  /* Past-events archive section */
-  .evt-archive { opacity:.96; }
-  #past-events .section-title { font-size:1.7rem; }
-  .evt-card.is-past .evt-card-thumb img { filter:grayscale(65%) brightness(.9); }
-  .btn.btn-ended { background:#5b6472 !important; border-color:#5b6472 !important; color:#fff !important; cursor:default; pointer-events:none; opacity:.95; box-shadow:none !important; }
-  .evt-card-content { padding:1.1rem 1.2rem 1.2rem; display:flex; flex-direction:column; gap:.5rem; flex:1; }
-  .evt-card-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
-  .evt-tag { font-family:'Lato',sans-serif; font-size:.56rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:.25rem .6rem; border-radius:100px; background:rgba(36,46,66,.07); color:var(--navy); }
-  .evt-tag.loc { background:rgba(245,166,35,.15); color:var(--gold-dark); }
-  .evt-card h3 { font-family:'PT Serif',Georgia,serif; font-size:1.02rem; color:var(--navy); line-height:1.25; margin:0; }
-  .evt-card-meta { font-size:.76rem; color:var(--text-mid); font-weight:700; margin:0; }
-  .evt-card-meta i { color:var(--gold); margin-right:.35rem; }
-  /* Colour-coded date tags — gold when upcoming/ongoing, gray once passed (set by JS) */
-  .evt-dates { display:flex; flex-wrap:wrap; gap:.34rem; margin:0; }
-  .evt-date-tag { display:inline-flex; align-items:center; gap:.32rem; font-family:'Lato',sans-serif; font-size:.68rem; font-weight:800; letter-spacing:.01em; line-height:1.15; padding:.3rem .62rem; border-radius:100px; border:1px solid rgba(36,46,66,.12); background:rgba(36,46,66,.06); color:var(--navy); white-space:nowrap; }
-  .evt-date-tag.is-upcoming { background:rgba(245,166,35,.15); border-color:rgba(245,166,35,.45); color:var(--gold-dark); }
-  .evt-date-tag.is-ongoing { background:rgba(245,166,35,.24); border-color:var(--gold); color:var(--gold-dark); }
-  .evt-date-tag.is-ongoing::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--gold-dark); flex:0 0 auto; animation:evtPulse 1.8s ease-out infinite; }
-  .evt-date-tag.is-past, .evt-date-tag.is-closed { background:rgba(36,46,66,.055); border-color:rgba(36,46,66,.1); color:var(--text-mid); }
-  @keyframes evtPulse { 0%{box-shadow:0 0 0 0 rgba(245,166,35,.55)} 70%{box-shadow:0 0 0 6px rgba(245,166,35,0)} 100%{box-shadow:0 0 0 0 rgba(245,166,35,0)} }
-  @media (prefers-reduced-motion:reduce){ .evt-date-tag.is-ongoing::before{ animation:none; } }
-  .evt-card-desc { font-size:.82rem; color:var(--body-text); line-height:1.55; margin:0; flex:1; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
-  .evt-card-actions { display:flex; gap:.55rem; margin-top:.4rem; }
-  .evt-card-actions .btn { flex:1; text-align:center; padding:.62rem .5rem; font-size:.66rem; }
-  .evt-card .evt-btn-2 { background:transparent; border-color:var(--navy); color:var(--navy); }
-  .evt-card .evt-btn-2:hover { background:var(--navy); border-color:var(--navy); color:#fff; box-shadow:0 12px 30px rgba(36,46,66,.3); }
-  .evt-empty { grid-column:1/-1; text-align:center; color:var(--text-mid); padding:3rem 0; display:none; }
-  @media (max-width:900px){ .evt-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:560px){ .evt-grid{ grid-template-columns:1fr; } }
-  @media (max-width:440px){ .evt-card-actions{ flex-direction:column; } }
-</style>
-<section class="section-cream" id="events-grid">
-  <div class="section-header-center" style="margin-bottom:2rem">
-    <span class="section-eyebrow">Calendar</span>
-    <h2 class="section-title">Upcoming Events</h2>
-    <p class="section-subtitle" id="evt-count"><span id="evt-count-up">&ndash;</span> upcoming &middot; <span id="evt-count-past">&ndash;</span> past</p>
-  </div>
+    <!-- FILTER BAR -->
+    <div class="ev-bar ev-rv" style="--d:180ms">
+      <div class="evt-filter" role="tablist" aria-label="Filter events">
+        <button type="button" class="evt-filter-btn is-active" data-filter="all" role="tab" id="ev-tab-all" aria-selected="true" aria-controls="evt-grid">All events</button>
+        <button type="button" class="evt-filter-btn" data-filter="singapore" role="tab" id="ev-tab-singapore" aria-selected="false" aria-controls="evt-grid" tabindex="-1">Singapore</button>
+        <button type="button" class="evt-filter-btn" data-filter="online" role="tab" id="ev-tab-online" aria-selected="false" aria-controls="evt-grid" tabindex="-1">Online</button>
+        <button type="button" class="evt-filter-btn" data-filter="international" role="tab" id="ev-tab-international" aria-selected="false" aria-controls="evt-grid" tabindex="-1">International</button>
+        <button type="button" class="evt-filter-btn" data-filter="certification" role="tab" id="ev-tab-certification" aria-selected="false" aria-controls="evt-grid" tabindex="-1">Certification</button>
+        <button type="button" class="evt-filter-btn" data-filter="workshops" role="tab" id="ev-tab-workshops" aria-selected="false" aria-controls="evt-grid" tabindex="-1">Workshops</button>
+      </div>
+      <p class="ev-status" id="ev-status" aria-live="polite"></p>
+    </div>
 
-  <!-- FILTER BAR -->
-  <div class="evt-filter" role="tablist" aria-label="Filter events">
-    <button type="button" class="evt-filter-btn is-active" data-filter="all">All events</button>
-    <button type="button" class="evt-filter-btn" data-filter="singapore">Singapore</button>
-    <button type="button" class="evt-filter-btn" data-filter="online">Online</button>
-    <button type="button" class="evt-filter-btn" data-filter="international">International</button>
-    <button type="button" class="evt-filter-btn" data-filter="certification">Certification</button>
-    <button type="button" class="evt-filter-btn" data-filter="workshops">Workshops</button>
-  </div>
-
-  <!-- EVENT GRID -->
-  <div class="evt-grid" id="evt-grid">
+    <!-- EVENT GRID -->
+  <div class="evt-grid" id="evt-grid" role="tabpanel" aria-labelledby="ev-tab-all">
 
     <!-- 3. From Shaking to Shaping (Bucharest in-person: 20 & 24 Oct 2026 — Sep 3 online session archived separately) -->
     <article class="evt-card is-sold" data-cat="international workshops" data-start="2026-10-20" data-end="2026-10-24" data-sold="true">
@@ -950,16 +1164,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <p class="evt-empty" id="evt-empty">No events in this category yet.</p>
   </div>
+  </div>
 </section>
 
 <!-- PAST EVENTS (archive) -->
-<section class="section-white" id="past-events">
-  <div class="section-header-center" style="margin-bottom:2rem">
-    <span class="section-eyebrow">Archive</span>
-    <h2 class="section-title">Past Events</h2>
-    <p class="section-subtitle">Recently with us &mdash; now closed</p>
-  </div>
-  <div class="evt-grid evt-archive" id="evt-archive">
+<section class="section-white ev ev-past" id="past-events" aria-labelledby="ev-past-title">
+  <div class="ev-wrap">
+    <div class="ev-head ev-past-head">
+      <div class="ev-head-t ev-rv">
+        <span class="section-eyebrow">Archive</span>
+        <h2 class="section-title" id="ev-past-title">Past Events</h2>
+        <p class="section-subtitle">Recently with us &mdash; now closed</p>
+      </div>
+      <div class="ev-nav" hidden>
+        <button type="button" class="ev-arrow" data-dir="-1" aria-controls="evt-archive" aria-label="Previous past events"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+        <button type="button" class="ev-arrow" data-dir="1" aria-controls="evt-archive" aria-label="More past events"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  <div class="evt-grid evt-archive ev-strip" id="evt-archive" role="region" aria-label="Past events" tabindex="0">
 
     <article class="evt-card is-past" data-cat="online international workshops" data-start="2026-09-03" data-end="2026-09-03">
       <a href="event-shaking-to-shaping-sep3.html" class="evt-card-thumb"><span class="evt-past-badge">Passed</span><img src="images/event-shaking-to-shaping.webp?v=4" alt="From Shaking to Shaping — Online, 3 September 2026" loading="lazy" decoding="async" /></a>
@@ -1003,6 +1225,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </article>
 
+  </div>
+    <div class="ev-prog" hidden aria-hidden="true"><span></span></div>
   </div>
 </section>
 
@@ -1227,33 +1451,371 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     live.forEach(function(c){ grid.appendChild(c); });
   }
 })();
+</script>
+<script>
+/* ==========================================================================
+   EVENTS LISTING (.ev) - runs after the date-status script above has badged
+   the cards, moved passed events to #evt-archive and pushed sold-out cards to
+   the back of #evt-grid. This adds: upcoming / past counts (count-up), filter
+   pills (role=tablist) with live counts + sliding indicator + FLIP re-layout,
+   a grid / by-month view, "Starts in N days" chips, pointer tilt + spotlight,
+   scroll reveal and the swipeable past-events strip. Cards are never created
+   or renamed here: the markup in #evt-grid / #evt-archive stays the source.
+   ========================================================================== */
+(function () {
+  'use strict';
+  var up = document.getElementById('events-grid');
+  var past = document.getElementById('past-events');
+  var grid = document.getElementById('evt-grid');
+  var archive = document.getElementById('evt-archive');
+  if (!up || !grid) return;
+  [up, past].forEach(function (s) { if (s) s.classList.add('ev-js'); });
 
-/* Event filter + upcoming/past counts (recomputed after status placement) */
-(function(){
-  var btns  = document.querySelectorAll('.evt-filter-btn');
-  var empty = document.getElementById('evt-empty');
-  function gridCards(){ return document.querySelectorAll('#evt-grid .evt-card'); }
+  var EASE = 'cubic-bezier(.23,1,.32,1)';
+  var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mqFine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  var canAnim = typeof Element.prototype.animate === 'function';
+  function still() { return mqReduce.matches || !canAnim; }
+  function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+  function ms(d, endOfDay) { return d ? Date.parse(d + (endOfDay ? 'T23:59:59' : 'T00:00:00') + '+08:00') : NaN; }
+  var DAY = 864e5;
+  var todaySG = Math.floor((Date.now() + 8 * 36e5) / DAY) * DAY - 8 * 36e5; /* SGT midnight today */
+  var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var MONTH = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-  var upEl = document.getElementById('evt-count-up'), pastEl = document.getElementById('evt-count-past');
-  if (upEl)   upEl.textContent   = gridCards().length;
-  if (pastEl) pastEl.textContent = document.querySelectorAll('#evt-archive .evt-card').length;
+  var base = $$('article.evt-card', grid);            /* live cards, in the status script's order */
+  var pastCards = archive ? $$('article.evt-card', archive) : [];
+  base.forEach(function (c, i) { c._evI = i; });
 
-  function apply(f){
-    var shown = 0;
-    gridCards().forEach(function(card){
-      var match = (f === 'all') || (card.getAttribute('data-cat') || '').indexOf(f) !== -1;
-      card.classList.toggle('is-hidden', !match);
-      if (match) shown++;
-    });
-    if (empty) empty.style.display = shown === 0 ? 'block' : 'none';
+  /* ---- Date block + "Starts in N days" chip ------------------------------- */
+  function decorate(card, live) {
+    var th = card.querySelector('.evt-card-thumb'), st = card.getAttribute('data-start');
+    if (!th || !st || th.querySelector('.ev-cal')) return;
+    var p = st.split('-');
+    if (p.length === 3) {
+      var cal = document.createElement('span');
+      cal.className = 'ev-cal'; cal.setAttribute('aria-hidden', 'true');
+      cal.innerHTML = '<b>' + (+p[2]) + '</b><span>' + MON[+p[1] - 1] + '</span>';
+      th.appendChild(cal);
+    }
+    if (!live) return;
+    var days = Math.round((ms(st, false) - todaySG) / DAY);
+    if (isNaN(days) || days < 0) return;                /* already under way */
+    var txt = days === 0 ? 'Starts today' : days === 1 ? 'Starts tomorrow'
+      : days < 60 ? 'Starts in ' + days + ' days' : 'Starts in ' + Math.round(days / 30.44) + ' months';
+    var w = document.createElement('span');
+    w.className = 'ev-when' + (days <= 14 ? ' ev-soon' : '');
+    w.innerHTML = '<i class="fa-regular fa-clock" aria-hidden="true"></i><span>' + txt + '</span>';
+    th.appendChild(w);
   }
-  btns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      btns.forEach(function(b){ b.classList.remove('is-active'); });
-      btn.classList.add('is-active');
-      apply(btn.getAttribute('data-filter'));
-    });
+  base.forEach(function (c) { decorate(c, !(c.classList.contains('is-sold') || c.getAttribute('data-sold') === 'true')); });
+  pastCards.forEach(function (c) { decorate(c, false); });
+
+  /* ---- Scroll reveal ------------------------------------------------------ */
+  var hasIO = 'IntersectionObserver' in window;
+  var revealIO = hasIO ? new IntersectionObserver(function (entries) {
+    entries.filter(function (e) { return e.isIntersecting; })
+      .sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left; })
+      .forEach(function (e, i) {
+        var el = e.target;
+        if (el.classList.contains('ev-rc')) {
+          el.style.setProperty('--d', Math.min(i, 6) * 70 + 'ms');
+          setTimeout(function () { el.style.removeProperty('--d'); }, 1500);
+        }
+        el.classList.add('ev-in');
+        revealIO.unobserve(el);
+      });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }) : null;
+  base.concat(pastCards).forEach(function (c) { c.classList.add('ev-rc'); });
+  $$('.ev-rv, .ev-rc', up).concat(past ? $$('.ev-rv, .ev-rc', past) : []).forEach(function (el) {
+    if (revealIO && !still()) revealIO.observe(el); else el.classList.add('ev-in');
   });
+
+  /* ---- Counts: upcoming / past (count-up) ---------------------------------- */
+  var upEl = document.getElementById('evt-count-up'), pastEl = document.getElementById('evt-count-past');
+  var nUp = base.length, nPast = pastCards.length;
+  function countTo(el, n, delay) {
+    if (!el) return;
+    if (still() || n < 2) { el.textContent = n; return; }
+    var t0 = null, dur = 1100;
+    el.textContent = '0';
+    (function step(ts) {
+      if (t0 === null) t0 = ts + (delay || 0);
+      var p = Math.min(1, Math.max(0, (ts - t0) / dur));
+      el.textContent = Math.round(n * (p === 1 ? 1 : 1 - Math.pow(2, -10 * p)));
+      if (p < 1) requestAnimationFrame(step);
+    })(performance.now());
+  }
+  if (upEl) upEl.textContent = nUp;
+  if (pastEl) pastEl.textContent = nPast;
+  var countBox = document.getElementById('evt-count');
+  if (hasIO && countBox && !still()) {
+    var cio = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      countTo(upEl, nUp, 150); countTo(pastEl, nPast, 300); cio.disconnect();
+    }, { threshold: 0.6 });
+    cio.observe(countBox);
+  }
+
+  /* ---- Filter pills -------------------------------------------------------- */
+  var bar = up.querySelector('.evt-filter');
+  var tabs = bar ? $$('.evt-filter-btn', bar) : [];
+  var empty = document.getElementById('evt-empty');
+  var statusEl = document.getElementById('ev-status');
+  var ind = null;
+  function match(c, f) { return f === 'all' || (c.getAttribute('data-cat') || '').indexOf(f) !== -1; }
+  if (bar) {
+    ind = document.createElement('span'); ind.className = 'ev-ind'; ind.setAttribute('aria-hidden', 'true');
+    bar.insertBefore(ind, bar.firstChild);
+  }
+  var tabCount = {};
+  tabs.forEach(function (t) {
+    var f = t.getAttribute('data-filter'), n = base.filter(function (c) { return match(c, f); }).length;
+    tabCount[f] = n;
+    var s = document.createElement('span'); s.className = 'ev-fc'; s.textContent = n; s.setAttribute('aria-hidden', 'true');
+    t.appendChild(s);
+    t.setAttribute('aria-label', t.firstChild.nodeValue.trim() + ', ' + n + (n === 1 ? ' event' : ' events'));
+    if (!n) t.setAttribute('data-empty', '');
+  });
+
+  function activeTab() { return tabs.filter(function (t) { return t.classList.contains('is-active'); })[0]; }
+  function moveInd(animate) {
+    var t = activeTab(); if (!t || !ind) return;
+    var instant = !animate || still();
+    if (instant) ind.style.transition = 'none';
+    ind.style.width = t.offsetWidth + 'px';
+    ind.style.transform = 'translateX(' + t.offsetLeft + 'px)';
+    if (instant) { void ind.offsetWidth; ind.style.transition = ''; }
+    if (bar.scrollWidth > bar.clientWidth + 1) {
+      var left = t.offsetLeft - (bar.clientWidth - t.offsetWidth) / 2;
+      try { bar.scrollTo({ left: left, behavior: instant ? 'auto' : 'smooth' }); } catch (err) { bar.scrollLeft = left; }
+    }
+  }
+
+  var current = 'all', view = 'grid', seq = 0, anims = [];
+  function stopAnims() { anims.forEach(function (a) { try { a.cancel(); } catch (e) {} }); anims = []; }
+  function track(a) { anims.push(a); return a; }
+  function shown() { return base.filter(function (c) { return !c.classList.contains('is-hidden'); }); }
+  function updateStatus() {
+    var n = shown().length;
+    if (empty) empty.style.display = n === 0 ? 'block' : 'none';
+    if (!statusEl) return;
+    var t = activeTab(), name = t ? t.firstChild.nodeValue.trim() : '';
+    statusEl.innerHTML = current === 'all'
+      ? 'Showing all <b>' + n + '</b> upcoming ' + (n === 1 ? 'event' : 'events')
+      : n ? 'Showing <b>' + n + '</b> of ' + nUp + ' &middot; ' + name : 'Nothing in ' + name + ' right now';
+  }
+
+  /* ---- Layout: grid order, or grouped by month ------------------------------ */
+  function gkey(c) {
+    var s = c.getAttribute('data-status');
+    if (s === 'sold') return 'z';                        /* sold out stays after everything bookable */
+    if (s === 'ongoing') return '0';
+    var st = c.getAttribute('data-start') || '';
+    return /^\d{4}-\d{2}/.test(st) ? '1' + st.slice(0, 7) : '2';
+  }
+  function glabel(k) {
+    if (k === 'z') return 'Sold Out';
+    if (k === '0') return 'Ongoing';
+    if (k === '2') return 'Upcoming';
+    return MONTH[+k.slice(6, 8) - 1] + ' ' + k.slice(1, 5);
+  }
+  function layout() {
+    $$('.ev-month', grid).forEach(function (h) { h.parentNode.removeChild(h); });
+    var order = base.slice();
+    if (view === 'month') {
+      order.sort(function (a, b) {
+        var ka = gkey(a), kb = gkey(b);
+        if (ka !== kb) return ka < kb ? -1 : 1;
+        var sa = ms(a.getAttribute('data-start'), false), sb = ms(b.getAttribute('data-start'), false);
+        if (isNaN(sa)) sa = Infinity; if (isNaN(sb)) sb = Infinity;
+        return (sa - sb) || (a._evI - b._evI);
+      });
+    }
+    order.forEach(function (c) { if (empty && empty.parentNode === grid) grid.insertBefore(c, empty); else grid.appendChild(c); });
+    grid.classList.toggle('ev-by-month', view === 'month');
+    if (view !== 'month') return;
+    var groups = {};
+    order.forEach(function (c) {
+      if (c.classList.contains('is-hidden')) return;
+      var k = gkey(c);
+      if (groups[k]) { groups[k].n++; return; }
+      var h = document.createElement('div');
+      h.className = 'ev-month' + (k === 'z' ? ' ev-m-sold' : '');
+      h.setAttribute('role', 'heading'); h.setAttribute('aria-level', '3');
+      h.innerHTML = '<span class="ev-month-l">' + glabel(k) + '</span><span class="ev-month-n"></span>';
+      grid.insertBefore(h, c);
+      groups[k] = { el: h, n: 1 };
+    });
+    Object.keys(groups).forEach(function (k) {
+      groups[k].el.querySelector('.ev-month-n').textContent = groups[k].n + (groups[k].n === 1 ? ' event' : ' events');
+    });
+  }
+
+  /* ---- Filter with FLIP ---------------------------------------------------- */
+  function applyFilter(f, animate) {
+    if (!(f in tabCount)) f = 'all';
+    current = f;
+    var my = ++seq;
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-filter') === f;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      if (on && t.id) grid.setAttribute('aria-labelledby', t.id);
+    });
+    moveInd(animate);
+    var motion = animate && !still();
+    stopAnims();
+    var vis = shown();
+    var leaving = vis.filter(function (c) { return !match(c, f); });
+    var staying = vis.filter(function (c) { return match(c, f); });
+    var entering = base.filter(function (c) { return c.classList.contains('is-hidden') && match(c, f); });
+
+    function commit() {
+      if (my !== seq) return;
+      stopAnims();
+      var oldHeads = {};
+      $$('.ev-month', grid).forEach(function (h) { oldHeads[h.textContent] = h.getBoundingClientRect(); });
+      var first = staying.map(function (c) { return c.getBoundingClientRect(); });
+      leaving.forEach(function (c) { c.classList.add('is-hidden'); });
+      entering.forEach(function (c) { c.classList.remove('is-hidden'); c.classList.add('ev-in'); });
+      layout();
+      updateStatus();
+      if (!motion) return;
+      staying.forEach(function (c, i) {
+        var a = first[i], b = c.getBoundingClientRect(), dx = a.left - b.left, dy = a.top - b.top;
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+        if ((a.bottom < 0 && b.bottom < 0) || (a.top > innerHeight && b.top > innerHeight)) return;
+        track(c.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px)' }, { transform: 'none' }], { duration: 620, easing: EASE }));
+      });
+      entering.forEach(function (c, i) {
+        track(c.animate([{ opacity: 0, transform: 'translateY(18px) scale(.96)' }, { opacity: 1, transform: 'none' }],
+          { duration: 520, delay: 90 + i * 55, easing: EASE, fill: 'backwards' }));
+      });
+      $$('.ev-month', grid).forEach(function (h) {
+        var o = oldHeads[h.textContent];
+        if (o) {
+          var b = h.getBoundingClientRect(), dy = o.top - b.top;
+          if (Math.abs(dy) > 1) track(h.animate([{ transform: 'translateY(' + dy + 'px)' }, { transform: 'none' }], { duration: 620, easing: EASE }));
+        } else {
+          track(h.animate([{ opacity: 0, transform: 'translateX(-12px)' }, { opacity: 1, transform: 'none' }], { duration: 480, delay: 60, easing: EASE, fill: 'backwards' }));
+        }
+      });
+    }
+    if (motion && leaving.length) {
+      leaving.forEach(function (c) {
+        track(c.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'scale(.94)' }], { duration: 200, easing: 'ease-in', fill: 'forwards' }));
+      });
+      setTimeout(commit, 190);
+    } else commit();
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { if (t.getAttribute('data-filter') !== current) applyFilter(t.getAttribute('data-filter'), true); });
+  });
+  if (bar) bar.addEventListener('keydown', function (e) {
+    var i = tabs.indexOf(document.activeElement), n = tabs.length, j = null;
+    if (i < 0) return;
+    if (e.key === 'ArrowRight') j = (i + 1) % n;
+    else if (e.key === 'ArrowLeft') j = (i - 1 + n) % n;
+    else if (e.key === 'Home') j = 0;
+    else if (e.key === 'End') j = n - 1;
+    if (j === null) return;
+    e.preventDefault();
+    tabs[j].focus();
+    applyFilter(tabs[j].getAttribute('data-filter'), true);
+  });
+
+  /* ---- View toggle: grid / by month ------------------------------------------ */
+  var viewBtns = $$('.ev-view', up);
+  function setView(v) {
+    if (v === view) return;
+    view = v;
+    viewBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-view') === v ? 'true' : 'false'); });
+    var my = ++seq;
+    stopAnims();
+    if (still()) { layout(); return; }
+    var out = track(grid.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(10px)' }], { duration: 180, easing: 'ease-in', fill: 'forwards' }));
+    out.onfinish = function () {
+      if (my !== seq) return;
+      layout();
+      stopAnims();
+      var items = Array.prototype.slice.call(grid.children).filter(function (el) {
+        return el.offsetParent !== null && el.getBoundingClientRect().top < innerHeight + 200;
+      });
+      items.forEach(function (el, i) {
+        el.classList.add('ev-in');
+        track(el.animate([{ opacity: 0, transform: 'translateY(20px)' }, { opacity: 1, transform: 'none' }],
+          { duration: 560, delay: Math.min(i, 8) * 55, easing: EASE, fill: 'backwards' }));
+      });
+    };
+  }
+  viewBtns.forEach(function (b) { b.addEventListener('click', function () { setView(b.getAttribute('data-view')); }); });
+
+  /* ---- Pointer tilt + spotlight (fine pointers only) ----------------------------- */
+  if (mqFine.matches && !still()) {
+    base.concat(pastCards).forEach(function (card) {
+      var raf = 0, ev = null;
+      function paint() {
+        raf = 0; if (!ev) return;
+        var r = card.getBoundingClientRect(), x = (ev.clientX - r.left) / r.width, y = (ev.clientY - r.top) / r.height;
+        card.style.setProperty('--ev-rx', ((.5 - y) * 5).toFixed(2) + 'deg');
+        card.style.setProperty('--ev-ry', ((x - .5) * 7).toFixed(2) + 'deg');
+        card.style.setProperty('--ev-px', (x * 100).toFixed(1) + '%');
+        card.style.setProperty('--ev-py', (y * 100).toFixed(1) + '%');
+      }
+      card.addEventListener('pointerenter', function () { card.classList.add('ev-tilting'); });
+      card.addEventListener('pointermove', function (e) { ev = e; if (!raf) raf = requestAnimationFrame(paint); });
+      card.addEventListener('pointerleave', function () {
+        ev = null; card.classList.remove('ev-tilting');
+        card.style.setProperty('--ev-rx', '0deg'); card.style.setProperty('--ev-ry', '0deg');
+      });
+    });
+  }
+
+  /* ---- Past events strip ------------------------------------------------------- */
+  if (past && archive) {
+    if (!pastCards.length) past.hidden = true;
+    var nav = past.querySelector('.ev-nav'), prog = past.querySelector('.ev-prog');
+    var thumb = prog ? prog.querySelector('span') : null;
+    var arrows = nav ? $$('.ev-arrow', nav) : [];
+    function stepW() {
+      var c = archive.querySelector('.evt-card');
+      var gap = parseFloat(getComputedStyle(archive).columnGap) || 16;
+      return c ? c.getBoundingClientRect().width + gap : archive.clientWidth * .8;
+    }
+    arrows.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var d = +b.getAttribute('data-dir') * stepW();
+        try { archive.scrollBy({ left: d, behavior: still() ? 'auto' : 'smooth' }); } catch (e) { archive.scrollLeft += d; }
+      });
+    });
+    var sraf = 0;
+    function sync() {
+      sraf = 0;
+      var sw = archive.scrollWidth, cw = archive.clientWidth, sl = archive.scrollLeft, over = sw > cw + 2;
+      if (nav) nav.hidden = !over;
+      if (prog) prog.hidden = !over;
+      if (!over) return;
+      if (arrows[0]) arrows[0].disabled = sl <= 2;
+      if (arrows[1]) arrows[1].disabled = sl >= sw - cw - 2;
+      if (thumb && prog) {
+        var W = prog.clientWidth, w = Math.max(28, W * cw / sw);
+        thumb.style.width = w + 'px';
+        thumb.style.transform = 'translateX(' + ((W - w) * (sl / (sw - cw))).toFixed(1) + 'px)';
+      }
+    }
+    archive.addEventListener('scroll', function () { if (!sraf) sraf = requestAnimationFrame(sync); }, { passive: true });
+    window.addEventListener('resize', function () { if (!sraf) sraf = requestAnimationFrame(sync); });
+    sync();
+  }
+
+  /* ---- Init ----------------------------------------------------------------- */
+  applyFilter('all', false);
+  window.addEventListener('resize', function () { moveInd(false); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { moveInd(false); });
+  window.addEventListener('load', function () { moveInd(false); });
 })();
 </script>
 </body>
