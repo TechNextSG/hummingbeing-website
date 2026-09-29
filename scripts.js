@@ -1107,3 +1107,127 @@ function sendLead(data) {
     })
     .catch(function () { buildBar(''); });
 })();
+
+// ==========================================================================
+// AUTO-ADVANCE ENGINE — 2026-09-29
+// Every tab set, one-at-a-time button group, "next" carousel and swipe
+// track on the site moves to its next item every 3 s and loops.
+// Pauses while the pointer is over the section or focus is inside it,
+// holds 8 s after the visitor taps / clicks / swipes / types there, only
+// counts while the component is on screen and the tab is visible, and the
+// count restarts from zero when it resumes. Off for prefers-reduced-motion.
+// Opt a component out with data-hb-auto="off" on it or an ancestor.
+// ==========================================================================
+(function () {
+  'use strict';
+  var STEP = 3000, HOLD = 8000;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var drivers = [], claimed = [];
+  function $$(s, c) { return [].slice.call((c || document).querySelectorAll(s)); }
+  function shown(el) { return !!(el && el.getClientRects().length) && getComputedStyle(el).visibility !== 'hidden'; }
+  function excluded(el) {
+    if (!el || el.closest('[data-hb-auto="off"], nav, footer, [role="dialog"], [aria-modal="true"], .ecx, .hb-chat-win')) return true;
+    var lab = ((el.getAttribute('aria-label') || '') + ' ' + (el.className || '') + ' ' + ((el.closest('[aria-label]') || {}).getAttribute ? el.closest('[aria-label]').getAttribute('aria-label') : '')).toLowerCase();
+    return /filter|evt-filter|hx-evf|ev-views|accordion|faq|bk-switch/.test(lab);
+  }
+  function isClaimed(el) { return claimed.some(function (c) { return c === el || c.contains(el) || el.contains(c); }); }
+  function rootOf(el) { return el.closest('section, article, .ce-layout, main > div') || el.parentElement; }
+
+  function add(kind, el, next) {
+    if (isClaimed(el)) return;
+    claimed.push(el);
+    var d = { kind: kind, el: el, root: rootOf(el), next: next, t: 0, vis: false, hover: false, focus: false, holdUntil: 0, engineAt: 0 };
+    var r = d.root;
+    r.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') d.hover = true; });
+    r.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') { d.hover = false; d.t = 0; } });
+    r.addEventListener('focusin', function (e) { if (e.target.matches(':focus-visible')) d.focus = true; });
+    r.addEventListener('focusout', function (e) { if (!r.contains(e.relatedTarget)) { d.focus = false; d.t = 0; } });
+    ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (ev) {
+      r.addEventListener(ev, function (e) { if (e.isTrusted) { d.holdUntil = Date.now() + HOLD; d.t = 0; } }, { passive: true });
+    });
+    if (kind === 'track') el.addEventListener('scroll', function () { if (Date.now() - d.engineAt > 900) { d.holdUntil = Date.now() + HOLD; d.t = 0; } }, { passive: true });
+    io.observe(el);
+    drivers.push(d);
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) { drivers.forEach(function (d) { if (d.el === en.target) { d.vis = en.intersectionRatio >= .35; if (!d.vis) d.t = 0; } }); });
+  }, { threshold: [0, .35, .6] });
+
+  function clickNext(list) {
+    var items = list.filter(shown);
+    if (items.length < 2) return false;
+    var cur = items.findIndex(function (b) { return b.getAttribute('aria-selected') === 'true' || b.getAttribute('aria-pressed') === 'true' || b.getAttribute('aria-current') === 'true'; });
+    items[(cur + 1) % items.length].click();
+    return true;
+  }
+
+  function scan() {
+    // 1. tab sets
+    $$('[role="tablist"]').forEach(function (tl) {
+      if (excluded(tl)) return;
+      var tabs = $$('[role="tab"]', tl);
+      if (tabs.length < 2) return;
+      add('tabs', tl, function () { return clickNext($$('[role="tab"]', tl).filter(function (t) { return !t.disabled && t.getAttribute('aria-disabled') !== 'true'; })); });
+    });
+    // 2. one-at-a-time button groups (exactly one pressed)
+    var seen = [];
+    $$('button[aria-pressed]').forEach(function (b) {
+      var g = b.parentElement;
+      if (seen.indexOf(g) > -1) return; seen.push(g);
+      var bs = $$(':scope > button[aria-pressed]', g);
+      if (bs.length < 3 || excluded(g)) return;
+      if (bs.filter(function (x) { return x.getAttribute('aria-pressed') === 'true'; }).length !== 1) return;
+      add('group', g, function () { return clickNext($$(':scope > button[aria-pressed]', g)); });
+    });
+    // 3. swipe tracks (scroll-snap rows), including those driven by prev/next buttons
+    $$('body *').forEach(function (el) {
+      if (el.children.length < 2 || excluded(el) || el.querySelector('[role="tab"]')) return;
+      var cs = getComputedStyle(el);
+      if (!/(auto|scroll)/.test(cs.overflowX) || cs.scrollSnapType === 'none' || /tablist/.test(el.getAttribute('role') || '')) return;
+      if (el.scrollWidth <= el.clientWidth + 8) return;
+      add('track', el, function () {
+        if (el.scrollWidth <= el.clientWidth + 8) return false;
+        var kids = [].filter.call(el.children, shown);
+        var step = kids.length > 1 ? (kids[1].offsetLeft - kids[0].offsetLeft) : el.clientWidth;
+        var d = drivers.filter(function (x) { return x.el === el; })[0]; if (d) d.engineAt = Date.now();
+        if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 6) el.scrollTo({ left: 0, behavior: 'smooth' });
+        else el.scrollBy({ left: step, behavior: 'smooth' });
+        return true;
+      });
+    });
+    // 4. carousels with a "Next" button but no tabs / track
+    $$('button[aria-label^="Next"], button[data-q="1"], button[data-dir="1"]').forEach(function (b) {
+      var box = b.closest('section, article, [class*="carousel"], [class*="slider"]') || b.parentElement;
+      var ctl = b.getAttribute('aria-controls') && document.getElementById(b.getAttribute('aria-controls'));
+      if (excluded(b) || b.closest('.hx-q') || isClaimed(box) || (ctl && isClaimed(ctl))) return;
+      add('next', box, function () {
+        if (!shown(b)) return false;
+        if (b.disabled) { var prev = box.querySelector('button[aria-label^="Prev"], button[data-dir="-1"]'); var n = 30; while (prev && !prev.disabled && n--) prev.click(); return true; }
+        b.click(); return true;
+      });
+    });
+  }
+
+  var last = Date.now();
+  function tick() {
+    var now = Date.now(), dt = Math.min(now - last, 500); last = now;
+    if (document.hidden) return;
+    drivers.forEach(function (d) {
+      var live = d.vis && !d.hover && !d.focus && now >= d.holdUntil && shown(d.el);
+      if (!live) { d.t = 0; return; }
+      d.t += dt;
+      if (d.t >= STEP) { d.t = 0; d.engineAt = now; try { d.next(); } catch (e) {} }
+    });
+  }
+  function start() {
+    scan();
+    var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(scan, 800); });
+    setInterval(tick, 200);
+    document.addEventListener('visibilitychange', function () { drivers.forEach(function (d) { d.t = 0; }); last = Date.now(); });
+    window.hbAuto = { state: function () { return drivers.map(function (d) { return d.kind + ' vis:' + d.vis + ' hover:' + d.hover + ' focus:' + d.focus + ' hold:' + Math.max(0, d.holdUntil - Date.now()) + ' t:' + d.t; }); }, list: function () { return drivers.map(function (d) { return d.kind + ':' + (d.el.id || d.el.className || d.el.tagName).toString().slice(0, 40); }); }, rescan: scan };
+  }
+  // scripts.js is deferred, so every page script has already built its components here
+  setTimeout(start, 400);
+  window.addEventListener('load', function () { setTimeout(function () { if (window.hbAuto) window.hbAuto.rescan(); }, 800); });
+})();
