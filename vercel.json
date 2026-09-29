@@ -25,67 +25,82 @@
     },
     {
       "source": "/tre",
-      "destination": "/tre-certification.html",
+      "destination": "/tre-certification",
       "permanent": true
     },
     {
       "source": "/tre/",
-      "destination": "/tre-certification.html",
+      "destination": "/tre-certification",
       "permanent": true
     },
     {
       "source": "/tre.html",
-      "destination": "/tre-certification.html",
+      "destination": "/tre-certification",
       "permanent": true
     },
     {
       "source": "/somatic-coaching",
-      "destination": "/holistic-mastermind.html",
+      "destination": "/holistic-mastermind",
       "permanent": true
     },
     {
       "source": "/somatic-coaching/",
-      "destination": "/holistic-mastermind.html",
+      "destination": "/holistic-mastermind",
       "permanent": true
     },
     {
       "source": "/somatic-coaching.html",
-      "destination": "/holistic-mastermind.html",
+      "destination": "/holistic-mastermind",
       "permanent": true
     },
     {
       "source": "/somatic-bodywork",
-      "destination": "/holistic-mastermind.html",
+      "destination": "/holistic-mastermind",
       "permanent": true
     },
     {
       "source": "/somatic-bodywork/",
-      "destination": "/holistic-mastermind.html",
+      "destination": "/holistic-mastermind",
       "permanent": true
     },
     {
       "source": "/somatic-bodywork.html",
-      "destination": "/holistic-mastermind.html",
+      "destination": "/holistic-mastermind",
       "permanent": true
     },
     {
       "source": "/somatic-healing",
-      "destination": "/holistic-mastermind.html",
+      "destination": "/holistic-mastermind",
       "permanent": true
     },
     {
       "source": "/somatic-healing/",
-      "destination": "/holistic-mastermind.html",
+      "destination": "/holistic-mastermind",
       "permanent": true
     },
     {
       "source": "/somatic-healing.html",
-      "destination": "/holistic-mastermind.html",
+      "destination": "/holistic-mastermind",
       "permanent": true
     },
     {
       "source": "/isabelle/",
-      "destination": "/isabelle.html",
+      "destination": "/isabelle",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:page((?!googlee4a95ab68dd774c1$|404$|index$)[^/.]+)\\.html",
+      "destination": "/:page",
       "permanent": true
     }
   ],

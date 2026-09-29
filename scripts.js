@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     { keys: ['when','availability','available'],
       reply: "Isabelle is available for sessions year-round in Singapore, Japan and online via Zoom.\n\nScheduling is flexible and arranged personally after your first enquiry. Regular group events are also listed on the Events page.",
-      link: { text: 'See upcoming events', url: 'events.html' },
+      link: { text: 'See upcoming events', url: '/events' },
       btns: ['How do I book a session?','Where are sessions held?','How much does it cost?'] },
 
     { keys: ['what'],
@@ -333,12 +333,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     { keys: ['book','schedule','appointment','sign up','register','join','how to start','how to book','how do i book','how can i book','get started','begin','start working','work together','make an appointment','booking','reserve','session booking'],
       reply: "Booking is straightforward:\n\n1. Use the contact form on the Book page\n2. Send a WhatsApp message directly to Isabelle\n\nIsabelle personally responds within 1–2 business days. The free discovery call is a great first step.",
-      link: { text: 'Go to the Book page', url: 'book.html' },
+      link: { text: 'Go to the Book page', url: '/book' },
       btns: ['Tell me about the free discovery call','How much does it cost?','What to expect in first session?','Can I reschedule?'] },
 
     { keys: ['discovery call','free call','free session','free chat','30 min','30 minute','consultation','no commitment','no pressure','first call','intro call','introductory','free','trial','no cost','complimentary'],
       reply: "The free 30-minute discovery call is a relaxed, no-pressure conversation with Isabelle. You will explore your situation, ask any questions, and find the right path forward together.\n\nNo sales pitch. No commitment. Just honest conversation.",
-      link: { text: 'Book the free call', url: 'book.html' },
+      link: { text: 'Book the free call', url: '/book' },
       btns: ['What happens after the call?','How much does it cost?','What services are available?'] },
 
     { keys: ['location','where','singapore','japan','online','zoom','remote','virtual','in person','travel','country','based','city','place','where is','where are you','sg','jp','virtual session'],
@@ -378,22 +378,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     { keys: ['contact','email','reach','get in touch','message','phone','whatsapp','how to contact','connect','communicate','enquire','enquiry','reach out'],
       reply: "You can reach Isabelle in two ways:\n\n• Fill in the contact form on the Book page\n• Send a WhatsApp message — tap the green button visible on any page\n\nShe personally responds within 1–2 business days.",
-      link: { text: 'Open the Book page', url: 'book.html' },
+      link: { text: 'Open the Book page', url: '/book' },
       btns: ['Book a free discovery call','How much does it cost?','What services are available?'] },
 
     { keys: ['gallery','photo','video','podcast','media','see','look','watch','content','interview','photos','videos','listen'],
       reply: "The Gallery features podcast interviews, session videos and photos from Isabelle's workshops and events. It is a wonderful way to get a feel for her approach and energy before committing to a session.",
-      link: { text: 'View the Gallery', url: 'gallery.html' },
+      link: { text: 'View the Gallery', url: '/gallery' },
       btns: ['About Isabelle','What services are available?','Book a session'] },
 
     { keys: ['event','workshop','group','upcoming','schedule','class','programme','program','events','group session','next event','tre workshop','group tre','romania','bucharest','certification','module 1','icf','cceu'],
       reply: "Upcoming events:\n\n• 8 Oct 2026 — Online · From Shaking to Shaping, with Isabelle Claus Teixeira & Saymara Ryon\n• 15–17 Oct 2026 — Bucharest, Romania · TRE™ Module 1 Certification · 21 ICF CCEUs\n• 20 & 24 Oct 2026 — Bucharest · From Shaking to Shaping, in person\n• 2027 Singapore cohort — Global TRE™ Provider Certification, co-taught by Isabelle Claus Teixeira & Simba Stenqvist: Module 1 27–28 Feb, Module 2 3–4 Jul, Module 3 30–31 Oct 2027, plus online supervisions and three self-paced bonus programs (Grounding, Verbal Interventions and an Internal Alchemy introduction).\n\n2027 early-bird pricing (until 31 December 2026): full certification + bonuses from S$5,888 (then S$6,688); Module 1 on its own from S$1,888 (then S$1,988). The 2026 Singapore intake is closed; past 2026 workshops now show as ended. Book an intake call and Isabelle will walk you through the options.",
-      link: { text: 'See all upcoming events', url: 'events.html' },
+      link: { text: 'See all upcoming events', url: '/events' },
       btns: ['What is TRE™?','Tell me about the 2027 certification','Book a private session'] },
 
     { keys: ['2027','certification pricing','provider certification','certified provider','become certified','how much is the certification','certification cost','module 2','module 3','bonus program','internal alchemy','simba','stenqvist','cohort'],
       reply: "The Global TRE™ Provider Certification — 2027 Singapore cohort — is co-taught by Isabelle Claus Teixeira and Simba Stenqvist (creator of Internal Alchemy):\n\n• Module 1 — Your Personal TRE™ Practice · 27–28 Feb 2027 (can be taken on its own)\n• Module 2 — Teaching One Person · 3–4 Jul 2027\n• Module 3 — Teaching Groups · 30–31 Oct 2027\n• Plus online TRE™ sessions & supervisions and three self-paced bonus programs (Grounding, Verbal Interventions, Internal Alchemy).\n\nPricing (early-bird until 31 Dec 2026): full certification + bonuses from S$5,888 (then S$6,688); Module 1 only from S$1,888 (then S$1,988). ICF CCE included with Module 1. One cohort per year in Singapore.",
-      link: { text: 'View the 2027 certification', url: 'event-certification-2027.html' },
+      link: { text: 'View the 2027 certification', url: '/event-certification-2027' },
       btns: ['See all upcoming events','How do I register?','About Isabelle'] },
 
     { keys: ['first session','what to expect','what happens','prepare','preparation','my first','what do i need','what to bring','how does a session work','session like','how does a session','session work','what happens in a session','what to expect in a session'],
@@ -423,12 +423,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     { keys: ['which package','compare package','package comparison','starter vs deep','starter or deep','which programme','which program','difference between packages','different from the starter','different from starter','how is it different from the starter','starter vs','which package is right'],
       reply: "Here's how the two packages compare:\n\n• 8-Week Coaching Package — S$2,300 for 8 weekly one-on-one sessions. Ideal for building a foundation and experiencing real, lasting shifts.\n• Deep Dive — custom pricing for 12 to 24 sessions combining TRE™, Coaching & Bodywork, with priority access and integration support, for deeper long-term transformation.\n\nNot sure which fits? The free discovery call will help you decide.",
-      link: { text: 'Book the free discovery call', url: 'book.html' },
+      link: { text: 'Book the free discovery call', url: '/book' },
       btns: ['Tell me about the 8-Week Package','Tell me about the Deep Dive','Book a free discovery call'] },
 
     { keys: ['which practice','which service','which is right','tre or coaching','coaching or bodywork','what should i choose','which one is right','tre vs coaching','which is best for me','where do i start','what do you recommend','right service for me'],
       reply: "All three practices work with the nervous system, just through different doors:\n\n• TRE™ — release stored stress & tension through natural tremors\n• Somatic Coaching — build resilience & self-awareness through the body\n• Somatic Bodywork — release held patterns through gentle touch\n\nYou don't have to choose alone — Isabelle will recommend the best fit for you in your free discovery call.",
-      link: { text: 'Book a free discovery call', url: 'book.html' },
+      link: { text: 'Book a free discovery call', url: '/book' },
       btns: ['What is TRE™?','Tell me about Somatic Coaching','What is Somatic Bodywork?'] },
 
     { keys: ['what to wear','wear','clothing','clothes','dress','what should i wear','attire','outfit'],
@@ -438,17 +438,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     { keys: ['cancel','cancellation','reschedule','rescheduling','change appointment','postpone','refund','money back','miss a session','missed session','change my booking'],
       reply: "Scheduling is handled personally and flexibly. If you need to reschedule, let Isabelle know as early as you can and she'll do her best to find a new time.\n\nFor anything about refunds or a specific package, it's best to raise it directly with Isabelle — she's always fair and transparent.",
-      link: { text: 'Message Isabelle', url: 'book.html' },
+      link: { text: 'Message Isabelle', url: '/book' },
       btns: ['How do I book?','Tell me about the free discovery call','How much does it cost?'] },
 
     { keys: ['payment options','pay in instal','instalment','installment','payment plan','split payment','how do i pay','methods of payment','bank transfer','credit card','paynow','pay later','what payment options are there'],
       reply: "Payment details and any available options are arranged directly with Isabelle once you choose a package. Feel free to ask about payment plans during your discovery call — she's happy to find an arrangement that works for you.",
-      link: { text: 'Book a discovery call', url: 'book.html' },
+      link: { text: 'Book a discovery call', url: '/book' },
       btns: ['How much does it cost?','Tell me about the 8-Week Package','How do I book?'] },
 
     { keys: ['one on one','1 on 1','one to one','individual or group','group or private','private or group','is it one to one','just me'],
       reply: "Most of Isabelle's work is 1:1 — fully personalised to you. Group experiences are available through the workshops and events on the Events page, which are a lovely, lower-cost way to try the work first.\n\nThe discovery call will help you choose what fits best.",
-      link: { text: 'See upcoming events', url: 'events.html' },
+      link: { text: 'See upcoming events', url: '/events' },
       btns: ['See upcoming events','Book a private session','How much does it cost?'] },
 
     { keys: ['language','languages','english','speak','what language','which language','do you speak','spoken'],
@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         addMsg("I'm not sure about that — but Isabelle would be happy to help personally! Feel free to reach out via the contact form or WhatsApp.", false,
           ['What services are available?','How much does it cost?','Back to start'],
-          { text: 'Contact Isabelle directly', url: 'book.html' });
+          { text: 'Contact Isabelle directly', url: '/book' });
       }
     }, 820);
   }
@@ -1050,7 +1050,7 @@ function sendLead(data) {
     var past = mine && mine.status === 'past';
     if (past && !$('.ce-past-note')) {
       var note = document.createElement('div'); note.className = 'ce-past-note';
-      note.innerHTML = '<div><p><i class="fa-solid fa-circle-info" aria-hidden="true"></i>This event has already taken place.</p><a href="events.html" class="btn btn-primary">See upcoming events</a></div>';
+      note.innerHTML = '<div><p><i class="fa-solid fa-circle-info" aria-hidden="true"></i>This event has already taken place.</p><a href="/events" class="btn btn-primary">See upcoming events</a></div>';
       var facts = $('.ce-facts');
       (facts || hero).parentNode.insertBefore(note, (facts || hero).nextSibling);
     }
@@ -1074,7 +1074,7 @@ function sendLead(data) {
         var inner = grid.parentNode;
         if (!$('.ce-rel-all', inner)) {
           var all = document.createElement('p'); all.className = 'ce-rel-all';
-          all.innerHTML = '<a href="events.html" class="btn btn-outline">See all events</a>';
+          all.innerHTML = '<a href="/events" class="btn btn-outline">See all events</a>';
           inner.appendChild(all);
         }
         mark(inner);
@@ -1084,7 +1084,7 @@ function sendLead(data) {
   }
 
   if (!window.fetch || !window.DOMParser) { buildBar(''); return; }
-  fetch('events.html', { cache: 'no-cache', credentials: 'same-origin' })
+  fetch('/events', { cache: 'no-cache', credentials: 'same-origin' })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (txt) {
       var doc = new DOMParser().parseFromString(txt, 'text/html');
