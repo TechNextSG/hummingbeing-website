@@ -736,7 +736,7 @@ function sendLead(data) {
       var inert = b.classList.contains('btn-soldout') || b.classList.contains('btn-ended');
       if (b.classList.contains('btn')) b.classList.add(onDark(b) ? 'on-dark' : 'on-light');
       if (!inert && b.classList.contains('btn') && b.tagName === 'A' && !b.querySelector('.btn-arr, i, svg')) {
-        var s = document.createElement('span'); s.className = 'btn-arr'; s.setAttribute('aria-hidden', 'true'); s.innerHTML = ARROW; b.appendChild(s);
+        var lt = b.lastChild; if (lt && lt.nodeType === 3) { lt.nodeValue = lt.nodeValue.replace(/\s*[\u2192\u279C\u27F6]\s*$/, ''); } var s = document.createElement('span'); s.className = 'btn-arr'; s.setAttribute('aria-hidden', 'true'); s.innerHTML = ARROW; b.appendChild(s);
       }
       if (inert) return;
       b.addEventListener('pointerdown', function (e) {

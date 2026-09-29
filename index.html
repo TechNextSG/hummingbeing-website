@@ -16,6 +16,412 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="styles.css?v=95" />
+  <style>
+    /* ==========================================================================
+       HOME (.hx) - page-scoped redesign of the sections below the hero.
+       Every selector is prefixed .hx-*. Buttons (.btn) are NOT restyled here.
+       The hummingbird (.hb-bird) and journey (.steps) sections are untouched.
+       ========================================================================== */
+    .hx-sec {
+      --hx-navy: #242e42; --hx-deep: #1a2030; --hx-mid: #3a4a66;
+      --hx-gold: #F5A623; --hx-gold-d: #c98000; --hx-cream: #fafaf8; --hx-text: #3d4250;
+      --hx-ease: cubic-bezier(.23, 1, .32, 1);
+      --hx-pad: clamp(16px, 5vw, 64px);
+      --hx-max: 1180px;
+      position: relative;
+      overflow: hidden; overflow: clip;
+    }
+    section.hx-sec, div.hx-sec.evt-countdown-bar { padding: clamp(3.5rem, 7vw, 6rem) var(--hx-pad); }
+    .hx-wrap { max-width: var(--hx-max); margin: 0 auto; position: relative; }
+    .hx-sec :focus-visible { outline: 3px solid var(--hx-gold); outline-offset: 3px; }
+
+    /* -- Shared heading pattern ---------------------------------------------- */
+    .hx-head { margin: 0 0 clamp(2rem, 4vw, 3rem); }
+    .hx-head-center { text-align: center; max-width: 720px; margin-left: auto; margin-right: auto; }
+    .hx-head-split { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.25rem 2rem; flex-wrap: wrap; }
+    .hx-head-split > div:first-child { max-width: 640px; }
+    .hx-eyebrow {
+      display: inline-flex; align-items: center; gap: .75rem;
+      font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700; line-height: 1.2;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--hx-mid); margin-bottom: 1rem;
+    }
+    .hx-eyebrow::before, .hx-head-center .hx-eyebrow::after { content: ""; width: 28px; height: 2px; background: var(--hx-gold); flex: 0 0 auto; }
+    .hx-title {
+      font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: var(--hx-navy);
+      font-size: clamp(1.9rem, 4.2vw, 3rem); line-height: 1.12; letter-spacing: -.01em; margin: 0 0 1rem;
+    }
+    .hx-lede { font-family: 'Lato', sans-serif; font-size: 1.02rem; line-height: 1.75; color: var(--hx-text); margin: 0; max-width: 40rem; }
+    .hx-head-center .hx-lede { margin: 0 auto; }
+    .hx-ctarow { display: flex; justify-content: center; align-items: center; gap: 1rem 1.2rem; flex-wrap: wrap; margin-top: clamp(2rem, 4vw, 2.75rem); }
+
+    /* -- Reveal (only once our script has marked the section live) ------------ */
+    .hx-live .hx-rv {
+      opacity: 0; translate: 0 26px;
+      transition: opacity .8s var(--hx-ease) var(--d, 0ms), translate .9s var(--hx-ease) var(--d, 0ms);
+    }
+    .hx-live .hx-rv.hx-in { opacity: 1; translate: 0 0; }
+
+    /* ==========================================================================
+       1. Upcoming events - tilt cards, live countdown chip, swipe track on mobile
+       ========================================================================== */
+    .hx-evts.evt-countdown-bar { background: var(--hx-cream); }
+    .hx-evts .hx-head { margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
+    .hx-evt-nav { display: flex; gap: .6rem; }
+    .hx-evt-nav[hidden], .hx-evt-prog[hidden] { display: none; }
+    .hx-arrow {
+      width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+      background: #fff; border: 1.5px solid rgba(36, 46, 66, .18); color: var(--hx-navy); cursor: pointer;
+      transition: border-color .3s var(--hx-ease), background .3s var(--hx-ease), color .3s var(--hx-ease), transform .3s var(--hx-ease), opacity .3s;
+    }
+    .hx-arrow svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .hx-arrow:active { transform: scale(.92); }
+    .hx-arrow:disabled { opacity: .35; cursor: default; }
+    @media (hover: hover) and (pointer: fine) {
+      .hx-arrow:not(:disabled):hover { background: var(--hx-navy); border-color: var(--hx-navy); color: #fff; }
+    }
+
+    .hx-evts .home-evt-3 {
+      max-width: none; gap: clamp(1rem, 2vw, 1.6rem);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .hx-evts .home-evt-card[hidden] { display: none; }
+    .hx-evts .home-evt-card {
+      position: relative; border-radius: 16px; isolation: isolate;
+      box-shadow: 0 1px 2px rgba(26, 32, 48, .06), 0 12px 34px -12px rgba(36, 46, 66, .18);
+      transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transition: transform .6s var(--hx-ease), box-shadow .5s var(--hx-ease), opacity .8s var(--hx-ease) var(--d, 0ms), translate .9s var(--hx-ease) var(--d, 0ms);
+    }
+    .hx-evts .home-evt-card::after {
+      content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none; border-radius: inherit;
+      background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), rgba(245, 166, 35, .12), transparent 55%);
+      opacity: 0; transition: opacity .45s var(--hx-ease);
+    }
+    .hx-evts .home-evt-thumb { overflow: hidden; aspect-ratio: 16 / 9; }
+    .hx-evts .home-evt-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--hx-ease); }
+    .hx-evts .home-evt-thumb::after {
+      content: "\f061"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: .8rem; line-height: 1;
+      position: absolute; top: 12px; right: 12px; z-index: 3; width: 36px; height: 36px; border-radius: 50%;
+      display: grid; place-items: center; background: rgba(250, 250, 248, .95); color: var(--hx-navy);
+      opacity: 0; transform: scale(.6) rotate(-45deg); transition: opacity .35s var(--hx-ease), transform .5s var(--hx-ease);
+    }
+    .hx-evts .home-evt-thumb:focus-visible { outline-offset: -3px; }
+    .hx-evts .home-evt-thumb:focus-visible::after { opacity: 1; transform: none; }
+    .hx-evts .home-evt-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.22rem; }
+    .hx-evts .evt-dates { align-items: center; gap: .4rem .6rem; }
+    .hx-when {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700; color: var(--hx-mid);
+    }
+    .hx-when i { color: var(--hx-gold-d); }
+    .hx-evts .home-evt-card[data-status="ongoing"] .hx-when::before {
+      content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--hx-gold);
+      box-shadow: 0 0 0 0 rgba(245, 166, 35, .6); animation: hx-ping 1.8s var(--hx-ease) infinite;
+    }
+    @keyframes hx-ping { 0% { box-shadow: 0 0 0 0 rgba(245, 166, 35, .6); } 100% { box-shadow: 0 0 0 9px rgba(245, 166, 35, 0); } }
+    @media (hover: hover) and (pointer: fine) {
+      .hx-evts .home-evt-card:hover {
+        transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-6px);
+        box-shadow: 0 30px 60px -24px rgba(26, 32, 48, .38);
+      }
+      .hx-evts .home-evt-card:hover::after { opacity: 1; }
+      .hx-evts .home-evt-card:hover .home-evt-thumb img { transform: scale(1.06); }
+      .hx-evts .home-evt-card:hover .home-evt-thumb::after { opacity: 1; transform: none; }
+      .hx-evts .home-evt-card.hx-tilt { transition: transform .14s linear, box-shadow .5s var(--hx-ease), opacity .8s var(--hx-ease) var(--d, 0ms), translate .9s var(--hx-ease) var(--d, 0ms); }
+    }
+    .hx-evt-prog { height: 3px; margin-top: 1.4rem; border-radius: 3px; background: rgba(36, 46, 66, .1); overflow: hidden; }
+    .hx-evt-prog i { display: block; height: 100%; width: 50%; border-radius: 3px; background: var(--hx-gold); transform-origin: left; transition: transform .25s linear; }
+    @media (max-width: 900px) {
+      .hx-evts .home-evt-3 {
+        grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: calc((100% - 1rem) / 2);
+        gap: 1rem; max-width: none; overflow-x: auto; overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory; scrollbar-width: none; padding: 6px 2px 14px; scroll-padding-left: 2px;
+      }
+      .hx-evts .home-evt-3::-webkit-scrollbar { display: none; }
+      .hx-evts .home-evt-card { scroll-snap-align: start; }
+      .hx-evt-prog { margin-top: .6rem; }
+    }
+    @media (max-width: 600px) {
+      .hx-evts .home-evt-3 { grid-auto-columns: 86%; }
+      .hx-evts .hx-head-split { align-items: flex-start; }
+      .hx-evts .home-evt-body { padding: 1.25rem 1.3rem 1.4rem; }
+    }
+
+    /* ==========================================================================
+       2. How We Teach - poster facade, click to play (YouTube loads on demand)
+       ========================================================================== */
+    .hx-video { max-width: 980px; margin: 0 auto; }
+    .hx-video-frame {
+      position: relative; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden;
+      background: var(--hx-deep); box-shadow: 0 34px 70px -34px rgba(26, 32, 48, .6);
+    }
+    .hx-video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .hx-facade {
+      position: absolute; inset: 0; z-index: 2; display: block; width: 100%; height: 100%;
+      margin: 0; padding: 0; border: 0; overflow: hidden; cursor: pointer; text-align: left;
+      background: var(--hx-deep); color: #fff; font: inherit; -webkit-tap-highlight-color: transparent;
+      transition: opacity .5s var(--hx-ease);
+    }
+    .hx-facade[hidden] { display: none; }
+    .hx-facade.hx-gone { opacity: 0; pointer-events: none; }
+    .hx-facade:focus-visible { outline-offset: -4px; }
+    .hx-facade img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transform: scale(1.05) translate(var(--px, 0px), var(--py, 0px)); transition: transform 1.2s var(--hx-ease);
+    }
+    .hx-facade-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26, 32, 48, .2) 0%, rgba(26, 32, 48, .3) 45%, rgba(26, 32, 48, .88) 100%); }
+    .hx-play {
+      position: absolute; left: 50%; top: 50%; width: clamp(64px, 9vw, 92px); aspect-ratio: 1; border-radius: 50%;
+      display: grid; place-items: center; background: var(--hx-gold); color: var(--hx-deep);
+      box-shadow: 0 18px 44px -10px rgba(245, 166, 35, .7);
+      transform: translate(-50%, -50%) scale(var(--s, 1)); transition: transform .5s var(--hx-ease);
+    }
+    .hx-play svg { width: 34%; height: 34%; fill: currentColor; margin-left: 8%; }
+    .hx-play::before, .hx-play::after {
+      content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(245, 166, 35, .75);
+      animation: hx-ring 2.8s var(--hx-ease) infinite;
+    }
+    .hx-play::after { animation-delay: 1.4s; }
+    @keyframes hx-ring { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(1.9); opacity: 0; } }
+    .hx-facade-cap { position: absolute; left: clamp(1rem, 3vw, 2rem); right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 1.8rem); display: grid; gap: .3rem; }
+    .hx-facade-k { font-family: 'Lato', sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--hx-gold); }
+    .hx-facade-t { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(1.1rem, 2.4vw, 1.7rem); line-height: 1.2; color: #fff; text-shadow: 0 2px 14px rgba(0, 0, 0, .35); }
+    .hx-yt {
+      position: absolute; top: clamp(.75rem, 2vw, 1.1rem); right: clamp(.75rem, 2vw, 1.1rem);
+      display: inline-flex; align-items: center; gap: .45rem; padding: .4rem .75rem; border-radius: 999px;
+      background: rgba(26, 32, 48, .62); border: 1px solid rgba(255, 255, 255, .16);
+      font-family: 'Lato', sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: 1px; color: #fff;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .hx-facade:hover img { transform: scale(1.1) translate(var(--px, 0px), var(--py, 0px)); }
+      .hx-facade:hover .hx-play { --s: 1.1; }
+    }
+    .hx-facade:active .hx-play { --s: .94; }
+    @media (max-width: 600px) { .hx-facade-t { display: none; } .hx-video-frame { border-radius: 12px; } }
+
+    /* ==========================================================================
+       3. What We Offer - tab switcher (no JS: three stacked cards)
+       ========================================================================== */
+    .hx-offer-tabs { display: none; }
+    .hx-offer-stage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+    .hx-opanel {
+      position: relative; background: #fff; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 1px 2px rgba(26, 32, 48, .06), 0 16px 40px -20px rgba(36, 46, 66, .25);
+      display: flex; flex-direction: column;
+    }
+    .hx-opanel-media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--hx-deep); }
+    .hx-opanel-media img { width: 100%; height: 100%; object-fit: cover; }
+    .hx-opanel-body { position: relative; padding: 1.6rem 1.7rem 1.8rem; display: flex; flex-direction: column; align-items: flex-start; }
+    .hx-opanel-icon { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: rgba(245, 166, 35, .15); color: var(--hx-gold-d); font-size: 1.05rem; margin-bottom: 1rem; }
+    .hx-opanel-n { position: absolute; top: .6rem; right: 1.2rem; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 3.4rem; line-height: 1; color: rgba(36, 46, 66, .07); pointer-events: none; }
+    .hx-opanel h3 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.4rem, 2.4vw, 1.9rem); color: var(--hx-navy); margin: 0 0 .75rem; }
+    .hx-opanel p { font-size: .98rem; line-height: 1.75; color: var(--hx-text); margin: 0 0 1.3rem; }
+    .hx-link {
+      display: inline-flex; align-items: center; gap: .5rem; min-height: 44px;
+      font-family: 'Lato', sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase;
+      color: var(--hx-navy); background-image: linear-gradient(var(--hx-gold), var(--hx-gold)); background-repeat: no-repeat;
+      background-size: 100% 2px; background-position: 0 calc(100% - 8px);
+    }
+    .hx-link:hover { color: var(--hx-gold-d); }
+    @media (max-width: 900px) { .hx-offer-stage { grid-template-columns: minmax(0, 1fr); max-width: 560px; margin: 0 auto; } }
+
+    .hx-live .hx-offer-ui { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 2fr); gap: clamp(1.25rem, 3vw, 2.25rem); align-items: center; }
+    .hx-live .hx-offer-tabs { display: flex; flex-direction: column; gap: .65rem; }
+    .hx-otab {
+      position: relative; display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: .9rem;
+      width: 100%; min-height: 44px; margin: 0; padding: 1.05rem 1.2rem; text-align: left; overflow: hidden;
+      background: transparent; border: 1px solid rgba(36, 46, 66, .13); border-radius: 14px; cursor: pointer;
+      color: var(--hx-navy); font: inherit; -webkit-tap-highlight-color: transparent;
+      transition: background .4s var(--hx-ease), border-color .4s var(--hx-ease), box-shadow .5s var(--hx-ease), transform .5s var(--hx-ease);
+    }
+    .hx-otab-n { font-family: 'Lato', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: 1.5px; color: var(--hx-mid); font-variant-numeric: tabular-nums; }
+    .hx-otab-i { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: rgba(245, 166, 35, .14); color: var(--hx-gold-d); transition: background .4s var(--hx-ease), color .4s var(--hx-ease), transform .5s var(--hx-ease); }
+    .hx-otab-t { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.12rem; line-height: 1.2; }
+    .hx-otab-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--hx-gold); transform: scaleY(0); transform-origin: top; transition: transform .6s var(--hx-ease); }
+    .hx-otab[aria-selected="true"] { background: #fff; border-color: rgba(36, 46, 66, 0); box-shadow: 0 22px 44px -24px rgba(36, 46, 66, .45); transform: translateX(8px); }
+    .hx-otab[aria-selected="true"] .hx-otab-bar { transform: scaleY(1); }
+    .hx-otab[aria-selected="true"] .hx-otab-i { background: var(--hx-gold); color: var(--hx-deep); transform: rotate(-8deg) scale(1.06); }
+    .hx-otab:focus-visible { outline-offset: 2px; }
+    @media (hover: hover) and (pointer: fine) { .hx-otab[aria-selected="false"]:hover { background: rgba(255, 255, 255, .75); border-color: rgba(245, 166, 35, .5); } }
+    .hx-otab:active { transform: scale(.98); }
+
+    .hx-live .hx-offer-stage { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: none; }
+    .hx-live .hx-opanel {
+      grid-area: 1 / 1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      opacity: 0; visibility: hidden; transform: scale(.985);
+      transition: opacity .55s var(--hx-ease), transform .7s var(--hx-ease), visibility 0s linear .55s;
+    }
+    .hx-live .hx-opanel.hx-cur { opacity: 1; visibility: visible; transform: none; transition: opacity .55s var(--hx-ease), transform .7s var(--hx-ease), visibility 0s; }
+    .hx-live .hx-opanel-media { aspect-ratio: auto; min-height: 360px; }
+    .hx-live .hx-opanel-media img { position: absolute; inset: 0; transform: scale(1.12) translate(var(--px, 0px), var(--py, 0px)); transition: transform 1.4s var(--hx-ease); }
+    .hx-live .hx-opanel.hx-cur .hx-opanel-media img { transform: scale(1.04) translate(var(--px, 0px), var(--py, 0px)); }
+    .hx-live .hx-opanel-body { justify-content: center; padding: clamp(1.6rem, 3.5vw, 2.8rem); }
+    .hx-live .hx-opanel-body > * { opacity: 0; transform: translateY(14px); transition: opacity .5s var(--hx-ease), transform .7s var(--hx-ease); }
+    .hx-live .hx-opanel.hx-cur .hx-opanel-body > * { opacity: 1; transform: none; }
+    .hx-live .hx-opanel.hx-cur .hx-opanel-body > :nth-child(2) { transition-delay: .06s; }
+    .hx-live .hx-opanel.hx-cur .hx-opanel-body > :nth-child(3) { transition-delay: .12s; }
+    .hx-live .hx-opanel.hx-cur .hx-opanel-body > :nth-child(4) { transition-delay: .18s; }
+    .hx-live .hx-opanel.hx-cur .hx-opanel-body > :nth-child(5) { transition-delay: .24s; }
+    @media (max-width: 900px) {
+      .hx-live .hx-offer-ui { grid-template-columns: minmax(0, 1fr); }
+      .hx-live .hx-offer-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+      .hx-otab { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; gap: .45rem; padding: .85rem .4rem; }
+      .hx-otab-n { display: none; }
+      .hx-otab-t { font-size: .92rem; }
+      .hx-otab-bar { left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 3px; transform: scaleX(0); transform-origin: left; }
+      .hx-otab[aria-selected="true"] { transform: translateY(-3px); }
+      .hx-otab[aria-selected="true"] .hx-otab-bar { transform: scaleX(1); }
+      .hx-live .hx-opanel { grid-template-columns: minmax(0, 1fr); align-self: start; }
+      .hx-live .hx-opanel-media { aspect-ratio: 16 / 9; min-height: 0; }
+    }
+    @media (max-width: 400px) { .hx-otab-t { font-size: .8rem; } .hx-otab-i { width: 36px; height: 36px; font-size: .85rem; } }
+
+    /* ==========================================================================
+       4. Testimonials - quote carousel (no JS: a grid of quotes)
+       ========================================================================== */
+    .hx-q { max-width: 920px; margin: 0 auto; position: relative; }
+    .hx-q-stage { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.25rem; }
+    .hx-q-slide {
+      margin: 0; background: #fff; border-radius: 18px; padding: 1.8rem 1.8rem 1.6rem;
+      box-shadow: 0 1px 2px rgba(26, 32, 48, .06), 0 16px 40px -22px rgba(36, 46, 66, .25);
+    }
+    .hx-q-slide blockquote { margin: 0; }
+    .hx-q-slide p { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.05rem; line-height: 1.6; color: var(--hx-navy); margin: 0; }
+    .hx-q-slide figcaption { margin-top: 1.1rem; font-family: 'Lato', sans-serif; font-size: .74rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--hx-mid); }
+    .hx-q-ctl { display: none; }
+
+    .hx-live .hx-q-stage {
+      position: relative; grid-template-columns: minmax(0, 1fr); gap: 0; touch-action: pan-y;
+      background: #fff; border-radius: 24px; padding: clamp(2.6rem, 6vw, 4rem) clamp(1.3rem, 6vw, 4.5rem) clamp(2rem, 5vw, 3rem);
+      box-shadow: 0 1px 2px rgba(26, 32, 48, .06), 0 34px 70px -40px rgba(36, 46, 66, .45);
+    }
+    .hx-live .hx-q-stage::before {
+      content: "\201C"; position: absolute; left: 50%; top: -.1em; transform: translateX(-50%);
+      font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(5rem, 10vw, 7.5rem); line-height: 1;
+      color: var(--hx-gold); opacity: .9; pointer-events: none;
+    }
+    .hx-live .hx-q-slide {
+      grid-area: 1 / 1; align-self: center; background: none; box-shadow: none; padding: 0; text-align: center;
+      opacity: 0; visibility: hidden; transform: translateX(44px);
+      transition: opacity .55s var(--hx-ease), transform .8s var(--hx-ease), visibility 0s linear .55s;
+    }
+    .hx-live .hx-q-slide[data-pos="before"] { transform: translateX(-44px); }
+    .hx-live .hx-q-slide[data-pos="cur"] { opacity: 1; visibility: visible; transform: none; transition: opacity .6s var(--hx-ease) .1s, transform .8s var(--hx-ease) .05s, visibility 0s; }
+    .hx-live .hx-q-slide p { font-size: clamp(1.1rem, 2.3vw, 1.55rem); line-height: 1.55; }
+    .hx-live .hx-q-slide figcaption { margin-top: 1.5rem; display: inline-flex; align-items: center; gap: .7rem; }
+    .hx-live .hx-q-slide figcaption::before { content: ""; width: 24px; height: 2px; background: var(--hx-gold); }
+    @media (max-width: 600px) { .hx-live .hx-q-slide figcaption { flex-direction: column; gap: .6rem; } }
+    .hx-live .hx-q-ctl { display: flex; flex-direction: column; align-items: center; gap: .6rem; margin-top: 1.4rem; }
+    .hx-q-row { display: flex; align-items: center; justify-content: center; gap: .5rem; }
+    .hx-q-dots { display: flex; align-items: center; }
+    .hx-qdot { width: 36px; height: 44px; margin: 0; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+    .hx-qdot i { position: relative; display: block; width: 26px; height: 4px; border-radius: 4px; background: rgba(36, 46, 66, .16); overflow: hidden; transition: width .5s var(--hx-ease); }
+    .hx-qdot i::after { content: ""; position: absolute; inset: 0; background: var(--hx-gold); transform: scaleX(0); transform-origin: left; }
+    .hx-qdot[aria-current="true"] i::after { transform: scaleX(1); }
+    .hx-q.hx-auto .hx-qdot[aria-current="true"] i::after { animation: hx-fill var(--hx-q-dur, 7s) linear forwards; }
+    .hx-q.hx-auto.hx-hold .hx-qdot[aria-current="true"] i::after { animation-play-state: paused; }
+    @keyframes hx-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    @media (hover: hover) and (pointer: fine) { .hx-qdot:hover i { background: rgba(36, 46, 66, .32); } }
+    .hx-q-meta { display: flex; align-items: center; gap: .9rem; font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: 1.5px; color: var(--hx-mid); font-variant-numeric: tabular-nums; }
+    .hx-q-pause {
+      display: inline-flex; align-items: center; gap: .45rem; min-height: 44px; padding: 0 .6rem; margin: 0;
+      background: none; border: 0; cursor: pointer; font: inherit; color: var(--hx-navy); letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .hx-q-pause[hidden] { display: none; }
+    .hx-q-pause svg { width: 14px; height: 14px; fill: currentColor; }
+    .hx-q-pause:hover { color: var(--hx-gold-d); }
+
+    /* ==========================================================================
+       5. Is this for you - tap-to-check list with a live meter
+       ========================================================================== */
+    .hx-fit-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+    .hx-fit-media { order: 2; position: relative; padding: 0 18px 18px 0; }
+    .hx-fit-media::before { content: ""; position: absolute; inset: 18px 0 0 18px; border: 2px solid var(--hx-gold); border-radius: 22px; opacity: .55; }
+    .hx-fit-frame {
+      position: relative; border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--hx-deep);
+      box-shadow: 0 34px 70px -38px rgba(26, 32, 48, .6);
+      transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .6s var(--hx-ease);
+    }
+    .hx-fit-frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08) translate(var(--px, 0px), var(--py, 0px)); transition: transform .9s var(--hx-ease); }
+    .hx-fit-text .hx-title { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+    .hx-fit-text > p { font-size: 1rem; line-height: 1.75; color: var(--hx-text); margin: 0 0 1.3rem; }
+    .hx-fit-hint { display: inline-flex; align-items: center; gap: .5rem; font-family: 'Lato', sans-serif; font-size: .72rem !important; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--hx-mid) !important; margin: 0 0 .8rem !important; }
+    .hx-fit-hint i { color: var(--hx-gold-d); }
+    .hx-fit-hint[hidden], .hx-fit-meter[hidden] { display: none; }
+    .hx-fit-list { list-style: none; margin: 0 0 1.2rem; padding: 0; display: grid; gap: .55rem; }
+    .hx-fit-item { display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: .9rem; align-items: baseline; font-size: .97rem; line-height: 1.55; color: var(--hx-text); }
+    .hx-fit-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--hx-gold); transform: translateY(-1px); }
+    .hx-fit-item.hx-btnd { display: block; }
+    .hx-fit-btn {
+      display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: .85rem; align-items: center;
+      width: 100%; min-height: 44px; margin: 0; padding: .75rem 1rem; text-align: left; cursor: pointer;
+      background: #fff; border: 1px solid rgba(36, 46, 66, .13); border-radius: 12px;
+      font-family: 'Lato', sans-serif; font-size: .95rem; line-height: 1.5; color: var(--hx-text);
+      -webkit-tap-highlight-color: transparent;
+      transition: border-color .3s var(--hx-ease), background .3s var(--hx-ease), color .3s var(--hx-ease), transform .45s var(--hx-ease), box-shadow .45s var(--hx-ease);
+    }
+    .hx-fit-box { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid rgba(36, 46, 66, .28); display: grid; place-items: center; transition: background .3s var(--hx-ease), border-color .3s var(--hx-ease); }
+    .hx-fit-box i { font-size: .72rem; color: var(--hx-deep); transform: scale(0) rotate(-30deg); transition: transform .45s var(--hx-ease); }
+    .hx-fit-btn[aria-pressed="true"] { background: rgba(245, 166, 35, .1); border-color: var(--hx-gold); color: var(--hx-navy); box-shadow: 0 14px 30px -20px rgba(201, 128, 0, .6); }
+    .hx-fit-btn[aria-pressed="true"] .hx-fit-box { background: var(--hx-gold); border-color: var(--hx-gold); }
+    .hx-fit-btn[aria-pressed="true"] .hx-fit-box i { transform: none; }
+    .hx-fit-btn:active { transform: scale(.985); }
+    @media (hover: hover) and (pointer: fine) {
+      .hx-fit-btn:hover { border-color: rgba(245, 166, 35, .7); transform: translateX(4px); }
+      .hx-fit-btn:hover .hx-fit-box { border-color: var(--hx-gold); }
+    }
+    .hx-fit-meter { display: flex; align-items: center; gap: .9rem; margin: 0 0 1.4rem; font-family: 'Lato', sans-serif; font-size: .85rem; color: var(--hx-text); }
+    .hx-fit-bar { position: relative; flex: 0 0 120px; height: 4px; border-radius: 4px; background: rgba(36, 46, 66, .12); overflow: hidden; }
+    .hx-fit-bar i { position: absolute; inset: 0; background: var(--hx-gold); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--hx-ease); }
+    .hx-fit-meter b { font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; color: var(--hx-navy); font-variant-numeric: tabular-nums; display: inline-block; }
+    .hx-fit-meter b.hx-bump { animation: hx-bump .45s var(--hx-ease); }
+    @keyframes hx-bump { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
+    .hx-fit-cta { display: flex; align-items: center; gap: 1rem 1.2rem; flex-wrap: wrap; }
+    .hx-fit-cta span { font-size: .8rem; color: var(--text-mid, #5f6472); }
+    @media (hover: hover) and (pointer: fine) { .hx-fit-media:hover .hx-fit-frame img { transform: scale(1.12) translate(var(--px, 0px), var(--py, 0px)); } }
+    .hx-fit-frame.hx-tilt { transition: transform .14s linear; }
+    @media (max-width: 900px) {
+      .hx-fit-grid { grid-template-columns: minmax(0, 1fr); }
+      .hx-fit-media { order: 0; max-width: 460px; width: 100%; margin: 0 auto; }
+      .hx-fit-frame { aspect-ratio: 4 / 3; }
+    }
+
+    /* ==========================================================================
+       6. Come as You Are - breathing rings + pointer glow on navy
+       ========================================================================== */
+    .hx-cta.cta-banner {
+      background: var(--hx-navy); border-top: 0; text-align: center; isolation: isolate;
+      padding: clamp(4.5rem, 10vw, 7.5rem) var(--hx-pad);
+    }
+    .hx-cta-in { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+    .hx-cta.cta-banner h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.2rem, 5.4vw, 3.8rem); color: #fff; margin: 0 0 1rem; }
+    .hx-cta.cta-banner p { color: rgba(255, 255, 255, .84); max-width: 540px; margin: 0 auto 2.2rem; }
+    .hx-breath { position: absolute; left: 50%; top: 50%; z-index: 0; width: min(720px, 150vw); aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none; }
+    .hx-breath span { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(245, 166, 35, .2); animation: hx-breathe 8s cubic-bezier(.45, 0, .55, 1) infinite; }
+    .hx-breath span:nth-child(2) { inset: 15%; border-color: rgba(245, 166, 35, .28); animation-delay: -.5s; }
+    .hx-breath span:nth-child(3) { inset: 30%; border: 0; background: radial-gradient(circle, rgba(245, 166, 35, .16), rgba(245, 166, 35, 0) 68%); animation-delay: -1s; }
+    @keyframes hx-breathe { 0%, 100% { transform: scale(.84); opacity: .5; } 50% { transform: scale(1.04); opacity: 1; } }
+    .hx-cta-glow {
+      position: absolute; left: 0; top: 0; z-index: 1; width: 520px; height: 520px; margin: -260px 0 0 -260px; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(58, 74, 102, .7), rgba(58, 74, 102, 0) 65%);
+      transform: translate(var(--gx, 50vw), var(--gy, 50%)); opacity: 0; transition: opacity .6s var(--hx-ease);
+    }
+    .hx-cta:hover .hx-cta-glow { opacity: 1; }
+    .hx-breath-lbl {
+      display: block; margin: 0 0 1.2rem; font-family: 'Lato', sans-serif; font-size: .7rem; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--hx-gold); transition: opacity .6s var(--hx-ease);
+    }
+    .hx-breath-lbl.hx-fade { opacity: 0; }
+    .hx-breath-lbl[hidden] { display: none; }
+
+    /* -- Reduced motion: no movement, everything visible ----------------------- */
+    @media (prefers-reduced-motion: reduce) {
+      .hx-live .hx-rv { opacity: 1; translate: none; transition: none; }
+      .hx-sec *, .hx-sec *::before, .hx-sec *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
+      .hx-evts .home-evt-card, .hx-evts .home-evt-card:hover, .hx-fit-frame { transform: none !important; }
+      .hx-facade img, .hx-live .hx-opanel-media img, .hx-fit-frame img { transform: none !important; }
+      .hx-breath-lbl, .hx-cta-glow { display: none; }
+    }
+  </style>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3" />
@@ -210,108 +616,144 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .home-evt-thumb .h-badge.is-ongoing::before { content:""; width:6px; height:6px; border-radius:50%; background:#fff; }
 </style>
 <!-- UPCOMING EVENTS -->
-<div class="evt-countdown-bar">
-  <div class="ecb-header">
-    <span class="section-eyebrow">Upcoming Events</span>
-    <h2 class="section-title">Join Isabelle Live</h2>
-    <p class="section-subtitle">Upcoming TRE&#8482; workshops and certifications &mdash; live online and in person.</p>
-  </div>
-  <div class="home-evt-3" id="home-evt-grid">
-    <article class="home-evt-card">
-      <a href="event-shaking-online.html" class="home-evt-thumb" aria-label="From Shaking to Shaping — Online event">
-        <img src="images/event-shaking-online.webp?v=5" alt="From Shaking to Shaping &mdash; Online" width="1920" height="1080" loading="lazy" decoding="async" />
-      </a>
-      <div class="home-evt-body">
-        <div class="home-evt-tags"><span class="home-evt-tag loc">Online</span><span class="home-evt-tag">TRE&#8482; Coaching</span></div>
-        <h3>From Shaking to Shaping &mdash; Online</h3>
-        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-08" data-end="2026-10-08">8 Oct 2026 &middot; 7&#8211;9pm</span></div>
-        <p class="home-evt-desc">A live online workshop on using TRE&#8482; in a coaching context &mdash; co-led by Isabelle Claus Teixeira &amp; Saymara Ryon.</p>
-        <div class="home-evt-actions">
-          <a href="event-shaking-online.html" class="btn btn-primary">Register</a>
-          <a href="event-shaking-online.html" class="btn home-evt-btn2">Details</a>
-        </div>
+<div class="evt-countdown-bar hx-sec hx-evts" id="hx-evts">
+  <div class="hx-wrap">
+    <div class="hx-head hx-head-split">
+      <div class="hx-rv">
+        <span class="hx-eyebrow">Upcoming Events</span>
+        <h2 class="hx-title">Join Isabelle Live</h2>
+        <p class="hx-lede">Upcoming TRE&#8482; workshops and certifications &mdash; live online and in person.</p>
       </div>
-    </article>
-    <article class="home-evt-card">
-      <a href="event-tre-module1-bucharest.html" class="home-evt-thumb" aria-label="TRE™ Module 1 Bucharest event">
-        <img src="images/event-bucharest-module1.webp?v=4" alt="TRE&#8482; Module 1 &mdash; Bucharest, Romania" width="1920" height="1080" loading="lazy" decoding="async" />
-      </a>
-      <div class="home-evt-body">
-        <div class="home-evt-tags"><span class="home-evt-tag loc">International</span><span class="home-evt-tag">21 ICF CCEUs</span></div>
-        <h3>TRE&#8482; Module 1 &mdash; Bucharest</h3>
-        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-15" data-end="2026-10-17">15&ndash;17 Oct 2026</span></div>
-        <p class="home-evt-desc">An immersive 3-day certification &mdash; the first in Europe in English. Valid as Module 1 of the Global TRE&#8482; Provider Certification.</p>
-        <div class="home-evt-actions">
-          <a href="https://www.atelierdesuflet.ro/tre-module-1-bucharest-romania-21-icf-cceus-only-tre-training-in-the-world-with-icf-accreditation.html" target="_blank" rel="noopener" class="btn btn-primary">Buy Tickets</a>
-          <a href="event-tre-module1-bucharest.html" class="btn home-evt-btn2">Details</a>
-        </div>
+      <div class="hx-evt-nav hx-rv" style="--d:120ms" hidden>
+        <button type="button" class="hx-arrow" data-dir="-1" aria-controls="home-evt-grid" aria-label="Previous event"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button type="button" class="hx-arrow" data-dir="1" aria-controls="home-evt-grid" aria-label="Next event"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
-    </article>
-    <article class="home-evt-card">
-      <a href="event-certification-2027.html" class="home-evt-thumb" aria-label="Global TRE™ Provider Certification 2027">
-        <img src="images/event-certification-2027.webp?v=6" alt="Become a Certified TRE&#8482; Provider 2027" width="1920" height="1080" loading="lazy" decoding="async" />
-      </a>
-      <div class="home-evt-body">
-        <div class="home-evt-tags"><span class="home-evt-tag loc">Singapore</span><span class="home-evt-tag">Certification</span></div>
-        <h3>Become a Certified TRE&#8482; Provider &mdash; 2027 Cohort</h3>
-        <div class="evt-dates"><span class="evt-date-tag" data-start="2027-02-27" data-end="2027-10-31">Feb&ndash;Oct 2027</span></div>
-        <p class="home-evt-desc">The 2027 Singapore cohort of the Global TRE&#8482; Provider Certification &mdash; three in-person modules plus online supervisions and bonus programs. Bundle from S$5,888 early bird.</p>
-        <div class="home-evt-actions">
-          <a href="event-certification-2027.html#reserve" class="btn btn-primary">Register</a>
-          <a href="event-certification-2027.html" class="btn home-evt-btn2">Details</a>
+    </div>
+    <div class="home-evt-3" id="home-evt-grid">
+      <article class="home-evt-card hx-rv">
+        <a href="event-shaking-online.html" class="home-evt-thumb" aria-label="From Shaking to Shaping — Online event">
+          <img src="images/event-shaking-online.webp?v=5" alt="From Shaking to Shaping &mdash; Online" width="1920" height="1080" loading="lazy" decoding="async" />
+        </a>
+        <div class="home-evt-body">
+          <div class="home-evt-tags"><span class="home-evt-tag loc">Online</span><span class="home-evt-tag">TRE&#8482; Coaching</span></div>
+          <h3>From Shaking to Shaping &mdash; Online</h3>
+          <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-08" data-end="2026-10-08">8 Oct 2026 &middot; 7&#8211;9pm</span></div>
+          <p class="home-evt-desc">A live online workshop on using TRE&#8482; in a coaching context &mdash; co-led by Isabelle Claus Teixeira &amp; Saymara Ryon.</p>
+          <div class="home-evt-actions">
+            <a href="event-shaking-online.html" class="btn btn-primary">Register</a>
+            <a href="event-shaking-online.html" class="btn home-evt-btn2">Details</a>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+      <article class="home-evt-card hx-rv" style="--d:110ms">
+        <a href="event-tre-module1-bucharest.html" class="home-evt-thumb" aria-label="TRE™ Module 1 Bucharest event">
+          <img src="images/event-bucharest-module1.webp?v=4" alt="TRE&#8482; Module 1 &mdash; Bucharest, Romania" width="1920" height="1080" loading="lazy" decoding="async" />
+        </a>
+        <div class="home-evt-body">
+          <div class="home-evt-tags"><span class="home-evt-tag loc">International</span><span class="home-evt-tag">21 ICF CCEUs</span></div>
+          <h3>TRE&#8482; Module 1 &mdash; Bucharest</h3>
+          <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-15" data-end="2026-10-17">15&ndash;17 Oct 2026</span></div>
+          <p class="home-evt-desc">An immersive 3-day certification &mdash; the first in Europe in English. Valid as Module 1 of the Global TRE&#8482; Provider Certification.</p>
+          <div class="home-evt-actions">
+            <a href="https://www.atelierdesuflet.ro/tre-module-1-bucharest-romania-21-icf-cceus-only-tre-training-in-the-world-with-icf-accreditation.html" target="_blank" rel="noopener" class="btn btn-primary">Buy Tickets</a>
+            <a href="event-tre-module1-bucharest.html" class="btn home-evt-btn2">Details</a>
+          </div>
+        </div>
+      </article>
+      <article class="home-evt-card hx-rv" style="--d:220ms">
+        <a href="event-certification-2027.html" class="home-evt-thumb" aria-label="Global TRE™ Provider Certification 2027">
+          <img src="images/event-certification-2027.webp?v=6" alt="Become a Certified TRE&#8482; Provider 2027" width="1920" height="1080" loading="lazy" decoding="async" />
+        </a>
+        <div class="home-evt-body">
+          <div class="home-evt-tags"><span class="home-evt-tag loc">Singapore</span><span class="home-evt-tag">Certification</span></div>
+          <h3>Become a Certified TRE&#8482; Provider &mdash; 2027 Cohort</h3>
+          <div class="evt-dates"><span class="evt-date-tag" data-start="2027-02-27" data-end="2027-10-31">Feb&ndash;Oct 2027</span></div>
+          <p class="home-evt-desc">The 2027 Singapore cohort of the Global TRE&#8482; Provider Certification &mdash; three in-person modules plus online supervisions and bonus programs. Bundle from S$5,888 early bird.</p>
+          <div class="home-evt-actions">
+            <a href="event-certification-2027.html#reserve" class="btn btn-primary">Register</a>
+            <a href="event-certification-2027.html" class="btn home-evt-btn2">Details</a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="hx-evt-prog" aria-hidden="true" hidden><i></i></div>
   </div>
 </div>
 
 <!-- SERVICES OVERVIEW -->
 <!-- HOW WE TEACH — video -->
-<section class="section-white" id="how-we-teach">
-  <div class="section-header-center">
-    <span class="section-eyebrow">How We Teach</span>
-    <h2 class="section-title">Isabelle &amp; Simba in the Room</h2>
-    <p class="section-subtitle">A look inside a live TRE&#8482; training &#8212; how Isabelle Claus Teixeira and Simba Stenqvist teach, guide and hold the space.</p>
-  </div>
-  <div style="max-width:960px;margin:0 auto;padding:0 1.25rem">
-    <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#0f1522;box-shadow:0 18px 50px rgba(36,46,66,.22)">
-      <iframe src="https://www.youtube-nocookie.com/embed/8_UE9nKEh2s?rel=0" title="How we teach TRE — Isabelle Claus Teixeira &amp; Simba Stenqvist" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+<section class="section-white hx-sec hx-teach" id="how-we-teach">
+  <div class="hx-wrap">
+    <div class="hx-head hx-head-center hx-rv">
+      <span class="hx-eyebrow">How We Teach</span>
+      <h2 class="hx-title">Isabelle &amp; Simba in the Room</h2>
+      <p class="hx-lede">A look inside a live TRE&#8482; training &#8212; how Isabelle Claus Teixeira and Simba Stenqvist teach, guide and hold the space.</p>
     </div>
+    <div class="hx-video hx-rv" style="--d:120ms">
+      <div class="hx-video-frame">
+        <button type="button" class="hx-facade" aria-label="Play video: How we teach TRE &#8212; Isabelle Claus Teixeira &amp; Simba Stenqvist" hidden>
+          <img src="images/gallery/gallery-module2-sep2026-4.jpg" alt="" width="1600" height="1200" loading="lazy" decoding="async" />
+          <span class="hx-facade-shade" aria-hidden="true"></span>
+          <span class="hx-yt" aria-hidden="true"><i class="fa-brands fa-youtube"></i> YouTube</span>
+          <span class="hx-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L7.5 3.64A1 1 0 0 0 6 4.5z"/></svg></span>
+          <span class="hx-facade-cap" aria-hidden="true"><span class="hx-facade-k">Play the video</span><span class="hx-facade-t">Isabelle &amp; Simba in the Room</span></span>
+        </button>
+        <noscript><iframe src="https://www.youtube-nocookie.com/embed/8_UE9nKEh2s?rel=0" title="How we teach TRE — Isabelle Claus Teixeira &amp; Simba Stenqvist" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></noscript>
+      </div>
+    </div>
+    <div class="hx-ctarow hx-rv"><a href="tre-certification.html" class="btn btn-primary">Explore the Certification</a></div>
   </div>
-  <div class="section-cta-center"><a href="tre-certification.html" class="btn btn-primary">Explore the Certification</a></div>
 </section>
 
-<section class="section-cream">
-  <div class="section-header-center">
-    <span class="section-eyebrow">What We Offer</span>
-    <h2 class="section-title">Somatic Practices for<br>Lasting Transformation</h2>
-    <p class="section-subtitle">Body-based approaches that work with your nervous system directly &#8212; not just your mind.</p>
-  </div>
-  <div class="cards-grid">
-    <div class="card green-top">
-      <div class="card-img"><img src="images/card-tre.webp?v=3" alt="TRE™ Exercises" loading="lazy" decoding="async" width="800" height="450"></div>
-      <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
-      <h3>TRE&#8482; Exercises</h3>
-      <p>Simple exercises that trigger your body's built-in tremoring response &#8212; releasing stored stress and tension from the nervous system.</p>
-      <a href="tre-certification.html" class="card-link">Learn More &#8594;</a>
+<section class="section-cream hx-sec hx-offer">
+  <div class="hx-wrap">
+    <div class="hx-head hx-head-center hx-rv">
+      <span class="hx-eyebrow">What We Offer</span>
+      <h2 class="hx-title">Somatic Practices for<br>Lasting Transformation</h2>
+      <p class="hx-lede">Body-based approaches that work with your nervous system directly &#8212; not just your mind.</p>
     </div>
-    <div class="card gold-top">
-      <div class="card-img"><img src="images/card-coaching.webp?v=3" alt="Coaching" loading="lazy" decoding="async" width="800" height="450"></div>
-      <div class="card-icon"><i class="fa-solid fa-spa"></i></div>
-      <h3>Coaching</h3>
-      <p>Somatic, trauma and neuroscience informed coaching that builds embodied intelligence &#8212; for lasting resilience, calm and transformation.</p>
-      <a href="holistic-mastermind.html" class="card-link">Learn More &#8594;</a>
+    <div class="hx-offer-ui hx-rv" style="--d:120ms">
+      <div class="hx-offer-tabs" role="tablist" aria-label="What we offer" aria-orientation="vertical">
+        <button type="button" class="hx-otab" role="tab" id="hx-otab-1" aria-controls="hx-opanel-1" aria-selected="true"><span class="hx-otab-bar" aria-hidden="true"></span><span class="hx-otab-n" aria-hidden="true">01</span><span class="hx-otab-i" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span><span class="hx-otab-t">TRE&#8482; Exercises</span></button>
+        <button type="button" class="hx-otab" role="tab" id="hx-otab-2" aria-controls="hx-opanel-2" aria-selected="false" tabindex="-1"><span class="hx-otab-bar" aria-hidden="true"></span><span class="hx-otab-n" aria-hidden="true">02</span><span class="hx-otab-i" aria-hidden="true"><i class="fa-solid fa-spa"></i></span><span class="hx-otab-t">Coaching</span></button>
+        <button type="button" class="hx-otab" role="tab" id="hx-otab-3" aria-controls="hx-opanel-3" aria-selected="false" tabindex="-1"><span class="hx-otab-bar" aria-hidden="true"></span><span class="hx-otab-n" aria-hidden="true">03</span><span class="hx-otab-i" aria-hidden="true"><i class="fa-solid fa-hand"></i></span><span class="hx-otab-t">Mindfulness</span></button>
+      </div>
+      <div class="hx-offer-stage">
+        <article class="hx-opanel hx-cur" id="hx-opanel-1" aria-labelledby="hx-otab-1">
+          <div class="hx-opanel-media"><img src="images/card-tre.webp?v=3" alt="TRE™ Exercises" loading="lazy" decoding="async" width="800" height="450"></div>
+          <div class="hx-opanel-body">
+            <span class="hx-opanel-n" aria-hidden="true">01</span>
+            <span class="hx-opanel-icon" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
+            <h3>TRE&#8482; Exercises</h3>
+            <p>Simple exercises that trigger your body's built-in tremoring response &#8212; releasing stored stress and tension from the nervous system.</p>
+            <a href="tre-certification.html" class="hx-link">Learn More &#8594;</a>
+          </div>
+        </article>
+        <article class="hx-opanel" id="hx-opanel-2" aria-labelledby="hx-otab-2">
+          <div class="hx-opanel-media"><img src="images/card-coaching.webp?v=3" alt="Coaching" loading="lazy" decoding="async" width="800" height="450"></div>
+          <div class="hx-opanel-body">
+            <span class="hx-opanel-n" aria-hidden="true">02</span>
+            <span class="hx-opanel-icon" aria-hidden="true"><i class="fa-solid fa-spa"></i></span>
+            <h3>Coaching</h3>
+            <p>Somatic, trauma and neuroscience informed coaching that builds embodied intelligence &#8212; for lasting resilience, calm and transformation.</p>
+            <a href="holistic-mastermind.html" class="hx-link">Learn More &#8594;</a>
+          </div>
+        </article>
+        <article class="hx-opanel" id="hx-opanel-3" aria-labelledby="hx-otab-3">
+          <div class="hx-opanel-media"><img src="images/card-mindfulness.webp?v=3" alt="Mindfulness" loading="lazy" decoding="async" width="800" height="450"></div>
+          <div class="hx-opanel-body">
+            <span class="hx-opanel-n" aria-hidden="true">03</span>
+            <span class="hx-opanel-icon" aria-hidden="true"><i class="fa-solid fa-hand"></i></span>
+            <h3>Mindfulness</h3>
+            <p>A 6 or 8-session personalised journey to bring mindfulness and neuroscience-backed practices into your daily life.</p>
+            <a href="holistic-mastermind.html" class="hx-link">Learn More &#8594;</a>
+          </div>
+        </article>
+      </div>
     </div>
-    <div class="card sage-top">
-      <div class="card-img"><img src="images/card-mindfulness.webp?v=3" alt="Mindfulness" loading="lazy" decoding="async" width="800" height="450"></div>
-      <div class="card-icon"><i class="fa-solid fa-hand"></i></div>
-      <h3>Mindfulness</h3>
-      <p>A 6 or 8-session personalised journey to bring mindfulness and neuroscience-backed practices into your daily life.</p>
-      <a href="holistic-mastermind.html" class="card-link">Learn More &#8594;</a>
+    <div class="hx-ctarow hx-rv">
+      <a href="book.html" class="btn btn-primary">Find Your Practice</a>
     </div>
-  </div>
-  <div style="margin-top:2.5rem;text-align:center">
-    <a href="book.html" class="btn btn-primary">Find Your Practice</a>
   </div>
 </section>
 
@@ -364,60 +806,78 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section-cream">
-  <div class="section-header-center">
-    <span class="section-eyebrow" style="color:var(--gold)">In Their Own Words</span>
-    <h2 class="section-title">What People Are Saying</h2>
-    <div class="divider divider-center"></div>
-  </div>
-  <div class="testimonials-grid">
-    <div class="testimonial-light">
-      <p>"Thank you!!! I am deeply grateful for this journey and everyone in it. Thank you, dear Isabelle, for going beyond a trainer with your passion, energy and care. 🙏🏼 Let&#8217;s continue to explore &amp; keep this community growing and helping others uncover their path to healing &amp; releasing! Shake it off &#8212; Yay!! 🎉"</p>
-      <div class="testimonial-author">&#8212; R.H., TRE&#8482; Certification Student</div>
+<section class="section-cream hx-sec hx-voices">
+  <div class="hx-wrap">
+    <div class="hx-head hx-head-center hx-rv">
+      <span class="hx-eyebrow">In Their Own Words</span>
+      <h2 class="hx-title">What People Are Saying</h2>
     </div>
-    <div class="testimonial-light">
-      <p>"I am less anxious and feel so much more grounded. I never expected a body-based practice to create such profound changes in my mindset."</p>
-      <div class="testimonial-author">&#8212; Senior Manager, Singapore</div>
+    <div class="hx-q hx-rv" style="--d:120ms" role="region" aria-roledescription="carousel" aria-label="What people are saying">
+      <div class="hx-q-stage" id="hx-q-stage">
+        <figure class="hx-q-slide">
+          <blockquote><p>"Thank you!!! I am deeply grateful for this journey and everyone in it. Thank you, dear Isabelle, for going beyond a trainer with your passion, energy and care. Let&#8217;s continue to explore &amp; keep this community growing and helping others uncover their path to healing &amp; releasing! Shake it off &#8212; Yay!!"</p></blockquote>
+          <figcaption>&#8212; R.H., TRE&#8482; Certification Student</figcaption>
+        </figure>
+        <figure class="hx-q-slide">
+          <blockquote><p>"I am less anxious and feel so much more grounded. I never expected a body-based practice to create such profound changes in my mindset."</p></blockquote>
+          <figcaption>&#8212; Senior Manager, Singapore</figcaption>
+        </figure>
+        <figure class="hx-q-slide">
+          <blockquote><p>"I slept so well after my first TRE™ session. Three months in, I can genuinely say my relationship with stress has completely changed."</p></blockquote>
+          <figcaption>&#8212; Finance Executive, Tokyo</figcaption>
+        </figure>
+        <figure class="hx-q-slide">
+          <blockquote><p>"Isabelle created such a safe, professional space. The somatic bodywork helped me release patterns I had carried for decades."</p></blockquote>
+          <figcaption>&#8212; Entrepreneur, Hong Kong</figcaption>
+        </figure>
+        <figure class="hx-q-slide">
+          <blockquote><p>"My back pain has significantly reduced and I have far more energy at work. I recommend TRE™ to every high performer I know."</p></blockquote>
+          <figcaption>&#8212; Mumbai</figcaption>
+        </figure>
+      </div>
+      <div class="hx-q-ctl">
+        <div class="hx-q-row">
+          <button type="button" class="hx-arrow" data-q="-1" aria-controls="hx-q-stage" aria-label="Previous quote"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+          <div class="hx-q-dots"></div>
+          <button type="button" class="hx-arrow" data-q="1" aria-controls="hx-q-stage" aria-label="Next quote"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+        <div class="hx-q-meta">
+          <span class="hx-q-count" aria-hidden="true">01 / 05</span>
+          <button type="button" class="hx-q-pause" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><span>Pause</span></button>
+        </div>
+      </div>
     </div>
-    <div class="testimonial-light">
-      <p>"I slept so well after my first TRE™ session. Three months in, I can genuinely say my relationship with stress has completely changed."</p>
-      <div class="testimonial-author">&#8212; Finance Executive, Tokyo</div>
+    <div class="hx-ctarow hx-rv">
+      <a href="book.html" class="btn btn-primary">Start Your Journey</a>
     </div>
-    <div class="testimonial-light">
-      <p>"Isabelle created such a safe, professional space. The somatic bodywork helped me release patterns I had carried for decades."</p>
-      <div class="testimonial-author">&#8212; Entrepreneur, Hong Kong</div>
-    </div>
-    <div class="testimonial-light">
-      <p>"My back pain has significantly reduced and I have far more energy at work. I recommend TRE™ to every high performer I know."</p>
-      <div class="testimonial-author">&#8212; Mumbai</div>
-    </div>
-
-  </div>
-  <div style="margin-top:2.5rem;text-align:center">
-    <a href="book.html" class="btn btn-primary">Start Your Journey</a>
   </div>
 </section>
 
 <!-- WHO IT'S FOR -->
-<section class="section-white">
-  <div class="two-col reverse">
-    <div class="two-col-image gold-bg"><img src="images/home-is-this-for-you.jpg" alt="Somatic healing session" loading="lazy" decoding="async" width="800" height="600" /></div>
-    <div class="two-col-text">
-      <span class="section-eyebrow">Is This for You?</span>
-      <h2>You Don't Need a Particular Story</h2>
-      <div class="divider"></div>
-      <p>HummingBeing is for anyone who feels something is off &#8212; even if they can't quite name it. You don't need to be in crisis. You just need to feel the quiet pull to come back to yourself.</p>
-      <ul class="feature-list">
-        <li>You're exhausted in a way that sleep doesn't fix</li>
-        <li>You're going through a big life or work change</li>
-        <li>Anxiety, tension or overwhelm feel like your default setting</li>
-        <li>You've been through something and don't want to talk about it to heal</li>
-        <li>You want to feel more present, more alive, more like <em>you</em></li>
-        <li>You sense there's more available to you than what you're currently living</li>
+<section class="section-white hx-sec hx-fit">
+  <div class="hx-wrap hx-fit-grid">
+    <div class="hx-fit-media hx-rv">
+      <div class="hx-fit-frame"><img src="images/home-is-this-for-you.jpg" alt="Somatic healing session" loading="lazy" decoding="async" width="800" height="600" /></div>
+    </div>
+    <div class="hx-fit-text">
+      <div class="hx-rv">
+        <span class="hx-eyebrow">Is This for You?</span>
+        <h2 class="hx-title">You Don't Need a Particular Story</h2>
+      </div>
+      <p class="hx-rv" style="--d:80ms">HummingBeing is for anyone who feels something is off &#8212; even if they can't quite name it. You don't need to be in crisis. You just need to feel the quiet pull to come back to yourself.</p>
+      <p class="hx-fit-hint" hidden><i class="fa-regular fa-hand-pointer" aria-hidden="true"></i> Tap any that feel familiar</p>
+      <ul class="hx-fit-list">
+        <li class="hx-fit-item hx-rv" style="--d:0ms"><span class="hx-fit-dot" aria-hidden="true"></span><span class="hx-fit-label">You're exhausted in a way that sleep doesn't fix</span></li>
+        <li class="hx-fit-item hx-rv" style="--d:60ms"><span class="hx-fit-dot" aria-hidden="true"></span><span class="hx-fit-label">You're going through a big life or work change</span></li>
+        <li class="hx-fit-item hx-rv" style="--d:120ms"><span class="hx-fit-dot" aria-hidden="true"></span><span class="hx-fit-label">Anxiety, tension or overwhelm feel like your default setting</span></li>
+        <li class="hx-fit-item hx-rv" style="--d:180ms"><span class="hx-fit-dot" aria-hidden="true"></span><span class="hx-fit-label">You've been through something and don't want to talk about it to heal</span></li>
+        <li class="hx-fit-item hx-rv" style="--d:240ms"><span class="hx-fit-dot" aria-hidden="true"></span><span class="hx-fit-label">You want to feel more present, more alive, more like <em>you</em></span></li>
+        <li class="hx-fit-item hx-rv" style="--d:300ms"><span class="hx-fit-dot" aria-hidden="true"></span><span class="hx-fit-label">You sense there's more available to you than what you're currently living</span></li>
       </ul>
-      <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:1.5rem">
+      <div class="hx-fit-meter" aria-live="polite" hidden><span class="hx-fit-bar" aria-hidden="true"><i></i></span><span><b>0</b> of 6 feel familiar</span></div>
+      <div class="hx-fit-cta hx-rv">
         <a href="book.html" class="btn btn-primary">Book a Free Chat</a>
-        <span style="font-size:.8rem;color:var(--text-mid)">Free 30-min discovery call · No commitment</span>
+        <span>Free 30-min discovery call · No commitment</span>
       </div>
     </div>
   </div>
@@ -449,10 +909,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   @media (max-width:440px){ .home-evt-actions{ flex-direction:column; } }
 </style>
 <!-- CTA BANNER -->
-<div class="cta-banner">
-  <h2>Come as You Are</h2>
-  <p>Start with a free 30-minute chat with Isabelle. No agenda, no pressure &#8212; just an honest conversation about how you're feeling and what might help.</p>
-  <a href="book.html" class="btn btn-primary">Book a Free Chat</a>
+<div class="cta-banner hx-sec hx-cta">
+  <div class="hx-breath" aria-hidden="true"><span></span><span></span><span></span></div>
+  <span class="hx-cta-glow" aria-hidden="true"></span>
+  <div class="hx-cta-in">
+    <span class="hx-breath-lbl" aria-hidden="true" hidden>Breathe in</span>
+    <h2>Come as You Are</h2>
+    <p>Start with a free 30-minute chat with Isabelle. No agenda, no pressure &#8212; just an honest conversation about how you're feeling and what might help.</p>
+    <a href="book.html" class="btn btn-primary">Book a Free Chat</a>
+  </div>
 </div>
 
 <footer>
@@ -577,6 +1042,278 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return startMs(a) - startMs(b);
   });
   cards.forEach(function(c){ grid.appendChild(c); });
+})();
+</script>
+<script>
+/* ==========================================================================
+   HOME (.hx) - reveal on scroll, event tilt + countdown chip + swipe track,
+   click-to-play video facade, offer tabs, quote carousel, "is this for you"
+   check list, breathing CTA. Plain JS, no libraries, scoped to .hx-sec.
+   Runs after the upcoming-events script above (it relies on data-status).
+   ========================================================================== */
+(function () {
+  'use strict';
+  var secs = [].slice.call(document.querySelectorAll('.hx-sec'));
+  if (!secs.length) return;
+  var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mqFine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  function still() { return mqReduce.matches; }
+  function $(s, c) { return (c || document).querySelector(s); }
+  function $$(s, c) { return [].slice.call((c || document).querySelectorAll(s)); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  secs.forEach(function (s) { s.classList.add('hx-live'); });
+
+  /* ---- Reveal on scroll ------------------------------------------------- */
+  var rv = $$('.hx-sec .hx-rv');
+  if (still() || !('IntersectionObserver' in window)) {
+    rv.forEach(function (e) { e.classList.add('hx-in'); });
+  } else {
+    var rio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        // event cards sit in a swipe track on phones: reveal the whole row together so the peeking card shows
+        var grp = en.target.classList.contains('home-evt-card') ? $$('.home-evt-card', en.target.parentNode) : [en.target];
+        grp.forEach(function (g) { g.classList.add('hx-in'); rio.unobserve(g); });
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+    rv.forEach(function (e) { rio.observe(e); });
+  }
+
+  /* ---- Pointer tilt helper (fine pointers only) -------------------------- */
+  function tilt(el, ax, ay, cb) {
+    if (!mqFine.matches || still()) return;
+    el.addEventListener('pointermove', function (e) {
+      var r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      el.classList.add('hx-tilt');
+      el.style.setProperty('--rx', ((.5 - y) * ax).toFixed(2) + 'deg');
+      el.style.setProperty('--ry', ((x - .5) * ay).toFixed(2) + 'deg');
+      el.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+      el.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+      if (cb) cb(x, y);
+    });
+    el.addEventListener('pointerleave', function () {
+      el.classList.remove('hx-tilt');
+      el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg');
+      if (cb) cb(.5, .5);
+    });
+  }
+
+  /* ---- 1. Upcoming events ------------------------------------------------ */
+  var ev = $('#hx-evts');
+  if (ev) {
+    var track = $('#home-evt-grid', ev), nav = $('.hx-evt-nav', ev), prog = $('.hx-evt-prog', ev);
+    var now = Date.now();
+    $$('.home-evt-card', track).forEach(function (card) {
+      tilt(card, 5, 7);
+      var st = card.getAttribute('data-status'), tag = $('.evt-date-tag', card);
+      if (!tag || (st !== 'upcoming' && st !== 'ongoing')) return;
+      var chip = document.createElement('span'); chip.className = 'hx-when';
+      if (st === 'ongoing') chip.textContent = 'Happening now';
+      else {
+        var s = Date.parse(tag.getAttribute('data-start') + 'T00:00:00+08:00');
+        if (isNaN(s)) return;
+        var d = Math.ceil((s - now) / 864e5);
+        chip.innerHTML = '<i class="fa-regular fa-clock" aria-hidden="true"></i>' + (d <= 1 ? 'Starts tomorrow' : 'Starts in ' + d + ' days');
+      }
+      tag.parentNode.appendChild(chip);
+    });
+    var bar = prog ? $('i', prog) : null, btns = $$('.hx-arrow', nav), raf = 0;
+    function cards() { return $$('.home-evt-card', track).filter(function (c) { return !c.hidden; }); }
+    function upd() {
+      raf = 0;
+      var max = track.scrollWidth - track.clientWidth, over = max > 4;
+      nav.hidden = !over; if (prog) prog.hidden = !over;
+      if (!over) return;
+      btns[0].disabled = track.scrollLeft < 4;
+      btns[1].disabled = track.scrollLeft > max - 4;
+      if (bar) {
+        bar.style.width = (track.clientWidth / track.scrollWidth * 100).toFixed(2) + '%';
+        bar.style.transform = 'translateX(' + (track.scrollLeft / track.clientWidth * 100).toFixed(2) + '%)';
+      }
+    }
+    function queue() { if (!raf) raf = requestAnimationFrame(upd); }
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var c = cards(); if (c.length < 2) return;
+        var step = c[1].offsetLeft - c[0].offsetLeft;
+        track.scrollBy({ left: +b.getAttribute('data-dir') * step, behavior: still() ? 'auto' : 'smooth' });
+      });
+    });
+    track.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    upd();
+  }
+
+  /* ---- 2. Video facade: YouTube only loads when the visitor presses play -- */
+  var fac = $('.hx-facade');
+  if (fac) {
+    var ns = fac.parentNode.querySelector('noscript');
+    if (ns && 'content' in document.createElement('template')) {
+      fac.hidden = false;
+      fac.addEventListener('click', function () {
+        var t = document.createElement('template'); t.innerHTML = ns.textContent;
+        var f = t.content.querySelector('iframe'); if (!f) return;
+        f.setAttribute('src', f.getAttribute('src') + (f.getAttribute('src').indexOf('?') > -1 ? '&' : '?') + 'autoplay=1');
+        f.removeAttribute('loading');
+        fac.parentNode.insertBefore(f, fac);
+        fac.classList.add('hx-gone');
+        setTimeout(function () { fac.remove(); try { f.focus(); } catch (e) {} }, still() ? 0 : 500);
+      });
+      tilt(fac, 0, 0, function (x, y) {
+        fac.style.setProperty('--px', ((.5 - x) * 16).toFixed(1) + 'px');
+        fac.style.setProperty('--py', ((.5 - y) * 10).toFixed(1) + 'px');
+      });
+    }
+  }
+
+  /* ---- 3. Offer tabs ------------------------------------------------------ */
+  var off = $('.hx-offer');
+  if (off) {
+    var tabs = $$('.hx-otab', off), panels = $$('.hx-opanel', off), tl = $('.hx-offer-tabs', off), hoverT = 0;
+    panels.forEach(function (p) { p.setAttribute('role', 'tabpanel'); });
+    function sel(i, focus) {
+      tabs.forEach(function (t, j) { var on = j === i; t.setAttribute('aria-selected', on ? 'true' : 'false'); t.tabIndex = on ? 0 : -1; });
+      panels.forEach(function (p, j) { p.classList.toggle('hx-cur', j === i); });
+      if (focus) tabs[i].focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { sel(i); });
+      t.addEventListener('keydown', function (e) {
+        var k = e.key, n = tabs.length, j = -1;
+        if (k === 'ArrowDown' || k === 'ArrowRight') j = (i + 1) % n;
+        else if (k === 'ArrowUp' || k === 'ArrowLeft') j = (i - 1 + n) % n;
+        else if (k === 'Home') j = 0; else if (k === 'End') j = n - 1;
+        if (j > -1) { e.preventDefault(); sel(j, true); }
+      });
+      if (mqFine.matches) {
+        t.addEventListener('pointerenter', function () { clearTimeout(hoverT); hoverT = setTimeout(function () { sel(i); }, 110); });
+        t.addEventListener('pointerleave', function () { clearTimeout(hoverT); });
+      }
+    });
+    var mqCol = window.matchMedia('(max-width: 900px)');
+    function orient() { tl.setAttribute('aria-orientation', mqCol.matches ? 'horizontal' : 'vertical'); }
+    orient(); if (mqCol.addEventListener) mqCol.addEventListener('change', orient);
+    panels.forEach(function (p) {
+      var m = $('.hx-opanel-media', p);
+      tilt(m, 0, 0, function (x, y) {
+        m.style.setProperty('--px', ((.5 - x) * 14).toFixed(1) + 'px');
+        m.style.setProperty('--py', ((.5 - y) * 10).toFixed(1) + 'px');
+      });
+    });
+  }
+
+  /* ---- 4. Quote carousel -------------------------------------------------- */
+  var q = $('.hx-q');
+  if (q) {
+    var stage = $('.hx-q-stage', q), slides = $$('.hx-q-slide', q), dotsBox = $('.hx-q-dots', q);
+    var count = $('.hx-q-count', q), pauseB = $('.hx-q-pause', q), n = slides.length, cur = 0;
+    var userPaused = false, hovering = false, focusIn = false, inView = false, auto = !still() && n > 1;
+    var dots = slides.map(function (s, i) {
+      s.setAttribute('role', 'group'); s.setAttribute('aria-roledescription', 'slide'); s.setAttribute('aria-label', (i + 1) + ' of ' + n);
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'hx-qdot';
+      b.setAttribute('aria-label', 'Show quote ' + (i + 1) + ' of ' + n); b.innerHTML = '<i></i>';
+      b.addEventListener('click', function () { go(i); });
+      dotsBox.appendChild(b); return b;
+    });
+    function hold() {
+      q.classList.toggle('hx-hold', userPaused || hovering || focusIn || !inView);
+      stage.setAttribute('aria-live', (auto && !userPaused) ? 'off' : 'polite');
+    }
+    function go(k) {
+      cur = (k + n) % n;
+      slides.forEach(function (s, j) {
+        s.setAttribute('data-pos', j === cur ? 'cur' : (j < cur ? 'before' : 'after'));
+        s.setAttribute('aria-hidden', j === cur ? 'false' : 'true');
+      });
+      dots.forEach(function (d, j) { if (j === cur) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+      count.textContent = pad(cur + 1) + ' / ' + pad(n);
+    }
+    dots.forEach(function (d) {
+      $('i', d).addEventListener('animationend', function () { if (auto && !userPaused) go(cur + 1); });
+    });
+    $$('[data-q]', q).forEach(function (b) { b.addEventListener('click', function () { go(cur + +b.getAttribute('data-q')); }); });
+    q.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
+    });
+    var sx = null, sy = 0;
+    stage.addEventListener('pointerdown', function (e) { if (e.pointerType === 'mouse') return; sx = e.clientX; sy = e.clientY; });
+    stage.addEventListener('pointerup', function (e) {
+      if (sx === null) return;
+      var dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) go(cur + (dx < 0 ? 1 : -1));
+    });
+    stage.addEventListener('pointercancel', function () { sx = null; });
+    if (auto) {
+      q.classList.add('hx-auto');
+      pauseB.hidden = false;
+      pauseB.addEventListener('click', function () {
+        userPaused = !userPaused;
+        pauseB.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
+        pauseB.innerHTML = userPaused
+          ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg><span>Play</span>'
+          : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><span>Pause</span>';
+        hold();
+      });
+      if (mqFine.matches) {
+        q.addEventListener('pointerenter', function () { hovering = true; hold(); });
+        q.addEventListener('pointerleave', function () { hovering = false; hold(); });
+      }
+      q.addEventListener('focusin', function () { focusIn = true; hold(); });
+      q.addEventListener('focusout', function (e) { if (!q.contains(e.relatedTarget)) { focusIn = false; hold(); } });
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) { inView = es[0].isIntersecting; hold(); }, { threshold: .35 }).observe(q);
+      } else inView = true;
+      document.addEventListener('visibilitychange', function () { if (document.hidden) { inView = false; hold(); } });
+    }
+    go(0); hold();
+  }
+
+  /* ---- 5. Is this for you: tap-to-check ----------------------------------- */
+  var fit = $('.hx-fit');
+  if (fit) {
+    var items = $$('.hx-fit-item', fit), meter = $('.hx-fit-meter', fit), num = $('b', meter), fill = $('.hx-fit-bar i', meter);
+    items.forEach(function (li) {
+      var lab = $('.hx-fit-label', li), dot = $('.hx-fit-dot', li);
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'hx-fit-btn'; b.setAttribute('aria-pressed', 'false');
+      b.innerHTML = '<span class="hx-fit-box" aria-hidden="true"><i class="fa-solid fa-check"></i></span>';
+      if (dot) dot.remove();
+      b.appendChild(lab); li.appendChild(b); li.classList.add('hx-btnd');
+      b.addEventListener('click', function () {
+        b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+        var c = $$('.hx-fit-btn[aria-pressed="true"]', fit).length;
+        num.textContent = c; fill.style.transform = 'scaleX(' + (c / items.length) + ')';
+        num.classList.remove('hx-bump'); void num.offsetWidth; num.classList.add('hx-bump');
+      });
+    });
+    $('.hx-fit-hint', fit).hidden = false; meter.hidden = false;
+    var fr = $('.hx-fit-frame', fit);
+    tilt(fr, 4, 6, function (x, y) {
+      fr.style.setProperty('--px', ((.5 - x) * 16).toFixed(1) + 'px');
+      fr.style.setProperty('--py', ((.5 - y) * 12).toFixed(1) + 'px');
+    });
+  }
+
+  /* ---- 6. Breathing CTA --------------------------------------------------- */
+  var cta = $('.hx-cta');
+  if (cta && !still()) {
+    var lbl = $('.hx-breath-lbl', cta), ring = $('.hx-breath span', cta), outT = 0;
+    if (lbl && ring) {
+      lbl.hidden = false;
+      var say = function (txt) { lbl.classList.add('hx-fade'); setTimeout(function () { lbl.textContent = txt; lbl.classList.remove('hx-fade'); }, 300); };
+      var cycle = function () { clearTimeout(outT); say('Breathe in'); outT = setTimeout(function () { say('Breathe out'); }, 4000); };
+      ring.addEventListener('animationiteration', cycle);
+      cycle();
+    }
+    if (mqFine.matches) {
+      var glow = $('.hx-cta-glow', cta);
+      cta.addEventListener('pointermove', function (e) {
+        var r = cta.getBoundingClientRect();
+        glow.style.setProperty('--gx', (e.clientX - r.left).toFixed(0) + 'px');
+        glow.style.setProperty('--gy', (e.clientY - r.top).toFixed(0) + 'px');
+      });
+    }
+  }
 })();
 </script>
 </body>

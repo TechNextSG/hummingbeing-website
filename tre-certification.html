@@ -16,6 +16,490 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Raleway:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="styles.css?v=95" />
+  <style>
+    /* ==========================================================================
+       TRE CERTIFICATION (.tc-) - page-scoped redesign of the eight sections
+       below the hero. Every selector is prefixed .tc-. Buttons are not restyled.
+       Reveal-hiding only applies under .tc-on, which the page script adds.
+       ========================================================================== */
+    .tc-sec {
+      --tc-navy: #242e42; --tc-deep: #1a2030; --tc-mid: #3a4a66;
+      --tc-gold: #F5A623; --tc-gold-d: #c98000; --tc-cream: #fafaf8;
+      --tc-text: #3d4250; --tc-mute: #5f6472;
+      --tc-ease: cubic-bezier(.23, 1, .32, 1);
+      --tc-pad: clamp(16px, 5vw, 64px);
+      --tc-r: 14px;
+    }
+    section.tc-sec {
+      padding: clamp(3.5rem, 7vw, 5.75rem) var(--tc-pad);
+      position: relative; overflow: clip; color: var(--tc-text);
+      font-family: 'Lato', sans-serif;
+    }
+    .tc-wrap { max-width: 1180px; margin: 0 auto; position: relative; }
+    .tc-sec :focus-visible { outline: 3px solid var(--tc-gold); outline-offset: 3px; }
+    .tc-sec h3 { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* -- Shared type ----------------------------------------------------------- */
+    .tc-eyebrow {
+      display: inline-flex; align-items: center; gap: .75rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--tc-navy); margin: 0 0 1rem;
+    }
+    .tc-eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--tc-gold); flex: 0 0 auto; }
+    .tc-h2 {
+      font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: var(--tc-navy);
+      font-size: clamp(1.8rem, 3.8vw, 2.85rem); line-height: 1.14; letter-spacing: -.01em; margin: 0 0 1.1rem;
+    }
+    .tc-h2 em { font-style: italic; color: var(--tc-gold-d); }
+    .tc-head { text-align: center; max-width: 780px; margin: 0 auto clamp(2rem, 4vw, 3rem); }
+    .tc-head .tc-eyebrow { justify-content: center; }
+    .tc-head .tc-eyebrow::after { content: ""; width: 28px; height: 2px; background: var(--tc-gold); flex: 0 0 auto; }
+    .tc-sub { font-size: 1.02rem; line-height: 1.75; color: var(--tc-mute); margin: 0; }
+    .tc-rule { display: block; width: 56px; height: 3px; background: var(--tc-gold); border-radius: 2px; margin: 0 0 1.5rem; transform-origin: left; }
+    .tc-link-inline {
+      color: var(--tc-navy); font-weight: 700; text-decoration: underline;
+      text-decoration-color: var(--tc-gold); text-decoration-thickness: 2px; text-underline-offset: 3px;
+      transition: color .3s var(--tc-ease);
+    }
+    .tc-link-inline:hover { color: var(--tc-mid); text-decoration-color: var(--tc-gold-d); }
+
+    /* -- Scroll reveal (only when the script is running) ----------------------- */
+    .tc-on .tc-rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--tc-ease), transform .9s var(--tc-ease); transition-delay: var(--tc-d, 0ms); }
+    .tc-on .tc-rv.tc-in { opacity: 1; transform: none; }
+    .tc-on .tc-rule.tc-rv { transform: scaleX(0); }
+    .tc-on .tc-rule.tc-rv.tc-in { transform: none; transition-delay: 200ms; }
+
+    /* -- Split layout + tilt photos ------------------------------------------- */
+    .tc-split { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+    .tc-split-rev { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); }
+    .tc-split-rev .tc-photo { order: 2; }
+    .tc-copy { min-width: 0; }
+    .tc-tilt {
+      position: relative; z-index: 1; border-radius: var(--tc-r); overflow: hidden; background: var(--tc-deep);
+      box-shadow: 0 30px 60px rgba(26, 32, 48, .16);
+      transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transition: transform .7s var(--tc-ease), box-shadow .6s var(--tc-ease);
+    }
+    .tc-tilt img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.4s var(--tc-ease); }
+    .tc-tilt::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 30%), rgba(255, 255, 255, .2), transparent 50%);
+      opacity: 0; transition: opacity .4s var(--tc-ease);
+    }
+    .tc-on .tc-rv .tc-tilt img { transform: scale(1.1); }
+    .tc-on .tc-rv.tc-in .tc-tilt img { transform: scale(1); }
+    .tc-photo { margin: 0; position: relative; min-width: 0; }
+    .tc-photo .tc-tilt { aspect-ratio: 4 / 3; }
+    .tc-photo::before {
+      content: ""; position: absolute; right: -14px; bottom: -14px; width: 46%; height: 58%;
+      border-radius: var(--tc-r); background: rgba(245, 166, 35, .2); z-index: 0;
+      transition: transform .8s var(--tc-ease);
+    }
+    .tc-split-rev .tc-photo::before { right: auto; left: -14px; }
+
+    /* -- 1. Trainer ------------------------------------------------------------ */
+    .tc-portrait { position: relative; margin: 0; max-width: 440px; width: 100%; justify-self: center; }
+    .tc-portrait .tc-tilt { aspect-ratio: 4 / 5; }
+    .tc-portrait .tc-tilt img { object-position: 50% 18%; }
+    .tc-portrait-frame {
+      position: absolute; inset: 0; z-index: 0; border: 2px solid var(--tc-gold); border-radius: var(--tc-r);
+      transform: translate(18px, 18px); transition: transform .8s var(--tc-ease);
+    }
+    .tc-badge {
+      position: absolute; z-index: 2; left: -18px; bottom: 30px;
+      display: flex; align-items: center; gap: .8rem; padding: .95rem 1.2rem;
+      background: var(--tc-navy); color: #fff; border-radius: 12px;
+      box-shadow: 0 18px 40px rgba(26, 32, 48, .3);
+    }
+    .tc-badge-n { font-family: 'Playfair Display', Georgia, serif; font-size: 2.3rem; font-weight: 700; line-height: 1; color: var(--tc-gold); font-variant-numeric: tabular-nums; min-width: 2ch; }
+    .tc-badge-l { font-size: .66rem; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; line-height: 1.35; max-width: 6.5rem; }
+    .tc-on .tc-portrait .tc-badge { opacity: 0; transform: translateY(18px) scale(.94); transition: opacity .7s var(--tc-ease) .35s, transform .8s var(--tc-ease) .35s; }
+    .tc-on .tc-portrait.tc-in .tc-badge { opacity: 1; transform: none; }
+    .tc-lede { font-size: 1.04rem; line-height: 1.82; margin: 0 0 1.6rem; }
+    .tc-hl {
+      background-image: linear-gradient(rgba(245, 166, 35, .38), rgba(245, 166, 35, .38));
+      background-repeat: no-repeat; background-size: 0% 40%; background-position: 0 90%;
+      -webkit-box-decoration-break: clone; box-decoration-break: clone;
+      transition: background-size .7s var(--tc-ease);
+    }
+    .tc-hl.tc-lit { background-size: 100% 40%; }
+    .tc-chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .tc-chip {
+      display: inline-flex; align-items: center; gap: .55rem; min-height: 44px; padding: .55rem 1.05rem; margin: 0;
+      border: 1px solid rgba(36, 46, 66, .16); border-radius: 999px; background: #fff; color: var(--tc-navy);
+      font: 700 .78rem/1.3 'Lato', sans-serif; letter-spacing: .3px; text-align: left; cursor: pointer;
+      transition: border-color .3s var(--tc-ease), background-color .3s var(--tc-ease), transform .45s var(--tc-ease), box-shadow .45s var(--tc-ease);
+    }
+    .tc-chip i { color: var(--tc-gold-d); transition: transform .5s var(--tc-ease); }
+    .tc-chip:hover, .tc-chip:focus-visible, .tc-chip[aria-pressed="true"] { border-color: var(--tc-gold); box-shadow: 0 10px 24px rgba(245, 166, 35, .22); transform: translateY(-2px); }
+    .tc-chip[aria-pressed="true"] { background: #fff6e6; }
+    .tc-chip:hover i, .tc-chip[aria-pressed="true"] i { transform: rotate(-12deg) scale(1.15); }
+    .tc-chip:active { transform: scale(.97); }
+
+    /* -- 2. Benefits ----------------------------------------------------------- */
+    .tc-quote { max-width: 840px; margin: 0 auto; text-align: center; }
+    .tc-quote blockquote {
+      font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 400;
+      font-size: clamp(1.3rem, 2.6vw, 1.85rem); line-height: 1.5; color: var(--tc-navy); margin: 0 0 1rem; padding: 0; border: 0;
+    }
+    .tc-w { display: inline-block; }
+    .tc-on .tc-quote .tc-w { opacity: 0; transform: translateY(.45em); transition: opacity .6s var(--tc-ease), transform .8s var(--tc-ease); transition-delay: calc(var(--i, 0) * 45ms); }
+    .tc-on .tc-quote.tc-in .tc-w { opacity: 1; transform: none; }
+    .tc-quote-by { font-size: .8rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--tc-mid); }
+    .tc-on .tc-quote .tc-quote-by { opacity: 0; transition: opacity .8s var(--tc-ease) 1s; }
+    .tc-on .tc-quote.tc-in .tc-quote-by { opacity: 1; }
+    .tc-wave {
+      height: 46px; max-width: 520px; margin: 1.8rem auto; overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
+    }
+    .tc-wave svg { display: block; width: 200%; height: 100%; animation: tc-wave 7s linear infinite; }
+    .tc-wave g { transform-origin: 50% 50%; transform-box: fill-box; transition: transform .8s var(--tc-ease); }
+    .tc-wave-a { fill: none; stroke: var(--tc-gold); stroke-width: 2.2; stroke-linecap: round; }
+    .tc-wave-b { fill: none; stroke: var(--tc-navy); stroke-opacity: .22; stroke-width: 1.4; }
+    .tc-benefits:has(.tc-ben:hover) .tc-wave g { transform: scaleY(1.6); }
+    @keyframes tc-wave { to { transform: translateX(-50%); } }
+    .tc-body { max-width: 780px; margin: 0 auto; text-align: center; font-size: 1.02rem; line-height: 1.8; }
+    .tc-kicker { text-align: center; font-weight: 700; color: var(--tc-navy); font-size: .95rem; margin: 2.6rem 0 1.2rem; }
+    .tc-bgrid { list-style: none; margin: 0 auto; padding: 0; max-width: 1060px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .tc-bgrid > li { display: flex; min-width: 0; }
+    .tc-ben {
+      position: relative; flex: 1; display: flex; align-items: center; gap: 1rem; padding: 1.3rem 1.3rem;
+      background: var(--tc-cream); border: 1px solid rgba(36, 46, 66, .08); border-radius: var(--tc-r);
+      overflow: hidden; isolation: isolate; color: var(--tc-navy); font-size: .95rem; line-height: 1.55;
+      transition: transform .5s var(--tc-ease), box-shadow .5s var(--tc-ease), border-color .4s var(--tc-ease);
+    }
+    .tc-ben::before {
+      content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(245, 166, 35, .16), transparent 60%);
+      opacity: 0; transition: opacity .4s var(--tc-ease);
+    }
+    .tc-ben::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--tc-gold);
+      transform: scaleX(0); transform-origin: left; transition: transform .6s var(--tc-ease);
+    }
+    .tc-bicon {
+      flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+      background: #fff; color: var(--tc-gold-d); font-size: 1rem; box-shadow: 0 6px 16px rgba(36, 46, 66, .08);
+    }
+    .tc-note { text-align: center; margin: 2rem 0 0; font-size: .92rem; color: var(--tc-mute); }
+    @keyframes tc-tremor {
+      0%, 100% { transform: translate(0, 0) rotate(0); }
+      20% { transform: translate(-1.5px, 1px) rotate(-4deg); }
+      40% { transform: translate(1.5px, -1px) rotate(4deg); }
+      60% { transform: translate(-1px, -1px) rotate(-2deg); }
+      80% { transform: translate(1px, 1px) rotate(2deg); }
+    }
+
+    /* -- 3. Why TRE (tabs) ---------------------------------------------------- */
+    .tc-why-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .tc-wp {
+      position: relative; min-width: 0; background: #fff; border-radius: 18px; border-top: 3px solid var(--tc-gold);
+      padding: clamp(1.5rem, 3vw, 2.2rem); box-shadow: 0 1px 2px rgba(26, 32, 48, .05); overflow: hidden;
+    }
+    .tc-wp-i { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: rgba(245, 166, 35, .15); color: var(--tc-gold-d); font-size: 1.3rem; margin-bottom: 1.1rem; }
+    .tc-wp h3 { font-size: 1.3rem; color: var(--tc-navy); margin: 0 0 .6rem; line-height: 1.25; }
+    .tc-wp p { margin: 0; font-size: .97rem; line-height: 1.75; }
+    .tc-wp-num { position: absolute; top: .4rem; right: 1.2rem; font: 700 clamp(4rem, 8vw, 6.5rem)/1 'Playfair Display', Georgia, serif; color: rgba(245, 166, 35, .14); pointer-events: none; }
+    .tc-why-tabs { display: none; }
+    .tc-on .tc-why-ui { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: clamp(1.25rem, 3vw, 2.5rem); align-items: stretch; }
+    .tc-on .tc-why-tabs { display: flex; flex-direction: column; gap: .3rem; position: relative; margin: 0; }
+    .tc-why-ind {
+      position: absolute; left: 0; top: 0; width: 100%; height: 56px; z-index: 0; pointer-events: none;
+      background: #fff; border-radius: 12px; box-shadow: 0 12px 30px rgba(36, 46, 66, .1);
+      transition: transform .55s var(--tc-ease);
+    }
+    .tc-why-ind::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 2px; background: var(--tc-gold); }
+    .tc-wt {
+      position: relative; z-index: 1; display: flex; align-items: center; gap: .9rem; width: 100%; min-height: 56px;
+      padding: .6rem 1rem; margin: 0; border: 0; border-radius: 12px; background: transparent; cursor: pointer;
+      color: var(--tc-navy); font: 700 .95rem/1.3 'Lato', sans-serif; text-align: left;
+    }
+    .tc-wt-i {
+      flex: 0 0 auto; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+      background: #fff; color: var(--tc-gold-d); font-size: .95rem;
+      transition: background-color .4s var(--tc-ease), color .4s var(--tc-ease), transform .5s var(--tc-ease);
+    }
+    .tc-wt-n { margin-left: auto; font-size: .7rem; letter-spacing: 1.5px; color: var(--tc-mute); font-variant-numeric: tabular-nums; }
+    .tc-wt:hover .tc-wt-i { transform: scale(1.1) rotate(-6deg); }
+    .tc-wt[aria-selected="true"] .tc-wt-i { background: var(--tc-gold); color: var(--tc-deep); transform: scale(1.06); }
+    .tc-wt:focus-visible { outline-offset: -3px; }
+    .tc-why-stage { min-width: 0; display: flex; flex-direction: column; }
+    .tc-on .tc-why-grid { grid-template-columns: minmax(0, 1fr); flex: 1; }
+    .tc-on .tc-wp {
+      grid-area: 1 / 1; display: flex; flex-direction: column; justify-content: center;
+      padding: clamp(1.75rem, 4vw, 3.25rem); box-shadow: 0 24px 60px rgba(26, 32, 48, .1);
+      opacity: 0; visibility: hidden; transform: translateY(18px) scale(.985);
+      transition: opacity .45s var(--tc-ease), transform .6s var(--tc-ease), visibility 0s linear .6s;
+    }
+    .tc-on .tc-wp.tc-cur { opacity: 1; visibility: visible; transform: none; transition: opacity .5s var(--tc-ease) .06s, transform .7s var(--tc-ease) .06s, visibility 0s; }
+    .tc-on .tc-wp-i { width: 72px; height: 72px; font-size: 1.7rem; }
+    .tc-on .tc-wp.tc-cur .tc-wp-i { animation: tc-pop .7s var(--tc-ease) both .1s; }
+    .tc-on .tc-wp h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+    .tc-on .tc-wp p { font-size: 1.04rem; max-width: 34rem; }
+    @keyframes tc-pop { from { transform: scale(.6) rotate(-12deg); opacity: 0; } to { transform: none; opacity: 1; } }
+    .tc-pnav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; }
+    .tc-pnav-c { font-size: .74rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--tc-mute); font-variant-numeric: tabular-nums; }
+    .tc-pnav-b { display: inline-flex; gap: .5rem; }
+    .tc-pbtn {
+      width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; margin: 0; padding: 0;
+      border: 1px solid rgba(36, 46, 66, .2); background: #fff; color: var(--tc-navy); cursor: pointer;
+      transition: background-color .3s var(--tc-ease), border-color .3s var(--tc-ease), color .3s var(--tc-ease), transform .4s var(--tc-ease);
+    }
+    .tc-pbtn:hover { background: var(--tc-navy); border-color: var(--tc-navy); color: var(--tc-gold); }
+    .tc-pbtn:active { transform: scale(.92); }
+    .tc-pbtn[disabled] { opacity: .4; cursor: default; background: #fff; color: var(--tc-navy); border-color: rgba(36, 46, 66, .2); }
+
+    /* -- 4. How it works (stepper) -------------------------------------------- */
+    .tc-path { max-width: 900px; margin: 0 auto; }
+    .tc-track { display: none; }
+    .tc-steps { display: grid; gap: 1rem; }
+    .tc-st {
+      display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.25rem; align-items: start;
+      background: var(--tc-cream); border: 1px solid rgba(36, 46, 66, .08); border-radius: 18px; padding: 1.5rem;
+    }
+    .tc-st-num { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--tc-navy); color: var(--tc-gold); font: 700 1.3rem/1 'Playfair Display', Georgia, serif; }
+    .tc-st h3 { font-size: 1.25rem; color: var(--tc-navy); margin: 0 0 .55rem; line-height: 1.3; }
+    .tc-st p { margin: 0; font-size: .98rem; line-height: 1.78; }
+    .tc-on .tc-track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); position: relative; margin: 0 0 1.75rem; }
+    .tc-track-line { position: absolute; top: 26px; left: 12.5%; right: 12.5%; height: 3px; border-radius: 2px; background: rgba(36, 46, 66, .12); overflow: hidden; }
+    .tc-track-fill { position: absolute; inset: 0; background: linear-gradient(90deg, var(--tc-gold-d), var(--tc-gold)); transform-origin: left; transform: scaleX(var(--tc-p, 0)); transition: transform .8s var(--tc-ease); }
+    .tc-node {
+      position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: .7rem;
+      margin: 0; padding: 0 .2rem; border: 0; background: none; cursor: pointer; font: inherit; color: var(--tc-navy); min-height: 44px;
+    }
+    .tc-node:focus-visible { outline-offset: 4px; border-radius: 10px; }
+    .tc-node-dot {
+      position: relative; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center;
+      background: #fff; border: 2px solid rgba(36, 46, 66, .2); color: var(--tc-navy); font: 700 1.2rem/1 'Playfair Display', Georgia, serif;
+      transition: background-color .4s var(--tc-ease), border-color .4s var(--tc-ease), color .4s var(--tc-ease), transform .5s var(--tc-ease), box-shadow .5s var(--tc-ease);
+    }
+    .tc-node-l { font: 700 .7rem/1.3 'Lato', sans-serif; letter-spacing: 1.4px; text-transform: uppercase; color: var(--tc-mute); text-align: center; transition: color .3s var(--tc-ease); }
+    .tc-node:hover .tc-node-dot { transform: scale(1.08); border-color: var(--tc-gold); }
+    .tc-node.tc-done .tc-node-dot { background: var(--tc-navy); border-color: var(--tc-navy); color: var(--tc-gold); }
+    .tc-node[aria-selected="true"] .tc-node-dot { background: var(--tc-gold); border-color: var(--tc-gold); color: var(--tc-deep); transform: scale(1.1); box-shadow: 0 0 0 8px rgba(245, 166, 35, .18); }
+    .tc-node[aria-selected="true"] .tc-node-dot::after { content: ""; position: absolute; inset: -2px; border-radius: 50%; border: 2px solid var(--tc-gold); animation: tc-pulse 2.4s var(--tc-ease) infinite; }
+    .tc-node[aria-selected="true"] .tc-node-l { color: var(--tc-navy); }
+    @keyframes tc-pulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.7); opacity: 0; } }
+    .tc-on .tc-steps { grid-template-columns: minmax(0, 1fr); }
+    .tc-on .tc-st {
+      grid-area: 1 / 1; padding: clamp(1.6rem, 3.5vw, 2.75rem); gap: clamp(1.25rem, 3vw, 2.25rem);
+      opacity: 0; visibility: hidden; transform: translateX(28px);
+      transition: opacity .45s var(--tc-ease), transform .6s var(--tc-ease), visibility 0s linear .6s;
+    }
+    .tc-on .tc-steps[data-dir="-1"] .tc-st { transform: translateX(-28px); }
+    .tc-on .tc-st.tc-cur { opacity: 1; visibility: visible; transform: none; transition: opacity .5s var(--tc-ease) .06s, transform .7s var(--tc-ease) .06s, visibility 0s; }
+    .tc-on .tc-st-num { width: 84px; height: 84px; font-size: 2.2rem; box-shadow: 0 14px 30px rgba(26, 32, 48, .2); }
+    .tc-on .tc-st h3 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); }
+
+    /* -- 5. Who this is for ---------------------------------------------------- */
+    .tc-who-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+    .tc-who-row {
+      position: relative; display: flex; align-items: center; gap: 1rem; padding: .8rem 1.1rem .8rem .9rem;
+      background: #fff; border: 1px solid rgba(36, 46, 66, .07); border-radius: 12px; overflow: hidden;
+      font-size: .96rem; line-height: 1.5; color: var(--tc-text);
+      transition: transform .5s var(--tc-ease), box-shadow .5s var(--tc-ease), border-color .4s var(--tc-ease);
+    }
+    .tc-who-row::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--tc-gold); transform: scaleY(0); transition: transform .45s var(--tc-ease); }
+    .tc-who-i {
+      flex: 0 0 auto; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+      background: rgba(36, 46, 66, .06); color: var(--tc-navy); font-size: .95rem;
+      transition: background-color .4s var(--tc-ease), color .4s var(--tc-ease), transform .5s var(--tc-ease);
+    }
+
+    /* -- 6. Upcoming (timeline) ------------------------------------------------ */
+    .tc-tl { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; position: relative; }
+    .tc-tl::before {
+      content: ""; position: absolute; top: 8px; height: 2px; left: calc((100% - 3rem) / 6); right: calc((100% - 3rem) / 6);
+      background: linear-gradient(90deg, var(--tc-gold), var(--tc-gold-d)); transform-origin: left;
+    }
+    .tc-on .tc-tl::before { transform: scaleX(0); transition: transform 1.4s var(--tc-ease) .15s; }
+    .tc-on .tc-tl.tc-in::before { transform: scaleX(1); }
+    .tc-tl-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; min-width: 0; }
+    .tc-tl-mark { height: 18px; display: grid; place-items: center; }
+    .tc-tl-dot { position: relative; width: 18px; height: 18px; border-radius: 50%; background: #f0f4f8; border: 3px solid var(--tc-gold); transition: transform .5s var(--tc-ease), background-color .4s var(--tc-ease); }
+    .tc-tl-dot::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--tc-gold); opacity: 0; }
+    .tc-tl-card {
+      position: relative; width: 100%; flex: 1; display: flex; flex-direction: column; overflow: hidden;
+      background: #fff; border: 1px solid rgba(36, 46, 66, .06); border-radius: 16px; padding: 1.6rem 1.5rem 1.3rem;
+      box-shadow: 0 1px 2px rgba(26, 32, 48, .05);
+      transition: transform .55s var(--tc-ease), box-shadow .55s var(--tc-ease);
+    }
+    .tc-tl-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--tc-gold); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--tc-ease); }
+    .tc-tl-item:hover .tc-tl-card, .tc-tl-item:focus-within .tc-tl-card { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(26, 32, 48, .12); }
+    .tc-tl-item:hover .tc-tl-card::before, .tc-tl-item:focus-within .tc-tl-card::before { transform: scaleX(1); }
+    .tc-tl-item:hover .tc-tl-dot, .tc-tl-item:focus-within .tc-tl-dot { background: var(--tc-gold); transform: scale(1.3); }
+    .tc-tl-item:hover .tc-tl-dot::after, .tc-tl-item:focus-within .tc-tl-dot::after { animation: tc-pulse 1.8s var(--tc-ease) infinite; }
+    .tc-tl-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1.1rem; }
+    .tc-date { display: flex; flex-direction: column; }
+    .tc-date-d { font: 700 2.2rem/1 'Playfair Display', Georgia, serif; color: var(--tc-navy); }
+    .tc-date-m { font: 700 .7rem/1 'Lato', sans-serif; letter-spacing: 2px; text-transform: uppercase; color: var(--tc-mute); margin-top: .5rem; }
+    .tc-tl-icon { flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgba(245, 166, 35, .15); color: var(--tc-gold-d); transition: transform .6s var(--tc-ease); }
+    .tc-tl-item:hover .tc-tl-icon { transform: rotate(-10deg) scale(1.1); }
+    .tc-tl-card h3 { font-size: 1.2rem; color: var(--tc-navy); margin: 0 0 .5rem; }
+    .tc-tl-card p { font-size: .93rem; line-height: 1.7; margin: 0 0 1rem; flex: 1; }
+    .tc-enq {
+      align-self: flex-start; display: inline-flex; align-items: center; gap: .45rem; min-height: 44px;
+      font: 700 .88rem/1 'Lato', sans-serif; letter-spacing: .5px; color: var(--tc-navy); text-decoration: underline;
+      text-decoration-color: var(--tc-gold); text-decoration-thickness: 2px; text-underline-offset: 5px;
+    }
+    .tc-enq-arr { display: inline-block; color: var(--tc-gold-d); transition: transform .45s var(--tc-ease); }
+    .tc-enq:hover .tc-enq-arr, .tc-enq:focus-visible .tc-enq-arr { transform: translateX(5px); }
+
+    /* -- 7. Pricing ------------------------------------------------------------ */
+    section.tc-price { background: var(--tc-deep); color: rgba(255, 255, 255, .8); }
+    .tc-price::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(700px circle at 50% 0%, rgba(245, 166, 35, .12), transparent 62%); }
+    .tc-price .tc-eyebrow { color: var(--tc-gold); }
+    .tc-price .tc-h2 { color: #fff; }
+    .tc-price .tc-h2 em { color: var(--tc-gold); }
+    .tc-price .tc-sub { color: rgba(255, 255, 255, .74); }
+    .tc-price-intro { max-width: 720px; margin: 0 auto 2rem; text-align: center; }
+    .tc-price-lead { font-family: 'PT Serif', Georgia, serif; font-size: 1.15rem; color: #fff; margin: 0 0 .6rem; }
+    .tc-price-intro p:not(.tc-price-lead) { font-size: .95rem; line-height: 1.7; color: rgba(255, 255, 255, .76); margin: 0; }
+    .tc-price-intro strong { color: #fff; }
+    .tc-bill-wrap { text-align: center; margin: 0 0 2.75rem; }
+    .tc-bill-wrap[hidden] { display: none; }
+    .tc-bill { position: relative; display: inline-grid; grid-template-columns: 1fr 1fr; padding: 5px; border-radius: 999px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .16); }
+    .tc-bill-ind { position: absolute; top: 5px; bottom: 5px; left: 5px; width: calc(50% - 5px); border-radius: 999px; background: var(--tc-gold); box-shadow: 0 8px 22px rgba(245, 166, 35, .35); transition: transform .5s var(--tc-ease); }
+    .tc-bill[data-mode="n"] .tc-bill-ind { transform: translateX(100%); }
+    .tc-bill-b {
+      position: relative; z-index: 1; min-height: 44px; padding: 0 1.4rem; margin: 0; border: 0; border-radius: 999px; background: none; cursor: pointer;
+      color: rgba(255, 255, 255, .86); font: 700 .74rem/1 'Lato', sans-serif; letter-spacing: 1.4px; text-transform: uppercase; white-space: nowrap;
+      transition: color .3s var(--tc-ease);
+    }
+    .tc-bill-b[aria-pressed="true"] { color: var(--tc-deep); }
+    .tc-bill-b:focus-visible { outline-offset: 2px; }
+    .tc-plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; max-width: 820px; margin: 0 auto; }
+    .tc-plan-cell { display: flex; min-width: 0; }
+    .tc-plan {
+      position: relative; flex: 1; display: flex; flex-direction: column; isolation: isolate;
+      padding: 2.2rem 1.8rem 1.8rem; border-radius: 18px; background: rgba(255, 255, 255, .045); border: 1px solid rgba(255, 255, 255, .14);
+      transition: transform .55s var(--tc-ease), border-color .4s var(--tc-ease), box-shadow .55s var(--tc-ease), opacity .4s var(--tc-ease);
+    }
+    .tc-plan::before {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1; pointer-events: none;
+      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(245, 166, 35, .17), transparent 58%);
+      opacity: 0; transition: opacity .45s var(--tc-ease);
+    }
+    .tc-plan-feat { border-color: rgba(245, 166, 35, .7); background: rgba(245, 166, 35, .07); }
+    .tc-plan:hover, .tc-plan:focus-within { transform: translateY(-6px); border-color: var(--tc-gold); box-shadow: 0 28px 60px rgba(0, 0, 0, .38), 0 0 0 1px var(--tc-gold); }
+    .tc-plan:hover::before, .tc-plan:focus-within::before { opacity: 1; }
+    .tc-plans:has(.tc-plan:hover) .tc-plan:not(:hover), .tc-plans:has(.tc-plan:focus-visible) .tc-plan:not(:focus-visible):not(:hover) { opacity: .82; transform: scale(.985); }
+    .tc-plan-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+      background: var(--tc-gold); color: var(--tc-deep); font: 700 .62rem/1 'Lato', sans-serif; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: .45rem 1rem; border-radius: 999px; box-shadow: 0 8px 20px rgba(245, 166, 35, .35);
+    }
+    .tc-plan-sel {
+      position: absolute; top: 1.15rem; right: 1.15rem; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--tc-gold); color: var(--tc-deep); font-size: .78rem; opacity: 0; transform: scale(.4);
+      transition: opacity .3s var(--tc-ease), transform .5s var(--tc-ease);
+    }
+    .tc-plan:hover .tc-plan-sel, .tc-plan:focus-within .tc-plan-sel { opacity: 1; transform: none; }
+    .tc-plan h3.tc-plan-name { font: 700 .74rem/1.55 'Lato', sans-serif; letter-spacing: 2px; text-transform: uppercase; color: var(--tc-gold); margin: 0 0 1rem; padding-right: 2.4rem; }
+    .tc-plan-price { display: flex; align-items: flex-start; gap: .2rem; margin: 0 0 1.25rem; font: 800 clamp(2.4rem, 5vw, 3.1rem)/1 'Playfair Display', Georgia, serif; color: #fff; }
+    .tc-plan-price small { font-size: 1.1rem; margin-top: .35rem; }
+    .tc-plan-num { display: inline-block; font-variant-numeric: tabular-nums; }
+    .tc-plan-tiers { border-top: 1px solid rgba(255, 255, 255, .12); padding-top: .8rem; display: flex; flex-direction: column; gap: .3rem; flex: 1; }
+    .tc-plan-tier { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .5rem .75rem; border-radius: 8px; font-size: .84rem; transition: background-color .4s var(--tc-ease); }
+    .tc-plan-tier::before { content: ""; position: absolute; left: 0; top: 22%; bottom: 22%; width: 3px; border-radius: 2px; background: var(--tc-gold); transform: scaleY(0); transition: transform .45s var(--tc-ease); }
+    .tc-plan-tier span:first-child { color: rgba(255, 255, 255, .74); }
+    .tc-plan-tier span:last-child { font-weight: 700; color: #fff; white-space: nowrap; }
+    .tc-plan-tier.tc-tier-on { background: rgba(245, 166, 35, .13); }
+    .tc-plan-tier.tc-tier-on::before { transform: scaleY(1); }
+    .tc-plan-inc { font-size: .8rem; line-height: 1.65; color: rgba(255, 255, 255, .64); margin: 1.1rem 0 0; padding-top: .9rem; border-top: 1px solid rgba(255, 255, 255, .09); }
+    .tc-price-cta { text-align: center; margin-top: 2.75rem; }
+    .tc-price-cta p { margin: .9rem 0 0; font-size: .85rem; color: rgba(255, 255, 255, .64); }
+    .tc-price-cta p a { color: rgba(255, 255, 255, .88); text-decoration: underline; text-decoration-color: rgba(245, 166, 35, .7); text-underline-offset: 3px; }
+    .tc-price-cta p a:hover { color: var(--tc-gold); }
+
+    /* -- 8. What's included ---------------------------------------------------- */
+    .tc-checks { list-style: none; margin: 0 0 1.6rem; padding: 0; display: grid; gap: .9rem; }
+    .tc-checks li { display: flex; align-items: flex-start; gap: .85rem; font-size: .98rem; line-height: 1.55; }
+    .tc-check { flex: 0 0 auto; width: 26px; height: 26px; margin-top: -1px; transition: transform .5s var(--tc-ease); }
+    .tc-check svg { display: block; width: 100%; height: 100%; overflow: visible; }
+    .tc-check circle { fill: rgba(245, 166, 35, .14); stroke: var(--tc-gold); stroke-width: 1.5; }
+    .tc-check path { fill: none; stroke: var(--tc-gold-d); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+    .tc-on .tc-check path { stroke-dasharray: 16; stroke-dashoffset: 16; transition: stroke-dashoffset .6s var(--tc-ease) calc(var(--tc-d, 0ms) + 320ms); }
+    .tc-on .tc-rv.tc-in .tc-check path { stroke-dashoffset: 0; }
+    .tc-checks li:hover .tc-check { transform: scale(1.15) rotate(-8deg); }
+    .tc-inc-note { margin: 0 0 1.5rem; font-size: .95rem; line-height: 1.7; color: var(--tc-mute); }
+
+    /* -- Fine-pointer hover ---------------------------------------------------- */
+    @media (hover: hover) and (pointer: fine) {
+      .tc-tilt:hover { box-shadow: 0 36px 70px rgba(26, 32, 48, .24); }
+      .tc-tilt:hover::after { opacity: 1; }
+      .tc-tilt.tc-tilting { transition: transform .12s linear, box-shadow .6s var(--tc-ease); }
+      .tc-on .tc-rv.tc-in .tc-tilt:hover img, .tc-tilt:hover img { transform: scale(1.05); }
+      .tc-portrait:hover .tc-portrait-frame { transform: translate(10px, 10px); }
+      .tc-photo:hover::before { transform: translate(-6px, -6px); }
+      .tc-split-rev .tc-photo:hover::before { transform: translate(6px, -6px); }
+      .tc-ben:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(26, 32, 48, .1); border-color: rgba(245, 166, 35, .45); }
+      .tc-ben:hover::before { opacity: 1; }
+      .tc-ben:hover::after { transform: scaleX(1); }
+      .tc-ben:hover .tc-bicon { animation: tc-tremor .45s linear 2; }
+      .tc-who-row:hover { transform: translateX(6px); box-shadow: 0 14px 30px rgba(26, 32, 48, .08); border-color: rgba(245, 166, 35, .4); }
+      .tc-who-row:hover::before { transform: scaleY(1); }
+      .tc-who-row:hover .tc-who-i { background: var(--tc-gold); color: var(--tc-deep); transform: rotate(-6deg); }
+    }
+
+    /* -- Responsive ------------------------------------------------------------ */
+    @media (max-width: 900px) {
+      .tc-split, .tc-split-rev { grid-template-columns: minmax(0, 1fr); }
+      .tc-split-rev .tc-photo { order: 0; }
+      .tc-portrait { max-width: 380px; }
+      .tc-photo { max-width: 620px; width: calc(100% - 14px); }
+      .tc-bgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tc-why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tc-on .tc-why-ui { grid-template-columns: minmax(0, 1fr); }
+      .tc-on .tc-why-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+      .tc-why-ind { display: none; }
+      .tc-wt {
+        flex-direction: column; justify-content: flex-start; gap: .5rem; padding: .85rem .5rem; text-align: center;
+        font-size: .8rem; background: rgba(255, 255, 255, .6); border: 1px solid rgba(36, 46, 66, .06);
+        transition: background-color .3s var(--tc-ease), box-shadow .3s var(--tc-ease), border-color .3s var(--tc-ease);
+      }
+      .tc-wt[aria-selected="true"] { background: #fff; border-color: rgba(245, 166, 35, .6); box-shadow: 0 10px 24px rgba(36, 46, 66, .1); }
+      .tc-wt-n { display: none; }
+      .tc-plans { grid-template-columns: minmax(0, 1fr); max-width: 480px; gap: 2rem; }
+      .tc-tl { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; padding-left: 2.1rem; }
+      .tc-tl::before { left: 8px; right: auto; top: 12px; bottom: 12px; width: 2px; height: auto; transform-origin: top; }
+      .tc-on .tc-tl::before { transform: scaleY(0); }
+      .tc-on .tc-tl.tc-in::before { transform: scaleY(1); }
+      .tc-tl-item { display: block; }
+      .tc-tl-mark { position: absolute; left: -2.1rem; top: 1.75rem; width: 18px; }
+    }
+    @media (max-width: 560px) {
+      .tc-bgrid, .tc-why-grid { grid-template-columns: minmax(0, 1fr); }
+      .tc-on .tc-why-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .tc-on .tc-why-grid { grid-template-columns: minmax(0, 1fr); }
+      .tc-wp-num { font-size: 4rem; }
+      .tc-portrait { width: calc(100% - 18px); }
+      .tc-badge { left: 10px; bottom: 16px; padding: .75rem 1rem; }
+      .tc-badge-n { font-size: 1.9rem; }
+      .tc-chip { font-size: .74rem; }
+      .tc-node-dot { width: 44px; height: 44px; font-size: 1rem; }
+      .tc-track-line { top: 21px; }
+      .tc-node-l { font-size: .6rem; letter-spacing: .8px; }
+      .tc-on .tc-st { grid-template-columns: minmax(0, 1fr); }
+      .tc-on .tc-st-num { width: 56px; height: 56px; font-size: 1.5rem; }
+      .tc-st { grid-template-columns: minmax(0, 1fr); }
+      .tc-plan { padding: 2.1rem 1.25rem 1.5rem; }
+      .tc-plan-tier { font-size: .8rem; padding: .5rem .6rem; }
+      .tc-bill-b { padding: 0 .95rem; font-size: .68rem; letter-spacing: 1px; }
+      .tc-who-row { font-size: .92rem; }
+    }
+
+    /* -- Reduced motion: no movement, everything visible ----------------------- */
+    @media (prefers-reduced-motion: reduce) {
+      .tc-sec *, .tc-sec *::before, .tc-sec *::after { animation: none !important; transition: none !important; }
+      .tc-on .tc-rv, .tc-on .tc-quote .tc-w, .tc-on .tc-quote .tc-quote-by, .tc-on .tc-portrait .tc-badge { opacity: 1 !important; transform: none !important; }
+      .tc-on .tc-tl::before { transform: none !important; }
+      .tc-on .tc-rv .tc-tilt img { transform: none !important; }
+      .tc-tilt { transform: none !important; }
+      .tc-on .tc-check path { stroke-dashoffset: 0 !important; }
+    }
+  </style>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3" />
@@ -167,255 +651,290 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img src="images/logo-icf-cce.webp" width="500" height="500" alt="ICF Continuing Coach Education — CCE Accredited" loading="lazy" decoding="async" />
 </div>
 
-<!-- SECTION 1 — YOUR TRAINER -->
-<section class="section-cream">
-  <div class="two-col">
-    <div class="two-col-image"><img src="images/isabelle-your-trainer.jpg" alt="Isabelle Claus Teixeira — Global TRE&#8482; Certifying Trainer" loading="lazy" decoding="async" width="800" height="1200" /></div>
-    <div class="two-col-text">
-      <span class="section-eyebrow">Your Trainer</span>
-      <h2>Learning From a Global TRE&#8482; <em>Certifying Trainer</em></h2>
-      <div class="divider"></div>
-      <p>Isabelle is a Global TRE&#8482; Certifying Trainer &#8212; accredited by the TRE&#8482; for All organisation under Dr. David Berceli&#8217;s methodology, with the highest level of qualification to certify new TRE&#8482; Providers worldwide. She has trained practitioners globally &#8212; across Europe, the US and Asia &#8212; bringing 30 years of human development experience and somatic practice to every certification training.</p>
-      <div style="margin-top:1.5rem">
-        <span class="tag">Global TRE&#8482; Certifying Trainer</span>
-        <span class="tag">Dr. David Berceli Methodology</span>
-        <span class="tag">30 Years Experience</span>
-        <span class="tag">Working Globally</span>
+<!-- SECTION 1 - YOUR TRAINER (tc- redesign: tilt portrait, count-up badge, credential chips that highlight the bio) -->
+<section class="section-cream tc-sec tc-trainer">
+  <div class="tc-wrap tc-split">
+    <figure class="tc-portrait tc-rv">
+      <span class="tc-portrait-frame" aria-hidden="true"></span>
+      <div class="tc-tilt"><img src="images/isabelle-your-trainer.jpg" alt="Isabelle Claus Teixeira &#8212; Global TRE&#8482; Certifying Trainer" loading="lazy" decoding="async" width="800" height="1200" /></div>
+      <figcaption class="tc-badge" aria-hidden="true"><span class="tc-badge-n" data-tc-count="30">30</span><span class="tc-badge-l">Years Experience</span></figcaption>
+    </figure>
+    <div class="tc-copy">
+      <span class="tc-eyebrow tc-rv">Your Trainer</span>
+      <h2 class="tc-h2 tc-rv">Learning From a Global TRE&#8482; <em>Certifying Trainer</em></h2>
+      <span class="tc-rule tc-rv" aria-hidden="true"></span>
+      <p class="tc-lede tc-rv">Isabelle is a <span class="tc-hl" data-tc-k="cert">Global TRE&#8482; Certifying Trainer</span> &#8212; accredited by the TRE&#8482; for All organisation under <span class="tc-hl" data-tc-k="berceli">Dr. David Berceli&#8217;s methodology</span>, with the highest level of qualification to certify new TRE&#8482; Providers worldwide. She has <span class="tc-hl" data-tc-k="global">trained practitioners globally &#8212; across Europe, the US and Asia</span> &#8212; bringing <span class="tc-hl" data-tc-k="years">30 years of human development experience</span> and somatic practice to every certification training.</p>
+      <div class="tc-chips tc-rv" role="group" aria-label="Credentials">
+        <button type="button" class="tc-chip" data-tc-k="cert" aria-pressed="false"><i class="fa-solid fa-award" aria-hidden="true"></i>Global TRE&#8482; Certifying Trainer</button>
+        <button type="button" class="tc-chip" data-tc-k="berceli" aria-pressed="false"><i class="fa-solid fa-book-open" aria-hidden="true"></i>Dr. David Berceli Methodology</button>
+        <button type="button" class="tc-chip" data-tc-k="years" aria-pressed="false"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>30 Years Experience</button>
+        <button type="button" class="tc-chip" data-tc-k="global" aria-pressed="false"><i class="fa-solid fa-earth-europe" aria-hidden="true"></i>Working Globally</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 1B — WHAT IS TRE™ / BENEFITS -->
-<section class="section-white">
-  <div class="section-header-center">
-    <span class="section-eyebrow">About TRE&#8482;</span>
-    <h2 class="section-title">The Benefits of <em>TRE&#8482;</em></h2>
-  </div>
-  <div style="max-width:780px;margin:0 auto;text-align:center">
-    <blockquote style="font-family:'Playfair Display',serif;font-size:1.35rem;font-style:italic;line-height:1.6;color:var(--navy);margin:1.5rem 0 .8rem">&#8220;The human body knows how to restore itself. We are trying to educate people to use this mechanism to restore themselves.&#8221;</blockquote>
-    <p style="font-size:.85rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:1.8rem">&#8212; Dr. David Berceli, creator of TRE&#8482;</p>
-    <p style="font-size:1rem;line-height:1.78;color:var(--body-text)">TRE&#8482; is a body-led series of simple, powerful exercises to release stress, tension and trauma. It safely activates the body&#8217;s natural reflex of shaking or vibrating &#8212; calming the nervous system and releasing muscular tension. When this process occurs in a safe and controlled environment, the body naturally returns to a balanced state.</p>
-  </div>
-  <div style="max-width:820px;margin:2.2rem auto 0">
-    <p style="text-align:center;font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:1.1rem">Reported benefits of regular TRE&#8482; practice:</p>
-    <ul class="feature-list" style="column-width:320px;column-gap:2.5rem">
-      <li>Deeper and more restful sleep</li>
-      <li>Increased personal energy for work and home</li>
-      <li>Increased focus, concentration and clearer thinking</li>
-      <li>Greater calm and emotional composure in stressful situations</li>
-      <li>Less worry, anxiety and depression</li>
-      <li>Relief from stress-related physical pain, with increased flexibility and mobility</li>
+<!-- SECTION 1B - WHAT IS TRE / BENEFITS (tc- redesign: word-by-word quote, tremor wave, spotlight benefit tiles) -->
+<section class="section-white tc-sec tc-benefits">
+  <div class="tc-wrap">
+    <header class="tc-head tc-rv">
+      <span class="tc-eyebrow">About TRE&#8482;</span>
+      <h2 class="tc-h2">The Benefits of <em>TRE&#8482;</em></h2>
+    </header>
+    <figure class="tc-quote tc-draw">
+      <blockquote data-tc-words>&#8220;The human body knows how to restore itself. We are trying to educate people to use this mechanism to restore themselves.&#8221;</blockquote>
+      <figcaption class="tc-quote-by">&#8212; Dr. David Berceli, creator of TRE&#8482;</figcaption>
+    </figure>
+    <div class="tc-wave tc-rv" aria-hidden="true">
+      <svg viewBox="0 0 400 46" preserveAspectRatio="none" focusable="false"><g><path class="tc-wave-a" d="M0 23.0L2 23.6L4 24.2L6 24.7L8 25.1L10 25.3L12 25.3L14 25.0L16 24.6L18 23.9L20 23.0L22 22.0L24 20.9L26 20.0L28 19.2L30 18.7L32 18.7L34 19.1L36 20.0L38 21.3L40 23.0L42 24.9L44 26.8L46 28.5L48 29.8L50 30.5L52 30.5L54 29.6L56 28.0L58 25.7L60 23.0L62 20.1L64 17.2L66 14.8L68 13.1L70 12.3L72 12.5L74 13.9L76 16.2L78 19.4L80 23.0L82 26.8L84 30.2L86 33.1L88 35.0L90 35.7L92 35.2L94 33.4L96 30.6L98 27.0L100 23.0L102 19.0L104 15.4L106 12.6L108 10.8L110 10.3L112 11.0L114 12.9L116 15.8L118 19.2L120 23.0L122 26.6L124 29.8L126 32.1L128 33.5L130 33.7L132 32.9L134 31.2L136 28.8L138 25.9L140 23.0L142 20.3L144 18.0L146 16.4L148 15.5L150 15.5L152 16.2L154 17.5L156 19.2L158 21.1L160 23.0L162 24.7L164 26.0L166 26.9L168 27.3L170 27.3L172 26.8L174 26.0L176 25.1L178 24.0L180 23.0L182 22.1L184 21.4L186 21.0L188 20.7L190 20.7L192 20.9L194 21.3L196 21.8L198 22.4L200 23.0L202 23.6L204 24.2L206 24.7L208 25.1L210 25.3L212 25.3L214 25.0L216 24.6L218 23.9L220 23.0L222 22.0L224 20.9L226 20.0L228 19.2L230 18.7L232 18.7L234 19.1L236 20.0L238 21.3L240 23.0L242 24.9L244 26.8L246 28.5L248 29.8L250 30.5L252 30.5L254 29.6L256 28.0L258 25.7L260 23.0L262 20.1L264 17.2L266 14.8L268 13.1L270 12.3L272 12.5L274 13.9L276 16.2L278 19.4L280 23.0L282 26.8L284 30.2L286 33.1L288 35.0L290 35.7L292 35.2L294 33.4L296 30.6L298 27.0L300 23.0L302 19.0L304 15.4L306 12.6L308 10.8L310 10.3L312 11.0L314 12.9L316 15.8L318 19.2L320 23.0L322 26.6L324 29.8L326 32.1L328 33.5L330 33.7L332 32.9L334 31.2L336 28.8L338 25.9L340 23.0L342 20.3L344 18.0L346 16.4L348 15.5L350 15.5L352 16.2L354 17.5L356 19.2L358 21.1L360 23.0L362 24.7L364 26.0L366 26.9L368 27.3L370 27.3L372 26.8L374 26.0L376 25.1L378 24.0L380 23.0L382 22.1L384 21.4L386 21.0L388 20.7L390 20.7L392 20.9L394 21.3L396 21.8L398 22.4L400 23.0" vector-effect="non-scaling-stroke"/><path class="tc-wave-b" d="M0 24.0L2 24.0L4 23.9L6 23.8L8 23.5L10 23.2L12 22.8L14 22.4L16 22.0L18 21.7L20 21.4L22 21.3L24 21.4L26 21.6L28 22.0L30 22.6L32 23.3L34 24.1L36 24.9L38 25.6L40 26.0L42 26.2L44 26.1L46 25.6L48 24.8L50 23.7L52 22.4L54 21.1L56 19.8L58 18.8L60 18.1L62 17.9L64 18.3L66 19.1L68 20.4L70 22.0L72 23.8L74 25.7L76 27.3L78 28.6L80 29.3L82 29.5L84 28.9L86 27.8L88 26.2L90 24.2L92 22.0L94 19.9L96 18.1L98 16.8L100 16.1L102 16.1L104 16.7L106 18.0L108 19.8L110 21.8L112 24.0L114 26.0L116 27.6L118 28.8L120 29.3L122 29.2L124 28.6L126 27.3L128 25.8L130 24.0L132 22.2L134 20.6L136 19.3L138 18.5L140 18.1L142 18.3L144 18.9L146 19.9L148 21.0L150 22.3L152 23.5L154 24.6L156 25.4L158 25.9L160 26.0L162 25.9L164 25.4L166 24.8L168 24.1L170 23.4L172 22.7L174 22.1L176 21.7L178 21.5L180 21.4L182 21.5L184 21.8L186 22.1L188 22.4L190 22.8L192 23.2L194 23.5L196 23.7L198 23.9L200 24.0L202 24.0L204 23.9L206 23.8L208 23.5L210 23.2L212 22.8L214 22.4L216 22.0L218 21.7L220 21.4L222 21.3L224 21.4L226 21.6L228 22.0L230 22.6L232 23.3L234 24.1L236 24.9L238 25.6L240 26.0L242 26.2L244 26.1L246 25.6L248 24.8L250 23.7L252 22.4L254 21.1L256 19.8L258 18.8L260 18.1L262 17.9L264 18.3L266 19.1L268 20.4L270 22.0L272 23.8L274 25.7L276 27.3L278 28.6L280 29.3L282 29.5L284 28.9L286 27.8L288 26.2L290 24.2L292 22.0L294 19.9L296 18.1L298 16.8L300 16.1L302 16.1L304 16.7L306 18.0L308 19.8L310 21.8L312 24.0L314 26.0L316 27.6L318 28.8L320 29.3L322 29.2L324 28.6L326 27.3L328 25.8L330 24.0L332 22.2L334 20.6L336 19.3L338 18.5L340 18.1L342 18.3L344 18.9L346 19.9L348 21.0L350 22.3L352 23.5L354 24.6L356 25.4L358 25.9L360 26.0L362 25.9L364 25.4L366 24.8L368 24.1L370 23.4L372 22.7L374 22.1L376 21.7L378 21.5L380 21.4L382 21.5L384 21.8L386 22.1L388 22.4L390 22.8L392 23.2L394 23.5L396 23.7L398 23.9L400 24.0" vector-effect="non-scaling-stroke"/></g></svg>
+    </div>
+    <p class="tc-body tc-rv">TRE&#8482; is a body-led series of simple, powerful exercises to release stress, tension and trauma. It safely activates the body&#8217;s natural reflex of shaking or vibrating &#8212; calming the nervous system and releasing muscular tension. When this process occurs in a safe and controlled environment, the body naturally returns to a balanced state.</p>
+    <p class="tc-kicker tc-rv">Reported benefits of regular TRE&#8482; practice:</p>
+    <ul class="tc-bgrid" data-tc-stagger="70">
+      <li class="tc-rv"><div class="tc-ben" data-tc-spot><span class="tc-bicon" aria-hidden="true"><i class="fa-solid fa-moon"></i></span><span>Deeper and more restful sleep</span></div></li>
+      <li class="tc-rv"><div class="tc-ben" data-tc-spot><span class="tc-bicon" aria-hidden="true"><i class="fa-solid fa-battery-full"></i></span><span>Increased personal energy for work and home</span></div></li>
+      <li class="tc-rv"><div class="tc-ben" data-tc-spot><span class="tc-bicon" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></span><span>Increased focus, concentration and clearer thinking</span></div></li>
+      <li class="tc-rv"><div class="tc-ben" data-tc-spot><span class="tc-bicon" aria-hidden="true"><i class="fa-solid fa-spa"></i></span><span>Greater calm and emotional composure in stressful situations</span></div></li>
+      <li class="tc-rv"><div class="tc-ben" data-tc-spot><span class="tc-bicon" aria-hidden="true"><i class="fa-solid fa-cloud-sun"></i></span><span>Less worry, anxiety and depression</span></div></li>
+      <li class="tc-rv"><div class="tc-ben" data-tc-spot><span class="tc-bicon" aria-hidden="true"><i class="fa-solid fa-person-walking"></i></span><span>Relief from stress-related physical pain, with increased flexibility and mobility</span></div></li>
     </ul>
-    <p style="text-align:center;margin-top:1.8rem;font-size:.92rem;color:var(--text-mid)">Learn more about TRE&#8482; worldwide at <a href="https://treglobal.org/" target="_blank" rel="noopener noreferrer" style="color:var(--gold-dark);font-weight:700">treglobal.org</a></p>
+    <p class="tc-note tc-rv">Learn more about TRE&#8482; worldwide at <a href="https://treglobal.org/" target="_blank" rel="noopener noreferrer" class="tc-link-inline">treglobal.org</a></p>
   </div>
 </section>
 
-<!-- SECTION 2 — WHY TRE™ IS WORTH CERTIFYING IN -->
-<section class="section-sage">
-  <div class="section-header-center">
-    <span class="section-eyebrow">About TRE&#8482;</span>
-    <h2 class="section-title">Why TRE&#8482; Is Worth Certifying In</h2>
-  </div>
-  <div class="cards-grid">
-    <div class="card green-top">
-      <div class="card-icon"><i class="fa-solid fa-flask"></i></div>
-      <h3>Evidence-Based</h3>
-      <p>TRE&#8482; is backed by over 40 years of research and clinical application across 100+ countries. It has been used with PTSD, trauma, chronic stress and general wellness populations.</p>
-    </div>
-    <div class="card gold-top">
-      <div class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-      <h3>Teachable</h3>
-      <p>Unlike many modalities, TRE&#8482; can be taught to clients for independent practice &#8212; making it a high-value, scalable addition to any practitioner&#8217;s toolkit.</p>
-    </div>
-    <div class="card sage-top">
-      <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
-      <h3>Physiologically Grounded</h3>
-      <p>Works directly with the nervous system through the body&#8217;s natural tremor mechanism. No need to narrate or revisit traumatic content.</p>
-    </div>
-    <div class="card green-top">
-      <div class="card-icon"><i class="fa-solid fa-arrows-spin"></i></div>
-      <h3>Versatile</h3>
-      <p>Applicable in 1:1 coaching, group facilitation, corporate wellness, trauma support, athletic recovery, personal development and more.</p>
-    </div>
-    <div class="card gold-top">
-      <div class="card-icon"><i class="fa-solid fa-globe"></i></div>
-      <h3>Globally Recognised</h3>
-      <p>TRE&#8482; certification is internationally recognised through TRE&#8482; for All. Certified Providers join a global network of practitioners.</p>
-    </div>
-    <div class="card sage-top">
-      <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
-      <h3>Fast to See Results</h3>
-      <p>Clients typically experience tangible shifts within 3&#8211;4 sessions. The return on investment &#8212; for practitioners and clients &#8212; is unusually fast.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3 — HOW THE CERTIFICATION WORKS -->
-<section class="section-white">
-  <div class="section-header-center">
-    <span class="section-eyebrow">The Certification Path</span>
-    <h2 class="section-title">How the Certification Works</h2>
-    <p class="section-subtitle">Three modules &#8212; each a 2-day workshop plus 4 online sessions &#8212; take you from personal practice to Certified Global TRE&#8482; Provider.</p>
-  </div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div>
-        <h3>Module 1 &#8212; Your Personal TRE&#8482; Practice</h3>
-        <p>2-day workshop + 4 online personal TRE&#8482; sessions. Explore the stress response (anatomy, neurology and physiology), understand the therapeutic tremor response, and experience TRE&#8482; as a self-practice &#8212; including self-regulation, containment and grounding strategies. The first step for anyone keen to pursue the certification path.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div>
-        <h3>Module 2 &#8212; Teaching TRE&#8482; to One Person</h3>
-        <p>2-day workshop + 4 online supervision sessions. Open to those who have completed Module 1 and their personal TRE&#8482; sessions. Deepens Module 1 content, covers Polyvagal theory and basic TRE&#8482; interventions, with hands-on practice teaching TRE&#8482; one-to-one.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div>
-        <h3>Module 3 &#8212; Teaching TRE&#8482; to Groups</h3>
-        <p>2-day workshop + 4 online supervision sessions. Open to those who have completed all learning requirements from Module 2. Deepens Module 2 content and covers the role of fascia, advanced TRE&#8482; interventions and modifications, transference and counter-transference, and experience leading groups of 3+ persons.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div>
-        <h3>Global TRE&#8482; Certified Provider</h3>
-        <p>On completing all three modules you receive your Global TRE&#8482; Provider certificate &#8212; qualified to offer TRE&#8482; to the general public in both individual and group settings, and to competently guide clients through the TRE&#8482; process.</p>
+<!-- SECTION 2 - WHY TRE IS WORTH CERTIFYING IN (tc- redesign: tab switcher built from the six reasons) -->
+<section class="section-sage tc-sec tc-why">
+  <div class="tc-wrap">
+    <header class="tc-head tc-rv">
+      <span class="tc-eyebrow">About TRE&#8482;</span>
+      <h2 class="tc-h2">Why TRE&#8482; Is Worth Certifying In</h2>
+    </header>
+    <div class="tc-why-ui tc-rv" data-tc-tabs>
+      <div class="tc-why-stage">
+        <div class="tc-why-grid">
+          <article class="tc-wp">
+            <div class="tc-wp-i" aria-hidden="true"><i class="fa-solid fa-flask"></i></div>
+            <h3>Evidence-Based</h3>
+            <p>TRE&#8482; is backed by over 40 years of research and clinical application across 100+ countries. It has been used with PTSD, trauma, chronic stress and general wellness populations.</p>
+          </article>
+          <article class="tc-wp">
+            <div class="tc-wp-i" aria-hidden="true"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <h3>Teachable</h3>
+            <p>Unlike many modalities, TRE&#8482; can be taught to clients for independent practice &#8212; making it a high-value, scalable addition to any practitioner&#8217;s toolkit.</p>
+          </article>
+          <article class="tc-wp">
+            <div class="tc-wp-i" aria-hidden="true"><i class="fa-solid fa-brain"></i></div>
+            <h3>Physiologically Grounded</h3>
+            <p>Works directly with the nervous system through the body&#8217;s natural tremor mechanism. No need to narrate or revisit traumatic content.</p>
+          </article>
+          <article class="tc-wp">
+            <div class="tc-wp-i" aria-hidden="true"><i class="fa-solid fa-arrows-spin"></i></div>
+            <h3>Versatile</h3>
+            <p>Applicable in 1:1 coaching, group facilitation, corporate wellness, trauma support, athletic recovery, personal development and more.</p>
+          </article>
+          <article class="tc-wp">
+            <div class="tc-wp-i" aria-hidden="true"><i class="fa-solid fa-globe"></i></div>
+            <h3>Globally Recognised</h3>
+            <p>TRE&#8482; certification is internationally recognised through TRE&#8482; for All. Certified Providers join a global network of practitioners.</p>
+          </article>
+          <article class="tc-wp">
+            <div class="tc-wp-i" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Fast to See Results</h3>
+            <p>Clients typically experience tangible shifts within 3&#8211;4 sessions. The return on investment &#8212; for practitioners and clients &#8212; is unusually fast.</p>
+          </article>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 4 — WHO THIS IS FOR -->
-<section class="section-cream">
-  <div class="two-col reverse">
-    <div class="two-col-image"><img src="images/isabelle-who-this-is-for.jpg" alt="Practitioners ready to add TRE&#8482; to their toolkit" loading="lazy" decoding="async" width="800" height="600" /></div>
-    <div class="two-col-text">
-      <span class="section-eyebrow">Who This Is For</span>
-      <h2>Built for Practitioners Ready to <em>Go Deeper</em></h2>
-      <div class="divider"></div>
-      <ul class="feature-list">
-        <li>Coaches (executive, life, wellness) wanting somatic tools</li>
-        <li>Therapists, counsellors and psychologists seeking body-based approaches</li>
-        <li>HR and OD professionals in corporate wellness and resilience</li>
-        <li>Physiotherapists, yoga teachers and movement practitioners</li>
-        <li>Anyone working in trauma support, conflict resolution or post-crisis recovery</li>
-        <li>Practitioners who have experienced TRE&#8482; personally and want to share it</li>
+<!-- SECTION 3 - HOW THE CERTIFICATION WORKS (tc- redesign: journey stepper with progress track) -->
+<section class="section-white tc-sec tc-how">
+  <div class="tc-wrap">
+    <header class="tc-head tc-rv">
+      <span class="tc-eyebrow">The Certification Path</span>
+      <h2 class="tc-h2">How the Certification Works</h2>
+      <p class="tc-sub">Three modules &#8212; each a 2-day workshop plus 4 online sessions &#8212; take you from personal practice to Certified Global TRE&#8482; Provider.</p>
+    </header>
+    <div class="tc-path tc-rv" data-tc-steps>
+      <div class="tc-steps">
+        <div class="tc-st" data-tc-short="Module 1">
+          <span class="tc-st-num" aria-hidden="true">1</span>
+          <div>
+            <h3>Module 1 &#8212; Your Personal TRE&#8482; Practice</h3>
+            <p>2-day workshop + 4 online personal TRE&#8482; sessions. Explore the stress response (anatomy, neurology and physiology), understand the therapeutic tremor response, and experience TRE&#8482; as a self-practice &#8212; including self-regulation, containment and grounding strategies. The first step for anyone keen to pursue the certification path.</p>
+          </div>
+        </div>
+        <div class="tc-st" data-tc-short="Module 2">
+          <span class="tc-st-num" aria-hidden="true">2</span>
+          <div>
+            <h3>Module 2 &#8212; Teaching TRE&#8482; to One Person</h3>
+            <p>2-day workshop + 4 online supervision sessions. Open to those who have completed Module 1 and their personal TRE&#8482; sessions. Deepens Module 1 content, covers Polyvagal theory and basic TRE&#8482; interventions, with hands-on practice teaching TRE&#8482; one-to-one.</p>
+          </div>
+        </div>
+        <div class="tc-st" data-tc-short="Module 3">
+          <span class="tc-st-num" aria-hidden="true">3</span>
+          <div>
+            <h3>Module 3 &#8212; Teaching TRE&#8482; to Groups</h3>
+            <p>2-day workshop + 4 online supervision sessions. Open to those who have completed all learning requirements from Module 2. Deepens Module 2 content and covers the role of fascia, advanced TRE&#8482; interventions and modifications, transference and counter-transference, and experience leading groups of 3+ persons.</p>
+          </div>
+        </div>
+        <div class="tc-st" data-tc-short="Certified">
+          <span class="tc-st-num" aria-hidden="true">4</span>
+          <div>
+            <h3>Global TRE&#8482; Certified Provider</h3>
+            <p>On completing all three modules you receive your Global TRE&#8482; Provider certificate &#8212; qualified to offer TRE&#8482; to the general public in both individual and group settings, and to competently guide clients through the TRE&#8482; process.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 - WHO THIS IS FOR (tc- redesign: tilt photo, icon rows with hover slide) -->
+<section class="section-cream tc-sec tc-who">
+  <div class="tc-wrap tc-split tc-split-rev">
+    <figure class="tc-photo tc-rv">
+      <div class="tc-tilt"><img src="images/isabelle-who-this-is-for.jpg" alt="Practitioners ready to add TRE&#8482; to their toolkit" loading="lazy" decoding="async" width="800" height="600" /></div>
+    </figure>
+    <div class="tc-copy">
+      <span class="tc-eyebrow tc-rv">Who This Is For</span>
+      <h2 class="tc-h2 tc-rv">Built for Practitioners Ready to <em>Go Deeper</em></h2>
+      <span class="tc-rule tc-rv" aria-hidden="true"></span>
+      <ul class="tc-who-list" data-tc-stagger="70">
+        <li class="tc-rv"><div class="tc-who-row"><span class="tc-who-i" aria-hidden="true"><i class="fa-solid fa-user-tie"></i></span><span>Coaches (executive, life, wellness) wanting somatic tools</span></div></li>
+        <li class="tc-rv"><div class="tc-who-row"><span class="tc-who-i" aria-hidden="true"><i class="fa-solid fa-comments"></i></span><span>Therapists, counsellors and psychologists seeking body-based approaches</span></div></li>
+        <li class="tc-rv"><div class="tc-who-row"><span class="tc-who-i" aria-hidden="true"><i class="fa-solid fa-building"></i></span><span>HR and OD professionals in corporate wellness and resilience</span></div></li>
+        <li class="tc-rv"><div class="tc-who-row"><span class="tc-who-i" aria-hidden="true"><i class="fa-solid fa-person-running"></i></span><span>Physiotherapists, yoga teachers and movement practitioners</span></div></li>
+        <li class="tc-rv"><div class="tc-who-row"><span class="tc-who-i" aria-hidden="true"><i class="fa-solid fa-hand-holding-heart"></i></span><span>Anyone working in trauma support, conflict resolution or post-crisis recovery</span></div></li>
+        <li class="tc-rv"><div class="tc-who-row"><span class="tc-who-i" aria-hidden="true"><i class="fa-solid fa-heart-pulse"></i></span><span>Practitioners who have experienced TRE&#8482; personally and want to share it</span></div></li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- SECTION 5 — UPCOMING TRAININGS -->
-<section class="section-sage">
-  <div class="section-header-center">
-    <span class="section-eyebrow">Upcoming Trainings</span>
-    <h2 class="section-title">2027 Certification Modules &#8212; Singapore</h2>
-    <p class="section-subtitle">One cohort per year, co-taught by Isabelle Claus Teixeira and Simba Stenqvist. Module 1 also runs in Bucharest on 15&#8211;17 October 2026 &#8212; <a href="event-tre-module1-bucharest.html" style="color:var(--gold-dark);font-weight:700">see the Bucharest event</a>.</p>
+<!-- SECTION 5 - UPCOMING TRAININGS (tc- redesign: 2027 timeline with drawn line and date tiles) -->
+<section class="section-sage tc-sec tc-up">
+  <div class="tc-wrap">
+    <header class="tc-head tc-rv">
+      <span class="tc-eyebrow">Upcoming Trainings</span>
+      <h2 class="tc-h2">2027 Certification Modules &#8212; Singapore</h2>
+      <p class="tc-sub">One cohort per year, co-taught by Isabelle Claus Teixeira and Simba Stenqvist. Module 1 also runs in Bucharest on 15&#8211;17 October 2026 &#8212; <a href="event-tre-module1-bucharest.html" class="tc-link-inline">see the Bucharest event</a>.</p>
+    </header>
+    <ol class="tc-tl tc-draw" data-tc-stagger="140">
+      <li class="tc-tl-item tc-rv">
+        <span class="tc-tl-mark" aria-hidden="true"><span class="tc-tl-dot"></span></span>
+        <article class="tc-tl-card">
+          <div class="tc-tl-top">
+            <span class="tc-date" aria-hidden="true"><span class="tc-date-d">27&#8211;28</span><span class="tc-date-m">Feb 2027</span></span>
+            <span class="tc-tl-icon" aria-hidden="true"><i class="fa-solid fa-calendar-check"></i></span>
+          </div>
+          <h3>Module 1 &#183; Singapore</h3>
+          <p>27 &amp; 28 February 2027 &#183; 2-day workshop + 4 online personal TRE&#8482; sessions. ICF CCE included.</p>
+          <a href="book.html" class="tc-enq">Enquire <span class="tc-enq-arr" aria-hidden="true">&#8594;</span></a>
+        </article>
+      </li>
+      <li class="tc-tl-item tc-rv">
+        <span class="tc-tl-mark" aria-hidden="true"><span class="tc-tl-dot"></span></span>
+        <article class="tc-tl-card">
+          <div class="tc-tl-top">
+            <span class="tc-date" aria-hidden="true"><span class="tc-date-d">3&#8211;4</span><span class="tc-date-m">Jul 2027</span></span>
+            <span class="tc-tl-icon" aria-hidden="true"><i class="fa-solid fa-person-chalkboard"></i></span>
+          </div>
+          <h3>Module 2 &#183; Singapore</h3>
+          <p>3 &amp; 4 July 2027 &#183; 2-day workshop + 4 online supervision sessions. Open to those who have completed Module 1.</p>
+          <a href="book.html" class="tc-enq">Enquire <span class="tc-enq-arr" aria-hidden="true">&#8594;</span></a>
+        </article>
+      </li>
+      <li class="tc-tl-item tc-rv">
+        <span class="tc-tl-mark" aria-hidden="true"><span class="tc-tl-dot"></span></span>
+        <article class="tc-tl-card">
+          <div class="tc-tl-top">
+            <span class="tc-date" aria-hidden="true"><span class="tc-date-d">30&#8211;31</span><span class="tc-date-m">Oct 2027</span></span>
+            <span class="tc-tl-icon" aria-hidden="true"><i class="fa-solid fa-people-group"></i></span>
+          </div>
+          <h3>Module 3 &#183; Singapore</h3>
+          <p>30 &amp; 31 October 2027 &#183; 2-day workshop + 4 online supervision sessions. Completes your Global TRE&#8482; Provider certification.</p>
+          <a href="book.html" class="tc-enq">Enquire <span class="tc-enq-arr" aria-hidden="true">&#8594;</span></a>
+        </article>
+      </li>
+    </ol>
   </div>
-  <div class="cards-grid">
-    <div class="card gold-top">
-      <div class="card-icon"><i class="fa-solid fa-calendar-check"></i></div>
-      <h3>Module 1 &#183; Singapore</h3>
-      <p>27 &amp; 28 February 2027 &#183; 2-day workshop + 4 online personal TRE&#8482; sessions. ICF CCE included.</p>
-      <a href="book.html" class="card-link" style="display:inline-block;margin-top:1rem;font-size:.88rem;font-family:'Lato',sans-serif;font-weight:700;letter-spacing:.5px;color:var(--gold);text-decoration:none">Enquire &#8594;</a>
+</section>
+
+<!-- SECTION 5B - CERTIFICATION PRICING (tc- redesign: early-bird / normal switch, tiers highlight on hover and focus) -->
+<section class="cert-pricing tc-sec tc-price" id="pricing">
+  <div class="tc-wrap">
+    <header class="tc-head tc-rv">
+      <span class="tc-eyebrow">The Investment</span>
+      <h2 class="tc-h2">Certification Pricing <em>2027</em></h2>
+      <p class="tc-sub">All prices in Singapore Dollars. The 2026 intake is closed &#8212; only one cohort runs per year. Early-bird pricing applies until 31 December 2026.</p>
+    </header>
+    <div class="tc-price-intro tc-rv">
+      <p class="tc-price-lead">The 2027 certification intake is open now.</p>
+      <p>Module 1 begins <strong>27&#8211;28 February 2027</strong> in Singapore, co-taught by Isabelle Claus Teixeira and Simba Stenqvist and boosted by Internal Alchemy.</p>
     </div>
-    <div class="card sage-top">
-      <div class="card-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
-      <h3>Module 2 &#183; Singapore</h3>
-      <p>3 &amp; 4 July 2027 &#183; 2-day workshop + 4 online supervision sessions. Open to those who have completed Module 1.</p>
-      <a href="book.html" class="card-link" style="display:inline-block;margin-top:1rem;font-size:.88rem;font-family:'Lato',sans-serif;font-weight:700;letter-spacing:.5px;color:var(--sage-dark,#5a7a5a);text-decoration:none">Enquire &#8594;</a>
+    <div class="tc-bill-wrap tc-rv" hidden>
+      <div class="tc-bill" role="group" aria-label="Show prices" data-mode="eb">
+        <span class="tc-bill-ind" aria-hidden="true"></span>
+        <button type="button" class="tc-bill-b" data-tc-bill="eb" aria-pressed="true">Early bird</button>
+        <button type="button" class="tc-bill-b" data-tc-bill="n" aria-pressed="false">Normal price</button>
+      </div>
     </div>
-    <div class="card green-top">
-      <div class="card-icon"><i class="fa-solid fa-people-group"></i></div>
-      <h3>Module 3 &#183; Singapore</h3>
-      <p>30 &amp; 31 October 2027 &#183; 2-day workshop + 4 online supervision sessions. Completes your Global TRE&#8482; Provider certification.</p>
-      <a href="book.html" class="card-link" style="display:inline-block;margin-top:1rem;font-size:.88rem;font-family:'Lato',sans-serif;font-weight:700;letter-spacing:.5px;color:var(--navy);text-decoration:none">Enquire &#8594;</a>
+    <div class="tc-plans" data-tc-stagger="120">
+      <div class="tc-plan-cell tc-rv">
+        <article class="tc-plan tc-plan-feat" tabindex="0" aria-labelledby="tc-plan-full" data-tc-spot>
+          <span class="tc-plan-badge">Best Value &#183; Full Journey</span>
+          <span class="tc-plan-sel" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          <h3 class="tc-plan-name" id="tc-plan-full">Full Certification + 2 Internal Alchemy Workshops</h3>
+          <div class="tc-plan-price"><small>S$</small><span class="tc-plan-num" data-eb="5,888" data-n="6,688">5,888</span></div>
+          <div class="tc-plan-tiers">
+            <div class="tc-plan-tier tc-tier-on" data-tc-tier="eb"><span>Early bird &#183; until 31 December 2026</span><span>S$5,888</span></div>
+            <div class="tc-plan-tier" data-tc-tier="n"><span>Normal price</span><span>S$6,688</span></div>
+          </div>
+          <p class="tc-plan-inc">Modules 1, 2 &amp; 3 &#183; taught by 2 TRE&#8482; Trainers &#183; ICF CCE with Module 1 &#183; Internal Alchemy workshops &#8594; Global TRE&#8482; Certified Provider</p>
+        </article>
+      </div>
+      <div class="tc-plan-cell tc-rv">
+        <article class="tc-plan" tabindex="0" aria-labelledby="tc-plan-m1" data-tc-spot>
+          <span class="tc-plan-sel" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          <h3 class="tc-plan-name" id="tc-plan-m1">Module 1 Only &#183; Personal Practice</h3>
+          <div class="tc-plan-price"><small>S$</small><span class="tc-plan-num" data-eb="1,888" data-n="1,988">1,888</span></div>
+          <div class="tc-plan-tiers">
+            <div class="tc-plan-tier tc-tier-on" data-tc-tier="eb"><span>Early bird &#183; until 31 December 2026</span><span>S$1,888</span></div>
+            <div class="tc-plan-tier" data-tc-tier="n"><span>Normal price</span><span>S$1,988</span></div>
+          </div>
+          <p class="tc-plan-inc">2-day workshop + 4 online TRE&#8482; sessions &#183; ICF CCE for coaches &#183; can be purchased alone</p>
+        </article>
+      </div>
+    </div>
+    <div class="tc-price-cta tc-rv">
+      <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:.9rem;padding:.9rem 2.5rem">Book a Certification Intake Call &#8594;</a>
+      <p>or email <a href="mailto:isabelle@bhdasia.com">isabelle@bhdasia.com</a></p>
     </div>
   </div>
 </section>
 
-<!-- SECTION 5B — CERTIFICATION PRICING -->
-<style>
-  .cert-pricing { background: var(--navy-deep, #1a2030); padding: 4.5rem 5%; }
-  .cert-pricing .section-eyebrow { color: var(--gold); }
-  .cert-pricing .section-title { color: var(--white, #fff); }
-  .cert-pricing .section-subtitle { color: rgba(255,255,255,.65); }
-  .cp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; max-width: 1080px; margin: 2.5rem auto 0; }
-  .cp-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 1.9rem 1.7rem; display: flex; flex-direction: column; }
-  .cp-card.featured { border-color: var(--gold); background: rgba(245,166,35,.08); position: relative; }
-  .cp-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); font-family: 'Lato', sans-serif; font-size: .62rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: .3rem .9rem; border-radius: 100px; white-space: nowrap; }
-  .cp-name { font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: .9rem; }
-  .cp-price { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; color: #fff; line-height: 1; }
-  .cp-price small { font-size: 1.1rem; vertical-align: super; }
-  .cp-price-note { font-size: .78rem; color: rgba(255,255,255,.55); display: block; margin: .45rem 0 1.1rem; }
-  .cp-tiers { border-top: 1px solid rgba(255,255,255,.12); padding-top: 1rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
-  .cp-tier { display: flex; justify-content: space-between; font-size: .82rem; }
-  .cp-tier span:first-child { color: rgba(255,255,255,.65); }
-  .cp-tier span:last-child { font-weight: 700; color: rgba(255,255,255,.9); }
-  .cp-inc { font-size: .76rem; color: rgba(255,255,255,.45); margin-top: 1rem; padding-top: .8rem; border-top: 1px solid rgba(255,255,255,.08); }
-  .cp-grid.cp-2 { grid-template-columns: repeat(2, 1fr); max-width: 760px; }
-  @media (max-width: 900px) { .cp-grid, .cp-grid.cp-2 { grid-template-columns: 1fr; max-width: 480px; } }
-</style>
-<section class="cert-pricing" id="pricing">
-  <div class="section-header-center">
-    <span class="section-eyebrow">The Investment</span>
-    <h2 class="section-title">Certification Pricing <em style="color:var(--gold)">2027</em></h2>
-    <p class="section-subtitle">All prices in Singapore Dollars. The 2026 intake is closed &#8212; only one cohort runs per year. Early-bird pricing applies until 31 December 2026.</p>
-  </div>
-  <div style="max-width:720px;margin:0 auto 1.5rem;text-align:center">
-    <p style="font-family:'PT Serif',Georgia,serif;font-size:1.15rem;color:#fff;margin:0 0 .6rem">The 2027 certification intake is open now.</p>
-    <p style="font-size:.95rem;line-height:1.7;color:rgba(255,255,255,.72);margin:0">Module 1 begins <strong style="color:#fff">27&#8211;28 February 2027</strong> in Singapore, co-taught by Isabelle Claus Teixeira and Simba Stenqvist and boosted by Internal Alchemy.</p>
-  </div>
-  <div class="cp-grid cp-2">
-    <div class="cp-card featured">
-      <span class="cp-badge">Best Value &#183; Full Journey</span>
-      <span class="cp-name">Full Certification + 2 Internal Alchemy Workshops</span>
-      <span class="cp-price"><small>S$</small>5,888</span>
-      <span class="cp-price-note">Early bird &#183; until 31 December 2026</span>
-      <div class="cp-tiers">
-        <div class="cp-tier"><span>Normal price</span><span>S$6,688</span></div>
-      </div>
-      <span class="cp-inc">Modules 1, 2 &amp; 3 &#183; taught by 2 TRE&#8482; Trainers &#183; ICF CCE with Module 1 &#183; Internal Alchemy workshops &#8594; Global TRE&#8482; Certified Provider</span>
-    </div>
-    <div class="cp-card">
-      <span class="cp-name">Module 1 Only &#183; Personal Practice</span>
-      <span class="cp-price"><small>S$</small>1,888</span>
-      <span class="cp-price-note">Early bird &#183; until 31 December 2026</span>
-      <div class="cp-tiers">
-        <div class="cp-tier"><span>Normal price</span><span>S$1,988</span></div>
-      </div>
-      <span class="cp-inc">2-day workshop + 4 online TRE&#8482; sessions &#183; ICF CCE for coaches &#183; can be purchased alone</span>
-    </div>
-  </div>
-  <div style="text-align:center;margin-top:2.5rem">
-    <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:.9rem;padding:.9rem 2.5rem">Book a Certification Intake Call &#8594;</a>
-    <p style="margin-top:.85rem;font-size:.85rem;color:rgba(255,255,255,.55)">or email <a href="mailto:isabelle@bhdasia.com" style="color:rgba(255,255,255,.75)">isabelle@bhdasia.com</a></p>
-  </div>
-</section>
-
-<!-- SECTION 6 — WHAT'S INCLUDED -->
-<section class="section-white">
-  <div class="two-col">
-    <div class="two-col-image"><img src="images/about-bhd-family.jpg" alt="TRE&#8482; Provider certification training with Isabelle" loading="lazy" decoding="async" width="800" height="600" /></div>
-    <div class="two-col-text">
-      <span class="section-eyebrow">The Investment</span>
-      <h2>What&#8217;s Included in Your <em>Training</em></h2>
-      <div class="divider"></div>
-      <ul class="feature-list">
-        <li>All training materials and manual</li>
-        <li>Supervised practice hours with Isabelle&#8217;s guidance</li>
-        <li>Access to the TRE&#8482; for All global community on certification</li>
-        <li>Ongoing mentorship support through completion</li>
-        <li>Certificate issued by TRE&#8482; for All upon qualification</li>
-        <li>Isabelle&#8217;s 30 years of human development context brought to every module</li>
+<!-- SECTION 6 - WHAT'S INCLUDED (tc- redesign: self-drawing checklist, tilt photo) -->
+<section class="section-white tc-sec tc-inc">
+  <div class="tc-wrap tc-split">
+    <figure class="tc-photo tc-rv">
+      <div class="tc-tilt"><img src="images/about-bhd-family.jpg" alt="TRE&#8482; Provider certification training with Isabelle" loading="lazy" decoding="async" width="800" height="600" /></div>
+    </figure>
+    <div class="tc-copy">
+      <span class="tc-eyebrow tc-rv">The Investment</span>
+      <h2 class="tc-h2 tc-rv">What&#8217;s Included in Your <em>Training</em></h2>
+      <span class="tc-rule tc-rv" aria-hidden="true"></span>
+      <ul class="tc-checks" data-tc-stagger="110">
+        <li class="tc-rv"><span class="tc-check" aria-hidden="true"><svg viewBox="0 0 26 26" focusable="false"><circle cx="13" cy="13" r="11.5"/><path d="M8 13.5l3.2 3.2L18 10"/></svg></span><span>All training materials and manual</span></li>
+        <li class="tc-rv"><span class="tc-check" aria-hidden="true"><svg viewBox="0 0 26 26" focusable="false"><circle cx="13" cy="13" r="11.5"/><path d="M8 13.5l3.2 3.2L18 10"/></svg></span><span>Supervised practice hours with Isabelle&#8217;s guidance</span></li>
+        <li class="tc-rv"><span class="tc-check" aria-hidden="true"><svg viewBox="0 0 26 26" focusable="false"><circle cx="13" cy="13" r="11.5"/><path d="M8 13.5l3.2 3.2L18 10"/></svg></span><span>Access to the TRE&#8482; for All global community on certification</span></li>
+        <li class="tc-rv"><span class="tc-check" aria-hidden="true"><svg viewBox="0 0 26 26" focusable="false"><circle cx="13" cy="13" r="11.5"/><path d="M8 13.5l3.2 3.2L18 10"/></svg></span><span>Ongoing mentorship support through completion</span></li>
+        <li class="tc-rv"><span class="tc-check" aria-hidden="true"><svg viewBox="0 0 26 26" focusable="false"><circle cx="13" cy="13" r="11.5"/><path d="M8 13.5l3.2 3.2L18 10"/></svg></span><span>Certificate issued by TRE&#8482; for All upon qualification</span></li>
+        <li class="tc-rv"><span class="tc-check" aria-hidden="true"><svg viewBox="0 0 26 26" focusable="false"><circle cx="13" cy="13" r="11.5"/><path d="M8 13.5l3.2 3.2L18 10"/></svg></span><span>Isabelle&#8217;s 30 years of human development context brought to every module</span></li>
       </ul>
-      <p style="margin-top:1.5rem;font-size:.95rem;color:var(--text-mid)">Full pricing is listed above &#8212; including the bundle deal for the complete certification journey. Contact Isabelle to discuss your situation and confirm your place.</p>
-      <div style="margin-top:1.5rem">
+      <p class="tc-inc-note tc-rv">Full pricing is listed above &#8212; including the bundle deal for the complete certification journey. Contact Isabelle to discuss your situation and confirm your place.</p>
+      <div class="tc-inc-cta tc-rv">
         <a href="book.html" class="btn btn-primary">Enquire About Certification</a>
       </div>
     </div>
@@ -484,5 +1003,304 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="https://wa.me/818065151778" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 <script src="scripts.js" defer></script>
+<script>
+/* ==========================================================================
+   TRE CERTIFICATION (.tc-) - scroll reveal, word reveal, count-up, tilt,
+   credential highlighter, "why" tabs, certification stepper, price switch.
+   Plain JS, no libraries, no network requests. Scoped to .tc-sec sections.
+   ========================================================================== */
+(function () {
+  'use strict';
+  var secs = [].slice.call(document.querySelectorAll('.tc-sec'));
+  if (!secs.length) return;
+  var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mqFine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  function still() { return mqReduce.matches; }
+  function $(s, c) { return (c || document).querySelector(s); }
+  function $$(s, c) { return [].slice.call((c || document).querySelectorAll(s)); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  secs.forEach(function (s) { s.classList.add('tc-on'); });
+
+  /* ---- Stagger delays for grouped reveals ------------------------------- */
+  $$('[data-tc-stagger]').forEach(function (g) {
+    var step = parseInt(g.getAttribute('data-tc-stagger'), 10) || 80;
+    $$(':scope > .tc-rv', g).forEach(function (el, i) { el.style.setProperty('--tc-d', (i * step) + 'ms'); });
+  });
+
+  /* ---- Word-by-word quote ------------------------------------------------ */
+  $$('[data-tc-words]').forEach(function (bq) {
+    var i = 0;
+    (function walk(node) {
+      [].slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          n.nodeValue.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var sp = document.createElement('span');
+            sp.className = 'tc-w'; sp.style.setProperty('--i', i++); sp.textContent = part;
+            frag.appendChild(sp);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1) { walk(n); }
+      });
+    })(bq);
+  });
+
+  /* ---- Count-up (only numbers already on the page) ----------------------- */
+  function countUp(el) {
+    var target = parseInt(el.getAttribute('data-tc-count'), 10);
+    if (still() || isNaN(target)) { el.textContent = target; return; }
+    var t0 = null, dur = 1500;
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur), e = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+      el.textContent = Math.round(target * e);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---- Scroll reveal ------------------------------------------------------ */
+  var hasIO = 'IntersectionObserver' in window;
+  var counters = $$('[data-tc-count]');
+  function onIn(el) {
+    el.classList.add('tc-in');
+    $$('[data-tc-count]', el).forEach(countUp);
+  }
+  var targets = $$('.tc-rv, .tc-draw');
+  if (!hasIO || still()) {
+    targets.forEach(function (el) { el.classList.add('tc-in'); });
+  } else {
+    counters.forEach(function (el) { el.textContent = '0'; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        onIn(e.target); io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    targets.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---- Pointer tilt + spotlight (fine pointers only) ---------------------- */
+  function trackPointer(el, tilt) {
+    var raf = 0;
+    el.addEventListener('pointermove', function (e) {
+      if (!mqFine.matches || still()) return;
+      var r = el.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () {
+        el.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+        el.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+        if (tilt) {
+          el.classList.add('tc-tilting');
+          el.style.setProperty('--ry', ((x - 0.5) * 8).toFixed(2) + 'deg');
+          el.style.setProperty('--rx', ((0.5 - y) * 8).toFixed(2) + 'deg');
+        }
+      });
+    });
+    el.addEventListener('pointerleave', function () {
+      cancelAnimationFrame(raf);
+      if (!tilt) return;
+      el.classList.remove('tc-tilting');
+      el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg');
+    });
+  }
+  $$('.tc-tilt').forEach(function (el) { trackPointer(el, true); });
+  $$('[data-tc-spot]').forEach(function (el) { trackPointer(el, false); });
+
+  /* ---- Keyboard for tablists ---------------------------------------------- */
+  function tabKeys(tabs, select) {
+    tabs.forEach(function (t, i) {
+      t.addEventListener('keydown', function (e) {
+        var n = tabs.length, j = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') j = (i + 1) % n;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') j = (i - 1 + n) % n;
+        else if (e.key === 'Home') j = 0;
+        else if (e.key === 'End') j = n - 1;
+        if (j === null) return;
+        e.preventDefault(); select(j); tabs[j].focus();
+      });
+    });
+  }
+  function navBar(label, onDir) {
+    var nav = document.createElement('div');
+    nav.className = 'tc-pnav';
+    nav.innerHTML = '<span class="tc-pnav-c"></span><span class="tc-pnav-b">' +
+      '<button type="button" class="tc-pbtn" data-dir="-1" aria-label="Previous ' + label + '"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>' +
+      '<button type="button" class="tc-pbtn" data-dir="1" aria-label="Next ' + label + '"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></span>';
+    $$('.tc-pbtn', nav).forEach(function (b) {
+      b.addEventListener('click', function () { onDir(parseInt(b.getAttribute('data-dir'), 10)); });
+    });
+    return nav;
+  }
+
+  /* ---- 1. Credential chips highlight their phrase in the bio -------------- */
+  var trainer = $('.tc-trainer');
+  if (trainer) {
+    var chips = $$('.tc-chip', trainer), hls = $$('.tc-hl', trainer);
+    var light = function (k) { hls.forEach(function (h) { h.classList.toggle('tc-lit', !!k && h.getAttribute('data-tc-k') === k); }); };
+    var pressed = function () { var p = $('.tc-chip[aria-pressed="true"]', trainer); return p ? p.getAttribute('data-tc-k') : null; };
+    chips.forEach(function (c) {
+      var k = c.getAttribute('data-tc-k');
+      c.addEventListener('click', function () {
+        var on = c.getAttribute('aria-pressed') !== 'true';
+        chips.forEach(function (o) { o.setAttribute('aria-pressed', o === c && on ? 'true' : 'false'); });
+        light(on ? k : null);
+      });
+      c.addEventListener('pointerenter', function () { if (mqFine.matches) light(k); });
+      c.addEventListener('pointerleave', function () { if (mqFine.matches) light(pressed()); });
+      c.addEventListener('focus', function () { light(k); });
+      c.addEventListener('blur', function () { light(pressed()); });
+    });
+  }
+
+  /* ---- 3. Why TRE: tabs built from the six reason cards -------------------- */
+  var why = $('.tc-why-ui');
+  if (why) {
+    var wPanels = $$('.tc-wp', why), stage = $('.tc-why-stage', why), wGrid = $('.tc-why-grid', why);
+    var list = document.createElement('div');
+    list.className = 'tc-why-tabs';
+    list.setAttribute('role', 'tablist');
+    list.setAttribute('aria-label', 'Why TRE is worth certifying in');
+    list.setAttribute('aria-orientation', 'vertical');
+    var ind = document.createElement('span');
+    ind.className = 'tc-why-ind'; ind.setAttribute('aria-hidden', 'true');
+    list.appendChild(ind);
+    var wTabs = wPanels.map(function (p, i) {
+      p.id = 'tc-why-p' + i;
+      p.setAttribute('role', 'tabpanel');
+      p.setAttribute('aria-labelledby', 'tc-why-t' + i);
+      p.tabIndex = 0;
+      var num = document.createElement('span');
+      num.className = 'tc-wp-num'; num.setAttribute('aria-hidden', 'true'); num.textContent = pad(i + 1);
+      p.appendChild(num);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'tc-wt'; b.id = 'tc-why-t' + i;
+      b.setAttribute('role', 'tab'); b.setAttribute('aria-controls', p.id);
+      var icon = $('.tc-wp-i i', p);
+      b.innerHTML = '<span class="tc-wt-i" aria-hidden="true"><i class="' + icon.className + '"></i></span><span class="tc-wt-l"></span><span class="tc-wt-n" aria-hidden="true">' + pad(i + 1) + '</span>';
+      $('.tc-wt-l', b).textContent = $('h3', p).textContent;
+      list.appendChild(b);
+      return b;
+    });
+    why.insertBefore(list, stage);
+    var wCur = 0, wN = wPanels.length;
+    var wNav = navBar('reason', function (d) { wSel((wCur + d + wN) % wN); });
+    stage.appendChild(wNav);
+    var wCount = $('.tc-pnav-c', wNav);
+    var moveInd = function () {
+      var t = wTabs[wCur];
+      if (getComputedStyle(ind).display === 'none') return;
+      ind.style.height = t.offsetHeight + 'px';
+      ind.style.transform = 'translateY(' + t.offsetTop + 'px)';
+    };
+    var wSel = function (i) {
+      wCur = i;
+      wTabs.forEach(function (t, j) {
+        var on = j === i;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        wPanels[j].classList.toggle('tc-cur', on);
+      });
+      wCount.textContent = pad(i + 1) + ' / ' + pad(wN);
+      moveInd();
+    };
+    tabKeys(wTabs, wSel);
+    wTabs.forEach(function (t, i) { t.addEventListener('click', function () { wSel(i); }); });
+    wSel(0);
+    window.addEventListener('resize', moveInd, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveInd);
+  }
+
+  /* ---- 4. Certification stepper -------------------------------------------- */
+  var path = $('[data-tc-steps]');
+  if (path) {
+    var steps = $$('.tc-st', path), stepsBox = $('.tc-steps', path), sN = steps.length;
+    var track = document.createElement('div');
+    track.className = 'tc-track';
+    track.setAttribute('role', 'tablist');
+    track.setAttribute('aria-label', 'Certification path');
+    track.innerHTML = '<span class="tc-track-line" aria-hidden="true"><span class="tc-track-fill"></span></span>';
+    var fill = $('.tc-track-fill', track);
+    var nodes = steps.map(function (st, i) {
+      st.id = 'tc-step-p' + i;
+      st.setAttribute('role', 'tabpanel');
+      st.setAttribute('aria-labelledby', 'tc-step-t' + i);
+      st.tabIndex = 0;
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'tc-node'; b.id = 'tc-step-t' + i;
+      b.setAttribute('role', 'tab'); b.setAttribute('aria-controls', st.id);
+      var dot = i === sN - 1 ? '<i class="fa-solid fa-award"></i>' : String(i + 1);
+      b.innerHTML = '<span class="tc-node-dot" aria-hidden="true">' + dot + '</span><span class="tc-node-l"></span>';
+      $('.tc-node-l', b).textContent = st.getAttribute('data-tc-short') || ('Step ' + (i + 1));
+      track.appendChild(b);
+      return b;
+    });
+    path.insertBefore(track, stepsBox);
+    var sCur = 0;
+    var sNav = navBar('step', function (d) { var j = sCur + d; if (j >= 0 && j < sN) sSel(j); });
+    path.appendChild(sNav);
+    var sCount = $('.tc-pnav-c', sNav), sBtns = $$('.tc-pbtn', sNav);
+    var sSel = function (i) {
+      stepsBox.setAttribute('data-dir', i < sCur ? '-1' : '1');
+      sCur = i;
+      nodes.forEach(function (b, j) {
+        b.setAttribute('aria-selected', j === i ? 'true' : 'false');
+        b.tabIndex = j === i ? 0 : -1;
+        b.classList.toggle('tc-done', j < i);
+        steps[j].classList.toggle('tc-cur', j === i);
+      });
+      fill.style.setProperty('--tc-p', sN > 1 ? i / (sN - 1) : 1);
+      sCount.textContent = 'Step ' + (i + 1) + ' of ' + sN;
+      sBtns[0].disabled = i === 0;
+      sBtns[1].disabled = i === sN - 1;
+    };
+    tabKeys(nodes, sSel);
+    nodes.forEach(function (b, i) { b.addEventListener('click', function () { sSel(i); }); });
+    sSel(0);
+  }
+
+  /* ---- 7. Pricing: early-bird / normal switch -------------------------------- */
+  var price = $('.tc-price');
+  if (price) {
+    var billWrap = $('.tc-bill-wrap', price), bill = $('.tc-bill', price);
+    var billBtns = $$('.tc-bill-b', price), plans = $$('.tc-plan', price);
+    billWrap.hidden = false;
+    var toNum = function (s) { return parseInt(String(s).replace(/[^0-9]/g, ''), 10) || 0; };
+    var fmt = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
+    var tween = function (el, to) {
+      var from = toNum(el.textContent), goal = toNum(to);
+      if (el._tcRaf) cancelAnimationFrame(el._tcRaf);
+      if (still() || from === goal) { el.textContent = to; return; }
+      var t0 = null, dur = 650;
+      var step = function (ts) {
+        if (t0 === null) t0 = ts;
+        var p = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = p === 1 ? to : fmt(Math.round(from + (goal - from) * e));
+        if (p < 1) el._tcRaf = requestAnimationFrame(step);
+      };
+      el._tcRaf = requestAnimationFrame(step);
+      if (typeof el.animate === 'function') {
+        el.animate([{ transform: 'translateY(-8px)', opacity: 0.35 }, { transform: 'none', opacity: 1 }],
+          { duration: 550, easing: 'cubic-bezier(.23,1,.32,1)' });
+      }
+    };
+    var setMode = function (m) {
+      bill.setAttribute('data-mode', m);
+      billBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-tc-bill') === m ? 'true' : 'false'); });
+      plans.forEach(function (card) {
+        $$('.tc-plan-tier', card).forEach(function (t) { t.classList.toggle('tc-tier-on', t.getAttribute('data-tc-tier') === m); });
+        var num = $('.tc-plan-num', card);
+        if (num) tween(num, num.getAttribute('data-' + m));
+      });
+    };
+    billBtns.forEach(function (b) {
+      b.addEventListener('click', function () { setMode(b.getAttribute('data-tc-bill')); });
+    });
+  }
+})();
+</script>
 </body>
 </html>
