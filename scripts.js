@@ -908,3 +908,202 @@ function sendLead(data) {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
   window.hbInitButtons = initButtons; // for content injected later (event grids, countdown)
 })();
+
+// ==========================================================================
+// EVENT PAGES (.ce-*) INTERACTIVE LAYER — 2026-09-29 (styles in styles.css)
+// Every event detail page on the .ce-* template: hero parallax + glow,
+// scroll reveals, poster tilt, live status chip, past-event notice, live
+// "Other upcoming events" and a phone booking bar. Status and related
+// events are read from events.html so they never go stale.
+// ==========================================================================
+(function () {
+  'use strict';
+  var hero = document.querySelector('.ce-hero');
+  if (!hero) return;
+  var body = document.body;
+  body.classList.add('ce-live');
+  var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mqFine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  function still() { return mqReduce.matches; }
+  function $(s, c) { return (c || document).querySelector(s); }
+  function $$(s, c) { return [].slice.call((c || document).querySelectorAll(s)); }
+  function ms(d, end) { return d ? Date.parse(d + (end ? 'T23:59:59' : 'T00:00:00') + '+08:00') : NaN; }
+  function statusOf(start, end, sold) {
+    var now = Date.now(), s = ms(start, false), e = ms(end || start, true);
+    if (sold) return 'sold';
+    if (!isNaN(e) && e < now) return 'past';
+    if (!isNaN(s) && s <= now) return 'ongoing';
+    return 'upcoming';
+  }
+  function whenText(st, start, end) {
+    if (st === 'sold') return 'Sold out';
+    if (st === 'past') return 'This event has passed';
+    if (st === 'ongoing') return (end && end !== start) ? 'Happening now' : 'Happening today';
+    var d = Math.ceil((ms(start, false) - Date.now()) / 864e5);
+    return d <= 1 ? 'Starts tomorrow' : 'Starts in ' + d + ' days';
+  }
+  function slug(h) { return (h || '').split('#')[0].split('?')[0].replace(/^.*\//, '').replace(/\.html$/, ''); }
+  var here = slug(location.pathname) || 'index';
+
+  /* ---- hero: parallax background + pointer glow --------------------------- */
+  var bg = $('.ce-bg', hero);
+  var glow = document.createElement('span'); glow.className = 'ce-glow'; glow.setAttribute('aria-hidden', 'true');
+  hero.insertBefore(glow, $('.ce-hero-inner', hero));
+  if (!still()) {
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var y = window.scrollY || 0;
+        if (bg && y < hero.offsetHeight + 200) bg.style.setProperty('--ce-py', (y * .22).toFixed(1) + 'px');
+      });
+    }, { passive: true });
+    if (mqFine.matches) hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      hero.style.setProperty('--ce-gx', (x * 100).toFixed(1) + '%');
+      hero.style.setProperty('--ce-gy', (y * 100).toFixed(1) + '%');
+      if (bg) bg.style.setProperty('--ce-px', ((.5 - x) * 18).toFixed(1) + 'px');
+    });
+  }
+
+  /* ---- scroll reveal -------------------------------------------------------- */
+  var groups = ['.ce-facts-grid', '.ce-main > *', '.ce-list > li', '.ce-side > .ce-box', '.ce-people > .ce-person', '.ce-sched > *', '.ce-prep', '.ce-related h2', '.ce-rel-grid > .ce-rel'];
+  function mark(root) {
+    groups.forEach(function (sel) {
+      $$(sel, root).forEach(function (el) {
+        if (el.classList.contains('ce-rv') || el.closest('.ce-hero')) return;
+        var sib = el.parentNode ? [].indexOf.call(el.parentNode.children, el) : 0;
+        el.style.setProperty('--ce-d', Math.min(sib, 6) * 70 + 'ms');
+        el.classList.add('ce-rv');
+        if (io) io.observe(el); else el.classList.add('ce-in');
+      });
+    });
+  }
+  var io = (!still() && 'IntersectionObserver' in window) ? new IntersectionObserver(function (es) {
+    es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('ce-in'); io.unobserve(en.target); } });
+  }, { threshold: .1, rootMargin: '0px 0px -5% 0px' }) : null;
+  mark(document);
+
+  /* ---- poster tilt + people spotlight --------------------------------------- */
+  var poster = $('.ce-poster');
+  if (poster && mqFine.matches && !still()) {
+    poster.addEventListener('pointermove', function (e) {
+      var r = poster.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      poster.classList.add('ce-tilt');
+      poster.style.setProperty('--ce-rx', ((.5 - y) * 5).toFixed(2) + 'deg');
+      poster.style.setProperty('--ce-ry', ((x - .5) * 7).toFixed(2) + 'deg');
+    });
+    poster.addEventListener('pointerleave', function () {
+      poster.classList.remove('ce-tilt'); poster.style.setProperty('--ce-rx', '0deg'); poster.style.setProperty('--ce-ry', '0deg');
+    });
+  }
+  $$('.ce-person').forEach(function (p) {
+    p.addEventListener('pointermove', function (e) {
+      var r = p.getBoundingClientRect();
+      p.style.setProperty('--ce-mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+      p.style.setProperty('--ce-my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+    });
+  });
+
+  /* ---- phone booking bar ---------------------------------------------------- */
+  var cta = $('.ce-hero-actions a.btn-primary');
+  var bar = null, barSub = null;
+  function buildBar(sub) {
+    if (!cta || bar) return;
+    var h1 = $('h1', hero);
+    bar = document.createElement('div'); bar.className = 'ce-bar'; bar.setAttribute('role', 'region'); bar.setAttribute('aria-label', 'Book this event');
+    var t = document.createElement('div'); t.className = 'ce-bar-t';
+    var b = document.createElement('b'); b.textContent = h1 ? h1.textContent.trim() : document.title;
+    barSub = document.createElement('span'); barSub.textContent = sub || '';
+    t.appendChild(b); t.appendChild(barSub); bar.appendChild(t);
+    var btn = cta.cloneNode(true); btn.removeAttribute('id'); btn.removeAttribute('data-hb-btn'); btn.classList.remove('on-dark', 'on-light'); $$('.btn-arr', btn).forEach(function (a) { a.remove(); });
+    var lbl = btn.textContent.replace(/[→\s]+$/, '').trim();
+    if (lbl.length > 18) btn.textContent = /zoom/i.test(lbl) ? 'Join on Zoom' : 'Register';
+    bar.appendChild(btn);
+    body.appendChild(bar);
+    var heroOut = false, blockers = 0;
+    function upd() { body.classList.toggle('ce-bar-on', heroOut && blockers === 0); }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { heroOut = !es[0].isIntersecting; upd(); }).observe(hero);
+      var seen = new Map();
+      var bo = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { seen.set(en.target, en.isIntersecting); });
+        blockers = 0; seen.forEach(function (v) { if (v) blockers++; }); upd();
+      }, { threshold: .15 });
+      $$('.ce-side, #reserve, footer').forEach(function (el) { bo.observe(el); });
+    }
+    if (window.hbInitButtons) window.hbInitButtons();
+  }
+
+  /* ---- sync with events.html ------------------------------------------------ */
+  function afterData(items) {
+    var mine = items.filter(function (x) { return x.slug === here; })[0];
+    var badges = $('.ce-badges', hero);
+    var already = badges && /pass|ended|sold/i.test(badges.textContent);
+    if (mine && badges && !already && !$('.ce-status', badges)) {
+      var chip = document.createElement('span');
+      chip.className = 'ce-badge ce-status is-' + mine.status;
+      chip.textContent = whenText(mine.status, mine.start, mine.end);
+      badges.appendChild(chip);
+    }
+    var past = mine && mine.status === 'past';
+    if (past && !$('.ce-past-note')) {
+      var note = document.createElement('div'); note.className = 'ce-past-note';
+      note.innerHTML = '<div><p><i class="fa-solid fa-circle-info" aria-hidden="true"></i>This event has already taken place.</p><a href="events.html" class="btn btn-primary">See upcoming events</a></div>';
+      var facts = $('.ce-facts');
+      (facts || hero).parentNode.insertBefore(note, (facts || hero).nextSibling);
+    }
+    if (!past && (!mine || mine.status !== 'sold')) buildBar(mine ? whenText(mine.status, mine.start, mine.end) : (($('.ce-fact span') || {}).textContent || ''));
+
+    var grid = $('.ce-rel-grid');
+    if (grid) {
+      var next = items.filter(function (x) { return x.slug !== here && (x.status === 'upcoming' || x.status === 'ongoing'); })
+        .sort(function (a, b) { return ms(a.start, false) - ms(b.start, false); }).slice(0, 3);
+      if (next.length) {
+        grid.innerHTML = '';
+        next.forEach(function (x) {
+          var a = document.createElement('a'); a.className = 'ce-rel'; a.href = x.href;
+          if (x.img) { var im = document.createElement('img'); im.src = x.img; im.alt = x.alt || x.title; im.loading = 'lazy'; im.decoding = 'async'; a.appendChild(im); }
+          var b = document.createElement('div'); b.className = 'b';
+          var st = document.createElement('strong'); st.textContent = x.title;
+          var sp = document.createElement('span'); sp.className = 'ce-rel-meta'; sp.textContent = [x.loc, x.date].filter(Boolean).join(' · ');
+          var w = document.createElement('span'); w.className = 'ce-rel-when'; w.textContent = whenText(x.status, x.start, x.end);
+          b.appendChild(st); b.appendChild(sp); b.appendChild(w); a.appendChild(b); grid.appendChild(a);
+        });
+        var inner = grid.parentNode;
+        if (!$('.ce-rel-all', inner)) {
+          var all = document.createElement('p'); all.className = 'ce-rel-all';
+          all.innerHTML = '<a href="events.html" class="btn btn-outline">See all events</a>';
+          inner.appendChild(all);
+        }
+        mark(inner);
+      }
+    }
+    if (window.hbInitButtons) window.hbInitButtons();
+  }
+
+  if (!window.fetch || !window.DOMParser) { buildBar(''); return; }
+  fetch('events.html', { cache: 'no-cache', credentials: 'same-origin' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (txt) {
+      var doc = new DOMParser().parseFromString(txt, 'text/html');
+      var items = [];
+      ['evt-grid', 'evt-archive'].forEach(function (id) {
+        var box = doc.getElementById(id); if (!box) return;
+        $$('article.evt-card', box).forEach(function (c) {
+          var th = $('.evt-card-thumb', c), img = th && $('img', th), h3 = $('h3', c), loc = $('.evt-tag.loc', c), dt = $('.evt-date-tag', c);
+          var sold = c.getAttribute('data-sold') === 'true' || c.classList.contains('is-sold');
+          var start = c.getAttribute('data-start'), end = c.getAttribute('data-end');
+          if (!th || !start) return;
+          items.push({
+            href: th.getAttribute('href'), slug: slug(th.getAttribute('href')), img: img ? img.getAttribute('src') : '', alt: img ? img.getAttribute('alt') : '',
+            title: h3 ? h3.textContent.trim() : '', loc: loc ? loc.textContent.trim() : '', date: dt ? dt.textContent.trim() : '',
+            start: start, end: end, status: statusOf(start, end, sold)
+          });
+        });
+      });
+      afterData(items);
+    })
+    .catch(function () { buildBar(''); });
+})();

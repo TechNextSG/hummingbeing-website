@@ -1849,3 +1849,150 @@ body.menu-lock .wa-float, body.menu-lock .top-float, body.menu-lock .hb-chat-btn
   .philo-live .philo-row-2 .philo-item { padding: 1.4rem 1.2rem 1.6rem !important; border-bottom-color: rgba(36,46,66,.06) !important; }
   .philo-live .philo-item::after { left: 1.2rem; right: 1.2rem; }
 }
+
+/* ==========================================================================
+   EVENT PAGES (.ce-*) INTERACTIVE LAYER — 2026-09-29
+   Applies to every event detail page built on the .ce-* template, current
+   and future. scripts.js adds body.ce-live; without JS nothing is hidden.
+   Live status chip, related events and past-event notice sync from
+   events.html (the single source of truth).
+   ========================================================================== */
+.ce-live .ce-hero { isolation: isolate; }
+.ce-live .ce-hero .ce-bg { will-change: transform; transform: translate3d(var(--ce-px, 0px), var(--ce-py, 0px), 0) scale(1.12); transition: transform .9s var(--ease-out); }
+.ce-glow { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .6s var(--ease-out);
+  background: radial-gradient(520px circle at var(--ce-gx, 70%) var(--ce-gy, 30%), rgba(245, 166, 35, .16), transparent 60%); }
+.ce-live .ce-hero:hover .ce-glow { opacity: 1; }
+.ce-live .ce-hero-inner { z-index: 2; }
+.ce-live .ce-hero-inner > div > * { animation: ce-rise .9s var(--ease-out) both; }
+.ce-live .ce-hero-inner > div > *:nth-child(2) { animation-delay: .08s; }
+.ce-live .ce-hero-inner > div > *:nth-child(3) { animation-delay: .16s; }
+.ce-live .ce-hero-inner > div > *:nth-child(4) { animation-delay: .24s; }
+.ce-live .ce-hero-inner > div > *:nth-child(5) { animation-delay: .32s; }
+.ce-live .ce-hero-inner > div > *:nth-child(n+6) { animation-delay: .4s; }
+@keyframes ce-rise { from { opacity: 0; translate: 0 22px; } to { opacity: 1; translate: 0 0; } }
+.ce-live .ce-hero h1 em { background: linear-gradient(var(--gold), var(--gold)) no-repeat 0 100% / 0 3px; padding-bottom: .04em; animation: ce-ul 1.1s var(--ease-out) .7s forwards; }
+@keyframes ce-ul { to { background-size: 100% 3px; } }
+.ce-live .ce-badge { transition: transform .35s var(--ease-out), background .35s, border-color .35s; }
+.ce-live .ce-badge:hover { transform: translateY(-2px); }
+
+/* live status chip (from events.html) */
+.ce-status { display: inline-flex; align-items: center; gap: .45rem; }
+.ce-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
+.ce-status.is-upcoming { background: rgba(245, 166, 35, .18) !important; border-color: rgba(245, 166, 35, .55) !important; color: #ffd48a !important; }
+.ce-status.is-upcoming::before, .ce-status.is-ongoing::before { animation: ce-ping 1.8s var(--ease-out) infinite; }
+.ce-status.is-ongoing { background: rgba(31, 157, 107, .25) !important; border-color: rgba(31, 157, 107, .6) !important; color: #a8f0cf !important; }
+.ce-status.is-past { background: rgba(255, 255, 255, .1) !important; color: #c7d2e6 !important; }
+.ce-status.is-sold { background: rgba(192, 57, 43, .3) !important; border-color: rgba(192, 57, 43, .7) !important; color: #ffd0ca !important; }
+@keyframes ce-ping { 0% { box-shadow: 0 0 0 0 currentColor; } 100% { box-shadow: 0 0 0 8px transparent; } }
+
+/* quick facts */
+.ce-live .ce-fact { position: relative; transition: background .35s var(--ease-out); }
+.ce-live .ce-fact::after { content: ""; position: absolute; left: 20px; right: 20px; bottom: 0; height: 3px; border-radius: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .5s var(--ease-out); }
+.ce-live .ce-fact i { display: inline-grid; place-items: center; width: 32px !important; height: 32px; margin-top: -4px !important; border-radius: 50%; background: rgba(245, 166, 35, .12); transition: background .35s, color .35s, transform .5s var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .ce-live .ce-fact:hover { background: rgba(245, 166, 35, .05); }
+  .ce-live .ce-fact:hover::after { transform: scaleX(1); }
+  .ce-live .ce-fact:hover i { background: var(--navy); color: var(--gold); transform: rotate(-10deg) scale(1.08); }
+}
+
+/* scroll reveal */
+.ce-live .ce-rv { transition: opacity .8s var(--ease-out) var(--ce-d, 0ms), translate .9s var(--ease-out) var(--ce-d, 0ms); }
+.ce-live .ce-rv:not(.ce-in) { opacity: 0; translate: 0 22px; }
+.ce-live .ce-main h2 { position: relative; padding-bottom: .55rem; }
+.ce-live .ce-main h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 44px; height: 3px; border-radius: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .8s var(--ease-out) .15s; }
+.ce-live .ce-main h2.ce-in::after, .ce-live .ce-prep h2::after { transform: scaleX(1); }
+.ce-live .ce-list li::before { display: inline-block; transition: transform .5s var(--ease-out) var(--ce-d, 0ms); }
+.ce-live .ce-list li.ce-rv:not(.ce-in)::before { transform: scale(0) rotate(-45deg); }
+
+/* poster + people + cards */
+.ce-live .ce-poster { transform: perspective(1100px) rotateX(var(--ce-rx, 0deg)) rotateY(var(--ce-ry, 0deg)); transition: transform .6s var(--ease-out), box-shadow .5s var(--ease-out), opacity .8s var(--ease-out), translate .9s var(--ease-out); box-shadow: 0 18px 50px -24px rgba(26, 32, 48, .45); }
+.ce-live .ce-poster.ce-tilt { transition: transform .12s linear, box-shadow .5s var(--ease-out), opacity .8s var(--ease-out), translate .9s var(--ease-out); box-shadow: 0 34px 70px -30px rgba(26, 32, 48, .55); }
+.ce-live .ce-poster img { transition: transform 1s var(--ease-out); }
+.ce-live .ce-poster:hover img { transform: scale(1.03); }
+.ce-live .ce-person { position: relative; overflow: hidden; isolation: isolate; transition: transform .5s var(--ease-out), box-shadow .5s var(--ease-out), opacity .8s var(--ease-out) var(--ce-d, 0ms), translate .9s var(--ease-out) var(--ce-d, 0ms); }
+.ce-live .ce-person::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .5s; background: radial-gradient(420px circle at var(--ce-mx, 20%) var(--ce-my, 20%), rgba(245, 166, 35, .18), transparent 60%); }
+.ce-live .ce-person .ce-avatar { transition: transform .6s var(--ease-out), border-color .4s, box-shadow .5s; }
+@media (hover: hover) and (pointer: fine) {
+  .ce-live .ce-person:hover { transform: translateY(-4px); box-shadow: 0 28px 60px -28px rgba(10, 14, 24, .6); }
+  .ce-live .ce-person:hover::before { opacity: 1; }
+  .ce-live .ce-person:hover .ce-avatar { transform: scale(1.05) rotate(-3deg); border-color: var(--gold); box-shadow: 0 0 0 6px rgba(245, 166, 35, .15), 0 10px 26px rgba(0, 0, 0, .3); }
+  .ce-live .ce-day:hover, .ce-live .ce-sescard:hover, .ce-live .ce-callout:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -22px rgba(36, 46, 66, .35); }
+}
+.ce-live .ce-day, .ce-live .ce-sescard, .ce-live .ce-callout { transition: transform .45s var(--ease-out), box-shadow .45s var(--ease-out), opacity .8s var(--ease-out) var(--ce-d, 0ms), translate .9s var(--ease-out) var(--ce-d, 0ms); }
+
+/* sidebar booking box */
+.ce-live .ce-box { position: relative; overflow: hidden; transition: box-shadow .5s var(--ease-out), border-color .5s, opacity .8s var(--ease-out) var(--ce-d, 0ms), translate .9s var(--ease-out) var(--ce-d, 0ms); }
+.ce-live .ce-box.evtl-form-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent) no-repeat -60% 0 / 60% 100%, rgba(245, 166, 35, .35); animation: ce-shine 3.6s var(--ease-out) infinite; }
+@keyframes ce-shine { to { background-position: 160% 0, 0 0; } }
+.ce-live .ce-box:hover { border-color: rgba(245, 166, 35, .4); box-shadow: 0 16px 44px -18px rgba(36, 46, 66, .28); }
+.ce-live .ce-tiers > div, .ce-live .ce-tier { transition: background .3s, padding .3s var(--ease-out); border-radius: 8px; }
+@media (hover: hover) and (pointer: fine) { .ce-live .ce-tiers > div:hover, .ce-live .ce-tier:hover { background: rgba(245, 166, 35, .08); } }
+.ce-live .evtl-field input { transition: border-color .3s, box-shadow .3s; }
+.ce-live .evtl-field input:focus { box-shadow: 0 0 0 4px rgba(245, 166, 35, .18); }
+
+/* past-event notice */
+.ce-past-note { max-width: 1160px; margin: 1.4rem auto 0; padding: 0 5%; }
+.ce-past-note > div { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem 1.4rem; padding: 1rem 1.3rem; border-radius: 12px; background: rgba(36, 46, 66, .05); border: 1px solid rgba(36, 46, 66, .1); }
+.ce-past-note p { margin: 0; font-family: 'Lato', sans-serif; font-size: .92rem; color: var(--navy); display: flex; align-items: center; gap: .6rem; }
+.ce-past-note i { color: var(--gold-dark); }
+
+/* related events (live) */
+.ce-live .ce-rel { position: relative; transition: transform .5s var(--ease-out), box-shadow .5s var(--ease-out), opacity .8s var(--ease-out) var(--ce-d, 0ms), translate .9s var(--ease-out) var(--ce-d, 0ms); }
+.ce-live .ce-rel img { transition: transform 1s var(--ease-out); }
+.ce-live .ce-rel .b { position: relative; padding-right: 3rem; }
+.ce-live .ce-rel .b::after { content: "\f061"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: .75rem; position: absolute; right: 1rem; top: 50%; width: 30px; height: 30px; margin-top: -15px; border-radius: 50%; display: grid; place-items: center; background: rgba(245, 166, 35, .14); color: var(--gold-dark); transition: transform .5s var(--ease-out), background .35s, color .35s; }
+.ce-live .ce-rel:hover img { transform: scale(1.06); }
+.ce-live .ce-rel:hover .b::after { transform: translateX(4px); background: var(--gold); color: var(--navy); }
+.ce-rel-when { display: inline-flex !important; align-items: center; gap: .35rem; margin-top: .45rem; font-size: .72rem !important; font-weight: 700; color: var(--gold-dark) !important; }
+.ce-rel-when::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.ce-rel-all { text-align: center; margin-top: 1.6rem; }
+.ce-live .ce-rel .ce-rel-meta { display: block; }
+
+/* phone: sticky booking bar */
+.ce-bar { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 900; display: none; align-items: center; gap: .8rem; padding: .6rem .6rem .6rem 1rem; border-radius: 16px;
+  background: rgba(26, 32, 48, .96); color: #fff; box-shadow: 0 18px 44px rgba(10, 14, 24, .4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  transform: translateY(140%); transition: transform .5s var(--ease-out); }
+.ce-bar-t { flex: 1; min-width: 0; font-family: 'Lato', sans-serif; line-height: 1.25; }
+.ce-bar-t b { display: block; font-size: .84rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ce-bar-t span { font-size: .7rem; color: #ffd48a; font-weight: 700; letter-spacing: .04em; }
+.ce-bar .btn { flex: none; margin: 0 !important; padding: .7rem 1rem !important; font-size: .7rem !important; width: auto !important; }
+@media (max-width: 900px) {
+  .ce-bar { display: flex; }
+  body.ce-bar-on .ce-bar { transform: none; }
+  body.ce-bar-on .wa-float, body.ce-bar-on .top-float, body.ce-bar-on .hb-chat-btn { translate: 0 -78px; }
+  .wa-float, .top-float, .hb-chat-btn { transition-property: opacity, transform, translate, box-shadow, background; transition-duration: .4s; }
+}
+body.menu-lock .ce-bar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ce-live .ce-hero-inner > div > *, .ce-live .ce-hero h1 em, .ce-status::before, .ce-live .ce-box.evtl-form-card::before { animation: none !important; }
+  .ce-live .ce-hero h1 em { background-size: 100% 3px; }
+  .ce-live .ce-rv:not(.ce-in) { opacity: 1; translate: none; }
+  .ce-live .ce-list li.ce-rv:not(.ce-in)::before { transform: none; }
+  .ce-live .ce-hero .ce-bg, .ce-live .ce-poster, .ce-bar { transition: none; }
+}
+
+/* ==========================================================================
+   MOBILE HERO — compact, video visible (2026-09-29)
+   Phones: the hero is no longer full-screen. It sizes to its content plus a
+   clear band of video under the header; the overlay is light at the top and
+   dark behind the text. Title and button sizes are unchanged.
+   ========================================================================== */
+@media (max-width: 767px) {
+  .hero, .page-hero, .event-hero {
+    min-height: 0 !important;
+    justify-content: flex-end !important;
+    padding-top: calc(86px + 22vw) !important;
+    padding-bottom: 2.2rem !important;
+  }
+  .hero::after, .page-hero::after, .event-hero::after {
+    background: linear-gradient(180deg, rgba(15, 20, 32, .38) 0%, rgba(15, 20, 32, .08) 18%, rgba(15, 20, 32, .42) 40%, rgba(15, 20, 32, .82) 72%, rgba(15, 20, 32, .9) 100%) !important;
+  }
+  .hero-eyebrow, .page-hero .eyebrow, .event-hero .eyebrow { margin-bottom: .8rem !important; }
+  .hero h1, .page-hero h1, .event-hero h1 { margin-bottom: .9rem !important; }
+  .hero p, .page-hero p, .event-hero > p { margin-bottom: 1.4rem !important; }
+  .hero-actions, .page-hero .hero-actions, .event-hero .hero-actions { gap: .7rem !important; }
+  .page-hero .hero-actions, .event-hero .hero-actions { margin-top: 0 !important; }
+  .hero-video { object-position: center 35%; }
+}
