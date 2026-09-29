@@ -99,7 +99,7 @@
       "permanent": true
     },
     {
-      "source": "/:page((?!googlee4a95ab68dd774c1$|404$|index$)[^/.]+)\\.html",
+      "source": "/:page((?!googlee4a95ab68dd774c1|404|index)[^/.]+)\\.html",
       "destination": "/:page",
       "permanent": true
     }
