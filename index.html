@@ -146,6 +146,61 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
       .hx-evts .home-evt-body { padding: 1.25rem 1.3rem 1.4rem; }
     }
 
+    /* ---- 1b. Live events feed: filters, next-up badge, desktop track, footer (2026-09-29) ---- */
+    .hx-evf { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 clamp(1.2rem, 2.4vw, 1.8rem); }
+    .hx-evf[hidden] { display: none; }
+    .hx-evf-b {
+      display: inline-flex; align-items: center; gap: .55rem; min-height: 42px; padding: 0 1.05rem; border-radius: 999px; cursor: pointer;
+      font-family: 'Lato', sans-serif; font-size: .74rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      background: #fff; color: var(--hx-navy); border: 1.5px solid rgba(36, 46, 66, .14);
+      transition: background .35s var(--hx-ease), color .35s var(--hx-ease), border-color .35s var(--hx-ease), transform .3s var(--hx-ease);
+    }
+    .hx-evf-b i { color: var(--hx-gold-d); font-size: .8rem; transition: color .35s var(--hx-ease), transform .5s var(--hx-ease); }
+    .hx-evf-n {
+      display: inline-grid; place-items: center; min-width: 1.5rem; height: 1.5rem; padding: 0 .35rem; border-radius: 999px;
+      font-size: .66rem; letter-spacing: 0; background: rgba(36, 46, 66, .07); color: var(--hx-navy); font-variant-numeric: tabular-nums;
+      transition: background .35s var(--hx-ease), color .35s var(--hx-ease);
+    }
+    .hx-evf-b[aria-pressed="true"] { background: var(--hx-navy); border-color: var(--hx-navy); color: #fff; }
+    .hx-evf-b[aria-pressed="true"] i { color: var(--hx-gold); transform: rotate(-12deg) scale(1.1); }
+    .hx-evf-b[aria-pressed="true"] .hx-evf-n { background: var(--hx-gold); color: var(--hx-deep); }
+    .hx-evf-b:active { transform: scale(.95); }
+    @media (hover: hover) and (pointer: fine) {
+      .hx-evf-b:not([aria-pressed="true"]):hover { border-color: var(--hx-gold); transform: translateY(-2px); }
+      .hx-evf-b:not([aria-pressed="true"]):hover i { transform: rotate(-12deg) scale(1.1); }
+    }
+    .hx-evts .home-evt-desc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 0 0 auto; line-height: 1.65; max-height: calc(1.65em * 3); }
+    .hx-evts .home-evt-actions { margin-top: auto; padding-top: .5rem; }
+    .hx-evts .home-evt-card.hx-pop { animation: hx-pop .6s var(--hx-ease) both; animation-delay: var(--pd, 0ms); }
+    @keyframes hx-pop { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: none; } }
+    .home-evt-thumb .h-badge.is-next { background: var(--hx-gold); color: var(--hx-deep); box-shadow: 0 6px 18px rgba(245, 166, 35, .45); }
+    .home-evt-thumb .h-badge.is-next::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--hx-deep); margin-right: .1rem;
+      animation: hx-ping-d 1.8s var(--hx-ease) infinite;
+    }
+    @keyframes hx-ping-d { 0% { box-shadow: 0 0 0 0 rgba(26, 32, 48, .5); } 100% { box-shadow: 0 0 0 7px rgba(26, 32, 48, 0); } }
+    @media (min-width: 901px) {
+      .hx-evts .home-evt-3.hx-many {
+        grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: calc((100% - 2 * clamp(1rem, 2vw, 1.6rem)) / 3);
+        overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 6px 2px 16px; scroll-padding-left: 2px;
+      }
+      .hx-evts .home-evt-3.hx-many::-webkit-scrollbar { display: none; }
+      .hx-evts .home-evt-3.hx-many .home-evt-card { scroll-snap-align: start; }
+    }
+    .hx-evt-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-top: clamp(1.4rem, 3vw, 2rem); }
+    .hx-evt-count { margin: 0; font-family: 'Lato', sans-serif; font-size: .85rem; color: var(--hx-mid); }
+    .hx-evt-n { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.35rem; color: var(--hx-navy); margin-right: .15rem; }
+    .hx-evt-empty { grid-column: 1 / -1; padding: 2.2rem 1.5rem; border-radius: 16px; background: #fff; text-align: center; color: var(--hx-mid); }
+    @media (max-width: 600px) {
+      .hx-evf { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: calc(-1 * var(--hx-pad, 16px)); padding-right: var(--hx-pad, 16px); }
+      .hx-evf::-webkit-scrollbar { display: none; }
+      .hx-evf-b { flex: none; }
+      .hx-evt-foot { flex-direction: column; align-items: stretch; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hx-evts .home-evt-card.hx-pop, .home-evt-thumb .h-badge.is-next::before { animation: none; }
+    }
+
     /* ==========================================================================
        2. How We Teach - poster facade, click to play (YouTube loads on demand)
        ========================================================================== */
@@ -629,46 +684,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button type="button" class="hx-arrow" data-dir="1" aria-controls="home-evt-grid" aria-label="Next event"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
     </div>
-    <div class="home-evt-3" id="home-evt-grid">
-      <article class="home-evt-card hx-rv">
-        <a href="event-shaking-online.html" class="home-evt-thumb" aria-label="From Shaking to Shaping — Online event">
-          <img src="images/event-shaking-online.webp?v=5" alt="From Shaking to Shaping &mdash; Online" width="1920" height="1080" loading="lazy" decoding="async" />
+    <div class="hx-evf hx-rv" role="toolbar" aria-label="Filter events" hidden></div>
+    <div class="home-evt-3" id="home-evt-grid" aria-live="polite">
+      <article class="home-evt-card hx-rv" data-cat="online international workshops">
+        <a href="event-shaking-online.html" class="home-evt-thumb" aria-label="From Shaking to Shaping — Online - event details">
+          <img src="images/event-shaking-online.webp?v=5" alt="From Shaking to Shaping — Online, 8 October" loading="lazy" decoding="async" width="1920" height="1080" />
         </a>
         <div class="home-evt-body">
           <div class="home-evt-tags"><span class="home-evt-tag loc">Online</span><span class="home-evt-tag">TRE&#8482; Coaching</span></div>
           <h3>From Shaking to Shaping &mdash; Online</h3>
           <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-08" data-end="2026-10-08">8 Oct 2026 &middot; 7&#8211;9pm</span></div>
-          <p class="home-evt-desc">A live online workshop on using TRE&#8482; in a coaching context &mdash; co-led by Isabelle Claus Teixeira &amp; Saymara Ryon.</p>
+          <p class="home-evt-desc">A live online workshop on using TRE&#8482; in a coaching context &mdash; co-led by Isabelle Claus Teixeira &amp; Saymara Ryon, in partnership with Neurogenic Integration.</p>
           <div class="home-evt-actions">
             <a href="event-shaking-online.html" class="btn btn-primary">Register</a>
-            <a href="event-shaking-online.html" class="btn home-evt-btn2">Details</a>
+            <a href="event-shaking-online.html" class="btn home-evt-btn2">View Details</a>
           </div>
         </div>
       </article>
-      <article class="home-evt-card hx-rv" style="--d:110ms">
-        <a href="event-tre-module1-bucharest.html" class="home-evt-thumb" aria-label="TRE™ Module 1 Bucharest event">
-          <img src="images/event-bucharest-module1.webp?v=4" alt="TRE&#8482; Module 1 &mdash; Bucharest, Romania" width="1920" height="1080" loading="lazy" decoding="async" />
+      <article class="home-evt-card hx-rv" data-cat="online workshops" style="--d:110ms">
+        <a href="event-feminine-masculine-energetics.html" class="home-evt-thumb" aria-label="Navigating Feminine &amp; Masculine Energetics - event details">
+          <img src="images/event-feminine-masculine.webp?v=3" alt="Navigating Feminine &amp; Masculine Energetics Inside Corporate Structures — Sara Marie, 28 October" loading="lazy" decoding="async" width="1920" height="1080" />
         </a>
         <div class="home-evt-body">
-          <div class="home-evt-tags"><span class="home-evt-tag loc">International</span><span class="home-evt-tag">21 ICF CCEUs</span></div>
-          <h3>TRE&#8482; Module 1 &mdash; Bucharest</h3>
-          <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-15" data-end="2026-10-17">15&ndash;17 Oct 2026</span></div>
-          <p class="home-evt-desc">An immersive 3-day certification &mdash; the first in Europe in English. Valid as Module 1 of the Global TRE&#8482; Provider Certification.</p>
+          <div class="home-evt-tags"><span class="home-evt-tag loc">Online</span><span class="home-evt-tag">Energetics &amp; Somatics</span></div>
+          <h3>Navigating Feminine &amp; Masculine Energetics</h3>
+          <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-28" data-end="2026-10-28">28 Oct 2026 &middot; 7&#8211;9:30pm SGT</span></div>
+          <p class="home-evt-desc">A live online workshop with Sara Marie &mdash; The Alchemist. Alchemising the pressure of masculine corporate structures into liberation, ease and personal power, through energetic transmission and somatic release.</p>
           <div class="home-evt-actions">
-            <a href="https://www.atelierdesuflet.ro/tre-module-1-bucharest-romania-21-icf-cceus-only-tre-training-in-the-world-with-icf-accreditation.html" target="_blank" rel="noopener" class="btn btn-primary">Buy Tickets</a>
-            <a href="event-tre-module1-bucharest.html" class="btn home-evt-btn2">Details</a>
+            <a href="event-feminine-masculine-energetics.html" class="btn btn-primary">Register</a>
+            <a href="event-feminine-masculine-energetics.html" class="btn home-evt-btn2">View Details</a>
           </div>
         </div>
       </article>
-      <article class="home-evt-card hx-rv" style="--d:220ms">
-        <a href="event-certification-2027.html" class="home-evt-thumb" aria-label="Global TRE™ Provider Certification 2027">
-          <img src="images/event-certification-2027.webp?v=6" alt="Become a Certified TRE&#8482; Provider 2027" width="1920" height="1080" loading="lazy" decoding="async" />
+      <article class="home-evt-card hx-rv" data-cat="online workshops" style="--d:220ms">
+        <a href="event-body-in-the-room.html" class="home-evt-thumb" aria-label="The Body in the Room - event details">
+          <img src="images/event-body-in-the-room.webp" alt="The Body in the Room — online workshop with Aun Ali, 25 November 2026" loading="lazy" decoding="async" width="1920" height="1080" />
+        </a>
+        <div class="home-evt-body">
+          <div class="home-evt-tags"><span class="home-evt-tag loc">Online</span><span class="home-evt-tag">Psychotherapy &amp; Somatics</span></div>
+          <h3>The Body in the Room</h3>
+          <div class="evt-dates"><span class="evt-date-tag" data-start="2026-11-25" data-end="2026-11-25">25 Nov 2026 &middot; 7:00pm SGT</span></div>
+          <p class="home-evt-desc">Integrating TRE&#8482; and somatic practice into psychotherapy &mdash; a trauma-informed approach. An online workshop with Aun Ali, Certified TRE&#8482; Trainer and Clinically Certified Trauma Specialist, for psychologists, counsellors and narrative therapists.</p>
+          <div class="home-evt-actions">
+            <a href="https://us02web.zoom.us/j/86108202439" target="_blank" rel="noopener" class="btn btn-primary">Join on Zoom</a>
+            <a href="event-body-in-the-room.html" class="btn home-evt-btn2">View Details</a>
+          </div>
+        </div>
+      </article>
+      <article class="home-evt-card hx-rv" data-cat="singapore certification" style="--d:330ms">
+        <a href="event-certification-2027.html" class="home-evt-thumb" aria-label="Become a Certified TRE™ Provider — 2027 Cohort - event details">
+          <img src="images/event-certification-2027.webp?v=6" alt="Become a Certified TRE&#8482; Provider 2027 &#8212; boosted by Internal Alchemy, with Isabelle Claus Teixeira and Simba Stenqvist" loading="lazy" decoding="async" width="1920" height="1080" />
         </a>
         <div class="home-evt-body">
           <div class="home-evt-tags"><span class="home-evt-tag loc">Singapore</span><span class="home-evt-tag">Certification</span></div>
           <h3>Become a Certified TRE&#8482; Provider &mdash; 2027 Cohort</h3>
-          <div class="evt-dates"><span class="evt-date-tag" data-start="2027-02-27" data-end="2027-10-31">Feb&ndash;Oct 2027</span></div>
-          <p class="home-evt-desc">The 2027 Singapore cohort of the Global TRE&#8482; Provider Certification &mdash; three in-person modules plus online supervisions and bonus programs. Bundle from S$5,888 early bird.</p>
+          <div class="evt-dates"><span class="evt-date-tag" data-start="2027-02-27" data-end="2027-02-28">M1 &middot; 27&ndash;28 Feb 2027</span><span class="evt-date-tag" data-start="2027-07-03" data-end="2027-07-04">M2 &middot; 3&ndash;4 Jul 2027</span><span class="evt-date-tag" data-start="2027-10-30" data-end="2027-10-31">M3 &middot; 30&ndash;31 Oct 2027</span></div>
+          <p class="home-evt-desc">The 2027 Singapore cohort of the Global TRE&#8482; Provider Certification &mdash; three in-person modules plus online supervisions and bonus programs, taught by two TRE&#8482; Trainers, Isabelle Claus Teixeira &amp; Simba Stenqvist. ICF CCE with Module 1. Bundle from S$5,888 early bird.</p>
           <div class="home-evt-actions">
             <a href="event-certification-2027.html#reserve" class="btn btn-primary">Register</a>
             <a href="event-certification-2027.html" class="btn home-evt-btn2">Details</a>
@@ -677,6 +748,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
     </div>
     <div class="hx-evt-prog" aria-hidden="true" hidden><i></i></div>
+    <div class="hx-evt-foot hx-rv">
+      <p class="hx-evt-count" aria-live="polite"><span class="hx-evt-n">4</span> upcoming events &middot; updated from the events calendar</p>
+      <a href="events.html" class="btn btn-outline">See all events</a>
+    </div>
   </div>
 </div>
 
@@ -1315,6 +1390,227 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 })();
+</script>
+<script>
+/* ==========================================================================
+   HOME - live events feed (2026-09-29).
+   The events page is the single source of truth: on every visit this reads
+   events.html, keeps the events that have not ended and are not sold out,
+   orders them soonest-first and rebuilds the cards (the static cards in the
+   HTML are only the first paint / no-JS fallback). Adds filter pills with
+   counts, a "Next up" badge, the "Starts in" chip, card tilt and the count.
+   ========================================================================== */
+(function () {
+  'use strict';
+  var sec = document.getElementById('hx-evts');
+  var grid = document.getElementById('home-evt-grid');
+  if (!sec || !grid) return;
+  var bar = sec.querySelector('.hx-evf'), countEl = sec.querySelector('.hx-evt-count');
+  var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mqFine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  var FILTERS = [
+    { k: 'all', l: 'All', i: 'fa-solid fa-layer-group' },
+    { k: 'online', l: 'Online', i: 'fa-solid fa-video' },
+    { k: 'singapore', l: 'Singapore', i: 'fa-solid fa-location-dot' },
+    { k: 'international', l: 'International', i: 'fa-solid fa-earth-europe' },
+    { k: 'workshops', l: 'Workshops', i: 'fa-solid fa-people-group' },
+    { k: 'certification', l: 'Certification', i: 'fa-solid fa-graduation-cap' }
+  ];
+  var current = 'all';
+
+  function ms(d, end) { return d ? Date.parse(d + (end ? 'T23:59:59' : 'T00:00:00') + '+08:00') : NaN; }
+  function $$(s, c) { return [].slice.call((c || document).querySelectorAll(s)); }
+  function cats(el) { return (el.getAttribute('data-cat') || '').toLowerCase().split(/\s+/); }
+  function statusOf(start, end, sold) {
+    var now = Date.now(), s = ms(start, false), e = ms(end || start, true);
+    if (sold) return 'sold';
+    if (!isNaN(e) && e < now) return 'past';
+    if (!isNaN(s) && s <= now) return 'ongoing';
+    return 'upcoming';
+  }
+
+  /* ---- build one home card from an events-page card ----------------------- */
+  function build(src) {
+    var card = document.createElement('article');
+    card.className = 'home-evt-card hx-rv hx-in';
+    card.setAttribute('data-cat', src.getAttribute('data-cat') || '');
+    var th = src.querySelector('.evt-card-thumb'), h3 = src.querySelector('h3');
+    var title = h3 ? h3.textContent.trim() : 'Event';
+    var a = document.createElement('a');
+    a.className = 'home-evt-thumb';
+    a.href = th ? th.getAttribute('href') : 'events.html';
+    a.setAttribute('aria-label', title + ' - event details');
+    var img = th && th.querySelector('img');
+    if (img) { var im = img.cloneNode(false); im.setAttribute('loading', 'lazy'); a.appendChild(im); }
+    card.appendChild(a);
+    var body = document.createElement('div'); body.className = 'home-evt-body';
+    var tags = document.createElement('div'); tags.className = 'home-evt-tags';
+    $$('.evt-tag', src).forEach(function (t) {
+      var s = document.createElement('span');
+      s.className = 'home-evt-tag' + (t.classList.contains('loc') ? ' loc' : '');
+      s.innerHTML = t.innerHTML; tags.appendChild(s);
+    });
+    body.appendChild(tags);
+    var h = document.createElement('h3'); h.innerHTML = h3 ? h3.innerHTML : title; body.appendChild(h);
+    var dates = src.querySelector('.evt-dates');
+    if (dates) body.appendChild(document.importNode(dates, true));
+    var dsc = src.querySelector('.evt-card-desc');
+    if (dsc) { var p = document.createElement('p'); p.className = 'home-evt-desc'; p.innerHTML = dsc.innerHTML; body.appendChild(p); }
+    var acts = document.createElement('div'); acts.className = 'home-evt-actions';
+    $$('.evt-card-actions a.btn', src).forEach(function (b, i) {
+      var n = document.importNode(b, true);
+      n.className = 'btn ' + (i === 0 ? 'btn-primary' : 'home-evt-btn2');
+      acts.appendChild(n);
+    });
+    body.appendChild(acts);
+    card.appendChild(body);
+    return card;
+  }
+
+  /* ---- status pills, badges, chips, tilt ---------------------------------- */
+  function decorate(list) {
+    var now = Date.now();
+    list.forEach(function (card, idx) {
+      $$('.evt-date-tag', card).forEach(function (t) {
+        t.classList.remove('is-past', 'is-ongoing', 'is-upcoming');
+        var st = statusOf(t.getAttribute('data-start'), t.getAttribute('data-end'), false);
+        t.classList.add(st === 'past' ? 'is-past' : st === 'ongoing' ? 'is-ongoing' : 'is-upcoming');
+      });
+      var tag = card.querySelector('.evt-date-tag');
+      var st = card.getAttribute('data-status');
+      var thumb = card.querySelector('.home-evt-thumb');
+      if (thumb) {
+        $$('.h-badge', thumb).forEach(function (b) { b.remove(); });
+        var b = document.createElement('span');
+        var next = idx === 0 && st === 'upcoming';
+        b.className = 'h-badge is-' + (next ? 'next' : st);
+        b.textContent = next ? 'Next up' : (st === 'ongoing' ? 'Ongoing' : 'Upcoming');
+        thumb.insertBefore(b, thumb.firstChild);
+      }
+      if (tag && !card.querySelector('.hx-when')) {
+        var chip = document.createElement('span'); chip.className = 'hx-when';
+        if (st === 'ongoing') chip.textContent = 'Happening now';
+        else {
+          var s = ms(tag.getAttribute('data-start'), false);
+          if (!isNaN(s)) {
+            var d = Math.ceil((s - now) / 864e5);
+            chip.innerHTML = '<i class="fa-regular fa-clock" aria-hidden="true"></i>' + (d <= 1 ? 'Starts tomorrow' : 'Starts in ' + d + ' days');
+          }
+        }
+        if (chip.textContent) tag.parentNode.appendChild(chip);
+      }
+      if (!card._hxTilt && mqFine.matches && !mqReduce.matches) {
+        card._hxTilt = true;
+        card.addEventListener('pointermove', function (e) {
+          var r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+          card.classList.add('hx-tilt');
+          card.style.setProperty('--rx', ((.5 - y) * 5).toFixed(2) + 'deg');
+          card.style.setProperty('--ry', ((x - .5) * 7).toFixed(2) + 'deg');
+          card.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+          card.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+        });
+        card.addEventListener('pointerleave', function () {
+          card.classList.remove('hx-tilt');
+          card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg');
+        });
+      }
+    });
+  }
+
+  /* ---- filters ------------------------------------------------------------- */
+  function allCards() { return $$('.home-evt-card', grid).filter(function (c) { return c.getAttribute('data-status') !== 'past'; }); }
+  function layout() {
+    var vis = allCards().filter(function (c) { return !c.hidden; });
+    grid.classList.toggle('hx-many', vis.length > 3);
+    grid.scrollLeft = 0;
+    window.dispatchEvent(new Event('resize')); // the track arrows + progress bar re-measure on resize
+  }
+  function apply(k, animate) {
+    current = k;
+    var shown = 0;
+    allCards().forEach(function (c) {
+      var on = k === 'all' || cats(c).indexOf(k) > -1;
+      c.hidden = !on;
+      c.classList.remove('hx-pop');
+      if (on && animate && !mqReduce.matches) { void c.offsetWidth; c.style.setProperty('--pd', Math.min(shown, 4) * 70 + 'ms'); c.classList.add('hx-pop'); }
+      if (on) shown++;
+    });
+    if (bar) $$('.hx-evf-b', bar).forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-k') === k ? 'true' : 'false'); });
+    layout();
+  }
+  function buildFilters() {
+    if (!bar) return;
+    var list = allCards(), counts = { all: list.length };
+    list.forEach(function (c) { cats(c).forEach(function (t) { counts[t] = (counts[t] || 0) + 1; }); });
+    var useful = FILTERS.filter(function (f) { return f.k === 'all' || (counts[f.k] && counts[f.k] < list.length); });
+    bar.innerHTML = '';
+    if (useful.length < 2) { bar.hidden = true; return; }
+    useful.forEach(function (f) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'hx-evf-b'; b.setAttribute('data-k', f.k); b.setAttribute('aria-controls', 'home-evt-grid');
+      b.setAttribute('aria-pressed', f.k === current ? 'true' : 'false');
+      b.innerHTML = '<i class="' + f.i + '" aria-hidden="true"></i>' + f.l + '<span class="hx-evf-n">' + (counts[f.k] || 0) + '</span>';
+      b.addEventListener('click', function () { apply(f.k, true); });
+      bar.appendChild(b);
+    });
+    if (!useful.some(function (f) { return f.k === current; })) current = 'all';
+    bar.hidden = false;
+    bar.classList.add('hx-in');
+  }
+  function setCount(n) {
+    if (!countEl) return;
+    countEl.innerHTML = '<span class="hx-evt-n">' + n + '</span> upcoming ' + (n === 1 ? 'event' : 'events') + ' &middot; updated from the events calendar';
+  }
+  function finish() {
+    var list = allCards();
+    decorate(list);
+    buildFilters();
+    apply(current, false);
+    setCount(list.length);
+    if (window.hbInitButtons) window.hbInitButtons();
+  }
+
+  // first paint: the static cards (already status-tagged by the script above)
+  $$('.home-evt-card', grid).forEach(function (c) {
+    if (!c.getAttribute('data-status')) {
+      var t = c.querySelector('.evt-date-tag');
+      c.setAttribute('data-status', t ? statusOf(t.getAttribute('data-start'), t.getAttribute('data-end'), false) : 'upcoming');
+    }
+  });
+  finish();
+
+  /* ---- sync with the events page ------------------------------------------ */
+  if (!window.fetch || !window.DOMParser) return;
+  fetch('events.html', { cache: 'no-cache', credentials: 'same-origin' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (txt) {
+      var doc = new DOMParser().parseFromString(txt, 'text/html');
+      var src = doc.getElementById('evt-grid');
+      if (!src) return;
+      var items = $$('article.evt-card', src).map(function (a) {
+        var sold = a.getAttribute('data-sold') === 'true' || a.classList.contains('is-sold');
+        return { el: a, start: a.getAttribute('data-start'), status: statusOf(a.getAttribute('data-start'), a.getAttribute('data-end'), sold) };
+      }).filter(function (x) { return x.start && (x.status === 'upcoming' || x.status === 'ongoing'); });
+      items.sort(function (a, b) { return ms(a.start, false) - ms(b.start, false); });
+      var sig = items.map(function (x) { var th = x.el.querySelector('.evt-card-thumb'); return (th ? th.getAttribute('href') : '') + '|' + x.start; }).join(',');
+      var have = allCards().filter(function (c) { return c.getAttribute('data-status') !== 'past'; }).map(function (c) {
+        var t = c.querySelector('.evt-date-tag'), th = c.querySelector('.home-evt-thumb');
+        return (th ? th.getAttribute('href') : '') + '|' + (t ? t.getAttribute('data-start') : '');
+      });
+      if (!items.length || sig === have.join(',')) return; // already current
+      var frag = document.createDocumentFragment();
+      items.forEach(function (x) {
+        var c = build(x.el);
+        c.setAttribute('data-status', x.status);
+        frag.appendChild(c);
+      });
+      grid.innerHTML = '';
+      grid.appendChild(frag);
+      finish();
+    })
+    .catch(function () { /* offline or blocked: the static cards stay */ });
+})();
+
 </script>
 </body>
 </html>

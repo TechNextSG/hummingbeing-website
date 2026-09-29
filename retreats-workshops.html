@@ -122,6 +122,19 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
       background: radial-gradient(circle, rgba(245, 166, 35, .2), transparent 65%); pointer-events: none;
     }
     .rw-off-stage:hover .rw-off-panel::before { opacity: 1; }
+    /* real-photo backgrounds on the offering panels (2026-09-29) */
+    .rw-off-panel { background: var(--rw-deep); }
+    .rw-off-bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; border-radius: inherit; pointer-events: none; }
+    .rw-off-bg img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.12); transition: transform 7s cubic-bezier(.23, 1, .32, 1); }
+    .rw-off-panel.rw-on .rw-off-bg img { transform: scale(1.02); }
+    .rw-off-bg::after { content: ""; position: absolute; inset: 0;
+      background: linear-gradient(100deg, rgba(26, 32, 48, .9) 0%, rgba(26, 32, 48, .74) 40%, rgba(26, 32, 48, .3) 75%, rgba(26, 32, 48, .12) 100%); }
+    .rw-off-panel::after { opacity: .6; }
+    .rw-off-panel h3, .rw-off-panel p { text-shadow: 0 1px 12px rgba(10, 14, 24, .45); }
+    @media (max-width: 1024px) {
+      .rw-off-bg::after { background: linear-gradient(180deg, rgba(26, 32, 48, .35) 0%, rgba(26, 32, 48, .78) 45%, rgba(26, 32, 48, .92) 100%); }
+    }
+    @media (prefers-reduced-motion: reduce) { .rw-off-bg img { transition: none; transform: none !important; } }
     .rw-off-ic {
       position: relative; width: 78px; height: 78px; border-radius: 50%; margin-bottom: 1.6rem;
       display: grid; place-items: center; font-size: 1.75rem;
@@ -554,31 +567,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="rw-off-ui rw-rv">
       <div class="rw-off-stage">
         <article class="rw-off-panel">
+          <span class="rw-off-bg" aria-hidden="true"><img src="images/gallery/gallery-module2-sep2026-5.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 60%"></span>
           <div class="rw-off-ic"><i class="fa-solid fa-sun"></i></div>
           <h3>Half-Day &amp; Day Workshops</h3>
           <p>Focused, accessible group sessions introducing somatic practices &#8212; TRE&#8482;, Breathwork or EFT &#8212; in a supportive group setting. Perfect for those curious about somatic work or wanting a deeper dive on a specific modality.</p>
         </article>
         <article class="rw-off-panel">
+          <span class="rw-off-bg" aria-hidden="true"><img src="images/gallery/gallery-ws-3.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 45%"></span>
           <div class="rw-off-ic"><i class="fa-solid fa-moon"></i></div>
           <h3>Weekend Retreats</h3>
           <p>Multi-day immersions in carefully chosen locations in Singapore and Japan. A combination of group somatic practice, individual integration time, nature connection and nourishing meals &#8212; designed to reset the nervous system at depth.</p>
         </article>
         <article class="rw-off-panel">
+          <span class="rw-off-bg" aria-hidden="true"><img src="images/gallery/gallery-insead-simba-stenqvist.jpg" alt="" loading="lazy" decoding="async" style="object-position:62% 50%"></span>
           <div class="rw-off-ic"><i class="fa-solid fa-building"></i></div>
           <h3>Corporate Wellness</h3>
           <p>Bespoke somatic wellness sessions designed for teams &#8212; addressing stress, burnout, communication and resilience at the organisational level. Delivered in-house or off-site, half-day to full-day formats.</p>
         </article>
         <article class="rw-off-panel">
+          <span class="rw-off-bg" aria-hidden="true"><img src="images/gallery/gallery-module2-sep2026-4.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 60%"></span>
           <div class="rw-off-ic"><i class="fa-solid fa-users"></i></div>
           <h3>TRE&#8482; Group Sessions</h3>
           <p>Facilitated group TRE&#8482; practice &#8212; experiencing the body&#8217;s natural tremor mechanism together in community. A powerful introduction to TRE&#8482; and an effective regular practice for existing practitioners.</p>
         </article>
         <article class="rw-off-panel">
+          <span class="rw-off-bg" aria-hidden="true"><img src="images/gallery/gallery-screenshot-practice.jpg" alt="" loading="lazy" decoding="async" style="object-position:60% 40%"></span>
           <div class="rw-off-ic"><i class="fa-solid fa-fire"></i></div>
           <h3>Somatic Healing Circles</h3>
           <p>Intimate group healing experiences combining Reiki, Breathwork, EFT and somatic movement. A safe container for deep rest, release and reconnection. Limited to small groups to ensure depth and personal attention.</p>
         </article>
         <article class="rw-off-panel">
+          <span class="rw-off-bg" aria-hidden="true"><img src="images/gallery/gallery-ws-4.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 35%"></span>
           <div class="rw-off-ic"><i class="fa-solid fa-graduation-cap"></i></div>
           <h3>Professional Training</h3>
           <p>Workshops and training programmes for coaches, therapists and wellness practitioners wanting to deepen their embodied practice and integrate somatic approaches into their work with clients.</p>
