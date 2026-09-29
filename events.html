@@ -503,12 +503,14 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     #past-events .ev-strip {
       display: grid; grid-auto-flow: column; grid-template-columns: none;
       grid-auto-columns: calc((100% - 2 * var(--ev-gap)) / 3); gap: var(--ev-gap); align-items: stretch;
-      overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding: 0 6px;
-      padding: 10px 6px 1.3rem; margin: 0 -6px; scrollbar-width: thin; scrollbar-color: rgba(245, 166, 35, .6) transparent;
+      --ev-bleed: clamp(16px, 3.5vw, 40px);
+      overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding: 0 var(--ev-bleed);
+      padding: 24px var(--ev-bleed) 64px; margin: -14px calc(-1 * var(--ev-bleed)) -40px; scrollbar-width: thin; scrollbar-color: rgba(245, 166, 35, .6) transparent;
     }
     .ev-js#past-events .ev-strip { scrollbar-width: none; }
     .ev-js#past-events .ev-strip::-webkit-scrollbar { display: none; }
     #past-events .ev-strip > .evt-card { scroll-snap-align: start; }
+    @media (hover: hover) and (pointer: fine) { #past-events .ev-strip > .evt-card:hover { box-shadow: 0 22px 40px -20px rgba(26, 32, 48, .32) !important; } }
     #past-events .evt-card-desc { -webkit-line-clamp: 2; }
     #past-events .evt-card h3 { font-size: 1.05rem; }
     .ev-prog { position: relative; height: 3px; border-radius: 3px; background: rgba(36, 46, 66, .08); overflow: hidden; }

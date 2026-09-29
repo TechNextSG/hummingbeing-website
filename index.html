@@ -134,7 +134,8 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
       .hx-evts .home-evt-3 {
         grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: calc((100% - 1rem) / 2);
         gap: 1rem; max-width: none; overflow-x: auto; overscroll-behavior-x: contain;
-        scroll-snap-type: x mandatory; scrollbar-width: none; padding: 6px 2px 14px; scroll-padding-left: 2px;
+        scroll-snap-type: x mandatory; scrollbar-width: none; --hx-bleed: clamp(14px, 3.5vw, 32px);
+        padding: 20px var(--hx-bleed) 56px; margin: -14px calc(-1 * var(--hx-bleed)) -36px; scroll-padding-left: var(--hx-bleed);
       }
       .hx-evts .home-evt-3::-webkit-scrollbar { display: none; }
       .hx-evts .home-evt-card { scroll-snap-align: start; }
@@ -182,7 +183,8 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     @media (min-width: 901px) {
       .hx-evts .home-evt-3.hx-many {
         grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: calc((100% - 2 * clamp(1rem, 2vw, 1.6rem)) / 3);
-        overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 6px 2px 16px; scroll-padding-left: 2px;
+        overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; --hx-bleed: 40px;
+        padding: 22px var(--hx-bleed) 60px; margin: -16px calc(-1 * var(--hx-bleed)) -40px; scroll-padding-left: var(--hx-bleed);
       }
       .hx-evts .home-evt-3.hx-many::-webkit-scrollbar { display: none; }
       .hx-evts .home-evt-3.hx-many .home-evt-card { scroll-snap-align: start; }
