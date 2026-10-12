@@ -1036,7 +1036,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="ev-head-t ev-rv">
         <span class="section-eyebrow">Calendar</span>
         <h2 class="section-title" id="ev-up-title">Upcoming Events</h2>
-        <p class="section-subtitle ev-count" id="evt-count"><span id="evt-count-up">&ndash;</span> upcoming &middot; <span id="evt-count-past">&ndash;</span> past</p>
+        <p class="section-subtitle ev-count" id="evt-count"><span id="evt-count-up">&ndash;</span> upcoming &middot; <span id="evt-count-past">&ndash;</span> past &amp; sold out</p>
       </div>
       <div class="ev-views ev-rv" role="group" aria-label="Choose a layout" style="--d:120ms">
         <button type="button" class="ev-view" data-view="grid" aria-pressed="true"><i class="fa-solid fa-grip" aria-hidden="true"></i>Grid</button>
@@ -1059,21 +1059,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- EVENT GRID -->
   <div class="evt-grid" id="evt-grid" role="tabpanel" aria-labelledby="ev-tab-all">
-
-    <!-- 3. From Shaking to Shaping (Bucharest in-person: 20 & 24 Oct 2026 — Sep 3 online session archived separately) -->
-    <article class="evt-card is-sold" data-cat="international workshops" data-start="2026-10-20" data-end="2026-10-24" data-sold="true">
-      <a href="/event-shaking-to-shaping" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/card-event-shaking-to-shaping.webp?v=1" alt="From Shaking to Shaping — Bucharest" loading="lazy" decoding="async" /></a>
-      <div class="evt-card-content">
-        <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">In-Person</span></div>
-        <h3>From Shaking to Shaping &mdash; Bucharest</h3>
-        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-20" data-end="2026-10-24">20 &amp; 24 Oct 2026 &middot; Bucharest</span></div>
-        <p class="evt-card-desc">Integrate TRE&#8482; into your coaching practice &mdash; neurogenic tremoring as a somatic tool for nervous system regulation and embodied presence. In-person in Bucharest, Rom&#226;nia.</p>
-        <div class="evt-card-actions">
-          <span class="btn btn-soldout">Sold Out</span>
-          <a href="/event-shaking-to-shaping" class="btn evt-btn-2">Details</a>
-        </div>
-      </div>
-    </article>
 
     <!-- 3c. Navigating Feminine & Masculine Energetics — Sara Marie (Online, 28 Oct 2026) -->
     <!-- The Body in the Room — Aun Ali (Online, 25 Nov 2026) -->
@@ -1134,6 +1119,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </article>
 
+    <!-- 5. Global TRE™ Provider Certification 2027 (Feb–Oct 2027, Singapore) -->
+    <article class="evt-card" data-cat="singapore certification" data-start="2027-02-27" data-end="2027-10-31">
+      <a href="/event-certification-2027" class="evt-card-thumb"><img src="images/card-event-certification-2027.webp?v=1" alt="Become a Certified TRE&#8482; Provider 2027 &#8212; boosted by Internal Alchemy, with Isabelle Claus Teixeira and Simba Stenqvist" loading="lazy" decoding="async" width="1920" height="1080" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
+        <h3>Become a Certified TRE&#8482; Provider &mdash; 2027 Cohort</h3>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2027-02-27" data-end="2027-02-28">M1 &middot; 27&ndash;28 Feb 2027</span><span class="evt-date-tag" data-start="2027-07-03" data-end="2027-07-04">M2 &middot; 3&ndash;4 Jul 2027</span><span class="evt-date-tag" data-start="2027-10-30" data-end="2027-10-31">M3 &middot; 30&ndash;31 Oct 2027</span></div>
+        <p class="evt-card-desc">The 2027 Singapore cohort of the Global TRE&#8482; Provider Certification &mdash; three in-person modules plus online supervisions and bonus programs, taught by two TRE&#8482; Trainers, Isabelle Claus Teixeira &amp; Simba Stenqvist. ICF CCE with Module 1. Bundle from S$5,888 early bird.</p>
+        <div class="evt-card-actions">
+          <a href="/event-certification-2027#reserve" class="btn btn-primary">Register</a>
+          <a href="/event-certification-2027" class="btn evt-btn-2">Details</a>
+        </div>
+      </div>
+    </article>
+
+    <p class="evt-empty" id="evt-empty">No events in this category yet.</p>
+  </div>
+  </div>
+</section>
+
+<!-- PAST AND SOLD OUT EVENTS (archive) -->
+<section class="section-white ev ev-past" id="past-events" aria-labelledby="ev-past-title">
+  <div class="ev-wrap">
+    <div class="ev-head ev-past-head">
+      <div class="ev-head-t ev-rv">
+        <span class="section-eyebrow">Archive</span>
+        <h2 class="section-title" id="ev-past-title">Past and Sold Out Events</h2>
+        <p class="section-subtitle">Recently with us, or fully booked &mdash; now closed</p>
+      </div>
+      <div class="ev-nav" hidden>
+        <button type="button" class="ev-arrow" data-dir="-1" aria-controls="evt-archive" aria-label="Previous past and sold out events"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+        <button type="button" class="ev-arrow" data-dir="1" aria-controls="evt-archive" aria-label="More past and sold out events"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  <div class="evt-grid evt-archive ev-strip" id="evt-archive" role="region" aria-label="Past and sold out events" tabindex="0">
+
+    <!-- 3. From Shaking to Shaping (Bucharest in-person: 20 & 24 Oct 2026 — Sep 3 online session archived separately) -->
+    <article class="evt-card is-sold" data-cat="international workshops" data-start="2026-10-20" data-end="2026-10-24" data-sold="true">
+      <a href="/event-shaking-to-shaping" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/card-event-shaking-to-shaping.webp?v=1" alt="From Shaking to Shaping — Bucharest" loading="lazy" decoding="async" /></a>
+      <div class="evt-card-content">
+        <div class="evt-card-tags"><span class="evt-tag loc">Romania</span><span class="evt-tag">In-Person</span></div>
+        <h3>From Shaking to Shaping &mdash; Bucharest</h3>
+        <div class="evt-dates"><span class="evt-date-tag" data-start="2026-10-20" data-end="2026-10-24">20 &amp; 24 Oct 2026 &middot; Bucharest</span></div>
+        <p class="evt-card-desc">Integrate TRE&#8482; into your coaching practice &mdash; neurogenic tremoring as a somatic tool for nervous system regulation and embodied presence. In-person in Bucharest, Rom&#226;nia.</p>
+        <div class="evt-card-actions">
+          <span class="btn btn-soldout">Sold Out</span>
+          <a href="/event-shaking-to-shaping" class="btn evt-btn-2">Details</a>
+        </div>
+      </div>
+    </article>
+
     <!-- 4. TRE™ Module 1 Bucharest (15-17 Oct 2026) -->
     <article class="evt-card is-sold" data-cat="international certification" data-start="2026-10-15" data-end="2026-10-17" data-sold="true">
       <a href="/event-tre-module1-bucharest" class="evt-card-thumb"><span class="evt-sold-badge">Sold Out</span><img src="images/card-event-bucharest-module1.webp?v=1" alt="TRE™ Module 1 - Bucharest" loading="lazy" decoding="async" /></a>
@@ -1163,42 +1199,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </article>
-
-    <!-- 5. Global TRE™ Provider Certification 2027 (Feb–Oct 2027, Singapore) -->
-    <article class="evt-card" data-cat="singapore certification" data-start="2027-02-27" data-end="2027-10-31">
-      <a href="/event-certification-2027" class="evt-card-thumb"><img src="images/card-event-certification-2027.webp?v=1" alt="Become a Certified TRE&#8482; Provider 2027 &#8212; boosted by Internal Alchemy, with Isabelle Claus Teixeira and Simba Stenqvist" loading="lazy" decoding="async" width="1920" height="1080" /></a>
-      <div class="evt-card-content">
-        <div class="evt-card-tags"><span class="evt-tag loc">Singapore</span><span class="evt-tag">Certification</span></div>
-        <h3>Become a Certified TRE&#8482; Provider &mdash; 2027 Cohort</h3>
-        <div class="evt-dates"><span class="evt-date-tag" data-start="2027-02-27" data-end="2027-02-28">M1 &middot; 27&ndash;28 Feb 2027</span><span class="evt-date-tag" data-start="2027-07-03" data-end="2027-07-04">M2 &middot; 3&ndash;4 Jul 2027</span><span class="evt-date-tag" data-start="2027-10-30" data-end="2027-10-31">M3 &middot; 30&ndash;31 Oct 2027</span></div>
-        <p class="evt-card-desc">The 2027 Singapore cohort of the Global TRE&#8482; Provider Certification &mdash; three in-person modules plus online supervisions and bonus programs, taught by two TRE&#8482; Trainers, Isabelle Claus Teixeira &amp; Simba Stenqvist. ICF CCE with Module 1. Bundle from S$5,888 early bird.</p>
-        <div class="evt-card-actions">
-          <a href="/event-certification-2027#reserve" class="btn btn-primary">Register</a>
-          <a href="/event-certification-2027" class="btn evt-btn-2">Details</a>
-        </div>
-      </div>
-    </article>
-
-    <p class="evt-empty" id="evt-empty">No events in this category yet.</p>
-  </div>
-  </div>
-</section>
-
-<!-- PAST EVENTS (archive) -->
-<section class="section-white ev ev-past" id="past-events" aria-labelledby="ev-past-title">
-  <div class="ev-wrap">
-    <div class="ev-head ev-past-head">
-      <div class="ev-head-t ev-rv">
-        <span class="section-eyebrow">Archive</span>
-        <h2 class="section-title" id="ev-past-title">Past Events</h2>
-        <p class="section-subtitle">Recently with us &mdash; now closed</p>
-      </div>
-      <div class="ev-nav" hidden>
-        <button type="button" class="ev-arrow" data-dir="-1" aria-controls="evt-archive" aria-label="Previous past events"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
-        <button type="button" class="ev-arrow" data-dir="1" aria-controls="evt-archive" aria-label="More past events"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
-      </div>
-    </div>
-  <div class="evt-grid evt-archive ev-strip" id="evt-archive" role="region" aria-label="Past events" tabindex="0">
 
     <article class="evt-card is-past" data-cat="online international workshops" data-start="2026-09-03" data-end="2026-09-03">
       <a href="/event-shaking-to-shaping-sep3" class="evt-card-thumb"><span class="evt-past-badge">Passed</span><img src="images/card-event-shaking-to-shaping-sep3.webp?v=1" alt="From Shaking to Shaping — Online, 3 September 2026" loading="lazy" decoding="async" /></a>
@@ -1396,8 +1396,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 /* ===== Date-driven event status: runs fresh on every page load =====
    Each card carries data-start / data-end (ISO, SGT) and optional data-sold.
-   Status -> badge (Upcoming/Ongoing/Sold Out/Passed), and passed events are
-   moved into the Past Events archive automatically. */
+   Status -> badge (Upcoming/Ongoing/Sold Out/Passed), and passed and sold-out
+   events are moved into the Past and Sold Out archive automatically. */
 (function(){
   var now = Date.now();
   function ms(d, endOfDay){ return d ? Date.parse(d + (endOfDay ? 'T23:59:59' : 'T00:00:00') + '+08:00') : NaN; }
@@ -1449,8 +1449,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var status = statusOf(card);
     card.setAttribute('data-status', status);
     setBadge(card, status);
-    if(status === 'past'){
-      endActions(card);
+    if(status === 'past' || status === 'sold'){
+      if(status === 'past') endActions(card);
       if(archive && card.parentElement !== archive) archive.appendChild(card);
     } else if(grid && card.parentElement !== grid){
       card.classList.remove('is-hidden');
@@ -1470,6 +1470,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return sa - sb;
     });
     live.forEach(function(c){ grid.appendChild(c); });
+  }
+  // 4) order the archive: sold-out first (soonest first), then passed (most recent first)
+  if(archive){
+    var arch = [].slice.call(archive.querySelectorAll('.evt-card'));
+    arch.sort(function(a,b){
+      var sa = a.getAttribute('data-status') === 'sold', sb = b.getAttribute('data-status') === 'sold';
+      if(sa !== sb) return sa ? -1 : 1;
+      if(sa) return ms(a.getAttribute('data-start'), false) - ms(b.getAttribute('data-start'), false);
+      return ms(b.getAttribute('data-end') || b.getAttribute('data-start'), true) - ms(a.getAttribute('data-end') || a.getAttribute('data-start'), true);
+    });
+    arch.forEach(function(c){ archive.appendChild(c); });
   }
 })();
 </script>
