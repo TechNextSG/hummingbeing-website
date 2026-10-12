@@ -52,7 +52,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     "name": "Public price",
     "price": "88",
     "priceCurrency": "SGD",
-    "url": "https://buy.stripe.com/5kQcMX8kX3BD62Y1WFaR200",
+    "url": "https://hummingbeing.com/event-body-in-the-room#register",
     "availability": "https://schema.org/InStock",
     "validFrom": "2026-09-29T00:00:00+08:00"
   },
@@ -217,7 +217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1>The Body <em>in the Room</em></h1>
       <p class="ce-lead">Integrating TRE&#8482; and somatic practice into psychotherapy: a trauma-informed approach. For psychologists, counsellors and narrative therapists who sense that talk alone isn&#8217;t always enough, and want a safe, structured way to bring the body into their work. Led by <strong>Aun Ali</strong>.</p>
       <div class="ce-hero-actions">
-        <a href="https://buy.stripe.com/5kQcMX8kX3BD62Y1WFaR200" target="_blank" rel="noopener" class="btn btn-primary">Register &mdash; S$88</a>
+        <a href="#register" class="btn btn-primary">Register &mdash; S$88</a>
         <a href="#reserve" class="btn btn-outline">Details &amp; questions</a>
       </div>
     </div>
@@ -280,27 +280,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- SIDEBAR -->
   <aside class="ce-side" id="reserve">
-    <div class="ce-box evtl-form-card">
+    <div class="ce-box evtl-form-card" id="register">
+      <div class="reg-step1">
       <h3>Register for the workshop</h3>
-      <p class="sub">Wednesday 25 November 2026, 7:00&#8211;9:00pm Singapore time, live on Zoom. The Zoom link is shared with registered participants.</p>
+      <p class="sub">Wednesday 25 November 2026, 7:00&#8211;9:00pm Singapore time, live on Zoom. Fill in your details to see the registration and payment options.</p>
       <div class="ce-tiers" style="border-top:1px solid rgba(36,46,66,.1);border-bottom:1px solid rgba(36,46,66,.1);padding:.9rem 0;margin:0 0 1rem;display:flex;flex-direction:column;gap:.55rem">
         <div style="display:flex;justify-content:space-between;align-items:baseline;gap:.9rem;font-size:.9rem"><span style="color:var(--text-mid)">Public price</span><strong style="color:var(--navy)">S$88</strong></div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;gap:.9rem;font-size:.9rem"><span style="color:var(--text-mid)">Discounted price <small style="display:block;font-size:.74rem">with a discount code</small></span><strong style="color:var(--navy)">S$68</strong></div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;gap:.9rem;font-size:.9rem"><span style="color:var(--text-mid)">Platform</span><strong style="color:var(--navy)">Zoom</strong></div>
       </div>
-      <a href="https://buy.stripe.com/5kQcMX8kX3BD62Y1WFaR200" target="_blank" rel="noopener" class="btn btn-primary">Register &mdash; S$88</a>
-      <p class="fine" style="margin-top:.6rem">Have a discount code? Email <a href="mailto:isabelle@bhdasia.com?subject=The%20Body%20in%20the%20Room%20%E2%80%94%20discounted%20registration">isabelle@bhdasia.com</a> for the discounted registration link.</p>
-      <p class="ce-or">or leave your details</p>
-      <form class="evtl-form" onsubmit="evtlSubmit(event)">
+      <form class="evtl-form reg-form">
         <input type="hidden" name="event" value="The Body in the Room — 25 Nov 2026 (online)" />
         <input type="hidden" name="source" value="HummingBeing Event — The Body in the Room (Aun Ali) 25 Nov" />
-        <div class="evtl-field"><label for="f-name">Full name</label><input id="f-name" name="name" type="text" required autocomplete="name" /></div>
-        <div class="evtl-field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="your@email.com" /></div>
-        <div class="evtl-field"><label for="f-phone">Phone / WhatsApp (optional)</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" /></div>
-        <div class="evtl-field"><label for="f-msg">Your question (optional)</label><input id="f-msg" name="message" type="text" /></div>
-        <button type="submit" class="btn btn-primary">Send enquiry &rarr;</button>
+        <div class="evtl-field"><label for="r-name">Full name</label><input id="r-name" name="name" type="text" required autocomplete="name" /></div>
+        <div class="evtl-field"><label for="r-email">Email</label><input id="r-email" name="email" type="email" required autocomplete="email" placeholder="your@email.com" /></div>
+        <div class="evtl-field"><label for="r-phone">Phone / WhatsApp</label><input id="r-phone" name="phone" type="tel" required autocomplete="tel" /></div>
+        <div class="evtl-field"><label for="r-country">Country (optional)</label><input id="r-country" name="country" type="text" autocomplete="country-name" /></div>
+        <div class="evtl-field"><label for="r-code">Discount code (optional)</label><input id="r-code" name="code" type="text" autocomplete="off" autocapitalize="characters" /></div>
+        <div class="evtl-field"><label for="r-msg">Your question (optional)</label><input id="r-msg" name="message" type="text" /></div>
+        <button type="submit" class="btn btn-primary">Register &amp; continue &rarr;</button>
       </form>
-      <div class="evtl-form-success" style="display:none"><i class="fa-solid fa-circle-check"></i><p>Thank you &#8212; we&#8217;ll get back to you shortly. See you on Zoom on 25 November.</p></div>
+      <p class="fine">Have a discount code? Enter it above and Isabelle will send you the discounted registration link.</p>
+      </div>
+      <div class="reg-step2" hidden aria-live="polite"></div>
       <p class="fine">Questions before the session? <a href="mailto:isabelle@bhdasia.com">isabelle@bhdasia.com</a></p>
     </div>
     <div class="ce-box ce-qa">
@@ -322,7 +324,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>A notebook for your own reflections and questions</li>
       </ul>
       <div class="btn-row">
-        <a href="https://buy.stripe.com/5kQcMX8kX3BD62Y1WFaR200" target="_blank" rel="noopener" class="btn btn-primary">Register &mdash; S$88</a>
+        <a href="#register" class="btn btn-primary">Register &mdash; S$88</a>
       </div>
     </div>
 </section>
@@ -404,25 +406,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 <script src="scripts.js" defer></script>
-<script>
-function evtlSubmit(e) {
-  e.preventDefault();
-  var fd = new FormData(e.target);
-  sendLead({
-    name: fd.get('name') || '',
-    email: fd.get('email') || '',
-    phone: fd.get('phone') || '',
-    event: fd.get('event') || '',
-    inquiry: 'Event registration enquiry',
-    source: fd.get('source') || document.title,
-    message: fd.get('message') || ''
-  });
-  var card = e.target.closest('.evtl-form-card');
-  card.querySelector('.evtl-form').style.display = 'none';
-  var s = card.querySelector('.evtl-form-success');
-  s.style.display = 'block';
+<script type="application/json" id="reg-config">
+{
+ "slug": "body-in-the-room",
+ "title": "The Body in the Room",
+ "priceLine": "Public price S$88 (S$68 with a discount code).",
+ "buttons": [
+  {
+   "label": "Register \u2014 S$88",
+   "href": "https://buy.stripe.com/5kQcMX8kX3BD62Y1WFaR200"
+  }
+ ],
+ "codeHidesButtons": true,
+ "codeNote": "Isabelle will email you the discounted (S$68) registration link.",
+ "altButtons": [
+  {
+   "label": "Or register at the full price, S$88",
+   "href": "https://buy.stripe.com/5kQcMX8kX3BD62Y1WFaR200"
+  }
+ ],
+ "note": "The Zoom link is shared with registered participants before the session."
 }
 </script>
+<script src="event-gate.js?v=1" defer></script>
 <script>
 (function(){
   var poster=document.querySelector('.ce-poster'); if(!poster) return;
