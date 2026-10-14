@@ -24,7 +24,7 @@ The only TRE™ training in the world with ICF accreditation (Module 1 carries I
 
 ## Operating Context
 
-Static HTML/CSS/JS site on Vercel (repo technextsg/hummingbeing-website). 25 pages: home, about, Isabelle, three service pages (Holistic Mastermind Ecosystem, Global Certifications, Retreats & Workshops), events index + per-event pages (compact `.ce-*` layout), book (discovery call + enquiry form), gallery & podcast, socials, online-session preparation guide. Sister sites bhdasia.com and TRE Singapore mirror the events. Forms email isabelle@bhdasia.com (FormSubmit) and log to a Google Sheet. Events are date-driven: past events auto-archive, sold-out ones drop to the back.
+Static HTML/CSS/JS site on Vercel (repo technextsg/hummingbeing-website). 25 pages: home, about, Isabelle, three service pages (Holistic Mastermind Ecosystem, Global Certifications, Retreats & Workshops), events index + per-event pages (compact `.ce-*` layout), book (discovery call + enquiry form), gallery & podcast, socials, online-session preparation guide. Sister sites bhdasia.com and TRE Singapore mirror the events. Forms email bonjour@bhdasia.com (FormSubmit) and log to a Google Sheet. Events are date-driven: past events auto-archive, sold-out ones drop to the back.
 
 ## Capabilities and Constraints
 

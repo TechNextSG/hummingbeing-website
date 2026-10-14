@@ -669,7 +669,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ── LEAD CAPTURE → Google Sheet + direct email to Isabelle ──────────────────
 var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkv934L8ffTxU1TPUiw3jn9Hu6KmdE0Ol1CcJRB_vWstls2xiZHHb-LErG5qHXdTuX/exec';
-var LEAD_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/isabelle@bhdasia.com';
+var LEAD_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/bonjour@bhdasia.com';
 function sendLead(data) {
   // 1) Log to the Google Sheet (existing backend)
   try {
@@ -775,7 +775,7 @@ function sendLead(data) {
     if (!ul.querySelector('.nav-extra')) {
       var li = document.createElement('li'); li.className = 'nav-extra';
       li.innerHTML =
-        '<div class="ne-row"><a href="mailto:isabelle@bhdasia.com"><i class="fa-regular fa-envelope"></i>isabelle@bhdasia.com</a>' +
+        '<div class="ne-row"><a href="mailto:bonjour@bhdasia.com"><i class="fa-regular fa-envelope"></i>bonjour@bhdasia.com</a>' +
         '<a href="https://wa.me/818065151778" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a></div>' +
         '<div class="ne-soc">' +
         '<a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>' +

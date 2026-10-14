@@ -92,7 +92,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added — Calendly button to both Romania event cards
 
-- **events.html** — Added Calendly button to "From Shaking to Shaping" card (gold `btn-primary`) with "Book a Call via Calendly →" and `isabelle@bhdasia.com` email link. Added same Calendly button to TRE™ Module 1 Bucharest card (dark `btn-dark`).
+- **events.html** — Added Calendly button to "From Shaking to Shaping" card (gold `btn-primary`) with "Book a Call via Calendly →" and `bonjour@bhdasia.com` email link. Added same Calendly button to TRE™ Module 1 Bucharest card (dark `btn-dark`).
 
 ---
 
@@ -786,7 +786,7 @@ Per the original feedback document, services are grouped into 3 categories:
 ## [44.3] — 2026-06-19
 
 ### Changed
-- **All pages — Footer contact email** — updated from `hello@hummingbeing.com` to `isabelle@bhdasia.com`
+- **All pages — Footer contact email** — updated from `hello@hummingbeing.com` to `bonjour@bhdasia.com`
 
 ---
 
