@@ -1996,3 +1996,8 @@ body.menu-lock .ce-bar { display: none; }
   .page-hero .hero-actions, .event-hero .hero-actions { margin-top: 0 !important; }
   .hero-video { object-position: center 35%; }
 }
+
+/* 2026-10-16: yellow buttons carry white text (client request) */
+.btn-primary, .btn-primary.on-light, .btn-primary.on-dark, .hero .btn-primary, .page-hero .btn-primary, .ecx .btn-primary,
+.section-dark .btn-primary, .cta-banner .btn-primary, .ce-hero .btn-primary, footer .btn-primary { --t: #fff !important; --ft: #fff !important; color: #fff !important; }
+.btn-primary:hover, .btn-primary:focus-visible, .btn-primary:active { color: #fff !important; }
