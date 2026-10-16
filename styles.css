@@ -2001,3 +2001,6 @@ body.menu-lock .ce-bar { display: none; }
 .btn-primary, .btn-primary.on-light, .btn-primary.on-dark, .hero .btn-primary, .page-hero .btn-primary, .ecx .btn-primary,
 .section-dark .btn-primary, .cta-banner .btn-primary, .ce-hero .btn-primary, footer .btn-primary { --t: #fff !important; --ft: #fff !important; color: #fff !important; }
 .btn-primary:hover, .btn-primary:focus-visible, .btn-primary:active { color: #fff !important; }
+/* white text needs a solid gold fill at rest (the v3 system draws an outline only); hover deepens the fill */
+.btn.btn-primary { background: var(--gold) !important; border-color: var(--gold) !important; --f: var(--gold-dark); }
+.btn.btn-primary:hover, .btn.btn-primary:focus-visible { border-color: var(--gold-dark) !important; }
