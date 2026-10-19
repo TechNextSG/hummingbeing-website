@@ -667,9 +667,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 })();
 
-// ── LEAD CAPTURE → Google Sheet + direct email to Rico (rico@bhdasia.com) ───
+// ── LEAD CAPTURE → Google Sheet + direct email (bonjour@bhdasia.com) ─────────
 var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkv934L8ffTxU1TPUiw3jn9Hu6KmdE0Ol1CcJRB_vWstls2xiZHHb-LErG5qHXdTuX/exec';
-var LEAD_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/rico@bhdasia.com';
+var LEAD_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/bonjour@bhdasia.com';
 function sendLead(data) {
   // Returns a promise that settles when both calls have finished (the register-first gate
   // waits for it before redirecting to a payment page). keepalive lets the sheet call outlive a navigation.
