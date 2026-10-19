@@ -667,13 +667,16 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 })();
 
-// ── LEAD CAPTURE → Google Sheet + direct email to Isabelle ──────────────────
+// ── LEAD CAPTURE → Google Sheet + direct email to Rico (rico@bhdasia.com) ───
 var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkv934L8ffTxU1TPUiw3jn9Hu6KmdE0Ol1CcJRB_vWstls2xiZHHb-LErG5qHXdTuX/exec';
-var LEAD_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/bonjour@bhdasia.com';
+var LEAD_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/rico@bhdasia.com';
 function sendLead(data) {
+  // Returns a promise that settles when both calls have finished (the register-first gate
+  // waits for it before redirecting to a payment page). keepalive lets the sheet call outlive a navigation.
+  var sends = [];
   // 1) Log to the Google Sheet (existing backend)
   try {
-    fetch(LEAD_ENDPOINT, { method: 'POST', body: new URLSearchParams(data) }).catch(function(){});
+    sends.push(fetch(LEAD_ENDPOINT, { method: 'POST', body: new URLSearchParams(data), keepalive: true }).catch(function(){}));
   } catch (e) {}
   // 2) Email the full submission straight to Isabelle (FormSubmit)
   try {
@@ -689,12 +692,13 @@ function sendLead(data) {
       Source: data.source || '',
       Message: data.message || ''
     };
-    fetch(LEAD_EMAIL_ENDPOINT, {
+    sends.push(fetch(LEAD_EMAIL_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(payload)
-    }).catch(function(){});
+    }).catch(function(){}));
   } catch (e) {}
+  return Promise.all(sends);
 }
 
 
