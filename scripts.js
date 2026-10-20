@@ -673,6 +673,7 @@ var LEAD_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/bonjour@bhdasia.com';
 function sendLead(data) {
   // Returns a promise that settles when both calls have finished (the register-first gate
   // waits for it before redirecting to a payment page). keepalive lets the sheet call outlive a navigation.
+  if (data && !data.gdpr_consent && window.gdprConsentSummary) data.gdpr_consent = window.gdprConsentSummary();
   var sends = [];
   // 1) Log to the Google Sheet (existing backend)
   try {
@@ -690,7 +691,8 @@ function sendLead(data) {
       Event: data.event || '',
       Enquiry: data.inquiry || '',
       Source: data.source || '',
-      Message: data.message || ''
+      Message: data.message || '',
+      Consent: data.gdpr_consent || ''
     };
     sends.push(fetch(LEAD_EMAIL_ENDPOINT, {
       method: 'POST',

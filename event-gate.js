@@ -44,7 +44,7 @@
     d.className = 'reg-consent';
     d.innerHTML =
       '<label class="reg-check"><input type="checkbox" name="consent" value="yes" required /><span>I agree that my details will be collected and used to process my registration and to contact me about this event' + policy + '.</span></label>' +
-      '<label class="reg-check"><input type="checkbox" name="updates" value="yes" /><span>Keep me informed about future events and workshops.</span></label>';
+      '';
     var btn = form.querySelector('button[type="submit"], button:not([type])');
     form.insertBefore(d, btn || null);
   }
@@ -137,7 +137,7 @@
         if (fd.get('country')) parts.push('Country: ' + fd.get('country'));
         if (code) parts.push('Discount code: ' + code + (cfg.discount ? (disc ? ' (valid)' : ' (not recognised)') : ''));
         if (fd.get('message')) parts.push('Message: ' + fd.get('message'));
-        parts.push('Consent: yes (' + new Date().toISOString() + ') | Updates: ' + (fd.get('updates') ? 'yes' : 'no'));
+        parts.push('Registration consent: yes (' + new Date().toISOString() + ') | GDPR: ' + (fd.get('gdpr_consent') || (window.gdprConsentSummary && window.gdprConsentSummary(form)) || 'not recorded'));
         var sent = null;
         try {
           sent = sendLead({
