@@ -45,7 +45,7 @@ Name "HummingBeing — Coaching & Somatics"; hummingbird logo (light/dark webp);
 - Real photography: Isabelle teaching, Module 1/2 cohorts (images/gallery/gallery-module2-sep2026-*.jpg, gallery-isabelle-*.jpg), events posters (images/event-*.webp), hero video images/index-hero.mp4 + .jpg.
 - Teaching video: YouTube 8_UE9nKEh2s (Isabelle & Simba in the room).
 - Testimonials on the current home page (three, attributed by role/city) — reuse verbatim, do not invent more.
-- Credentials: Global TRE™ Certifying Trainer, ICF PCC, Strozzi Somatic Bodywork Practitioner, Reiki II; 21 ICF CCEUs on Module 1; 2027 cohort pricing S$5,888 early bird (to 31 Dec 2026) / S$6,688; Module 1 S$1,888 / S$1,988; 8-week coaching package S$2,300; free 30-min discovery call.
+- Credentials: Global TRE™ Certifying Trainer, ICF PCC, Strozzi Somatic Bodywork Practitioner, Reiki II; 21 ICF CCEUs on Module 1; 2027 cohort packages (early bird to 31 Jan 2027): Growth S$5,888 / S$6,888, Foundational S$4,888 / S$5,888, Refresher from S$2,200; 8-week coaching package S$2,300; free 30-min discovery call.
 - No customer logos, no press, no benchmark numbers — do not fabricate any.
 
 ## Product Principles
