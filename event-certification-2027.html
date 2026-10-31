@@ -327,6 +327,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- BODY -->
 <div class="ce-layout">
   <div class="ce-main">
+    <figure class="ce-poster ce-poster-portrait" id="ce-poster" role="button" tabindex="0" aria-label="View full-size event poster" style="max-width:540px;margin-left:auto;margin-right:auto">
+      <img src="images/event-certification-2027-poster-v2.webp" alt="Become a Certified TRE&#8482; Provider 2027, boosted by Internal Alchemy, led by Isabelle Claus Teixeira and Simba Stenqvist. Growth, Foundational and Refresher packages; modules 27&#8211;28 Feb, 3&#8211;4 Jul and 30&#8211;31 Oct 2027 in Singapore." width="1080" height="1350" fetchpriority="high" decoding="async" />
+      <span class="ce-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to enlarge</span>
+    </figure>
+
     <h2>About this certification</h2>
     <p>TRE&#8482; is a body-led series of simple, powerful exercises that release stress, tension and trauma and build resilience &#8212; safely activating the body&#8217;s natural tremor reflex so the nervous system returns to balance. The <strong>Global TRE&#8482; Provider Certification</strong> qualifies you to offer TRE&#8482; to the general public, in both individual and group settings.</p>
     <p>The 2027 Singapore cohort is co-taught by two TRE&#8482; Trainers &#8212; Isabelle Claus Teixeira and Simba Stenqvist &#8212; for richer, varied learning. <strong>Only one cohort runs in Singapore each year</strong>, so register your interest early to secure your place.</p>
@@ -559,6 +564,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
+<div class="ce-lightbox" id="ce-lightbox" aria-hidden="true">
+  <button class="ce-lightbox-close" id="ce-lightbox-close" aria-label="Close">&times;</button>
+  <img src="images/event-certification-2027-poster-v2.webp" alt="Become a Certified TRE&#8482; Provider 2027 - full event poster" />
+</div>
+<script>
+(function(){
+  var poster=document.getElementById('ce-poster'), lb=document.getElementById('ce-lightbox'),
+      close=document.getElementById('ce-lightbox-close');
+  if(!poster||!lb) return;
+  function open(){ lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function shut(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  poster.addEventListener('click', open);
+  poster.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
+  lb.addEventListener('click', function(e){ if(e.target===lb||e.target===close) shut(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') shut(); });
+})();
+</script>
 <a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 <script src="scripts.js" defer></script>
