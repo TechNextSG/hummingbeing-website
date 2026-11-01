@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['What is TRE™?','Tell me about the 2027 certification','Book a private session'] },
 
     { keys: ['2027','certification pricing','provider certification','certified provider','become certified','how much is the certification','certification cost','module 2','module 3','bonus program','internal alchemy','simba','stenqvist','cohort'],
-      reply: "The Global TRE™ Provider Certification — 2027 Singapore cohort — is co-taught by Isabelle Claus Teixeira and Simba Stenqvist (creator of Internal Alchemy):\n\n• Module 1 — Your Personal TRE™ Practice · 27–28 Feb 2027\n• Module 2 — Teaching One Person · 3–4 Jul 2027\n• Module 3 — Teaching Groups · 30–31 Oct 2027\n• Plus online TRE™ sessions & supervisions.\n\nPackages (early bird until 31 January 2027):\n• Growth (new students): S$5,888, then S$6,888 — includes ICF credits and three bonus programs (Grounding, Verbal Interventions, Internal Alchemy)\n• Foundational (new students): S$4,888, then S$5,888 — without ICF credits and bonus programs\n• Refresher (accredited TRE™ Providers and trainees): four options from S$2,200 early bird\n\nPaid in three instalments; card charges are added on top of every instalment (credit card only). Extra online sessions or supervisions are S$190 per 60 minutes. One cohort per year in Singapore.",
+      reply: "The Global TRE™ Provider Certification — 2027 Singapore cohort — is co-taught by Isabelle Claus Teixeira and Simba Stenqvist (creator of Internal Alchemy):\n\n• Module 1 — Your Personal TRE™ Practice · 27–28 Feb 2027\n• Module 2 — Teaching One Person · 3–4 Jul 2027\n• Module 3 — Teaching Groups · 30–31 Oct 2027\n• Plus online TRE™ sessions & supervisions.\n\nPackages (early bird until 31 January 2027):\n• Growth (new students): S$5,888, then S$6,888 — includes ICF credits and three bonus programs (Grounding, Verbal Interventions, Internal Alchemy)\n• Foundational (new students): S$4,888, then S$5,888 — without ICF credits and bonus programs\n• Refresher (accredited TRE™ Providers and trainees): four options from S$2,200 early bird\n\nPay in three instalments or pay in full at registration; card charges are added on top of every instalment (credit card only). Extra online sessions or supervisions are S$190 per 60 minutes. One cohort per year in Singapore.",
       link: { text: 'View the 2027 packages', url: '/event-certification-2027' },
       btns: ['See all upcoming events','How do I register?','About Isabelle'] },
 
@@ -692,6 +692,7 @@ function sendLead(data) {
       Enquiry: data.inquiry || '',
       Source: data.source || '',
       Message: data.message || '',
+      Payment_plan: data.payment_plan || '',
       Consent: data.gdpr_consent || ''
     };
     sends.push(fetch(LEAD_EMAIL_ENDPOINT, {
