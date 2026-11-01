@@ -27,7 +27,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
   <meta property="og:type" content="website" />
   <meta property="og:title" content="TRE&#8482; Certification 2027 &#8212; Foundational Package | HummingBeing" />
   <meta property="og:description" content="Foundational Package, TRE&#8482; Certification Singapore 2027: the complete certification pathway, without ICF credits or bonus programmes. S$4,888 early bird to 31 Jan 2027, then S$5,888." />
-  <meta property="og:image" content="https://hummingbeing.com/images/event-certification-2027-foundational.webp" />
+  <meta property="og:image" content="https://hummingbeing.com/images/event-certification-2027-foundational.webp?v=3" />
   <meta property="og:url" content="https://hummingbeing.com/event-certification-2027-foundational" />
   <meta name="twitter:card" content="summary_large_image" />
   <script type="application/ld+json">
@@ -264,7 +264,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 <!-- HERO -->
 <section class="ce-hero">
-  <div class="ce-bg" style="background-image:url('images/event-certification-2027-foundational.webp')"></div>
+  <div class="ce-bg" style="background-image:url('images/event-certification-2027-foundational.webp?v=3')"></div>
   <div class="ce-hero-inner">
     <div>
       <p class="ce-crumbs"><a href="/events">Events</a> &rsaquo; <a href="/event-certification-2027">Certification 2027</a> &rsaquo; Foundational Package</p>
@@ -292,6 +292,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- BODY -->
 <div class="ce-layout">
   <div class="ce-main">
+    <figure class="ce-poster ce-poster-portrait" id="ce-poster" role="button" tabindex="0" aria-label="View full-size event poster" style="max-width:100%">
+      <img src="images/event-certification-2027-foundational-poster.webp?v=1" alt="TRE&#8482; Provider Certification 2027 Singapore, Foundational Package, led by Isabelle Claus Teixeira and Simba Stenqvist; modules 27&#8211;28 Feb, 3&#8211;4 Jul and 30&#8211;31 Oct 2027." width="1080" height="1350" fetchpriority="high" decoding="async" />
+      <span class="ce-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to enlarge</span>
+    </figure>
     <h2>The Foundational Package</h2>
     <p>The Foundational Package is the complete certification pathway for new students: <strong>Modules 1&#8211;3</strong> with all the online personal sessions and supervisions listed below. It does <strong>not</strong> include ICF credits or the three bonus programmes &#8212; for those, see the <a href="/event-certification-2027-growth" style="color:var(--gold-dark);font-weight:700">Growth Package</a>.</p>
     <div class="ce-tblwrap"><table class="ce-table"><thead><tr><th></th><th>Foundational</th><th>Growth</th></tr></thead><tbody>
@@ -543,5 +547,22 @@ function evtlSubmit(e) {
 }
 </script>
 <script src="gdpr-consent.js?v=1"></script>
+<div class="ce-lightbox" id="ce-lightbox" aria-hidden="true">
+  <button class="ce-lightbox-close" id="ce-lightbox-close" aria-label="Close">&times;</button>
+  <img src="images/event-certification-2027-foundational-poster.webp?v=1" alt="Foundational Package 2027 - full event poster" />
+</div>
+<script>
+(function(){
+  var poster=document.getElementById('ce-poster'), lb=document.getElementById('ce-lightbox'),
+      close=document.getElementById('ce-lightbox-close');
+  if(!poster||!lb) return;
+  function open(){ lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function shut(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  poster.addEventListener('click', open);
+  poster.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } });
+  lb.addEventListener('click', function(e){ if(e.target===lb||e.target===close) shut(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') shut(); });
+})();
+</script>
 </body>
 </html>
