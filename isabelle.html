@@ -296,6 +296,10 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     .is-x-pin.is-x-hot .is-x-pin-t { fill: var(--is-x-gold); }
     .is-x-pin-dot { transform-box: fill-box; transform-origin: center; transition: transform .5s var(--is-x-ease); }
     .is-x-pin.is-x-hot .is-x-pin-dot { transform: scale(1.35); }
+.is-x-pin-sm .is-x-pin-t { opacity: 0; transition: opacity .35s var(--is-x-ease), fill .4s var(--is-x-ease); }
+.is-x-pin-sm.is-x-hot .is-x-pin-t { opacity: 1; }
+.is-x-pin-sm .is-x-pin-ring { stroke-width: 1.2; }
+.is-x-js .is-x-map .is-x-arcs path.is-x-arc-sm:not(.is-x-hot), .is-x-map .is-x-arcs path.is-x-arc-sm:not(.is-x-hot) { opacity: 0; }
 
     .is-x-map-side { display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; padding: clamp(1.5rem, 3vw, 2.5rem); background: rgba(255, 255, 255, .035); border-left: 1px solid rgba(255, 255, 255, .08); min-width: 0; }
     .is-x-places { display: flex; flex-wrap: wrap; gap: .5rem; }
@@ -746,7 +750,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="is-x-globe-text">
         <span class="is-x-eyebrow is-x-rv">A Truly Global Journey</span>
         <h2 class="is-x-title is-x-rv" id="is-x-globe-t"><span data-is-x-count="9">9</span> Countries. <em><span data-is-x-count="40">40</span>+ Nationalities.</em></h2>
-        <p class="is-x-rv">Isabelle has lived and worked across an extraordinary range of cultures &#8212; including the United States, France, Russia, Japan, Singapore and multiple other countries in Asia and Europe.</p>
+        <p class="is-x-rv">Isabelle has lived and worked across an extraordinary range of cultures &#8212; including the United States, the United Kingdom, France, Spain, Belgium, Switzerland, Germany, Russia, Singapore and Japan, and other countries in Asia and Europe.</p>
         <p class="is-x-rv">This depth of cross-cultural exposure has shaped her ability to connect with clients from all walks of life &#8212; adapting her language, approach and style to whatever serves the individual in front of her.</p>
         <p class="is-x-rv">She has collaborated with colleagues and clients representing 40+ nationalities across diverse religious, gender and age backgrounds. Her somatic practice is built on this foundation of genuine cultural respect and curiosity.</p>
       </div>
@@ -758,7 +762,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="is-x-map is-x-rv" data-is-x-map>
       <div class="is-x-map-canvas">
         <svg class="is-x-map-svg" viewBox="150 50 800 235" role="img" aria-labelledby="is-x-map-title" focusable="false">
-          <title id="is-x-map-title">Map of the places named in Isabelle&#8217;s journey: the United States, France, Russia, Singapore and Japan</title>
+          <title id="is-x-map-title">Map of the places named in Isabelle&#8217;s journey: the United States, the United Kingdom, France, Spain, Belgium, Switzerland, Germany, Russia, Singapore and Japan</title>
           <defs>
             <radialGradient id="is-x-halo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F5A623" stop-opacity=".5"/><stop offset="1" stop-color="#F5A623" stop-opacity="0"/></radialGradient>
             <pattern id="is-x-dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="1.2" fill="#ffffff" fill-opacity=".1"/></pattern>
@@ -778,10 +782,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <path data-arc="fr" d="M884.7 149.4Q695 40 506.1 120.6"/>
             <path data-arc="ru" d="M884.7 149.4Q755 70 625 91.7"/>
             <path data-arc="sg" d="M884.7 149.4Q860 215 788.3 246.3"/>
+            <path class="is-x-arc-sm" data-arc="uk" d="M884.7 149.4Q690 16 494.4 101.4"/>
+            <path class="is-x-arc-sm" data-arc="es" d="M884.7 149.4Q687 53 489.7 138.3"/>
+            <path class="is-x-arc-sm" data-arc="be" d="M884.7 149.4Q699 24 512.5 109.4"/>
+            <path class="is-x-arc-sm" data-arc="ch" d="M884.7 149.4Q704 35 522.8 120.0"/>
+            <path class="is-x-arc-sm" data-arc="de" d="M884.7 149.4Q707 23 528.9 107.8"/>
           </g>
           <g class="is-x-pins" aria-hidden="true">
             <g class="is-x-pin" data-pin="us" transform="translate(227.8 141.7)"><circle class="is-x-pin-halo" r="26" fill="url(#is-x-halo)"/><circle class="is-x-pin-ring" r="9"/><circle class="is-x-pin-dot" r="5"/><text class="is-x-pin-t" y="-16">United States</text></g>
-            <g class="is-x-pin" data-pin="fr" transform="translate(506.1 120.6)"><circle class="is-x-pin-halo" r="26" fill="url(#is-x-halo)"/><circle class="is-x-pin-ring" r="9"/><circle class="is-x-pin-dot" r="5"/><text class="is-x-pin-t" y="24">France</text></g>
+            <g class="is-x-pin" data-pin="fr" transform="translate(506.1 120.6)"><circle class="is-x-pin-halo" r="26" fill="url(#is-x-halo)"/><circle class="is-x-pin-ring" r="9"/><circle class="is-x-pin-dot" r="5"/><text class="is-x-pin-t" x="-12" y="4" style="text-anchor:end">France</text></g>
+            <g class="is-x-pin is-x-pin-sm" data-pin="uk" transform="translate(494.4 101.4)"><circle class="is-x-pin-halo" r="16" fill="url(#is-x-halo)"/><circle class="is-x-pin-ring" r="5"/><circle class="is-x-pin-dot" r="3"/><text class="is-x-pin-t" x="-9" y="-5" style="text-anchor:end">United Kingdom</text></g>
+            <g class="is-x-pin is-x-pin-sm" data-pin="es" transform="translate(489.7 138.3)"><circle class="is-x-pin-halo" r="16" fill="url(#is-x-halo)"/><circle class="is-x-pin-ring" r="5"/><circle class="is-x-pin-dot" r="3"/><text class="is-x-pin-t" y="17">Spain</text></g>
+            <g class="is-x-pin is-x-pin-sm" data-pin="be" transform="translate(512.5 109.4)"><circle class="is-x-pin-halo" r="16" fill="url(#is-x-halo)"/><circle class="is-x-pin-ring" r="5"/><circle class="is-x-pin-dot" r="3"/><text class="is-x-pin-t" y="-10">Belgium</text></g>
+            <g class="is-x-pin is-x-pin-sm" data-pin="ch" transform="translate(522.8 120.0)"><circle class="is-x-pin-halo" r="16" fill="url(#is-x-halo)"/><circle class="is-x-pin-ring" r="5"/><circle class="is-x-pin-dot" r="3"/><text class="is-x-pin-t" x="9" y="5" style="text-anchor:start">Switzerland</text></g>
+            <g class="is-x-pin is-x-pin-sm" data-pin="de" transform="translate(528.9 107.8)"><circle class="is-x-pin-halo" r="16" fill="url(#is-x-halo)"/><circle class="is-x-pin-ring" r="5"/><circle class="is-x-pin-dot" r="3"/><text class="is-x-pin-t" x="9" y="-5" style="text-anchor:start">Germany</text></g>
             <g class="is-x-pin" data-pin="ru" transform="translate(625 91.7)"><circle class="is-x-pin-halo" r="26" fill="url(#is-x-halo)"/><circle class="is-x-pin-ring" r="9"/><circle class="is-x-pin-dot" r="5"/><text class="is-x-pin-t" y="-16">Russia</text></g>
             <g class="is-x-pin" data-pin="sg" transform="translate(788.3 246.3)"><circle class="is-x-pin-halo" r="26" fill="url(#is-x-halo)"/><circle class="is-x-pin-ring" r="9"/><circle class="is-x-pin-dot" r="5"/><text class="is-x-pin-t" y="26">Singapore</text></g>
             <g class="is-x-pin is-x-pin-home" data-pin="jp" transform="translate(884.7 149.4)"><circle class="is-x-pin-halo" r="30" fill="url(#is-x-halo)"/><circle class="is-x-pin-ring" r="10"/><circle class="is-x-pin-dot" r="6"/><text class="is-x-pin-t" y="-18">Japan</text></g>
@@ -791,7 +805,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="is-x-map-side">
         <div class="is-x-places" role="group" aria-label="Places in her journey">
           <button type="button" class="is-x-place" data-place="us" aria-pressed="false" data-k="Lived and worked" data-line="Part of her experience in US leadership contexts."><i class="fa-solid fa-location-dot" aria-hidden="true"></i>United States</button>
+          <button type="button" class="is-x-place" data-place="uk" aria-pressed="false" data-k="Lived and worked &#183; Europe" data-line="Part of her experience in European leadership contexts."><i class="fa-solid fa-location-dot" aria-hidden="true"></i>United Kingdom</button>
           <button type="button" class="is-x-place" data-place="fr" aria-pressed="false" data-k="Lived and worked &#183; Europe" data-line="Part of her experience in European leadership contexts."><i class="fa-solid fa-location-dot" aria-hidden="true"></i>France</button>
+          <button type="button" class="is-x-place" data-place="es" aria-pressed="false" data-k="Lived and worked &#183; Europe" data-line="Part of her experience in European leadership contexts."><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Spain</button>
+          <button type="button" class="is-x-place" data-place="be" aria-pressed="false" data-k="Lived and worked &#183; Europe" data-line="Part of her experience in European leadership contexts."><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Belgium</button>
+          <button type="button" class="is-x-place" data-place="ch" aria-pressed="false" data-k="Lived and worked &#183; Europe" data-line="Part of her experience in European leadership contexts."><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Switzerland</button>
+          <button type="button" class="is-x-place" data-place="de" aria-pressed="false" data-k="Lived and worked &#183; Europe" data-line="Part of her experience in European leadership contexts."><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Germany</button>
           <button type="button" class="is-x-place" data-place="ru" aria-pressed="false" data-k="Lived and worked" data-line="One of the places of her senior HR roles at Fortune 100 companies."><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Russia</button>
           <button type="button" class="is-x-place" data-place="sg" aria-pressed="false" data-k="Lived and worked &#183; Asia" data-line="Part of her experience in Asian leadership contexts."><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Singapore</button>
           <button type="button" class="is-x-place" data-place="jp" aria-pressed="true" data-k="Current home" data-line="Currently living in Japan and working globally."><i class="fa-solid fa-house" aria-hidden="true"></i>Japan</button>
