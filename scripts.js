@@ -670,9 +670,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // ── LEAD CAPTURE → Google Sheet + direct email (bonjour@bhdasia.com) ─────────
 var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkv934L8ffTxU1TPUiw3jn9Hu6KmdE0Ol1CcJRB_vWstls2xiZHHb-LErG5qHXdTuX/exec';
 var LEAD_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/bonjour@bhdasia.com';
-// Emails were ON HOLD 2026-11-02 to 2026-11-04; resumed with the spam filter below.
-// Set LEAD_EMAIL_ON = false to pause them again (leads then log to the Google Sheet only).
-var LEAD_EMAIL_ON = true;
+// 4 Nov 2026: the emails to bonjour@bhdasia.com now come from the Lead Capture Apps Script itself (one email per real lead, rows marked "Possible spam" are not emailed), not FormSubmit (it was down). So this stays false: the sheet send IS the email. true would ALSO email through FormSubmit = duplicates.
+var LEAD_EMAIL_ON = false;
 /* Lead spam filter, 2026-11-04. Master copy for hummingbeing.com (scripts.js), bhdasia.com (shared.js)
    and tre-in-singapore.com (assets/js/main.js): keep the three copies identical to this body.
    The bots that hit these forms Aug-Nov 2026 fill every field with random letters (name "Tzmkk Vcmapym",
