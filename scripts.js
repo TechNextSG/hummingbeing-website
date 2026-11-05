@@ -667,10 +667,10 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 })();
 
-// ── LEAD CAPTURE → Google Sheet + direct email (bonjour@bhdasia.com) ─────────
+// ── LEAD CAPTURE → Google Sheet + direct email (Isabelle's inbox) ─────────
 var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxkv934L8ffTxU1TPUiw3jn9Hu6KmdE0Ol1CcJRB_vWstls2xiZHHb-LErG5qHXdTuX/exec';
-var LEAD_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/bonjour@bhdasia.com';
-// 4 Nov 2026: the emails to bonjour@bhdasia.com now come from the Lead Capture Apps Script itself (one email per real lead, rows marked "Possible spam" are not emailed), not FormSubmit (it was down). So this stays false: the sheet send IS the email. true would ALSO email through FormSubmit = duplicates.
+var LEAD_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/' + 'bonjour' + '@' + 'bhdasia.com';
+// 4 Nov 2026: the emails to Isabelle's inbox now come from the Lead Capture Apps Script itself (one email per real lead, rows marked "Possible spam" are not emailed), not FormSubmit (it was down). So this stays false: the sheet send IS the email. true would ALSO email through FormSubmit = duplicates.
 var LEAD_EMAIL_ON = false;
 /* Lead spam filter, 2026-11-04. Master copy for hummingbeing.com (scripts.js), bhdasia.com (shared.js)
    and tre-in-singapore.com (assets/js/main.js): keep the three copies identical to this body.
@@ -821,7 +821,7 @@ function sendLead(data) {
     if (!ul.querySelector('.nav-extra')) {
       var li = document.createElement('li'); li.className = 'nav-extra';
       li.innerHTML =
-        '<div class="ne-row"><a href="mailto:bonjour@bhdasia.com"><i class="fa-regular fa-envelope"></i>bonjour@bhdasia.com</a>' +
+        '<div class="ne-row"><span style="color:#c7d2e6;display:inline-flex;align-items:center;gap:.45rem;padding:.35rem 0;font-size:.88rem"><i class="fa-regular fa-envelope" style="color:var(--gold)"></i>bonjour&#64;bhd<span style="display:none">-no-spam</span>asia&#46;com</span>' +
         '<a href="https://wa.me/818065151778" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a></div>' +
         '<div class="ne-soc">' +
         '<a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>' +
