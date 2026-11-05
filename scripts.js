@@ -821,7 +821,7 @@ function sendLead(data) {
     if (!ul.querySelector('.nav-extra')) {
       var li = document.createElement('li'); li.className = 'nav-extra';
       li.innerHTML =
-        '<div class="ne-row"><span style="color:#c7d2e6;display:inline-flex;align-items:center;gap:.45rem;padding:.35rem 0;font-size:.88rem"><i class="fa-regular fa-envelope" style="color:var(--gold)"></i>bonjour&#64;bhd<span style="display:none">-no-spam</span>asia&#46;com</span>' +
+        '<div class="ne-row"><span style="color:#c7d2e6;display:inline-flex;align-items:center;gap:.45rem;padding:.35rem 0;font-size:.88rem"><i class="fa-regular fa-envelope" style="color:var(--gold)"></i><span>bonjour&#64;bhd<span style="display:none">-no-spam</span>asia&#46;com</span></span>' +
         '<a href="https://wa.me/818065151778" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a></div>' +
         '<div class="ne-soc">' +
         '<a href="https://www.instagram.com/isabelleclausteixeira_bhd/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>' +
