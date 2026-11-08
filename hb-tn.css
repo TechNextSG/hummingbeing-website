@@ -439,6 +439,7 @@ html body .tn-form button[type=submit]:hover{background:#e8961a!important;border
 
 
 
+
 /* =====================================================================
    REVISION ROUND 2 (9 Nov 2026): animated home hero, one button system, dropdown,
    logo strip, guides strip, compact event cards with whole posters, compact sections.
@@ -1156,7 +1157,7 @@ html body section.hb-globe{padding:clamp(56px,6vw,88px) 0!important}
 @media (max-width:560px){.hb-globe-facts{grid-template-columns:1fr}}
 
 /* ---------- BUTTONS v3 (owner 9 Nov): strong buttons = deep HummingBeing amber with WHITE text (4.54:1) ---------- */
-:root{--hb-cta:#A36A0C;--hb-cta-hover:#8C5A08}
+:root{--hb-cta:#F5A623;--hb-cta-hover:#E0920F}
 html body :is(.btn,.tn-btn,.btn-primary,.nav-cta,.hb-link-btn),
 html body .btn.btn-primary.on-dark,html body .btn.btn-primary.on-light,
 html body :is(.hb-hero,.page-hero,.event-hero,.ce-hero,.tn-dark,.section-navy,.tn-hero,.tn-phero) .btn.btn-primary,
@@ -1167,7 +1168,7 @@ html body nav.scrolled .nav-links > li.nav-book-mobile > a,html body nav:not(.sc
 html body :is(.btn,.tn-btn,.btn-primary,.nav-cta,.hb-link-btn):hover,
 html body :is(.hb-hero,.page-hero,.event-hero,.ce-hero,.tn-dark,.section-navy,.tn-hero,.tn-phero) .btn.btn-primary:hover,
 html body .tn-form button[type=submit]:hover,html body #contact-form button[type=submit]:hover{
-  background:var(--hb-cta-hover)!important;border-color:var(--hb-cta-hover)!important;color:#fff!important;box-shadow:0 12px 24px -14px rgba(140,90,8,.8)!important}
+  background:var(--hb-cta-hover)!important;border-color:var(--hb-cta-hover)!important;color:#fff!important;box-shadow:0 12px 24px -14px rgba(224,146,15,.75)!important}
 html body :is(.btn,.tn-btn,.btn-primary,.nav-cta) :is(.btn-arr,svg,i){color:#fff!important;stroke:currentColor}
 /* secondary stays an outline (navy on light, white on dark) */
 html body :is(.btn-outline,.evt-btn-2,.home-evt-btn2,.tn-btn-2,.btn-secondary,.btn-dark):not(.on-dark){background:transparent!important;color:#242e42!important;border-color:rgba(36,46,66,.35)!important}
@@ -1186,5 +1187,6 @@ html body .hb-chat-foot .hb-send{background:var(--hb-cta)!important;color:#fff!i
 html body .hb-globe-map{grid-template-columns:.8fr 2.4fr 1.2fr!important;gap:16px 32px!important}
 html body .hb-globe-reg{flex-direction:column!important;align-items:flex-start!important;gap:10px!important}
 @media (max-width:980px){html body .hb-globe-map{grid-template-columns:1fr!important}}
-html body nav.scrolled .nav-actions .nav-cta,html body nav .nav-actions .nav-cta,html body nav.scrolled .nav-cta{background:#A36A0C!important;border-color:#A36A0C!important;color:#fff!important}
-html body nav .nav-actions .nav-cta:hover{background:#8C5A08!important;border-color:#8C5A08!important;color:#fff!important}
+html body nav.scrolled .nav-actions .nav-cta,html body nav .nav-actions .nav-cta,html body nav.scrolled .nav-cta{background:#F5A623!important;border-color:#F5A623!important;color:#fff!important}
+html body nav .nav-actions .nav-cta:hover{background:#E0920F!important;border-color:#E0920F!important;color:#fff!important}
+html body :is(.btn,.tn-btn,.btn-primary,.nav-cta,.hb-link-btn,.tn-form button[type=submit]):not(.btn-outline):not(.evt-btn-2):not(.home-evt-btn2):not(.tn-btn-2):not(.btn-dark):not(.btn-soldout){font-weight:800!important;text-shadow:0 1px 1px rgba(120,70,0,.35)}
