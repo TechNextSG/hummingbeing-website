@@ -135,7 +135,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     html,body{overflow-x:hidden;overflow-x:clip}
     .ce-side{position:sticky;top:90px;align-self:start;display:grid;gap:1.2rem;max-height:calc(100vh - 106px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;-ms-overflow-style:none}
     .ce-side::-webkit-scrollbar{display:none}
-    @media(max-width:900px){.ce-side{position:static}}
+    @media(max-width:900px){.ce-side{position:static;max-height:none;overflow:visible}}
     .ce-box{background:#fff;border:1px solid rgba(36,46,66,.1);border-radius:14px;padding:1.5rem;box-shadow:0 4px 22px rgba(36,46,66,.08)}
     .ce-box h3{font-family:'Playfair Display',serif;font-size:1.18rem;color:var(--navy);margin:0 0 .3rem}
     .ce-box .sub{font-size:.85rem;color:var(--text-mid);margin:0 0 1rem;line-height:1.5}
@@ -225,7 +225,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1>Nervous System Regulation &amp; <em>Neurogenic Tremoring</em></h1>
       <p class="ce-lead">Self-Care &amp; Presence for Coaches &#8212; two in-person days of TRE&#8482; for coaches who give a great deal to clients and need a way to restore themselves. Build embodied self-care, guard against burnout and bring a steadier somatic presence to your sessions. Counts as Module 1 of the Global TRE&#8482; Provider Certification. This cohort is fully booked.</p>
       <div class="ce-hero-actions">
-        <a href="#reserve" class="btn btn-primary">Join the waitlist &rarr;</a>
+        <a href="/events" class="btn btn-primary">See upcoming events &rarr;</a>
         <a href="/events" class="btn btn-outline">All events</a>
       </div>
     </div>
@@ -303,27 +303,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- SIDEBAR -->
   <aside class="ce-side" id="reserve">
     <div class="ce-box evtl-form-card">
-      <span class="ce-soldtag">Sold out &middot; waitlist open</span>
-      <h3>Join the waitlist</h3>
-      <p class="sub">This cohort is fully booked. Leave your details and we&#8217;ll notify you of any releases or the next available date.</p>
+      <span class="ce-soldtag">Sold out &middot; event ended</span>
+      <h3>This event has ended</h3>
+      <p class="sub">This cohort was fully booked and took place on 29 &amp; 30 Aug 2026. See what&#8217;s coming up next.</p>
       <div class="ce-tiers">
         <div class="ce-tier hl"><div class="tl">ICF Special<small>the sold-out cohort price</small></div><div class="tp">S$1,290</div></div>
         <div class="ce-tier"><div class="tl">Early Bird</div><div class="tp">S$1,500</div></div>
         <div class="ce-tier"><div class="tl">Normal price</div><div class="tp">S$1,800</div></div>
       </div>
-      <form class="evtl-form" onsubmit="evtlSubmit(event)">
-        <input type="hidden" name="source" value="Self-Care Coaches (Singapore) page — WAITLIST" />
-        <input type="hidden" name="event" value="Nervous System Regulation — 29 & 30 August 2026 · Singapore (WAITLIST)" />
-        <div class="evtl-field"><label>Full name</label><input type="text" name="name" placeholder="Your full name" required></div>
-        <div class="evtl-field"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
-        <div class="evtl-field"><label>Phone (optional)</label><input type="tel" name="phone" placeholder="+65 ..."></div>
-        <button type="submit" class="btn btn-primary">Join the waitlist &rarr;</button>
-      </form>
-      <div class="evtl-form-success" id="evtl-success" style="display:none">
-        <i class="fa-solid fa-circle-check"></i>
-        <p>Thank you! We&#8217;ll be in touch about releases or the next date.</p>
-        <a href="https://calendly.com/bhdasia/tre-certification-intake-call" target="_blank" rel="noopener" class="btn btn-dark">Or book an intake call &rarr;</a>
-      </div>
+      <a href="/events" class="btn btn-primary">See upcoming events &rarr;</a>
       <p class="fine">Includes 2-day workshop + 4 personal online TRE&#8482; sessions + 21 ICF CCEUs.</p>
     </div>
     <div class="ce-box ce-qa">
@@ -410,7 +398,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
-<script src="scripts.js?v=20261107b" defer></script>
+<script src="scripts.js?v=20261108a" defer></script>
 <script>
 function evtlSubmit(e) {
   e.preventDefault();

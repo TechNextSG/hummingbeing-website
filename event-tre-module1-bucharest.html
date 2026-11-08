@@ -176,7 +176,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     html,body{overflow-x:hidden;overflow-x:clip}
     .ce-side{position:sticky;top:90px;align-self:start;display:grid;gap:1.2rem;max-height:calc(100vh - 106px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;-ms-overflow-style:none}
     .ce-side::-webkit-scrollbar{display:none}
-    @media(max-width:900px){.ce-side{position:static}}
+    @media(max-width:900px){.ce-side{position:static;max-height:none;overflow:visible}}
     .ce-box{background:#fff;border:1px solid rgba(36,46,66,.1);border-radius:14px;padding:1.5rem;box-shadow:0 4px 22px rgba(36,46,66,.08)}
     .ce-box h3{font-family:'Playfair Display',serif;font-size:1.18rem;color:var(--navy);margin:0 0 .3rem}
     .ce-box .sub{font-size:.85rem;color:var(--text-mid);margin:0 0 1rem;line-height:1.5}
@@ -357,15 +357,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="ce-box">
       <span class="ce-soldtag">Sold out &middot; sales closed</span>
       <h3>Pricing &amp; tickets</h3>
-      <p class="sub">This event is sold out &#8212; ticket sales are closed. It has been postponed; contact Isabelle to join the waitlist for the new dates.</p>
+      <p class="sub">This event is sold out &#8212; ticket sales are closed. It has been postponed; see upcoming events for current dates.</p>
       <div class="ce-tiers">
         <div class="ce-tier hl"><div class="tl">Super Early Bird<small>first 5 tickets</small></div><div class="tp">&#8364;739</div></div>
         <div class="ce-tier"><div class="tl">Early Bird<small>next 5 tickets</small></div><div class="tp">&#8364;769</div></div>
         <div class="ce-tier"><div class="tl">Full Price<small>final 10 tickets</small></div><div class="tp">&#8364;799</div></div>
       </div>
       <span class="btn btn-soldout">Sold Out</span>
-      <a href="/book#contact-form" class="btn btn-dark">Join the waitlist &rarr;</a>
-      <p class="fine">This training is sold out and has been postponed. Send Isabelle a message to join the waitlist for the new dates.</p>
+      <a href="/events" class="btn btn-dark">See upcoming events &rarr;</a>
+      <p class="fine">This training is sold out and has been postponed. See upcoming events for current dates.</p>
     </div>
     <div class="ce-box ce-qa">
       <h3>Questions?</h3>
@@ -462,7 +462,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
-<script src="scripts.js?v=20261107b" defer></script>
+<script src="scripts.js?v=20261108a" defer></script>
 <script>
 (function(){
   var poster=document.querySelector('.ce-poster'); if(!poster) return;

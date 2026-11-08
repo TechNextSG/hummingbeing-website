@@ -174,7 +174,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     html,body{overflow-x:hidden;overflow-x:clip}
     .ce-side{position:sticky;top:90px;align-self:start;display:grid;gap:1.2rem;max-height:calc(100vh - 106px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;-ms-overflow-style:none}
     .ce-side::-webkit-scrollbar{display:none}
-    @media(max-width:900px){.ce-side{position:static}}
+    @media(max-width:900px){.ce-side{position:static;max-height:none;overflow:visible}}
     .ce-box{background:#fff;border:1px solid rgba(36,46,66,.1);border-radius:14px;padding:1.5rem;box-shadow:0 4px 22px rgba(36,46,66,.08)}
     .ce-box h3{font-family:'Playfair Display',serif;font-size:1.18rem;color:var(--navy);margin:0 0 .3rem}
     .ce-box .ce-sub{font-family:'Lato',sans-serif;font-size:.82rem;color:var(--text-mid);margin:0 0 1rem;line-height:1.5}
@@ -356,14 +356,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <h2>Price and instalments</h2>
     <p>Early bird <strong>S$5,888</strong> until 31 March 2027, then <strong>S$6,888</strong>. Pay in three instalments:</p>
-    <div class="ce-tblwrap"><table class="ce-table"><thead><tr><th>Instalment</th><th>Due</th><th class="n">Early bird</th><th class="n">Regular</th></tr></thead><tbody><tr><td><b>Instalment 1</b></td><td>On registration: by 31 Mar 2027 (early bird) or by 25 Feb 2027 (regular)</td><td class="n">S$1,888</td><td class="n">S$1,888</td></tr><tr><td><b>Instalment 2</b></td><td>Issued after Module 1; due by 3 Jun 2027</td><td class="n">S$2,000</td><td class="n">S$2,500</td></tr><tr><td><b>Instalment 3</b></td><td>Issued after Module 2; due by 30 Sep 2027</td><td class="n">S$2,000</td><td class="n">S$2,500</td></tr><tr class="tot"><td>Total</td><td>Full price owed once instalment 1 is paid</td><td class="n">S$5,888</td><td class="n">S$6,888</td></tr></tbody></table></div><p class="ce-payfull"><strong>Or pay in full at registration:</strong> S$5,888 (early bird) / S$6,888 (regular). Card charges still apply.</p>
+    <div class="ce-tblwrap"><table class="ce-table"><thead><tr><th>Instalment</th><th>Due</th><th class="n">Early bird</th><th class="n">Regular</th></tr></thead><tbody><tr><td><b>Instalment 1</b></td><td>On registration: by 31 Mar 2027 (early bird) or by 22 Apr 2027 (regular)</td><td class="n">S$1,888</td><td class="n">S$1,888</td></tr><tr><td><b>Instalment 2</b></td><td>Issued after Module 1; due by 3 Jun 2027</td><td class="n">S$2,000</td><td class="n">S$2,500</td></tr><tr><td><b>Instalment 3</b></td><td>Issued after Module 2; due by 30 Sep 2027</td><td class="n">S$2,000</td><td class="n">S$2,500</td></tr><tr class="tot"><td>Total</td><td>Full price owed once instalment 1 is paid</td><td class="n">S$5,888</td><td class="n">S$6,888</td></tr></tbody></table></div><p class="ce-payfull"><strong>Or pay in full at registration:</strong> S$5,888 (early bird) / S$6,888 (regular). Card charges still apply.</p>
     <div class="ce-note"><strong>Card charges are added on top of every instalment.</strong> Payment is by credit card only, through Stripe at checkout.</div>
 <h2 id="payment">Payment terms</h2>
     <ul class="ce-list">
       <li><strong>Credit card only</strong>, through Stripe at checkout. <strong>Card charges are added on top of every instalment.</strong></li>
       <li><strong>Early-bird pricing applies until 31 March 2027.</strong> All prices are in SGD.</li>
       <li><strong>Prefer to pay in full?</strong> Alternatively, you can pay the whole package price when you register rather than in three instalments. Card charges still apply.</li>
-      <li><strong>Paying the first instalment commits you to the whole package price.</strong> Instalment 1 is due on registration (by 31 Mar 2027 at the early-bird price, by 25 Feb 2027 at the regular price). Instalment 2 is issued after Module 1 and is due by 3 June 2027. Instalment 3 is issued after Module 2 and is due by 30 September 2027.</li>
+      <li><strong>Paying the first instalment commits you to the whole package price.</strong> Instalment 1 is due on registration (by 31 Mar 2027 at the early-bird price, by 22 Apr 2027 at the regular price). Instalment 2 is issued after Module 1 and is due by 3 June 2027. Instalment 3 is issued after Module 2 and is due by 30 September 2027.</li>
       <li><strong>Extra online personal sessions or supervisions:</strong> S$190 per 60-minute online session, available with any package.</li>
       <li><strong>All ticket sales are final</strong> &#8212; tickets are non-refundable and non-cancellable.</li>
     </ul>
@@ -552,7 +552,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
-<script src="scripts.js?v=20261107b" defer></script>
+<script src="scripts.js?v=20261108a" defer></script>
 <script>
 function evtlSubmit(e) {
   e.preventDefault();

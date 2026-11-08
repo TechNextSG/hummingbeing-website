@@ -66,7 +66,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
       "offers": {
         "@type": "Offer",
         "url": "https://neurogenic-integration.com/",
-        "availability": "https://schema.org/InStock"
+        "availability": "https://schema.org/SoldOut"
       },
       "image": "https://hummingbeing.com/images/event-shaking-online.webp?v=5"
     }
@@ -133,7 +133,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     html,body{overflow-x:hidden;overflow-x:clip}
     .ce-side{position:sticky;top:90px;align-self:start;display:grid;gap:1.2rem;max-height:calc(100vh - 106px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;-ms-overflow-style:none}
     .ce-side::-webkit-scrollbar{display:none}
-    @media(max-width:900px){.ce-side{position:static}}
+    @media(max-width:900px){.ce-side{position:static;max-height:none;overflow:visible}}
     .ce-box{background:#fff;border:1px solid rgba(36,46,66,.1);border-radius:14px;padding:1.5rem;box-shadow:0 4px 22px rgba(36,46,66,.08)}
     .ce-box h3{font-family:'Playfair Display',serif;font-size:1.18rem;color:var(--navy);margin:0 0 .3rem}
     .ce-box .sub{font-size:.85rem;color:var(--text-mid);margin:0 0 1rem;line-height:1.5}
@@ -217,8 +217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1>From Shaking to Shaping <em>&mdash; Online</em></h1>
       <p class="ce-lead">A live online workshop on how TRE&#8482; and neurogenic tremoring can steady you as a coach and deepen the presence you bring to clients: nervous system regulation, embodiment and resilience. Co-led by Isabelle Claus Teixeira and Saymara Ryon, in partnership with Neurogenic Integration.</p>
       <div class="ce-hero-actions">
-        <a href="https://neurogenic-integration.com/" target="_blank" rel="noopener" class="btn btn-primary">Register at Neurogenic Integration &rarr;</a>
-        <a href="#reserve" class="btn btn-outline">Enquire</a>
+        <a href="/events" class="btn btn-primary">See upcoming events &rarr;</a>
       </div>
     </div>
   </div>
@@ -281,23 +280,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- SIDEBAR -->
   <aside class="ce-side" id="reserve">
     <div class="ce-box evtl-form-card">
-      <h3>Join the workshop</h3>
-      <p class="sub">Registration is handled by Neurogenic Integration &#8212; secure your spot there, or leave your details and we&#8217;ll send you the joining link.</p>
-      <a href="https://neurogenic-integration.com/" target="_blank" rel="noopener" class="btn btn-primary">Register at Neurogenic Integration &rarr;</a>
-      <div class="ce-or">or leave your details</div>
-      <form class="evtl-form" onsubmit="evtlSubmit(event)">
-        <input type="hidden" name="source" value="From Shaking to Shaping Online (8 Oct) — INTEREST" />
-        <input type="hidden" name="event" value="From Shaking to Shaping — Online, 8 October 7–9pm" />
-        <div class="evtl-field"><label>Full name</label><input type="text" name="name" placeholder="Your full name" required></div>
-        <div class="evtl-field"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
-        <div class="evtl-field"><label>Phone (optional)</label><input type="tel" name="phone" placeholder="+ ..."></div>
-        <button type="submit" class="btn btn-dark">Send enquiry &rarr;</button>
-      </form>
-      <div class="evtl-form-success" id="evtl-success" style="display:none">
-        <i class="fa-solid fa-circle-check"></i>
-        <p>Thank you! We&#8217;ll be in touch with the joining details shortly.</p>
-        <a href="https://neurogenic-integration.com/" target="_blank" rel="noopener" class="btn btn-primary">Register at Neurogenic Integration &rarr;</a>
-      </div>
+      <h3>This event has ended.</h3>
+      <p class="sub">This live online workshop took place on 8 Oct 2026. See what&#8217;s coming up next.</p>
+      <a href="/events" class="btn btn-primary">See upcoming events &rarr;</a>
     </div>
     <div class="ce-box ce-qa">
       <h3>Questions?</h3>
@@ -400,7 +385,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <a href="https://wa.me/818065151778" class="wa-float" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="top-float" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
-<script src="scripts.js?v=20261107b" defer></script>
+<script src="scripts.js?v=20261108a" defer></script>
 <script>
 function evtlSubmit(e) {
   e.preventDefault();
