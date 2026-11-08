@@ -440,6 +440,7 @@ html body .tn-form button[type=submit]:hover{background:#e8961a!important;border
 
 
 
+
 /* =====================================================================
    REVISION ROUND 2 (9 Nov 2026): animated home hero, one button system, dropdown,
    logo strip, guides strip, compact event cards with whole posters, compact sections.
@@ -1190,3 +1191,9 @@ html body .hb-globe-reg{flex-direction:column!important;align-items:flex-start!i
 html body nav.scrolled .nav-actions .nav-cta,html body nav .nav-actions .nav-cta,html body nav.scrolled .nav-cta{background:#F5A623!important;border-color:#F5A623!important;color:#fff!important}
 html body nav .nav-actions .nav-cta:hover{background:#E0920F!important;border-color:#E0920F!important;color:#fff!important}
 html body :is(.btn,.tn-btn,.btn-primary,.nav-cta,.hb-link-btn,.tn-form button[type=submit]):not(.btn-outline):not(.evt-btn-2):not(.home-evt-btn2):not(.tn-btn-2):not(.btn-dark):not(.btn-soldout){font-weight:800!important;text-shadow:0 1px 1px rgba(120,70,0,.35)}
+
+/* ---------- HERO BUTTONS (owner 9 Nov): gold with white text in every hero ---------- */
+html body :is(.hb-hero,.tn-hero,.tn-phero,.tn-dark,.page-hero,.ce-hero,.event-hero,.hero) :is(.btn,.tn-btn):not(.btn-outline):not(.evt-btn-2):not(.tn-btn-2):not(.btn-soldout),
+html body :is(.hb-hero,.tn-hero,.tn-phero,.tn-dark,.page-hero,.ce-hero,.event-hero,.hero) .btn.btn-primary.on-dark{background:#F5A623!important;border-color:#F5A623!important;color:#fff!important}
+html body :is(.hb-hero,.tn-hero,.tn-phero,.tn-dark,.page-hero,.ce-hero,.event-hero,.hero) :is(.btn,.tn-btn):not(.btn-outline):not(.evt-btn-2):not(.tn-btn-2) :is(.btn-arr,svg,i){color:#fff!important}
+html body :is(.hb-hero,.tn-hero,.tn-phero,.tn-dark,.page-hero,.ce-hero,.event-hero,.hero) :is(.btn,.tn-btn):not(.btn-outline):not(.evt-btn-2):not(.tn-btn-2):not(.btn-soldout):hover{background:#E0920F!important;border-color:#E0920F!important;color:#fff!important}
