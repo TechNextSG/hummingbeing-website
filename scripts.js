@@ -311,12 +311,12 @@ document.addEventListener('DOMContentLoaded', function() {
       link: null,
       btns: ['What are her qualifications?','What services does she offer?','Where is she based?','Book a session'] },
 
-    { keys: ['what services','services offered','offer','available','what do you do','what can you help','how can you help','what you offer','what is offered','what do you provide','services','offerings','practices'],
+    { keys: ['what services','services offered','what do you do','what can you help','how can you help','what you offer','what is offered','what do you provide','services','offerings','practices'],
       reply: "HummingBeing offers three core practices:\n\n• TRE™ Exercises — release deep stress & tension through natural tremors\n• Somatic Coaching — body-based coaching for resilience\n• Somatic Bodywork — Strozzi method hands-on bodywork\n\nAll available 1:1, in-person (Singapore/Japan) or online via Zoom.",
       link: null,
       btns: ['What is TRE™?','Tell me about Somatic Coaching','What is Somatic Bodywork?','Which practice is right for me?'] },
 
-    { keys: ['price','cost','how much','fee','rate','investment','money','package','payment','expensive','afford','charges','pricing','fees','packages','rates','invest','pay','value','worth','dollar'],
+    { keys: ['price','cost','how much','fee','rate','investment','money','payment','expensive','afford','charges','pricing','fees','rates','invest','pay','value','worth','dollar'],
       reply: "Three options are available:\n\n• 8-Week Coaching Package — S$2,300\n• Deep Dive — Custom pricing for 12–24 sessions\n• Free Discovery Call — $0, 30 minutes\n\nThe free call is a great first step with no commitment required.",
       link: null,
       btns: ['Tell me about the 8-Week Package','Tell me about the Deep Dive','What payment options are there?','What is included?'] },
@@ -376,8 +376,8 @@ document.addEventListener('DOMContentLoaded', function() {
       link: null,
       btns: ['What is TRE™?','Is it safe?','Book a discovery call'] },
 
-    { keys: ['contact','email','reach','get in touch','message','phone','whatsapp','how to contact','connect','communicate','enquire','enquiry','reach out'],
-      reply: "You can reach Isabelle in two ways:\n\n• Fill in the contact form on the Book page\n• Send a WhatsApp message — tap the green button visible on any page\n\nShe personally responds within 1–2 business days.",
+    { keys: ['contact','email','reach','get in touch','message','phone','whatsapp','how to contact','connect','communicate','enquire','enquiry','reach out','contact isabelle','how do i contact','how can i contact','how to reach'],
+      reply: "Use the free-call form on this page, or WhatsApp Isabelle on +81 80 6515 1778. She reads every message herself and replies within 1–2 business days.",
       link: { text: 'Open the Book page', url: '/book' },
       btns: ['Book a free discovery call','How much does it cost?','What services are available?'] },
 
@@ -386,13 +386,13 @@ document.addEventListener('DOMContentLoaded', function() {
       link: { text: 'View the Gallery', url: '/gallery' },
       btns: ['About Isabelle','What services are available?','Book a session'] },
 
-    { keys: ['event','workshop','group','upcoming','schedule','class','programme','program','events','group session','next event','tre workshop','group tre','certification','module 1','icf','cceu'],
-      reply: "Upcoming events:\n\n• 25 Nov 2026 — Online · The Body in the Room, with Aun Ali · 7–9pm SGT · S$88\n• 15 Dec 2026 — Online · Breath as a medicine, with Ania Zielińska · 7–9pm SGT · S$88\n• 24 Jan 2027 — Online · The Art of Conscious Rest (Yoga Nidra), with Olga Titkova · 8–10pm SGT · S$88\n• 23 Feb, 29 Jun or 3 Nov 2027 — Singapore · Introduction to TRE™, with Isabelle Claus Teixeira & Simba Stenqvist · 7–9pm · S$88\n• 24 Feb, 30 Jun or 2 Nov 2027 — Singapore · Shaking to Shaping (TRE™ for Coaches) · 7–10pm · S$149 · 3 ICF CCEs\n• 24–25 Apr 2027 — Singapore · Module 1 of the 2027 certification cohort\n• 28–30 May 2027 — Lisbon, Portugal · TRE™ Module 1 · from 739 EUR early bird\n• 18–20 Jun 2027 — Online (UK time) · TRE™ Module 1 ONLINE with TRE Scotland, 21 ICF CCEUs, from £488 early bird until 31 May 2027 (then £589), limited to 15 participants\n• 2027 Singapore cohort — Global TRE™ Provider Certification, co-taught by Isabelle Claus Teixeira & Simba Stenqvist: Module 1 24–25 Apr, Module 2 3–4 Jul, Module 3 30–31 Oct 2027, plus online supervisions and three self-paced bonus programs (Grounding, Verbal Interventions and an Internal Alchemy introduction).\n\n2027 packages (early bird until 31 March 2027): Growth S$5,888 (then S$6,888), Foundational S$4,888 (then S$5,888), and Refresher packages for accredited TRE™ Providers and trainees from S$2,200. Card charges are added on top of every instalment. The 2026 Singapore intake is closed; past 2026 workshops now show as ended. Book an intake call and Isabelle will walk you through the options.",
+    { keys: ['event','workshop','group','upcoming','schedule','class','programme','program','events','group session','next event','tre workshop','group tre','certification','module 1'],
+      reply: "Next up:\n\n• 25 Nov 2026 · The Body in the Room · online · S$88\n• 15 Dec 2026 · Breath as a medicine · online · S$88\n• 24 Jan 2027 · The Art of Conscious Rest · online · S$88\n\nIn 2027: Introduction to TRE™ and Shaking to Shaping in Singapore, plus TRE™ certification in Singapore, Lisbon and online.",
       link: { text: 'See all upcoming events', url: '/events' },
       btns: ['What is TRE™?','Tell me about the 2027 certification','Book a private session'] },
 
-    { keys: ['2027','certification pricing','provider certification','certified provider','become certified','how much is the certification','certification cost','module 2','module 3','bonus program','internal alchemy','simba','stenqvist','cohort'],
-      reply: "The Global TRE™ Provider Certification — 2027 Singapore cohort — is co-taught by Isabelle Claus Teixeira and Simba Stenqvist (creator of Internal Alchemy):\n\n• Module 1 — Your Personal TRE™ Practice · 24–25 Apr 2027\n• Module 2 — Teaching One Person · 3–4 Jul 2027\n• Module 3 — Teaching Groups · 30–31 Oct 2027\n• Plus online TRE™ sessions & supervisions.\n\nPackages (early bird until 31 March 2027):\n• Growth (new students): S$5,888, then S$6,888 — includes ICF credits and three bonus programs (Grounding, Verbal Interventions, Internal Alchemy)\n• Foundational (new students): S$4,888, then S$5,888 — without ICF credits and bonus programs\n• Refresher (accredited TRE™ Providers and trainees): four options from S$2,200 early bird\n\nPay in three instalments or pay in full at registration; card charges are added on top of every instalment (credit card only). Extra online sessions or supervisions are S$190 per 60 minutes. One cohort per year in Singapore.",
+    { keys: ['2027','certification pricing','provider certification','certified provider','become certified','how much is the certification','certification cost','module 2','module 3','bonus program','internal alchemy','cohort','growth package','foundational','refresher','growth','refresher','growth package price','refresher package price','foundational package'],
+      reply: "The 2027 Singapore TRE™ certification runs 24–25 Apr, 3–4 Jul and 30–31 Oct 2027, co-taught by Isabelle and Simba Stenqvist.\n\n• Growth: S$5,888 early bird (then S$6,888)\n• Foundational: S$4,888 early bird (then S$5,888)\n• Refresher options from S$2,200\n\nEarly bird ends 31 Mar 2027.",
       link: { text: 'View the 2027 packages', url: '/event-certification-2027' },
       btns: ['See all upcoming events','How do I register?','About Isabelle'] },
 
@@ -436,8 +436,33 @@ document.addEventListener('DOMContentLoaded', function() {
       link: null,
       btns: ['What happens in a session?','How do I book?','Is it safe?'] },
 
+    { keys: ['icf','cceu','cceus','icf credits','ccu','continuing coach education','coach credits'],
+      reply: "ICF Continuing Coach Education credits come with the 2027 Growth certification package, Shaking to Shaping (3 ICF CCEs), and TRE™ Module 1 in Lisbon or online with TRE Scotland (21 ICF CCEUs each).",
+      link: { text: 'TRE™ with ICF CCEs', url: '/tre-icf-cceu' },
+      btns: ['Tell me about the 2027 certification','See all upcoming events','Book a free discovery call'] },
+
+    { keys: ['retreat','retreats','corporate workshop','team workshop','company workshop','offsite','away day','executive retreat','team'],
+      reply: "Isabelle runs group sessions, team workshops and executive retreats in Singapore, Japan and beyond, including a 5-day Corporate Detox and a 3-day Quick Reset. Dates are set with you.",
+      link: { text: 'Retreats & Workshops', url: '/retreats-workshops' },
+      btns: ['Book a free discovery call','See all upcoming events','About Isabelle'] },
+
+    { keys: ['simba','stenqvist','who is simba','simba stenqvist'],
+      reply: "Simba Stenqvist co-teaches the 2027 Singapore TRE™ certification and the Introduction to TRE™ evenings with Isabelle. He created the Internal Alchemy programme.",
+      link: { text: 'See the 2027 certification', url: '/event-certification-2027' },
+      btns: ['Tell me about the 2027 certification','See all upcoming events','About Isabelle'] },
+
+    { keys: ['shaking to shaping','tre for coaches','for coaches'],
+      reply: "Shaking to Shaping is TRE™ for coaches: a 3-hour evening in Singapore on 24 Feb, 30 Jun or 2 Nov 2027, 7–10pm, S$149, with 3 ICF CCEs.",
+      link: { text: 'See all upcoming events', url: '/events' },
+      btns: ['What is TRE™?','Tell me about the 2027 certification','Book a free discovery call'] },
+
+    { keys: ['online session','online sessions','zoom session','sessions online','do you do online','learn online'],
+      reply: "Yes. Every private session works online via Zoom, wherever you are, and several workshops run online too. In-person sessions are in Singapore and Japan.",
+      link: { text: 'Book a free discovery call', url: '/book' },
+      btns: ['How much does it cost?','What happens in a first session?','See all upcoming events'] },
+
     { keys: ['cancel','cancellation','reschedule','rescheduling','change appointment','postpone','refund','money back','miss a session','missed session','change my booking'],
-      reply: "Scheduling is handled personally and flexibly. If you need to reschedule, let Isabelle know as early as you can and she'll do her best to find a new time.\n\nFor anything about refunds or a specific package, it's best to raise it directly with Isabelle — she's always fair and transparent.",
+      reply: "Event and certification tickets are final: they are non-refundable and non-cancellable. For private sessions, tell Isabelle as early as you can and she will try to find a new time.",
       link: { text: 'Message Isabelle', url: '/book' },
       btns: ['How do I book?','Tell me about the free discovery call','How much does it cost?'] },
 
@@ -452,11 +477,11 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['See upcoming events','Book a private session','How much does it cost?'] },
 
     { keys: ['language','languages','english','speak','what language','which language','do you speak','spoken'],
-      reply: "Sessions are conducted in English. Isabelle has worked with clients from 40+ nationalities around the world, so international and cross-cultural clients are very welcome.",
+      reply: "Isabelle is fluent in English, Spanish and French, and has worked with clients from 40+ nationalities. Mention your preferred language on your free discovery call.",
       link: null,
       btns: ['Where are sessions held?','How do I book?','About Isabelle'] },
 
-    { keys: ['pregnant','pregnancy','injury','injured','medical condition','medication','disability','chronic illness','heart condition','surgery','back pain','can i still do','health issue'],
+    { keys: ['pregnant','pregnancy','injury','injured','medical condition','medication','disability','chronic illness','heart condition','surgery','back pain','can i still do','health issue','i am pregnant','am pregnant','while pregnant','during pregnancy'],
       reply: "Somatic practices are gentle and can often be adapted for many health situations. If you're pregnant, recovering from injury or managing a medical condition, please mention it when you book so Isabelle can tailor the session — and check with your doctor if you're unsure.",
       link: null,
       btns: ['Is it safe?','Book a discovery call','What happens in a session?'] },
@@ -495,10 +520,10 @@ document.addEventListener('DOMContentLoaded', function() {
         var matched = 0;
         for (var k = 0; k < kwWords.length; k++) {
           var kww = kwWords[k];
-          if (kww.length < 3) continue;
+          if (kww.length < 4) continue;
           for (var w = 0; w < words.length; w++) {
             var iw = words[w];
-            if (iw.length < 2) continue;
+            if (iw.length < 4 || /^(what|when|where|which|with|that|this|have|your|about|does|from|they|there|them|will|would|could|should)$/.test(iw)) continue;
             if (iw.indexOf(kww) === 0 || kww.indexOf(iw) === 0) { matched++; break; }
           }
         }
@@ -749,7 +774,7 @@ function sendLead(data) {
 // buttons · mobile menu · journey steps · philosophy cards · hummingbird
 // ════════════════════════════════════════════════════════════════════════
 (function () {
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce = true /* HB calm 8 Nov 2026 */;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var ARROW = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
@@ -1167,7 +1192,7 @@ function sendLead(data) {
 (function () {
   'use strict';
   var STEP = 3000, HOLD = 8000;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (true /* HB calm 8 Nov 2026 */) return;
   if (!('IntersectionObserver' in window)) return;
   var drivers = [], claimed = [];
   function $$(s, c) { return [].slice.call((c || document).querySelectorAll(s)); }
