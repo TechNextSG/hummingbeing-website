@@ -261,7 +261,7 @@
   function add(root) {
     (root || document).querySelectorAll(SEL).forEach(function (b) {
       if (b.classList.contains('hb-has-wave') || NOT.test(b.className) || b.closest('.hb-chat-btn')) return;
-      var w = document.createElement('span'); w.className = 'hb-wave'; w.setAttribute('aria-hidden', 'true');
+      var w = document.createElement('span'); w.className = 'hb-bwave'; w.setAttribute('aria-hidden', 'true');
       b.insertBefore(w, b.firstChild); b.classList.add('hb-has-wave');
     });
   }
