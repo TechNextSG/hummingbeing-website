@@ -252,3 +252,21 @@
   }, { threshold: .25 });
   vids.forEach(function (v) { io.observe(v); });
 })();
+
+/* ---------- primary buttons: dark-blue wave layer (9 Nov) ---------- */
+(function () {
+  'use strict';
+  var SEL = '.btn, .tn-btn, .nav-cta, .hb-link-btn, .tn-form button[type=submit], #contact-form button[type=submit]';
+  var NOT = /(^|\s)(btn-outline|evt-btn-2|home-evt-btn2|tn-btn-2|btn-secondary|btn-dark|btn-soldout|btn-ended|ce-soldbtn)(\s|$)/;
+  function add(root) {
+    (root || document).querySelectorAll(SEL).forEach(function (b) {
+      if (b.classList.contains('hb-has-wave') || NOT.test(b.className) || b.closest('.hb-chat-btn')) return;
+      var w = document.createElement('span'); w.className = 'hb-wave'; w.setAttribute('aria-hidden', 'true');
+      b.insertBefore(w, b.firstChild); b.classList.add('hb-has-wave');
+    });
+  }
+  function go() { add(); setTimeout(add, 900); setTimeout(add, 2500); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+  var mo = new MutationObserver(function (ms) { ms.forEach(function (m) { m.addedNodes.forEach(function (n) { if (n.nodeType === 1) add(n.parentNode || n); }); }); });
+  mo.observe(document.documentElement, { childList: true, subtree: true });
+})();
