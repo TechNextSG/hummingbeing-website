@@ -303,13 +303,18 @@
     var forms = [].slice.call(document.querySelectorAll('form')).filter(function (f) { return f.querySelector('input[type=email]'); });
     forms.sort(function (a, b) { return b.querySelectorAll('input,select,textarea').length - a.querySelectorAll('input,select,textarea').length; });
     var f = forms[0], btn = f && f.querySelector('button[type=submit], input[type=submit], button:not([type])');
-    if (btn && btn.parentNode) { box.style.cssText = 'margin:.6rem 0;max-width:100%;overflow:hidden'; btn.parentNode.insertBefore(box, btn); }
-    else if (f) { box.style.cssText = 'margin:.6rem 0;max-width:100%;overflow:hidden'; f.appendChild(box); }
-    else { box.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:2147483000'; document.body.appendChild(box); }
+    /* collapsed (no empty gap above the button) until Cloudflare actually asks for the tick */
+    var SHUT = 'height:0;margin:0;max-width:100%;overflow:hidden', OPEN = 'height:auto;margin:.6rem 0;max-width:100%;overflow:hidden';
+    if (btn && btn.parentNode) { box.style.cssText = SHUT; btn.parentNode.insertBefore(box, btn); }
+    else if (f) { box.style.cssText = SHUT; f.appendChild(box); }
+    else { SHUT = 'position:fixed;left:12px;bottom:12px;z-index:2147483000;height:0;overflow:hidden'; OPEN = 'position:fixed;left:12px;bottom:12px;z-index:2147483000';
+      box.style.cssText = SHUT; document.body.appendChild(box); }
     try {
       wid = window.turnstile.render(box, { sitekey: SITEKEY, appearance: 'interaction-only', action: 'website_form',
         callback: gotToken, 'expired-callback': function () { tok = null; },
-        'error-callback': function () { tok = null; } });
+        'error-callback': function () { tok = null; },
+        'before-interactive-callback': function () { box.style.cssText = OPEN; },
+        'after-interactive-callback': function () { box.style.cssText = SHUT; } });
     } catch (e) { wid = null; }
   }
   function loadTs() {

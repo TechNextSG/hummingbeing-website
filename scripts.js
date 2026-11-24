@@ -1263,7 +1263,8 @@ function sendLead(data) {
         es.forEach(function (en) { seen.set(en.target, en.isIntersecting); });
         blockers = 0; seen.forEach(function (v) { if (v) blockers++; }); upd();
       }, { threshold: .15 });
-      $$('.ce-side, #reserve, footer').forEach(function (el) { bo.observe(el); });
+      /* 25 Nov 2026 form audit: also step aside while a form is on screen (it covered the consent boxes on phones) */
+      $$('.ce-side, #reserve, #register, footer, form').forEach(function (el) { bo.observe(el); });
     }
     if (window.hbInitButtons) window.hbInitButtons();
   }
