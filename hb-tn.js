@@ -270,3 +270,54 @@
   var mo = new MutationObserver(function (ms) { ms.forEach(function (m) { m.addedNodes.forEach(function (n) { if (n.nodeType === 1) add(n.parentNode || n); }); }); });
   mo.observe(document.documentElement, { childList: true, subtree: true });
 })();
+
+/* ---------- Odoo native forms (24 Nov 2026) ----------
+   When this site is served by Odoo (www.hummingbeing.com = bhdasia database, website 2), every form that
+   calls sendLead() is answered by Odoo itself instead of the Google Sheet:
+   - free-call / contact / programme enquiries and event registrations -> CRM lead (website_crm form,
+     team "BHD Asia - all websites", salesperson Isabelle, so Odoo emails her each lead);
+   - newsletter sign-ups (inquiry "Newsletter signup") -> Email Marketing list "HummingBeing newsletter".
+   Bot-looking leads keep the "Possible spam" title, as before. The Lead Capture sheet is only the fallback
+   when Odoo refuses (so no lead is ever lost). On any copy that is not Odoo (no window.odoo) nothing changes. */
+(function () {
+  'use strict';
+  var O = window.odoo;
+  if (!O || !O.csrf_token || typeof window.sendLead !== 'function') return;
+  var LIST_ID = 2;
+  var SHEET = window.LEAD_ENDPOINT;
+  function sheet(d) {
+    try { return fetch(SHEET, { method: 'POST', body: new URLSearchParams(d), keepalive: true }).catch(function () {}); }
+    catch (e) { return Promise.resolve(); }
+  }
+  function lead(d) {
+    var fd = new FormData();
+    fd.append('csrf_token', O.csrf_token);
+    fd.append('name', (d.inquiry || 'Website enquiry') + (d.name ? ' — ' + d.name : ''));
+    fd.append('contact_name', d.name || '');
+    fd.append('email_from', d.email || '');
+    fd.append('phone', d.phone || '');
+    var lines = ['Website: HummingBeing', 'Page: ' + location.href];
+    ['source', 'event', 'country', 'code', 'payment_plan', 'gdpr_consent'].forEach(function (k) { if (d[k]) lines.push(k + ': ' + d[k]); });
+    if (d.message) lines.push('', d.message);
+    fd.append('description', lines.join('\n'));
+    return fetch('/website/form/crm.lead', { method: 'POST', body: fd, credentials: 'same-origin' })
+      .then(function (r) { return r.json(); })
+      .then(function (j) { if (!j || !j.id) throw new Error('lead not saved'); return j; });
+  }
+  function subscribe(email) {
+    return fetch('/website_mass_mailing/subscribe', {
+      method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ jsonrpc: '2.0', method: 'call', params: { list_id: LIST_ID, value: email, subscription_type: 'email' } })
+    }).then(function (r) { return r.json(); })
+      .then(function (j) { if (!j || j.error) throw new Error('subscribe failed'); return j; });
+  }
+  window.sendLead = function (data) {
+    data = data || {};
+    if (!data.gdpr_consent && window.gdprConsentSummary) { try { data.gdpr_consent = window.gdprConsentSummary(); } catch (e) {} }
+    var bot = false;
+    try { bot = window.leadLooksLikeBot(data); } catch (e) {}
+    if (bot && !/^Possible spam/.test(data.inquiry || '')) data.inquiry = 'Possible spam — ' + (data.inquiry || '');
+    var p = (!bot && data.email && /newsletter/i.test(data.inquiry || '')) ? subscribe(data.email) : lead(data);
+    return p.catch(function () { return sheet(data); });
+  };
+})();
