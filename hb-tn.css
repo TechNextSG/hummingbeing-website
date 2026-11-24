@@ -1234,3 +1234,10 @@ html body .hb-has-wave:hover,html body .hb-has-wave:hover :is(.btn-arr,svg,i){co
 @keyframes hbWaveDrift{to{background-position:-120px 0}}
 @media (prefers-reduced-motion:reduce){.hb-bwave{transition:none}.hb-has-wave:hover > .hb-bwave{animation:none}}
 html body :is(.hb-hero,.tn-hero,.tn-phero,.tn-dark,.page-hero,.ce-hero,.event-hero,.hero,section,nav,main,footer,body) .hb-has-wave:hover,html body nav .nav-actions .nav-cta.hb-has-wave:hover{border-color:#1f2a44!important;box-shadow:0 12px 24px -14px rgba(31,42,68,.7)!important;color:#fff!important}
+
+/* ---------- page-to-page switch (25 Nov 2026, owner: "pages flicker when moving between them") ----------
+   Same-site navigations keep the previous page on screen until the next one is ready (render-blocked until fully
+   parsed, see <link rel="expect"> in each page head), then swap with a short crossfade. Off for reduced motion. */
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.18s;animation-timing-function:ease-out}
+@media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}
