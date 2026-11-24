@@ -277,21 +277,54 @@
    - free-call / contact / programme enquiries and event registrations -> CRM lead (website_crm form,
      team "BHD Asia - all websites", salesperson Isabelle, so Odoo emails her each lead);
    - newsletter sign-ups (inquiry "Newsletter signup") -> Email Marketing list "HummingBeing newsletter".
-   Bot-looking leads keep the "Possible spam" title, as before. The Lead Capture sheet is only the fallback
-   when Odoo refuses (so no lead is ever lost). On any copy that is not Odoo (no window.odoo) nothing changes. */
+   Odoo protects its public forms with Cloudflare Turnstile, so pages with a form load the same invisible
+   Turnstile widget Odoo's own forms use and keep a fresh token ready (no wait before the event-payment
+   redirect). Anything Odoo refuses (no token, failed check, error) goes to the Lead Capture sheet as before,
+   so no lead is ever lost. Bot-looking leads keep the "Possible spam" title. Off Odoo nothing changes. */
 (function () {
   'use strict';
   var O = window.odoo;
   if (!O || !O.csrf_token || typeof window.sendLead !== 'function') return;
-  var LIST_ID = 2;
+  var LIST_ID = 2, SITEKEY = '0x4AAAAAAFzBZajh6muadkH3';
   var SHEET = window.LEAD_ENDPOINT;
+  var tok = null, wid = null, box = null, waiters = [];
+  function hasForm() { return !!document.querySelector('form.tn-lead-form, #contact-form, #reg-config, form input[type=email]'); }
+  function gotToken(t) { tok = t; var w = waiters; waiters = []; w.forEach(function (f) { f(t); }); }
+  function render() {
+    if (!window.turnstile || wid !== null) return;
+    box = document.createElement('div'); box.className = 'hb-ts';
+    box.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:2147483000';
+    document.body.appendChild(box);
+    try {
+      wid = window.turnstile.render(box, { sitekey: SITEKEY, appearance: 'interaction-only', action: 'website_form',
+        callback: gotToken, 'expired-callback': function () { tok = null; },
+        'error-callback': function () { tok = null; } });
+    } catch (e) { wid = null; }
+  }
+  function loadTs() {
+    if (window.turnstile) { render(); return; }
+    if (document.getElementById('hb-ts-api')) return;
+    var sc = document.createElement('script'); sc.id = 'hb-ts-api'; sc.async = true;
+    sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    sc.onload = render; document.head.appendChild(sc);
+  }
+  function token(ms) {   /* a fresh token, or null after ms */
+    if (tok) { var t = tok; tok = null; return Promise.resolve(t); }
+    loadTs();
+    return new Promise(function (res) {
+      var done = false, f = function (t) { if (!done) { done = true; tok = null; res(t); } };
+      waiters.push(f); setTimeout(function () { f(null); }, ms);
+    });
+  }
+  function reset() { try { if (window.turnstile && wid !== null) window.turnstile.reset(wid); } catch (e) {} }
   function sheet(d) {
     try { return fetch(SHEET, { method: 'POST', body: new URLSearchParams(d), keepalive: true }).catch(function () {}); }
     catch (e) { return Promise.resolve(); }
   }
-  function lead(d) {
+  function lead(d, t) {
     var fd = new FormData();
     fd.append('csrf_token', O.csrf_token);
+    fd.append('turnstile_captcha', t);
     fd.append('name', (d.inquiry || 'Website enquiry') + (d.name ? ' — ' + d.name : ''));
     fd.append('contact_name', d.name || '');
     fd.append('email_from', d.email || '');
@@ -300,16 +333,20 @@
     ['source', 'event', 'country', 'code', 'payment_plan', 'gdpr_consent'].forEach(function (k) { if (d[k]) lines.push(k + ': ' + d[k]); });
     if (d.message) lines.push('', d.message);
     fd.append('description', lines.join('\n'));
-    return fetch('/website/form/crm.lead', { method: 'POST', body: fd, credentials: 'same-origin' })
-      .then(function (r) { return r.json(); })
+    return fetch('/website/form/crm.lead', { method: 'POST', body: fd, credentials: 'same-origin', keepalive: true })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function (j) { if (!j || !j.id) throw new Error('lead not saved'); return j; });
   }
-  function subscribe(email) {
+  function subscribe(email, t) {
     return fetch('/website_mass_mailing/subscribe', {
       method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ jsonrpc: '2.0', method: 'call', params: { list_id: LIST_ID, value: email, subscription_type: 'email' } })
+      body: JSON.stringify({ jsonrpc: '2.0', method: 'call', params: { list_id: LIST_ID, value: email, subscription_type: 'email', turnstile_captcha: t } })
     }).then(function (r) { return r.json(); })
-      .then(function (j) { if (!j || j.error) throw new Error('subscribe failed'); return j; });
+      .then(function (j) {
+        var res = j && j.result;
+        if (!j || j.error || !res || res.toast_type === 'danger' || res.toast_type === 'warning') throw new Error('subscribe refused');
+        return j;
+      });
   }
   window.sendLead = function (data) {
     data = data || {};
@@ -317,7 +354,12 @@
     var bot = false;
     try { bot = window.leadLooksLikeBot(data); } catch (e) {}
     if (bot && !/^Possible spam/.test(data.inquiry || '')) data.inquiry = 'Possible spam — ' + (data.inquiry || '');
-    var p = (!bot && data.email && /newsletter/i.test(data.inquiry || '')) ? subscribe(data.email) : lead(data);
-    return p.catch(function () { return sheet(data); });
+    var news = !bot && data.email && /newsletter/i.test(data.inquiry || '');
+    return token(2500).then(function (t) {
+      if (!t) throw new Error('no turnstile token');
+      return news ? subscribe(data.email, t) : lead(data, t);
+    }).then(function (j) { reset(); return j; }, function () { reset(); return sheet(data); });
   };
+  function boot() { if (hasForm()) loadTs(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
