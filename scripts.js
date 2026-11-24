@@ -260,281 +260,397 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ── CHATBOT ───────────────────────────────────────────────────────────────────
 ;(function() {
-  var KB = [
-    { keys: ['hello','hi','hey','morning','afternoon','evening','howdy','greetings','start','help','hiya','yo','sup','ok','okay','aloha','namaste'],
-      reply: "Hi! I'm the HummingBeing assistant. I can answer questions about our services, pricing, booking and Isabelle. What would you like to know?",
-      link: null,
-      btns: ['What is TRE™?','Tell me about Somatic Coaching','About Isabelle','How much does it cost?'] },
+  /* 25 Nov 2026 chatbot audit: facts re-checked against every page (prices, dates, payment terms, policies);
+     the event list is dated and drops past events by itself; matching is whole-word (the old substring match sent
+     "I feel anxious" to pricing because "feel" contains "fee", and "your" to the greeting because it contains "yo").
+     When a page changes, change the matching line here too. Test: ~/ClaudeWork/qa/hb-chatbot/harness.js */
+  var EVENTS = [
+    { dates: ['2026-11-25'], text: 'The Body in the Room with Aun Ali · online, 7–9pm SGT · S$88' },
+    { dates: ['2026-12-15'], text: 'Breath as a medicine with Ania Zielińska · online, 7–9pm SGT · S$88' },
+    { dates: ['2027-01-24'], text: 'The Art of Conscious Rest with Olga Titkova · online, 8–10pm SGT · S$88' },
+    { dates: ['2027-02-23', '2027-06-29', '2027-11-03'], text: 'Introduction to TRE™ · Singapore, 7–9pm · S$88' },
+    { dates: ['2027-02-24', '2027-06-30', '2027-11-02'], text: 'Shaking to Shaping, TRE™ for Coaches · Singapore, 7–10pm · S$149 · 3 ICF CCEs' },
+    { dates: ['2027-04-24', '2027-07-03', '2027-10-30'], text: 'TRE™ Certification 2027, Singapore (3 modules) · from S$2,200 early bird' },
+    { dates: ['2027-05-28'], text: 'TRE™ Module 1, Lisboa · 28–30 May · from €739' },
+    { dates: ['2027-05-28', '2027-06-01', '2027-10-22'], text: 'TRE™ Certification, Lisboa (3 modules) · from €2,949 early bird' },
+    { dates: ['2027-06-18'], text: 'TRE™ Module 1 online with TRE Scotland · 18–20 June · from £488' }
+  ];
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function eventsReply() {
+    var t = new Date(), today = t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2);
+    var up = [];
+    EVENTS.forEach(function (e) {
+      var next = e.dates.filter(function (d) { return d >= today; })[0];
+      if (next) up.push({ d: next, more: e.dates.length - 1 - e.dates.indexOf(next), text: e.text });
+    });
+    up.sort(function (a, b) { return a.d < b.d ? -1 : a.d > b.d ? 1 : 0; });
+    if (!up.length) return "New dates are being planned. The Events page always has the latest, or message Isabelle and she will let you know first.";
+    var fmt = function (d) { var p = d.split('-'); return +p[2] + ' ' + MON[+p[1] - 1] + ' ' + p[0]; };
+    return 'Coming up next:\n\n' + up.slice(0, 6).map(function (e) {
+      return '• ' + fmt(e.d) + (e.more ? ' (+' + e.more + ' more date' + (e.more > 1 ? 's' : '') + ')' : '') + ' · ' + e.text;
+    }).join('\n') + (up.length > 6 ? '\n\n…and more on the Events page.' : '');
+  }
 
-    { keys: ['how'],
+  function onlineReply() {
+    var t = new Date(), today = t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2);
+    var fmt = function (d) { var p = d.split('-'); return +p[2] + ' ' + MON[+p[1] - 1] + ' ' + p[0]; };
+    var up = EVENTS.filter(function (e) { return e.text.indexOf('online,') !== -1 && e.dates[0] >= today; });
+    if (!up.length) return "New live online workshops are being planned. The Events page always has the latest.";
+    return 'Live online workshops on Zoom, S$88 each (S$68 with a discount code):\n\n' +
+      up.map(function (e) { return '• ' + fmt(e.dates[0]) + ' · ' + e.text.replace(' · S$88', ''); }).join('\n');
+  }
+
+  /* only: answers that input word alone (generic one-word questions); w: weight (greetings lose to any real topic). */
+  var KB = [
+    { keys: ['hello','hi','hey','morning','good morning','good afternoon','good evening','howdy','greetings','hiya','yo','aloha','namaste','hola','bonjour'], w: 0.5,
+      reply: "Hi! I'm the HummingBeing assistant. I can answer questions about TRE™, coaching, events, the TRE™ certification, prices and booking. What would you like to know?",
+      link: null,
+      btns: ['What is TRE™?','Upcoming events','About Isabelle','How much does it cost?'] },
+
+    { keys: ['how'], only: true,
       reply: "Happy to help! What would you like to know?\n\n• How much does it cost?\n• How does a session work?\n• How do I book?\n• How long are sessions?",
       link: null,
       btns: ['How much does it cost?','How does a session work?','How do I book?','How long is a session?'] },
 
-    { keys: ['when','availability','available'],
-      reply: "Isabelle is available for sessions year-round in Singapore, Japan and online via Zoom.\n\nScheduling is flexible and arranged personally after your first enquiry. Regular group events are also listed on the Events page.",
+    { keys: ['when'], only: true,
+      reply: "Private sessions are arranged with Isabelle year-round, in Singapore, Japan and online. Group events have fixed dates; ask me about upcoming events.",
       link: { text: 'See upcoming events', url: '/events' },
-      btns: ['How do I book a session?','Where are sessions held?','How much does it cost?'] },
+      btns: ['Upcoming events','How do I book a session?','How much does it cost?'] },
 
-    { keys: ['what'],
+    { keys: ['what'], only: true,
       reply: "What would you like to explore?\n\n• What services are available?\n• What results can you expect?\n• What happens in a first session?",
       link: null,
       btns: ['What services are available?','What results can I expect?','What happens in a session?'] },
 
-    { keys: ['why','reason','purpose','motivation'],
-      reply: "HummingBeing exists because the body holds answers the mind alone cannot always reach.\n\nMost wellness approaches work only with thoughts. Somatic practices work directly with the nervous system — creating deep, lasting change through the body's own natural release mechanisms.",
+    { keys: ['why'], only: true,
+      reply: "HummingBeing exists because the body holds answers the mind alone cannot always reach.\n\nMost wellness approaches work only with thoughts. Somatic practices work directly with the nervous system, through the body's own natural release mechanisms.",
       link: null,
       btns: ['What is TRE™?','Tell me about Somatic Coaching','About Isabelle'] },
 
-    { keys: ['info','information','more info','learn more','tell me more','know more','details'],
-      reply: "I can share information about:\n\n• Our somatic practices — TRE™, Coaching, Bodywork\n• Isabelle and her qualifications\n• Pricing and packages\n• Booking and where sessions are held\n\nWhat would you like to explore?",
+    { keys: ['info','information','more info','learn more','tell me more','know more','details'], only: true,
+      reply: "I can share information about:\n\n• TRE™, Somatic Coaching and Bodywork\n• Upcoming events and the TRE™ certification\n• Isabelle and her qualifications\n• Prices, payment and booking\n\nWhat would you like to explore?",
       link: null,
-      btns: ['What services are available?','About Isabelle','How much does it cost?','How do I book?'] },
+      btns: ['What services are available?','Upcoming events','How much does it cost?','How do I book?'] },
 
-    { keys: ['tre','tension release','trauma release','tremor','neurogenic','tension trauma','tré','t.r.e','shaking','psoas','nervous system','berceli','tremoring','tre exercises','what is tre','tell me about tre','what are tre exercises','what is tre exercises','explain tre'],
-      reply: "TRE™ (Tension & Trauma Releasing Exercises) activates your body's natural tremor mechanism to release deep stress, tension and trauma stored in the muscles and nervous system.\n\nDeveloped by Dr. David Berceli, it is gentle, safe and beginner-friendly. Most people learn to self-practice after just 3–4 supervised sessions.",
-      link: null,
-      btns: ['Is TRE™ safe?','What does a session feel like?','How many sessions do I need?','How much does it cost?'] },
+    { keys: ['tre','tension release','trauma release','tremor','tremors','tension and trauma','tension trauma','shaking','psoas','berceli','tremoring','tre exercises','what is tre','tell me about tre','explain tre','tension and trauma releasing exercises'],
+      reply: "TRE™ (Tension & Trauma Releasing Exercises) is a short sequence of simple exercises that activates your body's natural tremor reflex to release stress and tension.\n\nDeveloped by Dr. David Berceli, it is gentle and beginner-friendly, and you can stop the tremors at any time. Most people can practise on their own after 3–4 guided sessions.",
+      link: { text: 'Read the TRE™ FAQ', url: '/tre-faq' },
+      btns: ['Is TRE™ safe?','Upcoming events','How many sessions do I need?','How much does it cost?'] },
 
-    { keys: ['somatic coaching','somatic coach','coaching','embodied','emotional resilience','body coaching','life coach','executive coach','mind body','body awareness','inner work','self awareness','resilience'],
-      reply: "Somatic Coaching develops your body's wisdom for greater emotional resilience, reduced stress and deeper self-awareness.\n\nUnlike talk-based coaching, it works with the body directly — training you to read and respond to your physical signals in real time. Sessions are 1:1 with Isabelle.",
-      link: null,
-      btns: ['How is it different from therapy?','What results can I expect?','How many sessions?','How much does it cost?'] },
+    { keys: ['neurogenic','neurogenic tremors','why does the body shake','why do we shake','why shake','science','scientific','scientifically','proven','evidence','research','polyvagal','nervous system','vagus','vagal'],
+      reply: "Tremoring is a natural way for the nervous system to settle after stress; you can see it in many mammals. TRE™ gently invites this reflex in a safe, controlled way.\n\nThe guides below explain the science of neurogenic tremors and what happens in the body during a practice.",
+      link: { text: 'The science of neurogenic tremors', url: '/neurogenic-tremors-stress-anxiety' },
+      btns: ['What happens during tremoring?','Is TRE™ safe?','TRE™ vs Somatic Experiencing'] },
 
-    { keys: ['bodywork','somatic bodywork','strozzi','touch','body work','physical','hands on','hands-on','body therapy','manual','somatic body'],
-      reply: "Somatic Bodywork uses the Strozzi method — gentle, systematic hands-on touch — to release historical patterns, tensions and contractions held in the body.\n\nIt creates space for more energy, ease and aliveness. Fully clothed. Sessions are tailored 1:1 to your specific patterns.",
-      link: null,
-      btns: ['How is it different from massage?','Is it safe?','How much does it cost?','What to expect in a session?'] },
+    { keys: ['what happens during tremoring','during tremoring','what happens during','how does tre feel','what does tre feel like','what does it feel like','feel like','what does a session feel like'],
+      reply: "During TRE™ you lie on a mat after a few gentle preparation exercises, and a soft tremor usually starts in the legs and may travel through the body. You stay in control: straighten your legs and lie flat, or roll onto your side, and it settles within moments.\n\nAfterwards most people feel calmer and more grounded; some feel tired, slightly sore or emotional for a day.",
+      link: { text: 'What happens during tremoring', url: '/what-happens-during-neurogenic-tremoring' },
+      btns: ['Is TRE™ safe?','How do I stop the tremors?','Upcoming events'] },
 
-    { keys: ['isabelle','practitioner','who is','trainer','about isabelle','biography','background','qualifications','credentials','her story','meet isabelle','isabelle claus','teixeira','who runs','founder'],
-      reply: "Isabelle Claus Teixeira is a Global TRE™ Certifying Trainer & Certified TRE™ Provider, ICF PCC Executive Coach, Somatic Coach and Somatic Bodywork Practitioner.\n\nShe brings 30 years of human development experience across 9 countries, has worked with people from 40+ nationalities, and combines deep personal somatic practice with professional training. Based in Singapore and Japan.",
+    { keys: ['stop the tremors','stop tremors','stop shaking','how do i stop','can i stop','control the tremors'],
+      reply: "Straighten your legs and lie flat, or roll onto your side. The tremors settle within moments, and you stay in control the whole time.",
       link: null,
+      btns: ['Is TRE™ safe?','What happens during tremoring?','Book a free discovery call'] },
+
+    { keys: ['somatic experiencing','tre vs somatic experiencing','se therapy','peter levine','difference between tre and se','tre or se'],
+      reply: "TRE™ and Somatic Experiencing (SE) are separate approaches with different founders, trainings and methods. Both are body-based. TRE™ is designed to be learned: most people practise on their own after 3–4 guided sessions, while SE usually unfolds over a series of practitioner-led sessions.",
+      link: { text: 'TRE™ vs Somatic Experiencing', url: '/tre-vs-somatic-experiencing' },
+      btns: ['What is TRE™?','Is TRE™ safe?','Book a free discovery call'] },
+
+    { keys: ['somatic coaching','somatic coach','coaching','coach me','embodied','emotional resilience','body coaching','life coach','life coaching','mind body','body awareness','inner work','self awareness','resilience','burnout coaching'],
+      reply: "Somatic Coaching develops your body's wisdom for greater emotional resilience, less stress and deeper self-awareness.\n\nUnlike talk-based coaching, it works with the body directly, training you to read and respond to your physical signals in real time. Sessions are 1:1 with Isabelle, 60–75 minutes, and coaching typically runs 6–12 sessions.",
+      link: { text: 'Somatic coaching for burnout', url: '/somatic-coaching-burnout-singapore' },
+      btns: ['How is it different from therapy?','Tell me about the 8-Week Package','How much does it cost?'] },
+
+    { keys: ['holistic mastermind','mastermind','four pillars','4 pillars','executive coaching','executive coach','leadership coaching','leaders','leader','leadership','ceo','executives','executive','senior leader','high performer'],
+      reply: "The Holistic Mastermind is Isabelle's framework for leaders: four pillars worked together.\n\n• The Tactical Mind: values, beliefs, saboteurs, resilience\n• The Somatic Vessel: TRE™, breathwork, somatic coaching, EFT\n• The Energetic Matrix: clearing deep-rooted burnout patterns\n• The Expressive Vision: purpose and presence\n\nIt starts with a free discovery call.",
+      link: { text: 'Explore the Holistic Mastermind', url: '/holistic-mastermind' },
+      btns: ['Tell me about the Deep Dive','Executive retreats','Book a free discovery call'] },
+
+    { keys: ['bodywork','somatic bodywork','strozzi','touch','body work','hands on','body therapy','somatic body'],
+      reply: "Somatic Bodywork uses the Strozzi method: gentle, systematic hands-on touch to release historical patterns, tensions and contractions held in the body.\n\nIt creates space for more energy, ease and aliveness. Always fully clothed, tailored 1:1 to your patterns.",
+      link: null,
+      btns: ['How is it different from massage?','Is it safe?','How much does it cost?','What happens in a session?'] },
+
+    { keys: ['mindfulness','meditation','meditate','breathwork','breathing','breath work','pranayama','yoga nidra','reiki','eft','tapping','tft','energy healing','shamanism','core shamanism','healing circle'],
+      reply: "Alongside TRE™ and coaching, Isabelle teaches mindfulness and breathwork (60–75 min sessions) and is a Reiki and Core Shamanism healer; EFT and breathwork are part of her leadership work too.\n\nThe online workshops also cover breathwork (Breath as a medicine) and Yoga Nidra (The Art of Conscious Rest).",
+      link: { text: 'Book a free discovery call', url: '/book' },
+      btns: ['Upcoming events','Tell me about Somatic Coaching','How much does it cost?'] },
+
+    { keys: ['isabelle','practitioner','trainer','about isabelle','biography','background','her story','meet isabelle','isabelle claus','teixeira','who runs','founder','about you','who are you'],
+      reply: "Isabelle Claus Teixeira is a Global TRE™ Certifying Trainer, trained directly under Dr. David Berceli, an ICF PCC Senior Executive Coach, Somatic Coach, Somatic Bodyworker, Mindfulness Teacher and Breathwork Facilitator.\n\nBefore this she spent over 30 years in Fortune 100 HR and talent leadership across 9 countries. She has worked with people from 40+ nationalities and is based in Singapore and Japan.",
+      link: { text: 'Meet Isabelle', url: '/isabelle' },
       btns: ['What are her qualifications?','What services does she offer?','Where is she based?','Book a session'] },
 
-    { keys: ['what services','services offered','what do you do','what can you help','how can you help','what you offer','what is offered','what do you provide','services','offerings','practices'],
-      reply: "HummingBeing offers three core practices:\n\n• TRE™ Exercises — release deep stress & tension through natural tremors\n• Somatic Coaching — body-based coaching for resilience\n• Somatic Bodywork — Strozzi method hands-on bodywork\n\nAll available 1:1, in-person (Singapore/Japan) or online via Zoom.",
-      link: null,
-      btns: ['What is TRE™?','Tell me about Somatic Coaching','What is Somatic Bodywork?','Which practice is right for me?'] },
-
-    { keys: ['price','cost','how much','fee','rate','investment','money','payment','expensive','afford','charges','pricing','fees','rates','invest','pay','value','worth','dollar'],
-      reply: "Three options are available:\n\n• 8-Week Coaching Package — S$2,300\n• Deep Dive — Custom pricing for 12–24 sessions\n• Free Discovery Call — $0, 30 minutes\n\nThe free call is a great first step with no commitment required.",
-      link: null,
-      btns: ['Tell me about the 8-Week Package','Tell me about the Deep Dive','What payment options are there?','What is included?'] },
-
-    { keys: ['starter','8 week','8-week','first package','weekly sessions','starter package','coaching package','2300','2200','$2200','what is included','what included','included','whats included'],
-      reply: "The 8-Week Coaching Package is S$2,300 and includes:\n\n• Initial diagnostic session\n• 8 weekly one-on-one coaching sessions\n• Targeted exercises between sessions\n• Follow-up session at 3 months\n\nFully customised to your goals — leadership development, career transition, stress resilience or personal growth.",
-      link: null,
-      btns: ['Tell me about the Deep Dive','How do I book?','Tell me about the free discovery call','What happens in a session?'] },
-
-    { keys: ['deep dive','deep-dive','12 session','24 session','corporate','leadership','long term','long-term','corporate wellness','team','organisation','company','executive program'],
-      reply: "The Deep Dive Package is fully customised — 12 to 24 sessions combining TRE™, Coaching and Bodywork for deeper, lasting transformation.\n\nIncludes priority scheduling, direct access to Isabelle, corporate & leadership programmes, and ongoing integration support. Priced by consultation.",
-      link: null,
-      btns: ['How is it different from the 8-Week Package?','Tell me about the free discovery call','What is Somatic Coaching?','How do I book?'] },
-
-    { keys: ['book','schedule','appointment','sign up','register','join','how to start','how to book','how do i book','how can i book','get started','begin','start working','work together','make an appointment','booking','reserve','session booking'],
-      reply: "Booking is straightforward:\n\n1. Use the contact form on the Book page\n2. Send a WhatsApp message directly to Isabelle\n\nIsabelle personally responds within 1–2 business days. The free discovery call is a great first step.",
-      link: { text: 'Go to the Book page', url: '/book' },
-      btns: ['Tell me about the free discovery call','How much does it cost?','What to expect in first session?','Can I reschedule?'] },
-
-    { keys: ['discovery call','free call','free session','free chat','30 min','30 minute','consultation','no commitment','no pressure','first call','intro call','introductory','free','trial','no cost','complimentary'],
-      reply: "The free 30-minute discovery call is a relaxed, no-pressure conversation with Isabelle. You will explore your situation, ask any questions, and find the right path forward together.\n\nNo sales pitch. No commitment. Just honest conversation.",
-      link: { text: 'Book the free call', url: '/book' },
-      btns: ['What happens after the call?','How much does it cost?','What services are available?'] },
-
-    { keys: ['location','where','singapore','japan','online','zoom','remote','virtual','in person','travel','country','based','city','place','where is','where are you','sg','jp','virtual session'],
-      reply: "Sessions are available in three formats:\n\n• In-person in Singapore\n• In-person in Japan\n• Online via Zoom — for clients anywhere in the world\n\nOnline sessions are equally effective. Isabelle has worked with clients from 40+ countries.",
-      link: null,
-      btns: ['Is online as effective as in-person?','How do I book?','How much does it cost?'] },
-
-    { keys: ['online effective','zoom effective','virtual work','remote session','online work','does online work','is it effective online','can i do online','is zoom ok','work via zoom','is online as effective as in person','online as effective'],
-      reply: "Yes — online sessions via Zoom are equally effective for TRE™ and Somatic Coaching. All you need is a quiet space, comfortable clothing, and a mat or soft surface for TRE™ exercises.\n\nMany of Isabelle's clients have completed their full programme entirely online.",
-      link: null,
-      btns: ['How do I book an online session?','What do I need?','How much does it cost?'] },
-
-    { keys: ['how long','duration','time','minutes','hours','length','session length','how many sessions','number of sessions','session time','long is','long does','how many sessions do i need'],
-      reply: "Session lengths depend on the format:\n\n• Free Discovery Call — 30 min\n• Individual session — 60 to 90 min\n• 8-Week Coaching Package — 8 weekly sessions\n• Deep Dive — 12 to 24 sessions\n\nIsabelle will suggest the right structure during your discovery call.",
-      link: null,
-      btns: ['Tell me about the 8-Week Package','Tell me about the Deep Dive','Book a free call'] },
-
-    { keys: ['safe','safety','risk','side effect','suitable','beginner','first time','never tried','scared','worry','concern','danger','is it safe','safe for me','contraindication','health condition','is tre safe'],
-      reply: "TRE™ and somatic practices are gentle and considered very safe for most people. Isabelle tailors every session to your comfort level and health situation.\n\nIf you have specific medical conditions or concerns, mention them when booking — sessions are always adapted. There are very few contraindications.",
-      link: null,
-      btns: ['Who is it suitable for?','What to expect in a session?','Book a discovery call'] },
-
-    { keys: ['who is it for','suitable for','right for me','is it for me','who benefits','good for','works for','good candidate','am i right','should i try','who is it suitable for'],
-      reply: "Somatic practices can help anyone carrying chronic stress, burnout, anxiety, stored tension or past trauma. They work especially well for:\n\n• Professionals under high pressure\n• People feeling disconnected from their bodies\n• Those who have tried talk therapy without lasting results\n• Anyone curious about body-based approaches",
-      link: null,
-      btns: ['Is it safe?','What results can I expect?','Book a free discovery call'] },
-
-    { keys: ['stress','burnout','overwhelmed','tense','tight','ache','pain','sleep','relax','calm','tired','exhausted','fatigue','chronic stress','headache','anxious','anxiety','nervous','depression','low energy','dysregulated'],
-      reply: "HummingBeing specialises in helping people release chronic stress, burnout and stored physical tension. TRE™, Somatic Coaching and Bodywork all work with the nervous system directly — producing deep, lasting relief rather than temporary fixes.",
-      link: null,
-      btns: ['What is TRE™?','Tell me about Somatic Coaching','Is it safe for my situation?','Book a session'] },
-
-    { keys: ['trauma','ptsd','past','wound','abuse','grief','loss','difficult','history','past trauma','trauma-informed','stored trauma','old wounds','unprocessed'],
-      reply: "Somatic approaches are well-suited for processing stored trauma gently and safely. Isabelle works within a trauma-informed framework — you are always in full control and sessions move entirely at your pace.\n\nYou do not need to relive or retell events for the work to be effective.",
-      link: null,
-      btns: ['What is TRE™?','Is it safe?','Book a discovery call'] },
-
-    { keys: ['contact','email','reach','get in touch','message','phone','whatsapp','how to contact','connect','communicate','enquire','enquiry','reach out','contact isabelle','how do i contact','how can i contact','how to reach'],
-      reply: "Use the free-call form on this page, or WhatsApp Isabelle on +81 80 6515 1778. She reads every message herself and replies within 1–2 business days.",
-      link: { text: 'Open the Book page', url: '/book' },
-      btns: ['Book a free discovery call','How much does it cost?','What services are available?'] },
-
-    { keys: ['gallery','photo','video','podcast','media','see','look','watch','content','interview','photos','videos','listen'],
-      reply: "The Gallery features podcast interviews, session videos and photos from Isabelle's workshops and events. It is a wonderful way to get a feel for her approach and energy before committing to a session.",
-      link: { text: 'View the Gallery', url: '/gallery' },
-      btns: ['About Isabelle','What services are available?','Book a session'] },
-
-    { keys: ['event','workshop','group','upcoming','schedule','class','programme','program','events','group session','next event','tre workshop','group tre','certification','module 1'],
-      reply: "Next up:\n\n• 25 Nov 2026 · The Body in the Room · online · S$88\n• 15 Dec 2026 · Breath as a medicine · online · S$88\n• 24 Jan 2027 · The Art of Conscious Rest · online · S$88\n\nIn 2027: Introduction to TRE™ and Shaking to Shaping in Singapore, plus TRE™ certification in Singapore, Lisbon and online.",
-      link: { text: 'See all upcoming events', url: '/events' },
-      btns: ['What is TRE™?','Tell me about the 2027 certification','Book a private session'] },
-
-    { keys: ['2027','certification pricing','provider certification','certified provider','become certified','how much is the certification','certification cost','module 2','module 3','bonus program','internal alchemy','cohort','growth package','foundational','refresher','growth','refresher','growth package price','refresher package price','foundational package'],
-      reply: "The 2027 Singapore TRE™ certification runs 24–25 Apr, 3–4 Jul and 30–31 Oct 2027, co-taught by Isabelle and Simba Stenqvist.\n\n• Growth: S$5,888 early bird (then S$6,888)\n• Foundational: S$4,888 early bird (then S$5,888)\n• Refresher options from S$2,200\n\nEarly bird ends 31 Mar 2027.",
-      link: { text: 'View the 2027 packages', url: '/event-certification-2027' },
-      btns: ['See all upcoming events','How do I register?','About Isabelle'] },
-
-    { keys: ['first session','what to expect','what happens','prepare','preparation','my first','what do i need','what to bring','how does a session work','session like','how does a session','session work','what happens in a session','what to expect in a session'],
-      reply: "Your first session typically begins with a short conversation about your goals and situation. Nothing is rushed.\n\nFor TRE™ — wear comfortable clothes and have a mat or soft floor space ready. For Coaching — just bring an open, curious mind. Sessions are always tailored to you.",
-      link: null,
-      btns: ['Is it safe?','How long is a session?','What should I wear?','Book a session'] },
-
-    { keys: ['results','outcome','benefit','benefits','change','improve','help me','feel better','does it work','what will i feel','what changes','what results can i expect','what results can you expect'],
-      reply: "Common results reported by clients include:\n\n• Reduced stress, anxiety and chronic tension\n• Improved sleep quality and sustained energy\n• Greater emotional resilience and calm\n• Better relationships and less reactivity\n• A stronger connection to your body and sense of self\n\nResults vary — Isabelle is always honest about realistic expectations.",
-      link: null,
-      btns: ['What is TRE™?','Tell me about Somatic Coaching','Book a free call'] },
-
-    { keys: ['difference','different from','vs','versus','compare','therapy','talk therapy','physiotherapy','psychology','counselling','meditation','yoga','massage','compared to','how is it different from therapy','different from therapy'],
-      reply: "Somatic practices differ from talk therapy by working with the body, not just the mind. Unlike massage, they address nervous system patterns rather than muscle tension alone. Unlike yoga, sessions are 1:1 and tailored to your specific situation.\n\nThey are complementary to therapy and medical care — not a replacement.",
-      link: null,
-      btns: ['What is TRE™?','Tell me about Somatic Coaching','Book a discovery call'] },
-
-    { keys: ['after call','next steps','what next','after discovery','after free call','then what','what happens after'],
-      reply: "After your free discovery call, Isabelle will suggest the approach that best fits your situation — whether that is TRE™, Somatic Coaching, Bodywork or a combination.\n\nIf you decide to proceed, she will send you a package proposal and you choose what feels right. No pressure at any step.",
-      link: null,
-      btns: ['How much does it cost?','Book the free call','What services are available?'] },
-
-    { keys: ['qualifications','certified','training','credentials','trained','accredited','diploma','certificate','reiki','strozzi','bhd','bhd asia','what are her qualifications','her qualifications'],
-      reply: "Isabelle's key credentials include:\n\n• Global TRE™ Certifying Trainer & Certified TRE™ Provider (Dr. David Berceli method)\n• PCC — Professional Certified Coach (ICF)\n• Strozzi Somatic Bodywork Practitioner\n• Reiki Level II Practitioner\n• 30 years HR Leadership in Fortune 100 companies\n• Results Trained Coach (NeuroLeadership Institute)",
-      link: null,
+    { keys: ['qualifications','qualified','certified','credentials','trained','accredited','diploma','certificate','what are her qualifications','her qualifications','pcc','icf pcc'],
+      reply: "Isabelle's key credentials:\n\n• Global TRE™ Certifying Trainer & Certified TRE™ Provider (trained under Dr. David Berceli)\n• PCC, Professional Certified Coach (ICF)\n• Strozzi Somatic Bodywork Practitioner\n• Results Trained Coach (NeuroLeadership Institute)\n• Reiki Level II Practitioner\n• 30+ years in Fortune 100 HR & talent leadership",
+      link: { text: 'Meet Isabelle', url: '/isabelle' },
       btns: ['About Isabelle','What services does she offer?','Book a session'] },
 
-    { keys: ['which package','compare package','package comparison','starter vs deep','starter or deep','which programme','which program','difference between packages','different from the starter','different from starter','how is it different from the starter','starter vs','which package is right'],
-      reply: "Here's how the two packages compare:\n\n• 8-Week Coaching Package — S$2,300 for 8 weekly one-on-one sessions. Ideal for building a foundation and experiencing real, lasting shifts.\n• Deep Dive — custom pricing for 12 to 24 sessions combining TRE™, Coaching & Bodywork, with priority access and integration support, for deeper long-term transformation.\n\nNot sure which fits? The free discovery call will help you decide.",
+    { keys: ['what services','services offered','what do you do','what can you help','how can you help','what you offer','what do you offer','what is offered','what do you provide','services','offerings','practices','what services does she offer','what services are available'],
+      reply: "HummingBeing offers:\n\n• TRE™: release deep stress & tension through natural tremors\n• Somatic Coaching: body-based coaching for resilience\n• Somatic Bodywork: Strozzi method hands-on bodywork\n• Mindfulness & breathwork\n• Group workshops, retreats and the TRE™ provider certification\n\nPrivate sessions are 1:1, in person (Singapore, Japan) or online via Zoom.",
+      link: null,
+      btns: ['What is TRE™?','Tell me about Somatic Coaching','Upcoming events','Which practice is right for me?'] },
+
+    { keys: ['price','cost','costs','how much','fee','fees','rate','rates','investment','money','expensive','afford','charges','pricing','invest','value','worth','dollar','sgd','budget','cheap'],
+      reply: "Private work:\n\n• Free Discovery Call: $0, 30 minutes\n• 8-Week Coaching Package: S$2,300\n• Deep Dive (12–24 sessions): priced by consultation\n\nGroup events: online workshops S$88, Introduction to TRE™ S$88, Shaking to Shaping S$149, TRE™ certification from S$2,200 (Singapore) or €2,949 (Lisboa).",
+      link: { text: 'Sessions & pricing', url: '/book' },
+      btns: ['Tell me about the 8-Week Package','Tell me about the 2027 certification','What payment options are there?','Upcoming events'] },
+
+    { keys: ['starter','8 week','8 weeks','eight week','first package','weekly sessions','starter package','coaching package','2300','what is included','whats included','included','8 week package','tell me about the 8 week package'],
+      reply: "The 8-Week Coaching Package is S$2,300 and includes:\n\n• Initial diagnostic session\n• 8 weekly one-on-one coaching sessions\n• Targeted exercises between sessions\n• Follow-up session at 3 months\n\nFully customised to your goals: leadership, career, stress resilience or personal growth.",
+      link: { text: 'Get started', url: '/book' },
+      btns: ['Tell me about the Deep Dive','How do I book?','Tell me about the free discovery call'] },
+
+    { keys: ['deep dive','12 sessions','24 sessions','long term','executive program','executive programme','tell me about the deep dive'],
+      reply: "The Deep Dive is a longer, fully personal journey: 12 to 24 sessions combining TRE™, Coaching and Bodywork.\n\nIt includes priority scheduling, direct access to Isabelle, corporate & leadership programmes and ongoing integration support. Priced by consultation.",
+      link: { text: 'Enquire about the Deep Dive', url: '/book' },
+      btns: ['How is it different from the 8-Week Package?','Tell me about the free discovery call','How do I book?'] },
+
+    { keys: ['which package','compare package','compare packages','package comparison','starter vs deep','which programme','which program','difference between packages','different from the 8 week package','how is it different from the 8 week package','which package is right'],
+      reply: "• 8-Week Coaching Package: S$2,300 for 8 weekly 1:1 sessions plus a 3-month follow-up. Ideal for building a foundation and real, lasting shifts.\n• Deep Dive: 12–24 sessions combining TRE™, Coaching & Bodywork, with priority access and integration support, priced by consultation.\n\nNot sure? The free discovery call will help you decide.",
       link: { text: 'Book the free discovery call', url: '/book' },
       btns: ['Tell me about the 8-Week Package','Tell me about the Deep Dive','Book a free discovery call'] },
 
-    { keys: ['which practice','which service','which is right','tre or coaching','coaching or bodywork','what should i choose','which one is right','tre vs coaching','which is best for me','where do i start','what do you recommend','right service for me'],
-      reply: "All three practices work with the nervous system, just through different doors:\n\n• TRE™ — release stored stress & tension through natural tremors\n• Somatic Coaching — build resilience & self-awareness through the body\n• Somatic Bodywork — release held patterns through gentle touch\n\nYou don't have to choose alone — Isabelle will recommend the best fit for you in your free discovery call.",
+    { keys: ['book','booking','schedule a session','appointment','book a session','how to book','how do i book','how can i book','get started','how to start','start working','work together','make an appointment','reserve a session','book a private session','private session','book a session before you go'],
+      reply: "Booking a private session is simple:\n\n1. Send the form on the Book page, or\n2. WhatsApp Isabelle on +81 80 6515 1778\n\nIsabelle replies personally within 1–2 business days. The free 30-minute discovery call is the usual first step.\n\nFor a group event, use the Register button on that event's page.",
+      link: { text: 'Go to the Book page', url: '/book' },
+      btns: ['Tell me about the free discovery call','How do I register for an event?','How much does it cost?'] },
+
+    { keys: ['register','registration','sign up','signup','enrol','enroll','join an event','buy a ticket','ticket','tickets','reserve my place','reserve a place','how do i register','how do i register for an event'],
+      reply: "To join an event, open its page from the Events page and press Register (certifications: Reserve your place). Fill in your details, then you are taken to payment. Card or bank transfer details are on each page.\n\nHave a discount code? Enter it in the registration form and you are taken to the discounted price.",
+      link: { text: 'See all events', url: '/events' },
+      btns: ['Upcoming events','Do you have a discount code?','What payment options are there?'] },
+
+    { keys: ['discount','discount code','promo','promo code','coupon','voucher','code','cheaper','concession','early bird','earlybird','early bird price','when does early bird end'],
+      reply: "• Online workshops: S$88, or S$68 with a discount code\n• Introduction to TRE™: S$88, or S$66 with a code\n• Shaking to Shaping: S$149, or S$129 with a code\n• Certification early bird ends 31 Mar 2027 (Singapore and Lisboa); Lisboa Module 1 early bird is for the first 10 tickets; TRE Scotland early bird ends 31 May 2027\n\nEnter your code in the event's registration form.",
+      link: { text: 'See all events', url: '/events' },
+      btns: ['Upcoming events','How do I register for an event?','What payment options are there?'] },
+
+    { keys: ['discovery call','free call','free session','free chat','30 min','30 minute','30 minutes','consultation','no commitment','first call','intro call','introductory call','free','trial','no cost','complimentary','tell me about the free discovery call','book a free discovery call','book a discovery call','book the free call','book a free call'],
+      reply: "The free 30-minute discovery call is a relaxed, no-pressure video or phone call with Isabelle. You explore your situation, ask anything, and find the right path together.\n\nNo sales pitch, no commitment. Book it with the form on the Book page or by WhatsApp.",
+      link: { text: 'Book the free call', url: '/book' },
+      btns: ['What happens after the call?','How much does it cost?','What services are available?'] },
+
+    { keys: ['location','where','singapore','japan','tokyo','in person','travel','country','based','city','place','address','venue','studio','where is','where are you','sg','jp','where is she based','where are sessions held'],
+      reply: "• In person in Singapore\n• In person in Japan (Tokyo and beyond)\n• Online via Zoom, anywhere in the world\n\nFor group events, the venue details are sent to registered participants. Isabelle has worked with people from 40+ nationalities.",
+      link: null,
+      btns: ['Is online as effective as in-person?','Upcoming events','How do I book?'] },
+
+    { keys: ['online','zoom','remote','virtual','online session','online sessions','zoom session','online effective','is online as effective as in person','online as effective','do you do online','learn online','work via zoom','prepare for an online session','online preparation','camera'],
+      reply: "Yes. Every private session works online via Zoom, and many clients do their whole programme online.\n\nFor online TRE™ your facilitator must see you head to toe, standing and on the mat. Have a yoga mat, a camera about 2–2.5 m away, good light, loose light-coloured trousers, and headphones for group classes. A trusted person nearby and a signed consent form are also asked for.",
+      link: { text: 'How to prepare for an online session', url: '/online-session-preparation' },
+      btns: ['How do I book an online session?','Upcoming events','How much does it cost?'] },
+
+    { keys: ['how long','duration','minutes','hours','length','session length','long is','long does','how long is a session','how long are sessions'],
+      reply: "• Free Discovery Call: 30 min\n• TRE™ session: 60–90 min\n• Coaching or Mindfulness session: 60–75 min\n• 8-Week Coaching Package: 8 weekly sessions + follow-up\n• Deep Dive: 12–24 sessions\n\nGroup workshops are 2–3 hours; the time is on each event page.",
+      link: null,
+      btns: ['How many sessions do I need?','Tell me about the 8-Week Package','Book a free call'] },
+
+    { keys: ['how many sessions','number of sessions','how many sessions do i need','how many sessions will i need','how often','practise','practice at home','at home','on my own','by myself','alone','self practice','self practise','daily practice'],
+      reply: "It varies. Most people can practise TRE™ on their own after 3–4 guided sessions with a certified provider, then use it as a lifelong self-regulation tool at home. Coaching typically runs 6–12 sessions.\n\nIsabelle is upfront about what she thinks you need.",
+      link: { text: 'Read the TRE™ FAQ', url: '/tre-faq' },
+      btns: ['How long is a session?','How much does it cost?','Book a free discovery call'] },
+
+    { keys: ['safe','safety','risk','risks','side effect','side effects','danger','dangerous','is it safe','safe for me','contraindication','contraindications','make things worse','worse','is tre safe','is it safe for my situation'],
+      reply: "For most healthy adults TRE™ is a gentle, low-risk practice, and you can stop the tremors at any time. Sessions start with short tremor periods and the first ones are guided.\n\nIf you have a history of complex trauma, dissociation or a diagnosed mental health condition, speak to your doctor or therapist first, and tell Isabelle when you book.",
+      link: { text: 'Read: Is TRE™ safe?', url: '/is-tre-safe' },
+      btns: ['Who is it suitable for?','How do I stop the tremors?','Book a discovery call'] },
+
+    { keys: ['safe during pregnancy','during pregnancy','while pregnant','when pregnant','pregnant','pregnancy','injury','injured','surgery','operation','medical condition','medication','disability','chronic illness','heart condition','back pain','health issue','health condition','psychiatric','epilepsy','ptsd','c ptsd','cptsd'],
+      reply: "Please speak to your doctor (or midwife) first, and tell Isabelle before the session so the practice can be adapted or postponed.\n\nThe Introduction to TRE™ group workshop is not suitable during pregnancy, within 8 weeks of surgery or severe injury, or with diagnosed psychiatric conditions, PTSD or C-PTSD; private sessions are recommended instead.",
+      link: { text: 'Read: Is TRE™ safe?', url: '/is-tre-safe' },
+      btns: ['Is it safe?','Book a discovery call','What happens in a session?'] },
+
+    { keys: ['who is it for','suitable for','right for me','is it for me','who benefits','good for','works for','good candidate','should i try','who is it suitable for','beginner','beginners','first time','never tried','no experience','experience needed','previous experience','fitness','fit enough','age','old','elderly','kids','children','child','teen','teenager','teenagers'],
+      reply: "TRE™ suits anyone who wants a simple, body-based way to manage stress: busy professionals, leaders, coaches, therapists, carers and people recovering from burnout. No fitness level or experience is needed.\n\nFor children, teenagers or anyone with health concerns, please ask Isabelle first; she will tell you honestly what fits.",
+      link: null,
+      btns: ['Is it safe?','What results can I expect?','Book a free discovery call'] },
+
+    { keys: ['stress','stressed','burnout','burned out','burnt out','burn out','overwhelmed','tense','tension','tight','ache','pain','sleep','insomnia','cant sleep','relax','calm','tired','exhausted','fatigue','headache','anxious','anxiety','nervous','panic','depression','low energy','dysregulated','overthinking'],
+      reply: "HummingBeing specialises in helping people release chronic stress, burnout and stored physical tension. TRE™, Somatic Coaching and Bodywork all work with the nervous system directly, for deep, lasting relief rather than temporary fixes.\n\nIf you are struggling right now, a free call with Isabelle is a gentle first step.",
+      link: { text: 'Book a free discovery call', url: '/book' },
+      btns: ['What is TRE™?','Tell me about Somatic Coaching','Is it safe for my situation?'] },
+
+    { keys: ['trauma','past','wound','abuse','grief','loss','difficult','past trauma','trauma informed','stored trauma','old wounds','unprocessed','talk about my trauma','talk about it','relive'],
+      reply: "You never need to talk about what happened: the body releases in its own way, no story required. Isabelle works in a trauma-informed way, so you stay in control and everything moves at your pace.\n\nWith complex trauma or PTSD, private sessions are recommended, alongside your therapist.",
+      link: null,
+      btns: ['What is TRE™?','Is it safe?','Book a discovery call'] },
+
+    { keys: ['difference','different from','vs','versus','compare','therapy','therapist','talk therapy','physiotherapy','psychology','psychologist','counselling','counseling','yoga','massage','compared to','how is it different from therapy','how is it different from massage','medical','doctor','replace therapy'],
+      reply: "TRE™ is a self-help practice, not a therapy: it works with the body rather than with conversation, and many people use it alongside therapy or coaching. Unlike massage, these practices work with nervous-system patterns, not only muscles. Unlike a yoga class, private sessions are 1:1 and tailored to you.\n\nThey complement therapy and medical care; they do not replace them.",
+      link: null,
+      btns: ['TRE™ vs Somatic Experiencing','What is TRE™?','Book a discovery call'] },
+
+    { keys: ['contact','email','reach','get in touch','message','phone','whatsapp','whatsapp number','phone number','number','call isabelle','how to contact','connect','enquire','enquiry','reach out','contact isabelle','how do i contact','how can i contact','how to reach','speak to someone','human','real person'],
+      reply: "WhatsApp Isabelle on +81 80 6515 1778, or send the form on the Book page. She reads every message herself and replies within 1–2 business days.",
+      link: { text: 'Open the Book page', url: '/book' },
+      btns: ['Book a free discovery call','How much does it cost?','Upcoming events'] },
+
+    { keys: ['gallery','photo','photos','picture','pictures','video','videos','podcast','media','interview','listen','watch'],
+      reply: "The Gallery has podcast interviews, session videos and photos from Isabelle's workshops and events: a good way to get a feel for her approach before a session.",
+      link: { text: 'View the Gallery', url: '/gallery' },
+      btns: ['About Isabelle','Follow on social media','Book a session'] },
+
+    { keys: ['social','social media','instagram','facebook','linkedin','youtube','follow','newsletter','updates','news','mailing list','subscribe','stay in touch','follow on social media'],
+      reply: "Follow Isabelle on Instagram, Facebook, LinkedIn and YouTube, and join the newsletter for new events and practices. All the links are on the Socials page.",
+      link: { text: 'Socials & newsletter', url: '/socials' },
+      btns: ['Upcoming events','View the Gallery','About Isabelle'] },
+
+    { keys: ['event','events','workshop','workshops','group','upcoming','class','classes','programme','program','group session','next event','tre workshop','group tre','upcoming events','see all upcoming events','see upcoming events','view upcoming events','whats on','what is on'],
+      reply: eventsReply,
+      link: { text: 'See all upcoming events', url: '/events' },
+      btns: ['Tell me about the 2027 certification','TRE™ in Lisboa','Online workshops'] },
+
+    { keys: ['online workshop','online workshops','body in the room','the body in the room','breath as a medicine','breath as medicine','art of conscious rest','conscious rest','aun ali','ania','zielinska','ania zielinska','olga','titkova','olga titkova','guest teacher','psychotherapy'],
+      reply: onlineReply,
+      link: { text: 'See all upcoming events', url: '/events' },
+      btns: ['How do I register for an event?','Do you have a discount code?','Upcoming events'] },
+
+    { keys: ['introduction to tre','intro to tre','intro tre','introduction','intro evening','tre thailand','beginner workshop','try tre','tre for beginners','general public'],
+      reply: "Introduction to TRE™ is a 2-hour, in-person workshop in Singapore for anyone curious, with a full TRE™ session guided by Isabelle and Simba Stenqvist, with TRE Thailand.\n\nTue 23 Feb, Tue 29 Jun or Wed 3 Nov 2027, 7–9pm · S$88 (S$66 with a code). Personal TRE™ sessions can be added at S$180 each.",
+      link: { text: 'Introduction to TRE™', url: '/event-intro-tre-singapore-2027' },
+      btns: ['How do I register for an event?','Is it safe?','Upcoming events'] },
+
+    { keys: ['shaking to shaping','tre for coaches','for coaches','coaches','coach training'],
+      reply: "Shaking to Shaping is an ICF-accredited Introduction to TRE™ for coaches: a 3-hour, in-person workshop in Singapore with 3 ICF CCEs.\n\nWed 24 Feb, Wed 30 Jun or Tue 2 Nov 2027, 7–10pm · S$149 (S$129 with a code). Personal TRE™ sessions can be added at S$180 each.",
+      link: { text: 'Shaking to Shaping', url: '/event-shaking-to-shaping-singapore' },
+      btns: ['Tell me about ICF CCEs','Tell me about the 2027 certification','How do I register for an event?'] },
+
+    { keys: ['2027','certification','certification 2027','provider certification','certified provider','become certified','become a provider','tre provider','become a tre provider','teach tre','how much is the certification','certification cost','modules','module 1','module 2','module 3','how many modules','growth','growth package','foundational','foundational package','refresher','refresher package','cohort','bonus','bonuses','tell me about the 2027 certification'],
+      reply: "To become a Global TRE™ Provider you complete Modules 1, 2 and 3, each with online sessions and supervision, plus practice requirements.\n\nSingapore 2027, with Isabelle and Simba Stenqvist: 24–25 Apr, 3–4 Jul, 30–31 Oct.\n• Growth (with ICF credits + 3 bonus programmes): S$5,888 early bird, then S$6,888\n• Foundational: S$4,888 early bird, then S$5,888\n• Refresher (for providers & trainees): from S$2,200\n\nEarly bird ends 31 Mar 2027. Card or bank transfer, in full or 3 instalments.",
+      link: { text: 'View the 2027 packages', url: '/event-certification-2027' },
+      btns: ['TRE™ in Lisboa','Tell me about ICF CCEs','How do I register for an event?'] },
+
+    { w: 1.4, keys: ['lisbon certification','lisboa certification','certification in lisbon','certification in lisboa','training in portugal','lisbon','lisboa','portugal','europe','european','tre in lisboa','tre in lisbon','saymara'],
+      reply: "TRE™ in Lisboa, Portugal, 2027, taught in English by Isabelle:\n\n• Full certification: 28–30 May, 1–4 Jun, 22–24 Oct 2027, limited to 25 places. €2,949 early bird paid in full by 31 Mar 2027 (€3,499 regular), or 3 instalments (€2,999 early bird / €3,549).\n• Module 1 alone: 28–30 May 2027, 21 ICF CCEUs, €739 early bird (first 10 tickets, until 31 Mar 2027), then €799.",
+      link: { text: 'TRE™ Certification Lisboa', url: '/event-tre-certification-lisbon' },
+      btns: ['TRE™ Module 1 in Lisboa','What payment options are there?','Upcoming events'] },
+
+    { w: 1.4, keys: ['lisbon module 1','lisboa module 1','module 1 in lisbon','module 1 lisbon','module 1 in lisboa','tre module 1 in lisboa','module 1 lisboa','lisbon module'],
+      reply: "TRE™ Module 1 in Lisboa: 28 and 29 May (10:00–18:00) and 30 May 2027 (10:00–13:00), led by Isabelle with Saymara Ryon. The 21 ICF CCEUs need the extra Self-Care & Presence for Coaches block on 30 May, 14:00–18:00.\n\n€739 early bird (first 10 tickets, until 31 Mar 2027), then €799.",
+      link: { text: 'TRE™ Module 1 Lisboa', url: '/event-tre-module1-lisbon' },
+      btns: ['TRE™ in Lisboa','How do I register for an event?','Tell me about ICF CCEs'] },
+
+    { w: 1.4, keys: ['scotland','tre scotland','uk','united kingdom','britain','vicki','vicki cook','gbp','pounds','online module','online module 1','module 1 online','online certification','online training'],
+      reply: "TRE™ Module 1 ONLINE with TRE Scotland: 18–20 June 2027 on UK time, led by Isabelle with Vicki Cook, a small group of up to 15, 21 ICF CCEUs.\n\n£488 early bird until 31 May 2027, then £589. Personal TRE™ sessions can be added at £85 each.",
+      link: { text: 'Module 1 online with TRE Scotland', url: '/event-tre-module1-online-scotland' },
+      btns: ['How do I register for an event?','Tell me about ICF CCEs','Upcoming events'] },
+
+    { keys: ['icf','cceu','cceus','cce','cces','icf credits','ccu','continuing coach education','coach credits','tell me about icf cces'],
+      reply: "TRE™ Module 1 carries 21 ICF CCEs (16 Resource Development + 5 Core Competencies): with the 2027 Singapore Growth package, in Lisboa, or online with TRE Scotland. Shaking to Shaping carries 3 ICF CCEs per workshop.",
+      link: { text: 'TRE™ with ICF CCEs', url: '/tre-icf-cceu' },
+      btns: ['Tell me about the 2027 certification','TRE™ in Lisboa','Shaking to Shaping'] },
+
+    { keys: ['simba','stenqvist','simba stenqvist','internal alchemy','grounding'],
+      reply: "Simba Stenqvist is a Global TRE™ Certifying Trainer and the creator of Internal Alchemy (breathwork, fascial release, grounding and tremor work). He co-teaches the 2027 Singapore certification and the Introduction to TRE™ evenings with Isabelle; his Grounding and Internal Alchemy online programmes are bonuses in the Growth package.",
+      link: { text: 'See the 2027 certification', url: '/event-certification-2027' },
+      btns: ['Tell me about the 2027 certification','Introduction to TRE™','Upcoming events'] },
+
+    { keys: ['romania','bucharest','romanian','sold out','past events','past event','previous events'],
+      reply: "The 2026 Romania events (Shaking to Shaping and TRE™ Module 1 in Bucharest) and the 2026 Singapore certification cohort are sold out or have taken place. The next in Europe is Lisboa, from 28 May 2027.",
+      link: { text: 'See upcoming events', url: '/events' },
+      btns: ['TRE™ in Lisboa','Upcoming events','Book a free discovery call'] },
+
+    { keys: ['corporate programme','corporate program','retreat','retreats','corporate','corporate workshop','corporate wellness','team workshop','company workshop','offsite','away day','executive retreat','executive retreats','team','teams','company','organisation','organization','staff','employees','hr'],
+      reply: "Isabelle runs team workshops, corporate wellness sessions and executive retreats in Singapore, Japan and beyond, in-house or off-site:\n\n• The Corporate Detox: 5 days, 4 nights\n• The Quick Reset: 3 days, 2 nights\n• Half-day and day workshops, group TRE™, healing circles\n\nDates and formats are set with you.",
+      link: { text: 'Retreats & Workshops', url: '/retreats-workshops' },
+      btns: ['Book a free discovery call','Upcoming events','About Isabelle'] },
+
+    { keys: ['first session','what to expect','what happens','prepare','preparation','my first','what do i need','what to bring','bring','how does a session work','session like','how does a session','session work','what happens in a session','what to expect in a session','what happens in a first session'],
+      reply: "Your first session starts with a short conversation about your goals and situation. Nothing is rushed.\n\nFor TRE™, wear loose, comfortable clothes and have a yoga mat and a pillow or blanket. For coaching, just bring an open, curious mind. Sessions are always tailored to you.",
+      link: null,
+      btns: ['Is it safe?','How long is a session?','What should I wear?','Book a session'] },
+
+    { keys: ['to see results','see results','results','outcome','benefit','benefits','improve','help me','feel better','does it work','will it work','what will i feel','what changes','what results can i expect','afterwards','after a session','how long to see results'],
+      reply: "Clients commonly report:\n\n• Less stress, anxiety and chronic tension\n• Better sleep and steadier energy\n• More emotional resilience and calm\n• Less reactivity in relationships\n• A stronger connection to the body\n\nAfter TRE™ some people feel tired or emotional for a day: drink water and rest. Results vary, and Isabelle is honest about realistic expectations.",
+      link: null,
+      btns: ['What is TRE™?','Tell me about Somatic Coaching','Book a free call'] },
+
+    { keys: ['after call','next steps','what next','after discovery','after free call','then what','what happens after','what happens after the call'],
+      reply: "After your free discovery call, Isabelle suggests the approach that fits you best: TRE™, Somatic Coaching, Bodywork or a combination.\n\nIf you decide to go ahead, she sends a package proposal and you choose what feels right. No pressure at any step.",
+      link: null,
+      btns: ['How much does it cost?','Book the free call','What services are available?'] },
+
+    { keys: ['which practice','which service','which is right','tre or coaching','coaching or bodywork','what should i choose','which one is right','tre vs coaching','which is best for me','where do i start','what do you recommend','right service for me','which practice is right for me','which session is best','best for me'],
+      reply: "All three work with the nervous system, through different doors:\n\n• TRE™: release stored stress through natural tremors\n• Somatic Coaching: build resilience and self-awareness through the body\n• Somatic Bodywork: release held patterns through gentle touch\n\nYou don't have to choose alone: Isabelle recommends the best fit in your free discovery call.",
       link: { text: 'Book a free discovery call', url: '/book' },
       btns: ['What is TRE™?','Tell me about Somatic Coaching','What is Somatic Bodywork?'] },
 
-    { keys: ['what to wear','wear','clothing','clothes','dress','what should i wear','attire','outfit'],
-      reply: "Wear comfortable, loose clothing you can move and relax in. For TRE™ and Bodywork, have a mat or soft surface ready — and Bodywork is always done fully clothed.\n\nFor online sessions, just find a quiet, private space. That's all you need.",
-      link: null,
+    { keys: ['what to wear','wear','clothing','clothes','dress','what should i wear','attire','outfit','mat','yoga mat'],
+      reply: "Wear loose, comfortable clothing you can relax in, and have a yoga mat plus a pillow or blanket ready. Bodywork is always fully clothed.\n\nOnline, choose light-coloured trousers (dark clothing hides the tremors on camera) and make sure the camera sees you head to toe.",
+      link: { text: 'Online session preparation', url: '/online-session-preparation' },
       btns: ['What happens in a session?','How do I book?','Is it safe?'] },
 
-    { keys: ['icf','cceu','cceus','icf credits','ccu','continuing coach education','coach credits'],
-      reply: "ICF Continuing Coach Education credits come with the 2027 Growth certification package, Shaking to Shaping (3 ICF CCEs), and TRE™ Module 1 in Lisbon or online with TRE Scotland (21 ICF CCEUs each).",
-      link: { text: 'TRE™ with ICF CCEs', url: '/tre-icf-cceu' },
-      btns: ['Tell me about the 2027 certification','See all upcoming events','Book a free discovery call'] },
-
-    { keys: ['retreat','retreats','corporate workshop','team workshop','company workshop','offsite','away day','executive retreat','team'],
-      reply: "Isabelle runs group sessions, team workshops and executive retreats in Singapore, Japan and beyond, including a 5-day Corporate Detox and a 3-day Quick Reset. Dates are set with you.",
-      link: { text: 'Retreats & Workshops', url: '/retreats-workshops' },
-      btns: ['Book a free discovery call','See all upcoming events','About Isabelle'] },
-
-    { keys: ['simba','stenqvist','who is simba','simba stenqvist'],
-      reply: "Simba Stenqvist co-teaches the 2027 Singapore TRE™ certification and the Introduction to TRE™ evenings with Isabelle. He created the Internal Alchemy programme.",
-      link: { text: 'See the 2027 certification', url: '/event-certification-2027' },
-      btns: ['Tell me about the 2027 certification','See all upcoming events','About Isabelle'] },
-
-    { keys: ['shaking to shaping','tre for coaches','for coaches'],
-      reply: "Shaking to Shaping is TRE™ for coaches: a 3-hour evening in Singapore on 24 Feb, 30 Jun or 2 Nov 2027, 7–10pm, S$149, with 3 ICF CCEs.",
-      link: { text: 'See all upcoming events', url: '/events' },
-      btns: ['What is TRE™?','Tell me about the 2027 certification','Book a free discovery call'] },
-
-    { keys: ['online session','online sessions','zoom session','sessions online','do you do online','learn online'],
-      reply: "Yes. Every private session works online via Zoom, wherever you are, and several workshops run online too. In-person sessions are in Singapore and Japan.",
-      link: { text: 'Book a free discovery call', url: '/book' },
-      btns: ['How much does it cost?','What happens in a first session?','See all upcoming events'] },
-
-    { keys: ['cancel','cancellation','reschedule','rescheduling','change appointment','postpone','refund','money back','miss a session','missed session','change my booking'],
-      reply: "Event and certification tickets are final: they are non-refundable and non-cancellable. For private sessions, tell Isabelle as early as you can and she will try to find a new time.",
+    { keys: ['cancel','cancellation','reschedule','rescheduling','change appointment','postpone','refund','refunds','money back','miss a session','missed session','change my booking','can i reschedule','non refundable','transfer my ticket'],
+      reply: "Private sessions: give 24 hours' notice to cancel or reschedule. Life happens, just let Isabelle know.\n\nEvent and certification tickets are final: they are non-refundable and non-cancellable.",
       link: { text: 'Message Isabelle', url: '/book' },
       btns: ['How do I book?','Tell me about the free discovery call','How much does it cost?'] },
 
-    { keys: ['payment options','pay in instal','instalment','installment','payment plan','split payment','how do i pay','methods of payment','bank transfer','credit card','paynow','pay later','what payment options are there'],
-      reply: "Payment details and any available options are arranged directly with Isabelle once you choose a package. Feel free to ask about payment plans during your discovery call — she's happy to find an arrangement that works for you.",
-      link: { text: 'Book a discovery call', url: '/book' },
-      btns: ['How much does it cost?','Tell me about the 8-Week Package','How do I book?'] },
+    { keys: ['payment options','payment','pay','paying','instalment','instalments','installment','installments','payment plan','split payment','how do i pay','methods of payment','bank transfer','credit card','card','stripe','paynow','pay later','what payment options are there','currency','euro','euros','eur'],
+      reply: "Events and certifications: pay by credit card (through Stripe) or bank transfer, in full or, for the certifications, in three instalments. Card charges are added on top of card payments only. Prices are in S$ for Singapore, € for Lisboa and £ for TRE Scotland.\n\nPrivate packages: payment is arranged directly with Isabelle once you choose a package.",
+      link: { text: 'See the 2027 packages', url: '/event-certification-2027' },
+      btns: ['How do I register for an event?','Tell me about the 2027 certification','How much does it cost?'] },
 
-    { keys: ['one on one','1 on 1','one to one','individual or group','group or private','private or group','is it one to one','just me'],
-      reply: "Most of Isabelle's work is 1:1 — fully personalised to you. Group experiences are available through the workshops and events on the Events page, which are a lovely, lower-cost way to try the work first.\n\nThe discovery call will help you choose what fits best.",
+    { keys: ['one on one','1 on 1','1:1','one to one','individual or group','group or private','private or group','is it one to one','just me','private'],
+      reply: "Most of Isabelle's work is 1:1 and fully personalised. Group workshops and events are a lovely, lower-cost way to try the work first.\n\nThe discovery call will help you choose what fits best.",
       link: { text: 'See upcoming events', url: '/events' },
-      btns: ['See upcoming events','Book a private session','How much does it cost?'] },
+      btns: ['Upcoming events','Book a private session','How much does it cost?'] },
 
-    { keys: ['language','languages','english','speak','what language','which language','do you speak','spoken'],
-      reply: "Isabelle is fluent in English, Spanish and French, and has worked with clients from 40+ nationalities. Mention your preferred language on your free discovery call.",
+    { keys: ['in english','taught in english','what language is','language','languages','english','speak','what language','which language','do you speak','spoken','spanish','french','japanese','chinese','mandarin','portuguese'],
+      reply: "Isabelle is fluent in English, Spanish and French. Events and certifications are taught in English. Mention your preferred language on your free discovery call.",
       link: null,
       btns: ['Where are sessions held?','How do I book?','About Isabelle'] },
 
-    { keys: ['pregnant','pregnancy','injury','injured','medical condition','medication','disability','chronic illness','heart condition','surgery','back pain','can i still do','health issue','i am pregnant','am pregnant','while pregnant','during pregnancy'],
-      reply: "Somatic practices are gentle and can often be adapted for many health situations. If you're pregnant, recovering from injury or managing a medical condition, please mention it when you book so Isabelle can tailor the session — and check with your doctor if you're unsure.",
-      link: null,
-      btns: ['Is it safe?','Book a discovery call','What happens in a session?'] },
+    { keys: ['insurance','claim','medisave','receipt','invoice','reimburse','reimbursement','company pay','employer'],
+      reply: "Whether a session can be claimed depends on your insurer or employer, so please check with them. For an invoice, or if your company would like to pay for your place or a team programme, message Isabelle.",
+      link: { text: 'Message Isabelle', url: '/book' },
+      btns: ['What payment options are there?','Corporate programmes','How do I book?'] },
 
-    { keys: ['thanks','thank you','great','awesome','helpful','perfect','appreciate','wonderful','good','brilliant','excellent','nice','cheers','ty'],
-      reply: "You are very welcome! Is there anything else you would like to know about HummingBeing?",
+    { keys: ['thanks','thank you','great','awesome','helpful','perfect','appreciate','wonderful','brilliant','excellent','cheers','ty'], w: 0.5,
+      reply: "You are very welcome! Is there anything else you would like to know?",
       link: null,
-      btns: ['How much does it cost?','Book a session','What services are available?'] },
+      btns: ['Upcoming events','Book a session','What services are available?'] },
 
-    { keys: ['bye','goodbye','see you','ciao','later','take care','ttyl','farewell','good night','good day'],
-      reply: "Thank you for chatting! Wishing you calm, clarity and ease. Come back any time — we are always here.",
+    { keys: ['bye','goodbye','see you','ciao','take care','ttyl','farewell','good night','good day'], w: 0.5,
+      reply: "Thank you for chatting! Wishing you calm, clarity and ease. Come back any time.",
       link: null,
       btns: ['Book a session before you go','View upcoming events'] }
   ];
 
+  var STOP = /^(a|an|the|i|im|me|my|you|your|is|are|am|do|does|did|can|could|would|should|will|to|of|in|on|for|and|or|it|its|this|that|there|be|have|has|with|about|please|any|at|by|we|our|us|so|if|what|when|where|which|who|how|why|much|many|get|tell|know|want|need|like|just|some|from|not|no|yes)$/;
+  function norm(s) {
+    return ' ' + String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[™®]/g, '').replace(/[’']/g, '').replace(/[^a-z0-9: ]/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
+  }
   function match(input) {
-    var norm = input.toLowerCase()
-      .replace(/[^a-z0-9 ]/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
-    var words = norm.split(' ');
-    var isSingle = words.length <= 2 && norm.length >= 2;
+    var n = norm(input), whole = n.trim();
+    if (!whole) return null;
+    var words = whole.split(' ').filter(function (w) { return w.length > 2 && !STOP.test(w); });
     var best = null, bestScore = 0;
     for (var i = 0; i < KB.length; i++) {
-      var score = 0;
-      for (var j = 0; j < KB[i].keys.length; j++) {
-        var kw = KB[i].keys[j];
-        // exact key match — top priority
-        if (norm === kw) { score += kw.split(' ').length * 4; continue; }
-        // phrase contains keyword
-        if (norm.indexOf(kw) !== -1) { score += kw.split(' ').length * 3; continue; }
-        // short inputs: also match if input found within a keyword (e.g. "book" inside "booking")
-        if (isSingle && norm.length >= 3 && kw.indexOf(norm) !== -1) { score += 2; continue; }
-        // partial word-level match with starts-with tolerance
-        var kwWords = kw.split(' ');
-        var matched = 0;
-        for (var k = 0; k < kwWords.length; k++) {
-          var kww = kwWords[k];
-          if (kww.length < 4) continue;
+      var e = KB[i], score = 0;
+      for (var j = 0; j < e.keys.length; j++) {
+        var k = norm(e.keys[j]).trim(), kw = k.split(' ').length;
+        if (!k) continue;
+        if (whole === k) { score += kw * 4; continue; }
+        if (e.only) continue;                                  // generic one-word answers: exact input only
+        if (n.indexOf(' ' + k + ' ') !== -1 || new RegExp(' ' + k + '(s|es|ed|ing) ').test(n)) { score += kw * 3; continue; }
+        if (kw === 1 && k.length >= 6) {                       // practise/practice, registration/register, certificate/certification
           for (var w = 0; w < words.length; w++) {
-            var iw = words[w];
-            if (iw.length < 4 || /^(what|when|where|which|with|that|this|have|your|about|does|from|they|there|them|will|would|could|should)$/.test(iw)) continue;
-            if (iw.indexOf(kww) === 0 || kww.indexOf(iw) === 0) { matched++; break; }
+            var a = words[w], p = 0;
+            if (a.length < 6) continue;
+            while (p < a.length && p < k.length && a[p] === k[p]) p++;
+            if (p >= 6) { score += 1; break; }
           }
         }
-        if (matched > 0 && matched >= Math.ceil(kwWords.length * 0.6)) {
-          score += matched * 2;
-        }
       }
-      if (score > bestScore) { bestScore = score; best = KB[i]; }
+      score *= (e.w || 1);
+      if (score > bestScore) { bestScore = score; best = e; }
     }
-    return bestScore > 0 ? best : null;
+    return best;
   }
+  function replyText(r) { return typeof r.reply === 'function' ? r.reply() : r.reply; }
 
   function showTyping() {
     var box = document.getElementById('hb-msgs');
@@ -616,9 +732,9 @@ document.addEventListener('DOMContentLoaded', function() {
       if (typingEl && typingEl.parentNode) typingEl.remove();
       var r = match(text);
       if (r) {
-        addMsg(r.reply, false, r.btns, r.link);
+        addMsg(replyText(r), false, r.btns, r.link);
       } else {
-        addMsg("I'm not sure about that — but Isabelle would be happy to help personally! Feel free to reach out via the contact form or WhatsApp.", false,
+        addMsg("I'm not sure about that one, but Isabelle would be happy to help personally. Send the form on the Book page or WhatsApp her on +81 80 6515 1778.", false,
           ['What services are available?','How much does it cost?','Back to start'],
           { text: 'Contact Isabelle directly', url: '/book' });
       }
@@ -645,8 +761,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (opening && !win.dataset.greeted) {
       win.dataset.greeted = '1';
       setTimeout(function() {
-        addMsg("Hi! I'm the HummingBeing assistant. Ask me anything about our services, pricing or booking.", false,
-          ['What is TRE™?','Tell me about Somatic Coaching','About Isabelle','How much does it cost?'], null);
+        addMsg("Hi! I'm the HummingBeing assistant. Ask me anything about TRE™, events, prices or booking.", false,
+          ['What is TRE™?','Upcoming events','About Isabelle','How much does it cost?'], null);
       }, 260);
     }
     if (opening) {

@@ -298,8 +298,14 @@
   function render() {
     if (!window.turnstile || wid !== null) return;
     box = document.createElement('div'); box.className = 'hb-ts';
-    box.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:2147483000';
-    document.body.appendChild(box);
+    /* 25 Nov 2026 phone audit: the widget stays invisible unless Cloudflare needs the visitor to tick "Verify you are
+       human"; when it does, that box belongs in the main form above its button, not pinned over the page corner. */
+    var forms = [].slice.call(document.querySelectorAll('form')).filter(function (f) { return f.querySelector('input[type=email]'); });
+    forms.sort(function (a, b) { return b.querySelectorAll('input,select,textarea').length - a.querySelectorAll('input,select,textarea').length; });
+    var f = forms[0], btn = f && f.querySelector('button[type=submit], input[type=submit], button:not([type])');
+    if (btn && btn.parentNode) { box.style.cssText = 'margin:.6rem 0;max-width:100%;overflow:hidden'; btn.parentNode.insertBefore(box, btn); }
+    else if (f) { box.style.cssText = 'margin:.6rem 0;max-width:100%;overflow:hidden'; f.appendChild(box); }
+    else { box.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:2147483000'; document.body.appendChild(box); }
     try {
       wid = window.turnstile.render(box, { sitekey: SITEKEY, appearance: 'interaction-only', action: 'website_form',
         callback: gotToken, 'expired-callback': function () { tok = null; },
