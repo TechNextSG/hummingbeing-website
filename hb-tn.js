@@ -287,6 +287,11 @@
   if (!O || !O.csrf_token || typeof window.sendLead !== 'function') return;
   var LIST_ID = 2, SITEKEY = '0x4AAAAAAFzBZajh6muadkH3';
   var SHEET = window.LEAD_ENDPOINT;
+  /* page -> Odoo event (bhdasia DB, synced 24 Nov 2026): registration leads carry the event in CRM */
+  var EVENTS = { '/event-body-in-the-room': 5, '/event-breath-as-medicine': 12, '/event-art-of-conscious-rest': 13,
+    '/event-intro-tre-singapore-2027': 14, '/event-shaking-to-shaping-singapore': 15, '/event-tre-module1-lisbon': 16,
+    '/event-tre-certification-lisbon': 17, '/event-tre-module1-online-scotland': 18, '/event-certification-2027': 6,
+    '/event-certification-2027-foundational': 6, '/event-certification-2027-growth': 6, '/event-certification-2027-refresher': 6 };
   var tok = null, wid = null, box = null, waiters = [];
   function hasForm() { return !!document.querySelector('form.tn-lead-form, #contact-form, #reg-config, form input[type=email]'); }
   function gotToken(t) { tok = t; var w = waiters; waiters = []; w.forEach(function (f) { f(t); }); }
@@ -329,6 +334,8 @@
     fd.append('contact_name', d.name || '');
     fd.append('email_from', d.email || '');
     fd.append('phone', d.phone || '');
+    var evId = EVENTS[location.pathname.replace(/\.html$/, '').replace(/\/$/, '')];
+    if (evId && /registration/i.test(d.inquiry || '')) fd.append('event_id', String(evId));
     var lines = ['Website: HummingBeing', 'Page: ' + location.href];
     ['source', 'event', 'country', 'code', 'payment_plan', 'gdpr_consent'].forEach(function (k) { if (d[k]) lines.push(k + ': ' + d[k]); });
     if (d.message) lines.push('', d.message);
