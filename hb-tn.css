@@ -1220,6 +1220,10 @@ html body :is(.hb-hero,.tn-hero,.tn-phero,.tn-dark,.page-hero,.ce-hero,.event-he
 html body :is(.btn,.tn-btn,.nav-cta,.hb-link-btn,.tn-form button[type=submit],#contact-form button[type=submit]).hb-has-wave{
   background:var(--hb-cta)!important;border-color:var(--hb-cta)!important;color:#fff!important;position:relative!important;overflow:hidden!important;isolation:isolate}
 html body .hb-has-wave:hover{background:var(--hb-cta)!important;box-shadow:0 12px 24px -14px rgba(31,42,68,.7)!important}
+/* 25 Nov 2026 (owner: "the header flickers"): the same final look from the first frame - before, every gold button
+   painted #F5A623 and faded to #E8951A when hb-tn.js added .hb-has-wave a moment later, on every page */
+html body :is(.btn,.tn-btn,.nav-cta,.hb-link-btn,.tn-form button[type=submit],#contact-form button[type=submit]):not(.btn-outline):not(.evt-btn-2):not(.home-evt-btn2):not(.tn-btn-2):not(.btn-secondary):not(.btn-dark):not(.btn-soldout):not(.btn-ended):not(.ce-soldbtn):not(.hb-has-wave){
+  background:var(--hb-cta)!important;border-color:var(--hb-cta)!important;color:#fff!important;position:relative!important;overflow:hidden!important;isolation:isolate}
 html body .hb-has-wave:hover,html body .hb-has-wave:hover :is(.btn-arr,svg,i){color:#fff!important;border-color:var(--hb-wave)!important}
 .hb-bwave{position:absolute;left:0;top:0;width:100%;height:160%;z-index:-1;pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 100' preserveAspectRatio='none'%3E%3Cpath d='M0 9 Q15 0 30 9 T60 9 T90 9 T120 9 V100 H0Z' fill='%231f2a44'/%3E%3C/svg%3E") repeat-x 0 0/120px 100%;
