@@ -336,16 +336,35 @@
     var fd = new FormData();
     fd.append('csrf_token', O.csrf_token);
     fd.append('turnstile_captcha', t);
-    fd.append('name', (d.inquiry || 'Website enquiry') + (d.name ? ' — ' + d.name : ''));
+    /* 25 Nov 2026 lead audit: every registration title names its event; Notes are HTML lines (Odoo's description
+       is an HTML field, plain newlines collapsed into one paragraph); no line twice; Book page "event" = location. */
+    var inq = d.inquiry || 'Website enquiry';
+    if (/^Event registration enquiry$/i.test(inq)) {
+      var pt = (document.title || '').split('|')[0].trim();
+      inq = 'Event registration — ' + (pt || d.source || 'event') + (d.event && d.event !== pt ? ' (' + d.event + ')' : '');
+    }
+    fd.append('name', inq + (d.name ? ' — ' + d.name : ''));
     fd.append('contact_name', d.name || '');
     fd.append('email_from', d.email || '');
     fd.append('phone', d.phone || '');
     var evId = EVENTS[location.pathname.replace(/\.html$/, '').replace(/\/$/, '')];
-    if (evId && /registration/i.test(d.inquiry || '')) fd.append('event_id', String(evId));
+    if (evId && /registration/i.test(inq)) fd.append('event_id', String(evId));
+    var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
+    var LABEL = { source: 'Source', event: /Book a Session/i.test(d.source || '') ? 'Location' : 'Event / option', country: 'Country',
+      code: 'Discount code', payment_plan: 'Payment plan', gdpr_consent: 'Consent' };
     var lines = ['Website: HummingBeing', 'Page: ' + location.href];
-    ['source', 'event', 'country', 'code', 'payment_plan', 'gdpr_consent'].forEach(function (k) { if (d[k]) lines.push(k + ': ' + d[k]); });
-    if (d.message) lines.push('', d.message);
-    fd.append('description', lines.join('\n'));
+    ['source', 'event', 'country', 'code', 'payment_plan', 'gdpr_consent'].forEach(function (k) { if (d[k]) lines.push(LABEL[k] + ': ' + d[k]); });
+    var extra = String(d.message || '').split(/\s*\|\s*/).filter(function (p) {
+      if (!p) return false;
+      if (/^Payment plan:/i.test(p) && d.payment_plan) return false;
+      if (/^Country:/i.test(p) && d.country) return false;
+      if (/^GDPR:/i.test(p) && d.gdpr_consent) return false;
+      if (/^Discount code:/i.test(p) && d.code && p.indexOf('(') < 0) return false;
+      return true;
+    });
+    var html = lines.map(function (l) { return '<p>' + esc(l) + '</p>'; }).join('');
+    if (extra.length) html += '<p><b>Message</b></p>' + extra.map(function (l) { return '<p>' + esc(l) + '</p>'; }).join('');
+    fd.append('description', html);
     return fetch('/website/form/crm.lead', { method: 'POST', body: fd, credentials: 'same-origin', keepalive: true })
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function (j) { if (!j || !j.id) throw new Error('lead not saved'); return j; });
