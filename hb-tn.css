@@ -5,15 +5,15 @@
 
 
 /* HummingBeing brand fonts (brand book 8 Nov 2026): Playfair Display headlines, Lato body. Self-hosted. */
-@font-face{font-family:'Playfair Display';font-weight:700;font-style:normal;font-display:swap;src:url(/fonts/hb/playfair-display-latin-700-normal.woff2) format('woff2')}
-@font-face{font-family:'Playfair Display';font-weight:800;font-style:normal;font-display:swap;src:url(/fonts/hb/playfair-display-latin-800-normal.woff2) format('woff2')}
-@font-face{font-family:'Playfair Display';font-weight:700;font-style:italic;font-display:swap;src:url(/fonts/hb/playfair-display-latin-700-italic.woff2) format('woff2')}
-@font-face{font-family:'Playfair Display';font-weight:400;font-style:italic;font-display:swap;src:url(/fonts/hb/playfair-display-latin-400-italic.woff2) format('woff2')}
-@font-face{font-family:'Lato';font-weight:400;font-style:normal;font-display:swap;src:url(/fonts/hb/lato-latin-400-normal.woff2) format('woff2')}
-@font-face{font-family:'Lato';font-weight:700;font-style:normal;font-display:swap;src:url(/fonts/hb/lato-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Playfair Display';font-weight:700;font-style:normal;font-display:block;src:url(/fonts/hb/playfair-display-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Playfair Display';font-weight:800;font-style:normal;font-display:block;src:url(/fonts/hb/playfair-display-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Playfair Display';font-weight:700;font-style:italic;font-display:block;src:url(/fonts/hb/playfair-display-latin-700-italic.woff2) format('woff2')}
+@font-face{font-family:'Playfair Display';font-weight:400;font-style:italic;font-display:block;src:url(/fonts/hb/playfair-display-latin-400-italic.woff2) format('woff2')}
+@font-face{font-family:'Lato';font-weight:400;font-style:normal;font-display:block;src:url(/fonts/hb/lato-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Lato';font-weight:700;font-style:normal;font-display:block;src:url(/fonts/hb/lato-latin-700-normal.woff2) format('woff2')}
 /* PT Serif and Raleway still named by older inline styles: resolve to the brand pair */
-@font-face{font-family:'PT Serif';font-weight:400 800;font-display:swap;src:url(/fonts/hb/playfair-display-latin-700-normal.woff2) format('woff2')}
-@font-face{font-family:'Raleway';font-weight:100 900;font-display:swap;src:url(/fonts/hb/lato-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'PT Serif';font-weight:400 800;font-display:block;src:url(/fonts/hb/playfair-display-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Raleway';font-weight:100 900;font-display:block;src:url(/fonts/hb/lato-latin-400-normal.woff2) format('woff2')}
 
 :root{
   --tn-ink:#242e42; --tn-ink-2:#1a2030; --tn-body:#4a5060; --tn-mute:#5f6472;
@@ -799,6 +799,16 @@ html body .hb-chat-foot .hb-send{width:40px!important;height:40px!important;colo
 html body .hb-msg-img{margin:0 0 8px;width:min(190px,100%);border-radius:12px;overflow:hidden;background:#fff;border:1px solid rgba(36,46,66,.08);box-shadow:0 8px 20px -12px rgba(26,32,48,.35)}
 html body .hb-msg-img img{display:block;width:100%;height:auto;aspect-ratio:340/400;object-fit:cover}
 html body .hb-msg-img figcaption{font:700 11px/1.35 Lato,sans-serif;color:#242e42;padding:7px 10px 8px}
+/* chatbot answers as formatted text (25 Nov 2026): paragraphs, lists with hanging indent, bold labels */
+html body .hb-bubble.hb-rich{white-space:normal!important}
+html body .hb-rich p{margin:0 0 .6em}
+html body .hb-rich ul,html body .hb-rich ol{margin:.1em 0 .65em;padding:0 0 0 1.15em}
+html body .hb-rich li{margin:0 0 .4em;padding-left:.15em}
+html body .hb-rich ul li::marker{color:#d4911a;font-size:1.05em}
+html body .hb-rich ol li::marker{color:#a8741c;font-weight:700}
+html body .hb-rich strong{font-weight:700;color:#1a2030}
+html body .hb-rich>:last-child{margin-bottom:0}
+html body .hb-rich li:last-child{margin-bottom:0}
 
 /* ---------- ABOUT values grid v2 (owner 9 Nov): centred, top-aligned, compact ---------- */
 html body .philo-row{box-sizing:border-box;width:100%!important;max-width:1180px!important;margin:0 auto!important;padding:0 clamp(16px,5vw,64px)!important;align-items:stretch!important;gap:16px!important}

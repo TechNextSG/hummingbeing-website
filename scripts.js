@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     { keys: ['isabelle','practitioner','trainer','about isabelle','biography','background','her story','meet isabelle','isabelle claus','teixeira','who runs','founder','about you','who are you'],
       img: { src: '/images/isabelle-chat.webp', alt: 'Isabelle Claus Teixeira', cap: 'Isabelle Claus Teixeira · Founder, Coach & TRE™ Trainer' },
-      reply: "Isabelle Claus Teixeira is a Global TRE™ Certifying Trainer, trained directly under Dr. David Berceli, an ICF PCC Senior Executive Coach, Somatic Coach, Somatic Bodyworker, Mindfulness Teacher and Breathwork Facilitator.\n\nBefore this she spent over 30 years in Fortune 100 HR and talent leadership across 9 countries. She has worked with people from 40+ nationalities and is based in Singapore and Japan.",
+      reply: "Isabelle Claus Teixeira is the founder of HummingBeing:\n\n• Global TRE™ Certifying Trainer, trained directly under Dr. David Berceli\n• ICF PCC Senior Executive Coach\n• Somatic Coach and Somatic Bodyworker\n• Mindfulness Teacher and Breathwork Facilitator\n\nBefore this she spent over 30 years in Fortune 100 HR and talent leadership across 9 countries. She has worked with people from 40+ nationalities and is based in Singapore and Japan.",
       link: { text: 'Meet Isabelle', url: '/isabelle' },
       btns: ['What are her qualifications?','What services does she offer?','Where is she based?','Book a session'] },
 
@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['Is online as effective as in-person?','Upcoming events','How do I book?'] },
 
     { keys: ['online','zoom','remote','virtual','online session','online sessions','zoom session','online effective','is online as effective as in person','online as effective','do you do online','learn online','work via zoom','prepare for an online session','online preparation','camera'],
-      reply: "Yes. Every private session works online via Zoom, and many clients do their whole programme online.\n\nFor online TRE™ your facilitator must see you head to toe, standing and on the mat. Have a yoga mat, a camera about 2–2.5 m away, good light, loose light-coloured trousers, and headphones for group classes. A trusted person nearby and a signed consent form are also asked for.",
+      reply: "Yes. Every private session works online via Zoom, and many clients do their whole programme online.\n\nFor online TRE™ your facilitator must see you head to toe, standing and on the mat:\n\n• Camera: landscape, about 2–2.5 m away, good light in front of you\n• Kit: a yoga mat, pillows or a blanket\n• Clothing: loose, light-coloured trousers (dark clothing hides the tremors)\n• Sound: headphones for group classes\n• Safety: a trusted person nearby and a signed consent form",
       link: { text: 'How to prepare for an online session', url: '/online-session-preparation' },
       btns: ['How do I book an online session?','Upcoming events','How much does it cost?'] },
 
@@ -590,7 +590,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['How do I book?','Tell me about the free discovery call','How much does it cost?'] },
 
     { keys: ['payment options','payment','pay','paying','instalment','instalments','installment','installments','payment plan','split payment','how do i pay','methods of payment','bank transfer','credit card','card','stripe','paynow','pay later','what payment options are there','currency','euro','euros','eur'],
-      reply: "Events and certifications: pay by credit card (through Stripe) or bank transfer, in full or, for the certifications, in three instalments. Card charges are added on top of card payments only. Prices are in S$ for Singapore, € for Lisboa and £ for TRE Scotland.\n\nPrivate packages: payment is arranged directly with Isabelle once you choose a package.",
+      reply: "• Events and certifications: credit card (through Stripe) or bank transfer, in full or, for the certifications, in three instalments\n• Card charges: added on top of card payments only\n• Currency: S$ for Singapore, € for Lisboa, £ for TRE Scotland\n• Private packages: payment is arranged directly with Isabelle once you choose a package",
       link: { text: 'See the 2027 packages', url: '/event-certification-2027' },
       btns: ['How do I register for an event?','Tell me about the 2027 certification','How much does it cost?'] },
 
@@ -654,6 +654,39 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   function replyText(r) { return typeof r.reply === 'function' ? r.reply() : r.reply; }
 
+  /* 25 Nov 2026 (owner): answers are laid out like a written message - paragraphs, bullet and numbered lists
+     with a hanging indent, the label of each list line in bold ("Growth: ...", "25 Nov 2026 · ...").
+     Built with DOM nodes and textContent only, never innerHTML. **x** in a reply = bold. */
+  function inline(el, s) {
+    s.split(/(\*\*[^*]+\*\*)/).forEach(function (part) {
+      if (!part) return;
+      if (/^\*\*[^*]+\*\*$/.test(part)) { var b = document.createElement('strong'); b.textContent = part.slice(2, -2); el.appendChild(b); }
+      else el.appendChild(document.createTextNode(part));
+    });
+  }
+  function item(li, s) {
+    var m = s.match(/^(\d{1,2} [A-Z][a-z]{2} \d{4}(?: \(\+\d+ more dates?\))?)( · )([\s\S]*)$/) ||   // "24 Jan 2027 · ..."
+            s.match(/^([^:·(]{2,48}?)(: )([\s\S]*)$/);                                            // "Growth: ..."
+    if (m && s.indexOf('**') === -1) { var b = document.createElement('strong'); b.textContent = m[1]; li.appendChild(b); inline(li, m[2] + m[3]); }
+    else inline(li, s);
+  }
+  function rich(bub, text) {
+    String(text).split(/\n\s*\n/).forEach(function (block) {
+      var lines = block.split('\n').filter(function (l) { return l.trim(); }), list = null, kind = '';
+      lines.forEach(function (l) {
+        var bm = l.match(/^\s*[•\-]\s+(.*)$/), nm = l.match(/^\s*(\d+)\.\s+(.*)$/);
+        var k = bm ? 'ul' : nm ? 'ol' : '';
+        if (k) {
+          if (!list || kind !== k) { list = document.createElement(k); kind = k; bub.appendChild(list); }
+          var li = document.createElement('li'); item(li, bm ? bm[1] : nm[2]); list.appendChild(li);
+        } else {
+          list = null; kind = '';
+          var p = document.createElement('p'); inline(p, l.trim()); bub.appendChild(p);
+        }
+      });
+    });
+  }
+
   function showTyping() {
     var box = document.getElementById('hb-msgs');
     if (!box) return null;
@@ -690,7 +723,7 @@ document.addEventListener('DOMContentLoaded', function() {
     inner.className = 'hb-msg-inner';
     var bub = document.createElement('div');
     bub.className = 'hb-bubble';
-    bub.textContent = text;
+    if (isUser) bub.textContent = text; else { bub.className += ' hb-rich'; rich(bub, text); }
     if (!isUser && img) {                      /* 25 Nov 2026 (owner): questions about Isabelle show her photo */
       var fig = document.createElement('figure');
       fig.className = 'hb-msg-img';
@@ -992,12 +1025,12 @@ function sendLead(data) {
     window.toggleMenu = function () { set(!ul.classList.contains('nav-open')); };
     ul.addEventListener('click', function (e) {
       var a = e.target.closest('a'); if (!a || a.classList.contains('nav-dropdown-toggle')) return;
-      if (window.innerWidth <= 900) set(false);
+      if (window.innerWidth <= 1100) set(false);
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && ul.classList.contains('nav-open')) { set(false); btn.focus(); }
     });
-    window.addEventListener('resize', function () { if (window.innerWidth > 900 && ul.classList.contains('nav-open')) set(false); });
+    window.addEventListener('resize', function () { if (window.innerWidth > 1100 && ul.classList.contains('nav-open')) set(false); });
   }
 
   /* ---------- journey steps ---------- */
