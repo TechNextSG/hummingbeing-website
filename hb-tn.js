@@ -341,7 +341,7 @@
     var inq = d.inquiry || 'Website enquiry';
     if (/^Event registration enquiry$/i.test(inq)) {
       var pt = (document.title || '').split('|')[0].trim();
-      inq = 'Event registration — ' + (pt || d.source || 'event') + (d.event && d.event !== pt ? ' (' + d.event + ')' : '');
+      inq = 'Event registration — ' + (pt || d.source || 'event');   /* the chosen option is in the Notes */
     }
     fd.append('name', inq + (d.name ? ' — ' + d.name : ''));
     fd.append('contact_name', d.name || '');
