@@ -795,6 +795,10 @@ html body .hb-chat-foot{padding:10px 12px!important;gap:8px!important}
 html body .hb-chat-foot input{font:400 13px/1.4 Lato,sans-serif!important;padding:10px 14px!important;border-radius:999px!important}
 html body .hb-chat-foot .hb-send{width:40px!important;height:40px!important;color:#1a2030!important;background:#F5A623!important}
 @media (max-width:600px){html body .hb-chat-win{height:min(600px,calc(100vh - 170px))!important}}
+/* chatbot photo card (25 Nov 2026): answers about Isabelle show her portrait */
+html body .hb-msg-img{margin:0 0 8px;width:min(190px,100%);border-radius:12px;overflow:hidden;background:#fff;border:1px solid rgba(36,46,66,.08);box-shadow:0 8px 20px -12px rgba(26,32,48,.35)}
+html body .hb-msg-img img{display:block;width:100%;height:auto;aspect-ratio:340/400;object-fit:cover}
+html body .hb-msg-img figcaption{font:700 11px/1.35 Lato,sans-serif;color:#242e42;padding:7px 10px 8px}
 
 /* ---------- ABOUT values grid v2 (owner 9 Nov): centred, top-aligned, compact ---------- */
 html body .philo-row{box-sizing:border-box;width:100%!important;max-width:1180px!important;margin:0 auto!important;padding:0 clamp(16px,5vw,64px)!important;align-items:stretch!important;gap:16px!important}

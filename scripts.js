@@ -378,11 +378,13 @@ document.addEventListener('DOMContentLoaded', function() {
       btns: ['Upcoming events','Tell me about Somatic Coaching','How much does it cost?'] },
 
     { keys: ['isabelle','practitioner','trainer','about isabelle','biography','background','her story','meet isabelle','isabelle claus','teixeira','who runs','founder','about you','who are you'],
+      img: { src: '/images/isabelle-chat.webp', alt: 'Isabelle Claus Teixeira', cap: 'Isabelle Claus Teixeira · Founder, Coach & TRE™ Trainer' },
       reply: "Isabelle Claus Teixeira is a Global TRE™ Certifying Trainer, trained directly under Dr. David Berceli, an ICF PCC Senior Executive Coach, Somatic Coach, Somatic Bodyworker, Mindfulness Teacher and Breathwork Facilitator.\n\nBefore this she spent over 30 years in Fortune 100 HR and talent leadership across 9 countries. She has worked with people from 40+ nationalities and is based in Singapore and Japan.",
       link: { text: 'Meet Isabelle', url: '/isabelle' },
       btns: ['What are her qualifications?','What services does she offer?','Where is she based?','Book a session'] },
 
     { keys: ['qualifications','qualified','certified','credentials','trained','accredited','diploma','certificate','what are her qualifications','her qualifications','pcc','icf pcc'],
+      img: { src: '/images/isabelle-chat.webp', alt: 'Isabelle Claus Teixeira', cap: 'Isabelle Claus Teixeira · Founder, Coach & TRE™ Trainer' },
       reply: "Isabelle's key credentials:\n\n• Global TRE™ Certifying Trainer & Certified TRE™ Provider (trained under Dr. David Berceli)\n• PCC, Professional Certified Coach (ICF)\n• Strozzi Somatic Bodywork Practitioner\n• Results Trained Coach (NeuroLeadership Institute)\n• Reiki Level II Practitioner\n• 30+ years in Fortune 100 HR & talent leadership",
       link: { text: 'Meet Isabelle', url: '/isabelle' },
       btns: ['About Isabelle','What services does she offer?','Book a session'] },
@@ -673,7 +675,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return row;
   }
 
-  function addMsg(text, isUser, btns, link) {
+  function addMsg(text, isUser, btns, link, img) {
     var box = document.getElementById('hb-msgs');
     if (!box) return;
     var row = document.createElement('div');
@@ -689,6 +691,16 @@ document.addEventListener('DOMContentLoaded', function() {
     var bub = document.createElement('div');
     bub.className = 'hb-bubble';
     bub.textContent = text;
+    if (!isUser && img) {                      /* 25 Nov 2026 (owner): questions about Isabelle show her photo */
+      var fig = document.createElement('figure');
+      fig.className = 'hb-msg-img';
+      var im = document.createElement('img');
+      im.src = img.src; im.alt = img.alt; im.width = 340; im.height = 400; im.loading = 'eager';
+      im.onload = function () { var b = document.getElementById('hb-msgs'); if (b) b.scrollTop = b.scrollHeight; };
+      fig.appendChild(im);
+      if (img.cap) { var fc = document.createElement('figcaption'); fc.textContent = img.cap; fig.appendChild(fc); }
+      inner.appendChild(fig);
+    }
     inner.appendChild(bub);
     if (!isUser && link) {
       var la = document.createElement('a');
@@ -732,13 +744,13 @@ document.addEventListener('DOMContentLoaded', function() {
       if (typingEl && typingEl.parentNode) typingEl.remove();
       var r = match(text);
       if (r) {
-        addMsg(replyText(r), false, r.btns, r.link);
+        addMsg(replyText(r), false, r.btns, r.link, r.img);
       } else {
         addMsg("I'm not sure about that one, but Isabelle would be happy to help personally. Send the form on the Book page or WhatsApp her on +81 80 6515 1778.", false,
           ['What services are available?','How much does it cost?','Back to start'],
           { text: 'Contact Isabelle directly', url: '/book' });
       }
-    }, 820);
+    }, 1000 + Math.round(Math.random() * 2000));   /* 25 Nov 2026 (owner): a 1-3 s typing pause, like a person replying */
   }
 
   function hbSend() {
