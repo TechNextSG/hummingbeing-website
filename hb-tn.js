@@ -25,11 +25,14 @@
       if (cons && !cons.checked) bad.push(cons);
       if (bad.length) { if (err) err.hidden = false; bad[0].focus(); return; }
       if (err) err.hidden = true;
-      if (v('_honey') || Date.now() - t0 < 3000) { done(); return; } /* bots: pretend success, send nothing */
+      if (v('_honey')) { done(); return; } /* hidden trap field filled = bot: pretend success, send nothing */
+      /* 25 Nov 2026 lead audit: a very fast submit (phone autofill after "Book a free call") was silently dropped -
+         now it is still sent, flagged for review, so no real lead is ever lost */
+      var fast = Date.now() - t0 < 3000;
       var gd = f.querySelector('[name="gdpr_consent"]');
       var data = {
         name: v('fullname'), email: v('email'), phone: v('phone'),
-        event: '', inquiry: v('interest') || 'Free discovery call',
+        event: '', inquiry: (fast ? 'Possible spam (sent within 3 s) — ' : '') + (v('interest') || 'Free discovery call'),
         source: (f.dataset.source || 'Free call form') + ' · ' + (location.pathname === '/' ? 'home' : location.pathname.replace(/^\//, '').replace(/\.html$/, '')),
         message: v('message')
       };
