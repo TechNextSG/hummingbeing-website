@@ -1241,3 +1241,15 @@ html body :is(.hb-hero,.tn-hero,.tn-phero,.tn-dark,.page-hero,.ce-hero,.event-he
 @view-transition{navigation:auto}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.18s;animation-timing-function:ease-out}
 @media (prefers-reduced-motion:reduce){@view-transition{navigation:none}}
+
+/* ---------- 25 Nov 2026 accessibility audit fixes ---------- */
+/* phone header Book button: 44 px tap target (the 9 Nov 38 px rule won on specificity) */
+@media (max-width:640px){html body nav .nav-cta,html body nav:not(.scrolled) .nav-cta{min-height:44px!important;font-size:11.5px!important}}
+/* event card Register / View details: 44 px tap targets */
+html body :is(.evt-card-actions,.home-evt-actions) .btn{min-height:44px}
+/* footer email + copyright readable (was 3.5:1 and fainter) */
+html body .foot-links li span{color:rgba(255,255,255,.62)}
+html body .foot-copy{color:rgba(255,255,255,.6);font-size:.75rem}
+/* form fields: a visible keyboard focus ring (the gold border alone was 2:1) */
+html body :is(input,select,textarea):not([type=checkbox]):not([type=radio]):focus-visible{outline:2px solid #242e42!important;outline-offset:2px}
+html body :is(.tn-dark,.ecx,footer) :is(input,select,textarea):focus-visible{outline-color:#F5A623!important}

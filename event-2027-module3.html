@@ -302,9 +302,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="sub">30&#8211;31 October 2027 &middot; Singapore. Leave your details and Isabelle will confirm your place and the payment options.</p>
       <form class="evtl-form" onsubmit="evtlSubmit(event)">
         <input type="hidden" name="event" value="Teaching TRE™ to Groups — 30–31 October 2027" />
-        <label>Full name<input type="text" name="name" required placeholder="Your full name" /></label>
-        <label>Email<input type="email" name="email" required placeholder="you@email.com" /></label>
-        <label>WhatsApp / phone<input type="text" name="phone" placeholder="+65 …" /></label>
+        <label>Full name<input type="text" name="name" autocomplete="name" required placeholder="Your full name" /></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required placeholder="you@email.com" /></label>
+        <label>WhatsApp / phone<input type="tel" name="phone" autocomplete="tel" placeholder="+65 …" /></label>
         <label>Anything we should know?<textarea name="message" rows="3" placeholder="Optional"></textarea></label>
         <button type="submit" class="btn btn-primary" style="width:100%">Reserve my place &rarr;</button>
       </form>

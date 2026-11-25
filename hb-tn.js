@@ -243,14 +243,25 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   vids.forEach(function (v) { v.muted = true; v.setAttribute('muted', ''); v.removeAttribute('controls'); });
   if (reduce || !('IntersectionObserver' in window)) return;
+  /* 25 Nov 2026 a11y audit (WCAG 2.2.2): tap / click / Enter / Space pauses a loop and plays it again; a paused loop
+     stays paused when it scrolls back into view */
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) {
       var v = e.target;
-      if (e.isIntersecting) { if (v.preload === 'none') { v.preload = 'auto'; v.load(); } var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      if (e.isIntersecting) { if (v.dataset.hbPaused) return; if (v.preload === 'none') { v.preload = 'auto'; v.load(); } var p = v.play(); if (p && p.catch) p.catch(function () {}); }
       else v.pause();
     });
   }, { threshold: .25 });
-  vids.forEach(function (v) { io.observe(v); });
+  vids.forEach(function (v) {
+    io.observe(v);
+    v.setAttribute('tabindex', '0'); v.setAttribute('role', 'button'); v.setAttribute('aria-label', 'Pause video'); v.style.cursor = 'pointer';
+    var toggle = function () {
+      if (v.paused) { delete v.dataset.hbPaused; var p = v.play(); if (p && p.catch) p.catch(function () {}); v.setAttribute('aria-label', 'Pause video'); }
+      else { v.dataset.hbPaused = '1'; v.pause(); v.setAttribute('aria-label', 'Play video'); }
+    };
+    v.addEventListener('click', toggle);
+    v.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  });
 })();
 
 /* ---------- primary buttons: dark-blue wave layer (9 Nov) ---------- */
